@@ -1,0 +1,53 @@
+User-agent: *
+Disallow:
+
+Allow: /
+
+User-agent: *
+Disallow: /admin/
+Disallow: /ajax/
+Disallow: /assets/
+Disallow: /css/
+Disallow: /js/
+Disallow: /vendor/
+Disallow: /main.php
+Disallow: /index.php
+Disallow: /mix-manifest.json
+Disallow: /lang/en
+Disallow: /lang/fr
+Disallow: /lang/es
+Disallow: /lang/ar
+Disallow: /lang/pt
+Disallow: /lang/de
+Disallow: /lang/it
+Disallow: /lang/tr
+Disallow: /lang/ru
+Disallow: /lang/zh
+Disallow: /lang/ja
+Disallow: /lang/th
+Disallow: /lang/ro
+Disallow: /lang/ka
+Disallow: /auth/facebook
+Disallow: /auth/linkedin
+Disallow: /auth/twitter
+Disallow: /auth/google
+
+
+Sitemap: http://127.0.0.1:8002/af/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/ax/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/al/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/ad/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/ai/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/ag/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/am/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/aw/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/au/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/az/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/bb/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/be/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/ba/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/bg/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/bf/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/in/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/fm/sitemaps.xml
+Sitemap: http://127.0.0.1:8002/ae/sitemaps.xml
