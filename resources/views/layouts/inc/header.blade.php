@@ -107,6 +107,31 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 						</li>
 
 						<li class="nav-item">
+						@if (config('settings.security.login_open_in_modal'))
+								<a href="{{ url('category_list') }}" class="nav-link"><i class="fas fa-border-all"></i> {{ t('categories') }}</a>
+							 @else
+								<a href="{{ url('category_list') }}" class="nav-link"><i class="fas fa-border-all"></i> {{ t('categories') }}</a>
+							@endif 
+						</li>
+
+						<li class="nav-item">
+						@if (config('settings.security.login_open_in_modal'))
+								<a href="{{ url('/') }}" class="nav-link"><i class="fas fa-address-card"></i> {{ t('about_us') }}</a>
+							 @else
+								<a href="{{ url('/') }}" class="nav-link"><i class="fas fa-address-card"></i> {{ t('about_us') }}</a>
+							@endif 
+						</li>
+
+						<li class="nav-item">
+						@if (config('settings.security.login_open_in_modal'))
+								<a href="{{ \App\Helpers\UrlGen::contact() }}" class="nav-link"><i class="fas fa-info"></i> {{ t('Contact') }}</a>
+							 @else
+								<a href="{{ \App\Helpers\UrlGen::contact() }}" class="nav-link"><i class="fas fa-info"></i> {{ t('Contact') }}</a>
+							@endif 
+						</li>
+
+
+						<li class="nav-item">
 							@if (config('settings.security.login_open_in_modal'))
 								<a href="#quickLogin" class="nav-link" data-bs-toggle="modal"><i class="fas fa-user"></i> {{ t('log_in') }}</a>
 							@else
@@ -178,13 +203,13 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 						@include('currencyexchange::select-currency')
 					@endif
 					
-					@if (config('settings.single.pricing_page_enabled') == '')
+					<!-- @if (config('settings.single.pricing_page_enabled') == '')
 						<li class="nav-item pricing">
 							<a href="{{ \App\Helpers\UrlGen::pricing() }}" class="nav-link">
 								<i class="fas fa-tags"></i> {{ t('pricing_label') }}
 							</a>
 						</li>
-					@endif
+					@endif -->
 					
 					<?php
 						$addListingUrl = \App\Helpers\UrlGen::addPost();
@@ -200,11 +225,11 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 							$addListingAttr = '';
 						}
 					?>
-					<li class="nav-item postadd">
+					<!-- <li class="nav-item postadd">
 						<a class="btn btn-block btn-border btn-post btn-add-listing" href="{{ $addListingUrl }}"{!! $addListingAttr !!}>
 							<i class="fa fa-plus-circle"></i> {{ t('Add Listing') }}
 						</a>
-					</li>
+					</li> -->
 					
 					@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.menu.select-language', 'layouts.inc.menu.select-language'])
 					

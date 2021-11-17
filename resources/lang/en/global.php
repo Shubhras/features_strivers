@@ -48,6 +48,8 @@ return [
     'start_now' => 'Start Now!',
     'eg_smartphone' => 'e.g. Smartphone',
     'all_categories' => 'All Categories',
+    'related_coaches' =>'Related Coaches',
+    'categories' =>'Categories',
     'others_categories' => 'All Categories',
     'price_range' => 'Price range',
     'salary_range' => 'Salary range',
@@ -77,7 +79,7 @@ return [
     'terms' => 'Terms',
     'privacy' => 'Privacy',
     'all_rights_reserved' => 'All Rights Reserved',
-    
+    'our_reviews' => 'Our Reviews',
     
     // Login
     'password' => 'Password',

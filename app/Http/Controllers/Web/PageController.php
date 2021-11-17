@@ -165,21 +165,31 @@ class PageController extends FrontController
 	public function coach_details($id)
 	{
 		// Get the Country's largest city for Google Maps
-		// $cacheId = config('country.code') . '.city.population.desc.first';
-		// $city = Cache::remember($cacheId, $this->cacheExpiration, function () {
-		// 	$city = City::currentCountry()->orderBy('population', 'desc')->first();
+		$cacheId = config('country.code') . '.city.population.desc.first';
+		$city = Cache::remember($cacheId, $this->cacheExpiration, function () {
+			$city = City::currentCountry()->orderBy('population', 'desc')->first();
 			
-		// 	return $city;
-		// });
-		// view()->share('city', $city);
+			return $city;
+		});
+		view()->share('city', $city);
 
 // print_r($id);die;
 
 
-		$data['user'] = DB::table('users')->select('users.*','categories.slug','packages.name as subscription_name','packages.price','packages.currency_code')
+		$data['user'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
 		->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
 		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
 		->where('users.id',$id)->first();
+
+
+		$user_category = $data['user']->category;
+		//print_r($user_category);die;
+
+		$data['related_coaches'] = DB::table('users')->select('users.*','categories.slug','packages.name as subscription_name','packages.price','packages.currency_code')
+		->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+		->where('users.category',$user_category)->get();
+		//print_r($data['related_coaches']);die;
 
 		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 

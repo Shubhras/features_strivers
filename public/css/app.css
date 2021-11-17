@@ -53,7 +53,7 @@ display: block;
 }
 .subscription_plan_coach{
     font-size: 16px;
-    /* color: white; */
+    color: red;
     text-align: center;
     margin-top: 111px;
     font-weight: 800;
