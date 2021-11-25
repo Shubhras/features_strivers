@@ -94,7 +94,23 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 						@endif
 					@endif
 				</ul>
-				
+				<?php 
+
+								// $categories = DB::table('categories')->select('categories.name','categories.id')->orderBy('categories.name','asc')->where('categories.parent_id' ,null)->get();
+								// //print_r();die;
+								// foreach($categories as $value){
+
+									
+                                // $name = json_decode($value->name);
+                                // $ss = array();
+                                // foreach ($name as $key => $sub) {
+                                //     $ss[$key] = $sub;
+                                // }
+                                // print_r($ss['en']);die;
+                                
+										//print_r($value->name);die;
+								
+								//}?>
 				<ul class="nav navbar-nav ms-auto navbar-right">
 					@if (!auth()->check())
 
@@ -105,6 +121,61 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 								<a href="{{ url('/') }}" class="nav-link"><i class="fas fa-home"></i> {{ t('home') }}</a>
 							@endif 
 						</li>
+
+						<li class="nav-item dropdown no-arrow">
+						@if (config('settings.security.login_open_in_modal'))
+								<!-- <a href="{{ url('category_list') }}" class="nav-link"><i class="fas fa-border-all"></i> {{ t('categories') }}</a> -->
+								<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+								<i class="fas fa-user-circle hidden-sm"></i>
+								<span>{{ t('categories') }}</span>
+								<!-- <span class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">0</span> -->
+								<i class="fas fa-chevron-down"></i>
+							</a>
+
+								<ul id="userMenuDropdown" class="dropdown-menu user-menu dropdown-menu-right shadow-sm">
+
+
+								<?php 
+
+									$categories = DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();
+									//print_r();die;
+									foreach($categories as $value){
+
+										
+									$name = json_decode($value->name);
+									$ss = array();
+									foreach ($name as $key => $sub) {
+										$ss[$key] = $sub;
+									}
+									//print_r($ss['en']);
+
+								
+								?>
+								<li><a href="{{url('/coach_list/'.$value->id) }}"> {{$ss['en']}}</a></li>
+									
+									<?php }?>
+								</ul>
+							 @else
+								<a href="{{ url('category_list') }}" class="nav-link"><i class="fas fa-border-all"></i> {{ t('categories') }}</a>
+							@endif 
+						</li>
+
+						<li class="nav-item">
+						@if (config('settings.security.login_open_in_modal'))
+								<a href="{{ url('/') }}" class="nav-link"><i class="fas fa-address-card"></i> {{ t('about_us') }}</a>
+							 @else
+								<a href="{{ url('/') }}" class="nav-link"><i class="fas fa-address-card"></i> {{ t('about_us') }}</a>
+							@endif 
+						</li>
+
+						<li class="nav-item">
+						@if (config('settings.security.login_open_in_modal'))
+								<a href="{{ \App\Helpers\UrlGen::contact() }}" class="nav-link"><i class="fas fa-info"></i> {{ t('Contact') }}</a>
+							 @else
+								<a href="{{ \App\Helpers\UrlGen::contact() }}" class="nav-link"><i class="fas fa-info"></i> {{ t('Contact') }}</a>
+							@endif 
+						</li>
+
 
 						<li class="nav-item">
 							@if (config('settings.security.login_open_in_modal'))
@@ -178,13 +249,13 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 						@include('currencyexchange::select-currency')
 					@endif
 					
-					@if (config('settings.single.pricing_page_enabled') == '')
+					<!-- @if (config('settings.single.pricing_page_enabled') == '')
 						<li class="nav-item pricing">
 							<a href="{{ \App\Helpers\UrlGen::pricing() }}" class="nav-link">
 								<i class="fas fa-tags"></i> {{ t('pricing_label') }}
 							</a>
 						</li>
-					@endif
+					@endif -->
 					
 					<?php
 						$addListingUrl = \App\Helpers\UrlGen::addPost();
@@ -200,11 +271,11 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 							$addListingAttr = '';
 						}
 					?>
-					<li class="nav-item postadd">
+					<!-- <li class="nav-item postadd">
 						<a class="btn btn-block btn-border btn-post btn-add-listing" href="{{ $addListingUrl }}"{!! $addListingAttr !!}>
 							<i class="fa fa-plus-circle"></i> {{ t('Add Listing') }}
 						</a>
-					</li>
+					</li> -->
 					
 					@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.menu.select-language', 'layouts.inc.menu.select-language'])
 					

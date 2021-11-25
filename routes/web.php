@@ -76,6 +76,7 @@ Route::group([
 	Route::post('login', 'Auth\LoginController@login');
 	Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 	
+	
 	// Password Reset Routes...
 	Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 	Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
@@ -136,7 +137,7 @@ Route::group([
 		
 		// Others
 		Route::get('account', 'UserController@account');
-		Route::post('ajax/{table}/{field}', 'InlineRequestController@make')->where('table', '[^/]+')->where('field', '[^/]+');
+		//Route::post('ajax/{table}/{field}', 'InlineRequestController@make')->where('table', '[^/]+')->where('field', '[^/]+');
 		
 		// Backup
 		Route::get('backups', 'BackupController@index');
@@ -230,7 +231,8 @@ Route::group([
 			Route::get('/', 'CountriesController@index');
 		}
 		Route::get('/coach_details/{id}', 'PageController@coach_details');
-		
+		Route::get('/coach_list/{id}', 'PageController@coach_list_category');
+		Route::get('category_list', 'SitemapController@category_list');
 		// AUTH
 		Route::group(['middleware' => ['guest', 'no.http.cache']], function ($router) {
 			// Registration Routes...
@@ -475,6 +477,8 @@ Route::group([
 		
 		// SITEMAP (HTML)
 		Route::get(dynamicRoute('routes.sitemap'), 'SitemapController@index');
+		
+		
 		
 		// SEARCH
 		Route::group(['namespace' => 'Search'], function ($router) {

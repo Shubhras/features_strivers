@@ -186,6 +186,7 @@ class UserRequest extends Request
 			
 			'name'      => ['required', 'max:100'],
 			'username'  => [new UsernameIsValidRule(), new UsernameIsAllowedRule()],
+<<<<<<< HEAD
 			'email'     => ['required','max:100', new BlacklistEmailRule(), new BlacklistDomainRule()],
 			'phone'     => ['max:20'],
 			//'year_of_experience' => ['required','max:20'],
@@ -194,6 +195,11 @@ class UserRequest extends Request
 			// 'sub_category' => ['required', 'max:100'],
 			// 'coach_summary'      => ['required'],
 			
+=======
+			// 'category' => ['required', 'max:100'],
+			// 'year_of_experience' => ['max:20'],
+			// 'current_level'=> ['max:20'],
+>>>>>>> a465d0ae037c1b318279ad5a7b3af3d6d2cec92b
 		];
 		$guard = isFromApi() ? 'sanctum' : null;
 		$user = auth($guard)->user();

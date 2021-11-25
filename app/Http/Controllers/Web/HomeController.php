@@ -106,8 +106,15 @@ class HomeController extends FrontController
 
 		
 
-		$data['user'] = DB::table('users')->select('users.*')->where('users.user_type_id',2)->whereNotIn('users.id', [1])->limit(10)->get();
+		$data['user'] = DB::table('users')->select('users.*')->where('users.user_type_id',2)->whereNotIn('users.id', [1])->orderBy('users.id','asc')->limit(4)->get();
 
+		$data['our_reviews'] = DB::table('users')->select('users.*')->where('users.user_type_id',2)->whereNotIn('users.id', [1])->orderBy('users.id','asc')->limit(3)->get();
+
+
+		$data['our_review_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+		->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+		->where('users.id',2)->first();
 
 		$packages = Package::query()->applyCurrency();
 		
