@@ -13,4 +13,6 @@
  */
 
 /* Your custom CSS here... */
-
+.new-form-control{
+    height: 100px;
+}

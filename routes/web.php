@@ -395,11 +395,13 @@ Route::group([
 				
 				// Users
 				Route::get('/', 'EditController@index');
+				Route::get('getSubcategories', 'EditController@getSubcategories');
+				Route::put('photo/delete', 'EditController@updatePhoto');
+				Route::put('photo', 'EditController@updatePhoto');
+
 				Route::group(['middleware' => 'impersonate.protect'], function () {
 					Route::put('/', 'EditController@updateDetails');
 					Route::put('settings', 'EditController@updateDetails');
-					Route::put('photo', 'EditController@updatePhoto');
-					Route::put('photo/delete', 'EditController@updatePhoto');
 				});
 				Route::get('close', 'CloseController@index');
 				Route::group(['middleware' => 'impersonate.protect'], function () {

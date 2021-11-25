@@ -197,51 +197,28 @@
 											{!! csrf_field() !!}
 											<input name="_method" type="hidden" value="PUT">
 											<input name="panel" type="hidden" value="user">
-
-											{{-- gender_id --}}
-											<?php $genderIdError = (isset($errors) && $errors->has('gender_id')) ? ' is-invalid' : ''; ?>
-											<div class="row mb-3 required">
-												<label class="col-md-3 col-form-label">{{ t('gender') }}</label>
-												<div class="col-md-9">
-													@if ($genders->count() > 0)
-                                                        @foreach ($genders as $gender)
-															<div class="form-check form-check-inline pt-2">
-																<input name="gender_id"
-																	   id="gender_id-{{ $gender->id }}"
-																	   value="{{ $gender->id }}"
-																	   class="form-check-input{{ $genderIdError }}"
-																	   type="radio" {{ (old('gender_id', $user->gender_id)==$gender->id) ? 'checked="checked"' : '' }}
-																>
-																<label class="form-check-label" for="gender_id-{{ $gender->id }}">
-																	{{ $gender->name }}
-																</label>
-															</div>
-                                                        @endforeach
-													@endif
-												</div>
-											</div>
-												
+								
 											{{-- name --}}
 											<?php $nameError = (isset($errors) && $errors->has('name')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label class="col-md-3 col-form-label">{{ t('Name') }} <sup>*</sup></label>
+												<label class="col-md-9">{{ ('Display Name') }} <sup>*</sup></label>
 												<div class="col-md-9">
-													<input name="name" type="text" class="form-control{{ $nameError }}" placeholder="" value="{{ old('name', $user->name) }}">
+													<input name="name" type="text" class="form-control{{ $nameError }}" placeholder="Display Name" value="{{ old('name', $user->name) }}">
 												</div>
 											</div>
 											
 											{{-- username --}}
 											<?php $usernameError = (isset($errors) && $errors->has('username')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label class="col-md-3 col-form-label" for="email">{{ t('Username') }}</label>
+												<label class="col-md-9" for="username">{{ ('Full Name') }} <sup>*</sup></label>
 												<div class="col-md-9">
 													<div class="input-group">
 														<span class="input-group-text"><i class="fas fa-user"></i></span>
 														<input id="username"
 															   name="username"
 															   type="text"
-															   class="form-control"
-															   placeholder="{{ t('Username') }}"
+															   class="form-control{{$usernameError}}"
+															   placeholder="Full Name"
 															   value="{{ old('username', $user->username) }}"
 														>
 													</div>
@@ -251,9 +228,9 @@
 											{{-- email --}}
 											<?php $emailError = (isset($errors) && $errors->has('email')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label class="col-md-3 col-form-label">{{ t('email') }}
+												<label class="col-md-9">{{ t('email') }} <sup>*</sup>
 													@if (!isEnabledField('phone'))
-														<sup>*</sup>
+														<!-- <sup>*</sup> -->
 													@endif
 												</label>
 												<div class="col-md-9">
@@ -270,37 +247,15 @@
 												</div>
 											</div>
                                                 
-                                            {{-- country_code --}}
-                                            <?php
-                                            /*
-                                            <?php $countryCodeError = (isset($errors) and $errors->has('country_code')) ? ' is-invalid' : ''; ?>
-											<div class="form-group row required">
-												<label class="col-md-3 col-form-label{{ $countryCodeError }}" for="country_code">
-                                            		{{ t('your_country') }} <sup>*</sup>
-                                            	</label>
-												<div class="col-md-9">
-													<select name="country_code" class="form-control large-data-selecter{{ $countryCodeError }}">
-														<option value="0" {{ (!old('country_code') or old('country_code')==0) ? 'selected="selected"' : '' }}>
-															{{ t('select_a_country') }}
-														</option>
-														@foreach ($countries as $item)
-															<option value="{{ $item->get('code') }}" {{ (old('country_code', $user->country_code)==$item->get('code')) ? 'selected="selected"' : '' }}>
-																{{ $item->get('name') }}
-															</option>
-														@endforeach
-													</select>
-												</div>
-											</div>
-                                            */
-                                            ?>
+                                                      {{-- country_code --}}
 
-										<?php $countryCodeError = (isset($errors) and $errors->has('country_code')) ? ' is-invalid' : ''; ?>
-											<div class="form-group row required">
-												<label class="col-md-3 col-form-label{{ $countryCodeError }}" for="country_code">
-                                            		{{ t('your_country') }} <sup>*</sup>
-                                            	</label>
+										     <?php $countryCodeError = (isset($errors) and $errors->has('country_code')) ? ' is-invalid' : ''; ?>
+											<div class="row mb-3 required">
+												<label class="col-md-9{{ $countryCodeError }}" for="country_code">
+													{{ ('Country') }} <sup>*</sup>
+												</label>
 												<div class="col-md-9">
-													<select name="country_code" class="form-control large-data-selecter{{ $countryCodeError }}">
+													<select name="country_code" id="countryCode" class="form-control large-data-selecter{{ $countryCodeError }}">
 														<option value="0" {{ (!old('country_code') or old('country_code')==0) ? 'selected="selected"' : '' }}>
 															{{ t('select_a_country') }}
 														</option>
@@ -313,15 +268,14 @@
 												</div>
 											</div>
 
-
-                                            <input name="country_code" type="hidden" value="{{ $user->country_code }}">
+                                            			<!-- <input name="country_code" type="hidden" value="{{ $user->country_code }}"> -->
 												
 											{{-- phone --}}
 											<?php $phoneError = (isset($errors) && $errors->has('phone')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label for="phone" class="col-md-3 col-form-label">{{ t('phone') }}
+												<label for="phone" class="col-md-9">{{ ('Phone Number') }} <sup>*</sup>
 													@if (!isEnabledField('email'))
-														<sup>*</sup>
+														<!-- <sup>*</sup> -->
 													@endif
 												</label>
 												<div class="col-md-9">
@@ -339,53 +293,28 @@
 												</div>
 											</div>
 
-											<?php $countryCodeError = (isset($errors) and $errors->has('category')) ? ' is-invalid' : ''; ?>
-											<div class="form-group row required">
-												<label class="col-md-3 col-form-label{{ $countryCodeError }}" for="category">
-                                            		{{ t('category') }} <sup>*</sup>
-                                            	</label>
-												<div class="col-md-9">
-													<select name="category" class="form-control large-data-selecter{{ $countryCodeError }}">
-														<option value="0" {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }}>
-															{{ t('select_a_category') }}
-														</option>
-														@foreach ($categories as $item)
-															<option value="{{ $item->id }}" {{ (old('category', $user->category)==$item->id) ? 'selected="selected"' : '' }}>
-																{{ $item->slug }}
-															</option>
-														@endforeach
-													</select>
-												</div>
-											</div>
-											
-
-											{{-- experience --}}
-											<?php //$usernameError = (isset($errors) && $errors->has('year_of_experience')) ? ' is-invalid' : ''; ?>
+											{{-- experience and location --}}
+											<?php $experienceError = (isset($errors) && $errors->has('year_of_experience')) ? ' is-invalid' : ''; ?>
+											<?php $locationError = (isset($errors) and $errors->has('location')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label class="col-md-3 col-form-label" for="email">{{ t('year_of_experience') }}</label>
-												<div class="col-md-9">
+												<label class="col-md-4" for="email">{{ t('year_of_experience') }} <sup>*</sup>
+											     </label>
+												<label class="col-md-5{{ $countryCodeError }}" for="country_code">
+													{{ t('location') }} <sup>*</sup>
+												</label>
+												<div class="col-md-4">
 													<div class="input-group">
 														<span class="input-group-text"><i class="fas fa-experience"></i></span>
 														<input id="year_of_experience"
 															   name="year_of_experience"
 															   type="text"
-															   class="form-control"
+															   class="form-control{{ $experienceError }}"
 															   placeholder="{{ t('year_of_experience') }}"
 															   value="{{ old('year_of_experience', $user->year_of_experience) }}"
 														>
 													</div>
 												</div>
-											</div>
-
-
-											{{-- location --}}
-											
-											<?php $countryCodeError = (isset($errors) and $errors->has('location')) ? ' is-invalid' : ''; ?>
-											<div class="form-group row required">
-												<label class="col-md-3 col-form-label{{ $countryCodeError }}" for="country_code">
-                                            		{{ t('location') }} <sup>*</sup>
-                                            	</label>
-												<div class="col-md-9">
+												<div class="col-md-5">
 													<select name="location" class="form-control large-data-selecter{{ $countryCodeError }}">
 														<option value="0" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
 															{{ t('select_your_location') }}
@@ -398,22 +327,83 @@
 													</select>
 												</div>
 											</div>
-											
+
 											{{-- Current level --}}
-											<?php //$usernameError = (isset($errors) && $errors->has('Current_level')) ? ' is-invalid' : ''; ?>
+											<?php $currentlevelError = (isset($errors) && $errors->has('current_level')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label class="col-md-3 col-form-label" for="email">{{ t('Current_level') }}</label>
+												<label class="col-md-9" for="email">{{ t('Current_level') }} <sup>*</sup>
+											     </label>
 												<div class="col-md-9">
 													<div class="input-group">
 														<span class="input-group-text"><i class="fas fa-level-up-alt"></i></span>
 														<input id="current_level"
 															   name="current_level"
 															   type="text"
-															   class="form-control"
+															   class="form-control{{$currentlevelError}}"
 															   placeholder="{{ t('Current_level') }}"
 															   value="{{ old('current_level', $user->current_level) }}"
 														>
 													</div>
+												</div>
+											</div>
+
+											{{--industry/area of expertise and subcategories --}}
+											<?php $countryCodeError = (isset($errors) and $errors->has('category')) ? ' is-invalid' : ''; ?>
+											<div class="row mb-3 required">
+												<label class="col-md-4{{ $countryCodeError }}" for="category">
+													{{ ('Industry/Area of expertise') }} <sup>*</sup>
+												</label>
+												<label class="col-md-5">
+													{{ ('Subcategories') }} <sup>*</sup>
+												</label>
+												<div class="col-md-4">
+													<select name="category" id="category" class="form-control large-data-selecter{{ $countryCodeError }}">
+														<option value="0" {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }}>
+															{{ t('select_a_category') }}
+														</option>
+														@foreach ($categories as $item)
+															<option value="{{ $item->id }}" {{ (old('category', $user->category)==$item->id) ? 'selected="selected"' : '' }}>
+																{{ $item->slug }}
+															</option>
+														@endforeach
+													</select>
+												</div>
+												<div class="col-md-5">
+													<select name="sub_category" id="sub_category" class="form-control large-data-selecter{{ $countryCodeError }}">
+													</select>
+												</div>
+											</div>
+
+											{{-- gender_id --}}
+
+											<?php $genderIdError = (isset($errors) && $errors->has('gender_id')) ? ' is-invalid' : ''; ?>
+											<div class="row mb-3 required">
+												<label class="col-md-9">{{ t('gender') }}</label>
+												<div class="col-md-9">
+													@if ($genders->count() > 0)
+                                                        			@foreach ($genders as $gender)
+															<div class="form-check form-check-inline pt-2">
+																<input name="gender_id"
+																	   id="gender_id-{{ $gender->id }}"
+																	   value="{{ $gender->id }}"
+																	   class="form-check-input{{ $genderIdError }}"
+																	   type="radio" {{ (old('gender_id', $user->gender_id)==$gender->id) ? 'checked="checked"' : '' }}
+																>
+																<label class="form-check-label" for="gender_id-{{ $gender->id }}">
+																	{{ $gender->name }}
+																</label>
+															</div>
+                                                        			@endforeach
+													@endif
+												</div>
+											</div>
+
+											{{-- coach summary --}}
+											<?php $coach_summaryError = (isset($errors) && $errors->has('coach_summary')) ? ' is-invalid' : ''; ?>
+											<div class="row mb-3 required">
+												<label class="col-md-9">{{ ('Coach Summary') }} <sup>*</sup></label>
+												<div class="col-md-9">
+													<textarea name="coach_summary" class="form-control{{ $coach_summaryError }} new-form-control" placeholder="Coach Summary" rows="5">{{ old('coach_summary', $user->coach_summary) }}</textarea>
 												</div>
 											</div>
 
@@ -434,7 +424,7 @@
 
 
 							{{-- Bank account Details --}}
-							<div class="card card-default">
+							<div class="card card-default" style="display:none;">
 								<div class="card-header">
 									<h4 class="card-title"><a href="#Bank_account_Details_panel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Bank_account_Details') }}</a></h4>
 								</div>
@@ -485,7 +475,7 @@
 											{{-- password --}}
 											<?php $passwordError = (isset($errors) && $errors->has('password')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-2">
-												<label class="col-md-3 col-form-label">{{ t('account_number') }}</label>
+												<label class="col-md-9">{{ t('account_number') }}</label>
 												<div class="col-md-9">
 													<input id="password" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('account_number') }}">
 												</div>
@@ -494,7 +484,7 @@
 											{{-- ifsc_code --}}
 											<?php $passwordError = (isset($errors) && $errors->has('password')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3">
-												<label class="col-md-3 col-form-label">{{ t('ifsc_code') }}</label>
+												<label class="col-md-9">{{ t('ifsc_code') }}</label>
 												<div class="col-md-9">
 													<input id="password_confirmation" name="password_confirmation" type="password"
 														   class="form-control{{ $passwordError }}" placeholder="{{ t('ifsc_code') }}">
@@ -525,12 +515,10 @@
 												<input type="hidden" name="user_accept_terms" value="{{ (int)$user->accept_terms }}">
 											@endif
 											
-									
-
 											{{-- username --}}
 											<?php $usernameError = (isset($errors) && $errors->has('username')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label class="col-md-3 col-form-label" for="email">{{ t('Username') }}</label>
+												<label class="col-md-9" for="email">{{ t('Username') }}</label>
 												<div class="col-md-9">
 													<div class="input-group">
 														<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -609,7 +597,7 @@
 											{{-- password --}}
 											<?php $passwordError = (isset($errors) && $errors->has('password')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-2">
-												<label class="col-md-3 col-form-label">{{ t('New Password') }}</label>
+												<label class="col-md-9">{{ t('New Password') }}</label>
 												<div class="col-md-9">
 													<input id="password" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('password') }}">
 												</div>
@@ -618,7 +606,7 @@
 											{{-- password_confirmation --}}
 											<?php $passwordError = (isset($errors) && $errors->has('password')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3">
-												<label class="col-md-3 col-form-label">{{ t('Confirm Password') }}</label>
+												<label class="col-md-9">{{ t('Confirm Password') }}</label>
 												<div class="col-md-9">
 													<input id="password_confirmation" name="password_confirmation" type="password"
 														   class="form-control{{ $passwordError }}" placeholder="{{ t('Confirm Password') }}">
@@ -629,7 +617,7 @@
 												{{-- accept_terms --}}
 												<?php $acceptTermsError = (isset($errors) && $errors->has('accept_terms')) ? ' is-invalid' : ''; ?>
 												<div class="row mb-1 required">
-													<label class="col-md-3 col-form-label"></label>
+													<label class="col-md-3"></label>
 													<div class="col-md-9">
 														<div class="form-check">
 															<input name="accept_terms" id="acceptTerms"
@@ -652,7 +640,7 @@
 											{{-- accept_marketing_offers --}}
 											<?php $acceptMarketingOffersError = (isset($errors) && $errors->has('accept_marketing_offers')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label class="col-md-3 col-form-label"></label>
+												<label class="col-md-9"></label>
 												<div class="col-md-9">
 													<div class="form-check">
 														<input name="accept_marketing_offers" id="acceptMarketingOffers"
@@ -672,7 +660,7 @@
 											{{-- time_zone --}}
 											<?php $timeZoneError = (isset($errors) && $errors->has('time_zone')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-4 required">
-												<label class="col-md-3 col-form-label{{ $timeZoneError }}" for="time_zone">
+												<label class="col-md-9 {{ $timeZoneError }}" for="time_zone">
 													{{ t('preferred_time_zone_label') }}
 												</label>
 												<div class="col-md-9">
@@ -1566,6 +1554,7 @@
 	<script src="{{ url('assets/plugins/bootstrap-fileinput/js/fileinput.min.js') }}" type="text/javascript"></script>
 	<script src="{{ url('assets/plugins/bootstrap-fileinput/themes/fas/theme.js') }}" type="text/javascript"></script>
 	<script src="{{ url('js/fileinput/locales/' . config('app.locale') . '.js') }}" type="text/javascript"></script>
+
 	<script>
 		var uploadExtraData = {
 			_token:'{{ csrf_token() }}',
@@ -1695,5 +1684,75 @@
 			$('#avatarUploadSuccess ul li').append(out);
 			$('#avatarUploadSuccess').fadeIn('slow');
 		});
+          
 	</script>
+
+	<script>
+	     // when category dropdown changes
+		$(document).ready(function(){
+
+			var sub_cat_id = {{ old('sub_category', $user->sub_category) }}
+			$('#category').change(function() {
+				var categoryID = $('#category').val();
+				if (categoryID) {
+                         console.log("test2");
+					$.ajax({
+						type: "GET",
+						url: "{{ url('account/getSubcategories') }}?id=" + categoryID,
+
+						success: function(res) {
+
+							if (res) {
+
+								$("#sub_category").empty();
+								$("#sub_category").append('<option value=0>Select a subcategory</option>');
+								$.each(res, function(key, value) {
+									$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
+									'</option>');
+
+								});
+
+							} else {
+
+								$("#sub_category").empty();
+							}
+							
+						}
+					});
+				} else {
+					$("#sub_category").empty();
+				}
+			});
+			var categoryID = $('#category').val();	
+			if (categoryID) {
+				
+				$.ajax({
+					
+					type: "GET",
+					url: "{{ url('account/getSubcategories') }}?id=" + categoryID,
+
+					success: function(res) {
+
+						if (res) {
+							
+							$("#sub_category").empty();
+							$("#sub_category").append('<option value=0>Select a subcategory</option>');
+							$.each(res, function(key, value) {
+								$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
+								'</option>');
+
+							});
+
+						} else {
+
+							$("#sub_category").empty();
+						}
+						
+					}
+				});
+			} else {
+				$("#sub_category").empty();
+			}
+		});
+     </script>
 @endsection

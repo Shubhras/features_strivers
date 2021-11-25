@@ -101,6 +101,8 @@ class User extends BaseUser
 		'closed',
 		'last_activity',
 		'category',
+		'sub_category',
+		'coach_summary',
 		'year_of_experience',
 		'current_level',
 		'location',

@@ -61,22 +61,21 @@ class EditController extends AccountBaseController
 		//$data['categories']= Category::query()->get();
 
 		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
-		//print_r($data['categories']);die;
-		
-		// $embed = explode(',', request()->get('embed'));
-		
-		// if (in_array('currency', $embed)) {
-		// 	$package->with('currency');
-		// }
-		
-		// $package = $package->firstOrFail();
-		
-		// Meta Tags
-	//	print_r($data['subscription_plan']);die;
+
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 		
 		return appView('account.edit', $data);
+		
+	}
+
+	public function getSubcategories(UserRequest $request)
+	{
+	    $subcategories = DB::table("categories")
+		   ->where("parent_id", $request->id)
+		   ->pluck("slug", "id");
+	    return response()->json($subcategories);
+	    
 	}
 	
 	/**
@@ -85,8 +84,6 @@ class EditController extends AccountBaseController
 	 */
 	public function updateDetails(UserRequest $request)
 	{
-		//print_r($request->all());die;
-		// Call API endpoint
 		$endpoint = '/users/' . auth()->user()->id;
 		$data = makeApiRequest('put', $endpoint, $request->all());
 		//print_r($data);die;
@@ -169,7 +166,7 @@ class EditController extends AccountBaseController
 	 * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
 	 */
 	public function updatePhoto(AvatarRequest $request)
-	{
+	{   
 		// Call API endpoint
 		$endpoint = '/users/' . auth()->user()->id;
 		$data = makeApiRequest('put', $endpoint, $request->all());

@@ -78,12 +78,14 @@ class UserRequest extends Request
 	{
 		$rules = [];
 		
+		
 		// CREATE
 		if (in_array($this->method(), ['POST', 'CREATE'])) {
 			$rules = $this->storeRules();
 		}
 		
 		// UPDATE
+		
 		if (in_array($this->method(), ['PUT', 'PATCH', 'UPDATE'])) {
 			$rules = $this->updateRules();
 		}
@@ -100,6 +102,7 @@ class UserRequest extends Request
 		}
 		
 		return $rules;
+		
 	}
 	
 	/**
@@ -178,18 +181,20 @@ class UserRequest extends Request
 	 * @return array
 	 */
 	private function updateRules()
-	{
+	{ 
 		$rules = [
+			
 			'name'      => ['required', 'max:100'],
-			'phone'     => ['max:20'],
-			'email'     => ['max:100', new BlacklistEmailRule(), new BlacklistDomainRule()],
 			'username'  => [new UsernameIsValidRule(), new UsernameIsAllowedRule()],
-			'category' => ['required', 'max:100'],
-			'year_of_experience' => ['max:20'],
-			'current_level'=> ['max:20'],
+			'email'     => ['required','max:100', new BlacklistEmailRule(), new BlacklistDomainRule()],
+			'phone'     => ['max:20'],
+			//'year_of_experience' => ['required','max:20'],
+			//'current_level'=> ['required','max:20'],
+			// 'category'  => ['required', 'max:100'],
+			// 'sub_category' => ['required', 'max:100'],
+			// 'coach_summary'      => ['required'],
+			
 		];
-		
-		
 		$guard = isFromApi() ? 'sanctum' : null;
 		$user = auth($guard)->user();
 		
