@@ -184,9 +184,9 @@ class UserRequest extends Request
 			'phone'     => ['max:20'],
 			'email'     => ['max:100', new BlacklistEmailRule(), new BlacklistDomainRule()],
 			'username'  => [new UsernameIsValidRule(), new UsernameIsAllowedRule()],
-			'category' => ['required', 'max:100'],
-			'year_of_experience' => ['max:20'],
-			'current_level'=> ['max:20'],
+			// 'category' => ['required', 'max:100'],
+			// 'year_of_experience' => ['max:20'],
+			// 'current_level'=> ['max:20'],
 		];
 		
 		

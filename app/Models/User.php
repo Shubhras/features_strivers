@@ -100,11 +100,11 @@ class User extends BaseUser
 		'blocked',
 		'closed',
 		'last_activity',
-		'category',
-		'year_of_experience',
-		'current_level',
-		'location',
-		'subscription_plans'
+		// 'category',
+		// 'year_of_experience',
+		// 'current_level',
+		// 'location',
+		// 'subscription_plans'
 	];
 	
 	/**

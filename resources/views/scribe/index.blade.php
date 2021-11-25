@@ -60,7 +60,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 need to be added in the header of all the API requests with <code>X-AppApiToken</code> as key. On the other hand, the key <code>X-AppType</code> must not be added to the header... This key is only useful for the included web client and for API documentation.</p>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
 <script>
-    var baseUrl = "http://127.0.0.1:8002";
+    var baseUrl = "localhost";
 </script>
 <script src="{{ asset("vendor/scribe/js/tryitout-2.7.9.js") }}"></script>
 <blockquote>

@@ -94,7 +94,23 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 						@endif
 					@endif
 				</ul>
-				
+				<?php 
+
+								// $categories = DB::table('categories')->select('categories.name','categories.id')->orderBy('categories.name','asc')->where('categories.parent_id' ,null)->get();
+								// //print_r();die;
+								// foreach($categories as $value){
+
+									
+                                // $name = json_decode($value->name);
+                                // $ss = array();
+                                // foreach ($name as $key => $sub) {
+                                //     $ss[$key] = $sub;
+                                // }
+                                // print_r($ss['en']);die;
+                                
+										//print_r($value->name);die;
+								
+								//}?>
 				<ul class="nav navbar-nav ms-auto navbar-right">
 					@if (!auth()->check())
 
@@ -106,9 +122,39 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 							@endif 
 						</li>
 
-						<li class="nav-item">
+						<li class="nav-item dropdown no-arrow">
 						@if (config('settings.security.login_open_in_modal'))
-								<a href="{{ url('category_list') }}" class="nav-link"><i class="fas fa-border-all"></i> {{ t('categories') }}</a>
+								<!-- <a href="{{ url('category_list') }}" class="nav-link"><i class="fas fa-border-all"></i> {{ t('categories') }}</a> -->
+								<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+								<i class="fas fa-user-circle hidden-sm"></i>
+								<span>{{ t('categories') }}</span>
+								<!-- <span class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">0</span> -->
+								<i class="fas fa-chevron-down"></i>
+							</a>
+
+								<ul id="userMenuDropdown" class="dropdown-menu user-menu dropdown-menu-right shadow-sm">
+
+
+								<?php 
+
+									$categories = DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();
+									//print_r();die;
+									foreach($categories as $value){
+
+										
+									$name = json_decode($value->name);
+									$ss = array();
+									foreach ($name as $key => $sub) {
+										$ss[$key] = $sub;
+									}
+									//print_r($ss['en']);
+
+								
+								?>
+								<li><a href="{{url('/coach_list/'.$value->id) }}"> {{$ss['en']}}</a></li>
+									
+									<?php }?>
+								</ul>
 							 @else
 								<a href="{{ url('category_list') }}" class="nav-link"><i class="fas fa-border-all"></i> {{ t('categories') }}</a>
 							@endif 
