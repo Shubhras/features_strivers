@@ -47,29 +47,77 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                     </div>
                 </div>
                 <div class="row">
+                    <ul>
+                        @foreach($categories as $key => $cat)
+                            <li id="cat_id_<?php echo $cat->id?>" class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list">
+                                <a href="{{url('/coach_list/'.$cat->id) }}">
+                                    <h4>
+                                        <?php 
+                                        $name = json_decode($cat->name);
+                                        $ss = array();
+                                        foreach ($name as $key => $sub) {
+                                            $ss[$key] = $sub;
+                                        }
+                                        ?>
+                                        &nbsp;<span class="text-color"><b>{{ $ss['en'] }}</b></span>
+                                        
+                                    </h4>
+                                </a>
+                                <?php if($request_cat_id == $cat->id){?> 
+                                <div>
+                                    <ul id="subcategory_data_cat_id_<?php echo $cat->id?>">
+                                        <?php 
+                                        $sub_categories = DB::table('categories')->select('categories.name','categories.id')->orderBy('categories.name','asc')->where('categories.parent_id',$cat->id)->get();
+                                        ?>
+                                        @foreach($sub_categories as $key => $sub_cat)
+                                            <li class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list">
+                                                <a href="{{url('/coach_list/'.$sub_cat->id) }}">
+                                                    <h4>
+                                                        <?php
 
-                    @foreach($categories as $key => $cat)
-                    <div class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list">
-                        <a href="{{url('/coach_list/'.$cat->id) }}">
+                                                        $name = json_decode($sub_cat->name);
+                                                        $sub_cat_id =($sub_cat->id);
+                                                        $ss = array();
+                                                        foreach ($name as $key => $sub) {
+                                                            $ss[$key] = $sub;
+                                                        }
+                                                        ?>&nbsp;
+                                                        <span class="text-color">{{ $ss['en'] }}</span>
+                                                        
+                                                    </h4>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <?php }else {?>
+                                    <ul id="subcategory_data_cat_id_<?php echo $cat->id?>" style="display:none;">
+                                        <?php 
+                                        $sub_categories = DB::table('categories')->select('categories.name','categories.id')->orderBy('categories.name','asc')->where('categories.parent_id',$cat->id)->get();
+                                        ?>
+                                        @foreach($sub_categories as $key => $sub_cat)
+                                            <li class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list">
+                                                <a href="{{url('/coach_list/'.$cat->id) }}">
+                                                    <h4>
+                                                        <?php
 
-                            <h4>
-                                <?php
-
-                                $name = json_decode($cat->name);
-                                $ss = array();
-                                foreach ($name as $key => $sub) {
-                                    $ss[$key] = $sub;
-                                }
-                                ?>
-                                {{ $ss['en'] }}
-                                @if (config('settings.listing.count_categories_posts'))
-                                &nbsp;({{ $countPostsByCat->get($cat->id)->total ?? 0 }})
-                                @endif
-                            </h4>
-                        </a>
-
-                    </div>
-                    @endforeach
+                                                        $name = json_decode($sub_cat->name);
+                                                        $sub_cat_id =($sub_cat->id);
+                                                        $ss = array();
+                                                        foreach ($name as $key => $sub) {
+                                                            $ss[$key] = $sub;
+                                                        }
+                                                        ?>&nbsp;
+                                                        <span class="text-color">{{ $ss['en'] }}</span>
+                                                    </h4>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                    <?php }?>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
 
             </div>
@@ -83,20 +131,12 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                 </div>
                 <div class="row">
                     <?php foreach ($user as $coach_list) {
-
-                        //print_r($coach_list->name);
-
                     ?>
-
-
-
                         <div class="col-sm-4" >
                             <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 200px;" alt="{{ $coach_list->name }}">
                             <br>
                             <h3><b>{{ $coach_list->name }}</b></h3>
-
                         </div>
-
 
                     <?php  } ?>
                 </div>
@@ -126,15 +166,11 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
             <br>
 
         </div>
-
-       
     </div>
 </div>
 
 <br>
 <!-- coaches  -->
-
-
 
 <div class="container{{ $hideOnMobile }}">
     <div class="col-xl-12 content-box layout-section">
@@ -180,3 +216,17 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function(){   
+        $(document).on('click', 'li[id]', function (e) {
+            var requested_to = $(this).attr('id');
+            $("#subcategory_data_"+  requested_to).show();
+        });
+    });
+
+</script>
+
+
+

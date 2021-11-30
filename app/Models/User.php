@@ -100,7 +100,6 @@ class User extends BaseUser
 		'blocked',
 		'closed',
 		'last_activity',
-<<<<<<< HEAD
 		'category',
 		'sub_category',
 		'coach_summary',
@@ -108,13 +107,6 @@ class User extends BaseUser
 		'current_level',
 		'location',
 		'subscription_plans'
-=======
-		// 'category',
-		// 'year_of_experience',
-		// 'current_level',
-		// 'location',
-		// 'subscription_plans'
->>>>>>> a465d0ae037c1b318279ad5a7b3af3d6d2cec92b
 	];
 	
 	/**

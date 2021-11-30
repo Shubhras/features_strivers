@@ -1695,7 +1695,6 @@
 			$('#category').change(function() {
 				var categoryID = $('#category').val();
 				if (categoryID) {
-                         console.log("test2");
 					$.ajax({
 						type: "GET",
 						url: "{{ url('account/getSubcategories') }}?id=" + categoryID,

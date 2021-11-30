@@ -173,8 +173,6 @@ class PageController extends FrontController
 		});
 		view()->share('city', $city);
 
-// print_r($id);die;
-
 
 		$data['user'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
 		->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
@@ -224,7 +222,7 @@ class PageController extends FrontController
 			});
 			view()->share('city', $city);
 	
-	// print_r($id);die;
+			// print_r($id);die;
 	
 	
 			$data['user'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
@@ -234,7 +232,7 @@ class PageController extends FrontController
 	
 	
 			// $user_category = $data['user']->category;
-			//print_r($user_category);die;
+			//print_r($data['user']);die;
 	
 			// $data['related_coaches'] = DB::table('users')->select('users.*','categories.slug','packages.name as subscription_name','packages.price','packages.currency_code')
 			// ->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
@@ -244,11 +242,10 @@ class PageController extends FrontController
 	
 			$data['categories'] = DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();
 	
-	
-			$data['sub_categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->whereNotIn('categories.parent_id' ,['null'])->get();
-			//print_r($data['user']);die;
+			// $data['sub_categories'] = DB::table('categories')->select('categories.name','categories.id')->orderBy('categories.name','asc')->where('categories.parent_id',$id)->get();
+
 			// Meta Tags
-	
+			$data['request_cat_id'] = $id;
 	
 			[$title, $description, $keywords] = getMetaTag('contact');
 			MetaTag::set('title', $title);
