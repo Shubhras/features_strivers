@@ -63,15 +63,16 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                                         
                                     </h4>
                                 </a>
-                                <?php if($request_cat_id == $cat->id){?> 
+                                <?php if($request_cat_id == $cat->id){?>
+                                    
                                 <div>
                                     <ul id="subcategory_data_cat_id_<?php echo $cat->id?>">
                                         <?php 
                                         $sub_categories = DB::table('categories')->select('categories.name','categories.id')->orderBy('categories.name','asc')->where('categories.parent_id',$cat->id)->get();
                                         ?>
                                         @foreach($sub_categories as $key => $sub_cat)
-                                            <li class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list">
-                                                <a href="{{url('/coach_list/'.$sub_cat->id) }}">
+                                            <?php if($request_cat_id ==$sub_cat->id){?>
+                                                <li id="sub_id_<?= $sub_cat->id?>" value="<?= $sub_cat->id?>" class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list" style="color:red;">
                                                     <h4>
                                                         <?php
 
@@ -85,18 +86,35 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                                                         <span class="text-color">{{ $ss['en'] }}</span>
                                                         
                                                     </h4>
-                                                </a>
-                                            </li>
+                                                </li>
+                                            <?php }else{?>
+                                                <li id="sub_id_<?= $sub_cat->id?>" value="<?= $sub_cat->id?>" class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list">
+                                                    <h4>
+                                                        <?php
+
+                                                        $name = json_decode($sub_cat->name);
+                                                        $sub_cat_id =($sub_cat->id);
+                                                        $ss = array();
+                                                        foreach ($name as $key => $sub) {
+                                                            $ss[$key] = $sub;
+                                                        }
+                                                        ?>&nbsp;
+                                                        <span class="text-color">{{ $ss['en'] }}</span>
+                                                        
+                                                    </h4>
+                                                </li>
+                                            <?php } ?>    
                                         @endforeach
                                     </ul>
                                 </div>
+                                
                                 <?php }else {?>
                                     <ul id="subcategory_data_cat_id_<?php echo $cat->id?>" style="display:none;">
                                         <?php 
                                         $sub_categories = DB::table('categories')->select('categories.name','categories.id')->orderBy('categories.name','asc')->where('categories.parent_id',$cat->id)->get();
                                         ?>
                                         @foreach($sub_categories as $key => $sub_cat)
-                                            <li class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list">
+                                            <li id="sub_id_<?= $sub_cat->id?>" value="<?= $sub_cat->id?>" class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list">
                                                 <a href="{{url('/coach_list/'.$cat->id) }}">
                                                     <h4>
                                                         <?php
@@ -114,7 +132,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                                             </li>
                                         @endforeach
                                     </ul>
-                                    <?php }?>
+                                <?php }?>
                             </li>
                         @endforeach
                     </ul>
@@ -122,46 +140,28 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
 
             </div>
 
-            <div class="col-lg-8 col-md-3 col-sm-4 col-6">
-
-                <div class="row">
+            <div class="col-lg-8 col-md-3 col-sm-4 col-6" >
+                <div class="row" >
                     <div class="col-sm-12">
                         <h3 class="categories_list_by_coach">Coach List </h3>
                     </div>
                 </div>
-                <div class="row">
-                    <?php foreach ($user as $coach_list) {
-                    ?>
-                        <div class="col-sm-4" >
-                            <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 200px;" alt="{{ $coach_list->name }}">
-                            <br>
-                            <h3><b>{{ $coach_list->name }}</b></h3>
-                        </div>
-
-                    <?php  } ?>
-                </div>
-
-                <?php if (!empty($user->price)) { ?>
-                    <div class="row">
-
-                        <div class="col-sm-12 subscription_plan_coach">
-
-                            <p>Starting at {{ $user->currency_code }} {{ $user->price }} hours
-                                <?php
-
-                                $subcription_plan = json_decode($user->subscription_name);
-                                $ss = array();
-
-                                foreach ($subcription_plan as $key => $sub) {
-                                    $ss[$key] = $sub;
-                                }
-                                print_r($ss['en']);
-                                ?>
-                                (billed annually) </p>
-                        </div>
+                <?php if(isset($user[0])){ ?>
+                    <div class="row" id="coach_list_cat">
+                        <?php foreach ($user as $coach_list) {?>
+                            <div class="col-sm-4" >
+                                <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 200px;" alt="{{ $coach_list->name }}">
+                                <br>
+                                <h3><b>{{ $coach_list->name }}</b></h3>
+                            </div>                        
+                        <?php }?> 
+                    </div>
+                <?php }
+                else{ ?>
+                    <div class="row" id="coach_list_cat">
+                        <h3 class="coaches-data">Coaches is not available</h3>
                     </div>
                 <?php } ?>
-                <br>
             </div>
             <br>
 
@@ -186,7 +186,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                 </div>
             </div>
 
-            <?php //print_r($related_coaches);die;
+            <?php
             ?>
             @if (isset($related_coaches) and $related_coaches->count() > 0)
 
@@ -226,6 +226,35 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
         });
     });
 
+</script>
+
+<script>
+    $(document).ready(function(){
+        
+        $(document).on('click', 'li[id]', function (e) {
+
+            var categoryID = $(this).val();
+            
+            if (categoryID) {
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('coach_list_sub') }}/" + categoryID,
+                    success: function(res) {
+                        if (res) {
+
+                            $('#coach_list_cat').html(res);
+
+                        } else {
+
+                            $('#coach_list_cat').html('<h3 class= "coaches-data">Coaches is not available</h3>' );
+
+                        }
+                    }
+                });
+            } 
+        });
+        
+    });
 </script>
 
 

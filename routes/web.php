@@ -232,6 +232,8 @@ Route::group([
 		}
 		Route::get('/coach_details/{id}', 'PageController@coach_details');
 		Route::get('/coach_list/{id}', 'PageController@coach_list_category');
+		Route::get('/coach_list_sub/{id}', 'PageController@coach_list_sub_category');
+		
 		Route::get('category_list', 'SitemapController@category_list');
 		// AUTH
 		Route::group(['middleware' => ['guest', 'no.http.cache']], function ($router) {

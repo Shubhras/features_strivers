@@ -228,11 +228,11 @@ class PageController extends FrontController
 			$data['user'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
 			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
 			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
-			->where('users.category',$id)->get();
+			->where('users.category',$id)->orWhere('users.sub_category',$id)->get();
 	
 	
 			// $user_category = $data['user']->category;
-			//print_r($data['user']);die;
+			//print_r($data['user'][0]);die;
 	
 			// $data['related_coaches'] = DB::table('users')->select('users.*','categories.slug','packages.name as subscription_name','packages.price','packages.currency_code')
 			// ->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
@@ -255,6 +255,29 @@ class PageController extends FrontController
 			return appView('pages.category_coach_list',$data);
 
 	}
+
+	public function coach_list_sub_category($id){
+
+		$data['user'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+		->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+		->where('users.sub_category',$id)->get();
+
+
+		$data['categories'] = DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();
+
+		// Meta Tags
+		$data['request_cat_id'] = $id;
+
+		[$title, $description, $keywords] = getMetaTag('contact');
+		MetaTag::set('title', $title);
+		MetaTag::set('description', strip_tags($description));
+		MetaTag::set('keywords', $keywords);
+		
+		return appView('pages.coach_list_sub_cat',$data);
+
+}
+
 
 
 	public function contactPost(ContactRequest $request)
