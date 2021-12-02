@@ -228,7 +228,7 @@ class PageController extends FrontController
 			$data['user'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
 			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
 			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
-			->where('users.category',$id)->orWhere('users.sub_category',$id)->get();
+			->where('users.category',$id)->where('users.user_type_id',2)->orWhere('users.sub_category',$id)->get();
 	
 	
 			// $user_category = $data['user']->category;
@@ -262,7 +262,7 @@ class PageController extends FrontController
 		->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
 		->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
 		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
-		->where('users.sub_category',$id)->get();
+		->where('users.sub_category',$id)->where('users.user_type_id',2)->get();
 
 
 		$data['categories'] = DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();

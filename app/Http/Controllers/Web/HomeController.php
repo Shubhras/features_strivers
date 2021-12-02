@@ -610,7 +610,7 @@ class HomeController extends FrontController
 						Session()
 							->flash('strivre', 'welcome');
 						if ($userId->user_type_id == 2) {
-							$data = $this->common();
+							
 
 							return redirect('/account');
 						} elseif ($userId->user_type_id == 3) {

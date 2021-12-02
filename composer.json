@@ -77,7 +77,8 @@
 		"unicodeveloper/laravel-paystack": "1.0.*",
 		"vemcogroup/laravel-sparkpost-driver": "^4.0",
 		"watson/sitemap": "4.0.*",
-		"wildbit/swiftmailer-postmark": "^3.3"
+		"wildbit/swiftmailer-postmark": "^3.3",
+		"maddhatter/laravel-fullcalendar": "~1.0"
 	},
 	"require-dev": {
 		"facade/ignition": "^2.3.6",

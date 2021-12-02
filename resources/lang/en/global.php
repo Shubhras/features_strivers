@@ -920,6 +920,8 @@ return [
 	'nothing_has_changed' => 'Nothing has changed. The update was not performed.',
     'dashboard' => 'Dashboard',
     'Edit_Profile' =>'Edit Profile',
+    'my_subscription' => 'My Subscription',
+    'my_courses' => 'My Courses'
 
 
 

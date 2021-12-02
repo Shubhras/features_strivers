@@ -18,7 +18,7 @@
 				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/profile') }}">
 					<h5 class="collapse-title no-border">
 						<!-- <i class="fas fa-user-edit"></i> -->
-						{{ t('My Coach') }}&nbsp;
+						{{ ('My Strivers') }}&nbsp;
 
 					</h5>
 				</a>
@@ -39,7 +39,7 @@
 				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/profile') }}">
 					<h5 class="collapse-title no-border">
 						<!-- <i class="fas fa-user-edit"></i> -->
-						{{ t('my_subscription') }}&nbsp;
+						{{ ('Payments') }}&nbsp;
 
 					</h5>
 				</a>
