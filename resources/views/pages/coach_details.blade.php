@@ -56,10 +56,19 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                         <a href="{{ \App\Helpers\UrlGen::category($cat) }}">
 
                             <h4>
-                                {{ $cat->slug }}
+                                <!-- {{ $cat->name }}
                                 @if (config('settings.listing.count_categories_posts'))
                                 &nbsp;({{ $countPostsByCat->get($cat->id)->total ?? 0 }})
-                                @endif
+                                @endif -->
+
+                                <?php
+                                $slug = json_decode($cat->name);
+                                $ss = array();
+                                foreach ($slug as $key => $sub) {
+                                    $ss[$key] = $sub;
+                                }
+                                print_r($ss['en']);
+                                ?>
                             </h4>
                         </a>
                         <!-- @foreach($sub_categories as $sub_cat)

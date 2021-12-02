@@ -189,7 +189,7 @@ class PageController extends FrontController
 		->where('users.category',$user_category)->get();
 		//print_r($data['related_coaches']);die;
 
-		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
+		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id','categories.name')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 
 
 		$data['sub_categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->whereNotIn('categories.parent_id' ,['null'])->get();

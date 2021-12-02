@@ -11,7 +11,10 @@
 				</button>
 			</div>
 			
-			<form role="form" method="POST" action="{{ \App\Helpers\UrlGen::login() }}">
+			<!-- <form role="form" method="POST" action="{{ \App\Helpers\UrlGen::login() }}"> -->
+
+			<form role="form" method="POST" action="{{ url('/user_login') }}">
+			
 				{!! csrf_field() !!}
 				<input type="hidden" name="language_code" value="{{ config('app.locale') }}">
 				<div class="modal-body">

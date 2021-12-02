@@ -33,7 +33,46 @@ class EditController extends AccountBaseController
 	/**
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
+
+
 	public function index()
+	{
+		$data = [];
+		
+		$data['genders'] = Gender::query()->get();
+		
+		$user = auth()->user();
+		
+		// Mini Stats
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+
+		$data['subscription_plan']= Package::query()->get();
+
+		//$data['categories']= Category::query()->get();
+
+		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
+
+		MetaTag::set('title', t('my_account'));
+		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
+		
+		return appView('account.dashboard', $data);
+		
+	}
+
+
+	public function profile()
 	{
 		$data = [];
 		

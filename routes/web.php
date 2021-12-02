@@ -226,6 +226,8 @@ Route::group([
 		// HOMEPAGE
 		if (!doesCountriesPageCanBeHomepage()) {
 			Route::get('/', 'HomeController@index');
+
+			Route::post('user_login', 'HomeController@user_login');
 			Route::get(dynamicRoute('routes.countries'), 'CountriesController@index');
 		} else {
 			Route::get('/', 'CountriesController@index');
@@ -397,6 +399,7 @@ Route::group([
 				
 				// Users
 				Route::get('/', 'EditController@index');
+				Route::get('profile', 'EditController@profile');
 				Route::get('getSubcategories', 'EditController@getSubcategories');
 				Route::put('photo/delete', 'EditController@updatePhoto');
 				Route::put('photo', 'EditController@updatePhoto');

@@ -29,6 +29,9 @@ use App\Http\Resources\PackageResource;
 use Illuminate\Support\Facades\Cache;
 use Torann\LaravelMetaTags\Facades\MetaTag;
 use DB;
+use App\Http\Requests\UserRequest;
+use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends FrontController
 {
@@ -570,5 +573,89 @@ class HomeController extends FrontController
 		}
 		
 		return $cacheExpiration;
+	}
+
+
+	public function user_login(Request $request) {
+
+		$email = $request->input('login');
+		$password = $request->input('password');
+		 
+		
+
+		$users_context_id = DB::table('users')->where('email', $email)->first();
+
+		//print_r($users_context_id);die;
+
+		if (!empty($users_context_id)) {
+			//$users_context_id_del = DB::table('users')->join('employees', 'employees.id', '=', 'users.context_id')->where('users.email', $email)->where('employees.deleted_at', NULL)->first();
+
+			// $users_context_id_delete_date = DB::table('users')->select('users.deleted_at')->where('email', $email)->first();
+			// $users_context_id_delete_date = DB::table('users')->select('employees.deleted_at')->join('employees', 'employees.id', '=', 'users.context_id')->where('users.email', $email)->first();
+			// $delete_date = $users_context_id_delete_date->deleted_at;
+
+			if (!empty($users_context_id)) {
+
+				//$user_context_id = $users_context_id->context_id;
+
+				$checkLogin = DB::table('users')->where(['email' => $email, 'password' => $password])->get();
+
+				if (auth()
+					->attempt(['email' => $email, 'password' => $password])) {
+					$id = Auth::user()->id;
+					$userId = DB::table('users')->where('users.id', $id)
+						->first(['users.*']);
+
+					if ($userId->verified_email == 1) {
+						Session()
+							->flash('strivre', 'welcome');
+						if ($userId->user_type_id == 2) {
+							$data = $this->common();
+
+							return redirect('/account');
+						} elseif ($userId->user_type_id == 3) {
+
+							return redirect('/account');
+							// return redirect('/received-notification');
+						}
+
+					} 
+					// else {
+					// 	$user_login_id = $userId->id;
+					// 	$data1['login_user_id'] = $user_login_id;
+					// 	$user_login_email = $userId->email;
+					// 	$data1['user_login_email'] = $user_login_email;
+
+					// 	$mobile = $userId->mobile;
+					// 	$data1['mobile'] = $mobile;
+
+					// 	$data = $this->common();
+					// 	Session()
+					// 		->flash('loginerrors', 'You have not confirmed your OTP yet. please enter OTP');
+					// 	return view('header', $data) . view('confirm_otp', $data1) . view('footer', $data);
+
+					// }
+
+				} else {
+					Session()->flash('loginerror', 'Your email and password not valid !');
+				}
+			} else {
+				//$data = $this->common();
+				// $data4['users_context_id_delete_date'] = $users_context_id_delete_date;
+				// Session()
+				// 	->flash('loginerrors', 'Your account deleted at ' . $users_context_id_delete_date->deleted_at);
+				// return view('header', $data) . view('newlogin', $data4) . view('footer', $data);
+				// return redirect()->back()withError('Your account was blocked at ' . $data4);
+			}
+		} else {
+			Session()
+				->flash('loginerror', 'User not available');
+		}
+
+		// return redirect()
+		//     ->back()
+		//     ->withInput();
+		return redirect('/');
+
 	}
 }

@@ -2,7 +2,26 @@
 	<div class="inner-box">
 		<div class="user-panel-sidebar">
 
-			<div class="collapse-box">
+
+		<div class="collapse-box">
+		<a {!! ($pagePath=='') ? 'class="active"' : '' !!} href="{{ url('account') }}">
+				<h5 class="collapse-title no-border">
+				<i class="fas fa-th-list"></i> {{ t('dashboard') }}&nbsp;
+					<!-- <a href="#MyClassified" data-bs-toggle="collapse" class="float-end"><i class="fa fa-angle-down"></i></a> -->
+				</h5>
+				<!-- <div class="panel-collapse collapse show" id="MyClassified">
+					<ul class="acc-list">
+						<li>
+							<a {!! ($pagePath=='') ? 'class="active"' : '' !!} href="{{ url('account') }}">
+								<i class="fas fa-user-edit"></i> {{ t('Personal Home') }}
+							</a>
+						</li>
+					</ul>
+				</div> -->
+		</a>
+			</div>
+
+			<!-- <div class="collapse-box">
 				<h5 class="collapse-title no-border">
 					{{ t('My Account') }}&nbsp;
 					<a href="#MyClassified" data-bs-toggle="collapse" class="float-end"><i class="fa fa-angle-down"></i></a>
@@ -16,6 +35,15 @@
 						</li>
 					</ul>
 				</div>
+			</div> -->
+
+			<div class="collapse-box" id="MyClassified">
+			<a {!! ($pagePath=='') ? 'class="active"' : '' !!} href="{{ url('account/profile') }}">
+				<h5 class="collapse-title no-border">
+				<i class="fas fa-user-edit"></i>{{ t('Edit_Profile') }}&nbsp;
+					
+				</h5>
+			</a>
 			</div>
 			<!-- /.collapse-box  -->
 

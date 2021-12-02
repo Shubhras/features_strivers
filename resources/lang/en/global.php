@@ -918,6 +918,8 @@ return [
 	'captcha_hint' => 'Please enter the security code shown in the image above in the field below:',
 	'captcha_reload_hint' => 'Reload the security code.',
 	'nothing_has_changed' => 'Nothing has changed. The update was not performed.',
+    'dashboard' => 'Dashboard',
+    'Edit_Profile' =>'Edit Profile',
 
 
 
