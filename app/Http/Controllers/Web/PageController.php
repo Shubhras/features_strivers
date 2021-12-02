@@ -258,8 +258,9 @@ class PageController extends FrontController
 
 	public function coach_list_sub_category($id){
 
-		$data['user'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+		$data['user'] = DB::table('users')->select('users.*','categories.name as slug','sub.name as sub_cat','packages.name as subscription_name','packages.price','packages.currency_code')
 		->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+		->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
 		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
 		->where('users.sub_category',$id)->get();
 

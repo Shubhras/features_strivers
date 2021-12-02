@@ -152,7 +152,25 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                             <div class="col-sm-4" >
                                 <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 200px;" alt="{{ $coach_list->name }}">
                                 <br>
-                                <h3><b>{{ $coach_list->name }}</b></h3>
+                                <?php
+                                    $name = json_decode($coach_list->slug);
+                                    //$sub_cat_id =($sub_cat->id);
+                                    $ss = array();
+                                    foreach ($name as $key => $sub) {
+                                        $ss[$key] = $sub;
+                                    }
+                                ?>
+                                <div>
+                                    <h4><b>{{ $coach_list->name }}</b></h4>
+                                    <p><b>{{ $ss['en'] }}</b></p>
+                                    <?php if($coach_list->year_of_experience!=''){?> 
+                                        <p><b>{{ $coach_list->year_of_experience }} years Experience</b></p>
+                                        <?php 
+                                    }
+                                    else{?>
+                                        <p><b>No Experience</b></p>  
+                                    <?php }?>
+                                </div>
                             </div>                        
                         <?php }?> 
                     </div>
