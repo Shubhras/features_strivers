@@ -32,6 +32,10 @@ class PageController extends FrontController
 	/**
 	 * @return mixed
 	 */
+
+	
+
+
 	public function pricing()
 	{
 		$data = [];
@@ -310,4 +314,16 @@ class PageController extends FrontController
 		
 		return redirect(UrlGen::contact());
 	}
+
+
+
+
+
+	public function aboutUs(){
+		$data = "Hello Folks! ";
+		return appView('pages.aboutUs');
+
+	}
+
+	
 }
