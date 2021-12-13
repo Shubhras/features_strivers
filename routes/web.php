@@ -402,6 +402,12 @@ Route::group([
 				// Users
 				Route::get('/', 'EditController@index');
 				Route::get('profile', 'EditController@profile');
+				Route::get('my_coaches','EditController@my_coaches_by_striver');
+				Route::get('my_striver','EditController@my_coaches_by_striver');
+				Route::get('my_courses','EditController@my_courses_by_striver');
+				Route::get('my_payments','EditController@payment_and_subscription');
+				Route::get('my_subscription','EditController@payment_and_subscription');
+				Route::post('create_course' , 'EditController@create_coursesss');
 				Route::get('getSubcategories', 'EditController@getSubcategories');
 				Route::put('photo/delete', 'EditController@updatePhoto');
 				Route::put('photo', 'EditController@updatePhoto');

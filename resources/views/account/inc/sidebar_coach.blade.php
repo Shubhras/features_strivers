@@ -15,7 +15,7 @@
 
 
 			<div class="collapse-box" id="MyClassified">
-				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/profile') }}">
+				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_striver') }}">
 					<h5 class="collapse-title no-border">
 						<!-- <i class="fas fa-user-edit"></i> -->
 						{{ ('My Strivers') }}&nbsp;
@@ -25,7 +25,7 @@
 			</div>
 
 			<div class="collapse-box" id="MyClassified">
-				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/profile') }}">
+				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_courses') }}">
 					<h5 class="collapse-title no-border">
 						<!-- <i class="fas fa-user-edit"></i> -->
 						{{ t('my_courses') }}&nbsp;
@@ -34,16 +34,17 @@
 				</a>
 			</div>
 
-
-			<div class="collapse-box" id="MyClassified">
-				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/profile') }}">
+			<div class="collapse-box" id="">
+				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_subscription') }}">
 					<h5 class="collapse-title no-border">
 						<!-- <i class="fas fa-user-edit"></i> -->
-						{{ ('Payments') }}&nbsp;
+						{{ t('my_subscription') }}&nbsp;
 
 					</h5>
 				</a>
 			</div>
+
+			
 
 			<div class="collapse-box" id="MyClassified">
 				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/profile') }}">
