@@ -17,17 +17,32 @@
 	@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
 	<div class="main-container">
 		<div class="container">
-			<div class="row">
-				<div class="col-md-3 page-sidebar">
-					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
-				</div>
+			
+		<div class="row ">
+            <div class="col-md-3 page-sidebar inner-box default-inner-box coach_profile_img">
+                <h3 class="no-padding text-center-480 useradmin">
+                    <a href="">
+                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user">&nbsp;
+                        {{ $user->name }}
+                    </a>
+                </h3>
+            </div>
+
+            <div class="col-md-9 page-sidebar">
+
+            </div>
+        </div>
 
 
 				<?php if($user->user_type_id == 2){
 
 				?>
+				<div class="row">
 
-				<div class="col-md-9 page-content">
+<div class="col-md-3 page-sidebar sidebar_coach">
+					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
+				</div>
+				<div class="col-md-9 page-content coach_dashboard">
 
 					@include('flash::message')
 
@@ -47,88 +62,78 @@
 					<div id="avatarUploadSuccess" class="alert alert-success fade show" style="display:none;"></div>
 					
 					<div class="inner-box default-inner-box">
-						<div class="row">
-							<div class="col-md-5 col-sm-4 col-12">
-								<h3 class="no-padding text-center-480 useradmin">
-									<a href="">
-										<img id="userImg" class="userImg" src="{{ $user->photo_url }}" alt="user">&nbsp;
-										{{ $user->name }}
-									</a>
-								</h3>
-							</div>
-							<div class="col-md-7 col-sm-8 col-12">
-								<div class="header-data text-center-xs">
-									{{-- Threads Stats --}}
-									<div class="hdata">
-										<div class="mcol-left">
-											<i class="fas fa-envelope ln-shadow"></i></div>
-										<div class="mcol-right">
-											{{-- Number of messages --}}
-											<p>
-												<a href="{{ url('account/messages') }}">
-													{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-													<em>{{ trans_choice('global.count_mails', getPlural($countThreads), [], config('app.locale')) }}</em>
-												</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									
-									{{-- Traffic Stats --}}
-									<div class="hdata">
-										<div class="mcol-left">
-											<i class="fa fa-eye ln-shadow"></i>
-										</div>
-										<div class="mcol-right">
-											{{-- Number of visitors --}}
-											<p>
-												<a href="{{ url('account/my-posts') }}">
-													<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-													{{ \App\Helpers\Number::short($totalPostsVisits) }}
-													<em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-												</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
 
-									{{-- Ads Stats --}}
-									<div class="hdata">
-										<div class="mcol-left">
-											<i class="fas fa-bullhorn ln-shadow"></i>
-										</div>
-										<div class="mcol-right">
-											{{-- Number of ads --}}
-											<p>
-												<a href="{{ url('account/my-posts') }}">
-													{{ \App\Helpers\Number::short($countPosts) }}
-													<em>{{ trans_choice('global.count_posts', getPlural($countPosts), [], config('app.locale')) }}</em>
-												</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-4 col-12">
+                            <h3 class="no-padding text-center-480 useradmin">
+                                <!-- <a href=""> -->
+                                <!-- <img id="userImg" class="userImg" src="{{ $user->photo_url }}" alt="user">&nbsp; -->
+                                <!-- {{ $user->name }} -->
+                                <!-- </a> -->
+                                <b> Coach Dashboard </b>
+                            </h3>
+                        </div>
+                        <div class="col-md-9 col-sm-8 col-12">
+                            <div class="header-data text-center-xs">
+                                {{-- Threads Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-phone-alt ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of messages --}}
+                                        <p>
+                                            <a href="{{ url('account/messages') }}">
+                                                {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
+                                                <!-- <em>{{ trans_choice('global.count_mails', getPlural($countThreads), [], config('app.locale')) }}</em> -->
+                                                <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
 
-									{{-- Favorites Stats --}}
-									<div class="hdata">
-										<div class="mcol-left">
-											<i class="fa fa-user ln-shadow"></i>
-										</div>
-										<div class="mcol-right">
-											{{-- Number of favorites --}}
-											<p>
-												<a href="{{ url('account/favourite') }}">
-													{{ \App\Helpers\Number::short($countFavoritePosts) }}
-													<em>{{ trans_choice('global.count_favorites', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-												</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+                                {{-- Traffic Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-comments ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of visitors --}}
+                                        <p>
+                                            <a href="{{ url('account/my-posts') }}">
+                                                <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+                                                {{ \App\Helpers\Number::short($totalPostsVisits) }}
+                                                <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
+                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                               
+
+                                {{-- Favorites Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-bell ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of favorites --}}
+                                        <p>
+                                            <a href="{{ url('account/favourite') }}">
+                                                {{ \App\Helpers\Number::short($countFavoritePosts) }}
+                                                <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 					<div class="inner-box default-inner-box">
 						<div class="welcome-msg">
@@ -143,7 +148,7 @@
 							<div class="card card-default">
 								<div class="card-header">
 									<h4 class="card-title">
-										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or Avatar') }}</a>
+										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or User') }}</a>
 									</h4>
 								</div>
 								<?php
@@ -709,9 +714,17 @@
 					</div>
 				</div>
 				<!--/.page-content-->
+				</div>
 
 				<?php } else {?>
-					<div class="col-md-9 page-content">
+
+					<div class="row">
+
+				<div class="col-md-3 page-sidebar sidebar_coach">
+					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
+				</div>
+
+					<div class="col-md-9 page-content coach_dashboard">
 
 					@include('flash::message')
 
@@ -731,87 +744,76 @@
 					<div id="avatarUploadSuccess" class="alert alert-success fade show" style="display:none;"></div>
 					
 					<div class="inner-box default-inner-box">
-						<div class="row">
-							<div class="col-md-5 col-sm-4 col-12">
-								<h3 class="no-padding text-center-480 useradmin">
-									<a href="">
-										<img id="userImg" class="userImg" src="{{ $user->photo_url }}" alt="user">&nbsp;
-										{{ $user->name }}
-									</a>
-								</h3>
-							</div>
-							<div class="col-md-7 col-sm-8 col-12">
-								<div class="header-data text-center-xs">
-									{{-- Threads Stats --}}
-									<div class="hdata">
-										<div class="mcol-left">
-											<i class="fas fa-envelope ln-shadow"></i></div>
-										<div class="mcol-right">
-											{{-- Number of messages --}}
-											<p>
-												<a href="{{ url('account/messages') }}">
-													{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-													<em>{{ trans_choice('global.count_mails', getPlural($countThreads), [], config('app.locale')) }}</em>
-												</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									
-									{{-- Traffic Stats --}}
-									<div class="hdata">
-										<div class="mcol-left">
-											<i class="fa fa-eye ln-shadow"></i>
-										</div>
-										<div class="mcol-right">
-											{{-- Number of visitors --}}
-											<p>
-												<a href="{{ url('account/my-posts') }}">
-													<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-													{{ \App\Helpers\Number::short($totalPostsVisits) }}
-													<em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-												</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
+					<div class="row">
+                        <div class="col-md-4 col-sm-4 col-12">
+                            <h3 class="no-padding text-center-480 useradmin">
+                                <!-- <a href=""> -->
+                                <!-- <img id="userImg" class="userImg" src="{{ $user->photo_url }}" alt="user">&nbsp; -->
+                                <!-- {{ $user->name }} -->
+                                <!-- </a> -->
+                                <b> Striver Update Profile </b>
+                            </h3>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-12">
+                            <div class="header-data text-center-xs">
+                                {{-- Threads Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-phone-alt ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of messages --}}
+                                        <p>
+                                            <a href="{{ url('account/messages') }}">
+                                                {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
+                                                <!-- <em>{{ trans_choice('global.count_mails', getPlural($countThreads), [], config('app.locale')) }}</em> -->
+                                                <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
 
-									{{-- Ads Stats --}}
-									<div class="hdata">
-										<div class="mcol-left">
-											<i class="fas fa-bullhorn ln-shadow"></i>
-										</div>
-										<div class="mcol-right">
-											{{-- Number of ads --}}
-											<p>
-												<a href="{{ url('account/my-posts') }}">
-													{{ \App\Helpers\Number::short($countPosts) }}
-													<em>{{ trans_choice('global.count_posts', getPlural($countPosts), [], config('app.locale')) }}</em>
-												</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
+                                {{-- Traffic Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-comments ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of visitors --}}
+                                        <p>
+                                            <a href="{{ url('account/my-posts') }}">
+                                                <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+                                                {{ \App\Helpers\Number::short($totalPostsVisits) }}
+                                                <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
+                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
 
-									{{-- Favorites Stats --}}
-									<div class="hdata">
-										<div class="mcol-left">
-											<i class="fa fa-user ln-shadow"></i>
-										</div>
-										<div class="mcol-right">
-											{{-- Number of favorites --}}
-											<p>
-												<a href="{{ url('account/favourite') }}">
-													{{ \App\Helpers\Number::short($countFavoritePosts) }}
-													<em>{{ trans_choice('global.count_favorites', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-												</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-						</div>
+                               
+
+                                {{-- Favorites Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-bell ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of favorites --}}
+                                        <p>
+                                            <a href="{{ url('account/favourite') }}">
+                                                {{ \App\Helpers\Number::short($countFavoritePosts) }}
+                                                <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 					</div>
 
 					<div class="inner-box default-inner-box">
@@ -827,7 +829,7 @@
 							<div class="card card-default">
 								<div class="card-header">
 									<h4 class="card-title">
-										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or Avatar') }}</a>
+										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or User') }}</a>
 									</h4>
 								</div>
 								<?php
@@ -1474,8 +1476,9 @@
 					</div>
 				</div>
 
-					<?php }?>
 				</div>
+					<?php }?>
+				
 			<!--/.row-->
 		</div>
 		<!--/.container-->

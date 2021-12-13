@@ -16,6 +16,7 @@
 namespace App\Http\Controllers\Web\Account;
 
 use App\Http\Controllers\Web\Auth\Traits\VerificationTrait;
+use App\Http\Requests\Admin\Request;
 use App\Http\Requests\AvatarRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\Post;
@@ -62,6 +63,19 @@ class EditController extends AccountBaseController
 
 		//$data['categories']= Category::query()->get();
 
+		$data['suggested_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',2)->orderBy('users.id','asc')->get();
+
+		$data['suggested_striver'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
+
+
 		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 
 		MetaTag::set('title', t('my_account'));
@@ -107,6 +121,261 @@ class EditController extends AccountBaseController
 		return appView('account.edit', $data);
 		
 	}
+
+
+
+
+
+	public function my_coaches_by_striver(){
+
+		$data = [];
+		
+		$data['genders'] = Gender::query()->get();
+		
+		$user = auth()->user();
+		
+		// Mini Stats
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+
+			$data['my_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',2)->orderBy('users.id','asc')->limit(3)->get();
+
+			$data['suggested_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',2)->orderBy('users.id','asc')->get();
+
+			$data['suggested_striver'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
+
+
+			$data['my_striver'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',3)->orderBy('users.id','asc')->limit(3)->get();
+
+
+
+			
+		$data['subscription_plan']= Package::query()->get();
+
+		//$data['categories']= Category::query()->get();
+
+		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
+
+		MetaTag::set('title', t('my_account'));
+		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
+
+		return appView('account.my_coaches', $data);
+
+	}
+
+
+	public function my_courses_by_striver(){
+
+
+		$data = [];
+		
+		$data['genders'] = Gender::query()->get();
+		
+		$user = auth()->user();
+		
+		// Mini Stats
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+
+			// $data['my_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			// ->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			// ->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			// ->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			// ->where('users.user_type_id',2)->orderBy('users.id','asc')->limit(3)->get();
+
+			$data['suggested_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',2)->orderBy('users.id','asc')->get();
+
+			$data['suggested_striver'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
+
+
+			
+
+
+
+			
+		$data['subscription_plan']= Package::query()->get();
+
+		//$data['categories']= Category::query()->get();
+
+		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
+
+
+		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*')->orderBy('coach_course.id','asc')->where('coach_course.coach_id', $user->id)->get();
+
+		MetaTag::set('title', t('my_account'));
+		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
+
+		return appView('account.my_courses', $data);
+
+
+	}
+
+
+
+	public function payment_and_subscription(){
+
+
+		$data = [];
+		
+		$data['genders'] = Gender::query()->get();
+		
+		$user = auth()->user();
+		
+		// Mini Stats
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+
+			// $data['my_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			// ->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			// ->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			// ->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			// ->where('users.user_type_id',2)->orderBy('users.id','asc')->limit(3)->get();
+
+			$data['suggested_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',2)->orderBy('users.id','asc')->get();
+
+			$data['suggested_striver'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
+
+
+			$data['user_subscription'] = DB::table('user_subscription')->select('user_subscription.*','packages.*')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'user_subscription.subscription_id')
+			->where('user_subscription.user_id',$user->id)->get();
+
+
+
+			//print_r($data['user_subscription']);die;
+		$data['subscription_plan']= Package::query()->get();
+
+		//$data['categories']= Category::query()->get();
+
+		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
+
+
+		
+		MetaTag::set('title', t('my_account'));
+		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
+
+		return appView('account.payment_and_subscription', $data);
+
+
+	}
+
+
+	public function create_coursesss(Request $request){
+
+		$data = [];
+		
+		$data['genders'] = Gender::query()->get();
+		
+		$user = auth()->user();
+		
+		// Mini Stats
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+
+
+		
+
+
+		// ]);
+		$datess = date('Y-m-d h:i:s');
+		$data = array(
+			'coach_id' =>$user->id,
+			'course_name' =>$request->course_name,
+			'course_hourse' => $request->course_hourse,
+			'description' => $request->description, 
+			// 'created_at' => $datess,
+			// 'updated_at' => $datess
+	
+	
+			);
+			//print_r($data);die;
+
+			
+
+		
+
+		DB::table('coach_course')->insert($data);
+
+
+	}
+
+
 
 	public function getSubcategories(UserRequest $request)
 	{

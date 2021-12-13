@@ -401,9 +401,32 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <!--/.page-content-->
 
+            <br>
+				<div class="row">
+					<h3><b> Suggested Strivers</b></h3>
+					<?php foreach ($suggested_striver as $coach_list) { ?>
+								<div class="col-sm-3" >
+									<img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 320px; width:-webkit-fill-available;" alt="{{ $coach_list->name }}">
+									<br>
+									<?php
+											// $name = json_decode($coach_list->slug);
+											// $ss = array();
+											// foreach ($name as $key => $sub) {
+											// $ss[$key] = $sub;
+											// }
+									?>
+									<h4><b>{{ $coach_list->name }}</b></h4>
+									
+									
+								</div>
+
+							<?php } ?>
+
+					</div>
 
         </div>
 
@@ -767,6 +790,31 @@
 
 
         </div>
+
+
+        <br>
+
+					<div class="row">
+					<h3><b> Suggested Coaches</b></h3>
+					<?php foreach ($suggested_coaches as $coach_list) { ?>
+								<div class="col-sm-3" >
+									<img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 320px; width:-webkit-fill-available;" alt="{{ $coach_list->name }}">
+									<br>
+									<?php
+											// $name = json_decode($coach_list->slug);
+											// $ss = array();
+											// foreach ($name as $key => $sub) {
+											// $ss[$key] = $sub;
+											// }
+									?>
+									<h4><b>{{ $coach_list->name }}</b></h4>
+									
+									
+								</div>
+
+							<?php } ?>
+
+					</div>
 
         <?php } ?>
         <!--/.row-->

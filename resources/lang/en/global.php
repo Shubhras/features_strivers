@@ -921,7 +921,9 @@ return [
     'dashboard' => 'Dashboard',
     'Edit_Profile' =>'Edit Profile',
     'my_subscription' => 'My Subscription',
-    'my_courses' => 'My Courses'
+    'my_courses' => 'My Courses',
+    'Photo or User' =>'Photo or User'
+
 
 
 
