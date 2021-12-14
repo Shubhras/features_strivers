@@ -560,7 +560,7 @@
 
 <script>
 	var flag = false;
-	console.log(flag);
+	// console.log(flag);
   function openCity(cityName) {
 	//   console.log(cityName,	'lovekush');
 	if(cityName == 'Strivers'){
@@ -572,7 +572,7 @@
 		// console.log(flag1);
 		// alert(flag);
 		flag = true;
-		console.log(flag);
+		// console.log(flag);
 
 	}
 	if(cityName == 'Coaches'){
@@ -583,7 +583,7 @@
 		// var flag1 = $('#signupForm').attr('flag');
 		// console.log(flag1);
 		flag = true;
-		console.log(flag);
+		// console.log(flag);
 
 	}
     sessionStorage.setItem('tabName',cityName);
