@@ -17,6 +17,7 @@
 	@if (!(isset($paddingTopExists) and $paddingTopExists))
 		<div class="p-0 mt-lg-4 mt-md-3 mt-3"></div>
 	@endif
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 	<div class="main-container">
 		<div class="container">
 
@@ -24,21 +25,31 @@
 
 		<div class="w3-bar w3-black nav-tabs" id="myDIV" style="border-bottom:none;">
           <button class="w3-bar-item w3-button btn1 Strivers btn btn-primary" onclick="openCity('Strivers')">Strivers</button>
-          <button class="w3-bar-item w3-button Coaches btn1 active btn btn-danger" onclick="openCity('Coaches')">Coaches</button>
+          <button class="w3-bar-item w3-button Coaches btn1  btn btn-danger" onclick="openCity('Coaches')">Coaches</button>
          
         </div>
+		
 
 		</div>
+		
 		<br>
+		<div class="col-12" id="Coaches-Strivers-error" style ="display: none">
+		<div class="alert alert-danger alert-dismissible fade show"  >
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+						Please Select <strong> Striver </strong> or <strong> Coach </strong>first.
+						</div>
+		</div>
 
-		<div id="Strivers" class="w3-container city">
+		<div id="Strivers" class="w3-container city" >
 			<div class="row">
-				
+			
 
 			
 				@if (isset($errors) && $errors->any())
+				
 					<div class="col-12">
-						<div class="alert alert-danger alert-dismissible">
+						
+						<div class="alert alert-danger alert-dismissible fade show">
 							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
 							<h5><strong>{{ t('oops_an_error_has_occurred') }}</strong></h5>
 							<ul class="list list-check">
@@ -79,7 +90,7 @@
 												<input name="name" placeholder="{{ t('Name') }}" class="form-control input-md{{ $nameError }}" type="text" value="{{ old('name') }}">
 
 
-												<input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden" value="3">
+												<input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden" id="user_type_striver" value="3">
 											</div>
 										</div>
 
@@ -332,7 +343,7 @@
 											
 												<input name="name" placeholder="{{ t('Name') }}" class="form-control input-md{{ $nameError }}" type="text" value="{{ old('name') }}">
 
-												<input name="user_type_id" placeholder="{{ t('Name') }}" class="form-control input-md{{ $nameError }}" type="hidden" value="2">
+												<input name="user_type_id" placeholder="{{ t('Name') }}" class="form-control input-md{{ $nameError }}" type="hidden" id="user_type_coach" value="2">
 											</div>
 										</div>
 
@@ -540,17 +551,43 @@
 	<script>
 		$(document).ready(function () {
 			/* Submit Form */
-			$("#signupBtn").click(function () {
-				$("#signupForm").submit();
-				return false;
-			});
+			document.getElementById("user_type_coach").value = 0;
+			document.getElementById("user_type_striver").value = 0;
+			
 		});
 	</script>
+	
 
 <script>
+	var flag = false;
+	console.log(flag);
   function openCity(cityName) {
+	//   console.log(cityName,	'lovekush');
+	if(cityName == 'Strivers'){
+		document.getElementById("user_type_striver").value = 3;
+		document.getElementById('Coaches-Strivers-error').style.display = "none ";
+		// console.log(cityName);
+		// $('#signupForm').attr( 'flag','true');
+		// var flag1 = $('#signupForm').attr('flag');
+		// console.log(flag1);
+		// alert(flag);
+		flag = true;
+		console.log(flag);
+
+	}
+	if(cityName == 'Coaches'){
+		document.getElementById("user_type_coach").value = 2;
+		document.getElementById('Coaches-Strivers-error').style.display = "none ";
+		// console.log(cityName);
+		// $('#signupForm').attr( 'flag','true');
+		// var flag1 = $('#signupForm').attr('flag');
+		// console.log(flag1);
+		flag = true;
+		console.log(flag);
+
+	}
     sessionStorage.setItem('tabName',cityName);
-  var i;
+  var i = 0;
   var x = document.getElementsByClassName("city");
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none"; 
@@ -570,7 +607,7 @@
 //     break;
 //   }
   document.getElementById(cityName).style.display = "block"; 
-  changeCountryCode(defaultCountryCode);
+//   changeCountryCode(defaultCountryCode);
 }
 
 var header = document.getElementById("myDIV");
@@ -587,4 +624,29 @@ for (var j = 0; j < btns.length; j++) {
 
 
 </script>
+<script>
+		$(document).ready(function () {
+			/* Submit Form */
+			
+			$("#signupBtn").click(function () {
+				// alert ('Please select Coach or Striver');
+			
+				if(flag == false){
+					// alert('hello');
+					document.getElementById('Coaches-Strivers-error').style.display = "block ";
+					return false;
+				}
+				
+				else	{
+					// console.log('hello there');
+					// alert("hello");	
+				$("#signupForm").submit();
+				return true;
+				}
+			});
+			
+
+
+		});
+	</script>
 @endsection

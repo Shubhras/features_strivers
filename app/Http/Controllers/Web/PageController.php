@@ -320,7 +320,7 @@ class PageController extends FrontController
 
 
 	public function aboutUs(){
-		$data = "Hello Folks! ";
+		// $data = "Hello Folks! ";
 		return appView('pages.aboutUs');
 
 	}
