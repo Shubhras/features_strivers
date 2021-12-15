@@ -539,4 +539,9 @@ class UrlGen
 	{
 		return url(self::registerPath());
 	}
+
+	public static function aboutUs()
+	{
+		return url(config('routes.aboutUs'));
+	}
 }

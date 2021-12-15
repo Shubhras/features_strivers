@@ -84,8 +84,8 @@ class RegisterController extends FrontController
 	 */
 	public function register(UserRequest $request)
 	{
-
-		//print_r($request->all());die;
+		
+		// print_r($request->all());die;
 		// Call API endpoint
 		$endpoint = '/users';
 		$data = makeApiRequest('post', $endpoint, $request->all());

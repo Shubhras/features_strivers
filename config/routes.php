@@ -19,4 +19,5 @@ return [
     'countries' => 'countries',
     'contact' => 'contact',
     'pricing' => 'pricing',
+    'aboutUs'=> 'aboutUs'
 ];

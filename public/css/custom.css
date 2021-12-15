@@ -23,3 +23,153 @@
     color: #B63939;
     margin-left: 22px;
 }
+
+/* CSS for Categories Modal in nav bar */
+
+/* .modal-dialog{
+    margin-top: 80px;
+} */
+
+
+.category_container {
+    display: flex;
+    flex-flow: row wrap;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 800px) {
+    .category_container {
+      flex-direction: column;
+    }
+}
+
+.category_data {
+    flex-basis: 29.77%;
+    border: 2px solid black;
+    margin: 10px 10px;
+    padding: 10px;
+}
+
+.category_data > a{
+    /* margin: 10px; */
+    font-size: 18px;
+}
+
+.modal {
+    overflow-y: auto;
+}
+   
+.modal-open {
+    overflow: auto;
+}
+
+/* .modal-body{
+    border: 2px solid black;
+} */
+
+#catModal .modal-title{
+    /* text-align: center; */
+    font-size: 20px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#sbmturintrst {
+    margin: auto;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #fff !important;
+    box-shadow: 3px 3px;
+}
+
+
+/* CSS for About Us Page */
+.backimage{
+    background-image: url('/images/aboutus-bg-img.png');
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 40px 10px;
+    min-height: 400px;
+    background-size: 100% 1100px;
+
+}
+
+.backfirst.container{
+    text-align: center;
+    margin-top: 40px;
+}
+
+.backfirst.container > h1, .backfirst.container > h2, .backfirst.container > p{
+    /* text-align: center; */
+    color: #dadada;
+}
+
+.backfirst.container > h1{
+    font-size: 30px;
+    font-weight: 600;
+
+}
+
+.backfirst.container > h2{
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.backfirst.container > p{
+    max-width: 600px;
+    margin: auto;
+}
+
+
+.backfirst.container > .startcourse{
+    margin-top: 30px;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 30px;
+    background-color: #dadada;
+}
+
+.secondimage {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.secondimage > .aboutusvideo{
+    width : 760px;
+    height : 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 2), 0 6px 20px 0 rgba(0, 0, 0, 2);
+}
+
+.ourglobalcommunity {
+    max-width: 1000px;
+    text-align: left;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.ourglobalcommunity div{
+    display: flex;
+    flex-direction: row;
+    text-justify: auto;
+}
+
+.container.striverisgreat{
+    /* max-width: 1090px; */
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.ourglobalcommunity .a{
+    display: flex;
+    flex-flow: row wrap;
+    flex-wrap: wrap;
+}
+
+.ourglobalcommunity .b{
+    flex-basis: 25%;
+    
+
+}

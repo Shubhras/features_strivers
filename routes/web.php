@@ -490,6 +490,8 @@ Route::group([
 		Route::get(dynamicRoute('routes.pricing'), 'PageController@pricing');
 		Route::get(dynamicRoute('routes.pageBySlug'), 'PageController@cms');
 		Route::get(dynamicRoute('routes.contact'), 'PageController@contact');
+		Route::get(dynamicRoute('routes.aboutUs'), 'PageController@aboutUs');
+
 		
 		
 		Route::post(dynamicRoute('routes.contact'), 'PageController@contactPost');
