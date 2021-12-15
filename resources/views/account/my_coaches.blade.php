@@ -138,6 +138,7 @@
 			<div class="inner-box default-inner-box">
 							
 				<div class="row">
+					
 						<?php foreach ($my_striver as $coach_list) { ?>
 							<div class="col-sm-4" >
 								<img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 320px; width: -webkit-fill-available" alt="{{ $coach_list->name }}">

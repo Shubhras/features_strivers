@@ -208,6 +208,9 @@ Route::group([
 | The translated front-end routes
 |
 */
+Route::get('stripe', 'App\Http\Controllers\StripePaymentController@stripe');
+Route::post('stripe', 'App\Http\Controllers\StripePaymentController@stripePost')->name('stripe.post');
+
 Route::group([
 	'namespace' => 'App\Http\Controllers\Web',
 ], function ($router) {
@@ -221,6 +224,7 @@ Route::group([
 		 */
 		$countryCodePattern = '(?i:' . $countryCodePattern . ')';
 		$router->pattern('countryCode', $countryCodePattern);
+		
 		
 		
 		// HOMEPAGE
@@ -401,17 +405,20 @@ Route::group([
 				
 				// Users
 				Route::get('/', 'EditController@index');
-				Route::get('profile', 'EditController@profile');
+				Route::get('dashboard', 'EditController@dashboard');
 				Route::get('my_coaches','EditController@my_coaches_by_striver');
 				Route::get('my_striver','EditController@my_coaches_by_striver');
 				Route::get('my_courses','EditController@my_courses_by_striver');
 				Route::get('my_payments','EditController@payment_and_subscription');
 				Route::get('my_subscription','EditController@payment_and_subscription');
 				Route::post('create_course' , 'EditController@create_coursesss');
+				Route::post('payment_subscription_planss', 'EditController@payment_subscription_plan');
 				Route::get('getSubcategories', 'EditController@getSubcategories');
 				Route::put('photo/delete', 'EditController@updatePhoto');
 				Route::put('photo', 'EditController@updatePhoto');
 
+				
+				
 				Route::group(['middleware' => 'impersonate.protect'], function () {
 					Route::put('/', 'EditController@updateDetails');
 					Route::put('settings', 'EditController@updateDetails');
@@ -421,6 +428,7 @@ Route::group([
 					Route::post('close', 'CloseController@submit');
 				});
 				
+
 				// Posts
 				Route::get('saved-search', 'PostsController@getSavedSearch');
 				$router->pattern('pagePath', '(my-posts|archived|favourite|pending-approval|saved-search)+');
@@ -503,5 +511,7 @@ Route::group([
 			Route::get(dynamicRoute('routes.searchPostsBySubCat'), 'CategoryController@index');
 			Route::get(dynamicRoute('routes.searchPostsByCat'), 'CategoryController@index');
 		});
+
+		
 	});
 });

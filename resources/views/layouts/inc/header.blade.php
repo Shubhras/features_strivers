@@ -176,6 +176,17 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 							@endif 
 						</li>
 
+						@if (config('plugins.currencyexchange.installed'))
+						@include('currencyexchange::select-currency')
+					@endif
+					
+					@if (config('settings.single.pricing_page_enabled') == '')
+						<li class="nav-item pricing">
+							<a href="{{ \App\Helpers\UrlGen::pricing() }}" class="nav-link">
+								<i class="fas fa-tags"></i> {{ t('pricing_label') }}
+							</a>
+						</li>
+					@endif
 
 						<li class="nav-item">
 							@if (config('settings.security.login_open_in_modal'))

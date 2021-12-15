@@ -4,7 +4,7 @@
 
 
 			<div class="collapse-box">
-				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account') }}">
+				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/dashboard') }}">
 					<h5 class="collapse-title no-border">
 						<i class="fas fa-th-list"></i> {{ t('dashboard') }}&nbsp;
 
@@ -36,17 +36,17 @@
 
 
 			<div class="collapse-box" id="MyClassified">
-				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_payments') }}">
+				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_subscription') }}">
 					<h5 class="collapse-title no-border">
 						<!-- <i class="fas fa-user-edit"></i> -->
-						{{ ('Payments') }}&nbsp;
+						{{ ('Subscription') }}&nbsp;
 
 					</h5>
 				</a>
 			</div>
 
 			<div class="collapse-box" id="MyClassified">
-				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/profile') }}">
+				<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account') }}">
 					<h5 class="collapse-title no-border">
 						<!-- <i class="fas fa-user-edit"></i> -->
 						{{ t('Edit_Profile') }}&nbsp;

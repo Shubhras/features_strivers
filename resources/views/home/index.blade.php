@@ -355,9 +355,13 @@
 									$pricingUrl = $addListingUrl . '?package=' . $package->id;
 								}
 								?>
-								<a href="{{ $pricingUrl }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
+								<!-- <a href="{{ $pricingUrl }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
+									{{ t('get_started') }}
+								</a> -->
+								<a href="{{ url('stripe') }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
 									{{ t('get_started') }}
 								</a>
+								
 							</div>
 						</div>
 					</div>
