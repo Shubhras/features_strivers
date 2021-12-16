@@ -314,6 +314,27 @@ class PageController extends FrontController
 		
 		return redirect(UrlGen::contact());
 	}
+	public function coachall_detail($id)
+	{
+		// $data['user'] = DB::table('users')->where('id',$id)->select('users.*','id','name')
+		// ->where('users.user_type_id',2)->get();
+		$data['user'] = DB::table('users')->select('users.*','categories.name as slug','sub.name as sub_cat','packages.name as subscription_name','packages.price','packages.currency_code')
+		->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+		->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+		->where('users.id',$id)->where('users.user_type_id',2)->get();
+			return appView('coach_detail',$data);
+
+	}
+	public function coaches()
+	{
+		// $data = "hello";
+		$data['user'] = DB::table('users')->select('id','name')
+			->where('users.user_type_id',2)->get();
+			// print_r($data);die;
+		return appView('coach',$data);
+
+	}
 
 
 

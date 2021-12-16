@@ -235,6 +235,8 @@ Route::group([
 		Route::get('/coach_details/{id}', 'PageController@coach_details');
 		Route::get('/coach_list/{id}', 'PageController@coach_list_category');
 		Route::get('/coach_list_sub/{id}', 'PageController@coach_list_sub_category');
+		Route::get('coachall_detail/{id}', 'PageController@coachall_detail');
+		Route::get('coaches', 'PageController@coaches');
 		
 		Route::get('category_list', 'SitemapController@category_list');
 		// AUTH
@@ -483,6 +485,8 @@ Route::group([
 		Route::get(dynamicRoute('routes.pageBySlug'), 'PageController@cms');
 		Route::get(dynamicRoute('routes.contact'), 'PageController@contact');
 		Route::get(dynamicRoute('routes.aboutUs'), 'PageController@aboutUs');
+		
+		
 
 		
 		

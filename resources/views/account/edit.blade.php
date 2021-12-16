@@ -22,7 +22,7 @@
             <div class="col-md-3 page-sidebar inner-box default-inner-box coach_profile_img">
                 <h3 class="no-padding text-center-480 useradmin">
                     <a href="">
-                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user">&nbsp;
+                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp; 
                         {{ $user->name }}
                     </a>
                 </h3>
