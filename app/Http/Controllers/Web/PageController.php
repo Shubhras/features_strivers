@@ -168,6 +168,15 @@ class PageController extends FrontController
 
 	public function coach_details($id)
 	{
+
+		$user = auth()->user();
+		if($user !=""){
+
+		
+		$data['login_id'] = $user->id;
+	}else{
+		$data['login_id'] = 0;
+	}
 		// Get the Country's largest city for Google Maps
 		$cacheId = config('country.code') . '.city.population.desc.first';
 		$city = Cache::remember($cacheId, $this->cacheExpiration, function () {
@@ -208,6 +217,8 @@ class PageController extends FrontController
 		
 		return appView('pages.coach_details',$data);
 	}
+
+	
 	
 
 	/**
