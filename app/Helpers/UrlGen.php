@@ -544,4 +544,5 @@ class UrlGen
 	{
 		return url(config('routes.aboutUs'));
 	}
+	
 }

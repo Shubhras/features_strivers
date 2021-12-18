@@ -39,7 +39,7 @@
 				?>
 				<div class="row">
 
-<div class="col-md-3 page-sidebar sidebar_coach">
+				<div class="col-md-3 page-sidebar sidebar_coach">
 					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
 				</div>
 				<div class="col-md-9 page-content coach_dashboard">
@@ -70,7 +70,7 @@
                                 <!-- <img id="userImg" class="userImg" src="{{ $user->photo_url }}" alt="user">&nbsp; -->
                                 <!-- {{ $user->name }} -->
                                 <!-- </a> -->
-                                <b> My Subscriptions</b>
+                                <b> My Payments</b>
 
 
                             </h3>
@@ -137,17 +137,82 @@
                     </div>
                 </div>
 
+
+							<?php
+								$i =0;
+								$total_count= [];
+								
+							
+								foreach($user_subscription as $key => $post):
+
+										$i=	$i+1;	 
+										$total_count[] = $post;
+										
+								 endforeach; ?>
+								
+					<div class="container payment_sbuscription_coach">
+
+					
+
+						<div class="row ">
+
+							<div class="col-md-3">
+							<h4> Revenue till date</h4>
+							</div>
+
+							<div class="col-md-3">
+							
+							</div>
+
+							<div class="col-md-3">
+
+							<h4> Total strivers</h4>
+							</div>
+
+							<div class="col-md-3">
+							<h4> <?php print_r(count($total_count)); ?> </h4>
+							</div>
+							</div>
+
+							<div class="row">
+
+							<div class="col-md-3">
+							<h4> Revenue this month</h4>
+							</div>
+							<div class="col-md-3">
+							</div>
+							<div class="col-md-3">
+							<h4> Available Balance</h4>
+							</div>
+							<div class="col-md-3">
+
+
+							</div>
+
+							</div>
+							<div class="row">
+							<div class="col-md-3">
+							<h4> Revenue this Quarter</h4>
+							</div>
+							<div class="col-md-3">
+							</div>
+							<div class="col-md-6">
+								<button class="btn btn-primary get_paid_payment">Get Paid</button>
+							</div>
+							</div>
+							</div>
+							<br>
+
+
 			<div class="inner-box default-inner-box">
+							
 							
 				<div class="row">
 
-						 <div class="inner-box">
+							
+					<div class="inner-box">
 						
-						<h2 class="title-2"> {{ ('My Subscriptions') }} 
 
-						<!-- <button id="myBtn" class="btn btn-primary" style="float: right;">+ Create Course</button></h2> -->
-					
-					
 					<div class="table-responsive">
 					<br>
 						<form name="listForm" method="POST" action="{{ url('account/' . $pagePath . '/delete') }}">
@@ -183,96 +248,112 @@
 							<table id="addManageTable"
 								   class="table table-striped table-bordered add-manage-table table demo"
 								   data-filter="#filter"
-								   data-filter-text-only="true"
-							>
+								   data-filter-text-only="true">
 								<thead>
 								<tr>
-									<th data-type="numeric" data-sort-initial="true">SN</th>
-									<th>{{ ('Subscription name') }}</th>
-									<th data-sort-ignore="true">{{ ('Subscription color') }}</th>
-									<th data-type="numeric">{{ ('Price') }}</th>
-									<th>{{ t('Option') }}</th>
+									<!-- <th data-type="numeric" data-sort-initial="true">SN</th> -->
+									<th data-type="numeric"><b><h3>{{ ('Student') }}</h3></th>
+									<th data-type="numeric" data-sort-ignore="true"><b><h3>{{ ('Course') }}</h3></b></th>
+									<th data-type="numeric" data-type="numeric"><b><h3>{{ ('Total amount') }}</h3></b></th>
+									<th data-type="numeric" data-type="numeric"><b><h3>{{ ('Date') }}</h3></b></th>
+									<th data-type="numeric" data-type="numeric"><b><h3>{{ ('Fee deducte') }}</h3></b></th>
+									<th data-type="numeric" data-type="numeric"><b><h3>{{ ('Net Payment') }}</h3></b></th>
+									<!-- <th><b><h3>{{ t('Option') }}</h3></b></th> -->
 								</tr>
+								
 								</thead>
 								<tbody>
-
 								<?php
 								$i =0;
+								
 								if (isset($user_subscription) && $user_subscription->count() > 0):
 								foreach($user_subscription as $key => $post):
-									// Fixed 1
-									
 
-									// Get Post's URL
-
-								$i=	$i+1;
-									
+										$i=	$i+1;	 
+										
 								?>
-
-<?php
-										 $name = json_decode($post->short_name);
-										//  print_r($name);die;
-										$ss = array();
-										foreach ($name as $key => $sub) {
-										$ss = $sub;
-										}
-								?>
+								
 								<tr>
 									
-									<td style="width:5%" class="items-details-td">
-										<div>
-											
-											<p>
-												<strong>
-													{{$i}}
-												</strong>
-												
-											</p>
-											<p>
-												
-											</p>
-										</div>
-									</td>
-									<td style="width:30%" class="price-td">
+									
+									<td class="price-td" style="width:20%">
 										<div>
 											<strong>
-											&nbsp;{{$ss}}
+											{{ $post->striver_name }}
 											
 												
 											</strong>
 										</div>
 									</td>
 
-
-									<td style="width:5%" class="price-td">
+									<td  class="price-td" style="width:40%">
 										<div>
 											<strong>
-											{{ $post->ribbon }}
+											{{ $post->course_name }}
 											
 												
 											</strong>
 										</div>
 									</td>
-									<td style="width:50%" class="price-td">
+
+									<td  class="price-td" style="width:10%">
 										<div>
 											<strong>
 											
-											{{ $post->price }}
+											<?php  
+
+											
+
+							$total_payment = $post->fee_deducte + $post->net_payment;
+								?>
+
+											{{$total_payment}}
 												
 											</strong>
-											<strong>
+											<!-- <strong>
 											
 											{{ $post->currency_code }}
 												
+											</strong> -->
+										</div>
+									</td>
+
+									
+
+
+									<td  class="price-td" style="width:10%">
+										<div>
+											<strong>
+											{{$post->created_at}}
+											
+												
+											</strong>
+										</div>
+									</td>
+									
+
+									<td  class="price-td" style="width:10%">
+										<div>
+											<strong>
+											{{ $post->fee_deducte }}
+											
+												
 											</strong>
 										</div>
 									</td>
 
+
+									<td class="price-td" style="width:10%">
+										<div>
+											<strong>
+											{{ $post->net_payment }}
+											
+												
+											</strong>
+										</div>
 									</td>
 									
-									
-									
-									<td style="width:10%" class="action-td">
+									<!-- <td style="width:10%" class="action-td">
 										<div>
 											@if (in_array($pagePath, ['my-posts', 'pending-approval']) and $post->user_id==$user->id and $post->archived==0)
 												<p>
@@ -301,31 +382,30 @@
 												</a>
 											</p>
 										</div>
-									</td>
+									</td> -->
 								</tr>
 								<?php endforeach; ?>
+								
 								<?php endif; ?>
+
 								</tbody>
 							</table>
 						</form>
 					</div>
-						
+					</div>
 					<nav>
 						{{ (isset($posts)) ? $posts->links() : '' }}
 					</nav>
 
 				</div>
 
-						</div>
+				</div>
+					
+					</div>
 						<!--/.row-box End-->
 
-					</div>
-				</div>
-						</div>
-						<!--/.row-box End-->
-
-					</div>
-				</div>
+			</div>
+				
 				<!--/.page-content-->
 				
 				<br>
@@ -335,13 +415,7 @@
 								<div class="col-sm-3" >
 									<img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 320px; width:-webkit-fill-available;" alt="{{ $coach_list->name }}">
 									<br>
-									<?php
-											// $name = json_decode($coach_list->slug);
-											// $ss = array();
-											// foreach ($name as $key => $sub) {
-											// $ss[$key] = $sub;
-											// }
-									?>
+									
 									<h4><b>{{ $coach_list->name }}</b></h4>
 									
 									
@@ -350,7 +424,7 @@
 							<?php } ?>
 
 					</div>
-					</div>
+				</div>
 				
 
 				<?php } else {?>
@@ -388,7 +462,7 @@
                                 <!-- <img id="userImg" class="userImg" src="{{ $user->photo_url }}" alt="user">&nbsp; -->
                                 <!-- {{ $user->name }} -->
                                 <!-- </a> -->
-                                <b> My Payments </b>
+                                <b> My Subscriptions </b>
                             </h3>
                         </div>
                         <div class="col-md-8 col-sm-8 col-12">
@@ -459,7 +533,7 @@
 						<div class="row">
 
 							<h2>
-                            My Payments
+                            My Subscriptions
                             </h2>
 							</div>
 

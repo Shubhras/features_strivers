@@ -16,8 +16,12 @@ class UserSubscription extends Migration
         Schema::create('user_subscription', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->bigInteger('user_id')->unsigned()->nullable();
+            $table->bigInteger('student_id')->unsigned()->nullable();
             $table->bigInteger('subscription_id')->unsigned()->nullable();
 			$table->text('subscription_name');
+            $table->bigInteger('course_id')->unsigned()->nullable();
+            $table->text('net_payment')->unsigned()->nullable();
+            $table->text('free_deducte')->unsigned()->nullable();
 			$table->timestamp('deleted_at')->nullable();
 			$table->timestamp('created_at');
             $table->timestamp('updated_at');

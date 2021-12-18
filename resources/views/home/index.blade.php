@@ -238,7 +238,7 @@
 					<div class="inner">
 						<h2>
 							<span class="title-3">{{ t('Browse by') }} <span style="font-weight: bold;">{{ ('Coaches') }}</span></span>
-							<a href="{{ \App\Helpers\UrlGen::sitemap() }}" class="sell-your-item">
+							<a href="{{ '\coaches' }}" class="sell-your-item">
 								{{ t('View more') }} <i class="fas fa-bars"></i>
 							</a>
 						</h2>
@@ -355,9 +355,13 @@
 									$pricingUrl = $addListingUrl . '?package=' . $package->id;
 								}
 								?>
-								<a href="{{ $pricingUrl }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
+								<!-- <a href="{{ $pricingUrl }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
+									{{ t('get_started') }}
+								</a> -->
+								<a href="{{ url('stripe') }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
 									{{ t('get_started') }}
 								</a>
+								
 							</div>
 						</div>
 					</div>
@@ -584,7 +588,7 @@
 					<div class="inner">
 						<h2>
 							<span class="title-3"> <span style="font-weight: bold;">{{ t('our_reviews') }}</span></span>
-							<a href="{{ \App\Helpers\UrlGen::sitemap() }}" class="sell-your-item">
+							<a href="{{'\coaches'}}" class="sell-your-item">
 								{{ t('View more') }} <i class="fas fa-bars"></i>
 							</a>
 						</h2>

@@ -95,5 +95,17 @@ display: block;
 .user_sidebar_coach_strivre{
     height: 760px;
 }
-
-
+.payment_sbuscription_coach{
+    border: 1px inset;
+    border-radius: 8px;
+    padding: 13px;
+}
+.get_paid_payment{
+    width: 200px;
+}
+.my_payment_list{
+    --bs-gutter-x: -0.5rem!important;
+}
+.coach_class_schedule{
+    margin-top: 71px;
+}

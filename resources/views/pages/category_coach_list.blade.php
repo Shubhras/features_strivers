@@ -12,6 +12,9 @@
  * Please read the full License from here - http://codecanyon.net/licenses/standard
 --}}
 @extends('layouts.master')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 @section('search')
 @parent
@@ -149,7 +152,9 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                 <?php if(isset($user[0])){ ?>
                     <div class="row" id="coach_list_cat">
                         <?php foreach ($user as $coach_list) {?>
-                            <div class="col-sm-4" >
+                          
+                            <div class="col-sm-4" data-toggle="modal" data-target="#myModal_{{$coach_list->id }}">
+                              <a href="#" id="{{$coach_list->id }}">
                                 <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 200px;" alt="{{ $coach_list->name }}">
                                 <br>
                                 <?php
@@ -171,9 +176,49 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                                         <p><b>No Experience</b></p>  
                                     <?php }?>
                                 </div>
-                            </div>                        
+                                    </a>
+                            </div> 
+                            <div class="modal" id="myModal_{{$coach_list->id }}">
+                            <div class="modal-dialog">
+                            <div class="modal-content" style="margin-top: 172px;">
+                            
+                                <!-- Modal Header -->
+                                <div class="modal-header" id="{{$coach_list->id }}" >
+                                </div>
+                                
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 100px;padding-left: 237px;">
+                                
+                                    <h4><b><center>{{ $coach_list->name }}</center></b></h4>
+                                    <p><b><center>{{ $ss['en'] }}</center></b></p>
+                                    <?php if($coach_list->year_of_experience!=''){?> 
+                                        <p><b><center>{{ $coach_list->year_of_experience }} years Experience</center></b></p>
+                                        <?php 
+                                    }
+                                    else{?>
+                                        <p><b><center>No Experience</center></b></p>  
+                                    <?php }?>
+                                
+                                
+                                </div>
+                                
+                                <!-- Modal footer -->
+                                <div class="modal-footer" style="justify-content:center;!important">
+                                <a href="{{url('/coachall_detail/'.$coach_list->id) }}">
+                                
+                                <button type="button" class="btn btn-default btn-lg" >Know More</button></a>
+                                
+                                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Get Started</button>
+                                </div>
+                                
+                            </div>
+                            </div>
+                             </div>
+
                         <?php }?> 
                     </div>
+                    
                 <?php }
                 else{ ?>
                     <div class="row" id="coach_list_cat">
@@ -233,6 +278,28 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
 
         </div>
     </div>
+</div>
+<br>
+<div class="container{{ $hideOnMobile }}">
+    <div class="col-xl-12 content-box layout-section">
+    <div class="row row-featured row-featured-category">
+			   <h1 class="text-center title-1" style="color: ;"><strong style="float: left;">FAQ</strong></h1>
+                        <!-- <hr class="center-block small mt-0" style="background-color:white ;"> -->
+                                        
+					<div class="col-md-12 page-content">
+						<div class="inner-box relative">
+							<div class="row">
+								<div class="col-sm-12 page-content">
+										<h3 class="text-center" style="color: ;">Frequently Asked Questions</h3>
+									<div class="text-content text-start from-wysiwyg">
+										<p><b>How do I place an ad?</b></p><p>It's very easy to place an ad: click on the button "Post free Ads" above right.</p><p><b>What does it cost to advertise?</b></p><p>The publication is 100% free throughout the website.</p><p><b>If I post an ad, will I also get more spam e-mails?</b></p><p>Absolutely not because your email address is not visible on the website.</p><p><b>How long will my ad remain on the website?</b></p><p>In general, an ad is automatically deactivated from the website after 3 months. You will receive an email a week before D-Day and another on the day of deactivation. You have the ability to put them online in the following month by logging into your account on the site. After this delay, your ad will be automatically removed permanently from the website.</p><p><b>I sold my item. How do I delete my ad?</b></p><p>Once your product is sold or leased, log in to your account to remove your ad.</p>
+								    </div>
+							    </div>
+						    </div>
+					    </div>
+			        </div>				
+			</div>
+        </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>

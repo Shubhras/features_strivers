@@ -36,7 +36,7 @@ class EditController extends AccountBaseController
 	 */
 
 
-	public function index()
+	public function dashboard()
 	{
 		$data = [];
 		
@@ -86,7 +86,7 @@ class EditController extends AccountBaseController
 	}
 
 
-	public function profile()
+	public function index()
 	{
 		$data = [];
 		
@@ -260,6 +260,7 @@ class EditController extends AccountBaseController
 
 	public function payment_and_subscription(){
 
+		//return appView('account.stripe');
 
 		$data = [];
 		
@@ -282,11 +283,7 @@ class EditController extends AccountBaseController
 		})->where('user_id', $user->id)
 			->count();
 
-			// $data['my_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
-			// ->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
-			// ->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
-			// ->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
-			// ->where('users.user_type_id',2)->orderBy('users.id','asc')->limit(3)->get();
+			
 
 			$data['suggested_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
 			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
@@ -301,8 +298,10 @@ class EditController extends AccountBaseController
 			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
 
 
-			$data['user_subscription'] = DB::table('user_subscription')->select('user_subscription.*','packages.*')
+			$data['user_subscription'] = DB::table('user_subscription')->select('user_subscription.*','packages.*','users.name as striver_name','coach_course.course_name')
 			->leftjoin('packages' ,'packages.id' ,'=' ,'user_subscription.subscription_id')
+			->leftjoin('users' ,'users.id' ,'=' ,'user_subscription.student_id')
+			->leftjoin('coach_course' ,'coach_course.id' ,'=' ,'user_subscription.course_id')
 			->where('user_subscription.user_id',$user->id)->get();
 
 
@@ -394,11 +393,11 @@ class EditController extends AccountBaseController
 	{
 		$endpoint = '/users/' . auth()->user()->id;
 		$data = makeApiRequest('put', $endpoint, $request->all());
-		//print_r($data);die;
+		//print_r($request->all());die;
 		
 		// Parsing the API's response
 		$message = !empty(data_get($data, 'message')) ? data_get($data, 'message') : 'Unknown Error.';
-		
+		// print_r($message);die;
 		// HTTP Error Found
 		if (!data_get($data, 'isSuccessful')) {
 			flash($message)->error();
@@ -513,5 +512,59 @@ class EditController extends AccountBaseController
 		}
 		
 		return redirect(url('account'));
+	}
+
+	public function payment_subscription_plan(Request $request){
+
+		// print_r($request->all());die;
+
+		$data = [];
+		
+		$data['genders'] = Gender::query()->get();
+		
+		$user = auth()->user();
+		
+		// Mini Stats
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+
+
+		
+
+
+		// ]);
+		$datess = date('Y-m-d h:i:s');
+		$data = array(
+			'user_id' =>$request->user_id,
+			'student_id' =>$request->student_id,
+			'subscription_id' =>$request->subscription_id,
+			'course_id' => $request->course_id,
+			'net_payment' => $request->net_payment, 
+			'fee_deducte' =>$request->fee_deducte,
+			'created_at' => $datess,
+			'updated_at' => $datess
+	
+	
+			);
+			// print_r($data);die;
+
+			
+
+		
+
+		DB::table('user_subscription')->insert($data);
+
+
 	}
 }
