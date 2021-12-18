@@ -20,14 +20,17 @@
 
     <div class="col-md-9 col-12">
         <br>
-    <div class="inner-box default-inner-box">
+    <div class="inner-box default-inner-box1" style="height: 90px;">
+                    
                             
                                 {{-- Traffic Stats --}}
+                                <h3 >Coach</h3>
                                 <div class="hdata" style="float:right;">
-                                    <div class="mcol-left" >
-                                        <i class="fas fa-comments ln-shadow" style="margin-top: -23px;"></i>
+                                 
+                                    <div class="" >
+                                        <i class="fas fa-comments ln-shadow" style="margin-top: -43px;"></i>
                                     </div>
-                                    <div class="">
+                                    <div class="mcol-bottom">
                                         {{-- Number of visitors --}}
                                         <p>
                                             <em>{{ ('Chat') }}</em>
@@ -39,9 +42,9 @@
                                 {{-- Favorites Stats --}}
                                 <div class="hdata" style="float:right;">
                                     <div class="mcol-left">
-                                        <i class="fas fa-bell ln-shadow" style="margin-top: -23px;"></i>
+                                        <i class="fas fa-bell ln-shadow" style="margin-top: -43px;"></i>
                                     </div>
-                                    <div class="mcol-right">
+                                    <div class="mcol-bottom">
                                         {{-- Number of favorites --}}
                                         <p>   
                                                 <em>{{ ('Notification') }} <em>                                      
@@ -52,11 +55,16 @@
                      
         </div>
     </div>
+    <br>
     <div class="col-md-9 page-content">
                     <?php
-                    foreach($user as $cat) {?>
-                   
-						<div class="inner-box default-inner-box">
+                    
+                    foreach($user as $cat) {
+                        
+                        
+                        ?>
+                
+						<div class="inner-box default-inner-box" style="width: 100%;">
 							<h3 class=""><center> {{ $cat->name }} </center></h3>
                             <h3 class=""><center> Teacher </center></h3>
 
@@ -69,7 +77,7 @@
 							<div class="card card-default">
 								<div class="card-header">
 								<p style="font-family: Times New Roman;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus magnam eligendi corporis cumque maiores in esse neque optio, iusto consectetur? Fugit libero laborum odit quis vitae, inventore debitis dolor commodi voluptatum accusantium ducimus doloribus error facilis magni aspernatur! Enim quibusdam aliquid inventore dicta! A debitis iusto similique dolorum voluptas, incidunt velit ipsum, unde vitae molestiae laboriosam illo maiores blanditiis aliquam consectetur ratione magnam reprehenderit obcaecati tempora fuga sunt accusantium?</p><p> Dolorum quae, qui atque dolorem nemo voluptates minus explicabo hic sint laudantium, voluptate, quidem velit dolores. Totam itaque culpa quasi, hic voluptas doloribus assumenda harum. Vel corporis magnam blanditiis impedit molestiae?</p>
-								</div>
+                            </div>
                             <div class="flex-container">
                                     <div class="box">
                                     <h2><b><center>Coach Detail</center></b></h2>
@@ -82,9 +90,28 @@
                                     }
                                     else{?>
                                         <p><b>No Experience</b></p>  
+                                        
                                     <?php }?>
-                                    <p><b>industry=>  {{ $cat->category }}</b></p>
-                                    <p><b>speciality=>  {{ $cat->sub_category }}</b></p>
+                                    <?php  
+
+                                    
+                                    $slug = json_decode($cat->slug);
+                                $ss = array();
+                                foreach ($slug as $key => $sub) {
+                                    $ss[$key] = $sub;
+                                }
+                                // print_r($ss['en']);
+
+
+                                $sub_cat = json_decode($cat->sub_cat);
+                                $aaa = array();
+                                foreach ($sub_cat as $key => $subc) {
+                                    $aaa[$key] = $subc;
+                                }
+
+                                    ?>
+                                    <p><b>industry=>  {{ $ss['en'] }}</b></p>
+                                    <p><b>speciality=>  {{ $aaa['en'] }}</b></p>
                                 </div >
                                 <br>
                                 <div class ="box">
@@ -134,7 +161,7 @@
 }
 .mcol-left{
     padding-left: 5px;
-px
-;
+
 }
+
     </style>

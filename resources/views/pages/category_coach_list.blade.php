@@ -208,8 +208,8 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                                 <a href="{{url('/coachall_detail/'.$coach_list->id) }}">
                                 
                                 <button type="button" class="btn btn-default btn-lg" >Know More</button></a>
-                                
-                                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Get Started</button>
+                                <a href="{{url('/show1') }}">
+                                <button type="button" class="btn btn-default btn-lg">Get Started</button></a>
                                 </div>
                                 
                             </div>
