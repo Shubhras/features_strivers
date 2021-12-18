@@ -73,4 +73,5 @@ class StripePaymentController extends Controller
             dd('card declined');
         }
     }
+   
 }

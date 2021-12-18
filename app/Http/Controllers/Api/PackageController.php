@@ -46,7 +46,7 @@ class PackageController extends BaseController
 		$packages = $packages->get();
 		
 		$resourceCollection = new EntityCollection(class_basename($this), $packages);
-		
+		// print_r($resourceCollection);die;
 		return $this->respondWithCollection($resourceCollection);
 	}
 	
@@ -77,6 +77,7 @@ class PackageController extends BaseController
 		}
 		
 		$resource = new PackageResource($package);
+		// print_r($resource);die;
 		
 		return $this->respondWithResource($resource);
 	}

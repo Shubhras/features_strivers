@@ -99,7 +99,8 @@ Route::group([
 		Route::get('permissions/create_default_entries', 'PermissionController@createDefaultEntries');
 		Route::get('blacklists/add', 'BlacklistController@banUserByEmail');
 		Route::get('categories/rebuild-nested-set-nodes', 'CategoryController@rebuildNestedSetNodes');
-		
+		// Route::get('show1', 'PackageController@show1');
+
 		// CRUD
 		CRUD::resource('advertisings', 'AdvertisingController');
 		CRUD::resource('blacklists', 'BlacklistController');
@@ -121,7 +122,7 @@ Route::group([
 		CRUD::resource('admins2/{admin2Code}/cities', 'CityController');
 		CRUD::resource('languages', 'LanguageController');
 		CRUD::resource('meta_tags', 'MetaTagController');
-		CRUD::resource('packages', 'PackageController');
+		CRUD::resource('packages', 'PackageController');	
 		CRUD::resource('pages', 'PageController');
 		CRUD::resource('payments', 'PaymentController');
 		CRUD::resource('payment_methods', 'PaymentMethodController');
@@ -211,6 +212,7 @@ Route::group([
 Route::get('stripe', 'App\Http\Controllers\StripePaymentController@stripe');
 Route::post('stripe', 'App\Http\Controllers\StripePaymentController@stripePost')->name('stripe.post');
 
+
 Route::group([
 	'namespace' => 'App\Http\Controllers\Web',
 ], function ($router) {
@@ -241,6 +243,8 @@ Route::group([
 		Route::get('/coach_list_sub/{id}', 'PageController@coach_list_sub_category');
 		Route::get('coachall_detail/{id}', 'PageController@coachall_detail');
 		Route::get('coaches', 'PageController@coaches');
+		Route::get('show1', 'PageController@show1');
+
 		
 		Route::get('category_list', 'SitemapController@category_list');
 		// AUTH

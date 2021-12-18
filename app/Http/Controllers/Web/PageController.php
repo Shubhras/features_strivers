@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Torann\LaravelMetaTags\Facades\MetaTag;
 use DB;
+use App\Http\Resources\EntityCollection;
+use App\Http\Resources\PackageResource;
 
 class PageController extends FrontController
 {
@@ -44,11 +46,13 @@ class PageController extends FrontController
 		$cacheId = 'packages.with.currency.' . config('app.locale');
 		$packages = Cache::remember($cacheId, $this->cacheExpiration, function () {
 			$packages = Package::applyCurrency()->with('currency')->orderBy('lft')->get();
+
+			// print_r($packages);die;
 			
 			return $packages;
 		});
 		$data['packages'] = $packages;
-		
+		// print_r($data);die;
 		// Select a Package and go to previous URL ---------------------
 		// Add Listing possible URLs
 		$addListingUriArray = [
@@ -277,7 +281,7 @@ class PageController extends FrontController
 		->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
 		->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
 		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
-		->where('users.sub_category',$id)->where('users.user_type_id',2)->get();
+		->where('users.sub_category','categories.id')->where('users.user_type_id',2)->get();
 
 
 		$data['categories'] = DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();
@@ -334,9 +338,11 @@ class PageController extends FrontController
 		->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
 		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
 		->where('users.id',$id)->where('users.user_type_id',2)->get();
+		
 			return appView('coach_detail',$data);
 
 	}
+
 	public function coaches()
 	{
 		// $data = "hello";
@@ -345,6 +351,269 @@ class PageController extends FrontController
 			// print_r($data);die;
 		return appView('coach',$data);
 
+	}
+	public function show1()
+
+	{
+		$data = [];
+		
+		// Get Packages
+		$cacheId = 'packages.with.currency.' . config('app.locale');
+		$packages = Cache::remember($cacheId, $this->cacheExpiration, function () {
+			$packages = Package::applyCurrency()->with('currency')->orderBy('lft')->get();
+
+			// print_r($packages);die;
+			
+			return $packages;
+		});
+		$data['packages'] = $packages;
+		// print_r($data);die;
+		// Select a Package and go to previous URL ---------------------
+		// Add Listing possible URLs
+		$addListingUriArray = [
+			'create',
+			'post\/create',
+			'post\/create\/[^\/]+\/photos',
+		];
+		// Default Add Listing URL
+		$addListingUrl = UrlGen::addPost();
+		if (request()->filled('from')) {
+			foreach ($addListingUriArray as $uriPattern) {
+				if (preg_match('#' . $uriPattern . '#', request()->get('from'))) {
+					$addListingUrl = url(request()->get('from'));
+					break;
+				}
+			}
+		}
+		view()->share('addListingUrl', $addListingUrl);
+		// --------------------------------------------------------------
+		
+		// Meta Tags
+		[$title, $description, $keywords] = getMetaTag('pricing');
+		MetaTag::set('title', $title);
+		MetaTag::set('description', strip_tags($description));
+		MetaTag::set('keywords', $keywords);
+		
+		return appView('subscription', $data);
+	}
+	
+	/**
+	 * @param $slug
+	 * @return \Illuminate\Http\RedirectResponse|mixed
+	 */
+
+	protected function getCoaches($value = [])
+	{
+		// Get the default Max. Items
+		$maxItems = null;
+		if (isset($value['max_items'])) {
+			$maxItems = (int)$value['max_items'];
+		}
+		
+		// Number of columns
+		$numberOfCols = 3;
+		
+		// Get the Default Cache delay expiration
+		$cacheExpiration = $this->getCacheExpirationTime($value);
+
+		//print_r($cacheExpiration);die;
+		
+		$cacheId = 'categories.parents.' . config('app.locale') . '.take.' . $maxItems;
+		
+		if (isset($value['type_of_display']) && in_array($value['type_of_display'], ['cc_normal_list', 'cc_normal_list_s'])) {
+			
+			$categories = Cache::remember($cacheId, $cacheExpiration, function () {
+				$categories = Category::orderBy('lft')->get();
+				
+				return $categories;
+			});
+			$categories = collect($categories)->keyBy('id');
+			$categories = $subCategories = $categories->groupBy('parent_id');
+			
+			if ($categories->has(null)) {
+				if (!empty($maxItems)) {
+					$categories = $categories->get(null)->take($maxItems);
+				} else {
+					$categories = $categories->get(null);
+				}
+				$subCategories = $subCategories->forget(null);
+				
+				$maxRowsPerCol = round($categories->count() / $numberOfCols, 0, PHP_ROUND_HALF_EVEN);
+				$maxRowsPerCol = ($maxRowsPerCol > 0) ? $maxRowsPerCol : 1;
+				$categories = $categories->chunk($maxRowsPerCol);
+			} else {
+				$categories = collect();
+				$subCategories = collect();
+			}
+			
+			view()->share('subscription', $categories);
+			view()->share('subCategories', $subCategories);
+			
+		} else {
+			
+			$categories = Cache::remember($cacheId, $cacheExpiration, function () use ($maxItems) {
+				if (!empty($maxItems)) {
+					$categories = Category::where(function ($query) {
+						$query->where('parent_id', 0)->orWhereNull('parent_id');
+					})->take($maxItems)->orderBy('lft')->get();
+				} else {
+					$categories = Category::where(function ($query) {
+						$query->where('parent_id', 0)->orWhereNull('parent_id');
+					})->orderBy('lft')->get();
+				}
+				
+				return $categories;
+			});
+			
+			if (isset($value['type_of_display']) && $value['type_of_display'] == 'c_picture_icon') {
+				$categories = collect($categories)->keyBy('id');
+			} else {
+				// $maxRowsPerCol = round($categories->count() / $numberOfCols, 0); // PHP_ROUND_HALF_EVEN
+				$maxRowsPerCol = ceil($categories->count() / $numberOfCols);
+				$maxRowsPerCol = ($maxRowsPerCol > 0) ? $maxRowsPerCol : 1; // Fix array_chunk with 0
+				$categories = $categories->chunk($maxRowsPerCol);
+			}
+			
+			view()->share('subscription', $categories);
+			
+		}
+		
+		// Count Posts by category (if the option is enabled)
+		$countPostsByCat = collect();
+		if (config('settings.listing.count_categories_posts')) {
+			$cacheId = config('country.code') . '.count.posts.by.cat.' . config('app.locale');
+			$countPostsByCat = Cache::remember($cacheId, $cacheExpiration, function () {
+				$countPostsByCat = Category::countPostsByCategory();
+				
+				return $countPostsByCat;
+			});
+		}
+		view()->share('subscription', $countPostsByCat);
+		
+		// Export the Options
+		view()->share('subscription', $value);
+	}
+	protected function getCategories($value = [])
+	{
+		// Get the default Max. Items
+		$maxItems = null;
+		if (isset($value['max_items'])) {
+			$maxItems = (int)$value['max_items'];
+		}
+		
+		// Number of columns
+		$numberOfCols = 3;
+		
+		// Get the Default Cache delay expiration
+		$cacheExpiration = $this->getCacheExpirationTime($value);
+		
+		$cacheId = 'categories.parents.' . config('app.locale') . '.take.' . $maxItems;
+		
+		if (isset($value['type_of_display']) && in_array($value['type_of_display'], ['cc_normal_list', 'cc_normal_list_s'])) {
+			
+			$categories = Cache::remember($cacheId, $cacheExpiration, function () {
+				$categories = Category::orderBy('lft')->get();
+				
+				return $categories;
+			});
+			$categories = collect($categories)->keyBy('id');
+			$categories = $subCategories = $categories->groupBy('parent_id');
+			
+			if ($categories->has(null)) {
+				if (!empty($maxItems)) {
+					$categories = $categories->get(null)->take($maxItems);
+				} else {
+					$categories = $categories->get(null);
+				}
+				$subCategories = $subCategories->forget(null);
+				
+				$maxRowsPerCol = round($categories->count() / $numberOfCols, 0, PHP_ROUND_HALF_EVEN);
+				$maxRowsPerCol = ($maxRowsPerCol > 0) ? $maxRowsPerCol : 1;
+				$categories = $categories->chunk($maxRowsPerCol);
+			} else {
+				$categories = collect();
+				$subCategories = collect();
+			}
+			
+			view()->share('subscription', $categories);
+			view()->share('subscription', $subCategories);
+			
+		} else {
+			
+			$categories = Cache::remember($cacheId, $cacheExpiration, function () use ($maxItems) {
+				if (!empty($maxItems)) {
+					$categories = Category::where(function ($query) {
+						$query->where('parent_id', 0)->orWhereNull('parent_id');
+					})->take($maxItems)->orderBy('lft')->get();
+				} else {
+					$categories = Category::where(function ($query) {
+						$query->where('parent_id', 0)->orWhereNull('parent_id');
+					})->orderBy('lft')->get();
+				}
+				
+				return $categories;
+			});
+			
+			if (isset($value['type_of_display']) && $value['type_of_display'] == 'c_picture_icon') {
+				$categories = collect($categories)->keyBy('id');
+			} else {
+				// $maxRowsPerCol = round($categories->count() / $numberOfCols, 0); // PHP_ROUND_HALF_EVEN
+				$maxRowsPerCol = ceil($categories->count() / $numberOfCols);
+				$maxRowsPerCol = ($maxRowsPerCol > 0) ? $maxRowsPerCol : 1; // Fix array_chunk with 0
+				$categories = $categories->chunk($maxRowsPerCol);
+			}
+			
+			view()->share('categories', $categories);
+			
+		}
+		
+		// Count Posts by category (if the option is enabled)
+		$countPostsByCat = collect();
+		if (config('settings.listing.count_categories_posts')) {
+			$cacheId = config('country.code') . '.count.posts.by.cat.' . config('app.locale');
+			$countPostsByCat = Cache::remember($cacheId, $cacheExpiration, function () {
+				$countPostsByCat = Category::countPostsByCategory();
+				
+				return $countPostsByCat;
+			});
+		}
+		view()->share('countPostsByCat', $countPostsByCat);
+		
+		// Export the Options
+		view()->share('categoriesOptions', $value);
+	}
+
+	protected function setSeo($searchFormOptions = [])
+	{
+		// Meta Tags
+		[$title, $description, $keywords] = getMetaTag('home');
+		MetaTag::set('title', $title);
+		MetaTag::set('description', strip_tags($description));
+		MetaTag::set('keywords', $keywords);
+		
+		// Open Graph
+		$this->og->title($title)->description($description);
+		$backgroundImage = '';
+		if (!empty(config('country.background_image'))) {
+			if (isset($this->disk) && $this->disk->exists(config('country.background_image'))) {
+				$backgroundImage = config('country.background_image');
+			}
+		}
+		if (empty($backgroundImage)) {
+			if (isset($searchFormOptions['background_image']) && !empty($searchFormOptions['background_image'])) {
+				$backgroundImage = $searchFormOptions['background_image'];
+			}
+		}
+		if (!empty($backgroundImage)) {
+			if ($this->og->has('image')) {
+				$this->og->forget('image')->forget('image:width')->forget('image:height');
+			}
+			$this->og->image(imgUrl($backgroundImage, 'bgHeader'), [
+				'width'  => 600,
+				'height' => 600,
+			]);
+		}
+		view()->share('og', $this->og);
 	}
 
 
