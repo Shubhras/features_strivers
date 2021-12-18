@@ -483,6 +483,7 @@ Route::group([
 		Route::get(dynamicRoute('routes.pageBySlug'), 'PageController@cms');
 		Route::get(dynamicRoute('routes.contact'), 'PageController@contact');
 		Route::get(dynamicRoute('routes.aboutUs'), 'PageController@aboutUs');
+		Route::get('selectCoursesHours', 'PageController@selectCoursesHours');
 
 		
 		

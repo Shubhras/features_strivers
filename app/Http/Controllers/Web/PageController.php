@@ -325,5 +325,12 @@ class PageController extends FrontController
 
 	}
 
+	// Select plans per hours
+	
+	public function selectCoursesHours(){
+		return appView('pages.courseHours');
+	} 
+
+
 	
 }
