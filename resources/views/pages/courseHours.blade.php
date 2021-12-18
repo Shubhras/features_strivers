@@ -1,3 +1,16 @@
+{{--
+ * LaraClassifier - Classified Ads Web Application
+ * Copyright (c) BeDigit. All Rights Reserved
+ *
+ * Website: https://laraclassifier.com
+ *
+ * LICENSE
+ * -------
+ * This software is furnished under a license and may be used and copied
+ * only in accordance with the terms of such license and with the inclusion
+ * of the above copyright notice. If you Purchased from CodeCanyon,
+ * Please read the full License from here - http://codecanyon.net/licenses/standard
+--}}
 @extends('layouts.master')
 
 @section('content')
@@ -8,8 +21,13 @@
 #wrapper {
     padding-top: 80px !important;
 }
+.col-xl-6, .col-md-6 {
+    width : 50% ;
+}
 </style>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 <br>
 <div class="container">
     
@@ -25,6 +43,7 @@
             <button class ="btn btn-primary" onclick = calculate();>Calculate Amount</button>
         </div>
     </div>
+    <br>
 
     <div class="row">
         <div class="col-12" id="totalAmount" style ="display: none">
@@ -35,6 +54,7 @@
             </div>
         </div>
     </div>
+    <br>
 
     <div class="row">
         <div class="col-12" id="rangeWarning" style ="display: none">
@@ -44,13 +64,15 @@
                 
             </div>
         </div>
-    </div>
+    </div><br>
 
 
 
 
 </div>
 @endsection
+
+@section('after_scripts')
 
 <script>
     function calculate(){
@@ -71,3 +93,5 @@
 
     }
 </script>
+
+@endsection
