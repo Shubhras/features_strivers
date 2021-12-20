@@ -358,7 +358,7 @@
 								<!-- <a href="{{ $pricingUrl }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
 									{{ t('get_started') }}
 								</a> -->
-								<a href="{{ url('stripe') }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
+								<a href="{{ url('selectCoursesHours/'.$package->id) }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
 									{{ t('get_started') }}
 								</a>
 								

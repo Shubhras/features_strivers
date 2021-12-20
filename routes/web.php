@@ -243,6 +243,7 @@ Route::group([
 		Route::get('coachall_detail/{id}', 'PageController@coachall_detail');
 		Route::get('coaches', 'PageController@coaches');
 		Route::get('show1', 'PageController@show1');
+		Route::get('selectCoursesHours/{id}', 'PageController@selectCoursesHours');
 
 		
 		Route::get('category_list', 'SitemapController@category_list');
@@ -492,7 +493,7 @@ Route::group([
 		Route::get(dynamicRoute('routes.pageBySlug'), 'PageController@cms');
 		Route::get(dynamicRoute('routes.contact'), 'PageController@contact');
 		Route::get(dynamicRoute('routes.aboutUs'), 'PageController@aboutUs');
-		Route::get('selectCoursesHours', 'PageController@selectCoursesHours');
+		
 
 		
 		

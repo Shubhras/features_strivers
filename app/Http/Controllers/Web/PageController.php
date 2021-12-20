@@ -628,8 +628,22 @@ class PageController extends FrontController
 
 	// Select plans per hours
 	
-	public function selectCoursesHours(){
-		return appView('pages.courseHours');
+	public function selectCoursesHours($id){
+
+		$user = auth()->user();
+		
+		if(!$user){
+			// print_r($user);die;
+			return redirect('login');
+		}
+		else{
+			// print_r($user->id);die;
+			$userId = $user->id;
+			$data['userData'] = DB::table('users')->where('id', $userId)->first();
+			$data['price'] = DB::table('packages')->where('id',$id)->first();
+
+			return appView('pages.courseHours',$data);
+		}
 	} 
 
 
