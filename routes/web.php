@@ -210,6 +210,8 @@ Route::group([
 |
 */
 Route::get('stripe', 'App\Http\Controllers\StripePaymentController@stripe');
+Route::get('stripe/{price}', 'App\Http\Controllers\StripePaymentController@stripe');
+
 Route::post('stripe', 'App\Http\Controllers\StripePaymentController@stripePost')->name('stripe.post');
 
 
@@ -243,7 +245,7 @@ Route::group([
 		Route::get('coachall_detail/{id}', 'PageController@coachall_detail');
 		Route::get('coaches', 'PageController@coaches');
 		Route::get('show1', 'PageController@show1');
-		Route::get('selectCoursesHours/{id}', 'PageController@selectCoursesHours');
+		// Route::get('selectCoursesHours/{id}', 'PageController@selectCoursesHours');
 
 		
 		Route::get('category_list', 'SitemapController@category_list');

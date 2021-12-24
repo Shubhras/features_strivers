@@ -1,9 +1,5 @@
 
-
-	<title>Laravel 5 - Stripe Payment Gateway Integration Example - ItSolutionStuff.com</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <style type="text/css">
+<style type="text/css">
         .panel-title {
         display: inline;
         font-weight: bold;
@@ -20,8 +16,15 @@
             width: 61%;
         }
     </style>
+@section('content')
+
+	<title>Laravel 5 - Stripe Payment Gateway Integration Example - ItSolutionStuff.com</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
 
 <?php
+// print_r($price.'hello');die; 
 $hideOnMobile = '';
 if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categoriesOptions['hide_on_mobile'] == '1') {
     $hideOnMobile = ' hidden-sm';
@@ -103,7 +106,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
   
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ($100)</button>
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ${{$price}}</button>
                             </div>
                         </div>
                           
@@ -171,4 +174,14 @@ $(function() {
     }
   
 });
+</script>
+
+<script>
+    // var url = window.location;
+    // var url = new URL(url_string);
+    // console.log(url);
+    // var str = "foo/bar/test.html";
+    // var n = url.lastIndexOf('/');
+    // var result = url.substring(n + 1);
+    // console.log(result);
 </script>

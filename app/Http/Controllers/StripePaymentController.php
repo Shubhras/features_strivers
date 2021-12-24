@@ -22,32 +22,40 @@ use Stripe\Stripe;
 class StripePaymentController extends Controller
 {
     //
-    public function stripe()
+    public function stripe($price = null)
     {
 
+        // print_r($price);die;
         $data = [];
 		
 		$data['genders'] = Gender::query()->get();
 		
 		$user = auth()->user();
 		
+        if(!$user){
+            return redirect('login');
+        }
+        else{
 		// Mini Stats
-		$data['countPostsVisits'] = DB::table((new Post())->getTable())
-			->select('user_id', DB::raw('SUM(visits) as total_visits'))
-			->where('country_code', config('country.code'))
-			->where('user_id', $user->id)
-			->groupBy('user_id')
-			->first();
-		$data['countPosts'] = Post::currentCountry()
-			->where('user_id', $user->id)
-			->count();
-		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
-			$query->currentCountry();
-		})->where('user_id', $user->id)
-			->count();
-
-        //  print_r('kjskdjkdsj k jkd jskdjk dj dsjfjkdf');die;
-        return appView('home.stripe');
+            $data['countPostsVisits'] = DB::table((new Post())->getTable())
+                ->select('user_id', DB::raw('SUM(visits) as total_visits'))
+                ->where('country_code', config('country.code'))
+                ->where('user_id', $user->id)
+                ->groupBy('user_id')
+                ->first();
+            $data['countPosts'] = Post::currentCountry()
+                ->where('user_id', $user->id)
+                ->count();
+            $data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+                $query->currentCountry();
+                })->where('user_id', $user->id)
+                ->count();
+            
+            $data['price'] = $price;
+            
+            //  print_r('kjskdjkdsj k jkd jskdjk dj dsjfjkdf');die;
+            return appView('home.stripe', $data);
+        }
     }
   
     /**
