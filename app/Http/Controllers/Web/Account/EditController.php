@@ -84,25 +84,7 @@ class EditController extends AccountBaseController
 			->leftjoin('coach_course' , 'coach_course.id','=','user_subscription.course_id')
 			->where('user_subscription.student_id',$user->id)
 		    ->orderBy('users.id','asc')->get();
-		// print_r($data['suggested_striver_data']);die;
-			//$coaches = [];
 		
-		// foreach($data['suggested_striver_data'] as $coach_course){
-		// 	$coach = $coach_course->coach_id;
-		// 	$data['suggested_striver_data1'] = DB::table('users')->select('users.name as coach_name')
-		// 	->leftjoin('coach_course' ,'coach_course.coach_id' ,'=' ,'users.id')
-		// 	->where('coach_course.coach_id',$coach)
-		//     ->orderBy('users.id','asc')->first();
-		// 	// print_r($data['suggested_striver_data1']);die;
-		// 	 foreach ($data['suggested_striver_data1'] as $key => $value) {
-				
-		// 		$coaches['coach_name'] = $value;
-		// 	 }
-			 
-		// }
-		//  $data['suggested_striver_datas']=array_push($coaches,$data['suggested_striver_data']);
-		//  print_r($data['suggested_striver_datas']);die;
-		// $keeeed = call_user_func_array('array_merge',$data['suggested_striver_datas']);
 
 
 		
@@ -112,7 +94,9 @@ class EditController extends AccountBaseController
 
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
+		
 		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*')->orderBy('coach_course.id','asc')->where('coach_course.coach_id', $user->id)->get();
+		// print_r($data);die;
 		return appView('account.dashboard', $data);
 		
 	}

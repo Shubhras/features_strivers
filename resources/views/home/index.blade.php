@@ -336,7 +336,7 @@
 										{!! $package->currency->symbol !!}
 										@endif
 									</span>
-									<small class="text-muted">/ {{ t('hours') }}</small>
+									<small class="text-muted">/36 {{ t('hours') }}</small>
 								</h1>
 								<ul class="list list-border text-center mt-3 mb-4">
 									@if (is_array($package->description_array) and count($package->description_array) > 0)
@@ -358,7 +358,15 @@
 								<!-- <a href="{{ $pricingUrl }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
 									{{ t('get_started') }}
 								</a> -->
-								<a href="{{ url('stripe') }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
+								<?php
+									$price_total = $package->price;
+									// print_r($price_total.'hello ceo sir');die;
+									$var = $price_total;
+									$var = (int)$var; // 252
+									// print_r($var);
+								?>
+
+								<a href="{{ url('stripe/'.$var) }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
 									{{ t('get_started') }}
 								</a>
 								
