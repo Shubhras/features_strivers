@@ -30,8 +30,9 @@ trait Update
 	 */
 	public function updateDetails($id, UserRequest $request)
 	{
+		// print_r($request->all());die;
 		$user = User::withoutGlobalScopes([VerifiedScope::class])->where('id', $id)->first();
-		
+		// print_r($user);die;
 		if (empty($user)) {
 			return $this->respondNotFound(t('User not found'));
 		}
@@ -39,6 +40,7 @@ trait Update
 		// Check logged User
 		// Get the User Personal Access Token Object
 		$personalAccess = request()->user()->tokens()->where('id', getApiAuthToken())->first();
+		// print_r($personalAccess);die;
 		if (!empty($personalAccess)) {
 			if ($personalAccess->tokenable_id != $user->id) {
 				return $this->respondUnauthorized();
@@ -58,6 +60,7 @@ trait Update
 		
 		// Update User
 		$input = $request->only($user->getFillable());
+
 		foreach ($input as $key => $value) {
 			if ($request->has($key)) {
 				if (in_array($key, ['email', 'phone', 'username', 'password']) && empty($value)) {
@@ -65,6 +68,7 @@ trait Update
 				}
 				$user->{$key} = $value;
 			}
+			// print_r($request->has($key));die;
 		}
 		
 		// Checkboxes

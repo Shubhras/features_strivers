@@ -244,8 +244,7 @@ Route::group([
 		Route::get('/coach_list_sub/{id}', 'PageController@coach_list_sub_category');
 		Route::get('coachall_detail/{id}', 'PageController@coachall_detail');
 		Route::get('coaches', 'PageController@coaches');
-		Route::get('show1', 'PageController@show1');
-		// Route::get('selectCoursesHours/{id}', 'PageController@selectCoursesHours');
+		Route::get('subscription', 'PageController@show1');
 
 		
 		Route::get('category_list', 'SitemapController@category_list');
@@ -413,7 +412,8 @@ Route::group([
 				
 				// Users
 				Route::get('/', 'EditController@index');
-				Route::get('profile', 'EditController@profile');
+				Route::get('dashboard', 'EditController@dashboard');
+				// Route::get('profile', 'EditController@profile');
 				Route::get('my_coaches','EditController@my_coaches_by_striver');
 				Route::get('my_striver','EditController@my_coaches_by_striver');
 				Route::get('my_courses','EditController@my_courses_by_striver');

@@ -527,44 +527,48 @@
                     </div>
 					</div>
 
-					<div class="inner-box default-inner-box">
+					<div class="">
 						
 						<!--/.row-box End-->
 						<div class="row">
 
-							<h2>
-                            My Subscriptions
-                            </h2>
-							</div>
+							<h2 style="text-align:center;"><b>
+                            My Subscriptions				</b></h2>
+							<?php
+							
+							foreach ($user_subscription as $key => $value) {
+											
+							
+								
+                               $sub_cat = json_decode($value->name);
+                                $aaa = array();
+                                foreach ($sub_cat as $key => $subc) {
+                                    $aaa[$key] = $subc;
+								}
+								?>
+							<div class="states">
+							<h2> current subscription  : {{$aaa['en']}}</h2>
+							
+							<h2> Total Days : {{$value->duration}}/day</h2>
+							<h2> Days Remaining  : {{$value->depth}}/days.</h2>
 
+								
+						<?php }?>
+						</div>
+						</div>
+						<br>
+						<div class="col-md-12" style="text-align: center;">
+						<a href="{{ url('subscription') }}" >
+																	
+							<button   style="font-size: 20px; ">Renew Subscriptions</button>
+							</a>
 						</div>
 					</div>
-
 					</div>
 
 					<br>
 
-					<div class="row">
-					<h3><b> Suggested Coaches</b></h3>
-					<?php foreach ($suggested_coaches as $coach_list) { ?>
-								<div class="col-sm-3" >
-									<img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 320px; width:-webkit-fill-available;" alt="{{ $coach_list->name }}">
-									<br>
-									<?php
-											// $name = json_decode($coach_list->slug);
-											// $ss = array();
-											// foreach ($name as $key => $sub) {
-											// $ss[$key] = $sub;
-											// }
-									?>
-									<h4><b>{{ $coach_list->name }}</b></h4>
-									
-									
-								</div>
-
-							<?php } ?>
-
-					</div>
+					
 
 
 				<?php }?>
@@ -638,6 +642,10 @@
 		}
 		.file-drop-zone .kv-file-content {
 			padding: 0
+		}
+		.states h2{
+			margin-top: 50px;
+			padding-left: 35px;
 		}
 	</style>
 @endsection

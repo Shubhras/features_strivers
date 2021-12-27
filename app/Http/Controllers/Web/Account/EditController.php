@@ -75,12 +75,28 @@ class EditController extends AccountBaseController
 			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
 			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
 
+			$data['suggested_striver_data']= DB::table('users')->select('users.*','categories.name as slug','packages.name   as     subscription_name','packages.price','packages.currency_code'
+		,'coach_course.dated','coach_course.starting_time','coach_course.course_name','coach_course.coach_id')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->leftjoin('user_subscription' ,'user_subscription.student_id' ,'=' ,'users.id')
+			->leftjoin('coach_course' , 'coach_course.id','=','user_subscription.course_id')
+			->where('user_subscription.student_id',$user->id)
+		    ->orderBy('users.id','asc')->get();
+		
+
+
+		
+         
 
 		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 		
+		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*')->orderBy('coach_course.id','asc')->where('coach_course.coach_id', $user->id)->get();
+		// print_r($data);die;
 		return appView('account.dashboard', $data);
 		
 	}
@@ -233,7 +249,7 @@ class EditController extends AccountBaseController
 			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
 			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
 
-
+		// print_r();die;
 			
 
 
@@ -298,13 +314,15 @@ class EditController extends AccountBaseController
 			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
 
 
-			$data['user_subscription'] = DB::table('user_subscription')->select('user_subscription.*','packages.*','users.name as striver_name','coach_course.course_name')
-			->leftjoin('packages' ,'packages.id' ,'=' ,'user_subscription.subscription_id')
-			->leftjoin('users' ,'users.id' ,'=' ,'user_subscription.student_id')
-			->leftjoin('coach_course' ,'coach_course.id' ,'=' ,'user_subscription.course_id')
+			$data['user_subscription'] = DB::table('user_subscription')->select('packages.*')
+			->leftjoin('packages','packages.id'  ,'=','user_subscription.subscription_id')
+			->leftjoin('users' ,'users.id' ,'=', 'user_subscription.student_id')
 			->where('user_subscription.user_id',$user->id)->get();
 
-
+		// print_r($data['user_subscription']);die;
+		// ->leftjoin('packages' ,'packages.id' ,'=' ,'user_subscription.subscription_id')
+		// 	->leftjoin('users' ,'users.id' ,'=' ,'user_subscription.student_id')
+		// 	->leftjoin('coach_course' ,'coach_course.id' ,'=' ,'user_subscription.course_id')
 
 			//print_r($data['user_subscription']);die;
 		$data['subscription_plan']= Package::query()->get();
@@ -326,6 +344,7 @@ class EditController extends AccountBaseController
 
 	public function create_coursesss(Request $request){
 
+		// print_r($request->all());die;
 		$data = [];
 		
 		$data['genders'] = Gender::query()->get();
@@ -353,23 +372,28 @@ class EditController extends AccountBaseController
 
 		// ]);
 		$datess = date('Y-m-d h:i:s');
+		// print_r($request->all());die;
 		$data = array(
 			'coach_id' =>$user->id,
 			'course_name' =>$request->course_name,
 			'course_hourse' => $request->course_hourse,
 			'description' => $request->description, 
-			// 'created_at' => $datess,
-			// 'updated_at' => $datess
+			'starting_time' => $request->starting_time,
+			'dated' => $request->dated,
 	
 	
 			);
-			//print_r($data);die;
+			// print_r($data);die;
 
 			
 
 		
 
-		DB::table('coach_course')->insert($data);
+		$tru = DB::table('coach_course')->insert($data);
+		if($tru){
+			return true;
+		}
+		
 
 
 	}
@@ -391,13 +415,15 @@ class EditController extends AccountBaseController
 	 */
 	public function updateDetails(UserRequest $request)
 	{
+		// print_r($request->all());die;
 		$endpoint = '/users/' . auth()->user()->id;
 		$data = makeApiRequest('put', $endpoint, $request->all());
-		//print_r($request->all());die;
+		
 		
 		// Parsing the API's response
 		$message = !empty(data_get($data, 'message')) ? data_get($data, 'message') : 'Unknown Error.';
 		// print_r($message);die;
+		
 		// HTTP Error Found
 		if (!data_get($data, 'isSuccessful')) {
 			flash($message)->error();
@@ -425,7 +451,7 @@ class EditController extends AccountBaseController
 		if ($request->filled('panel')) {
 			$queryString = '?panel=' . $request->input('panel');
 		}
-		
+		// print_r($queryString);die;
 		// Get the next URL
 		$nextUrl = url('account' . $queryString);
 		

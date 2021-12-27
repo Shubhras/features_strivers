@@ -71,8 +71,7 @@
 							
 						</div>
                         <br>
-						
-						<div  class="panel-group">
+						<div class="panel-group"> 
 							
 							<div class="card card-default">
 								<div class="card-header">

@@ -15,6 +15,26 @@ class StripePaymentController extends Controller
      */
     public function stripe()
     {
+        $data = [];
+		
+		$data['genders'] = Gender::query()->get();
+		
+		$user = auth()->user();
+		
+		// Mini Stats
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
         //  print_r('kjskdjkdsj k jkd jskdjk dj dsjfjkdf');die;
         return appView('account.stripe');
     }
