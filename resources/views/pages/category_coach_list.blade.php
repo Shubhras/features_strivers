@@ -74,7 +74,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                                         $sub_categories = DB::table('categories')->select('categories.name','categories.id')->orderBy('categories.name','asc')->where('categories.parent_id',$cat->id)->get();
                                         ?>
                                         @foreach($sub_categories as $key => $sub_cat)
-                                            <?php if($request_cat_id ==$sub_cat->id){?>
+                                            <?php if($request_cat_id == $sub_cat->id){?>
                                                 <li id="sub_id_<?= $sub_cat->id?>" value="<?= $sub_cat->id?>" class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list" style="color:red;">
                                                     <h4>
                                                         <?php
@@ -208,7 +208,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                                 <a href="{{url('/coachall_detail/'.$coach_list->id) }}">
                                 
                                 <button type="button" class="btn btn-default btn-lg" >Know More</button></a>
-                                <a href="{{url('/show1') }}">
+                                <a href="{{url('/subscription') }}">
                                 <button type="button" class="btn btn-default btn-lg">Get Started</button></a>
                                 </div>
                                 

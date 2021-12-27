@@ -30,6 +30,7 @@ class SetLocaleController extends FrontController
 	public function redirect($langCode)
 	{
 		// Check if the selected Language Code is supported by the system
+		// print_r($langCode);die;
 		if (!isAvailableLang($langCode)) {
 			$message = t('language_not_supported', ['code' => $langCode]);
 			flash($message)->error();

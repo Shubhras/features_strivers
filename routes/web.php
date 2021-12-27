@@ -243,7 +243,7 @@ Route::group([
 		Route::get('/coach_list_sub/{id}', 'PageController@coach_list_sub_category');
 		Route::get('coachall_detail/{id}', 'PageController@coachall_detail');
 		Route::get('coaches', 'PageController@coaches');
-		Route::get('show1', 'PageController@show1');
+		Route::get('subscription', 'PageController@show1');
 
 		
 		Route::get('category_list', 'SitemapController@category_list');

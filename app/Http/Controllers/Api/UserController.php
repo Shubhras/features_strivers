@@ -125,6 +125,9 @@ class UserController extends BaseController
 	 */
 	public function update($id, UserRequest $request)
 	{
+		
+			
+		
 		return $this->updateDetails($id, $request);
 	}
 	

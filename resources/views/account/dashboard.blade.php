@@ -29,7 +29,26 @@
 <div class="main-container">
     <div class="container">
 
+<?php
 
+// print_r(json_decode($coach_course));die;
+$cal_array=array();
+foreach ($coach_course as $key => $value) {
+    # code...
+    // foreach ($value as  $values) {
+        # code...
+        $cal_array[]=array(
+            'id'=>$value->id,
+            'course_name'=>$value->course_name,
+            "course_hourse"=>$value->course_hourse,
+            "starting_time"=>$value->starting_time,
+            "datad"=>$value->dated,
+        );
+        // }
+    }
+//     print_r($cal_array);
+// die;
+?>
 
         <div class="row ">
             <div class="col-md-3 page-sidebar inner-box default-inner-box coach_profile_img">
@@ -187,20 +206,36 @@
                                 
                                 */
 
-
+                               valueArray = <?php echo json_encode($cal_array); ?>;
+                                    // console.log(valueArray[0]);
                                 /* initialize the external events
+                                
                                 -----------------------------------------------------------------*/
-
+                                var  events = []
+                                for (let index = 0; index < valueArray.length; index++) {
+                                            //  events({valueArray[index]['course_name'],});
+                                            // console.log(valueArray[index]);
+                                    // var dated = valueArray[index]['starting_time'];
+                                                events.push({
+                                                    title : valueArray[index]['course_name']+ "</span><br> " + " Start Time:"+valueArray[index]['starting_time'],
+                                                    start : new Date(valueArray[index]['datad']),
+                                                    // end :  new Date(valueArray[index]['datad']),
+                                                    
+                                                });
+                                                
+                                        }
+                                        // console.log(events);
+                                        
                                 $('#external-events div.external-event').each(function() {
 
                                     // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                                     // it doesn't need to have a start or end
                                     var eventObject = {
-                                        title: $.trim($(this).text()) // use the element's text as the event title
+                                        title: $.trim($(this).events()) // use the element's text as the event title
                                     };
 
                                     // store the Event Object in the DOM element so we can get to it later
-                                    $(this).data('eventObject', eventObject);
+                                    $(this).events('eventObject', eventObject);
 
                                     // make the event draggable using jQuery UI
                                     $(this).draggable({
@@ -214,7 +249,8 @@
 
                                 /* initialize the calendar
                                 -----------------------------------------------------------------*/
-
+                                ;
+                                
                                 var calendar = $('#calendar').fullCalendar({
                                     header: {
                                         left: 'title',
@@ -254,79 +290,22 @@
                                         }
                                         calendar.fullCalendar('unselect');
                                     },
-                                    droppable: true, // this allows things to be dropped onto the calendar !!!
-                                    drop: function(date, allDay) { // this function is called when something is dropped
-
-                                        // retrieve the dropped element's stored Event Object
-                                        var originalEventObject = $(this).data('eventObject');
-
-                                        // we need to copy it, so that multiple events don't have a reference to the same object
-                                        var copiedEventObject = $.extend({}, originalEventObject);
-
-                                        // assign it the date that was reported
-                                        copiedEventObject.start = date;
-                                        copiedEventObject.allDay = allDay;
-
-                                        // render the event on the calendar
-                                        // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                                        $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
-                                        // is the "remove after drop" checkbox checked?
-                                        if ($('#drop-remove').is(':checked')) {
-                                            // if so, remove the element from the "Draggable Events" list
-                                            $(this).remove();
-                                        }
-
-                                    },
-
-                                    events: [{
-                                            title: 'All Day Event',
-                                            start: new Date(y, m, 1)
-                                        },
-                                        {
-                                            id: 999,
-                                            title: 'Repeating Event',
-                                            start: new Date(y, m, d - 3, 16, 0),
-                                            allDay: false,
-                                            className: 'info'
-                                        },
-                                        {
-                                            id: 999,
-                                            title: 'Repeating Event',
-                                            start: new Date(y, m, d + 4, 16, 0),
-                                            allDay: false,
-                                            className: 'info'
-                                        },
-                                        {
-                                            title: 'Meeting',
-                                            start: new Date(y, m, d, 10, 30),
-                                            allDay: false,
-                                            className: 'important'
-                                        },
-                                        {
-                                            title: 'Lunch',
-                                            start: new Date(y, m, d, 12, 0),
-                                            end: new Date(y, m, d, 14, 0),
-                                            allDay: false,
-                                            className: 'important'
-                                        },
-                                        {
-                                            title: 'Birthday Party',
-                                            start: new Date(y, m, d + 1, 19, 0),
-                                            end: new Date(y, m, d + 1, 22, 30),
-                                            allDay: false,
-                                        },
-                                        {
-                                            title: 'Click for Google',
-                                            start: new Date(y, m, 28),
-                                            end: new Date(y, m, 29),
-                                            url: 'https://ccp.cloudaccess.net/aff.php?aff=5188',
-                                            className: 'success'
-                                        }
-                                    ],
+                                                                       
+                                   events:events,
+                                   
+                                        // {
+                                        //     title: 'Click for Google',
+                                        //     start: new Date(y, m, 28),
+                                        //     end: new Date(y, m, 29),
+                                        //     url: 'https://ccp.cloudaccess.net/aff.php?aff=5188',
+                                        //     className: 'success'
+                                        // }
+                                        
+                                        
                                 });
-
-
+                                
+                                        
+                               
                             });
                         </script>
                         <style>
@@ -404,8 +383,7 @@
 
             </div>
             <!--/.page-content-->
-
-            <br>
+                  <br>
 				<div class="row">
 					<h3><b> Suggested Strivers</b></h3>
 					<?php foreach ($suggested_striver as $coach_list) { ?>
@@ -548,6 +526,49 @@
                         </div>
                     </div>
                 </div>
+                <?php
+
+        // print_r(json_decode($coach_course));die;
+        $cal_array=array();
+    //    $suggested_striver_data = json_decode($suggested_striver_data);
+        // print_r(session()->has('langCode'));
+        foreach ($suggested_striver_data as $key => $value) {
+
+            $coach = $value->coach_id;
+			$data['suggested_striver_data1'] = DB::table('users')->select('users.name as coach_name')
+			->leftjoin('coach_course' ,'coach_course.coach_id' ,'=' ,'users.id')
+			->where('coach_course.coach_id',$coach)
+		    ->orderBy('users.id','asc')->first();
+			// print_r($data['suggested_striver_data1']);die;
+            $coaches = [];
+			 foreach ($data['suggested_striver_data1'] as $key => $valuess) {
+				
+				$coaches = $valuess;
+			 }
+
+
+            $slug = json_decode($value->subscription_name);
+            $ss = array();
+            foreach ($slug as $key => $sub) {
+                $ss[$key] = $sub;
+            }
+
+                $cal_array[]=array(
+                    'plan'=>$ss['en'],
+                    'course_name'=>$value->course_name,                   
+                    "datad"=>$value->dated,
+                    "starting_time"=> $value->starting_time,
+                    "course_name"=> $value->course_name,
+                    "coach_name"=> $coaches,
+                );
+            
+            }
+          
+     
+       
+        //print_r($cal_array);die;
+        ?>
+      
 
                 <div class="inner-box default-inner-box">
 
@@ -570,17 +591,37 @@
                                 className: default(transparent), important(red), chill(pink), success(green), info(blue)
                                 
                                 */
-
-
+                                valueArray = <?php echo json_encode($cal_array); ?>;
+                                // console.log(valueArray);
                                 /* initialize the external events
                                 -----------------------------------------------------------------*/
+                               
 
+                                
+                                var  events = []
+                                for (let index = 0; index < valueArray.length; index++) {
+                                            
+                                           
+                                    // var dated = valueArray[index]['plan'];
+                                                events.push({
+                                                    
+                                                    title : "coach_name:"+valueArray[index]['coach_name']+ "</span><br> " + " Start Time:"+valueArray[index]['starting_time']+"</span><br>" + "Subject:" +valueArray[index]['course_name'],
+                                                    start : new Date(valueArray[index]['datad']),
+                                                    
+                                                    // end :  new Date(valueArray[index]['datad']),
+                                                    
+                                                });
+                                                // console.log(dated);
+                                                
+                                        }
+
+                                        // console.log(events);
                                 $('#external-events div.external-event').each(function() {
 
                                     // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                                     // it doesn't need to have a start or end
                                     var eventObject = {
-                                        title: $.trim($(this).text()) // use the element's text as the event title
+                                        title: $.trim($(this).events()) // use the element's text as the event title
                                     };
 
                                     // store the Event Object in the DOM element so we can get to it later
@@ -662,52 +703,9 @@
                                         }
 
                                     },
+                                    events:events,
 
-                                    events: [{
-                                            title: 'All Day Event',
-                                            start: new Date(y, m, 1)
-                                        },
-                                        {
-                                            id: 999,
-                                            title: 'Repeating Event',
-                                            start: new Date(y, m, d - 3, 16, 0),
-                                            allDay: false,
-                                            className: 'info'
-                                        },
-                                        {
-                                            id: 999,
-                                            title: 'Repeating Event',
-                                            start: new Date(y, m, d + 4, 16, 0),
-                                            allDay: false,
-                                            className: 'info'
-                                        },
-                                        {
-                                            title: 'Meeting',
-                                            start: new Date(y, m, d, 10, 30),
-                                            allDay: false,
-                                            className: 'important'
-                                        },
-                                        {
-                                            title: 'Lunch',
-                                            start: new Date(y, m, d, 12, 0),
-                                            end: new Date(y, m, d, 14, 0),
-                                            allDay: false,
-                                            className: 'important'
-                                        },
-                                        {
-                                            title: 'Birthday Party',
-                                            start: new Date(y, m, d + 1, 19, 0),
-                                            end: new Date(y, m, d + 1, 22, 30),
-                                            allDay: false,
-                                        },
-                                        {
-                                            title: 'Click for Google',
-                                            start: new Date(y, m, 28),
-                                            end: new Date(y, m, 29),
-                                            url: 'https://ccp.cloudaccess.net/aff.php?aff=5188',
-                                            className: 'success'
-                                        }
-                                    ],
+                                    
                                 });
 
 

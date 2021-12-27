@@ -190,6 +190,8 @@
 									<th>{{ ('Course name') }}</th>
 									<th data-sort-ignore="true">{{ ('Course Hourse') }}</th>
 									<th data-type="numeric">{{ ('Description') }}</th>
+									<th data-type="numeric">{{ ('Starting Time') }}</th>
+
 									<th>{{ t('Option') }}</th>
 								</tr>
 								</thead>
@@ -200,7 +202,7 @@
 								if (isset($coach_course) && $coach_course->count() > 0):
 								foreach($coach_course as $key => $post):
 									// Fixed 1
-									
+									// print_r($post);
 
 									// Get Post's URL
 
@@ -243,7 +245,7 @@
 											</strong>
 										</div>
 									</td>
-									<td style="width:50%" class="price-td">
+									<td style="width:45%" class="price-td">
 										<div>
 											<strong>
 											
@@ -252,6 +254,16 @@
 											</strong>
 										</div>
 									</td>
+									<td style="width:5%" class="price-td">
+										<div>
+											<strong>
+											
+											{{ $post->starting_time }}
+												
+											</strong>
+										</div>
+									</td>
+									
 									
 									<td style="width:10%" class="action-td">
 										<div>
@@ -316,6 +328,14 @@
 											<div class="form-group">
 												<label for="recipient-name" class="control-label">Course Hours:</label>
 												<input type="text" class="form-control" id="course_hourse" name="course_hourse">
+											</div>
+											<div class="form-group">
+												<label for="recipient-name" class="control-label"> start time:</label>
+												<input type="text" class="form-control" id="starting_time" name="starting_time" placeholder="H:I:S">
+											</div>
+											<div class="form-group">
+												<label for="recipient-name" class="control-label">Course Dated:</label>
+												<input type="text" class="form-control" id="dated" name="dated" placeholder="yyyy/mm/dd">
 											</div>
 
 											<div class="form-group">
@@ -820,6 +840,8 @@ window.onclick = function(event) {
 					course_name: $("#course_name").val(),
 					course_hourse: $("#course_hourse").val(),
 					description: $("#description").val(),
+					starting_time: $("#starting_time").val(),
+					dated: $("#dated").val(),
 				};
 
 				$.ajax({
@@ -828,8 +850,10 @@ window.onclick = function(event) {
 				data: formData,
 				dataType: "json",
 				encode: true,
-				}).done(function (data) {
-				console.log(data);
+				}).success(function (data) {
+					document.getElementsByClassName("close")[0].click=true;
+					document.getElementById("myModal").style.display="none";
+				location.reload();// console.log("hello welcome to digiprima technology");
 				});
 
 				event.preventDefault();
