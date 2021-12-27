@@ -208,7 +208,7 @@ Route::group([
 |
 | The translated front-end routes
 |
-*/
+// */
 Route::get('stripe', 'App\Http\Controllers\StripePaymentController@stripe');
 Route::get('stripe/{price}', 'App\Http\Controllers\StripePaymentController@stripe');
 

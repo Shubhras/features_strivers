@@ -1,31 +1,24 @@
 <?php
-
+    
 namespace App\Http\Controllers;
-
-use App\Http\Requests\AvatarRequest;
-use App\Http\Requests\UserRequest;
+    
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Gender;
 use App\Models\Post;
 use App\Models\SavedPost;
-use App\Models\Package;
-use App\Models\Gender;
-use App\Models\Category;
-use Illuminate\Support\Facades\DB;
-use Torann\LaravelMetaTags\Facades\MetaTag;
-
-
-use Laravel\Cashier\Billable;
-use Auth;
-use App\User;
-use Illuminate\Support\Facades\Request;
-use Stripe\Stripe;
-
+use Session;
+use Stripe;
+    
 class StripePaymentController extends Controller
 {
-    //
-    public function stripe($price = null)
+    /**
+     * success response method.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function stripe($price =null)
     {
-
-        // print_r($price);die;
         $data = [];
 		
 		$data['genders'] = Gender::query()->get();
@@ -57,29 +50,25 @@ class StripePaymentController extends Controller
             return appView('home.stripe', $data);
         }
     }
-  
+   
     /**
      * success response method.
      *
      * @return \Illuminate\Http\Response
      */
     public function stripePost(Request $request)
-    {   
-        
-        $token = Request::input('stripeToken');
-
-        Stripe::setApiKey(Config::get('stripe.secret_key'));
-
-        try {
-            return Stripe_Charge::create([
-                'amount' => 1000,
-                'currenct' => 'gbp',
-                'description' => Auth::user()->email,
-                'card' => $token,
-            ]);
-        } catch(Stripe_CardError $e) {
-            dd('card declined');
-        }
-    }
+    {
+        // print_r($request->price);die;
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create ([
+                "amount" => $request->price,
+                "currency" => "INR",
+                "source" => $request->stripeToken,
+                "description" => "This payment is tested purpose phpcodingstuff.com"
+        ]);
    
+        Session::flash('success', 'Payment successful!');
+           
+        return back();
+    }
 }

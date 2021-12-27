@@ -1,187 +1,184 @@
 
-<style type="text/css">
-        .panel-title {
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Payment </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style type="text/css">
+    .panel-title {
         display: inline;
         font-weight: bold;
-        }
-        .display-table {
-            display: table;
-        }
-        .display-tr {
-            display: table-row;
-        }
-        .display-td {
-            display: table-cell;
-            vertical-align: middle;
-            width: 61%;
-        }
+    }
+
+    .display-table {
+        display: table;
+    }
+
+    .display-tr {
+        display: table-row;
+    }
+
+    .display-td {
+        display: table-cell;
+        vertical-align: middle;
+        width: 61%;
+    }
+
+    .hide {
+        display: none;
+    }
     </style>
-@section('content')
+</head>
 
-	<title>Laravel 5 - Stripe Payment Gateway Integration Example - ItSolutionStuff.com</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
+<body>
 
-<?php
-// print_r($price.'hello');die; 
-$hideOnMobile = '';
-if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categoriesOptions['hide_on_mobile'] == '1') {
-    $hideOnMobile = ' hidden-sm';
-}
-?>
-@includeFirst([config('larapen.core.customizedViewPath') . 'home.inc.spacer', 'home.inc.spacer'], ['hideOnMobile' => $hideOnMobile]);
-
-<br><br><br><br>
-
-<div class="container">
-  
-    <h1>Laravel 5 - Stripe Payment Gateway Integration Example <br/> ItSolutionStuff.com</h1>
-  
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default credit-card-box">
-                <div class="panel-heading display-table" >
-                    <div class="row display-tr" >
-                        <h3 class="panel-title display-td" >Payment Details</h3>
-                        <div class="display-td" >                            
-                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+    <div class="container ">
+        
+        <div class="row justify-content-center"><h1>Stripe Payment Page </h1></div>
+        <br>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default credit-card-box">
+                    <div class="panel-heading display-table">
+                        <div class="row display-tr">
+                            <h3 class="panel-title display-td">Payment Details</h3>
+                            <div class="display-td">
+                                <!-- <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png"> -->
+                            </div>
                         </div>
-                    </div>                    
-                </div>
-                <div class="panel-body">
-  
-                    @if (Session::has('success'))
+                    </div>
+                    <div class="panel-body">
+                        @if (Session::has('success'))
                         <div class="alert alert-success text-center">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
                             <p>{{ Session::get('success') }}</p>
                         </div>
-                    @endif
-  
-                    <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
-                                                     data-cc-on-file="false"
-                                                    data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
-                                                    id="payment-form">
-                        @csrf
-  
-                        <div class='form-row row'>
-                            <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Name on Card</label> <input
-                                    class='form-control' size='4' type='text'>
+                        <script>
+                        const myTimeout = setTimeout(goToHomePage, 3000);
+                        // console.log('hello timeout');
+                        function goToHomePage() {
+                            document.location.href = "/";
+                        }
+
+                        function back() {
+                            window.history.forward();
+                        }
+
+                        // Force Client to forward to last (current) Page.
+                        setTimeout("back()", 0);
+
+                        window.onunload = function() {
+                            null
+                        };
+                        </script>
+                        @endif
+                        <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
+                            data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                            id="payment-form">
+                            @csrf
+                            <div class='form-row row'>
+                                <div class='col-xs-12 col-md-12 col-xl-12 form-group required'>
+                                    <label class='control-label'>Name on Card</label> <input class='form-control'
+                                        size='4' type='text' name="cardHoldername">
+                                </div>
                             </div>
-                        </div>
-  
-                        <div class='form-row row'>
-                            <div class='col-xs-12 form-group card required'>
-                                <label class='control-label'>Card Number</label> <input
-                                    autocomplete='off' class='form-control card-number' size='20'
-                                    type='text'>
+                            <div class='form-row row'>
+                                <div class='col-xs-12 col-md-12 col-xl-12 form-group  required'>
+                                    <label class='control-label'>Card Number</label> <input autocomplete='off'
+                                        class='form-control card-number' size='20' type='text' name="cardNumber">
+                                </div>
                             </div>
-                        </div>
-  
-                        <div class='form-row row'>
-                            <div class='col-xs-12 col-md-4 form-group cvc required'>
-                                <label class='control-label'>CVC</label> <input autocomplete='off'
-                                    class='form-control card-cvc' placeholder='ex. 311' size='4'
-                                    type='text'>
+                            <div class='form-row row'>
+                                <div class='col-xs-12 col-md-4 form-group cvc required'>
+                                    <label class='control-label'>CVC</label> <input autocomplete='off'
+                                        class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'
+                                        name="cvcNumber">
+                                </div>
+                                <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                    <label class='control-label'>Expiration Month</label> <input
+                                        class='form-control card-expiry-month' placeholder='MM' size='2' type='text'
+                                        name="expiryMonth">
+                                </div>
+                                <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                    <label class='control-label'>Expiration Year</label> <input
+                                        class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'
+                                        name="expiryyear">
+                                </div>
                             </div>
-                            <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                <label class='control-label'>Expiration Month</label> <input
-                                    class='form-control card-expiry-month' placeholder='MM' size='2'
-                                    type='text'>
+                            <div class='form-row row'>
+                                <div class='col-md-12 error form-group hide'>
+                                    <div class='alert-danger alert'>Please correct the errors and try
+                                        again.
+                                    </div>
+                                </div>
                             </div>
-                            <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                <label class='control-label'>Expiration Year</label> <input
-                                    class='form-control card-expiry-year' placeholder='YYYY' size='4'
-                                    type='text'>
+                            <input type="hidden" name="price" value={{$price}}>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-12 col-xl-12r">
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now
+                                        ${{$price}}</button>
+                                </div>
                             </div>
-                        </div>
-  
-                        <div class='form-row row'>
-                            <div class='col-md-12 error form-group hide'>
-                                <div class='alert-danger alert'>Please correct the errors and try
-                                    again.</div>
-                            </div>
-                        </div>
-  
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ${{$price}}</button>
-                            </div>
-                        </div>
-                          
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>        
+            </div>
         </div>
     </div>
-      
-</div>
-  
-
+</body>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-  
 <script type="text/javascript">
 $(function() {
-    var $form         = $(".require-validation");
-  $('form.require-validation').bind('submit', function(e) {
-    var $form         = $(".require-validation"),
-        inputSelector = ['input[type=email]', 'input[type=password]',
-                         'input[type=text]', 'input[type=file]',
-                         'textarea'].join(', '),
-        $inputs       = $form.find('.required').find(inputSelector),
-        $errorMessage = $form.find('div.error'),
-        valid         = true;
+    var $form = $(".require-validation");
+    $('form.require-validation').bind('submit', function(e) {
+        var $form = $(".require-validation"),
+            inputSelector = ['input[type=email]', 'input[type=password]',
+                'input[type=text]', 'input[type=file]',
+                'textarea'
+            ].join(', '),
+            $inputs = $form.find('.required').find(inputSelector),
+            $errorMessage = $form.find('div.error'),
+            valid = true;
         $errorMessage.addClass('hide');
- 
         $('.has-error').removeClass('has-error');
-    $inputs.each(function(i, el) {
-      var $input = $(el);
-      if ($input.val() === '') {
-        $input.parent().addClass('has-error');
-        $errorMessage.removeClass('hide');
-        e.preventDefault();
-      }
+        $inputs.each(function(i, el) {
+            var $input = $(el);
+            if ($input.val() === '') {
+                $input.parent().addClass('has-error');
+                $errorMessage.removeClass('hide');
+                e.preventDefault();
+            }
+        });
+        if (!$form.data('cc-on-file')) {
+            e.preventDefault();
+            Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+            Stripe.createToken({
+                number: $('.card-number').val(),
+                cvc: $('.card-cvc').val(),
+                exp_month: $('.card-expiry-month').val(),
+                exp_year: $('.card-expiry-year').val()
+            }, stripeResponseHandler);
+        }
     });
-  
-    if (!$form.data('cc-on-file')) {
-      e.preventDefault();
-      Stripe.setPublishableKey($form.data('stripe-publishable-key'));
-      Stripe.createToken({
-        number: $('.card-number').val(),
-        cvc: $('.card-cvc').val(),
-        exp_month: $('.card-expiry-month').val(),
-        exp_year: $('.card-expiry-year').val()
-      }, stripeResponseHandler);
-    }
-  
-  });
-  
-  function stripeResponseHandler(status, response) {
+
+    function stripeResponseHandler(status, response) {
         if (response.error) {
             $('.error')
                 .removeClass('hide')
                 .find('.alert')
                 .text(response.error.message);
         } else {
-            // token contains id, last4, and card type
+            /* token contains id, last4, and card type */
             var token = response['id'];
-            // insert the token into the form so it gets submitted to the server
             $form.find('input[type=text]').empty();
             $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
             $form.get(0).submit();
         }
     }
-  
 });
 </script>
 
-<script>
-    // var url = window.location;
-    // var url = new URL(url_string);
-    // console.log(url);
-    // var str = "foo/bar/test.html";
-    // var n = url.lastIndexOf('/');
-    // var result = url.substring(n + 1);
-    // console.log(result);
-</script>
+</html>

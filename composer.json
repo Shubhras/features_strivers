@@ -56,7 +56,6 @@
 		"league/flysystem-cached-adapter": "^1.0",
 		"league/flysystem-sftp": "^1.0",
 		"livecontrol/eloquent-datatable": "dev-master",
-		"maddhatter/laravel-fullcalendar": "~1.0",
 		"mews/purifier": "3.3.*",
 		"mhetreramesh/flysystem-backblaze": "^1.5",
 		"openpayu/openpayu": "2.3.*",
@@ -73,13 +72,14 @@
 		"spatie/laravel-feed": "^2.7",
 		"spatie/laravel-permission": "^3.17",
 		"spatie/laravel-translatable": "^4.6",
-		"stripe/stripe-php": "^7.107",
+		"stripe/stripe-php": "^7.108",
 		"therobfonz/laravel-mandrill-driver": "^3.0",
 		"torann/laravel-meta-tags": "^3.0",
 		"unicodeveloper/laravel-paystack": "1.0.*",
 		"vemcogroup/laravel-sparkpost-driver": "^4.0",
 		"watson/sitemap": "4.0.*",
 		"wildbit/swiftmailer-postmark": "^3.3"
+		
 	},
 	"require-dev": {
 		"facade/ignition": "^2.3.6",
@@ -139,7 +139,9 @@
 		"preferred-install": "dist",
 		"sort-packages": true,
 		"optimize-autoloader": true,
-		"disable-tls": true
+		"allow-plugins": {
+			"composer/package-versions-deprecated": true
+		}
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true
