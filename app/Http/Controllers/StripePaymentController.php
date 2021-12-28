@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\SavedPost;
 use Session;
 use Stripe;
+use Carbon\Carbon;
     
 class StripePaymentController extends Controller
 {
@@ -17,8 +18,10 @@ class StripePaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function stripe($price =null)
+    public function stripe(Request $request)
+
     {
+        // print_r($request->all());die;
         $data = [];
 		
 		$data['genders'] = Gender::query()->get();
@@ -44,8 +47,8 @@ class StripePaymentController extends Controller
                 })->where('user_id', $user->id)
                 ->count();
             
-            $data['price'] = $price;
-            
+            $data['price'] = $request->price;
+            $data['subscriptionPlan'] = $request->subscriptionPlan;
             //  print_r('kjskdjkdsj k jkd jskdjk dj dsjfjkdf');die;
             return appView('home.stripe', $data);
         }
@@ -58,17 +61,52 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request)
     {
-        // print_r($request->price);die;
+        $user = auth()->user();
+        $userId = $user->id;
+        // print_r($request->all());die;
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        Stripe\Charge::create ([
-                "amount" => $request->price,
+        $data = Stripe\Charge::create ([
+                "amount" => $request->price *100,
                 "currency" => "INR",
                 "source" => $request->stripeToken,
                 "description" => "This payment is tested purpose phpcodingstuff.com"
         ]);
+
+        // print_r($data->id);die;
    
         Session::flash('success', 'Payment successful!');
-           
-        return back();
+        
+        if($data->paid){
+            $data['subscription_plan'] = DB::table('users')->where('id', $userId)
+					->update(array(
+						'subscription_plans' => $request->subscriptionPlan, 
+					));
+            
+            $data['payment_details'] = DB::table('payments')
+                    ->insert(array(
+                        'post_id' => null,
+                        'package_id' => $request->subscriptionPlan,
+                        'payment_method_id' => null,
+                        'transaction_id' => $data->balance_transaction,
+                        'amount' => $data->amount/100,
+                        'active' => 1,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => null
+
+                    )
+                );
+                
+        }
+        return redirect("/");
     }
+
+
+    public function forward_back_block(){
+        return redirect("/");
+    }
+
+
+
+
+
 }

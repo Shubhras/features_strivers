@@ -209,9 +209,9 @@ Route::group([
 | The translated front-end routes
 |
 // */
-Route::get('stripe', 'App\Http\Controllers\StripePaymentController@stripe');
-Route::get('stripe/{price}', 'App\Http\Controllers\StripePaymentController@stripe');
-
+// Route::get('stripe', 'App\Http\Controllers\StripePaymentController@stripe');
+Route::post('payment', 'App\Http\Controllers\StripePaymentController@stripe');
+Route::get('payment', 'App\Http\Controllers\StripePaymentController@forward_back_block');
 Route::post('stripe', 'App\Http\Controllers\StripePaymentController@stripePost')->name('stripe.post');
 
 
