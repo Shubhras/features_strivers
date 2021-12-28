@@ -108,7 +108,8 @@
 	<div class="p-0 mt-lg-4 mt-md-3 mt-3"></div>
 	@endif
 
-	<?php $parallax = (isset($sForm['parallax']) && $sForm['parallax'] == '1') ? ' parallax' : ''; ?>
+	<?php $parallax = (isset($sForm['parallax']) && $sForm['parallax'] == '1') ? ' parallax' : ''; 
+	$qCategory = (isset($cat) && !empty($cat)) ? $cat->id : request()->get('c');?>
 	<div class="horsepower-bg intro{{ $hideOnMobile }}{{ $parallax }}">
 		<div class="container text-center">
 
@@ -124,8 +125,24 @@
 			@if ($sForm['hideForm'] != '1')
 			<form id="search" name="search" action="{{ \App\Helpers\UrlGen::search() }}" method="GET">
 				<div class="row search-row animated fadeInUp">
+					<div class="col-md-3 col-sm-12 search-col relative mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
+						<div class="search-col-inner" style="padding:2.5px; ">
+							<select name="c" id="catSearch" class="form-control selecter" >
+								<option value="" {{ ($qCategory=='') ? 'selected="selected"' : '' }}  >
+									{{ t('all_categories') }}
+								</option>
+								@if (isset($categories) and $categories->count() > 0)
+									@foreach ($categories as $itemCat)
+										<option {{ ($qCategory == $itemCat->id) ? ' selected="selected"' : '' }} value="{{ $itemCat->id }}">
+											{{ $itemCat->name }}
+										</option>
+									@endforeach
+								@endif
+							</select>
+						</div>
+					</div>
 
-					<div class="col-md-5 col-sm-12 search-col relative mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
+					<div class="col-md-3 col-sm-12 search-col relative mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
 						<div class="search-col-inner">
 							<i class="fas fa-angle-double-right icon-append"></i>
 							<div class="search-col-input">
@@ -136,7 +153,7 @@
 
 					<input type="hidden" id="lSearch" name="l" value="">
 
-					<div class="col-md-5 col-sm-12 search-col relative locationicon mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
+					<div class="col-md-3 col-sm-12 search-col relative locationicon mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
 						<div class="search-col-inner">
 							<i class="fas fa-map-marker-alt icon-append"></i>
 							<div class="search-col-input">
@@ -149,7 +166,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-2 col-sm-12 search-col">
+					<div class="col-md-3 col-sm-12 search-col">
 						<div class="search-btn-border bg-primary">
 							<button class="btn btn-primary btn-search btn-block btn-gradient">
 								<i class="fas fa-search"></i><strong>{{ t('find') }}</strong>

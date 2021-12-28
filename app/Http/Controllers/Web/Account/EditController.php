@@ -85,11 +85,6 @@ class EditController extends AccountBaseController
 			->where('user_subscription.student_id',$user->id)
 		    ->orderBy('users.id','asc')->get();
 		
-
-
-		
-         
-
 		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 
 		MetaTag::set('title', t('my_account'));
