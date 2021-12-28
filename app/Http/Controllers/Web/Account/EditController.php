@@ -245,6 +245,15 @@ class EditController extends AccountBaseController
 			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
 
 		// print_r();die;
+		$data['users'] = DB::table('user_subscription')->select('coach_course.*')
+			->leftjoin('packages','packages.id'  ,'=','user_subscription.subscription_id')
+			->leftjoin('users' ,'users.id' ,'=', 'user_subscription.student_id')
+			->leftjoin('coach_course','coach_course.id','=','user_subscription.course_id')
+			->where('user_subscription.student_id',$user->id)
+			->where('users.user_type_id',3)
+			->orderBy('users.id','asc')->get();
+			
+		// print_r($data['users']);die;
 			
 
 
@@ -306,6 +315,7 @@ class EditController extends AccountBaseController
 			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
 			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
 			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			
 			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
 
 
@@ -315,9 +325,7 @@ class EditController extends AccountBaseController
 			->where('user_subscription.user_id',$user->id)->get();
 
 		// print_r($data['user_subscription']);die;
-		// ->leftjoin('packages' ,'packages.id' ,'=' ,'user_subscription.subscription_id')
-		// 	->leftjoin('users' ,'users.id' ,'=' ,'user_subscription.student_id')
-		// 	->leftjoin('coach_course' ,'coach_course.id' ,'=' ,'user_subscription.course_id')
+		
 
 			//print_r($data['user_subscription']);die;
 		$data['subscription_plan']= Package::query()->get();
@@ -332,6 +340,7 @@ class EditController extends AccountBaseController
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
 		return appView('account.payment_and_subscription', $data);
+		
 
 
 	}

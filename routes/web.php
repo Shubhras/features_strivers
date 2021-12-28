@@ -210,7 +210,7 @@ Route::group([
 |
 // */
 Route::get('stripe', 'App\Http\Controllers\StripePaymentController@stripe');
-Route::get('stripe/{price}', 'App\Http\Controllers\StripePaymentController@stripe');
+Route::get('stripe/{price?}', 'App\Http\Controllers\StripePaymentController@stripe');
 
 Route::post('stripe', 'App\Http\Controllers\StripePaymentController@stripePost')->name('stripe.post');
 
