@@ -200,7 +200,7 @@
 								<?php
 								$i =0;
 								if (isset($coach_course) && $coach_course->count() > 0):
-								foreach($coach_course as $key => $post):
+								foreach($users as $key => $post):
 									// Fixed 1
 									// print_r($post);
 
@@ -566,12 +566,9 @@
 
 								<?php
 								$i =0;
-								if (isset($coach_course) && $coach_course->count() > 0):
-								foreach($coach_course as $key => $post):
-									// Fixed 1
+								if (isset($users) && $users->count() > 0):
+								foreach($users as $key => $post):
 									
-
-									// Get Post's URL
 
 								$i=	$i+1;
 									
