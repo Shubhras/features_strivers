@@ -377,7 +377,7 @@
 								</a> -->
 								<?php
 									$price_total = $package->price;
-									// print_r($price_total.'hello ceo sir');die;
+									
 									$var = $price_total;
 									$var = (int)$var; // 252
 									// print_r($var);

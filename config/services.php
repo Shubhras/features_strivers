@@ -80,6 +80,10 @@ return [
 	/*
 	 * Payment gateways
 	 */
+
+    'stripe' => [
+        'secret' => env('STRIPE_SECRET'),
+    ],
 	// See payment plugins config files
 	
 	/*
