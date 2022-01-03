@@ -64,10 +64,12 @@
 			// location.reload();
         }
 
+        setTimeout("back()", 0);
+
 		function back() { window.history.forward();}
 
 		// Force Client to forward to last (current) Page.
-		setTimeout("back()", 0);
+		
 
 		window.onunload = function() { null };
 		
@@ -297,7 +299,7 @@
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">Payment Successful!</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
@@ -307,7 +309,7 @@
 
                 <!-- Modal footer -->
                 <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div> -->
 
             </div>
@@ -404,7 +406,7 @@
                     <div class="inner">
                         <h2>
                             <span class="title-3">{{ t('Browse by') }} <span
-                                    style="font-weight: bold;">{{ ('Subscription_plans_Coach_wise') }}</span></span>
+                                    style="font-weight: bold;">{{ ('Subscription Plans Coach Wise') }}</span></span>
                             <a href="{{ \App\Helpers\UrlGen::sitemap() }}" class="sell-your-item">
                                 {{ t('View more') }} <i class="fas fa-bars"></i>
                             </a>
@@ -437,7 +439,7 @@
                                         {!! $package->currency->symbol !!}
                                         @endif
                                     </span>
-                                    <small class="text-muted">/36 {{ t('hours') }}</small>
+                                    <small class="text-muted">/{{ $package->duration }} {{ t('hours') }}</small>
                                 </h1>
                                 <ul class="list list-border text-center mt-3 mb-4">
                                     @if (is_array($package->description_array) and count($package->description_array) >
@@ -463,6 +465,7 @@
                                 <?php
 									$price_total = $package->price;
 									$subscriptionPlan = $package->id;
+                                    $totalHours = $package->duration;
 									
 									// $var = $price_total;
 									// $var = (int)$var;
@@ -473,10 +476,19 @@
                                     @csrf
                                     <input type="hidden" value={{$price_total}} name="price">
 									<input type="hidden" value={{$subscriptionPlan}} name="subscriptionPlan">
-                                    <button type='submit'
+                                    <input type="hidden" value={{$totalHours}} name="totalHours">
+                                    <!-- <input type="hidden" value="redirect to plan" name="loginRedirect"> -->
+
+                                    <button type='submit' onclick = "customSession()"
                                         class="btn btn-lg btn-block{{ $boxBtnClass }}">{{ t('get_started') }}</button>
                                 </form>
-
+                                <!-- <script>
+                                    function customSession (){
+                                        <?php
+                                            //Session::put('loginRedirectToken', 1);
+                                        ?>
+                                    }
+                                </script> -->
 
                             </div>
                         </div>
