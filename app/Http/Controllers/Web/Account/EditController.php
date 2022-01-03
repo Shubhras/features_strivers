@@ -319,10 +319,13 @@ class EditController extends AccountBaseController
 			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
 
 
-			$data['user_subscription'] = DB::table('user_subscription')->select('packages.*')
-			->leftjoin('packages','packages.id'  ,'=','user_subscription.subscription_id')
-			->leftjoin('users' ,'users.id' ,'=', 'user_subscription.student_id')
-			->where('user_subscription.user_id',$user->id)->get();
+			// $data['user_subscription'] = DB::table('user_subscription')->select('packages.*')
+			// ->leftjoin('packages','packages.id'  ,'=','user_subscription.subscription_id')
+			// ->leftjoin('users' ,'users.id' ,'=', 'user_subscription.student_id')
+			// ->where('user_subscription.user_id',$user->id)->get();
+			$data['user_subscription'] = DB::table('user_subscription')
+			->where('user_subscription.user_id',$user->id)
+			->first();
 
 		// print_r($data['user_subscription']);die;
 		

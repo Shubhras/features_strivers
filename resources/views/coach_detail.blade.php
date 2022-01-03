@@ -125,7 +125,9 @@
             </div>
             <br>
             <div class="" style="text-align: center;">
+            <a href="{{url('/subscription') }}">
             <button type="button" class="btn btn-default btn-lg" >Get Started</button>
+                                </a>
             </div>
             		        
     </div>                            

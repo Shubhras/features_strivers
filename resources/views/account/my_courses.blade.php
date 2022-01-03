@@ -200,7 +200,7 @@
 								<?php
 								$i =0;
 								if (isset($coach_course) && $coach_course->count() > 0):
-								foreach($users as $key => $post):
+								foreach($coach_course as $key => $post):
 									// Fixed 1
 									// print_r($post);
 

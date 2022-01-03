@@ -61,7 +61,7 @@ class StripePaymentController extends Controller
         // print_r($request->price);die;
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
-                "amount" => $request->price,
+                "amount" => $request->price*100,
                 "currency" => "INR",
                 "source" => $request->stripeToken,
                 "description" => "This payment is tested purpose phpcodingstuff.com"

@@ -534,26 +534,40 @@
 
 							<h2 style="text-align:center;"><b>
                             My Subscriptions				</b></h2>
-							<?php
 							
-							foreach ($user_subscription as $key => $value) {
-											
-							
-								
-                               $sub_cat = json_decode($value->name);
-                                $aaa = array();
-                                foreach ($sub_cat as $key => $subc) {
-                                    $aaa[$key] = $subc;
-								}
-								?>
 							<div class="states">
-							<h2> current subscription  : {{$aaa['en']}}</h2>
-							
-							<h2> Total Days : {{$value->duration}}/day</h2>
-							<h2> Days Remaining  : {{$value->depth}}/days.</h2>
+							<?php
+							if($user_subscription){
+								?>
+
+							<h2> Total hours : {{$user_subscription->total_provided_hours}} Hours.</h2>
+							<h2> Consumed Hours  : {{$user_subscription->consumed_hours}} Hours.</h2>
+							<h2> Remaining Hours  : {{$user_subscription->remaining_hours}} Hours.</h2>
 
 								
-						<?php }?>
+						<?php //}
+							
+						?>
+						</div>
+						</div>
+						<br>
+						<div class="col-md-12" style="text-align: center;">
+						<a href="{{ url('subscription') }}" >
+																	
+							<button   style="font-size: 20px; ">Renew Subscriptions</button>
+							</a>
+						</div>
+
+						<?php
+							}
+							else{
+								?>
+
+							<div class="col-md-12" style="text-align: center;">
+							<h2>Please Get Subscription First!</h2>
+							</div>
+							<?php }
+							?>
 						</div>
 						</div>
 						<br>
@@ -572,6 +586,7 @@
 
 
 				<?php }?>
+				
 				
 			<!--/.row-->
 		</div>
