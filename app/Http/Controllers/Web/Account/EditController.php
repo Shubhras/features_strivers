@@ -287,6 +287,7 @@ class EditController extends AccountBaseController
 		$data['genders'] = Gender::query()->get();
 		
 		$user = auth()->user();
+		// print_r($user->id);die;
 		
 		// Mini Stats
 		$data['countPostsVisits'] = DB::table((new Post())->getTable())
@@ -323,9 +324,16 @@ class EditController extends AccountBaseController
 			// ->leftjoin('packages','packages.id'  ,'=','user_subscription.subscription_id')
 			// ->leftjoin('users' ,'users.id' ,'=', 'user_subscription.student_id')
 			// ->where('user_subscription.user_id',$user->id)->get();
+<<<<<<< HEAD
 			$data['user_subscription'] = DB::table('user_subscription')
 			->where('user_subscription.user_id',$user->id)
 			->first();
+=======
+
+			$data['user_subscription'] = DB::table('user_subscription_payment')
+					->where('user_id', $user->id)
+					->first();
+>>>>>>> ed3ffed79047ade34a7b34a8ebc00fb1251e2f4a
 
 		// print_r($data['user_subscription']);die;
 		

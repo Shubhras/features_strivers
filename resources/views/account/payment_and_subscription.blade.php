@@ -534,8 +534,26 @@
 
 							<h2 style="text-align:center;"><b>
                             My Subscriptions				</b></h2>
+<<<<<<< HEAD
 							
 							<div class="states">
+=======
+							<?php
+							// print_r($user_subscription);die;
+							// foreach ($user_subscription as $key => $value) {
+											
+							
+								
+                            //    $sub_cat = json_decode($value->name);
+                            //     $aaa = array();
+                            //     foreach ($sub_cat as $key => $subc) {
+                            //         $aaa[$key] = $subc;
+							// 	}
+							
+								// ?>
+							<div class="states">
+
+>>>>>>> ed3ffed79047ade34a7b34a8ebc00fb1251e2f4a
 							<?php
 							if($user_subscription){
 								?>
@@ -548,6 +566,7 @@
 						<?php //}
 							
 						?>
+<<<<<<< HEAD
 						</div>
 						</div>
 						<br>
@@ -568,6 +587,8 @@
 							</div>
 							<?php }
 							?>
+=======
+>>>>>>> ed3ffed79047ade34a7b34a8ebc00fb1251e2f4a
 						</div>
 						</div>
 						<br>
@@ -577,6 +598,17 @@
 							<button   style="font-size: 20px; ">Renew Subscriptions</button>
 							</a>
 						</div>
+
+						<?php
+							}
+							else{
+								?>
+
+							<div class="col-md-12" style="text-align: center;">
+							<h2>Please Get Subscription First!</h2>
+							</div>
+							<?php }
+							?>
 					</div>
 					</div>
 
