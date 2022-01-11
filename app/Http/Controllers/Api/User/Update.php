@@ -41,18 +41,26 @@ trait Update
 		// Get the User Personal Access Token Object
 		$personalAccess = request()->user()->tokens()->where('id', getApiAuthToken())->first();
 		// print_r($personalAccess);die;
-		if (!empty($personalAccess)) {
-			if ($personalAccess->tokenable_id != $user->id) {
-				return $this->respondUnauthorized();
-			}
-		} else {
-			return $this->respondUnauthorized();
-		}
+		// if (!empty($personalAccess)) {
+		// 	if ($personalAccess->tokenable_id != $user->id) {
+		// 		return $this->respondUnauthorized();
+		// 	}
+		// } else {
+		// 	return $this->respondUnauthorized();
+		// }
 		
 		// Check if these fields has changed
 		$emailChanged = $request->filled('email') && $request->input('email') != $user->email;
 		$phoneChanged = $request->filled('phone') && $request->input('phone') != $user->phone;
 		$usernameChanged = $request->filled('username') && $request->input('username') != $user->username;
+		$categoryChanged = $request->filled('category')&& $request->input('category') != $user->category;
+		$sub_categoryChanged = $request->filled('sub_category')&& $request->input('sub_category') != $user->sub_category;
+		$coach_summaryChanged = $request->filled('coach_summary')&& $request->input('coach_summary') != $user->coach_summary;
+		$experienceChanged = $request->filled('year_of_experience')&& $request->input('year_of_experience') != $user->year_of_experience;
+		$current_levelChanged = $request->filled('current_level')&& $request->input('current_level') != $user->current_level;
+		$locationChanged = $request->filled('location')&& $request->input('location') != $user->location;
+		
+		
 		
 		// Conditions to Verify User's Email or Phone
 		$emailVerificationRequired = config('settings.mail.email_verification') == 1 && $emailChanged;
@@ -60,10 +68,10 @@ trait Update
 		
 		// Update User
 		$input = $request->only($user->getFillable());
-
+			// print_r($input);die;
 		foreach ($input as $key => $value) {
 			if ($request->has($key)) {
-				if (in_array($key, ['email', 'phone', 'username', 'password']) && empty($value)) {
+				if (in_array($key, ['email', 'phone', 'username', 'password','category','sub_category','coach_summary','year_of_experience','current_level','location']) && empty($value)) {
 					continue;
 				}
 				$user->{$key} = $value;
@@ -75,6 +83,7 @@ trait Update
 		$user->phone_hidden = (int)$request->input('phone_hidden');
 		$user->disable_comments = (int)$request->input('disable_comments');
 		$user->accept_marketing_offers = (int)$request->input('accept_marketing_offers');
+		
 		if ($request->filled('accept_terms')) {
 			$user->accept_terms = (int)$request->input('accept_terms');
 		}

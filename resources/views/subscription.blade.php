@@ -70,12 +70,13 @@
 			
 			
 			<div class="row mt-5 mb-md-5 justify-content-center">
-				@if ($packages->count() > 0)
-					@foreach($packages as $package)
+
+						@if ($packages->count() > 0)
+						@foreach($packages as $package)
 						<?php
-							$boxClass = ($package->recommended == 1) ? ' border-color-primary' : '';
-							$boxHeaderClass = ($package->recommended == 1) ? ' bg-primary border-color-primary text-white' : '';
-							$boxBtnClass = ($package->recommended == 1) ? ' btn-primary' : ' btn-outline-primary';
+						$boxClass = ($package->recommended == 1) ? ' border-color-primary' : '';
+						$boxHeaderClass = ($package->recommended == 1) ? ' bg-primary border-color-primary text-white' : '';
+						$boxBtnClass = ($package->recommended == 1) ? ' btn-primary' : ' btn-outline-primary';
 						?>
 						<div class="col-md-4">
 							<div class="card mb-4 box-shadow{{ $boxClass }}">
@@ -86,22 +87,23 @@
 									<h1 class="text-center">
 										<span class="fw-bold">
 											@if ($package->currency->in_left == 1)
-												{!! $package->currency->symbol !!}
+											{!! $package->currency->symbol !!}
 											@endif
 											{{ \App\Helpers\Number::format($package->price) }}
 											@if ($package->currency->in_left == 0)
-												{!! $package->currency->symbol !!}
+											{!! $package->currency->symbol !!}
 											@endif
 										</span>
-										<small class="text-muted">/ {{ t('hours') }}</small>
+										<small class="text-muted">/{{ $package->duration }} {{ t('hours') }}</small>
 									</h1>
 									<ul class="list list-border text-center mt-3 mb-4">
-										@if (is_array($package->description_array) and count($package->description_array) > 0)
-											@foreach($package->description_array as $option)
-												<li>{!! $option !!}</li>
-											@endforeach
+										@if (is_array($package->description_array) and count($package->description_array) >
+										0)
+										@foreach($package->description_array as $option)
+										<li>{!! $option !!}</li>
+										@endforeach
 										@else
-											<li> *** </li>
+										<li> *** </li>
 										@endif
 									</ul>
 									<?php
@@ -112,25 +114,51 @@
 										$pricingUrl = $addListingUrl . '?package=' . $package->id;
 									}
 									?>
-									<a href="{{ url('stripe')  }}"
-									   class="btn btn-lg btn-block{{ $boxBtnClass }}"{!! $addListingAttr !!}
-									>
+									<!-- <a href="{{ $pricingUrl }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
 										{{ t('get_started') }}
-									</a>
+									</a> -->
+									<?php
+										$price_total = $package->price;
+										$subscriptionPlan = $package->id;
+										$totalHours = $package->duration;
+										
+										// $var = $price_total;
+										// $var = (int)$var;
+										
+										// print_r($var);
+									?>
+									<form action="payment" method="POST">
+										@csrf
+										<input type="hidden" value={{$price_total}} name="price">
+										<input type="hidden" value={{$subscriptionPlan}} name="subscriptionPlan">
+										<input type="hidden" value={{$totalHours}} name="totalHours">
+										<!-- <input type="hidden" value="redirect to plan" name="loginRedirect"> -->
+
+										<button type='submit' onclick = "customSession()"
+											class="btn btn-lg btn-block{{ $boxBtnClass }}">{{ t('get_started') }}</button>
+									</form>
+									<!-- <script>
+										function customSession (){
+											<?php
+												//Session::put('loginRedirectToken', 1);
+											?>
+										}
+									</script> -->
+
 								</div>
 							</div>
 						</div>
-					@endforeach
-				@else
-					<div class="col-md-6 col-sm-12 text-center">
-						<div class="card bg-light">
-							<div class="card-body">
-								{{ t('no_package_available') }}
+						@endforeach
+						@else
+						<div class="col-md-6 col-sm-12 text-center">
+							<div class="card bg-light">
+								<div class="card-body">
+									{{ t('no_package_available') }}
+								</div>
 							</div>
 						</div>
-					</div>
-				@endif
-			</div>
+						@endif
+						</div>
 			
 		</div>
 	</div>

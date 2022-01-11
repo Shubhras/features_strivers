@@ -320,20 +320,16 @@ class EditController extends AccountBaseController
 			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
 
 
-			// $data['user_subscription'] = DB::table('user_subscription')->select('packages.*')
-			// ->leftjoin('packages','packages.id'  ,'=','user_subscription.subscription_id')
-			// ->leftjoin('users' ,'users.id' ,'=', 'user_subscription.student_id')
-			// ->where('user_subscription.user_id',$user->id)->get();
-<<<<<<< HEAD
-			$data['user_subscription'] = DB::table('user_subscription')
-			->where('user_subscription.user_id',$user->id)
-			->first();
-=======
-
+			$data['user_subscriptions1'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*','packages.name','users.name as username')
+			->leftjoin('packages','packages.id'  ,'=','user_subscription_payment.subscription_id')
+			->leftjoin('users' ,'users.id' ,'=', 'user_subscription_payment.user_id')
+			->where('user_subscription_payment.user_id',$user->id)
+			->where('user_subscription_payment.remaining_hours',0)
+			->get();
+		// print_r($data['user_subscription']);die;
 			$data['user_subscription'] = DB::table('user_subscription_payment')
 					->where('user_id', $user->id)
 					->first();
->>>>>>> ed3ffed79047ade34a7b34a8ebc00fb1251e2f4a
 
 		// print_r($data['user_subscription']);die;
 		

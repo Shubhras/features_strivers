@@ -138,28 +138,31 @@
                 </div>
 
 
-							<?php
-								$i =0;
-								$total_count= [];
-								
 							
-								foreach($user_subscription as $key => $post):
-
-										$i=	$i+1;	 
-										$total_count[] = $post;
-										
-								 endforeach; ?>
 								
 					<div class="container payment_sbuscription_coach">
 
 					
 
 						<div class="row ">
-
+						<?php 
+							if ($user_subscriptions1) {
+								
+								
+							}	
+						?>
+						
+						<br>
+								
+							
+						
 							<div class="col-md-3">
 							<h4> Revenue till date</h4>
+							
 							</div>
 
+							
+							
 							<div class="col-md-3">
 							
 							</div>
@@ -170,7 +173,7 @@
 							</div>
 
 							<div class="col-md-3">
-							<h4> <?php print_r(count($total_count)); ?> </h4>
+							<h4>   </h4>
 							</div>
 							</div>
 
@@ -196,11 +199,13 @@
 							</div>
 							<div class="col-md-3">
 							</div>
+							
 							<div class="col-md-6">
 								<button class="btn btn-primary get_paid_payment">Get Paid</button>
 							</div>
-							</div>
-							</div>
+						</div>
+							
+					</div>
 							<br>
 
 
@@ -255,8 +260,7 @@
 									<th data-type="numeric"><b><h3>{{ ('Student') }}</h3></th>
 									<th data-type="numeric" data-sort-ignore="true"><b><h3>{{ ('Course') }}</h3></b></th>
 									<th data-type="numeric" data-type="numeric"><b><h3>{{ ('Total amount') }}</h3></b></th>
-									<th data-type="numeric" data-type="numeric"><b><h3>{{ ('Date') }}</h3></b></th>
-									<th data-type="numeric" data-type="numeric"><b><h3>{{ ('Fee deducte') }}</h3></b></th>
+									<th data-type="numeric" data-type="numeric"><b><h3>{{ ('Fee Date') }}</h3></b></th>
 									<th data-type="numeric" data-type="numeric"><b><h3>{{ ('Net Payment') }}</h3></b></th>
 									<!-- <th><b><h3>{{ t('Option') }}</h3></b></th> -->
 								</tr>
@@ -266,11 +270,11 @@
 								<?php
 								$i =0;
 								
-								if (isset($user_subscription) && $user_subscription->count() > 0):
-								foreach($user_subscription as $key => $post):
+								if (isset($user_subscription1) && $user_subscription1->count() > 0):
+								foreach($user_subscription1 as $key => $post):
 
 										$i=	$i+1;	 
-										
+									// print_r($user_subscription1);die;	
 								?>
 								
 								<tr>
@@ -279,7 +283,7 @@
 									<td class="price-td" style="width:20%">
 										<div>
 											<strong>
-											{{ $post->striver_name }}
+											{{ $post->username }}
 											
 												
 											</strong>
@@ -289,7 +293,7 @@
 									<td  class="price-td" style="width:40%">
 										<div>
 											<strong>
-											{{ $post->course_name }}
+											{{ $post->name }}
 											
 												
 											</strong>
@@ -307,7 +311,7 @@
 							$total_payment = $post->fee_deducte + $post->net_payment;
 								?>
 
-											{{$total_payment}}
+											{{$total_provided_hours}}
 												
 											</strong>
 											<!-- <strong>
@@ -335,7 +339,7 @@
 									<td  class="price-td" style="width:10%">
 										<div>
 											<strong>
-											{{ $post->fee_deducte }}
+											
 											
 												
 											</strong>
@@ -346,7 +350,7 @@
 									<td class="price-td" style="width:10%">
 										<div>
 											<strong>
-											{{ $post->net_payment }}
+										
 											
 												
 											</strong>
@@ -534,26 +538,9 @@
 
 							<h2 style="text-align:center;"><b>
                             My Subscriptions				</b></h2>
-<<<<<<< HEAD
 							
-							<div class="states">
-=======
-							<?php
-							// print_r($user_subscription);die;
-							// foreach ($user_subscription as $key => $value) {
-											
-							
-								
-                            //    $sub_cat = json_decode($value->name);
-                            //     $aaa = array();
-                            //     foreach ($sub_cat as $key => $subc) {
-                            //         $aaa[$key] = $subc;
-							// 	}
-							
-								// ?>
 							<div class="states">
 
->>>>>>> ed3ffed79047ade34a7b34a8ebc00fb1251e2f4a
 							<?php
 							if($user_subscription){
 								?>
@@ -566,16 +553,20 @@
 						<?php //}
 							
 						?>
-<<<<<<< HEAD
 						</div>
 						</div>
 						<br>
-						<div class="col-md-12" style="text-align: center;">
-						<a href="{{ url('subscription') }}" >
-																	
-							<button   style="font-size: 20px; ">Renew Subscriptions</button>
-							</a>
-						</div>
+								<?php
+								if(empty($user_subscription->remaining_hours))
+								{
+								?>
+								<div class="col-md-12" style="text-align: center;">
+								<a href="{{ url('subscription') }}" >
+																			
+									<button   style="font-size: 20px; ">Renew Subscriptions</button>
+									</a>
+								</div>
+								<?php } ?>
 
 						<?php
 							}
@@ -585,36 +576,73 @@
 							<div class="col-md-12" style="text-align: center;">
 							<h2>Please Get Subscription First!</h2>
 							</div>
-							<?php }
-							?>
-=======
->>>>>>> ed3ffed79047ade34a7b34a8ebc00fb1251e2f4a
-						</div>
-						</div>
-						<br>
-						<div class="col-md-12" style="text-align: center;">
+							<div class="col-md-12" style="text-align: center;">
 						<a href="{{ url('subscription') }}" >
 																	
-							<button   style="font-size: 20px; ">Renew Subscriptions</button>
+							<button   style="font-size: 20px; ">Get Subscriptions</button>
 							</a>
 						</div>
 
-						<?php
-							}
-							else{
-								?>
-
-							<div class="col-md-12" style="text-align: center;">
-							<h2>Please Get Subscription First!</h2>
-							</div>
 							<?php }
 							?>
-					</div>
-					</div>
+						</div>
+						
+						<br>
+						
+						
+					
 
 					<br>
 
 					
+						
+						<!--/.row-box End-->
+						
+							<h2 style="text-align:center;"><b>
+                            old  Subscriptions				</b></h2>
+							<?php
+							
+							// 	}
+							
+								// ?>
+							<div class="states">
+
+							<?php
+							if($user_subscriptions1){
+								?>
+
+							
+
+								
+						<?php 
+							foreach ($user_subscriptions1 as $key => $value) {
+								$name = json_decode($value->name);
+											$ss = array();
+											foreach ($name as $key => $sub) {
+											$ss[$key] = $sub;
+											}
+							
+						?>
+						
+						<br>
+								<?php
+								if(empty($user_subscriptions1->remaining_hours))
+								{
+								?>
+								<div class="col-md-12" >
+								<h2> Old plan :{{$ss['en']}}</h2>
+								<h2> Old plan Hours :{{$value->total_provided_hours}} Hours.</h2>
+								</div>
+								<?php } ?>
+							
+						<?php
+							}
+							
+							}	?>
+							<br>						
+							</div>
+							</div>
+					</div>
 
 
 				<?php }?>

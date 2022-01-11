@@ -109,3 +109,13 @@ display: block;
 .coach_class_schedule{
     margin-top: 71px;
 }
+
+.modal-backdrop {
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}

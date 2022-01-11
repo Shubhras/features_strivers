@@ -106,7 +106,7 @@ class StripePaymentController extends Controller
                         'user_id' => $userId,
                         'subscription_id' => $request->subscriptionPlan,
                         'total_provided_hours' => $request->totalHours,
-                        'consumed_hours' => NULL,
+                        'consumed_hours' => 0,
                         'remaining_hours' => $request->totalHours,
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),

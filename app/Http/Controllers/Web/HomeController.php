@@ -118,6 +118,7 @@ class HomeController extends FrontController
 		->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
 		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
 		->where('users.id',2)->first();
+		$data['user_course']= DB::table('coach_course')->select('course_name','course_hourse')->get();
 
 		$packages = Package::query()->applyCurrency();
 		

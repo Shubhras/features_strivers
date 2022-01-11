@@ -11,126 +11,112 @@
  * of the above copyright notice. If you Purchased from CodeCanyon,
  * Please read the full License from here - http://codecanyon.net/licenses/standard
 --}}
+
 @extends('layouts.master')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('search')
-@parent
-@endsection
 
-@section('content')
+<head>
+    <title>Strivre - Your Course To Success</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
 
-<div class="main-container" id="homepage">
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymentSuccessful">
-  Open modal
-</button> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    @if (session()->has('flash_notification'))
-    @includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
-    <?php $paddingTopExists = true; ?>
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                @include('flash::message')
+    <!-- Start Include All CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/elegant-icons.css" />
+    <link rel="stylesheet" href="assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/lightcase.css">
+    <link rel="stylesheet" href="assets/css/preset.css" />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
+    <link rel="stylesheet" href="assets/css/master.css">
+
+    <!-- End Include All CSS -->
+
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <!-- Favicon Icon -->
+    
+</head>
+
+<body>
+
+
+    <!-- Preloader Icon --> 
+     <!-- <div class="" id="">
+        <div class="loaderInner">
+            <div id="top" class="mask">
+                <div class="plane"></div>
+            </div>
+            <div id="middle" class="mask">
+                <div class="plane"></div>
+            </div>
+            <div id="bottom" class="mask">
+                <div class="plane"></div>
+            </div>
+            <p>LOADING...</p>
+        </div> -->
+    </div>
+    <!-- Preloader Icon -->
+
+    <!-- Header Start -->
+
+    <style>
+        /* #web {display: block;}
+        #mobile {display: none;}
+    
+        @media screen and (max-width: 768px) {
+            #web {display: none;}
+            #mobile {display: block;}
+        } */
+    </style>
+  
+    <!-- Header End -->
+
+    <!-- Hero Banner Start -->
+    <section class="hero-banner-1" style="background-image: url(assets/images/home/banner.png);">
+        <!-- shape -->
+        <div class="shape-wrap">
+            <div class="b-shape-1">
+                <img src="assets/images/home/shape-1.png" alt="">
+            </div>
+            <div class="b-shape-2">
+                <img src="assets/images/home/shape-2.png" alt="">
+            </div>
+            <div class="b-shape-3">
+                <img src="assets/images/home/shape-3.png" alt="">
+            </div>
+            <div class="b-shape-4">
+                <img src="assets/images/home/shape-4.png" alt="">
             </div>
         </div>
-    </div>
-    @endif
-
-    @if (Session::has('success'))
-		<!-- Updating user's subscription plan into databases -->
-		
-		<?php
-			// $user = auth()->user();
-			// // print_r($user->id);die;
-			// $userId = $user->id;
-
-			// $data = DB::table('users')->where('id', $userId)
-			// 		->update(array(
-			// 			'subscription_plans' => 
-			// 		));
-
-		?>
 
 
-    <!-- The Modal -->
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('#paymentSuccessful').modal('show');
+        <!-- shape -->
 
-        const myTimeout = setTimeout(goToHomePage, 3000);
-        // console.log('hello timeout');
-        function goToHomePage() {
-            $('#paymentSuccessful').modal('hide');
-			// location.reload();
-        }
-
-        setTimeout("back()", 0);
-
-		function back() { window.history.forward();}
-
-		// Force Client to forward to last (current) Page.
-		
-
-		window.onunload = function() { null };
-		
-    });
-    </script>
-    <!-- <script>
-    const myTimeout = setTimeout(goToHomePage, 3000);
-    // console.log('hello timeout');
-    function goToHomePage() {
-        document.location.href = "/";
-    }
-
-    function back() {
-        window.history.forward();
-    }
-
-    // Force Client to forward to last (current) Page.
-    setTimeout("back()", 0);
-
-    window.onunload = function() {
-        null
-    };
-    </script> -->
-
-    @endif
-    <!-- @if (isset($sections) and $sections->count() > 0)
-			@foreach($sections as $section)
-				@if (view()->exists($section->view))
-					@includeFirst([config('larapen.core.customizedViewPath') . $section->view, $section->view], ['firstSection' => $loop->first])
-				@endif
-			@endforeach
-		@endif -->
-
-
-
-
-    <!-- search section  -->
-
-
-    <?php
-	// Init.
-	$sForm = [
-		'enableFormAreaCustomization' => '0',
-		'hideTitles'                  => '0',
-		'title'                       => t('homepage_title_text'),
-		'subTitle'                    => t('simple_fast_and_efficient'),
-		'bigTitleColor'               => '', // 'color: #FFF;',
-		'subTitleColor'               => '', // 'color: #FFF;',
-		'backgroundColor'             => '', // 'background-color: #444;',
-		'backgroundImage'             => '', // null,
-		'height'                      => '', // '450px',
-		'parallax'                    => '0',
-		'hideForm'                    => '0',
-		'formBorderColor'             => '', // 'background-color: #333;',
-		'formBorderSize'              => '', // '5px',
-		'formBtnBackgroundColor'      => '', // 'background-color: #4682B4; border-color: #4682B4;',
-		'formBtnTextColor'            => '', // 'color: #FFF;',
-	];
-
-	// Get Search Form Options
-	if (isset($searchFormOptions)) {
+        <div class="container">
+            
+            <div class="row">
+                <?php
+        if (isset($searchFormOptions)) {
 		if (isset($searchFormOptions['enable_form_area_customization']) && !empty($searchFormOptions['enable_form_area_customization'])) {
 			$sForm['enableFormAreaCustomization'] = $searchFormOptions['enable_form_area_customization'];
 		}
@@ -165,658 +151,532 @@
 		$hideOnMobile = ' hidden-sm';
 	}
 	?>
-    @if (isset($sForm['enableFormAreaCustomization']) && $sForm['enableFormAreaCustomization'] == '1')
+   
 
-    @if (isset($firstSection) && !$firstSection)
-    <div class="p-0 mt-lg-4 mt-md-3 mt-3"></div>
-    @endif
+                <div class="col-lg-5 col-md-5 title-box-fix" >
+                    <div class="hero-content">
+                        <h1 class="text_font_size_index">Your Course To Success</h1>
 
-    <?php $parallax = (isset($sForm['parallax']) && $sForm['parallax'] == '1') ? ' parallax' : ''; ?>
-    <div class="horsepower-bg intro{{ $hideOnMobile }}{{ $parallax }}">
-        <div class="container text-center">
+                        <form action="{{ \App\Helpers\UrlGen::search() }}" method="GET" class="row mt-5 box_filter2 search-box_filter2">
+                            <!-- <div class="col-md-12">
+                                <input type="text" name="f-name" class="search-box-for-main" placeholder="Search for Coach, Industry, Location and more..."><button type="submit"><i class="fa fa-search"></i></button>
+                            </div> -->
 
-            @if ($sForm['hideTitles'] != '1')
-            <h1 class="intro-title animated fadeInDown">
-                {{ $sForm['title'] }}
-            </h1>
-            <p class="sub animateme fittext3 animated fadeIn">
-                {!! $sForm['subTitle'] !!}
-            </p>
-            @endif
-
-            @if ($sForm['hideForm'] != '1')
-            <form id="search" name="search" action="{{ \App\Helpers\UrlGen::search() }}" method="GET">
-                <div class="row search-row animated fadeInUp">
-
-                    <div class="col-md-5 col-sm-12 search-col relative mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
-                        <div class="search-col-inner">
-                            <i class="fas fa-angle-double-right icon-append"></i>
-                            <div class="search-col-input">
-                                <input class="form-control has-icon" name="q" placeholder="{{ t('what') }}" type="text"
-                                    value="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <input type="hidden" id="lSearch" name="l" value="">
-
-                    <div
-                        class="col-md-5 col-sm-12 search-col relative locationicon mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
-                        <div class="search-col-inner">
-                            <i class="fas fa-map-marker-alt icon-append"></i>
-                            <div class="search-col-input">
-                                @if ($showMap)
-                                <input class="form-control locinput input-rel searchtag-input has-icon" id="locSearch"
-                                    name="location" placeholder="{{ t('where') }}" type="text" value=""
-                                    data-bs-placement="top" data-bs-toggle="tooltipHover"
-                                    title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}">
+                            <div class="input-group">
+                                <div class="form-outline search-box-fix">
+                                @if($showMap)
+                                 
+                                <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more..." title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}"/>
                                 @else
                                 <input class="form-control locinput input-rel searchtag-input has-icon" id="locSearch"
                                     name="location" placeholder="{{ t('where') }}" type="text" value="">
                                 @endif
-                            </div>
-                        </div>
-                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary btn_class">
+                                  <i class="fas fa-search" alt="{{('find') }}"></i>
+                                </button>
+                              </div>
 
-                    <div class="col-md-2 col-sm-12 search-col">
-                        <div class="search-btn-border bg-primary">
-                            <button class="btn btn-primary btn-search btn-block btn-gradient">
-                                <i class="fas fa-search"></i><strong>{{ t('find') }}</strong>
-                            </button>
-                        </div>
+                        </form>
+                        <br>
+                        <a href="#" class="bisylms-btn">Ready to Get Started?</a>
                     </div>
-
                 </div>
-            </form>
-            @endif
-
-        </div>
-    </div>
-
-    @else
-
-    @includeFirst([config('larapen.core.customizedViewPath') . 'home.inc.spacer', 'home.inc.spacer'])
-    <div class="horsepower-bg horsepower-bgintro only-search-bar{{ $hideOnMobile }}">
-        <div class="container text-center">
-
-            @if ($sForm['hideForm'] != '1')
-            <form id="search" name="search" action="{{ \App\Helpers\UrlGen::search() }}" method="GET">
-                <div class="row search-row animated fadeInUp">
-
-                    <div class="col-md-5 col-sm-12 search-col relative mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
-                        <div class="search-col-inner">
-                            <i class="fas fa-angle-double-right icon-append"></i>
-                            <div class="search-col-input">
-                                <input class="form-control has-icon" name="q" placeholder="{{ t('what') }}" type="text"
-                                    value="">
-                            </div>
-                        </div>
+                <div class="col-lg-7 col-md-7">
+                    <div class="banner-thumb">
+                        <img src="assets/images/home/layer.png" alt="">
                     </div>
-
-                    <input type="hidden" id="lSearch" name="l" value="">
-
-                    <div
-                        class="col-md-5 col-sm-12 search-col relative locationicon mb-1 mb-xxl-0 mb-xl-0 mb-lg-0 mb-md-0">
-                        <div class="search-col-inner">
-                            <i class="fas fa-map-marker-alt icon-append"></i>
-                            <div class="search-col-input">
-                                @if ($showMap)
-                                <input class="form-control locinput input-rel searchtag-input has-icon" id="locSearch"
-                                    name="location" placeholder="{{ t('where') }}" type="text" value=""
-                                    data-bs-placement="top" data-bs-toggle="tooltipHover"
-                                    title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}">
-                                @else
-                                <input class="form-control locinput input-rel searchtag-input has-icon" id="locSearch"
-                                    name="location" placeholder="{{ t('where') }}" type="text" value="">
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 col-sm-12 search-col">
-                        <div class="search-btn-border bg-primary">
-                            <button class="btn btn-primary btn-search btn-block btn-gradient">
-                                <i class="fas fa-search"></i><strong>{{ t('find') }}</strong>
-                            </button>
-                        </div>
-                    </div>
-
                 </div>
-            </form>
-            @endif
-
-        </div>
-    </div>
-
-
-
-    @endif
-
-    <div class="modal" id="paymentSuccessful">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Payment Successful!</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Thank You for your purhcase!
-                </div>
-
-                <!-- Modal footer -->
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                </div> -->
-
             </div>
+           
         </div>
-    </div>
+    </section>
+    <!-- Banner End -->
 
+    <div class="main-section">
+        <div class="container">
+             <div class="row">
+                <div class="col-lg-3">
+                    <div class="course-sidebar1">
+                        <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
+                        
+                        <aside class="widget ttr ">
+                            <h5 class="mb-1 ">FIND INTERESTING</h5>
+                            <?php
+                            foreach ($categories as $key => $value) {
+                               
+                            
+                            ?>
+                            <div class="latest-course1 ppt">
+                                <a href="single-course.html"><img src="assets/images/home/desktop1-image.png" alt=""></a>
+                                <span class="f-17">{{$value->slug}}</span>
+                                <!-- <div class="course-price">
+                                    3hour
+                                </div> -->
+                            </div>
+                            <?php }?>
 
-    <!-- coaches  -->
-
-
-
-    <?php
-	$hideOnMobile = '';
-	if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categoriesOptions['hide_on_mobile'] == '1') {
-		$hideOnMobile = ' hidden-sm';
-	}
-	?>
-    @if (isset($categoriesOptions) and isset($categoriesOptions['type_of_display']))
-    @includeFirst([config('larapen.core.customizedViewPath') . 'home.inc.spacer', 'home.inc.spacer'], ['hideOnMobile' =>
-    $hideOnMobile])
-    <div class="container{{ $hideOnMobile }}">
-        <div class="col-xl-12 content-box layout-section">
-            <div class="row row-featured row-featured-category">
-                <div class="col-xl-12 box-title no-border">
-                    <div class="inner">
-                        <h2>
-                            <span class="title-3">{{ t('Browse by') }} <span
-                                    style="font-weight: bold;">{{ ('Coaches') }}</span></span>
-                            <a href="{{ '\coaches' }}" class="sell-your-item">
-                                {{ t('View more') }} <i class="fas fa-bars"></i>
-                            </a>
-                        </h2>
+                             
+                            
+                        </aside> </nav>
+                        </div>
+                        <br>
+                        <div class="course-sidebar1">
+                        <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
+                        <aside class="widget h-75 d-inline-block">
+                            <h5 class="mb-1 ">LATEST NEWS</h5>
+                            <div class="info-course">
+                                <!-- <a href="single-course.html"><img src="assets/images/course/1.jpg" alt=""></a> -->
+                                <p>Python new version is released..</p>
+                                <!-- <div class="course-price">
+                                    $24.00
+                                </div> -->
+                            </div>
+                            <div class="info-course">
+                                <!-- <a href="single-course.html"><img src="assets/images/course/1.jpg" alt=""></a> -->
+                                <p>Python new version is released..</p>
+                                <!-- <div class="course-price">
+                                    $24.00
+                                </div> -->
+                            </div>
+                            <div class="info-course">
+                                
+                                <p>Get ready for Bootstrap 4....</p>
+                                <!-- <div class="course-price">
+                                    Free
+                                    <span>$76.00</span>
+                                </div> -->
+                            <!-- </div>
+                            <div class="info-coursee">
+                                <h6><a>New forms in Bootstrap..</a></h6>
+                                 <div class="course-price">
+                                    $46
+                                    <span>$76.00</span>
+                                </div> 
+                            </div> -->
+                            <div class="info-course">
+                                <p>Read about Java update ...</p>
+                                <!-- <div class="course-price">
+                                    $74
+                                    <span>$94.00</span>
+                                </div> -->
+                            </div>
+                            <div class="info-course">
+                                <p>Read about Java update ...</p>
+                                <!-- <div class="course-price">
+                                    $74
+                                    <span>$94.00</span>
+                                </div> -->
+                            </div>
+                        </aside>
+                        </nav> 
                     </div>
-                </div>
+                    </div>
+            <div class="col-lg-6">
+            <h2 class="sec-title">
+                TOP COACHES
+            </h2>
 
-                @if (isset($categories) and $categories->count() > 0)
+            <div class="row">
+                
+            @if (isset($categories) and $categories->count() > 0)
 
 
                 @foreach($user as $key => $coach)
 
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6 f-coach">
-                    <a href="{{url('/coach_details/'.$coach->id) }}">
-                        <img src="{{ imgUrl($coach->photo, '') }}" class="lazyload img-fluid" alt="{{ $coach->name }}">
-
-                        <h5 style="margin-top: -76px;font-size: xx-large;color: white; margin-bottom: 47px;">
-                            <b>{{ $coach->name }}</b>
-
-                        </h5>
-
-                    </a>
-
-                </div>
-
-                @endforeach
-
-                @endif
-
-            </div>
-        </div>
-    </div>
-    @endif
-
-    @section('before_scripts')
-    @parent
-    @if (isset($categoriesOptions) and isset($categoriesOptions['max_sub_cats']) and $categoriesOptions['max_sub_cats']
-    >= 0)
-    <!-- <script>
-			var maxSubCats = {{ (int)$categoriesOptions['max_sub_cats'] }};
-		</script> -->
-    @endif
-    @endsection
-
-
-    <!-- pricing section  -->
-
-
-    <?php
-	$addListingUrl = (isset($addListingUrl)) ? $addListingUrl : \App\Helpers\UrlGen::addPost();
-	$addListingAttr = '';
-	if (!auth()->check()) {
-		if (config('settings.single.guests_can_post_ads') != '1') {
-			$addListingUrl = '#quickLogin';
-			$addListingAttr = ' data-bs-toggle="modal"';
-		}
-	}
-	?>
-    @if (isset($categoriesOptions) and isset($categoriesOptions['type_of_display']))
-    @includeFirst([config('larapen.core.customizedViewPath') . 'home.inc.spacer', 'home.inc.spacer'], ['hideOnMobile' =>
-    $hideOnMobile])
-    <div class="container{{ $hideOnMobile }}">
-        <div class="col-xl-12 content-box layout-section">
-            <div class="row row-featured row-featured-category">
-                <div class="col-xl-12 box-title no-border">
-                    <div class="inner">
-                        <h2>
-                            <span class="title-3">{{ t('Browse by') }} <span
-                                    style="font-weight: bold;">{{ ('Subscription Plans Coach Wise') }}</span></span>
-                            <a href="{{ \App\Helpers\UrlGen::sitemap() }}" class="sell-your-item">
-                                {{ t('View more') }} <i class="fas fa-bars"></i>
-                            </a>
-                        </h2>
-                    </div>
-                </div>
-
-                <div class="row mt-5 mb-md-5 justify-content-center">
-
-                    @if ($packages->count() > 0)
-                    @foreach($packages as $package)
-                    <?php
-					$boxClass = ($package->recommended == 1) ? ' border-color-primary' : '';
-					$boxHeaderClass = ($package->recommended == 1) ? ' bg-primary border-color-primary text-white' : '';
-					$boxBtnClass = ($package->recommended == 1) ? ' btn-primary' : ' btn-outline-primary';
-					?>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow{{ $boxClass }}">
-                            <div class="card-header text-center{{ $boxHeaderClass }}">
-                                <h4 class="my-0 fw-normal pb-0 h4">{{ $package->short_name }}</h4>
+                <div class="col-lg-4 col-md-6">
+                    <div class="teacher-item">
+                        <div class="teacher-thumb">
+                        <a href="{{url('/coach_details/'.$coach->id) }}">
+                            <img src="{{ imgUrl($coach->photo, '') }}" alt="{{ $coach->name }}">
+                            <div class="teacher-social">
+                                <a href="#">
+                                    <i aria-hidden="true" class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#">
+                                    <i aria-hidden="true" class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i aria-hidden="true" class="fab fa-pinterest-p"></i>
+                                </a>
+                                <a href="#">
+                                    <i aria-hidden="true" class="fab fa-vimeo-v"></i>
+                                </a>
                             </div>
-                            <div class="card-body">
-                                <h1 class="text-center">
-                                    <span class="fw-bold">
-                                        @if ($package->currency->in_left == 1)
-                                        {!! $package->currency->symbol !!}
-                                        @endif
-                                        {{ \App\Helpers\Number::format($package->price) }}
-                                        @if ($package->currency->in_left == 0)
-                                        {!! $package->currency->symbol !!}
-                                        @endif
-                                    </span>
-                                    <small class="text-muted">/{{ $package->duration }} {{ t('hours') }}</small>
-                                </h1>
-                                <ul class="list list-border text-center mt-3 mb-4">
-                                    @if (is_array($package->description_array) and count($package->description_array) >
-                                    0)
-                                    @foreach($package->description_array as $option)
-                                    <li>{!! $option !!}</li>
-                                    @endforeach
-                                    @else
-                                    <li> *** </li>
-                                    @endif
-                                </ul>
-                                <?php
-								$pricingUrl = '';
-								if (\Illuminate\Support\Str::startsWith($addListingUrl, '#')) {
-									$pricingUrl = '' . $addListingUrl;
-								} else {
-									$pricingUrl = $addListingUrl . '?package=' . $package->id;
-								}
-								?>
-                                <!-- <a href="{{ $pricingUrl }}" class="btn btn-lg btn-block{{ $boxBtnClass }}" {!! $addListingAttr !!}>
-									{{ t('get_started') }}
-								</a> -->
-                                <?php
-									$price_total = $package->price;
-									$subscriptionPlan = $package->id;
-                                    $totalHours = $package->duration;
-									
-									// $var = $price_total;
-									// $var = (int)$var;
-									
-									// print_r($var);
-								?>
-                                <form action="payment" method="POST">
-                                    @csrf
-                                    <input type="hidden" value={{$price_total}} name="price">
-									<input type="hidden" value={{$subscriptionPlan}} name="subscriptionPlan">
-                                    <input type="hidden" value={{$totalHours}} name="totalHours">
-                                    <!-- <input type="hidden" value="redirect to plan" name="loginRedirect"> -->
+                        </a>
+                        </div>
+                            
+                       
 
-                                    <button type='submit' onclick = "customSession()"
-                                        class="btn btn-lg btn-block{{ $boxBtnClass }}">{{ t('get_started') }}</button>
-                                </form>
-                                <!-- <script>
-                                    function customSession (){
-                                        <?php
-                                            //Session::put('loginRedirectToken', 1);
-                                        ?>
+                        <div class="teacher-meta">
+                            <h5>
+                            {{$coach->name}}
+                            </5>
+                            </p>
+                            <span> <?php if($coach->year_of_experience!=''){?> 
+                                        <p><b>{{ $coach->year_of_experience }}            years Experience</b></p>
+                                        <?php 
                                     }
-                                </script> -->
-
-                            </div>
+                                    else{?>
+                                        <p><b>No Experience</b></p>  
+                                        
+                                    <?php }?>
+                            </span>
                         </div>
                     </div>
-                    @endforeach
-                    @else
-                    <div class="col-md-6 col-sm-12 text-center">
-                        <div class="card bg-light">
-                            <div class="card-body">
-                                {{ t('no_package_available') }}
-                            </div>
-                        </div>
-                    </div>
-                    @endif
-                </div>
-
-            </div>
-        </div>
-    </div>
-    @endif
-
-    @section('before_scripts')
-    @parent
-    @if (isset($categoriesOptions) and isset($categoriesOptions['max_sub_cats']) and $categoriesOptions['max_sub_cats']
-    >= 0)
-    <!-- <script>
-			var maxSubCats = {{ (int)$categoriesOptions['max_sub_cats'] }};
-		</script> -->
-    @endif
-    @endsection
-
-
-
-    <!-- category  -->
-
-
-    <?php
-	$hideOnMobile = '';
-	if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categoriesOptions['hide_on_mobile'] == '1') {
-		$hideOnMobile = ' hidden-sm';
-	}
-	?>
-    @if (isset($categoriesOptions) and isset($categoriesOptions['type_of_display']))
-    @includeFirst([config('larapen.core.customizedViewPath') . 'home.inc.spacer', 'home.inc.spacer'], ['hideOnMobile' =>
-    $hideOnMobile])
-    <div class="container{{ $hideOnMobile }}">
-        <div class="col-xl-12 content-box layout-section">
-            <div class="row row-featured row-featured-category">
-                <div class="col-xl-12 box-title no-border">
-                    <div class="inner">
-                        <h2>
-                            <span class="title-3">{{ t('Browse by') }} <span
-                                    style="font-weight: bold;">{{ t('category') }}</span></span>
-                            <a href="{{ url('category_list') }}" class="sell-your-item">
-                                {{ t('View more') }} <i class="fas fa-bars"></i>
-                            </a>
-                        </h2>
-                    </div>
-                </div>
-
-                @if ($categoriesOptions['type_of_display'] == 'c_picture_icon')
-
-                @if (isset($categories) and $categories->count() > 0)
-                @foreach($categories as $key => $cat)
-                <div class="col-lg-2 col-md-3 col-sm-4 col-6 f-category">
-                    <a href="{{ \App\Helpers\UrlGen::category($cat) }}">
-                        <img src="{{ imgUrl($cat->picture, 'cat') }}" class="lazyload img-fluid" alt="{{ $cat->name }}">
-                        <h6>
-                            {{ $cat->name }}
-                            @if (config('settings.listing.count_categories_posts'))
-                            &nbsp;({{ $countPostsByCat->get($cat->id)->total ?? 0 }})
-                            @endif
-                        </h6>
-                    </a>
                 </div>
                 @endforeach
                 @endif
-
-                @elseif (in_array($categoriesOptions['type_of_display'], ['cc_normal_list', 'cc_normal_list_s']))
-
-                <div style="clear: both;"></div>
-                <?php $styled = ($categoriesOptions['type_of_display'] == 'cc_normal_list_s') ? ' styled' : ''; ?>
-
-                @if (isset($categories) and $categories->count() > 0)
-                <div class="col-xl-12">
-                    <div class="list-categories-children{{ $styled }}">
-                        <div class="row">
-                            @foreach ($categories as $key => $cols)
-                            <div class="col-md-4 col-sm-4 {{ (count($categories) == $key+1) ? 'last-column' : '' }}">
-                                @foreach ($cols as $iCat)
-
-                                <?php
-								$randomId = '-' . substr(uniqid(rand(), true), 5, 5);
-								?>
-
-                                <div class="cat-list">
-                                    <h3 class="cat-title rounded">
-                                        @if (isset($categoriesOptions['show_icon']) and $categoriesOptions['show_icon']
-                                        == 1)
-                                        <i class="{{ $iCat->icon_class ?? 'icon-ok' }}"></i>&nbsp;
-                                        @endif
-                                        <a href="{{ \App\Helpers\UrlGen::category($iCat) }}">
-                                            {{ $iCat->name }}
-                                            @if (config('settings.listing.count_categories_posts'))
-                                            &nbsp;({{ $countPostsByCat->get($iCat->id)->total ?? 0 }})
-                                            @endif
-                                        </a>
-                                        <span class="btn-cat-collapsed collapsed" data-bs-toggle="collapse"
-                                            data-bs-target=".cat-id-{{ $iCat->id . $randomId }}" aria-expanded="false">
-                                            <span class="icon-down-open-big"></span>
-                                        </span>
-                                    </h3>
-                                    <ul
-                                        class="cat-collapse collapse show cat-id-{{ $iCat->id . $randomId }} long-list-home">
-                                        @if (isset($subCategories) and $subCategories->has($iCat->id))
-                                        @foreach ($subCategories->get($iCat->id) as $iSubCat)
-                                        <li>
-                                            <a href="{{ \App\Helpers\UrlGen::category($iSubCat) }}">
-                                                {{ $iSubCat->name }}
-                                            </a>
-                                            @if (config('settings.listing.count_categories_posts'))
-                                            &nbsp;({{ $countPostsByCat->get($iSubCat->id)->total ?? 0 }})
-                                            @endif
-                                        </li>
-                                        @endforeach
-                                        @endif
-                                    </ul>
-                                </div>
-                                @endforeach
-                            </div>
-                            @endforeach
+       </div>
+        <center>
+        <button type="button" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">Explore Your
+            Interest </button>
+    </center></div>
+        <div class="col-lg-3">
+            <div class="course-sidebar1">
+                <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
+                <aside class="widget ppt">
+                    <h5 class="mb-1 ">LATEST OFFERING</h5>
+                    <?php
+                    foreach ($user_course as $key => $value) {
+                        # code...
+                    
+                    ?>
+                    <div class="latest-course">
+                        <a href="single-course.html"><img src="assets/images/course/1.jpg" alt=""></a>
+                        <span class="f-17">{{$value->course_name}}</span>
+                        <div class="course-price">
+                            {{$value->course_hourse}} Hourse
                         </div>
                     </div>
-                    <div style="clear: both;"></div>
+                    <?php } ?>
+
+                </aside> </nav>
                 </div>
-                @endif
-
-                @else
-
-                <?php
-				$listTab = [
-					'c_circle_list' => 'list-circle',
-					'c_check_list'  => 'list-check',
-					'c_border_list' => 'list-border',
-				];
-				$catListClass = (isset($listTab[$categoriesOptions['type_of_display']])) ? 'list ' . $listTab[$categoriesOptions['type_of_display']] : 'list';
-				?>
-                @if (isset($categories) and $categories->count() > 0)
-                <div class="col-xl-12">
-                    <div class="list-categories">
-                        <div class="row">
-                            @foreach ($categories as $key => $items)
-                            <ul
-                                class="cat-list {{ $catListClass }} col-md-4 {{ (count($categories) == $key+1) ? 'cat-list-border' : '' }}">
-                                @foreach ($items as $k => $cat)
-                                <li>
-                                    @if (isset($categoriesOptions['show_icon']) and $categoriesOptions['show_icon'] ==
-                                    1)
-                                    <i class="{{ $cat->icon_class ?? 'icon-ok' }}"></i>&nbsp;
-                                    @endif
-                                    <a href="{{ \App\Helpers\UrlGen::category($cat) }}">
-                                        {{ $cat->name }}
-                                    </a>
-                                    @if (config('settings.listing.count_categories_posts'))
-                                    &nbsp;({{ $countPostsByCat->get($cat->id)->total ?? 0 }})
-                                    @endif
-                                </li>
-                                @endforeach
-                            </ul>
-                            @endforeach
+                <br>
+            <div class="course-sidebar1">
+                <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
+                <aside class="widget h-75 d-inline-block">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="assets/images/home/2.png" src="..." alt="">
+                            <P>440 Strivres are 
+                                making career</P>
+                          </div>
+                          <div class="carousel-item">
+                            <img src="assets/images/home/11.png" src="..." alt="">
+                            <P>440 Strivres are 
+                                making career</P>
+                          </div>
+                          <div class="carousel-item">
+                            <img src="assets/images/home/12.png" src="..." alt="">
+                            <P>440 Strivres are 
+                                making career</P>
+                          </div>
                         </div>
-                    </div>
+                      </div>
+                    
+                    <!-- <div class="info-course">
+                        <ul>
+                            <li><i class="icon_house_alt"></i><span>Instructor: </span> Justin Case</li>
+                            <li><i class="icon_document_alt"></i><span>Lectures: </span> 14</li>
+                            <li><i class="icon_clock_alt"></i><span>Duration: </span> 10 weeks</li>
+                            <li><i class="icon_profile"></i><span>Enrolled: </span> 75 students</li>
+                            <li><i class="icon_cog"></i><span>Language: </span> English</li>
+                            <li><i class="icon_calendar"></i><span>Deadline: </span> 16 April 2020</li>
+                        </ul>
+                        <a class="bisylms-btn" href="#">Enroll Course</a>
+                    </div> -->
+                
+                </aside>
+            </nav>
+        
                 </div>
-                @endif
-
-                @endif
-
+               
             </div>
-        </div>
     </div>
-    @endif
+    
+    
 
-    @section('before_scripts')
-    @parent
-    @if (isset($categoriesOptions) and isset($categoriesOptions['max_sub_cats']) and $categoriesOptions['max_sub_cats']
-    >= 0)
-    <!-- <script>
-			var maxSubCats = {{ (int)$categoriesOptions['max_sub_cats'] }};
-		</script> -->
-    @endif
-    @endsection
-
-
-
-    <!-- letest post  -->
-    <?php
-	$widgetType = 'normal';
-	if (
-		isset($widgetLatestPosts, $widgetLatestPosts->options)
-		&& array_key_exists('items_in_carousel', $widgetLatestPosts->options)
-		&& $widgetLatestPosts->options['items_in_carousel'] == '1'
-	) {
-		$widgetType = 'carousel';
-	}
-	?>
-
-
-    <!-- @includeFirst([
-		config('larapen.core.customizedViewPath') . 'search.inc.posts.widget.' . $widgetType,
-		'search.inc.posts.widget.' . $widgetType
-	],
-	['widget' => ($widgetLatestPosts ?? null)]
-) -->
-
-
-
-
-
-    <!-- our reviews section  -->
-
-
-    <?php
-	$hideOnMobile = '';
-	if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categoriesOptions['hide_on_mobile'] == '1') {
-		$hideOnMobile = ' hidden-sm';
-	}
-	?>
-    @if (isset($categoriesOptions) and isset($categoriesOptions['type_of_display']))
-    @includeFirst([config('larapen.core.customizedViewPath') . 'home.inc.spacer', 'home.inc.spacer'], ['hideOnMobile' =>
-    $hideOnMobile])
-    <div class="container{{ $hideOnMobile }}">
-        <div class="col-xl-12 content-box layout-section">
-            <div class="row row-featured row-featured-category">
-                <div class="col-xl-12 box-title no-border">
-                    <div class="inner">
-                        <h2>
-                            <span class="title-3"> <span style="font-weight: bold;">{{ t('our_reviews') }}</span></span>
-                            <a href="{{'\coaches'}}" class="sell-your-item">
-                                {{ t('View more') }} <i class="fas fa-bars"></i>
-                            </a>
-                        </h2>
-                    </div>
-                </div>
-
-                @if (isset($our_reviews) and $our_reviews->count() > 0)
-
-
-                @foreach($our_reviews as $key => $coach)
-
-                <div class="col-lg-4 col-md-3 col-sm-4 col-6 f-coach">
-                    <a href="{{url('/coach_details/'.$coach->id) }}">
-                        <img src="{{ imgUrl($coach->photo, '') }}" class="lazyload img-fluid" alt="{{ $coach->name }}">
-
-                        <h5 style="margin-top: -76px;font-size: xx-large;color: white; margin-bottom: 47px;">
-                            <b>{{ $coach->name }}</b>
-
-                        </h5>
-
-                    </a>
-
-                </div>
-
-                @endforeach
-                @endif
-            </div>
-
-        </div>
-    </div>
-
-    @endif
-
-
-
-    @if (isset($categoriesOptions) and isset($categoriesOptions['type_of_display']))
-    @includeFirst([config('larapen.core.customizedViewPath') . 'home.inc.spacer', 'home.inc.spacer'], ['hideOnMobile' =>
-    $hideOnMobile])
-    <div class="container{{ $hideOnMobile }}">
-        <div class="col-xl-12 content-box layout-section">
-            <div class="row row-featured row-featured-category">
-                <!-- <div class="col-xl-12 box-title no-border">
-
-				</div> -->
-                <div class="col-lg-6 col-md-6 col-sm-6 col-6 ">
-
-                    <img src="{{ imgUrl($our_review_coaches->photo, '') }}" class=""
-                        alt="{{ $our_review_coaches->name }}">
-                    <!-- {{$our_review_coaches->name;}} -->
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-6 f-coach">
-                    <h2 style="color:black; font-weight:800;">Join Our Largest Coaching Community</h2>
-                    <p style="font-size: medium; text-align:justify; padding: inherit;">We will differentiate ourselves
-                        by talking about tangible life skills. Coaches will be
-                        carefully selected and qualified on the basis of altruism, life experience, multi-
-                        cultural cross border exposure and significant exposure to the corporate world.
-                        They will work in tight partnership with the strivers offering them ideas, critical
-                        feedback, developmental areas, camaraderie, guidance on careers / industries as
-                        well as introductions to jobs / business / recruiters / stakeholders.</p>
-
-                    <button class="btn btn-primary">Get Started</button>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-    @endif
 
 </div>
-@endsection
+
+
+</div>
+
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-contents">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">What topics do you find interesting?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
 
 
-@section('after_scripts')
-<script>
-@if(config('settings.optimization.lazy_loading_activation') == 1)
-$(document).ready(function() {
-    $('#postsList').each(function() {
-        var $masonry = $(this);
-        /*
-        var update = function () {
-        	$.fn.matchHeight._update();
-        };
-        $('.item-list', $masonry).matchHeight();
-        this.addEventListener('load', update, true);
-        */
-    });
-});
-@endif
-</script>
-@endsection
+                <div class="row p-5 text-center">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="course-wrapper">
+                                <div class="course-item-01 text-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 74 60">
+                                        <defs>
+                                            <style>
+                                                .cls-1 {
+                                                    fill: url(#pattern);
+                                                }
+                                            </style>
+                                            <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%"
+                                                height="100%" viewBox="0 0 74 60">
+                                                <image width="74" height="60"
+                                                    xlink:href="assets/images/home/desktop1-image.png" />
+                                            </pattern>
+                                        </defs>
+                                        <path id="desktop1" class="cls-1" d="M0,0H74V60H0Z" />
+                                    </svg>
+                                    <h4><a href="#">Computer Science</a></h4>
+                                    <input type="checkbox" style="width: 22px;">
+                                </div>
+                                <div class="course-item-01 text-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 64 64">
+                                        <image id="data" width="64" height="64"
+                                            xlink:href="assets/images/home/data-image.png" />
+                                    </svg>
+                                    <h4><a href="#">Data Analysis & Statistics</a></h4>
+                                    <input type="checkbox" style="width: 22px;">
+                                </div>
+                                <div class="course-item-01 text-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 74 70">
+                                        <image id="proposal" width="74" height="70"
+                                            xlink:href="assets/images/home/proposal-image.png" />
+                                    </svg>
+                                    <h4><a href="#">Business & Management</a></h4>
+                                    <input type="checkbox" style="width: 22px;">
+                                </div>
+                                <div class="course-item-01 text-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="50" height="50" viewBox="0 0 80 67">
+                                        <image id="chat" width="80" height="67"
+                                            xlink:href="assets/images/home/chat-image.png" />
+                                    </svg>
+                                    <h4><a href="#">Social Sciences</a></h4>
+                                    <input type="checkbox" style="width: 22px;">
+                                </div>
+                                <div class="course-item-01 text-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="50" height="50" viewBox="0 0 58 73">
+                                        <image id="mind" width="50" height="50"
+                                            xlink:href="assets/images/home/mind-image.png" />
+                                    </svg>
+                                    <h4><a href="#">Biology & Life Sciences</a></h4>
+                                    <input type="checkbox" style="width: 22px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
+                <div class="col-lg-12">
+                    <div class="course-wrapper">
+                        <div class="course-item-01 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 74 60">
+                                <defs>
+                                    <style>
+                                        .cls-1 {
+                                            fill: url(#pattern);
+                                        }
+                                    </style>
+                                    <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%"
+                                        height="100%" viewBox="0 0 74 60">
+                                        <image width="74" height="60"
+                                            xlink:href="assets/images/home/desktop1-image.png" />
+                                    </pattern>
+                                </defs>
+                                <path id="desktop1" class="cls-1" d="M0,0H74V60H0Z" />
+                            </svg>
+                            <h4><a href="">Al & Machine Learning
+                            </a></h4>
+                            <input type="checkbox" style="width: 22px;">
+                        </div>
+                        <div class="course-item-01 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 64 64">
+                                <image id="data" width="64" height="64"
+                                    xlink:href="assets/images/home/data-image.png" />
+                            </svg>
+                            <h4><a href="">Project Management
+                            </a></h4>
+                            <input type="checkbox" style="width: 22px;">
+                        </div>
+                        <div class="course-item-01 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 74 70">
+                                <image id="proposal" width="74" height="70"
+                                    xlink:href="assets/images/home/proposal-image.png" />
+                            </svg>
+                            <h4><a href="">Cyber Courses
+                            </a></h4>
+                            <input type="checkbox" style="width: 22px;">
+                        </div>
+                        <div class="course-item-01 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 80 67">
+                                <image id="chat" width="80" height="67"
+                                    xlink:href="assets/images/home/chat-image.png" />
+                            </svg>
+                            <h4><a href="">Cloud Computing
+                            </a></h4>
+                            <input type="checkbox" style="width: 22px;">
+                        </div>
+                        <div class="course-item-01 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 58 73">
+                                <image id="mind" width="50" height="50"
+                                    xlink:href="assets/images/home/mind-image.png" />
+                            </svg>
+                            <h4><a href="">DevOps</a></h4>
+                            <input type="checkbox" style="width: 22px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+                   
+                    
+                    <div class="col-lg-12">
+                        <button type="button" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">
+                            Submit Your Interest
+                        </button>
+                    </div>
+
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
+
+
+    <section>
+        <div class="container mt-120    ">
+            <center>
+                <h2>GET YOUR DREAM COURSE WITH BEST INSTRUCTOR
+                </h2>
+            </center>
+            <div class="row mt-5 ">
+                <div class="col-lg-5 col-md-6">
+
+
+                    <div class="ab-content">
+                        <h3>CONNECT WITH COACHES/ STRIVERS AROUND THE WORLD</h3>
+                        <p class="">Strivre is great for teams because it’s easy to get set up and the offerings touch on a vast array of soft skill focus areas, which not only build role-related talents but also enable team members to grow their whole selves beyond
+                            work.
+                        </p>
+                        @if (!auth()->user())
+<a class="bisylms-btn" href="{{ \App\Helpers\UrlGen::register() }}">Sign Up </a>
+   @endif                     
+
+                    </div>
+                </div>
+                <div class=" col-lg-7 col-md-6">
+
+                    <div class="">
+                        <img src="assets/images/edu_2.png" alt="">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+
+            <div class="row mt-120">
+                <div class="col-lg-7 col-md-6">
+                    <div class="ab-thumb">
+                        <img src="assets/images/edu_1.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6">
+                    <div class="ab-content">
+                        <h3>JOIN OUR LARGEST COACHING COMMUNITY.</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
+                            Aliquam euismod, elit vel bibendum vestibulum, nisl nisl mollis tortor, a rhoncus mi augue eleifend justo. Sed sed ullamcorper massa, at pretium tortor. Integer nunc tellus, elementum eu malesuada eu, pellentesque a tellus.
+
+
+                        </p>
+                       
+                        <a class="bisylms-btn" href="{{url('/subscription') }}">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Course Start -->
+
+    <!-- Course End -->
+
+
+
+    <br><br>
+
+
+    <br><br>
+
+
+    <br><br>
+
+    <br><br>
+
+    <br><br>
+
+    <br><br>
+
+
+
+
+
+    <!-- Footer Section Start -->
+  
+    <!-- Footer Section End -->
+
+    <!-- Back To Top -->
+    <a href="#" id="back-to-top">
+        <i class="fal fa-angle-double-up"></i>
+    </a>
+    <!-- Back To Top -->
+
+    <!-- Start Include All JS -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.appear.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/TweenMax.min.js"></script>
+    <script src="assets/js/lightcase.js"></script>
+    <script src="assets/js/jquery.plugin.min.js"></script>
+    <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/jquery.shuffle.min.js"></script>
+
+    <script src="assets/js/theme.js"></script>
+    <!-- End Include All JS -->
+
+</body>
+
+</html>
+<style>
+    aside.ttr {
+  
+  height:350px;
+    
+  overflow: scroll;
+}
+
+aside.ppt{
+    height:350px;
+    overflow: scroll;
+
+}
+    </style>
