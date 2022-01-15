@@ -1,9 +1,10 @@
 @extends('layouts.master')
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Strivre</title>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
 
@@ -45,8 +46,8 @@
                 <div class="plane"></div>
             </div>
             <p>LOADING...</p>
-        </div>
-    </div> -->
+        </div> -->
+    </div>
     <!-- Preloader Icon -->
 
     <!-- Header Start -->
@@ -69,81 +70,68 @@
     <!-- Banner End -->
 
     <!-- Course Section Start -->
-    <section class="contact-section">
-        <div class="container">
-		@if (isset($errors) && $errors->any())
-					<div class="col-12">
-						<div class="alert alert-danger alert-dismissible">
-							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
-							<ul class="list list-check">
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					</div>
-				@endif
-				@if (session()->has('flash_notification'))
-					<div class="col-12">
-						@include('flash::message')
-					</div>
-				@endif
+    <section class="contact-section ">
+    
             <div class="col-md-8 d-flex justify-content-center">
-                <div class="contact-form dform">
-                    <center><h4>Login</h4></center>
-					<?php $mtAuth = !socialLoginIsEnabled() ? ' mt-2' : ' mt-1'; ?>
-                    <form id="loginForm" role="form" method="POST" action="{{ url()->current() }}"class="row">
-					{!! csrf_field() !!}
+            @if (isset($errors) && $errors->any())
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            @endif
+                <div class="contact-form dform" id="Coaches" >
+                    <center><h4>Sign Up As Coach</h4></center><br>
+                    <form role="form" method="POST" action="{{ url('/strivers_signup') }}" class="row">
                         <div class="col-md-12">
-						<?php
-									$loginValue = (session()->has('login')) ? session('login') : old('login');
-									$loginField = getLoginField($loginValue);
-									if ($loginField == 'phone') {
-										$loginValue = phoneFormat($loginValue, old('country', config('country.code')));
-									}
-								?>
-								{{-- login --}}
-								<?php $loginError = (isset($errors) && $errors->has('login')) ? ' is-invalid' : ''; ?>
-								<label for="login" class="col-form-label">{{ t('login') . ' (' . getLoginLabel() . ')' }}:</label>
-									<div class="input-group">
-										
-										<input id="login" name="login" type="text" placeholder="{{ getLoginLabel() }}" class="form-control{{ $loginError }}" value="{{ $loginValue }}">
-									</div>
+                        <?php $nameError = (isset($errors) and $errors->has('name')) ? ' is-invalid' : ''; ?>
+                            <label class="form-label" for="Name ">Name 
+                            </label>
+                            <input  name="name" class="form-control input-md{{ $nameError }}" type="text" placeholder="First Name" value="{{ old('name') }}">
+                            <input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden" id="user_type_coach" value="2">
                         </div>
-						{{-- password --}}
-                        <div class="col-md-12">
-					
-								<?php $passwordError = (isset($errors) && $errors->has('password')) ? ' is-invalid' : ''; ?>
-								<label for="password" class="col-form-label">{{ t('password') }}:</label>
-									<div class="input-group show-pwd-group">
-										
-										<input id="password" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('password') }}" autocomplete="off">
-										
-									</div>
-                        </div>
+                        @if (isEnabledField('email'))
                         <div class="col-md-6">
-						<label class="checkbox float-start mt-2 mb-2">
-						<label for="vehicle1">
-									<input type="checkbox" value="1" name="remember" id="remember">
-									Remember me</label>
-									
-								</label>
+                        <?php $emailError = (isset($errors) and $errors->has('email')) ? ' is-invalid' : ''; ?>
+                            <label class="form-label" for="email">Email 
+                            </label>
+                            <input id="email"  name="email"	type="email" class="form-control{{ $emailError }}"placeholder="{{ t('email') }}"value="{{ old('email') }}">
                         </div>
-                        <div class="col-md-6 text-right">
-                            <div class="check">
-                                <label><a href="{{ url('password/reset') }}">Forgot Password</a><a href="{{ \App\Helpers\UrlGen::register() }}">/Sign Up </a> 
-								    
-                                    </label>
-                            </div>
+                        @endif
+                        @if (isEnabledField('phone'))
+                        <div class="col-md-6">
+                        <?php $phoneError = (isset($errors) and $errors->has('phone')) ? ' is-invalid' : ''; ?>
+                            <label class="form-label" for="phone">Phone Numbers
+                            </label>
+                            <input name="phone"
+															   placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}"
+															   class="form-control input-md{{ $phoneError }}"
+															   type="text"
+															   value="{{ phoneFormat(old('phone'), old('country', config('country.code'))) }}"
+														>
                         </div>
-                        <br>
-                        <br>
-                            <div class="col-md-6 text-right">
-                                <a class="b-btn bisylms-btn"  type="reset" href="">Cancel</a>
-                            </div>
-                            <div class="col-md-6 text-left">
-							<button id="loginBtn" class="b-btn bisylms-btn"> {{ t('log_in') }} </button>
-                            </div>
+                        @endif
+                        <div class="col-md-12">
+                        <?php $passwordError = (isset($errors) and $errors->has('password')) ? ' is-invalid' : ''; ?>
+                            <label class="form-label" for="address">Password
+                            </label>
+                            <input id="password" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('password') }}" autocomplete="off">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="password">Password Confrmation
+                            </label>
+                            <input id="password_confirmation" name="password_confirmation" type="password" class="form-control{{ $passwordError }}"
+													   placeholder="{{ t('Password Confirmation') }}" autocomplete="off">
+
+                            <input type="hidden" name="accept_terms" value="1">
+                        </div>
+                        <div class="col-sm-12">
+                            <center><a class="b-btn bisylms-btn col-sm-12" href="payment-detail.html">Please Enter Your Card Details</a><br>
+                            </center> </div>
+                             <div class="col-md-12">
+                             <center><button class="btn01  btn-primary1" type="submit" id="signupBtn">
+                                    Register </button></center>
+                         </div>
+                         <br>
+                         <br>
                             <div class="col-sm-12">
                                 <center><button class="loginBtn loginBtn--google btn-primary1">
                                 Login with Google
@@ -165,20 +153,13 @@
                     </form>
                 </div>
             </div>
+            
                     </div>
 
 
             
         
     </section>
-	<script>
-		$(document).ready(function () {
-			$("#loginBtn").click(function () {
-				$("#loginForm").submit();
-				return false;
-			});
-		});
-	</script>
     <!-- Course Section End -->
 
     <!-- Footer Section Start -->

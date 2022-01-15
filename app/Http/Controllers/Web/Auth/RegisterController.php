@@ -74,6 +74,7 @@ class RegisterController extends FrontController
 		MetaTag::set('keywords', $keywords);
 		
 		return appView('auth.register.index', $data);
+		
 	}
 	
 	/**
@@ -174,4 +175,41 @@ class RegisterController extends FrontController
 		
 		return appView('auth.register.finish');
 	}
+
+
+	public function getRegisternewUsers()
+	{
+		$data = [];
+		
+		// References
+		$data['genders'] = Gender::query()->get();
+		// print_r($data['genders']);die;
+		// Meta Tags
+		[$title, $description, $keywords] = getMetaTag('register');
+		MetaTag::set('title', $title);
+		MetaTag::set('description', strip_tags($description));
+		MetaTag::set('keywords', $keywords);
+		
+		
+		 return appView('auth.register.coach', $data);
+		
+	}
+	public function getRegisternewStrivers()
+	{
+		$data = [];
+		
+		// References
+		$data['genders'] = Gender::query()->get();
+		
+		// Meta Tags
+		[$title, $description, $keywords] = getMetaTag('register');
+		MetaTag::set('title', $title);
+		MetaTag::set('description', strip_tags($description));
+		MetaTag::set('keywords', $keywords);
+		
+		
+		return appView('auth.register.Strivers', $data);
+	}
+	
+	
 }

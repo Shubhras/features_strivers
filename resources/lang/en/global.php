@@ -922,7 +922,8 @@ return [
     'Edit_Profile' =>'Edit Profile',
     'my_subscription' => 'My Subscription',
     'my_courses' => 'My Courses',
-    'Photo or User' =>'Photo or User'
+    'Photo or User' =>'Photo or User',
+    'Contact_submit'=>'Send Massage'
 
 
 

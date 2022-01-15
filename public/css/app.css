@@ -111,11 +111,12 @@ display: block;
 }
 
 .modal-backdrop {
-    /* position: fixed; */
+    /* position: none; */
     top: 0;
     left: 0;
-    z-index: 1040;
+    z-index: 1040!important;
     width: 100vw;
     height: 100vh;
+    /* z-index: 1960; */
     background-color: #000;
 }

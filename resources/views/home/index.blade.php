@@ -246,8 +246,8 @@
                                     Free
                                     <span>$76.00</span>
                                 </div> -->
-                            <!-- </div>
-                            <div class="info-coursee">
+                                <!-- </div>
+                                <div class="info-coursee">
                                 <h6><a>New forms in Bootstrap..</a></h6>
                                  <div class="course-price">
                                     $46
@@ -288,7 +288,7 @@
                     <div class="teacher-item">
                         <div class="teacher-thumb">
                         <a href="{{url('/coach_details/'.$coach->id) }}">
-                            <img src="{{ imgUrl($coach->photo, '') }}" alt="{{ $coach->name }}">
+                            <img src="{{ imgUrl($coach->photo, '') }}" alt="{{ $coach->name }}" style="height: 192px;">
                             <div class="teacher-social">
                                 <a href="#">
                                     <i aria-hidden="true" class="fab fa-facebook-f"></i>
@@ -604,7 +604,7 @@
 
                         </p>
                        
-                        <a class="bisylms-btn" href="{{url('/subscription') }}">Get Started</a>
+                        <a class="bisylms-btn" href="{{url('/pricing') }}">Get Started</a>
                     </div>
                 </div>
             </div>

@@ -235,10 +235,13 @@ Route::group([
 			Route::get('/', 'HomeController@index');
 
 			Route::post('user_login', 'HomeController@user_login');
+			Route::post('strivers_signup', 'HomeController@register_new_user');
 			Route::get(dynamicRoute('routes.countries'), 'CountriesController@index');
 		} else {
 			Route::get('/', 'CountriesController@index');
 		}
+		
+
 		Route::get('/coach_details/{id}', 'PageController@coach_details');
 		Route::get('/coach_list/{id}', 'PageController@coach_list_category');
 		Route::get('/coach_list_sub/{id}', 'PageController@coach_list_sub_category');
@@ -248,12 +251,17 @@ Route::group([
 
 		
 		Route::get('category_list', 'SitemapController@category_list');
+
+		
 		// AUTH
 		Route::group(['middleware' => ['guest', 'no.http.cache']], function ($router) {
 			// Registration Routes...
 			Route::get(dynamicRoute('routes.register'), 'Auth\RegisterController@showRegistrationForm');
 			Route::post(dynamicRoute('routes.register'), 'Auth\RegisterController@register');
 			Route::get('register/finish', 'Auth\RegisterController@finish');
+			Route::get('coach', 'Auth\RegisterController@getRegisternewUsers');
+			Route::get('Strivers', 'Auth\RegisterController@getRegisternewStrivers');
+			
 			
 			// Authentication Routes...
 			Route::get(dynamicRoute('routes.login'), 'Auth\LoginController@showLoginForm');
@@ -283,6 +291,8 @@ Route::group([
 		Route::get('users/{id}/verify/resend/sms', 'Auth\RegisterController@reSendPhoneVerification');
 		Route::get('users/verify/{field}/{token?}', 'Auth\RegisterController@verification');
 		Route::post('users/verify/{field}/{token?}', 'Auth\RegisterController@verification');
+		
+
 		
 		// User Logout
 		Route::get(dynamicRoute('routes.logout'), 'Auth\LoginController@logout');
