@@ -101,7 +101,7 @@
                                     <div class="mcol-right">
                                         {{-- Number of visitors --}}
                                         <p>
-                                            <a href="{{ url('account/my-posts') }}">
+                                            <a href="{{ url('account/chat') }}">
                                                 <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
                                                 {{ \App\Helpers\Number::short($totalPostsVisits) }}
                                                 <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
@@ -661,7 +661,7 @@
                                     <div class="mcol-right">
                                         {{-- Number of visitors --}}
                                         <p>
-                                            <a href="{{ url('account/my-posts') }}">
+                                            <a href="{{ url('account/chat') }}">
                                                 <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
                                                 {{ \App\Helpers\Number::short($totalPostsVisits) }}
                                                 <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
@@ -1358,6 +1358,21 @@
 				</div>
 					<?php }?>
 				
+
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js" integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validator.min.js" integrity="sha512-xYHcfaQeUiKHs9YsHqjpyLaHnh+q7y8kYuOGdh5FkJeK7Z+dZct7Yoa7h+PtsrKRh03t8eJZuSeCN7b0dkrFwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  
+  <!-- <script src="js/config.js"></script>
+
+  <script src="js/auth.js"></script>
+
+  <script src="js/firebase.js"></script>
+
+  <script src="js/util.js"></script>
+  <script src="js/login.js"></script> -->
+
+
 			<!--/.row-->
 		</div>
 		<!--/.container-->

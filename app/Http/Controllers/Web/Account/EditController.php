@@ -490,6 +490,7 @@ class EditController extends AccountBaseController
 			}
 		}
 		
+		
 		// Mail Notification Message
 		if (data_get($data, 'extra.mail.message')) {
 			$mailMessage = data_get($data, 'extra.mail.message');
@@ -602,6 +603,42 @@ class EditController extends AccountBaseController
 
 		DB::table('user_subscription')->insert($data);
 
+
+	}
+
+	public function comet_chat(){
+
+		$data = [];
+		
+		$data['genders'] = Gender::query()->get();
+
+		$user = auth()->user();
+
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+
+			$data['auth_user_name'] = DB::table('users')
+			->select('users.username')
+			->where('id', $user->id)
+			->first();
+
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+
+// print_r($data['auth_user_name']);die;
+		MetaTag::set('title', t('my_account'));
+		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
+
+		return appView('account.cometchat', $data);
 
 	}
 }

@@ -135,7 +135,7 @@ foreach ($coach_course as $key => $value) {
                                     <div class="mcol-right">
                                         {{-- Number of visitors --}}
                                         <p>
-                                            <a href="{{ url('account/my-posts') }}">
+                                            <a href="{{ url('account/chat') }}">
                                                 <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
                                                 {{ \App\Helpers\Number::short($totalPostsVisits) }}
                                                 <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
@@ -478,7 +478,7 @@ foreach ($coach_course as $key => $value) {
                                     <div class="mcol-right">
                                         {{-- Number of visitors --}}
                                         <p>
-                                            <a href="{{ url('account/my-posts') }}">
+                                            <a href="{{ url('account/chat') }}">
                                                 <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
                                                 {{ \App\Helpers\Number::short($totalPostsVisits) }}
                                                 <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
