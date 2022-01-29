@@ -1,7 +1,7 @@
 {
     "name": "symfony/polyfill-php73",
     "type": "library",
-    "description": "Symfony polyfill backporting some PHP 7.3+ features to lower PHP versions",
+    "description": "Symfony polyfill backporting some PHP 7.4+ features to lower PHP versions",
     "keywords": ["polyfill", "shim", "compatibility", "portable"],
     "homepage": "https://symfony.com",
     "license": "MIT",

@@ -31,7 +31,7 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 
 ## Installation and usage
 
-This package requires PHP 7.3 and Laravel 6.0 or higher.
+This package requires PHP 7.4 and Laravel 6.0 or higher.
 You'll find installation instructions and full documentation on https://docs.spatie.be/laravel-backup.
 
 ## Using an older version of PHP / Laravel?

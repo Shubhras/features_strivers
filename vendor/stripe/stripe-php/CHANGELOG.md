@@ -576,7 +576,7 @@ Pull requests included in this release (cf. [#552](https://github.com/stripe/str
 -   [#714](https://github.com/stripe/stripe-php/pull/714) Add `pending_setup_intent` property in `Subscription`
 -   [#713](https://github.com/stripe/stripe-php/pull/713) Add typehint to `ApiResponse`
 -   [#712](https://github.com/stripe/stripe-php/pull/712) Fix comment
--   [#701](https://github.com/stripe/stripe-php/pull/701) Start testing PHP 7.3
+-   [#701](https://github.com/stripe/stripe-php/pull/701) Start testing PHP 7.4
 
 ## 6.43.0 - 2019-08-09
 
