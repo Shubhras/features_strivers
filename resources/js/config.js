@@ -7,11 +7,11 @@ const config = {
     appId: "1:461457796711:web:85996b3969b8a75eae6ec2",
     measurementId: "G-VJ0BELSR7W",
     databaseURL: "https://cometchat-112-default-rtdb.firebaseio.com",
-    CometChatAppId: "201695e40a40d1cb",
+    CometChatAppId: "201196c7af88afe8",
     CometChatRegion: "us",
-    CometChatAuthKey:"1f5c5fdd84024fdd7ee42c4cfd2e369bddc2f09f",
-    CometChatAPIKey:"2450842328709a981e6dbd18a61aeda99a17fd74",
-    CometChatWidgetId: "190ca9b4-015f-42cc-b973-9b378437abf9"
+    CometChatAuthKey:"d7ed27f7c12eafedb544130c6681425f0ae2fdf2",
+    CometChatAPIKey:"06194d1350ab75932cca6dc225d87404681bbecc",
+    CometChatWidgetId: "45bab00b-f5d7-44c7-a970-94115a5db2b7"
   };
 
   // Import the functions you need from the SDKs you need
