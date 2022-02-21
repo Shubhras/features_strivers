@@ -304,7 +304,7 @@
     <!-- End Include All JS -->
 </body>
 
-</html>
+
 
     <script>
 		var uploadExtraData = {
