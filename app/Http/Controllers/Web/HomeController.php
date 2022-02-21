@@ -119,6 +119,7 @@ class HomeController extends FrontController
 		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
 		->where('users.id',2)->first();
 		$data['user_course']= DB::table('coach_course')->select('course_name','course_hourse')->get();
+		$data['user_striver'] = DB::table('users')->select('users.*')->where('users.user_type_id',3)->whereNotIn('users.id', [1])->orderBy('users.id','desc')->limit(3)->get();
 
 		$packages = Package::query()->applyCurrency();
 		

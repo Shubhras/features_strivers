@@ -59,6 +59,8 @@ trait Update
 		$experienceChanged = $request->filled('year_of_experience')&& $request->input('year_of_experience') != $user->year_of_experience;
 		$current_levelChanged = $request->filled('current_level')&& $request->input('current_level') != $user->current_level;
 		$locationChanged = $request->filled('location')&& $request->input('location') != $user->location;
+		$Bank_AccountChanged = $request->filled('Bank_Account')&& $request->input('Bank_Account') != $user->Bank_Account;
+		$Bank_IFSCChanged = $request->filled('Bank_IFSC')&& $request->input('Bank_IFSC') != $user->Bank_IFSC;
 		
 		
 		
@@ -71,7 +73,7 @@ trait Update
 			// print_r($input);die;
 		foreach ($input as $key => $value) {
 			if ($request->has($key)) {
-				if (in_array($key, ['email', 'phone', 'username', 'password','category','sub_category','coach_summary','year_of_experience','current_level','location']) && empty($value)) {
+				if (in_array($key, ['email', 'phone', 'username', 'password','category','sub_category','coach_summary','year_of_experience','current_level','location','Bank_Account','Bank_IFSC']) && empty($value)) {
 					continue;
 				}
 				$user->{$key} = $value;
