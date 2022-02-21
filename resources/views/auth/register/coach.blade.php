@@ -190,6 +190,42 @@
     <script src="assets/js/theme.js"></script>
     <!-- End Include All JS -->
 
+    <script>
+
+const chatService = (function () {
+
+    var username = "raj123";
+    return {
+    createUserOnCometChat: function (username) {
+            let url = `https://api-us.cometchat.io/v3.0/users`;
+            let data = {
+              uid: username,
+              name: `${username} sample`,
+              avatar:
+                "https://data-us.cometchat.io/assets/images/avatars/captainamerica.png",
+            };
+            
+            fetch(url, {
+              method: "POST",
+              headers: new Headers({
+                appid: APP_ID,
+                apikey: REST_API_KEY,
+                "Content-Type": "application/json",
+              }),
+              body: JSON.stringify(data),
+            })
+              .then((response) => response.json())
+              .then((result) => {
+                this.addUserToAGroup(result.data.uid);
+                console.log(result, "User created");
+              })
+              .catch((error) => console.log(error));
+          }
+        }
+        });
+        
+    </script>
+
 </body>
 
 </html>

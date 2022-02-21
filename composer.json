@@ -21,7 +21,7 @@
 		}
 	],
 	"require": {
-		"php": "^7.3",
+		"php": "^7.2",
 		"ext-curl": "*",
 		"ext-json": "*",
 		"aws/aws-sdk-php": "~3.0",
@@ -136,6 +136,7 @@
 		]
 	},
 	"config": {
+		"platform-check": false,
 		"preferred-install": "dist",
 		"sort-packages": true,
 		"optimize-autoloader": true,

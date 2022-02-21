@@ -1,7 +1,7 @@
 Symfony Polyfill / Php73
 ========================
 
-This component provides functions added to PHP 7.3 core:
+This component provides functions added to PHP 7.4 core:
 
 - [`array_key_first`](https://php.net/array_key_first)
 - [`array_key_last`](https://php.net/array_key_last)

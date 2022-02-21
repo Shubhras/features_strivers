@@ -138,6 +138,7 @@ Route::group([
 		
 		// Others
 		Route::get('account', 'UserController@account');
+		
 		//Route::post('ajax/{table}/{field}', 'InlineRequestController@make')->where('table', '[^/]+')->where('field', '[^/]+');
 		
 		// Backup
@@ -433,6 +434,8 @@ Route::group([
 				Route::get('getSubcategories', 'EditController@getSubcategories');
 				Route::put('photo/delete', 'EditController@updatePhoto');
 				Route::put('photo', 'EditController@updatePhoto');
+
+				Route::get('chat', 'EditController@comet_chat');
 
 				Route::group(['middleware' => 'impersonate.protect'], function () {
 					Route::put('/', 'EditController@updateDetails');

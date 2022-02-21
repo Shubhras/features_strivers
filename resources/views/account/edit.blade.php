@@ -106,6 +106,96 @@
 							   <div class="col-12 col-md-12 p-4">
                                 <div class="editdp">
 								
+					<div class="inner-box default-inner-box">
+
+                    <div class="row">
+                        <div class="col-md-3 col-sm-4 col-12">
+                            <h3 class="no-padding text-center-480 useradmin">
+                                <!-- <a href=""> -->
+                                <!-- <img id="userImg" class="userImg" src="{{ $user->photo_url }}" alt="user">&nbsp; -->
+                                <!-- {{ $user->name }} -->
+                                <!-- </a> -->
+                                <b> Coach Dashboard </b>
+                            </h3>
+                        </div>
+                        <div class="col-md-9 col-sm-8 col-12">
+                            <div class="header-data text-center-xs">
+                                {{-- Threads Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-phone-alt ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of messages --}}
+                                        <p>
+                                            <a href="{{ url('account/messages') }}">
+                                                {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
+                                                <!-- <em>{{ trans_choice('global.count_mails', getPlural($countThreads), [], config('app.locale')) }}</em> -->
+                                                <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                {{-- Traffic Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-comments ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of visitors --}}
+                                        <p>
+                                            <a href="{{ url('account/chat') }}">
+                                                <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+                                                {{ \App\Helpers\Number::short($totalPostsVisits) }}
+                                                <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
+                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                               
+
+                                {{-- Favorites Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-bell ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of favorites --}}
+                                        <p>
+                                            <a href="{{ url('account/favourite') }}">
+                                                {{ \App\Helpers\Number::short($countFavoritePosts) }}
+                                                <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+					<div class="inner-box default-inner-box">
+						<div class="welcome-msg">
+							<h3 class="page-sub-header2 clearfix no-padding">{{ t('Hello') }} {{ $user->name }} ! </h3>
+							<span class="page-sub-header-sub small">
+                                {{ t('You last logged in at') }}: {{ \App\Helpers\Date::format($user->last_login_at, 'datetime') }}
+                            </span>
+						</div>
+						
+						<div id="accordion" class="panel-group">
+							{{-- PHOTO --}}
+							<div class="card card-default">
+								<div class="card-header">
+									<h4 class="card-title">
+										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or User') }}</a>
+									</h4>
+								</div>
 								<?php
 								$photoPanelClass = '';
 								$photoPanelClass = request()->filled('panel')
@@ -245,20 +335,16 @@
 
                                 </h4>
                                     </div>
-                                    <div class="row">
-
-                                   
-                                    <div class="mb-3 col-12 col-md-12">
-                                    <?php $usernameError = (isset($errors) && $errors->has('username')) ? ' is-invalid' : ''; ?>
-                                    <input id="username"
-															   name="username"
-															   type="text"
-															   class="form-control{{$usernameError}}"
-															   placeholder="Account Holder Name"
-															   value="{{ old('username', $user->username) }}"
-														>
-                                       
-                                       
+                                    <div class="mcol-right">
+                                        {{-- Number of visitors --}}
+                                        <p>
+                                            <a href="{{ url('account/chat') }}">
+                                                <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+                                                {{ \App\Helpers\Number::short($totalPostsVisits) }}
+                                                <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
+                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -485,50 +571,112 @@
                                     
                             
 								</div>
-					
-                        </div>
-                    </div>
-					</form>
-							
-            <?php } ?>
-            </div>
-        </div>
-        
-    </section>
-    <!-- Course Section End -->
+							</div>
 
-    <!-- Footer Section Start -->
-    
-    <!-- Footer Section End -->
+						</div>
+						<!--/.row-box End-->
 
-    <!-- Back To Top -->
-    <a href="#" id="back-to-top">
-        <i class="fal fa-angle-double-up"></i>
-    </a>
-    <!-- Back To Top -->
+					</div>
+				</div>
 
-    <!-- Start Include All JS -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.appear.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/jquery.nice-select.min.js"></script>
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script src="assets/js/TweenMax.min.js"></script>
-    <script src="assets/js/lightcase.js"></script>
-    <script src="assets/js/jquery.plugin.min.js"></script>
-    <script src="assets/js/jquery.countdown.min.js"></script>
-    <script src="assets/js/jquery.easing.1.3.js"></script>
-    <script src="assets/js/jquery.shuffle.min.js"></script>
+				</div>
+					<?php }?>
+				
 
-    <script src="assets/js/theme.js"></script>
-    <!-- End Include All JS -->
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js" integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validator.min.js" integrity="sha512-xYHcfaQeUiKHs9YsHqjpyLaHnh+q7y8kYuOGdh5FkJeK7Z+dZct7Yoa7h+PtsrKRh03t8eJZuSeCN7b0dkrFwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  
+  <!-- <script src="js/config.js"></script>
 
-</body>
+  <script src="js/auth.js"></script>
 
-</html>
-<script>
+  <script src="js/firebase.js"></script>
+
+  <script src="js/util.js"></script>
+  <script src="js/login.js"></script> -->
+
+
+			<!--/.row-->
+		</div>
+		<!--/.container-->
+	</div>
+	<!-- /.main-container -->
+
+
+@section('after_styles')
+	<link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput.min.css') }}" rel="stylesheet">
+	@if (config('lang.direction') == 'rtl')
+		<link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput-rtl.min.css') }}" rel="stylesheet">
+	@endif
+	<style>
+		.krajee-default.file-preview-frame:hover:not(.file-preview-error) {
+			box-shadow: 0 0 5px 0 #666666;
+		}
+		.file-loading:before {
+			content: " {{ t('Loading') }}...";
+		}
+	</style>
+	<style>
+		/* Avatar Upload */
+		.photo-field {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.photo-field .krajee-default.file-preview-frame,
+		.photo-field .krajee-default.file-preview-frame:hover {
+			margin: 0;
+			padding: 0;
+			border: none;
+			box-shadow: none;
+			text-align: center;
+		}
+		.photo-field .file-input {
+			display: table-cell;
+			width: 150px;
+		}
+		.photo-field .krajee-default.file-preview-frame .kv-file-content {
+			width: 150px;
+			height: 160px;
+		}
+		.kv-reqd {
+			color: red;
+			font-family: monospace;
+			font-weight: normal;
+		}
+		
+		.file-preview {
+			padding: 2px;
+		}
+		.file-drop-zone {
+			margin: 2px;
+			min-height: 100px;
+		}
+		.file-drop-zone .file-preview-thumbnails {
+			cursor: pointer;
+		}
+		
+		.krajee-default.file-preview-frame .file-thumbnail-footer {
+			height: 30px;
+		}
+		
+		/* Allow clickable uploaded photos (Not possible) */
+		.file-drop-zone {
+			padding: 20px;
+		}
+		.file-drop-zone .kv-file-content {
+			padding: 0
+		}
+	</style>
+@endsection
+
+@section('after_scripts')
+	<script src="{{ url('assets/plugins/bootstrap-fileinput/js/plugins/sortable.min.js') }}" type="text/javascript"></script>
+	<script src="{{ url('assets/plugins/bootstrap-fileinput/js/fileinput.min.js') }}" type="text/javascript"></script>
+	<script src="{{ url('assets/plugins/bootstrap-fileinput/themes/fas/theme.js') }}" type="text/javascript"></script>
+	<script src="{{ url('js/fileinput/locales/' . config('app.locale') . '.js') }}" type="text/javascript"></script>
+
+	<script>
 		var uploadExtraData = {
 			_token:'{{ csrf_token() }}',
 			_method:'PUT',
@@ -727,3 +875,4 @@
 			}
 		});
      </script>
+ @endsection

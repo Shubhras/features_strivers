@@ -31,7 +31,7 @@ All notable changes to Prologue Alerts will be documented in this file. This fil
 ### Added
 
 - docblocks;
-- php 7.3 to Travis CI;
+- PHP 7.4 to Travis CI;
 
 ### Removed
 - HHVM from Travis CI;

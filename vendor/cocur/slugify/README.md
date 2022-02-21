@@ -505,7 +505,7 @@ $slugify = $container->get(Slugify\SlugifyInterface::class);
 
 ### Version 4.0 (14 December 2019)
 
-Version 4 does not introduce new major features, but adds support for Symfony 4 and 5, Twig 3 and, most importantly, PHP 7.3 and 7.4.
+Version 4 does not introduce new major features, but adds support for Symfony 4 and 5, Twig 3 and, most importantly, PHP 7.4 and 7.4.
 
 Support for PHP 5, Twig 1 and Silex is dropped.
 
@@ -517,7 +517,7 @@ Support for PHP 5, Twig 1 and Silex is dropped.
 - [#241](https://github.com/cocur/slugify/pull/241) Update .gitattributes (by [kubawerlos](https://github.com/kubawerlos))
 - [#242](https://github.com/cocur/slugify/pull/242) Add PHP CS Fixer (by [kubawerlos](https://github.com/kubawerlos))
 - [#243](https://github.com/cocur/slugify/pull/243) Normalize composer.json (by [kubawerlos](https://github.com/kubawerlos))
-- [#246](https://github.com/cocur/slugify/pull/246) Add support for PHP 7.3 and 7.4 (by [snapshotpl](https://github.com/snapshotpl))
+- [#246](https://github.com/cocur/slugify/pull/246) Add support for PHP 7.4 and 7.4 (by [snapshotpl](https://github.com/snapshotpl))
 - [#247](https://github.com/cocur/slugify/pull/247) AppVeyor improvements (by [kubawerlos](https://github.com/kubawerlos))
 - [#249](https://github.com/cocur/slugify/pull/249) PHPUnit annotations should be a FQCNs including a root namespace (by [kubawerlos](https://github.com/kubawerlos))
 - [#250](https://github.com/cocur/slugify/pull/250) Add support for Symfony 4 and 5 (by [franmomu](https://github.com/franmomu))

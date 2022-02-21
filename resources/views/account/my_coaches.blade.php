@@ -115,19 +115,16 @@
                                     <div class="madels">
 									<img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid"  alt="{{ $coach_list->name }}">
                                     </div>
-                                    <div class="teacher-social">
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-facebook-f"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-twitter"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-pinterest-p"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-vimeo-v"></i>
-                                        </a>
+                                    <div class="mcol-right">
+                                        {{-- Number of visitors --}}
+                                        <p>
+                                            <a href="{{ url('account/chat') }}">
+                                                <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+                                                {{ \App\Helpers\Number::short($totalPostsVisits) }}
+                                                <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
+                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="teacher-meta">
@@ -191,24 +188,21 @@
                 <div class="col-lg-9 ">
                     <div class="row">
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="teacher-item">
-                                <div class="teacher-thumb">
-								<?php foreach ($my_coaches as $coach_list) { ?>
-									<img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid"  alt="{{ $coach_list->name }}">
-                                    <div class="teacher-social">
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-facebook-f"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-twitter"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-pinterest-p"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-vimeo-v"></i>
-                                        </a>
+                                {{-- Traffic Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-comments ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of visitors --}}
+                                        <p>
+                                            <a href="{{ url('account/chat') }}">
+                                                <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+                                                {{ \App\Helpers\Number::short($totalPostsVisits) }}
+                                                <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
+                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
 							
@@ -277,7 +271,7 @@
             </div>
         </div>
      </div>
-        <?php } ?>
+      
 </section>
     <!-- Course Section End -->
 

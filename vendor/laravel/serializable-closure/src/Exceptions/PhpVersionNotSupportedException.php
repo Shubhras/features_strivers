@@ -12,7 +12,7 @@ class PhpVersionNotSupportedException extends Exception
      * @param  string  $message
      * @return void
      */
-    public function __construct($message = 'PHP 7.3 is not supported.')
+    public function __construct($message = 'PHP 7.4 is not supported.')
     {
         parent::__construct($message);
     }
