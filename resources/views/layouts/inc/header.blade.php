@@ -195,6 +195,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                                 class="fas fa-user-plus"></i> {{ t('register') }}</a>
                     </li>
                     @else
+                    
 
                     <li class="nav-item">
                         @if (config('settings.security.login_open_in_modal'))
