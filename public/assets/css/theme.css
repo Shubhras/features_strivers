@@ -58,6 +58,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     z-index: 5;
     background: transparent;
     padding: 0;
+
 }
 
 .navbar.navbar-expand-lg {
@@ -4467,7 +4468,7 @@ footer .widget ul li a:hover {
     font-size: 13px;
     line-height: .8;
     color: #7e7c87;
-    6 font-weight: 600;
+    font-weight: 600;
 }
 
 .tags {
@@ -7595,4 +7596,16 @@ input#modal-description {
 }
 .logoh{
     height: 80px!important;
+}
+.dropdown-menu-sidebar{
+    padding-left: 20px!important;
+    
+}
+.dropdown-menu-sidebar-a{
+    color: #000000!important;
+}
+.sidebar-menu-ul{
+    width: 207px;
+    margin-left: -50px;
+    margin-top: 23px;
 }

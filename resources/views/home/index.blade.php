@@ -303,7 +303,7 @@
                                     <i aria-hidden="true" class="fab fa-vimeo-v"></i>
                                 </a>
                             </div>
-                        </a>
+                        
                         </div>
                             
                        
@@ -323,6 +323,7 @@
                                     <?php }?>
                             </span>
                         </div>
+                        </a>
                     </div>
                 </div>
                 @endforeach
@@ -566,7 +567,7 @@
 
                     <div class="ab-content">
                         <h3>CONNECT WITH COACHES/ STRIVERS AROUND THE WORLD</h3>
-                        <p class="">Strivre is great for teams because it’s easy to get set up and the offerings touch on a vast array of soft skill focus areas, which not only build role-related talents but also enable team members to grow their whole selves beyond
+                        <p class="">Strivre is great for teams because it`s easy to get set up and the offerings touch on a vast array of soft skill focus areas, which not only build role-related talents but also enable team members to grow their whole selves beyond
                             work.
                         </p>
                         @if (!auth()->user())

@@ -11,10 +11,32 @@
  * of the above copyright notice. If you Purchased from CodeCanyon,
  * Please read the full License from here - http://codecanyon.net/licenses/standard
 --}}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Start Include All CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/elegant-icons.css" />
+    <link rel="stylesheet" href="assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/lightcase.css">
+    <link rel="stylesheet" href="assets/css/preset.css" />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+
 @extends('layouts.master')
 
 
-@section('content')
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
@@ -25,9 +47,18 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
 
-@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
+
+
+@section('content')
+	@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
+
 <div class="main-container">
     <div class="container">
+
+
+    
+
+
 
 <?php
 
@@ -135,7 +166,7 @@ foreach ($coach_course as $key => $value) {
                                     <div class="mcol-right">
                                         {{-- Number of visitors --}}
                                         <p>
-                                            <a href="{{ url('account/chat') }}">
+                                            <a href="{{ url('chat') }}">
                                                 <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
                                                 {{ \App\Helpers\Number::short($totalPostsVisits) }}
                                                 <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
@@ -478,7 +509,7 @@ foreach ($coach_course as $key => $value) {
                                     <div class="mcol-right">
                                         {{-- Number of visitors --}}
                                         <p>
-                                            <a href="{{ url('account/chat') }}">
+                                            <a href="{{ url('chat') }}">
                                                 <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
                                                 {{ \App\Helpers\Number::short($totalPostsVisits) }}
                                                 <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->

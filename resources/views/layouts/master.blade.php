@@ -42,7 +42,7 @@
 	$publicDisk = \Storage::disk(config('filesystems.default'));
 ?>
 <!DOCTYPE html>
-<html lang="{{ ietfLangTag(config('app.locale')) }}"{!! (config('lang.direction')=='rtl') ? ' dir="rtl"' : '' !!}>
+<html>
 <head>
 	<meta charset="utf-8">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
@@ -167,7 +167,7 @@
 <div id="wrapper">
 	
 	@section('header')
-		@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.header', 'layouts.inc.header'])
+		@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.header1', 'layouts.inc.header1'])
 	@show
 	
 	@section('search')
@@ -221,63 +221,7 @@
 	@endif
 @endif
 
-<script>
-	{{-- Init. Root Vars --}}
-	var siteUrl = '{{ url('/') }}';
-	var languageCode = '<?php echo config('app.locale'); ?>';
-	var countryCode = '<?php echo config('country.code', 0); ?>';
-	var timerNewMessagesChecking = <?php echo (int)config('settings.other.timer_new_messages_checking', 0); ?>;
-	var isLogged = <?php echo (auth()->check()) ? 'true' : 'false'; ?>;
-	var isLoggedAdmin = <?php echo (auth()->check() && auth()->user()->can(\App\Models\Permission::getStaffPermissions())) ? 'true' : 'false'; ?>;
-	
-	{{-- Init. Translation Vars --}}
-	var langLayout = {
-		'hideMaxListItems': {
-			'moreText': "{{ t('View More') }}",
-			'lessText': "{{ t('View Less') }}"
-		},
-		'select2': {
-			errorLoading: function(){
-				return "{!! t('The results could not be loaded') !!}"
-			},
-			inputTooLong: function(e){
-				var t = e.input.length - e.maximum, n = {!! t('Please delete X character') !!};
-				return t != 1 && (n += 's'),n
-			},
-			inputTooShort: function(e){
-				var t = e.minimum - e.input.length, n = {!! t('Please enter X or more characters') !!};
-				return n
-			},
-			loadingMore: function(){
-				return "{!! t('Loading more results') !!}"
-			},
-			maximumSelected: function(e){
-				var t = {!! t('You can only select N item') !!};
-				return e.maximum != 1 && (t += 's'),t
-			},
-			noResults: function(){
-				return "{!! t('No results found') !!}"
-			},
-			searching: function(){
-				return "{!! t('Searching') !!}"
-			}
-		}
-	};
-	var fakeLocationsResults = "{{ config('settings.listing.fake_locations_results', 0) }}";
-	var stateOrRegionKeyword = "{{ t('area') }}";
-	var errorText = {
-		errorFound: "{{ t('error_found') }}"
-	};
-	
-	{{-- Prevent the page to load in IFRAME by redirecting it to the top-level window --}}
-	try {
-		if (window.top.location !== window.location) {
-			window.top.location.replace(siteUrl);
-		}
-	} catch (e) {
-		console.error(e);
-	}
-</script>
+
 
 @stack('before_scripts_stack')
 @yield('before_scripts')
@@ -292,42 +236,7 @@
 @if (config('plugins.detectadsblocker.installed'))
 	<script src="{{ url('assets/detectadsblocker/js/script.js') . getPictureVersion() }}"></script>
 @endif
-<script>
-	$(document).ready(function () {
-		{{-- Select Boxes --}}
-		$('.selecter').select2({
-			language: langLayout.select2,
-			width: '100%',
-			dropdownAutoWidth: 'true',
-			minimumResultsForSearch: Infinity
-		});
-		
-		{{-- Searchable Select Boxes --}}
-		$('.large-data-selecter').select2({
-			language: langLayout.select2,
-			width: '100%',
-			dropdownAutoWidth: 'true'
-		});
-		
-		{{-- Social Share --}}
-		$('.share').ShareLink({
-			title: '{{ addslashes(MetaTag::get('title')) }}',
-			text: '{!! addslashes(MetaTag::get('title')) !!}',
-			url: '{!! request()->fullUrl() !!}',
-			width: 640,
-			height: 480
-		});
-		
-		{{-- Modal Login --}}
-		@if (isset($errors) && $errors->any())
-			@if ($errors->any() && old('quickLoginForm')=='1')
-				{{-- Re-open the modal if error occured --}}
-				let quickLogin = new bootstrap.Modal(document.getElementById('quickLogin'), {});
-				quickLogin.show();
-			@endif
-		@endif
-	});
-</script>
+
 
 @stack('after_scripts_stack')
 @yield('after_scripts')

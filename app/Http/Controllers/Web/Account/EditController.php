@@ -36,66 +36,7 @@ class EditController extends AccountBaseController
 	 */
 
 
-	public function dashboard()
-	{
-		$data = [];
-		
-		$data['genders'] = Gender::query()->get();
-		
-		$user = auth()->user();
-		
-		// Mini Stats
-		$data['countPostsVisits'] = DB::table((new Post())->getTable())
-			->select('user_id', DB::raw('SUM(visits) as total_visits'))
-			->where('country_code', config('country.code'))
-			->where('user_id', $user->id)
-			->groupBy('user_id')
-			->first();
-		$data['countPosts'] = Post::currentCountry()
-			->where('user_id', $user->id)
-			->count();
-		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
-			$query->currentCountry();
-		})->where('user_id', $user->id)
-			->count();
-
-		$data['subscription_plan']= Package::query()->get();
-
-		//$data['categories']= Category::query()->get();
-
-		$data['suggested_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
-			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
-			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
-			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
-			->where('users.user_type_id',2)->orderBy('users.id','asc')->get();
-
-		$data['suggested_striver'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
-			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
-			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
-			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
-			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
-
-			$data['suggested_striver_data']= DB::table('users')->select('users.*','categories.name as slug','packages.name   as     subscription_name','packages.price','packages.currency_code'
-		,'coach_course.dated','coach_course.starting_time','coach_course.course_name','coach_course.coach_id')
-			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
-			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
-			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
-			->leftjoin('user_subscription' ,'user_subscription.student_id' ,'=' ,'users.id')
-			->leftjoin('coach_course' , 'coach_course.id','=','user_subscription.course_id')
-			->where('user_subscription.student_id',$user->id)
-		    ->orderBy('users.id','asc')->get();
-		
-		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
-
-		MetaTag::set('title', t('my_account'));
-		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
-		
-		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*')->orderBy('coach_course.id','asc')->where('coach_course.coach_id', $user->id)->get();
-		// print_r($data);die;
-		return appView('account.dashboard', $data);
-		
-	}
-
+	
 
 	public function index()
 	{
@@ -133,6 +74,73 @@ class EditController extends AccountBaseController
 		
 	}
 
+
+
+	public function dashboard()
+	{
+		$data = [];
+		
+		$data['genders'] = Gender::query()->get();
+		
+		$user = auth()->user();
+		
+		// Mini Stats
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+
+		$data['subscription_plan']= Package::query()->get();
+
+		//$data['categories']= Category::query()->get();
+
+		
+
+		MetaTag::set('title', t('my_account'));
+		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
+		
+		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
+		
+		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*')->orderBy('coach_course.id','asc')->where('coach_course.coach_id', $user->id)->get();
+		// print_r($data);die;
+
+
+
+		$data['suggested_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',2)->orderBy('users.id','asc')->get();
+
+		$data['suggested_striver'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
+
+			$data['suggested_striver_data']= DB::table('users')->select('users.*','categories.name as slug','packages.name   as     subscription_name','packages.price','packages.currency_code'
+		,'coach_course.dated','coach_course.starting_time','coach_course.course_name','coach_course.coach_id')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->leftjoin('user_subscription' ,'user_subscription.student_id' ,'=' ,'users.id')
+			->leftjoin('coach_course' , 'coach_course.id','=','user_subscription.course_id')
+			->where('user_subscription.student_id',$user->id)
+		    ->orderBy('users.id','asc')->get();
+		
+		
+		return appView('account.dashboard', $data);
+		
+	}
 
 
 

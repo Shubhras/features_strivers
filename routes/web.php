@@ -405,7 +405,7 @@ Route::group([
 		
 		
 		// ACCOUNT
-		Route::group(['prefix' => 'account'], function ($router) {
+		// Route::group(['prefix' => 'account'], function ($router) {
 			// Messenger
 			// Contact Post's Author
 			Route::group([
@@ -422,7 +422,7 @@ Route::group([
 				$router->pattern('id', '[0-9]+');
 				
 				// Users
-				Route::get('/', 'EditController@index');
+				Route::get('account', 'EditController@index');
 				Route::get('dashboard', 'EditController@dashboard');
 				// Route::get('profile', 'EditController@profile');
 				Route::get('my_coaches','EditController@my_coaches_by_striver');
@@ -473,7 +473,7 @@ Route::group([
 				// Transactions
 				Route::get('transactions', 'TransactionsController@index');
 			});
-		});
+		// });
 		
 		
 		// AJAX
