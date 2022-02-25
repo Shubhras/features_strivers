@@ -978,15 +978,15 @@
 
 
 
-<script>
+<!-- <script>
 	// when category dropdown changes
 	$(document).ready(function() {
 
 		var sub_cat_id = {
 			{
-				old('sub_category', $user - > sub_category)
+				old('sub_category', $user->sub_category)
 			}
-		}
+		},
 		$('#category').change(function() {
 			var categoryID = $('#category').val();
 			if (categoryID) {
@@ -1048,5 +1048,5 @@
 			$("#sub_category").empty();
 		}
 	});
-</script>
+</script> -->
 @endsection
