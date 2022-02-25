@@ -118,6 +118,7 @@ class HomeController extends FrontController
 		->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
 		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
 		->where('users.id',2)->first();
+
 		$data['user_course']= DB::table('coach_course')->select('course_name','course_hourse')->get();
 		$data['user_striver'] = DB::table('users')->select('users.*')->where('users.user_type_id',3)->whereNotIn('users.id', [1])->orderBy('users.id','desc')->limit(3)->get();
 
@@ -137,6 +138,11 @@ class HomeController extends FrontController
 		// print_r($data['packages']);die;
 		// Get SEO
 		$this->setSeo($searchFormOptions);
+
+
+
+		$data['categories_list_coach'] = DB::table('categories')->select('categories.slug','categories.id','categories.name')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
+		// print_r($data['categories_list_coach']);die;
 		
 		return appView('home.index', $data);
 	}

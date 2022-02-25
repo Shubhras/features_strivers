@@ -20,7 +20,7 @@
                                     <!-- <span class="heading ">Account</span> -->
                                     <ul class="list-unstyled mb-4 mt-2">
                                         <li class="nav-item ">
-										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('dashboard') }}">
+										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/dashboard') }}">
 												<h5 class="collapse-title no-border">
 													<i class="fas fa-th-list"></i> {{ t('dashboard') }}&nbsp;
 
@@ -38,7 +38,7 @@
 									</a>
 															</li>
                                         <li class="nav-item  ">
-										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('my_coaches') }}">
+										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_coaches') }}">
 											<h5 class="collapse-title no-border">
 												<!-- <i class="fas fa-user-edit"></i> -->
 												{{ ('My Coach') }}&nbsp;
@@ -47,7 +47,7 @@
 										</a>
                                         </li>
                                         <li class="nav-item ">
-										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('my_courses') }}">
+										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_courses') }}">
 											<h5 class="collapse-title no-border">
 												<!-- <i class="fas fa-user-edit"></i> -->
 												Consultation &nbsp;
@@ -57,7 +57,7 @@
                                             
                                         </li>
                                         <li class="nav-item ">
-										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('my_subscription') }}">
+										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_subscription') }}">
 												<h5 class="collapse-title no-border">
 													<!-- <i class="fas fa-user-edit"></i> -->
 													My Subscriptions &nbsp;

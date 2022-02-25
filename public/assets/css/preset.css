@@ -77,13 +77,34 @@ input[type=number] {
 
 
 /*---- Common Btn ----*/
+.bisylms-btn-pink {
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    background: #EA2AA4;
+    height: 50px;
+    padding: 20px 35px;
+    text-align: center;
+    display: inline-block;
+    line-height: .8;
+    letter-spacing: 0;
+    position: relative;
+    border-radius: 3px;
+    z-index: 1;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
 
 .bisylms-btn {
     border: none;
     font-size: 13px;
     font-weight: 600;
     color: #fff;
-    background: #5838fc;
+    background: #012245;
     height: 50px;
     padding: 20px 35px;
     text-align: center;
@@ -378,7 +399,7 @@ svg g path {
     /* margin-top: -12px; */
     width: 283px;
     color: #fff;
-    background: #5838fc;
+    background: #012245!important;
     height: 81px;
     /* padding: 20px 35px; */
     text-align: center;

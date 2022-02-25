@@ -23,9 +23,10 @@ use App\Models\Package;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Torann\LaravelMetaTags\Facades\MetaTag;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Http\Resources\EntityCollection;
 use App\Http\Resources\PackageResource;
+use App\Models\Category;
 
 class PageController extends FrontController
 {
@@ -271,9 +272,56 @@ class PageController extends FrontController
 			MetaTag::set('description', strip_tags($description));
 			MetaTag::set('keywords', $keywords);
 			
-			return appView('pages.category_coach_list',$data);
+			 return appView('pages.category_coach_list',$data);
+
+			// return appView('pages.category_coaches',$data);
 
 	}
+
+
+	public function coach_list_category_all(){
+
+		// Get the Country's largest city for Google Maps
+		$cacheId = config('country.code') . '.city.population.desc.first';
+		$city = Cache::remember($cacheId, $this->cacheExpiration, function () {
+			$city = City::currentCountry()->orderBy('population', 'desc')->first();
+			
+			return $city;
+		});
+		view()->share('city', $city);
+
+		// print_r($id);die;
+
+		$data['categories'] = DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();
+
+		// print_r($data['categories']);die;
+		
+		$data['my_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',2)->orderBy('users.id','asc')->limit(8)->get();
+
+
+		$data['suggested_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',2)->orderBy('users.id','asc')->limit(8)->get();
+
+			
+
+		[$title, $description, $keywords] = getMetaTag('contact');
+		MetaTag::set('title', $title);
+		MetaTag::set('description', strip_tags($description));
+		MetaTag::set('keywords', $keywords);
+		
+		
+		return appView('pages.category_coaches',$data);
+
+}
+
+
 
 	public function coach_list_sub_category($id){
 

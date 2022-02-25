@@ -1,16 +1,4 @@
-{{--
- * LaraClassifier - Classified Ads Web Application
- * Copyright (c) BeDigit. All Rights Reserved
- *
- * Website: https://laraclassifier.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
---}}
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -18,20 +6,20 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Start Include All CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="assets/css/elegant-icons.css" />
-    <link rel="stylesheet" href="assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/lightcase.css">
-    <link rel="stylesheet" href="assets/css/preset.css" />
-    <link rel="stylesheet" href="assets/css/theme.css" />
-    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/elegant-icons.css" />
+    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="../assets/css/animate.css" />
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/lightcase.css">
+    <link rel="stylesheet" href="../assets/css/preset.css" />
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
 
 @extends('layouts.master')
 
@@ -47,13 +35,17 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
 
-
+<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+       
+    </section>
 
 @section('content')
 	@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
 
-<div class="main-container">
-    <div class="container">
+	
+<section style="background-color: white;">
+	 <div class="main-container" >
+		<div class="container">
 
 
     
@@ -81,64 +73,38 @@ foreach ($coach_course as $key => $value) {
 // die;
 ?>
 
-        <div class="row ">
-            <div class="col-md-3 page-sidebar inner-box default-inner-box coach_profile_img">
-                <h3 class="no-padding text-center-480 useradmin">
-                    <a href="">
-                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user">&nbsp;
-                        {{ $user->name }}
-                    </a>
-                </h3>
-            </div>
-
-            <div class="col-md-9 page-sidebar">
-
-            </div>
-        </div>
+      
 
 
 
         <?php if($user->user_type_id ==2){?>
 
 
-            <div class="row">
-            <div class="col-md-3 page-sidebar sidebar_coach">
-                @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
+
+        <div class="row ">
+            <div class="col-md-3 page-sidebar">
+			  <div class="inner-box default-inner-box">
+                <h3 class="no-padding text-center-480 useradmin">
+                    <a href="">
+                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp; 
+                        {{ $user->name }}
+                    </a>
+                </h3>
+			  </div>
             </div>
 
-            <div class="col-md-9 page-content coach_dashboard">
-
-                @include('flash::message')
-
-                @if (isset($errors) && $errors->any())
-                <div class="alert alert-danger alert-dismissible">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
-                    <h5><strong>{{ t('oops_an_error_has_occurred') }}</strong></h5>
-                    <ul class="list list-check">
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-
-                <div id="avatarUploadError" class="center-block" style="width:100%; display:none"></div>
-                <div id="avatarUploadSuccess" class="alert alert-success fade show" style="display:none;"></div>
-
-                <div class="inner-box default-inner-box">
+            <div class="col-md-9 page-content ">
 
 
-                    <div class="row">
-                        <div class="col-md-3 col-sm-4 col-12">
+					<div class="inner-box default-inner-box edit-file-chat">
+					<div class="row">
+                        <div class="col-md-4 col-sm-4 col-12">
                             <h3 class="no-padding text-center-480 useradmin">
-                                <!-- <a href=""> -->
-                                <!-- <img id="userImg" class="userImg" src="{{ $user->photo_url }}" alt="user">&nbsp; -->
-                                <!-- {{ $user->name }} -->
-                                <!-- </a> -->
-                                <b> Coach Dashboard </b>
+                               
+                                <b> Coach Update Profile </b>
                             </h3>
                         </div>
-                        <div class="col-md-9 col-sm-8 col-12">
+                        <div class="col-md-8 col-sm-8 col-12">
                             <div class="header-data text-center-xs">
                                 {{-- Threads Stats --}}
                                 <div class="hdata">
@@ -150,7 +116,7 @@ foreach ($coach_course as $key => $value) {
                                         <p>
                                             <a href="{{ url('account/messages') }}">
                                                 {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-                                                <!-- <em>{{ trans_choice('global.count_mails', getPlural($countThreads), [], config('app.locale')) }}</em> -->
+                                               
                                                 <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
                                             </a>
                                         </p>
@@ -166,10 +132,10 @@ foreach ($coach_course as $key => $value) {
                                     <div class="mcol-right">
                                         {{-- Number of visitors --}}
                                         <p>
-                                            <a href="{{ url('chat') }}">
+                                            <a href="{{ url('account/chat') }}">
                                                 <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
                                                 {{ \App\Helpers\Number::short($totalPostsVisits) }}
-                                                <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
+                                    
                                                 <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
                                             </a>
                                         </p>
@@ -177,22 +143,7 @@ foreach ($coach_course as $key => $value) {
                                     <div class="clearfix"></div>
                                 </div>
 
-                                <!-- {{-- Ads Stats --}}
-                                <div class="hdata">
-                                    <div class="mcol-left">
-                                        <i class="fas fa-bullhorn ln-shadow"></i>
-                                    </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of ads --}}
-                                        <p>
-                                            <a href="{{ url('account/my-posts') }}">
-                                                {{ \App\Helpers\Number::short($countPosts) }}
-                                                <em>{{ trans_choice('global.count_posts', getPlural($countPosts), [], config('app.locale')) }}</em>
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div> -->
+                               
 
                                 {{-- Favorites Stats --}}
                                 <div class="hdata">
@@ -213,10 +164,42 @@ foreach ($coach_course as $key => $value) {
                             </div>
                         </div>
                     </div>
+				</div>
+
+			</div>
+	</div>
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-3 page-sidebar">
+
+                @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
+            </div>
+
+
+            <div class="col-md-9 page-content">
+
+                @include('flash::message')
+
+                @if (isset($errors) && $errors->any())
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
+                    <h5><strong>{{ t('oops_an_error_has_occurred') }}</strong></h5>
+                    <ul class="list list-check">
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
+                @endif
+
+                <div id="avatarUploadError" class="center-block" style="width:100%; display:none"></div>
+                <div id="avatarUploadSuccess" class="alert alert-success fade show" style="display:none;"></div>
 
                 <div class="inner-box default-inner-box">
-
 
                     <div class="row">
 
@@ -413,75 +396,86 @@ foreach ($coach_course as $key => $value) {
                 </div>
 
             </div>
-            <!--/.page-content-->
-                  <br>
-				<div class="row">
-					<h3><b> Suggested Strivers</b></h3>
-					<?php foreach ($suggested_striver as $coach_list) { ?>
-								<div class="col-sm-3" >
-									<img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 320px; width:-webkit-fill-available;" alt="{{ $coach_list->name }}">
-									<br>
-									<?php
-											// $name = json_decode($coach_list->slug);
-											// $ss = array();
-											// foreach ($name as $key => $sub) {
-											// $ss[$key] = $sub;
-											// }
-									?>
-									<h4><b>{{ $coach_list->name }}</b></h4>
-									
-									
-								</div>
-
-							<?php } ?>
-
-					</div>
-
         </div>
+         </div>
+        </div>
+     </div>
+</section>
+
+
+    <div class="main-section">
+        <div class="container">
+
+            <h2 class="sec-title" style="font-weight: 700;">
+                Suggested Strivre
+
+            </h2>
+
+         <div class="row">
+            <?php foreach ($suggested_striver as $coach_list) { ?>
+                <div class="col-lg-3 col-md-6">
+                    <div class="teacher-item">
+                        <div class="teacher-thumb coach-img-wrapper">
+                            <img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
+                            <div class="teacher-social">
+                                <a href="#">
+                                    <i aria-hidden="true" class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#">
+                                    <i aria-hidden="true" class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i aria-hidden="true" class="fab fa-pinterest-p"></i>
+                                </a>
+                                <a href="#">
+                                    <i aria-hidden="true" class="fab fa-vimeo-v"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="teacher-meta">
+                            <h5>
+                            {{ $coach_list->name }}
+                            </h5>
+                            <p>Stylist &amp; Author
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+
 
 
 
         <?php } else{?>
 
 
-        <div class="row">
-            <div class="col-md-3 page-sidebar sidebar_coach">
-                @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
+        <div class="row ">
+            <div class="col-md-3 page-sidebar">
+			  <div class="inner-box default-inner-box">
+                <h3 class="no-padding text-center-480 useradmin">
+                    <a href="">
+                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp; 
+                        {{ $user->name }}
+                    </a>
+                </h3>
+			  </div>
             </div>
 
-            <div class="col-md-9 page-content coach_dashboard">
-
-                @include('flash::message')
-
-                @if (isset($errors) && $errors->any())
-                <div class="alert alert-danger alert-dismissible">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
-                    <h5><strong>{{ t('oops_an_error_has_occurred') }}</strong></h5>
-                    <ul class="list list-check">
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-
-                <div id="avatarUploadError" class="center-block" style="width:100%; display:none"></div>
-                <div id="avatarUploadSuccess" class="alert alert-success fade show" style="display:none;"></div>
-
-                <div class="inner-box default-inner-box">
+            <div class="col-md-9 page-content ">
 
 
-                    <div class="row">
-                        <div class="col-md-3 col-sm-4 col-12">
+					<div class="inner-box default-inner-box edit-file-chat">
+					<div class="row">
+                        <div class="col-md-4 col-sm-4 col-12">
                             <h3 class="no-padding text-center-480 useradmin">
-                                <!-- <a href=""> -->
-                                <!-- <img id="userImg" class="userImg" src="{{ $user->photo_url }}" alt="user">&nbsp; -->
-                                <!-- {{ $user->name }} -->
-                                <!-- </a> -->
-                                <b> Striver Dashboard </b>
+                               
+                                <b> Coach Update Profile </b>
                             </h3>
                         </div>
-                        <div class="col-md-9 col-sm-8 col-12">
+                        <div class="col-md-8 col-sm-8 col-12">
                             <div class="header-data text-center-xs">
                                 {{-- Threads Stats --}}
                                 <div class="hdata">
@@ -493,7 +487,7 @@ foreach ($coach_course as $key => $value) {
                                         <p>
                                             <a href="{{ url('account/messages') }}">
                                                 {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-                                                <!-- <em>{{ trans_choice('global.count_mails', getPlural($countThreads), [], config('app.locale')) }}</em> -->
+                                               
                                                 <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
                                             </a>
                                         </p>
@@ -509,10 +503,10 @@ foreach ($coach_course as $key => $value) {
                                     <div class="mcol-right">
                                         {{-- Number of visitors --}}
                                         <p>
-                                            <a href="{{ url('chat') }}">
+                                            <a href="{{ url('account/chat') }}">
                                                 <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
                                                 {{ \App\Helpers\Number::short($totalPostsVisits) }}
-                                                <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
+                                    
                                                 <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
                                             </a>
                                         </p>
@@ -520,22 +514,7 @@ foreach ($coach_course as $key => $value) {
                                     <div class="clearfix"></div>
                                 </div>
 
-                                <!-- {{-- Ads Stats --}}
-                                <div class="hdata">
-                                    <div class="mcol-left">
-                                        <i class="fas fa-bullhorn ln-shadow"></i>
-                                    </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of ads --}}
-                                        <p>
-                                            <a href="{{ url('account/my-posts') }}">
-                                                {{ \App\Helpers\Number::short($countPosts) }}
-                                                <em>{{ trans_choice('global.count_posts', getPlural($countPosts), [], config('app.locale')) }}</em>
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div> -->
+                               
 
                                 {{-- Favorites Stats --}}
                                 <div class="hdata">
@@ -556,7 +535,23 @@ foreach ($coach_course as $key => $value) {
                             </div>
                         </div>
                     </div>
-                </div>
+				</div>
+
+			</div>
+	</div>
+
+
+
+
+        <div class="row">
+            <div class="col-md-3 page-sidebar">
+                @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
+            </div>
+
+            <div class="col-md-9 page-content">
+
+               
+
                 <?php
 
         // print_r(json_decode($coach_course));die;
@@ -814,36 +809,61 @@ foreach ($coach_course as $key => $value) {
                         </div>
                     </div>
                 </div>
+
             </div>
             <!--/.page-content-->
 
 
         </div>
+        </div>
 
 
         <br>
 
-					<div class="row">
-					<h3><b> Suggested Coaches</b></h3>
-					<?php foreach ($suggested_coaches as $coach_list) { ?>
-								<div class="col-sm-3" >
-									<img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 320px; width:-webkit-fill-available;" alt="{{ $coach_list->name }}">
-									<br>
-									<?php
-											// $name = json_decode($coach_list->slug);
-											// $ss = array();
-											// foreach ($name as $key => $sub) {
-											// $ss[$key] = $sub;
-											// }
-									?>
-									<h4><b>{{ $coach_list->name }}</b></h4>
-									
-									
-								</div>
+					
 
-							<?php } ?>
+         <div class="main-section">
+        <div class="container">
 
-					</div>
+            <h2 class="sec-title" style="font-weight: 700;">
+                Suggested Coaches
+
+            </h2>
+
+            <div class="row">
+            <?php foreach ($suggested_coaches as $coach_list) { ?>
+                <div class="col-lg-3 col-md-6">
+                    <div class="teacher-item">
+                        <div class="teacher-thumb coach-img-wrapper">
+                            <img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
+                            <div class="teacher-social">
+                                <a href="#">
+                                    <i aria-hidden="true" class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#">
+                                    <i aria-hidden="true" class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i aria-hidden="true" class="fab fa-pinterest-p"></i>
+                                </a>
+                                <a href="#">
+                                    <i aria-hidden="true" class="fab fa-vimeo-v"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="teacher-meta">
+                            <h5 style="font-weight: 700;">
+                            {{ $coach_list->name }}
+                            </h5>
+                            <p>Stylist &amp; Author
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
 
         <?php } ?>
         <!--/.row-->
@@ -852,6 +872,8 @@ foreach ($coach_course as $key => $value) {
 
     <!--/.container-->
 </div>
+
+@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 <!-- /.main-container -->
 @endsection
 
@@ -867,7 +889,146 @@ foreach ($coach_course as $key => $value) {
 
 @section('after_scripts')
 
+<style>
 
+.madels {
+        width: 48px;
+        height: 50px;
+        border-radius: 50%;
+        text-align: center;
+        display: inline-block;
+        position: absolute;
+        right: 25px;
+        top: 0;
+        /* bottom: 337px; */
+        margin: auto;
+    }
+
+
+
+
+
+    .teacher-thumb {
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        /* background-image: linear-gradient(to right top, #E92AA4, #d95566, #a33e6d, #673065, #2c234d); */
+    }
+
+
+
+    .teacher-item {
+        position: relative;
+        text-align: center;
+        margin: 0 0 51px;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+
+    .coach-img-wrapper img {
+        filter: grayscale(100%) contrast(1) blur(var(--blur));
+        mix-blend-mode: var(--bg-blend);
+        object-fit: cover;
+        opacity: var(--opacity);
+        position: relative;
+        width: 100%;
+    }
+
+
+    .teacher-thumb img,
+    .teachers-slider.owl-carousel .teacher-thumb img {
+        width: 100%;
+        height: auto;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+
+
+    .teacher-item:hover .teacher-social {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+    }
+
+
+    .teacher-social {
+        position: absolute;
+        left: 0;
+        bottom: 20px;
+        z-index: 4;
+        right: 0;
+        margin: 0 auto;
+        text-align: center;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        transform: scale(0);
+        -webkit-transform: scale(0);
+        -moz-transform: scale(0);
+    }
+
+    .teacher-social a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 14px;
+        line-height: 43px;
+        margin: 0 5px;
+        color: #fff;
+    }
+
+    img {
+        vertical-align: middle;
+        border-style: none;
+    }
+
+    .teacher-item:hover .teacher-thumb {
+        -webkit-box-shadow: 0px 20px 30px 0px rgb(56 15 2 / 16%);
+        -moz-box-shadow: 0px 20px 30px 0px rgba(56, 15, 2, 0.16);
+        box-shadow: 0px 20px 30px 0px rgb(56 15 2 / 16%);
+    }
+
+    .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .coach-img-wrapper img {
+        filter: grayscale(100%) contrast(1) blur(var(--blur));
+        mix-blend-mode: var(--bg-blend);
+        object-fit: cover;
+        opacity: var(--opacity);
+        position: relative;
+        width: 100%;
+    }
+
+    .coach-img-wrapper::before {
+        background-color: var(--foreground);
+        bottom: 0;
+        content: '';
+        height: 100%;
+        left: 0;
+        mix-blend-mode: var(--fg-blend);
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+</style>
 <style>
     /*!
  * FullCalendar v1.6.4 Stylesheet
@@ -7853,4 +8014,24 @@ border-top-right-radius: 3px;
     })(jQuery);
 </script>
 
+<style>
+.teacher-meta {
+    position: relative;
+    padding: 25px 15px 0;
+}
+
+
+.teacher-meta h5 {
+    font-size: 16px;
+    line-height: 24px;
+    color: #2c234d;
+    margin: 0 0 7px;
+    font-weight: 700!important;
+    
+}
+
+
+</style>
+
 @endsection
+

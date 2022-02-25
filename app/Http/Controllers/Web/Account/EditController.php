@@ -172,7 +172,7 @@ class EditController extends AccountBaseController
 			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
 			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
 			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
-			->where('users.user_type_id',2)->orderBy('users.id','asc')->limit(3)->get();
+			->where('users.user_type_id',2)->orderBy('users.id','asc')->limit(6)->get();
 
 			$data['suggested_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
 			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
@@ -191,7 +191,7 @@ class EditController extends AccountBaseController
 			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
 			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
 			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
-			->where('users.user_type_id',3)->orderBy('users.id','asc')->limit(3)->get();
+			->where('users.user_type_id',3)->orderBy('users.id','asc')->limit(6)->get();
 
 
 
@@ -335,11 +335,18 @@ class EditController extends AccountBaseController
 			->where('user_subscription_payment.remaining_hours',0)
 			->get();
 		// print_r($data['user_subscription']);die;
-			$data['user_subscription'] = DB::table('user_subscription_payment')
-					->where('user_id', $user->id)
-					->first();
+			// $data['user_subscription'] = DB::table('user_subscription_payment')
+			// 		->where('user_id', $user->id)
+			// 		->first();
 
-		// print_r($data['user_subscription']);die;
+
+			$data['user_subscription'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*','packages.name','users.name as username')
+			->leftjoin('packages','packages.id'  ,'=','user_subscription_payment.subscription_id')
+			->leftjoin('users' ,'users.id' ,'=', 'user_subscription_payment.user_id')
+			->where('user_subscription_payment.user_id', $user->id)
+			->first();
+
+		//  print_r($data['user_subscription']);die;
 		
 
 			//print_r($data['user_subscription']);die;

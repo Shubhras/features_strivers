@@ -13,6 +13,11 @@
 --}}
 @extends('layouts.master')
 
+
+<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+       
+    </section>
+	
 @section('content')
 	@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
 	<div class="main-container">

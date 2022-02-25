@@ -71,7 +71,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                                 <div>
                                     <ul id="subcategory_data_cat_id_<?php echo $cat->id?>">
                                         <?php 
-                                        $sub_categories = DB::table('categories')->select('categories.name','categories.id')->orderBy('categories.name','asc')->where('categories.parent_id',$cat->id)->get();
+                                        $sub_categories = Illuminate\Support\Facades\DB::table('categories')->select('categories.name','categories.id')->orderBy('categories.name','asc')->where('categories.parent_id',$cat->id)->get();
                                         ?>
                                         @foreach($sub_categories as $key => $sub_cat)
                                             <?php if($request_cat_id == $sub_cat->id){?>
@@ -114,7 +114,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                                 <?php }else {?>
                                     <ul id="subcategory_data_cat_id_<?php echo $cat->id?>" style="display:none;">
                                         <?php 
-                                        $sub_categories = DB::table('categories')->select('categories.name','categories.id')->orderBy('categories.name','asc')->where('categories.parent_id',$cat->id)->get();
+                                        $sub_categories = Illuminate\Support\Facades\DB::table('categories')->select('categories.name','categories.id')->orderBy('categories.name','asc')->where('categories.parent_id',$cat->id)->get();
                                         ?>
                                         @foreach($sub_categories as $key => $sub_cat)
                                             <li id="sub_id_<?= $sub_cat->id?>" value="<?= $sub_cat->id?>" class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list">

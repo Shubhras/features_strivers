@@ -1,6 +1,6 @@
 <div class="modal fade" id="quickLogin" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog  modal-sm">
-		<div class="modal-content">
+		<div class="modal-content login-model-page">
 			
 			<div class="modal-header">
 				<h4 class="modal-title"><i class="fas fa-sign-in-alt"></i> {{ t('log_in') }} </h4>

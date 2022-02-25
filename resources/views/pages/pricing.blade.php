@@ -13,25 +13,25 @@
     <meta name="viewport" content="width=device-width">
 
     <!-- Start Include All CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="assets/css/elegant-icons.css" />
-    <link rel="stylesheet" href="assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/lightcase.css">
-    <link rel="stylesheet" href="assets/css/preset.css" />
-    <link rel="stylesheet" href="assets/css/theme.css" />
-    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/elegant-icons.css" />
+    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="../assets/css/animate.css" />
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/lightcase.css">
+    <link rel="stylesheet" href="../assets/css/preset.css" />
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
     <!-- End Include All CSS -->
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!-- Favicon Icon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
     <!-- Favicon Icon -->
 </head>
 
@@ -71,9 +71,9 @@
 
     <!-- Banner Start -->
 
-    <section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
+	<section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
        
-    </section>
+	   </section>
 
   
 
@@ -95,8 +95,9 @@
                         </div>
                     </div>
                 </div>
-</section>    
-                
+<!-- </section>     -->
+           
+<div class="main-section-new">
 				
 <div class="container">
 
@@ -105,8 +106,9 @@
 		<section class="elementor-section elementor-inner-section elementor-element elementor-element-5f6ccbf elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="5f6ccbf" data-element_type="section">
 			<div class="elementor-container elementor-column-gap-default">
 				<div class="elementor-row">
+					<br>
 
-		<h2 style="text-align: center; font-size: 25px; padding: -32px;"> Choose a plan for after your 7-day Free trial</h2><br><br>
+		<h2 class="h22"> Choose a plan for after your 7-day Free trial</h2><br><br>
 
 							
 <div class="row">
@@ -348,8 +350,8 @@
 
 </section>
 </div>
-
-                    
+</div>
+</section>               
                     <!-- <div class="row">
                         <div class="col-md-12">
                             <div class="testimonial-slider owl-carousel owl-loaded owl-drag">
@@ -399,21 +401,9 @@
                 <!-- </div>
             </section>
    </div> -->
-    <!-- Banner End -->
 
-    <!-- Contact Start -->
-   
-    <!-- Contact End -->
+	@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 
-    <!-- Gamps Start -->
-   
-    <!-- Gamps Start -->
-
-    <!-- Footer Section Start -->
-   
-    <!-- Footer Section End -->
-
-    <!-- Back To Top -->
     <a href="#" id="back-to-top">
         <i class="fal fa-angle-double-up"></i>
     </a>
@@ -436,7 +426,14 @@
 
     <script src="assets/js/theme.js"></script>
     <!-- End Include All JS -->
-
+<style>
+	.h22{
+		color: white!important;
+		text-align: center; 
+		font-size: 25px; 
+		/* padding: -32px!important; */
+	}
+</style>
 </body>
 
 </html>

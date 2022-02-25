@@ -9,6 +9,7 @@
  License URI:
  */
 
+
 /*=======================================================================
 [Table of contents]
 =========================================================================
@@ -20,6 +21,7 @@
 5. Responsive For Mobile Device
 */
 
+
 /*------------------------------------------------------------------------------------
 / 1. Responsive For Extra large Device 2
 --------------------------------------------------------------------------------------*/
@@ -30,7 +32,7 @@
         padding-top: 130px;
     }
     .banner-thumb img {
-        max-width: 100%;
+        max-width: 115%;
         height: auto;
     }
     .hero-slider.owl-carousel .owl-nav button {
@@ -60,7 +62,36 @@
     .hero-banner-2 .banner-thumb {
         margin-left: -90px;
     }
-
+    .join-btn01 {
+        /* width: 70px;
+        margin-left: 6px;
+        position: relative;
+        height: 44px;
+        border-radius: 3px;
+        text-align: center;
+        font-size: 13px;
+        line-height: 40px;
+        font-weight: 600;
+        padding: 0 0px;
+        color: #fff;
+        display: inline-block;
+        background: transparent;
+        border: 2px solid rgb(255 255 255 / 92%); */
+        width: 76px;
+        margin-left: 13px;
+        position: relative;
+        height: 44px;
+        border-radius: 3px;
+        text-align: center;
+        font-size: 13px;
+        line-height: 42px;
+        font-weight: 700;
+        padding: 0px 0px;
+        color: #fff;
+        display: inline-block;
+        background: transparent;
+        border: 3px solid rgb(255 255 255 / 92%);
+    }
     .join-btn {
         width: 128px;
         margin-left: 20px;
@@ -75,32 +106,42 @@
         color: #fff;
         display: inline-block;
         background: transparent;
-        border: 2px solid rgba(255, 255, 255, .2);
+        border: 2px solid rgb(255 255 255 / 92%);
     }
-
+    .join-btn:hover {
+        background: #fff;
+        border-color: #fff;
+        -webkit-box-shadow: 0px 20px 30px 0px rgba(26, 8, 119, 0.24);
+        -moz-box-shadow: 0px 20px 30px 0px rgba(26, 8, 119, 0.24);
+        box-shadow: 0px 20px 30px 0px rgba(26, 8, 119, 0.24);
+    }
+    .join-btn01:hover {
+        background: #fff;
+        border-color: #fff;
+        -webkit-box-shadow: 0px 20px 30px 0px rgba(138, 40, 40, 0.24);
+        -moz-box-shadow: 0px 20px 30px 0px rgba(122, 41, 48, 0.24);
+        box-shadow: 0px 20px 30px 0px rgba(168, 57, 57, 0.24);
+        color: crimson;
+    }
     .navbar.navbar-expand-lg .navbar-toggler {
         right: 0%;
         position: absolute;
     }
-
     .navbar.navbar-expand-lg .navbar-collapse {
-             /* position: absolute; */
-            /* left: 549px; */
-            /* top: 71%; */
-            width: 21%;
-            /* background: #fff; */
-            border-radius: 0;
-            z-index: 99;
-            /* -webkit-box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%); */
-            /* -moz-box-shadow: 0px 6px 10px 0px rgba(11, 02, 55, 0.06); */
-            /* box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%); */
-        }
-        .li-media{
-            display: block;
-        }
-        .header-logo12{
-            margin-left: 140px;
-        }
+        /* position: absolute; */
+        /* left: 549px; */
+        /* top: 71%; */
+        width: 21%;
+        /* background: #fff; */
+        border-radius: 0;
+        z-index: 99;
+        /* -webkit-box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%); */
+        /* -moz-box-shadow: 0px 6px 10px 0px rgba(11, 02, 55, 0.06); */
+        /* box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%); */
+    }
+    .li-media {
+        display: block;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -113,11 +154,31 @@
     }
 }
 
+
 /*------------------------------------------------------------------------------------
 / 2. Desktop Device
 /--------------------------------------------------------------------------------------*/
 
 @media (min-width: 992px) and (max-width: 1199px) {
+    .join-btn01 {
+        margin-left: 10px;
+        padding: 0 25px;
+    }
+    .navbar-expand-lg .navbar-nav li {
+        margin: 0 17px 0 0;
+    }
+    .course-item-01 {
+        position: relative;
+        width: 100%;
+        background: #f7f6fa;
+        border-radius: 20px;
+        padding: 10px 10px 4px!important;
+        margin-right: 10px;
+        margin-bottom: 20px;
+        -webkit-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
     .navbar-expand-lg .navbar-nav li:nth-last-child(1)>.sub-menu li .sub-menu,
     .navbar-expand-lg .navbar-nav li:nth-last-child(2)>.sub-menu li .sub-menu,
     .navbar-expand-lg .navbar-nav li:nth-last-child(3)>.sub-menu li .sub-menu {
@@ -301,18 +362,12 @@
     .appstore-section .bisylms-btn-3 {
         padding: 13px 24px;
     }
-    .navbar-expand-lg .navbar-nav li {
-        margin: 0 20px 0 0;
-    }
     .shaf-filter li {
         font-size: 14px;
         margin-left: 15px;
     }
-
-    .header-logo12{
-        margin-left: 51px;
-    }
 }
+
 
 /*------------------------------------------------------------------------------------
 / 3. Responsive For Tab Device
@@ -435,6 +490,7 @@
         background-position: 56% 100%;
     }
 }
+
 
 /*------------------------------------------------------------------------------------
 / 4. Responsive For Mobile & Tab
@@ -707,6 +763,7 @@
     }
 }
 
+
 /*------------------------------------------------------------------------------------
 / 5. Responsive For Mobile Device
 --------------------------------------------------------------------------------------*/
@@ -927,6 +984,9 @@
     .join-btn {
         display: none;
     }
+    .join-btn01 {
+        display: none;
+    }
     .course-wrapper {
         display: block;
     }
@@ -1088,18 +1148,28 @@
     }
 }
 
-@media (min-width: 1024px) and (max-width: 1200px){
-.hero-banner-1 {
-    background-position: bottom right;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-    padding: 276px 0 190px;
+@media (min-width: 1024px) and (max-width: 1200px) {
+    .course-item-01 {
+        position: relative;
+        width: 100%;
+        background: #f7f6fa;
+        border-radius: 20px;
+        padding: 10px 10px 4px!important;
+        margin-right: 10px;
+        margin-bottom: 20px;
+    }
+    .hero-banner-1 {
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 276px 0 190px;
+    }
+    .hero-banner-1 {
+        padding-top: 165px;
+    }
 }
-.hero-banner-1 {
-    padding-top: 165px;
-}
-}
+
 
 /*------------------------------------------------------------------------------------
 / 6. Responsive For Mobile Device
@@ -1111,7 +1181,7 @@
     }
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
     .join-btn {
         margin-left: 20px;
         position: relative;
@@ -1125,245 +1195,263 @@
         color: rgb(2, 0, 0);
         display: inline-block;
         background: transparent;
-        border: 2px solid rgba(255, 255, 255, .2);
+        border: 2px solid rgb(255 255 255 / 92%);
     }
-
-    
+    .join-btn01 {
+        margin-left: 20px;
+        position: relative;
+        height: 44px;
+        border-radius: 3px;
+        text-align: center;
+        font-size: 13px;
+        line-height: 40px;
+        font-weight: 600;
+        padding: 0 30px;
+        color: rgb(2, 0, 0);
+        display: inline-block;
+        background: transparent;
+        border: 2px solid rgb(255 255 255 / 92%);
+    }
     .navbar.navbar-expand-lg .navbar-toggler {
         right: 0%;
         position: absolute;
     }
-
     .navbar.navbar-expand-lg .navbar-collapse {
-             position: absolute;
-            left: 549px;
-            top: 71%;
-            width: 21%;
-            background: #fff;
-            border-radius: 0;
-            z-index: 99;
-            -webkit-box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
-            -moz-box-shadow: 0px 6px 10px 0px rgba(11, 02, 55, 0.06);
-            box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
-        }
-        .li-media{
-            display: block;
-        }
-
-        /* #web {display: none;}
-        #mobile {display: block;} */
-    
+        position: absolute;
+        left: 549px;
+        top: 71%;
+        width: 21%;
+        background: #fff;
+        border-radius: 0;
+        z-index: 99;
+        -webkit-box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
+        -moz-box-shadow: 0px 6px 10px 0px rgba(11, 02, 55, 0.06);
+        box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
     }
-
-    
-    .li-media{
+    .li-media {
         display: block;
     }
+    /* #web {display: none;}
+        #mobile {display: block;} */
+}
 
+.li-media {
+    display: block;
+}
 
-    @media (min-width: 320px) and (max-width: 425px){
-.navbar.navbar-expand-lg .navbar-collapse {
-    position: absolute;
-    left: -12px;
-    top: 71%;
-    width: 104%;
-    background: #fff;
-    border-radius: 0;
-    z-index: 99;
-    -webkit-box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
-    -moz-box-shadow: 0px 6px 10px 0px rgba(11, 02, 55, 0.06);
-    box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
+@media (min-width: 320px) and (max-width: 425px) {
+    .navbar.navbar-expand-lg .navbar-collapse {
+        position: absolute;
+        left: -12px;
+        top: 71%;
+        width: 104%;
+        background: #fff;
+        border-radius: 0;
+        z-index: 99;
+        -webkit-box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
+        -moz-box-shadow: 0px 6px 10px 0px rgba(11, 02, 55, 0.06);
+        box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
+    }
+}
 
+@media screen and (min-width: 320px) {
+    .hero-banner-1 {
+        background-position: 48% 100%;
     }
-    
+    .search_box_filter {
+        width: 320px;
     }
-    @media screen and (min-width: 320px) {
-        .hero-banner-1 {
-            background-position: 48% 100%;
-        }
-        .search_box_filter{
-            width: 320px;
-        }
-    }
+}
 
-    @media screen and (min-width: 375px) {
-        .hero-banner-1 {
-            background-position: 50% 100%;
-        }
-        .search_box_filter{
-            width: 375px;
-        }
+@media screen and (min-width: 375px) {
+    .hero-banner-1 {
+        background-position: 50% 100%;
     }
+    .search_box_filter {
+        width: 375px;
+    }
+}
 
-    @media screen and (min-width: 425px) {
-        .hero-banner-1 {
-            background-position: 52% 100%;
-        }
-        .search_box_filter{
-            width: 425px;
-        }
+@media screen and (min-width: 425px) {
+    .hero-banner-1 {
+        background-position: 52% 100%;
     }
-    @media (min-width: 320px) and (max-width: 767px){
+    .search_box_filter {
+        width: 425px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .knowbtn {
+        margin-bottom: 8px!important;
+    }
     button.bisylms-btn {
         margin-bottom: 50px;
     }
-    
 }
 
 @media screen and (min-width: 768px) {
-   
-    .search_box_filter{
+    .search_box_filter {
         width: 744px;
     }
-.col-lg-123{
-    position: relative;
-    width: 37%;
-    padding-right: 15px;
-    padding-left: 15px;
-}
-.letes_news{
-    width: 326px;
-}
-
-.letes_news_sidebar1{
-    margin-top: -454px;
-    margin-left: 334px;
-}
-.top_coaches_list{
-    margin-top: 119px;
-}
-.letes_news_height{
-    height: 410px;
-}
-
-.search_box_filterss{
-    width: 437px;
-}
-.search-box_filter2{
-    margin-left: -2px
-}
-.text_font_size_index{
-    font-size: 49px!important;
-    line-height: 55px!important;
-}
-.title-box-fix{
-    margin-top: 100px;
-}
-.search-box-fix{
-    width: 249px;
-}
-.search-box-fix1 {
-    width: 406px;
-}
-.search-box-font{
-    font-size: 14px!important;
-}
-.btn_class_coaches{
-    height: 50px;
-    background-color: #43329f!important;
-}
-
-}
-
-@media screen and (min-width: 1024px) {
-   
-    .search_box_filter{
-        width: 474px;
+    .col-lg-123 {
+        position: relative;
+        width: 37%;
+        padding-right: 15px;
+        padding-left: 15px;
     }
-
-    .btn_class{
-        height: 50px;
-        /* margin-left: 350px;
-        margin-top: -70px; */
-        background-color: #5738FB!important;
+    .letes_news {
+        width: 326px;
     }
-    .btn_class_coaches{
-        height: 50px;
-        background-color: #43329f!important;
+    .letes_news_sidebar1 {
+        margin-top: -454px;
+        margin-left: 334px;
     }
-    .search_box_filterss{
+    .top_coaches_list {
+        margin-top: 119px;
+    }
+    .letes_news_height {
+        height: 410px;
+    }
+    .search_box_filterss {
         width: 437px;
     }
-    .search-box_filter2{
+    .search-box_filter2 {
         margin-left: -2px
     }
-    .text_font_size_index{
+    .text_font_size_index {
         font-size: 49px!important;
         line-height: 55px!important;
     }
-    .title-box-fix{
+    .title-box-fix {
         margin-top: 100px;
     }
-    .search-box-fix{
+    .search-box-fix {
+        width: 249px;
+    }
+    .search-box-fix1 {
+        width: 406px;
+    }
+    .search-box-font {
+        font-size: 14px!important;
+    }
+    .btn_class_coaches {
+        height: 50px;
+        background-color: #012245!important;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .search_box_filter {
+        width: 474px;
+    }
+    .btn_class {
+        height: 50px;
+        /* margin-left: 350px;
+        margin-top: -70px; */
+        background-color: #012245!important;
+    }
+    .btn_class_coaches {
+        height: 50px;
+        background-color: #43329f!important;
+    }
+    .search_box_filterss {
+        width: 437px;
+    }
+    .search-box_filter2 {
+        margin-left: -2px
+    }
+    .text_font_size_index {
+        font-size: 49px!important;
+        line-height: 55px!important;
+    }
+    .title-box-fix {
+        margin-top: 100px;
+    }
+    .search-box-fix {
         width: 336px;
     }
     .search-box-fix1 {
         width: 550px;
     }
-    .search-box-font{
+    .search-box-font {
         font-size: 14px!important;
     }
 }
 
-
 @media screen and (min-width: 1224px) {
-   
-    .search_box_filter{
+    .search_box_filter {
         width: 474px;
     }
-
-    .btn_class{
+    .btn_class {
         height: 50px;
-        background-color: #5738FB!important;
+        background-color: #012245!important;
     }
-    .btn_class_coaches{
+    .btn_class_coaches {
         height: 50px;
         background-color: #43329f!important;
     }
-    .search_box_filterss{
+    .search_box_filterss {
         width: 437px;
     }
-    .search-box_filter2{
+    .search-box_filter2 {
         margin-left: -2px
     }
-    .text_font_size_index{
+    .text_font_size_index {
         font-size: 49px!important;
         line-height: 55px!important;
     }
-    .title-box-fix{
-        margin-top: 100px;
+    .title-box-fix {
+        margin-top: 156px;
     }
-    .search-box-fix{
-        width: 413px;
+    .search-box-fix {
+        width: 404px;
     }
     .search-box-fix1 {
         width: 631px;
     }
-    .search-box-font{
-        font-size: 18px!important;
+    .search-box-font {
+        font-size: 16px!important;
     }
 }
 
-
-.col-lg-123{
+.col-lg-123 {
     position: relative;
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
 }
-.letes_news{
+
+.letes_news {
     /* width: 326px; */
 }
 
-.letes_news_sidebar1{
+.letes_news_sidebar1 {
     /* margin-top: -454px; */
     /* margin-left: 334px; */
 }
-.top_coaches_list{
+
+.top_coaches_list {
     /* margin-top: 119px; */
 }
-.letes_news_height{
+
+.letes_news_height {
     /* height: 410px; */
 }
 
-   
+.chat-heading-data {
+    margin-top: -35px;
+}
+
+.edit-file-chat {
+    height: 90%;
+}
+
+.side-menu-dropdown {
+    margin-left: -118px;
+}
+
+.side-menu-li-user {
+    padding-left: 20px!important;
+    color: black!important;
+}

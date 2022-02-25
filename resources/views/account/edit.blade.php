@@ -11,72 +11,79 @@
  * of the above copyright notice. If you Purchased from CodeCanyon,
  * Please read the full License from here - http://codecanyon.net/licenses/standard
 --}}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Start Include All CSS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/elegant-icons.css" />
+    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="../assets/css/animate.css" />
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/lightcase.css">
+    <link rel="stylesheet" href="../assets/css/preset.css" />
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+
 @extends('layouts.master')
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+
+<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
+
+<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+       
+    </section>
 
 @section('content')
 	@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
-	<div class="main-container">
 
-	<br>
-
+	
+<section style="background-color: white;">
+	 <div class="main-container" >
 		<div class="container">
-			
+			<?php if($user->user_type_id == 2){ ?>
+
 		<div class="row ">
-            <div class="col-md-3 page-sidebar inner-box default-inner-box coach_profile_img">
+            <div class="col-md-3 page-sidebar">
+			  <div class="inner-box default-inner-box">
                 <h3 class="no-padding text-center-480 useradmin">
                     <a href="">
                         <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp; 
                         {{ $user->name }}
                     </a>
                 </h3>
+			  </div>
             </div>
 
-            <div class="col-md-9 page-sidebar">
-
-            </div>
-        </div>
+            <div class="col-md-9 page-content ">
 
 
-				<?php if($user->user_type_id == 2){
-
-				?>
-				<div class="row">
-
-<div class="col-md-3 page-sidebar sidebar_coach">
-					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
-				</div>
-				<div class="col-md-9 page-content coach_dashboard">
-
-					@include('flash::message')
-
-					@if (isset($errors) && $errors->any())
-						<div class="alert alert-danger alert-dismissible">
-							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
-							<h5><strong>{{ t('oops_an_error_has_occurred') }}</strong></h5>
-							<ul class="list list-check">
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
-					
-					<div id="avatarUploadError" class="center-block" style="width:100%; display:none"></div>
-					<div id="avatarUploadSuccess" class="alert alert-success fade show" style="display:none;"></div>
-					
-					<div class="inner-box default-inner-box">
-
-                    <div class="row">
-                        <div class="col-md-3 col-sm-4 col-12">
+					<div class="inner-box default-inner-box edit-file-chat">
+					<div class="row">
+                        <div class="col-md-4 col-sm-4 col-12">
                             <h3 class="no-padding text-center-480 useradmin">
-                                <!-- <a href=""> -->
-                                <!-- <img id="userImg" class="userImg" src="{{ $user->photo_url }}" alt="user">&nbsp; -->
-                                <!-- {{ $user->name }} -->
-                                <!-- </a> -->
-                                <b> Coach Dashboard </b>
+                               
+                                <b> Coach Update Profile </b>
                             </h3>
                         </div>
-                        <div class="col-md-9 col-sm-8 col-12">
+                        <div class="col-md-8 col-sm-8 col-12">
                             <div class="header-data text-center-xs">
                                 {{-- Threads Stats --}}
                                 <div class="hdata">
@@ -88,7 +95,7 @@
                                         <p>
                                             <a href="{{ url('account/messages') }}">
                                                 {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-                                                <!-- <em>{{ trans_choice('global.count_mails', getPlural($countThreads), [], config('app.locale')) }}</em> -->
+                                               
                                                 <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
                                             </a>
                                         </p>
@@ -104,11 +111,11 @@
                                     <div class="mcol-right">
                                         {{-- Number of visitors --}}
                                         <p>
-                                            <a href="{{ url('chat') }}">
+                                            <a href="{{ url('account/chat') }}">
                                                 <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
                                                 {{ \App\Helpers\Number::short($totalPostsVisits) }}
-                                                <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
-												<em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+                                    
+                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
                                             </a>
                                         </p>
                                     </div>
@@ -136,7 +143,42 @@
                             </div>
                         </div>
                     </div>
-                </div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+<div class="row">
+
+         <div class="col-md-3 page-sidebar">
+
+		 
+					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
+		
+		 </div>
+
+		 <div class="col-md-9 page-content">
+
+					@include('flash::message')
+
+					@if (isset($errors) && $errors->any())
+						<div class="alert alert-danger alert-dismissible">
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
+							<h5><strong>{{ t('oops_an_error_has_occurred') }}</strong></h5>
+							<ul class="list list-check">
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
+					
+					<div id="avatarUploadError" class="center-block" style="width:100%; display:none"></div>
+					<div id="avatarUploadSuccess" class="alert alert-success fade show" style="display:none;"></div>
+					
+					
 
 					<div class="inner-box default-inner-box">
 						<div class="welcome-msg">
@@ -146,7 +188,7 @@
                             </span>
 						</div>
 						
-						<div id="accordion" class="panel-group">
+					    <div id="accordion" class="panel-group">
 							{{-- PHOTO --}}
 							<div class="card card-default">
 								<div class="card-header">
@@ -596,43 +638,33 @@
 					</div>
 				</div>
 				<!--/.page-content-->
-				</div>
+			</div>
 
+		</div>
 				<?php } else {?>
 
-					<div class="row">
 
-				<div class="col-md-3 page-sidebar sidebar_coach">
-					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
+			<div class="row">
+
+				<div class="col-md-3 page-sidebar">
+				<div class="inner-box default-inner-box">
+                <h3 class="no-padding text-center-480 useradmin">
+                    <a href="">
+                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp; 
+                        {{ $user->name }}
+                    </a>
+                </h3>
 				</div>
+            </div>
 
-					<div class="col-md-9 page-content coach_dashboard">
+		<div class="col-md-9 page-content">
 
-					@include('flash::message')
 
-					@if (isset($errors) && $errors->any())
-						<div class="alert alert-danger alert-dismissible">
-							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
-							<h5><strong>{{ t('oops_an_error_has_occurred') }}</strong></h5>
-							<ul class="list list-check">
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
-					
-					<div id="avatarUploadError" class="center-block" style="width:100%; display:none"></div>
-					<div id="avatarUploadSuccess" class="alert alert-success fade show" style="display:none;"></div>
-					
-					<div class="inner-box default-inner-box">
+					<div class="inner-box default-inner-box edit-file-chat">
 					<div class="row">
                         <div class="col-md-4 col-sm-4 col-12">
                             <h3 class="no-padding text-center-480 useradmin">
-                                <!-- <a href=""> -->
-                                <!-- <img id="userImg" class="userImg" src="{{ $user->photo_url }}" alt="user">&nbsp; -->
-                                <!-- {{ $user->name }} -->
-                                <!-- </a> -->
+                            
                                 <b> Striver Update Profile </b>
                             </h3>
                         </div>
@@ -648,7 +680,7 @@
                                         <p>
                                             <a href="{{ url('account/messages') }}">
                                                 {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-                                                <!-- <em>{{ trans_choice('global.count_mails', getPlural($countThreads), [], config('app.locale')) }}</em> -->
+                                               
                                                 <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
                                             </a>
                                         </p>
@@ -664,10 +696,10 @@
                                     <div class="mcol-right">
                                         {{-- Number of visitors --}}
                                         <p>
-                                            <a href="{{ url('chat') }}">
+                                            <a href="{{ url('account/chat') }}">
                                                 <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
                                                 {{ \App\Helpers\Number::short($totalPostsVisits) }}
-                                                <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
+                                               
                                                 <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
                                             </a>
                                         </p>
@@ -696,7 +728,42 @@
                             </div>
                         </div>
                     </div>
-					</div>
+				</div>
+
+			</div>
+	</div>
+	
+	
+
+
+				<div class="row">
+
+				<div class="col-md-3 page-sidebar">
+				
+					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
+				</div>
+				
+
+					<div class="col-md-9 page-content">
+
+					@include('flash::message')
+
+					@if (isset($errors) && $errors->any())
+						<div class="alert alert-danger alert-dismissible">
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
+							<h5><strong>{{ t('oops_an_error_has_occurred') }}</strong></h5>
+							<ul class="list list-check">
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
+					
+					<div id="avatarUploadError" class="center-block" style="width:100%; display:none"></div>
+					<div id="avatarUploadSuccess" class="alert alert-success fade show" style="display:none;"></div>
+					
+					
 
 					<div class="inner-box default-inner-box">
 						<div class="welcome-msg">
@@ -1363,10 +1430,19 @@
 				
 			<!--/.row-->
 		</div>
+	
 		<!--/.container-->
 	</div>
+
+	</section>
+
+	@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
+
+
 	<!-- /.main-container -->
-@endsection
+
+
+	@endsection
 
 @section('after_styles')
 	<link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput.min.css') }}" rel="stylesheet">

@@ -8,25 +8,25 @@
     <meta name="viewport" content="width=device-width">
 
     <!-- Start Include All CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="assets/css/elegant-icons.css" />
-    <link rel="stylesheet" href="assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/lightcase.css">
-    <link rel="stylesheet" href="assets/css/preset.css" />
-    <link rel="stylesheet" href="assets/css/theme.css" />
-    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/elegant-icons.css" />
+    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="../assets/css/animate.css" />
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/lightcase.css">
+    <link rel="stylesheet" href="../assets/css/preset.css" />
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
     <!-- End Include All CSS -->
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!-- Favicon Icon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
     <!-- Favicon Icon -->
 </head>
 
@@ -70,12 +70,8 @@
        
     </section> -->
 
-<br>
-<br>
-
     
-    
-    <section class="cta-section" style="background-image: url(assets/images/home/cta-bg.jpg);">
+    <section class="cta-section" style="background-image: url(../assets/images/home/cta-bg.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -93,7 +89,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1 text-center">
-                    <div class="video-banner" style="background-image: url(assets/images/home/video-bg.jpg);">
+                    <div class="video-banner" style="background-image: url(../assets/images/home/video-bg.jpg);">
                         <a class="popup-video" href="#" data-rel="lightcase"><i class="fas fa-play"></i></a>
                     </div>
                 </div>
@@ -120,14 +116,14 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="funfact-item-3 ml-15">
-                        <img src="assets/images/home3/f4.png" alt="">
+                        <img src="../assets/images/home3/f4.png" alt="">
                         <h2><span data-counter="4" class="timer">4</span>.6</h2>
                         <p>Million Graduates</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="funfact-item-3 ml-40">
-                        <img src="assets/images/home3/f5.png" alt="">
+                        <img src="../assets/images/home3/f5.png" alt="">
                         <h2><span data-counter="1400" class="timer">1<span>,</span>400</span>+</h2>
                         <p>Online Courses</p>
                     </div>
@@ -143,29 +139,18 @@
         </div>
        
     </section>
-    <section class="funfact-section">
+    <section class="funfact-section-blue">
         <div class="container">
-            <p class="global_page"> “ Strivre is great for teams because it’s easy to get set up and the oferings touch on a<br>
+            <p class="global_page_white"> “ Strivre is great for teams because it’s easy to get set up and the oferings touch on a<br>
 vast array of soft skill focus areas, which not only build role-related talents but also<br> 
 enable team members to grow their whole selves beyond work.”</p>
 
             </div>
             </section>
    </div>
-    <!-- Banner End -->
 
-    <!-- Contact Start -->
-   
-    <!-- Contact End -->
 
-    <!-- Gamps Start -->
-   
-    <!-- Gamps Start -->
-
-    <!-- Footer Section Start -->
-   
-    <!-- Footer Section End -->
-
+   @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
     <!-- Back To Top -->
     <a href="#" id="back-to-top">
         <i class="fal fa-angle-double-up"></i>
@@ -173,21 +158,21 @@ enable team members to grow their whole selves beyond work.”</p>
     <!-- Back To Top -->
 
     <!-- Start Include All JS -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.appear.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/jquery.nice-select.min.js"></script>
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script src="assets/js/TweenMax.min.js"></script>
-    <script src="assets/js/lightcase.js"></script>
-    <script src="assets/js/jquery.plugin.min.js"></script>
-    <script src="assets/js/jquery.countdown.min.js"></script>
-    <script src="assets/js/jquery.easing.1.3.js"></script>
-    <script src="assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery.appear.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/slick.js"></script>
+    <script src="../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../assets/js/swiper-bundle.min.js"></script>
+    <script src="../assets/js/TweenMax.min.js"></script>
+    <script src="../assets/js/lightcase.js"></script>
+    <script src="../assets/js/jquery.plugin.min.js"></script>
+    <script src="../assets/js/jquery.countdown.min.js"></script>
+    <script src="../assets/js/jquery.easing.1.3.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
 
-    <script src="assets/js/theme.js"></script>
+    <script src="../assets/js/theme.js"></script>
     <!-- End Include All JS -->
 
 </body>

@@ -1,192 +1,115 @@
-@extends('layouts.master')
-<!DOCTYPE html>
-<html lang="en">
+{{--
+ * LaraClassifier - Classified Ads Web Application
+ * Copyright (c) BeDigit. All Rights Reserved
+ *
+ * Website: https://laraclassifier.com
+ *
+ * LICENSE
+ * -------
+ * This software is furnished under a license and may be used and copied
+ * only in accordance with the terms of such license and with the inclusion
+ * of the above copyright notice. If you Purchased from CodeCanyon,
+ * Please read the full License from here - http://codecanyon.net/licenses/standard
+--}}
 
-<head>
-    <title>Strivre</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Start Include All CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="assets/css/elegant-icons.css" />
-    <link rel="stylesheet" href="assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/lightcase.css">
-    <link rel="stylesheet" href="assets/css/preset.css" />
-    <link rel="stylesheet" href="assets/css/theme.css" />
-    <link rel="stylesheet" href="assets/css/responsive.css" />
-    <!-- End Include All CSS -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/elegant-icons.css" />
+    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="../assets/css/animate.css" />
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/lightcase.css">
+    <link rel="stylesheet" href="../assets/css/preset.css" />
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
 
-    <!-- Favicon Icon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <!-- Favicon Icon -->
-</head>
+@extends('layouts.master')
 
-<body>
 
-    <!-- Preloader Icon -->
-    <!-- <div class="preloader">
-        <div class="loaderInner">
-            <div id="top" class="mask">
-                <div class="plane"></div>
-            </div>
-            <div id="middle" class="mask">
-                <div class="plane"></div>
-            </div>
-            <div id="bottom" class="mask">
-                <div class="plane"></div>
-            </div>
-            <p>LOADING...</p>
-        </div>
-    </div> -->
-    <!-- Preloader Icon -->
 
-    <!-- Header Start -->
-   
-    <!-- Header End -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-    <!-- Banner Start -->
-    <section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="banner-title">My Strivre</h2>
-                    
-                </div>
-            </div>
-        </div> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+
+<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
+
+<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+       
     </section>
-    <!-- Banner End -->
 
-    <!-- Course Section Start -->
-<section class="coursepage-section-2">
-	<?php if($user->user_type_id == 2){
+@section('content')
+	@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
 
-		?>
-	<div class="container">
-		
-            <h2>
-           
-            <h2 class="sec-title">My Strivre</h2>
-        </h2>
-            <div class="row">
-               
-                <div class="col-lg-3">
+    <section style="background-color: white;">
+	 <div class="main-container" >
+		<div class="container">
 
-                    <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
-                        <a class="d-xl-none d-lg-none d-md-none text-inherit  font-weight-bold" href="#">Menu</a>
-                        <button class="navbar-toggler d-md-none icon-shape icon-sm rounded bg-primary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="fas fa-bars"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                            <div class="navbar-nav flex-column w-100 ">
-                                <div class="border-bottom py-4 p-md-4 d-flex justify-content-between text-reset">
-                                    <div class="d-flex align-items-center">
-                                        <img src="../assets/images/avatar-1.png" alt="" class="rounded-circle avatar-lg">
-                                       
-                                    </div>
-                                </div>
-								@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
-                            </div>
+        
+
+
+        <?php if ($user->user_type_id == 2) {
+
+        ?>
+
+
+
+
+        <div class="row ">
+            <div class="col-md-3 page-sidebar">
+			  <div class="inner-box default-inner-box">
+                <h3 class="no-padding text-center-480 useradmin">
+                    <a href="">
+                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp; 
+                        {{ $user->name }}
+                    </a>
+                </h3>
+			  </div>
+            </div>
+
+            <div class="col-md-9 page-content ">
+
+
+					<div class="inner-box default-inner-box edit-file-chat">
+					<div class="row">
+                        <div class="col-md-4 col-sm-4 col-12">
+                            <h3 class="no-padding text-center-480 useradmin">
+                               
+                                <b> My Strivre </b>
+                            </h3>
                         </div>
-                    </nav>
-
-
-                </div>
-
-
-                <div class="col-lg-9 ">
-                    <div class="row">
-
-                       
-                        <div class="col-lg-4 col-md-6">
-                            <div class="teacher-item">
-                                <div class="teacher-thumb">
-									<?php foreach ($my_striver as $coach_list) { ?>
-									
-                                    <div class="madels">
-									<img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid"  alt="{{ $coach_list->name }}">
+                        <div class="col-md-8 col-sm-8 col-12">
+                            <div class="header-data text-center-xs">
+                                {{-- Threads Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-phone-alt ln-shadow"></i>
                                     </div>
                                     <div class="mcol-right">
-                                        {{-- Number of visitors --}}
+                                        {{-- Number of messages --}}
                                         <p>
-                                            <a href="{{ url('account/chat') }}">
-                                                <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-                                                {{ \App\Helpers\Number::short($totalPostsVisits) }}
-                                                <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
-                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+                                            <a href="{{ url('account/messages') }}">
+                                                {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
+                                               
+                                                <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
                                             </a>
                                         </p>
                                     </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="teacher-meta">
-                                    <h5>
-									{{ $coach_list->name }}
-                                    </h5>
-									<?php } ?>
-                                </div>
-								
-                            </div>
-                        </div>
-                     
-                    
-                        
-                      
-                       
-                       
-                      
-                        
-                    </div>
-                </div>
-
-            </div>
-        </div>
-	</div>
-		<?php } else { ?>
-
-			
-        <div class="container">
-            
-           
-            <h2 class="sec-title">My Coaches</h2>
-        
-            <div class="row">
-               
-                <div class="col-lg-3">
-
-                    <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
-                        <a class="d-xl-none d-lg-none d-md-none text-inherit  font-weight-bold" href="#">Menu</a>
-                        <button class="navbar-toggler d-md-none icon-shape icon-sm rounded bg-primary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="fas fa-bars"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                            <div class="navbar-nav flex-column w-100 ">
-                                <div class="border-bottom py-4 p-md-4 d-flex justify-content-between text-reset">
-                                    <div class="d-flex align-items-center">
-                                        <img src="../assets/images/avatar-1.png" alt="" class="rounded-circle avatar-lg">
-                                        
-                                    </div>
-									
-                                </div>
-								@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
-                            </div>
-                        </div>
-                    </nav>
-
-
-                </div>
-
-
-                <div class="col-lg-9 ">
-                    <div class="row">
 
                                 {{-- Traffic Stats --}}
                                 <div class="hdata">
@@ -199,314 +122,492 @@
                                             <a href="{{ url('account/chat') }}">
                                                 <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
                                                 {{ \App\Helpers\Number::short($totalPostsVisits) }}
-                                                <!-- <em>{{ trans_choice('global.count_visits', getPlural($totalPostsVisits), [], config('app.locale')) }}</em> -->
+                                    
                                                 <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
                                             </a>
                                         </p>
                                     </div>
+                                    <div class="clearfix"></div>
                                 </div>
-							
-                                <div class="teacher-meta">
-                                    <h5>
-									{{ $coach_list->name }}
-                                    </h5>
-                                   
+
+                               
+
+                                {{-- Favorites Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-bell ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of favorites --}}
+                                        <p>
+                                            <a href="{{ url('account/favourite') }}">
+                                                {{ \App\Helpers\Number::short($countFavoritePosts) }}
+                                                <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-								<?php } ?>
                             </div>
                         </div>
-                     
-                      
-                      
-                       
-                      
-                       
                     </div>
-                </div>
-            </div>
+				</div>
 
-        </div>
-    <div class="main-section">
-        <div class="container">
+			</div>
+	    </div>
 
-            <h2 class="sec-title">
-                Suggested Coaches
 
-            </h2>
+
 
             <div class="row">
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="teacher-item">
-					<?php foreach ($suggested_coaches as $coach_list) { ?>
-                        <div class="teacher-thumb">
-						<img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid"  alt="{{ $coach_list->name }}">
-                            <div class="teacher-social">
-                                <a href="#">
-                                    <i aria-hidden="true" class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#">
-                                    <i aria-hidden="true" class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#">
-                                    <i aria-hidden="true" class="fab fa-pinterest-p"></i>
-                                </a>
-                                <a href="#">
-                                    <i aria-hidden="true" class="fab fa-vimeo-v"></i>
-                                </a>
+                <div class="col-md-3 page-sidebar">
+                    @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
+                </div>
+
+
+                <div class="col-md-9 page-content">
+
+
+                    <div class="row">
+
+                        <?php foreach ($my_striver as $coach_list) { ?>
+
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="teacher-item">
+                                    <div class="teacher-thumb coach-img-wrapper">
+
+                                        <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
+
+                                        <!-- <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2020/11/teacher_5.png" alt="Hugh Saturation"> -->
+
+                                        <div class="madels">
+                                            <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2021/03/Standerd-3.svg" alt="Standard">
+
+                                            <!-- <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid"  alt="{{ $coach_list->name }}">  -->
+
+
+                                        </div>
+                                        <div class="teacher-social">
+                                            <a href="#">
+                                                <i aria-hidden="true" class="fab fa-facebook-f"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i aria-hidden="true" class="fab fa-twitter"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i aria-hidden="true" class="fab fa-pinterest-p"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i aria-hidden="true" class="fab fa-vimeo-v"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="teacher-meta">
+                                        <h5>
+                                            <!-- Hugh Saturation -->
+                                            {{ $coach_list->name }}
+
+                                        </h5>
+                                        <p>Photographer
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <?php } ?>
+
+
+
+                    </div>
+                    <!-- </div> -->
+
+
+                </div>
+                <!--/.page-content-->
+            </div>
+
+
+
+        <?php } else { ?>
+
+
+
+            <div class="row ">
+            <div class="col-md-3 page-sidebar">
+			  <div class="inner-box default-inner-box">
+                <h3 class="no-padding text-center-480 useradmin">
+                    <a href="">
+                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp; 
+                        {{ $user->name }}
+                    </a>
+                </h3>
+			  </div>
+            </div>
+
+            <div class="col-md-9 page-content ">
+
+
+					<div class="inner-box default-inner-box edit-file-chat">
+					<div class="row">
+                        <div class="col-md-4 col-sm-4 col-12">
+                            <h3 class="no-padding text-center-480 useradmin">
+                               
+                                <b> My Coach </b>
+                            </h3>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-12">
+                            <div class="header-data text-center-xs">
+                                {{-- Threads Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-phone-alt ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of messages --}}
+                                        <p>
+                                            <a href="{{ url('account/messages') }}">
+                                                {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
+                                               
+                                                <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                {{-- Traffic Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-comments ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of visitors --}}
+                                        <p>
+                                            <a href="{{ url('account/chat') }}">
+                                                <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+                                                {{ \App\Helpers\Number::short($totalPostsVisits) }}
+                                    
+                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                               
+
+                                {{-- Favorites Stats --}}
+                                <div class="hdata">
+                                    <div class="mcol-left">
+                                        <i class="fas fa-bell ln-shadow"></i>
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of favorites --}}
+                                        <p>
+                                            <a href="{{ url('account/favourite') }}">
+                                                {{ \App\Helpers\Number::short($countFavoritePosts) }}
+                                                <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="teacher-meta">
-                            <h5>
-							{{ $coach_list->name }}
-                            </h5>
-                           
-                        </div>
-						<?php } ?>
                     </div>
+				</div>
+
+			</div>
+	    </div>
+
+
+
+            <div class="row">
+
+                <div class="col-md-3 page-sidebar">
+                    @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
                 </div>
-             
-              
-               
+
+                <div class="col-md-9 page-content">
+
+                
+
+                    <div class="row">
+
+                        <?php foreach ($my_coaches as $coach_list) { ?>
+
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="teacher-item">
+                                    <div class="teacher-thumb coach-img-wrapper">
+
+                                        <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
+
+                                        <!-- <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2020/11/teacher_5.png" alt="Hugh Saturation"> -->
+
+                                        <div class="madels">
+                                            <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2021/03/Standerd-3.svg" alt="Standard">
+
+                                            <!-- <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid"  alt="{{ $coach_list->name }}">  -->
+
+
+                                        </div>
+                                        <div class="teacher-social">
+                                            <a href="#">
+                                                <i aria-hidden="true" class="fab fa-facebook-f"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i aria-hidden="true" class="fab fa-twitter"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i aria-hidden="true" class="fab fa-pinterest-p"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i aria-hidden="true" class="fab fa-vimeo-v"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="teacher-meta">
+                                        <h5>
+                                            <!-- Hugh Saturation -->
+                                            {{ $coach_list->name }}
+
+                                        </h5>
+                                        <p>Photographer
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <?php } ?>
+
+
+
+                    </div>
+                    <!-- </div> -->
+                </div>
+
             </div>
-        </div>
-     </div>
-      
-</section>
-    <!-- Course Section End -->
+        <?php } ?>
 
-    <!-- Footer Section Start -->
-   
-    <!-- Footer Section End -->
+        <!--/.row-->
+    </div>
+    <!--/.container-->
+</div>
 
-    <!-- Back To Top -->
-    <a href="#" id="back-to-top">
-        <i class="fal fa-angle-double-up"></i>
-    </a>
-    <!-- Back To Top -->
+@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
+<!-- /.main-container -->
+@endsection
 
-    <!-- Start Include All JS -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.appear.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/jquery.nice-select.min.js"></script>
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script src="assets/js/TweenMax.min.js"></script>
-    <script src="assets/js/lightcase.js"></script>
-    <script src="assets/js/jquery.plugin.min.js"></script>
-    <script src="assets/js/jquery.countdown.min.js"></script>
-    <script src="assets/js/jquery.easing.1.3.js"></script>
-    <script src="assets/js/jquery.shuffle.min.js"></script>
+@section('after_styles')
+<link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput.min.css') }}" rel="stylesheet">
+@if (config('lang.direction') == 'rtl')
+<link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput-rtl.min.css') }}" rel="stylesheet">
+@endif
+<style>
+    .krajee-default.file-preview-frame:hover:not(.file-preview-error) {
+        box-shadow: 0 0 5px 0 #666666;
+    }
 
-    <script src="assets/js/theme.js"></script>
-    <!-- End Include All JS -->
-</body>
+    .file-loading:before {
+        content: " {{ t('Loading') }}...";
+    }
+</style>
+<style>
+    /* Avatar Upload */
+    .photo-field {
+        display: inline-block;
+        vertical-align: middle;
+    }
 
-</html>
+    .photo-field .krajee-default.file-preview-frame,
+    .photo-field .krajee-default.file-preview-frame:hover {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        text-align: center;
+    }
 
-    <script>
-		var uploadExtraData = {
-			_token:'{{ csrf_token() }}',
-			_method:'PUT',
-			name:'{{ $user->name }}',
-			phone:'{{ $user->phone }}',
-			email:'{{ $user->email }}'
-		};
-		var initialPreviewConfigExtra = uploadExtraData;
-		initialPreviewConfigExtra.remove_photo = 1;
-		
-		var photoInfo = '<h6 class="text-muted pb-0">{{ t('Click to select') }}</h6>';
-		var footerPreview = '<div class="file-thumbnail-footer pt-2">\n' +
-			'    {actions}\n' +
-			'</div>';
-		
-		$('#photoField').fileinput(
-		{
-			theme: 'fas',
-			language: '{{ config('app.locale') }}',
-			@if (config('lang.direction') == 'rtl')
-				rtl: true,
-			@endif
-			overwriteInitial: true,
-			showCaption: false,
-			showPreview: true,
-			allowedFileExtensions: {!! getUploadFileTypes('image', true) !!},
-			uploadUrl: '{{ url('account/photo') }}',
-			uploadExtraData: uploadExtraData,
-			uploadAsync: false,
-			showBrowse: false,
-			showCancel: true,
-			showUpload: false,
-			showRemove: false,
-			minFileSize: {{ (int)config('settings.upload.min_image_size', 0) }}, {{-- in KB --}}
-			maxFileSize: {{ (int)config('settings.upload.max_image_size', 1000) }}, {{-- in KB --}}
-			browseOnZoneClick: true,
-			minFileCount: 0,
-			maxFileCount: 1,
-			validateInitialCount: true,
-			uploadClass: 'btn btn-primary',
-			defaultPreviewContent: '<img src="{{ url('images/user.jpg') }}" alt="{{ t('Your Photo or Avatar') }}">' + photoInfo,
-			/* Retrieve current images */
-			/* Setup initial preview with data keys */
-			initialPreview: [
-				@if (isset($user->photo) && !empty($user->photo))
-					'{{ imgUrl($user->photo, 'user') }}'
-				@endif
-			],
-			initialPreviewAsData: true,
-			initialPreviewFileType: 'image',
-			/* Initial preview configuration */
-			initialPreviewConfig: [
-				{
-					<?php
-						// Get the file size
-						try {
-							$fileSize = (isset($disk) && $disk->exists($user->photo)) ? (int)$disk->size($user->photo) : 0;
-						} catch (\Throwable $e) {
-							$fileSize = 0;
-						}
-					?>
-					@if (isset($user->photo) && !empty($user->photo))
-						caption: '{{ basename($user->photo) }}',
-						size: {{ $fileSize }},
-						url: '{{ url('account/photo/delete') }}',
-						key: {{ (int)$user->id }},
-						extra: initialPreviewConfigExtra
-					@endif
-				}
-			],
-			
-			showClose: false,
-			fileActionSettings: {
-				showDrag: false, /* Show/hide move (rearrange) icon */
-				removeIcon: '<i class="far fa-trash-alt"></i>',
-				removeClass: 'btn btn-sm btn-danger',
-				removeTitle: '{{ t('Remove file') }}'
-			},
-			
-			elErrorContainer: '#avatarUploadError',
-			msgErrorClass: 'alert alert-block alert-danger',
-			
-			layoutTemplates: {main2: '{preview} {remove} {browse}', footer: footerPreview}
-		});
-		
-		/* Auto-upload added file */
-		$('#photoField').on('filebatchselected', function(event, data, id, index) {
-			$(this).fileinput('upload');
-		});
-		
-		/* Show upload status message */
-		$('#photoField').on('filebatchpreupload', function(event, data, id, index) {
-			$('#avatarUploadSuccess').html('<ul></ul>').hide();
-		});
-		
-		/* Show success upload message */
-		$('#photoField').on('filebatchuploadsuccess', function(event, data, previewId, index) {
-			/* Show uploads success messages */
-			var out = '';
-			$.each(data.files, function(key, file) {
-				if (typeof file !== 'undefined') {
-					var fname = file.name;
-					out = out + {!! t('Uploaded file X successfully') !!};
-				}
-			});
-			$('#avatarUploadSuccess ul').append(out);
-			$('#avatarUploadSuccess').fadeIn('slow');
-			
-			$('#userImg').attr({'src':$('.photo-field .kv-file-content .file-preview-image').attr('src')});
-		});
-		
-		/* Delete picture */
-		$('#photoField').on('filepredelete', function(jqXHR) {
-			var abort = true;
-			if (confirm("{{ t('Are you sure you want to delete this picture') }}")) {
-				abort = false;
-			}
-			return abort;
-		});
-		
-		$('#photoField').on('filedeleted', function() {
-			$('#userImg').attr({'src':'{!! url('images/user.jpg') !!}'});
-			
-			var out = "{{ t('Your photo or avatar has been deleted') }}";
-			$('#avatarUploadSuccess').html('<ul><li></li></ul>').hide();
-			$('#avatarUploadSuccess ul li').append(out);
-			$('#avatarUploadSuccess').fadeIn('slow');
-		});
-          
-	</script>
+    .photo-field .file-input {
+        display: table-cell;
+        width: 150px;
+    }
 
-	<script>
-	     // when category dropdown changes
-		$(document).ready(function(){
+    .photo-field .krajee-default.file-preview-frame .kv-file-content {
+        width: 150px;
+        height: 160px;
+    }
 
-			var sub_cat_id = {{ old('sub_category', $user->sub_category) }}
-			$('#category').change(function() {
-				var categoryID = $('#category').val();
-				if (categoryID) {
-					$.ajax({
-						type: "GET",
-						url: "{{ url('account/getSubcategories') }}?id=" + categoryID,
+    .kv-reqd {
+        color: red;
+        font-family: monospace;
+        font-weight: normal;
+    }
 
-						success: function(res) {
+    .file-preview {
+        padding: 2px;
+    }
 
-							if (res) {
+    .file-drop-zone {
+        margin: 2px;
+        min-height: 100px;
+    }
 
-								$("#sub_category").empty();
-								$("#sub_category").append('<option value=0>Select a subcategory</option>');
-								$.each(res, function(key, value) {
-									$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
-									'</option>');
+    .file-drop-zone .file-preview-thumbnails {
+        cursor: pointer;
+    }
 
-								});
+    .krajee-default.file-preview-frame .file-thumbnail-footer {
+        height: 30px;
+    }
 
-							} else {
+    /* Allow clickable uploaded photos (Not possible) */
+    .file-drop-zone {
+        padding: 20px;
+    }
 
-								$("#sub_category").empty();
-							}
-							
-						}
-					});
-				} else {
-					$("#sub_category").empty();
-				}
-			});
-			var categoryID = $('#category').val();	
-			if (categoryID) {
-				
-				$.ajax({
-					
-					type: "GET",
-					url: "{{ url('account/getSubcategories') }}?id=" + categoryID,
+    .file-drop-zone .kv-file-content {
+        padding: 0
+    }
 
-					success: function(res) {
-
-						if (res) {
-							
-							$("#sub_category").empty();
-							$("#sub_category").append('<option value=0>Select a subcategory</option>');
-							$.each(res, function(key, value) {
-								$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
-								'</option>');
-
-							});
-
-						} else {
-
-							$("#sub_category").empty();
-						}
-						
-					}
-				});
-			} else {
-				$("#sub_category").empty();
-			}
-		});
-     </script>
+    .madels {
+        width: 48px;
+        height: 50px;
+        border-radius: 50%;
+        text-align: center;
+        display: inline-block;
+        position: absolute;
+        right: 25px;
+        top: 0;
+        /* bottom: 337px; */
+        margin: auto;
+    }
 
 
 
 
-	
+
+    .teacher-thumb {
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        /* background-image: linear-gradient(to right top, #E92AA4, #d95566, #a33e6d, #673065, #2c234d); */
+    }
+
+
+
+    .teacher-item {
+        position: relative;
+        text-align: center;
+        margin: 0 0 51px;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+
+    .coach-img-wrapper img {
+        filter: grayscale(100%) contrast(1) blur(var(--blur));
+        mix-blend-mode: var(--bg-blend);
+        object-fit: cover;
+        opacity: var(--opacity);
+        position: relative;
+        width: 100%;
+    }
+
+
+    .teacher-thumb img,
+    .teachers-slider.owl-carousel .teacher-thumb img {
+        width: 100%;
+        height: auto;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+
+
+    .teacher-item:hover .teacher-social {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+    }
+
+
+    .teacher-social {
+        position: absolute;
+        left: 0;
+        bottom: 20px;
+        z-index: 4;
+        right: 0;
+        margin: 0 auto;
+        text-align: center;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        transform: scale(0);
+        -webkit-transform: scale(0);
+        -moz-transform: scale(0);
+    }
+
+    .teacher-social a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 14px;
+        line-height: 43px;
+        margin: 0 5px;
+        color: #fff;
+    }
+
+    img {
+        vertical-align: middle;
+        border-style: none;
+    }
+
+    .teacher-item:hover .teacher-thumb {
+        -webkit-box-shadow: 0px 20px 30px 0px rgb(56 15 2 / 16%);
+        -moz-box-shadow: 0px 20px 30px 0px rgba(56, 15, 2, 0.16);
+        box-shadow: 0px 20px 30px 0px rgb(56 15 2 / 16%);
+    }
+
+    .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .coach-img-wrapper img {
+        filter: grayscale(100%) contrast(1) blur(var(--blur));
+        mix-blend-mode: var(--bg-blend);
+        object-fit: cover;
+        opacity: var(--opacity);
+        position: relative;
+        width: 100%;
+    }
+
+    .coach-img-wrapper::before {
+        background-color: var(--foreground);
+        bottom: 0;
+        content: '';
+        height: 100%;
+        left: 0;
+        mix-blend-mode: var(--fg-blend);
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+</style>
+@endsection

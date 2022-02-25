@@ -191,6 +191,9 @@
     <!-- Footer Section End -->
 
     <!-- Back To Top -->
+
+    @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
+    
     <a href="#" id="back-to-top">
         <i class="fal fa-angle-double-up"></i>
     </a>
