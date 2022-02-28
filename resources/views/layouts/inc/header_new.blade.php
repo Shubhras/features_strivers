@@ -267,7 +267,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                         </a>
                         @endif
                     </li>
-                    <li class="nav-item dropdown no-arrow">
+                    <li class="nav-item dropdown no-arrow" style="margin-top: -12px;">
                         <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                             <!-- <i class="fas fa-user-circle hidden-sm"></i> -->
                             <span>{{ auth()->user()->name }}</span>
