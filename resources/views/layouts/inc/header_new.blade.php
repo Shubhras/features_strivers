@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="../assets/css/lightcase.css">
     <link rel="stylesheet" href="../assets/css/preset.css" />
-    <link rel="stylesheet" href="url(../assets/css/theme.css)" />
+    <link rel="stylesheet" href="../assets/css/theme.css" />
     <link rel="stylesheet" href="../assets/css/responsive.css" />
 
 
@@ -61,8 +61,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                     <nav class="navbar navbar-expand-lg">
                         <!-- logo Start-->
                         <a class="navbar-brand" href="{{ url('/') }}">
-                            <!-- <img src="../assets/images/logo.png" alt=""> -->
-
+                            
                             <img src="../assets/images/logo4.png" alt="">
 
                             <img class="sticky-logo" src="../assets/images/logo4.png" alt="">
@@ -190,7 +189,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
             
             @else
                     
-            <div class="collapse navbar-collapse" id="navbarsDefault" style="margin-right: -193px;">
+            <div class="collapse navbar-collapse" id="navbarsDefault" style="margin-right: -160px;">
 
                                 
                 <ul class="navbar-nav ">
@@ -267,14 +266,29 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                         </a>
                         @endif
                     </li>
-                    <li class="nav-item dropdown no-arrow" style="margin-top: -12px;">
-                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                    
+                    <li class="nav-item dropdown no-arrow">
+
+                    @if (config('settings.security.login_open_in_modal'))
+                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" style="margin-top: -5px">
                             <!-- <i class="fas fa-user-circle hidden-sm"></i> -->
                             <span>{{ auth()->user()->name }}</span>
                             <span
                                 class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">0</span>
                             <i class="fas fa-chevron-down"></i>
                         </a>
+                        @else
+
+
+                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" style="margin-top: -5px">
+                            <!-- <i class="fas fa-user-circle hidden-sm"></i> -->
+                            <span>{{ auth()->user()->name }}</span>
+                            <span
+                                class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">0</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        @endif
+
                         <ul id="userMenuDropdown" class="dropdown-menu user-menu dropdown-menu-right shadow-sm sidebar-menu-ul side-menu-dropdown">
                             <li class="dropdown-item active dropdown-menu-sidebar">
                                 <a href="{{ url('account') }}" class="dropdown-menu-sidebar-a side-menu-li-user">
@@ -283,14 +297,10 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                             </li>
                             <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/dashboard') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
                                         class="fas fa-th-list"></i> {{ t('dashboard') }} </a></li>
-                            <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
-                                        class="fas fa-heart"></i> {{ ('Edit Profile') }} </a></li> -->
-                            <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/saved-search') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
-                                        class="fas fa-bookmark"></i> {{ t('Saved searches') }} </a></li> -->
+                
                             <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/my_courses') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
                                         class="fas fa-hourglass-half"></i> {{ ('Consultation') }} </a></li>
-                            <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/archived') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
-                                        class="fas fa-calendar-times"></i> {{ t('archived_ads') }}</a></li> -->
+                            
                             <li class="dropdown-item dropdown-menu-sidebar">
                                 <a href="{{ url('account/chat') }}" class="dropdown-menu-sidebar-a side-menu-li-user">
                                     <i class="far fa-envelope"></i> {{ ('Chat') }}

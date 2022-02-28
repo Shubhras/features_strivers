@@ -35,7 +35,7 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-	<script src="{{ url('../assets/js/theme.js') }}" type="text/javascript"></script>
+	
 
     <link rel="stylesheet" href="../assets/css/master.css">
 <?php
@@ -90,15 +90,15 @@
 		<link href="https://fonts.googleapis.com/css?family=Cairo|Changa" rel="stylesheet">
 		<link href="{{ url(mix('css/app.rtl.css')) }}" rel="stylesheet">
 	@else
-		<link href="{{ url(mix('../css/app.css')) }}" rel="stylesheet">
+		<link href="{{ url(mix('css/app.css')) }}" rel="stylesheet">
 	@endif
 	@if (config('plugins.detectadsblocker.installed'))
-		<link href="{{ url('../assets/detectadsblocker/css/style.css') . getPictureVersion() }}" rel="stylesheet">
+		<link href="{{ url('assets/detectadsblocker/css/style.css') . getPictureVersion() }}" rel="stylesheet">
 	@endif
 	
 	@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.tools.style', 'layouts.inc.tools.style'])
 	
-	<link href="{{ url()->asset('../css/custom.css') . getPictureVersion() }}" rel="stylesheet">
+	<link href="{{ url()->asset('css/custom.css') . getPictureVersion() }}" rel="stylesheet">
 	
 	@stack('after_styles_stack')
     @yield('after_styles')
@@ -127,8 +127,8 @@
 			elements: true
 		};
 	</script>
-	<script src="{{ url()->asset('../assets/js/pace.min.js') }}"></script>
-	<script src="{{ url()->asset('../assets/plugins/modernizr/modernizr-custom.js') }}"></script>
+	<script src="{{ url()->asset('assets/js/pace.min.js') }}"></script>
+	<script src="{{ url()->asset('assets/plugins/modernizr/modernizr-custom.js') }}"></script>
 	
 	@yield('captcha_head')
 	@section('recaptcha_head')
@@ -223,15 +223,15 @@
 @stack('before_scripts_stack')
 @yield('before_scripts')
 
-<script src="{{ url(mix('../js/app.js')) }}"></script>
+<script src="{{ url(mix('js/app.js')) }}"></script>
 @if (config('settings.optimization.lazy_loading_activation') == 1)
-	<script src="{{ url()->asset('../assets/plugins/lazysizes/lazysizes.min.js') }}" async=""></script>
+	<script src="{{ url()->asset('assets/plugins/lazysizes/lazysizes.min.js') }}" async=""></script>
 @endif
 @if (file_exists(public_path() . '/assets/plugins/select2/js/i18n/'.config('app.locale').'.js'))
-	<script src="{{ url()->asset('../assets/plugins/select2/js/i18n/'.config('app.locale').'.js') }}"></script>
+	<script src="{{ url()->asset('assets/plugins/select2/js/i18n/'.config('app.locale').'.js') }}"></script>
 @endif
 @if (config('plugins.detectadsblocker.installed'))
-	<script src="{{ url('../assets/detectadsblocker/js/script.js') . getPictureVersion() }}"></script>
+	<script src="{{ url('assets/detectadsblocker/js/script.js') . getPictureVersion() }}"></script>
 @endif
 
 

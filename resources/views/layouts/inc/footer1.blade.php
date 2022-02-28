@@ -130,12 +130,12 @@
                 <aside class="widget">
                     <h3 class="widget-title">Explore</h3>
                     <ul>
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="{{ url(\App\Helpers\UrlGen::aboutUs()) }}">About Us</a></li>
                         <li><a href="#">Success Story</a></li>
                         <li><a href="#">Careers</a></li>
                         <li><a href="#">Resource Center</a></li>
                         <li><a href="#">Courses</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="{{ \App\Helpers\UrlGen::contact() }}">Contact Us</a></li>
                     </ul>
                 </aside>
             </div>

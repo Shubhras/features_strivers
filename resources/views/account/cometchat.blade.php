@@ -151,7 +151,7 @@
 
                 <div class="inner-box default-inner-box">
 
-                    <div id="cometchat"></div>
+                    <div id="cometchat" style="position: sticky;"></div>
                     <script>
                         valueArray = <?php echo json_encode($auth_user_name->username); ?>;
                         
@@ -413,7 +413,7 @@
 
                 <div class="inner-box default-inner-box">
 
-                    <div id="cometchat"></div>
+                    <div id="cometchat" style="position: sticky;"></div>
                     <script>
                         valueArray = <?php echo json_encode($auth_user_name->username); ?>;
                         
