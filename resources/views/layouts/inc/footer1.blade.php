@@ -118,10 +118,10 @@
                             Lost the plot Richard you mug cup of tea knackered boot bender.
                         </p>
                         <div class="ab-social">
-                            <a class="fac" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="twi" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="you" href="#"><i class="fab fa-pinterest-p"></i></a>
-                            <a class="lin" href="#"><i class="fab fa-linkedin-in    "></i></a>
+                            <a class="fac" href="#"><i class="fab fa-facebook-f" style="line-height: 3;"></i></a>
+                            <a class="twi" href="#"><i class="fab fa-twitter" style="line-height: 3;"></i></a>
+                            <a class="you" href="#"><i class="fab fa-pinterest-p" style="line-height: 3;"></i></a>
+                            <a class="lin" href="#"><i class="fab fa-linkedin-in" style="line-height: 3;"></i></a>
                         </div>
                     </div>
                 </aside>
@@ -183,3 +183,20 @@
 <!-- Back To Top -->
 
 <!-- Start Include All JS -->
+<style>
+    .fa, .fab, .fad, .fal, .far, .fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 3;
+}
+.fab {
+    font-family: "Font Awesome 5 Brands";
+}
+.fab, .far {
+    font-weight: 400;
+}
+</style>

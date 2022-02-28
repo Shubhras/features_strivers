@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="../assets/css/theme.css" />
     <link rel="stylesheet" href="../assets/css/responsive.css" />
 
-@extends('layouts.master')
+@extends('layouts.master_new')
 
 
 

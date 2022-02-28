@@ -1,5 +1,5 @@
 
-@extends('layouts.master')
+@extends('layouts.master_new')
 <!DOCTYPE html>
 <html lang="en">
 

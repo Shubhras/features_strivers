@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master_new')
 <style>
 	.alert {
 		display:none;
@@ -433,6 +433,24 @@
 		font-size: 25px; 
 		/* padding: -32px!important; */
 	}
+</style>
+
+<style>
+    .fa, .fab, .fad, .fal, .far, .fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 3;
+}
+.fab {
+    font-family: "Font Awesome 5 Brands";
+}
+.fab, .far {
+    font-weight: 400;
+}
 </style>
 </body>
 

@@ -11,7 +11,7 @@
  * of the above copyright notice. If you Purchased from CodeCanyon,
  * Please read the full License from here - http://codecanyon.net/licenses/standard
 --}}
-@extends('layouts.master')
+@extends('layouts.master_new')
 
 @section('search')
 @parent

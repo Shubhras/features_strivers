@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../assets/css/theme.css" />
     <link rel="stylesheet" href="../assets/css/responsive.css" />
 
-@extends('layouts.master')
+@extends('layouts.master_new')
 
 
 
@@ -101,64 +101,72 @@ foreach ($coach_course as $key => $value) {
                         <div class="col-md-4 col-sm-4 col-12">
                             <h3 class="no-padding text-center-480 useradmin">
                                
-                                <b> Coach Update Profile </b>
+                                <b> Coach Dashboard </b>
                             </h3>
                         </div>
                         <div class="col-md-8 col-sm-8 col-12">
                             <div class="header-data text-center-xs">
                                 {{-- Threads Stats --}}
                                 <div class="hdata">
+                                <a href="{{ url('account/messages') }}">
+
                                     <div class="mcol-left">
                                         <i class="fas fa-phone-alt ln-shadow"></i>
                                     </div>
                                     <div class="mcol-right">
                                         {{-- Number of messages --}}
                                         <p>
-                                            <a href="{{ url('account/messages') }}">
+                                            
                                                 {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
                                                
                                                 <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-                                            </a>
+                                           
                                         </p>
                                     </div>
+                                    </a>
                                     <div class="clearfix"></div>
                                 </div>
 
                                 {{-- Traffic Stats --}}
                                 <div class="hdata">
+                                <a href="{{ url('account/chat') }}">
                                     <div class="mcol-left">
                                         <i class="fas fa-comments ln-shadow"></i>
                                     </div>
                                     <div class="mcol-right">
                                         {{-- Number of visitors --}}
                                         <p>
-                                            <a href="{{ url('account/chat') }}">
+                                            
                                                 <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
                                                 {{ \App\Helpers\Number::short($totalPostsVisits) }}
                                     
                                                 <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-                                            </a>
+                                           
                                         </p>
                                     </div>
+
+                                    </a>
                                     <div class="clearfix"></div>
                                 </div>
 
                                
 
                                 {{-- Favorites Stats --}}
-                                <div class="hdata">
-                                    <div class="mcol-left">
-                                        <i class="fas fa-bell ln-shadow"></i>
+                                <div class="hdata" style="width: 151px!important;margin-left: -38px;">
+                                <a href="{{ url('account/favourite') }}">
+                                    <div class="mcol-left" >
+                                        <i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
                                     </div>
                                     <div class="mcol-right">
                                         {{-- Number of favorites --}}
                                         <p>
-                                            <a href="{{ url('account/favourite') }}">
+                                            
                                                 {{ \App\Helpers\Number::short($countFavoritePosts) }}
                                                 <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-                                            </a>
+                                           
                                         </p>
                                     </div>
+                                    </a>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -472,64 +480,72 @@ foreach ($coach_course as $key => $value) {
                         <div class="col-md-4 col-sm-4 col-12">
                             <h3 class="no-padding text-center-480 useradmin">
                                
-                                <b> Coach Update Profile </b>
+                                <b> Strivre Dashboard </b>
                             </h3>
                         </div>
                         <div class="col-md-8 col-sm-8 col-12">
                             <div class="header-data text-center-xs">
                                 {{-- Threads Stats --}}
                                 <div class="hdata">
+                                <a href="{{ url('account/messages') }}">
+
                                     <div class="mcol-left">
                                         <i class="fas fa-phone-alt ln-shadow"></i>
                                     </div>
                                     <div class="mcol-right">
                                         {{-- Number of messages --}}
                                         <p>
-                                            <a href="{{ url('account/messages') }}">
+                                            
                                                 {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
                                                
                                                 <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-                                            </a>
+                                           
                                         </p>
                                     </div>
+                                    </a>
                                     <div class="clearfix"></div>
                                 </div>
 
                                 {{-- Traffic Stats --}}
                                 <div class="hdata">
+                                <a href="{{ url('account/chat') }}">
                                     <div class="mcol-left">
                                         <i class="fas fa-comments ln-shadow"></i>
                                     </div>
                                     <div class="mcol-right">
                                         {{-- Number of visitors --}}
                                         <p>
-                                            <a href="{{ url('account/chat') }}">
+                                            
                                                 <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
                                                 {{ \App\Helpers\Number::short($totalPostsVisits) }}
                                     
                                                 <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-                                            </a>
+                                           
                                         </p>
                                     </div>
+
+                                    </a>
                                     <div class="clearfix"></div>
                                 </div>
 
                                
 
                                 {{-- Favorites Stats --}}
-                                <div class="hdata">
-                                    <div class="mcol-left">
-                                        <i class="fas fa-bell ln-shadow"></i>
+                                <div class="hdata" style="width: 151px!important;margin-left: -38px;">
+                                <a href="{{ url('account/favourite') }}">
+                                    <div class="mcol-left" >
+                                        <i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
                                     </div>
                                     <div class="mcol-right">
                                         {{-- Number of favorites --}}
                                         <p>
-                                            <a href="{{ url('account/favourite') }}">
+                                            
                                                 {{ \App\Helpers\Number::short($countFavoritePosts) }}
                                                 <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-                                            </a>
+                                           
                                         </p>
                                     </div>
+                                    </a>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -875,6 +891,32 @@ foreach ($coach_course as $key => $value) {
 
 @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 <!-- /.main-container -->
+
+
+
+<a href="#" id="back-to-top">
+        <i class="fal fa-angle-double-up"></i>
+    </a>
+    <!-- Back To Top -->
+
+    <!-- Start Include All JS -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery.appear.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/slick.js"></script>
+    <script src="../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../assets/js/swiper-bundle.min.js"></script>
+    <script src="../assets/js/TweenMax.min.js"></script>
+    <script src="../assets/js/lightcase.js"></script>
+    <script src="../assets/js/jquery.plugin.min.js"></script>
+    <script src="../assets/js/jquery.countdown.min.js"></script>
+    <script src="../assets/js/jquery.easing.1.3.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+
+    <script src="../assets/js/theme.js"></script>
+
+    
 @endsection
 
 @section('after_styles')
