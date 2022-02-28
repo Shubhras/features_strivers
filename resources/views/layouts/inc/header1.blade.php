@@ -280,14 +280,14 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                             </li>
                             <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/dashboard') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
                                         class="fas fa-th-list"></i> {{ t('dashboard') }} </a></li>
-                            <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/favourite') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
-                                        class="fas fa-heart"></i> {{ t('favourite_ads') }} </a></li>
-                            <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/saved-search') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
-                                        class="fas fa-bookmark"></i> {{ t('Saved searches') }} </a></li>
+                            <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
+                                        class="fas fa-heart"></i> {{ ('Edit Profile') }} </a></li> -->
+                            <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/saved-search') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
+                                        class="fas fa-bookmark"></i> {{ t('Saved searches') }} </a></li> -->
                             <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/my_courses') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
                                         class="fas fa-hourglass-half"></i> {{ ('Consultation') }} </a></li>
-                            <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/archived') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
-                                        class="fas fa-calendar-times"></i> {{ t('archived_ads') }}</a></li>
+                            <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/archived') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
+                                        class="fas fa-calendar-times"></i> {{ t('archived_ads') }}</a></li> -->
                             <li class="dropdown-item dropdown-menu-sidebar">
                                 <a href="{{ url('account/chat') }}" class="dropdown-menu-sidebar-a side-menu-li-user">
                                     <i class="far fa-envelope"></i> {{ ('Chat') }}
@@ -295,8 +295,8 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                                         class="badge badge-pill badge-important count-threads-with-new-messages">0</span>
                                 </a>
                             </li>
-                            <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/transactions') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
-                                        class="fas fa-coins"></i> {{ t('Transactions') }}</a></li>
+                            <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/transactions') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
+                                        class="fas fa-coins"></i> {{ t('Transactions') }}</a></li> -->
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item dropdown-menu-sidebar">
                                 @if (app('impersonate')->isImpersonating())
