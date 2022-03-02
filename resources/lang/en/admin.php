@@ -110,6 +110,7 @@ return [
     'click_here_to_reset'  => 'Click here to reset your password',
     'unauthorized'         => 'Unauthorized access.',
     'dashboard'            => 'Dashboard',
+	'letest_news'          => 'Letest News',
     'handcrafted_by'       => 'Powered by',
     'powered_by'           => 'Powered by',
 

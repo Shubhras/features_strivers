@@ -15,8 +15,8 @@
 			<a class="navbar-brand" href="{{ url('/') }}" target="_blank">
 				{{-- Logo text --}}
 				<span class="logo-text">
-					<img src="{{ imgUrl(config('settings.app.logo_dark'), 'adminLogo') }}" alt="{{ strtolower(config('settings.app.name')) }}" class="dark-logo img-fluid"/>
-					<img src="{{ imgUrl(config('settings.app.logo_light'), 'adminLogo') }}" alt="{{ strtolower(config('settings.app.name')) }}" class="light-logo img-fluid"/>
+					<img src="{{ imgUrl(config('settings.app.logo_dark'), 'adminLogo') }}" alt="{{ strtolower(config('settings.app.name')) }}" class="dark-logo img-fluid" style="height: 70px;"/>
+					<img src="{{ imgUrl(config('settings.app.logo_light'), 'adminLogo') }}" alt="{{ strtolower(config('settings.app.name')) }}" class="light-logo img-fluid" style="height: 70px;"/>
 				</span>
 			</a>
 			

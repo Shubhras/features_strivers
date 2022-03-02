@@ -153,6 +153,21 @@
 
                     <div id="cometchat" style="position: sticky;"></div>
                     <script>
+
+
+
+                            // let newUser: User = User(uid: "user1", name: "Kevin") // Replace with your uid and the name for the user to be created.
+                            // let authKey = "AUTH_KEY" // Replace with your Auth Key.
+                            // CometChat.createUser(user: newUser, apiKey: authKey, onSuccess: {
+                            //     (User) in
+                            //     print("User created successfully. \(User.stringValue())")
+                            // }) {
+                            //     (error) in
+                            //     print("The error is \(String(describing: error?.description))")
+                            // }
+                        
+
+
                         valueArray = <?php echo json_encode($auth_user_name->username); ?>;
                         
                         window.addEventListener('DOMContentLoaded', (event) => {

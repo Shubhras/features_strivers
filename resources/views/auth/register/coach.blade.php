@@ -1,10 +1,10 @@
-@extends('layouts.master')
+@extends('layouts.master_new')
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
 
@@ -51,7 +51,7 @@
     <!-- Preloader Icon -->
 
     <!-- Header Start -->
-  
+
     <!-- Header End -->
 
     <!-- Banner Start -->
@@ -71,99 +71,100 @@
 
     <!-- Course Section Start -->
     <section class="contact-section ">
-    
-            <div class="col-md-8 d-flex justify-content-center">
+
+        <div class="col-md-8 d-flex justify-content-center">
             @if (isset($errors) && $errors->any())
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+            <li>{{ $error }}</li>
             @endforeach
             @endif
-                <div class="contact-form dform" id="Coaches" >
-                    <center><h4>Sign Up As Coach</h4></center><br>
-                    <form role="form" method="POST" action="{{ url('/strivers_signup') }}" class="row">
-                        <div class="col-md-12">
-                        <?php $nameError = (isset($errors) and $errors->has('name')) ? ' is-invalid' : ''; ?>
-                            <label class="form-label" for="Name ">Name 
-                            </label>
-                            <input  name="name" class="form-control input-md{{ $nameError }}" type="text" placeholder="First Name" value="{{ old('name') }}">
-                            <input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden" id="user_type_coach" value="2">
-                        </div>
-                        @if (isEnabledField('email'))
-                        <div class="col-md-6">
-                        <?php $emailError = (isset($errors) and $errors->has('email')) ? ' is-invalid' : ''; ?>
-                            <label class="form-label" for="email">Email 
-                            </label>
-                            <input id="email"  name="email"	type="email" class="form-control{{ $emailError }}"placeholder="{{ t('email') }}"value="{{ old('email') }}">
-                        </div>
-                        @endif
-                        @if (isEnabledField('phone'))
-                        <div class="col-md-6">
-                        <?php $phoneError = (isset($errors) and $errors->has('phone')) ? ' is-invalid' : ''; ?>
-                            <label class="form-label" for="phone">Phone Numbers
-                            </label>
-                            <input name="phone"
-															   placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}"
-															   class="form-control input-md{{ $phoneError }}"
-															   type="text"
-															   value="{{ phoneFormat(old('phone'), old('country', config('country.code'))) }}"
-														>
-                        </div>
-                        @endif
-                        <div class="col-md-12">
-                        <?php $passwordError = (isset($errors) and $errors->has('password')) ? ' is-invalid' : ''; ?>
-                            <label class="form-label" for="address">Password
-                            </label>
-                            <input id="password" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('password') }}" autocomplete="off">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="form-label" for="password">Password Confrmation
-                            </label>
-                            <input id="password_confirmation" name="password_confirmation" type="password" class="form-control{{ $passwordError }}"
-													   placeholder="{{ t('Password Confirmation') }}" autocomplete="off">
+            <div class="contact-form dform" id="Coaches">
+                <center>
+                    <h4>Sign Up As Coach</h4>
+                </center><br>
+                <form role="form" method="POST" action="{{ url('/strivers_signup') }}" class="row">
+                    <div class="col-md-12">
 
-                            <input type="hidden" name="accept_terms" value="1">
-                        </div>
-                        <div class="col-sm-12">
-                            <center><a class="b-btn bisylms-btn col-sm-12" href="payment-detail.html">Please Enter Your Card Details</a><br>
-                            </center> </div>
-                             <div class="col-md-12">
-                             <center><button class="btn01  btn-primary1" type="submit" id="signupBtn">
-                                    Register </button></center>
-                         </div>
-                         <br>
-                         <br>
-                            <div class="col-sm-12">
-                                <center><button class="loginBtn loginBtn--google btn-primary1">
+                        
+
+
+                        <?php $nameError = (isset($errors) and $errors->has('name')) ? ' is-invalid' : ''; ?>
+                        <label class="form-label" for="Name ">Name
+                        </label>
+                        <input name="name" class="form-control input-md{{ $nameError }}" type="text" placeholder="First Name" value="{{ old('name') }}">
+                        <input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden" id="user_type_coach" value="2">
+                    </div>
+                    @if (isEnabledField('email'))
+                    <div class="col-md-6">
+                        <?php $emailError = (isset($errors) and $errors->has('email')) ? ' is-invalid' : ''; ?>
+                        <label class="form-label" for="email">Email
+                        </label>
+                        <input id="email" name="email" type="email" class="form-control{{ $emailError }}" placeholder="{{ t('email') }}" value="{{ old('email') }}">
+                    </div>
+                    @endif
+                    @if (isEnabledField('phone'))
+                    <div class="col-md-6">
+                        <?php $phoneError = (isset($errors) and $errors->has('phone')) ? ' is-invalid' : ''; ?>
+                        <label class="form-label" for="phone">Phone Numbers
+                        </label>
+                        <input name="phone" placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}" class="form-control input-md{{ $phoneError }}" type="text" value="{{ phoneFormat(old('phone'), old('country', config('country.code'))) }}">
+                    </div>
+                    @endif
+                    <div class="col-md-12">
+                        <?php $passwordError = (isset($errors) and $errors->has('password')) ? ' is-invalid' : ''; ?>
+                        <label class="form-label" for="address">Password
+                        </label>
+                        <input id="password" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('password') }}" autocomplete="off">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label" for="password">Password Confrmation
+                        </label>
+                        <input id="password_confirmation" name="password_confirmation" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('Password Confirmation') }}" autocomplete="off">
+
+                        <input type="hidden" name="accept_terms" value="1">
+                    </div>
+                    <div class="col-sm-12">
+                        <center><a class="b-btn bisylms-btn col-sm-12" href="payment-detail.html">Please Enter Your Card Details</a><br>
+                        </center>
+                    </div>
+                    <div class="col-md-12">
+                        <center><button class="btn01  btn-primary1" type="submit" id="signupBtn">
+                                Register </button></center>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-sm-12">
+                        <center><button class="loginBtn loginBtn--google btn-primary1">
                                 Login with Google
-                              </button>  </center>
-                              </div>
-                              <br>
-                              <br>
-                              <div class="col-sm-12">
-                              <center><button class="loginBtn loginBtn--facebook btn-primary1">
-                                    Login with Facebook
-                                  </button>
-                                </center>
-                                </div>
-                        <!-- <center>
+                            </button> </center>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-sm-12">
+                        <center><button class="loginBtn loginBtn--facebook btn-primary1">
+                                Login with Facebook
+                            </button>
+                        </center>
+                    </div>
+                    <!-- <center>
                             <div class="col-md-12>
                         <div class="col-md-3">
                             <input type="submit" name="submit" value="Send Message">
                         </div> -->
-                    </form>
-                </div>
+                </form>
             </div>
-            
-                    </div>
+        </div>
+
+        </div>
 
 
-            
-        
+
+
     </section>
     <!-- Course Section End -->
 
     <!-- Footer Section Start -->
-   
+
     <!-- Footer Section End -->
 
     <!-- Back To Top -->
@@ -191,39 +192,36 @@
     <!-- End Include All JS -->
 
     <script>
+        const chatService = (function() {
 
-const chatService = (function () {
+            var username = "raj123";
+            return {
+                createUserOnCometChat: function(username) {
+                    let url = `https://api-us.cometchat.io/v3.0/users`;
+                    let data = {
+                        uid: username,
+                        name: `${username} sample`,
+                        avatar: "https://data-us.cometchat.io/assets/images/avatars/captainamerica.png",
+                    };
 
-    var username = "raj123";
-    return {
-    createUserOnCometChat: function (username) {
-            let url = `https://api-us.cometchat.io/v3.0/users`;
-            let data = {
-              uid: username,
-              name: `${username} sample`,
-              avatar:
-                "https://data-us.cometchat.io/assets/images/avatars/captainamerica.png",
-            };
-            
-            fetch(url, {
-              method: "POST",
-              headers: new Headers({
-                appid: APP_ID,
-                apikey: REST_API_KEY,
-                "Content-Type": "application/json",
-              }),
-              body: JSON.stringify(data),
-            })
-              .then((response) => response.json())
-              .then((result) => {
-                this.addUserToAGroup(result.data.uid);
-                console.log(result, "User created");
-              })
-              .catch((error) => console.log(error));
-          }
-        }
+                    fetch(url, {
+                            method: "POST",
+                            headers: new Headers({
+                                appid: APP_ID,
+                                apikey: REST_API_KEY,
+                                "Content-Type": "application/json",
+                            }),
+                            body: JSON.stringify(data),
+                        })
+                        .then((response) => response.json())
+                        .then((result) => {
+                            this.addUserToAGroup(result.data.uid);
+                            console.log(result, "User created");
+                        })
+                        .catch((error) => console.log(error));
+                }
+            }
         });
-        
     </script>
 
 </body>

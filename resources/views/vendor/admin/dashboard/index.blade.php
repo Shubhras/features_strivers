@@ -59,7 +59,7 @@
 	
 	<style>
 		/* Bootstrap tooltip need to be in single line */
-		{{-- B4 (xs: < 576px | sm: >= 576px | md >= 768px | lg >= 992px | xl: >= 1200px) --}}
+		/* {{-- B4 (xs: < 576px | sm: >= 576px | md >= 768px | lg >= 992px | xl: >= 1200px) --}} */
 		@media (min-width: 992px) {
 			.tooltip-inner {
 				white-space: nowrap;

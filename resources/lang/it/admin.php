@@ -42,6 +42,7 @@ return [
     'packages' => 'packages',
     'page' => 'page',
     'pages' => 'pages',
+    'letest_news' =>'Letest News',
     'payment' => 'payment',
     'payments' => 'payments',
     'payment method' => 'payment method',

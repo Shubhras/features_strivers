@@ -919,6 +919,7 @@ return [
 	'captcha_reload_hint' => 'Reload the security code.',
 	'nothing_has_changed' => 'Nothing has changed. The update was not performed.',
     'dashboard' => 'Dashboard',
+    'letest_news' => 'Letest News',
     'Edit_Profile' =>'Edit Profile',
     'my_subscription' => 'My Subscription',
     'my_courses' => 'My Courses',
