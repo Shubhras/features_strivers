@@ -104,7 +104,7 @@
                     <div class="cta-wrapper">
                         <img src="../assets/images/home/2.png" alt="">
                         <h3>You can be your own Guiding star with our help!</h3>
-                        <a href="join-us.html" class="bisylms-btn">Get Started Now</a>
+                        <a href="../pricing" class="bisylms-btn">Get Started Now</a>
                     </div>
                 </div>
             </div>

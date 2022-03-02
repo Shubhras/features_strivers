@@ -275,7 +275,10 @@ class EditController extends AccountBaseController
 
 
 		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*')->orderBy('coach_course.id','asc')->where('coach_course.coach_id', $user->id)->get();
-
+		$data['coach_coarsee']= DB::table('coach_course')->select('coach_course.*','users.name','users.photo')
+		->leftjoin('users' ,'users.id' ,'=', 'coach_course.coach_id')->orderBy('id','desc')
+		->limit(9)->get();
+		// print_r($data['coach_coarsee']);die;
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
@@ -392,7 +395,6 @@ class EditController extends AccountBaseController
 		})->where('user_id', $user->id)
 			->count();
 
-
 		
 
 
@@ -404,6 +406,7 @@ class EditController extends AccountBaseController
 			'course_name' =>$request->course_name,
 			'course_hourse' => $request->course_hourse,
 			'description' => $request->description, 
+			'image' => $request->image, 
 			'starting_time' => $request->starting_time,
 			'dated' => $request->dated,
 	
@@ -416,13 +419,13 @@ class EditController extends AccountBaseController
 		
 
 		$tru = DB::table('coach_course')->insert($data);
-		if($tru){
-			return true;
-		}
+		
+		
+		
 		
 
-
 	}
+	
 
 
 

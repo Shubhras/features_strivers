@@ -79,7 +79,7 @@
 
 
     
-    <section class="hero-banner-1 main" style="background-image: url(../assets/images/home/banner.png);">
+    <section class="hero-banner-245 main" style="background-image: url(assets/images/home/banner.png);">
 
         <div class="shape-wrap">
             <div class="b-shape-1">
@@ -221,7 +221,9 @@
                                 <h5 class="mb-1 ">LATEST NEWS</h5>
                                 <div class="info-course">
                                     <!-- <a href="single-course.html"><img src="assets/images/course/1.jpg" alt=""></a> -->
+                                    <a href="../page/sunil-sir">
                                     <p>Python new version is released..</p>
+                                    </a>
                                     <!-- <div class="course-price">
                                     $24.00
                                 </div> -->
@@ -542,7 +544,7 @@
                                 work.
                             </p>
 
-                            <a class="bisylms-btn-pink" href="strivre-sign-up.html">Sign Up </a>
+                            <a class="bisylms-btn-pink" href="../register">Sign Up </a>
 
 
                         </div>
@@ -574,7 +576,7 @@
 
 
                         </p>
-                        <a class="bisylms-btn" href="coach-sign-up.html">Get Started</a>
+                        <a class="bisylms-btn" href="../pricing">Get Started</a>
                     </div>
                 </div>
             </div>
