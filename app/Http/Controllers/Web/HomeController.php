@@ -28,7 +28,7 @@ use App\Http\Resources\EntityCollection;
 use App\Http\Resources\PackageResource;
 use Illuminate\Support\Facades\Cache;
 use Torann\LaravelMetaTags\Facades\MetaTag;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Auth;
@@ -140,10 +140,12 @@ class HomeController extends FrontController
 		$this->setSeo($searchFormOptions);
 
 
+		$data['letest_news']= DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id','desc')->limit(6)->get();
 
 		$data['categories_list_coach'] = DB::table('categories')->select('categories.slug','categories.id','categories.name')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 		// print_r($data['categories_list_coach']);die;
 		
+		// print_r($data['letest_news']);die;
 		return appView('home.index', $data);
 	}
 	
@@ -670,6 +672,12 @@ class HomeController extends FrontController
 	{
 		
 	
+
+
+		
+
+
+
 		// Call API endpoint
 		$endpoint = '/users';
 		$data = makeApiRequest('post', $endpoint, $request->all());

@@ -16,6 +16,7 @@
 namespace App\Http\Controllers\Web\Traits\Sluggable;
 
 use App\Models\Page;
+use App\Models\LetestNews;
 use Illuminate\Support\Facades\Cache;
 
 trait PageBySlug
@@ -37,6 +38,28 @@ trait PageBySlug
 		$cacheId = 'page.slug.' . $slug . '.' . $locale;
 		$page = Cache::remember($cacheId, $this->cacheExpiration, function () use ($slug, $locale) {
 			$page = Page::where('slug', $slug)->first();
+			
+			if (!empty($page)) {
+				$page->setLocale($locale);
+			}
+			
+			return $page;
+		});
+		
+		return $page;
+	}
+
+
+
+	private function getLetestBySlug($slug, $locale = null)
+	{
+		if (empty($locale)) {
+			$locale = config('app.locale');
+		}
+		
+		$cacheId = 'page.slug.' . $slug . '.' . $locale;
+		$page = Cache::remember($cacheId, $this->cacheExpiration, function () use ($slug, $locale) {
+			$page = LetestNews::where('slug', $slug)->first();
 			
 			if (!empty($page)) {
 				$page->setLocale($locale);

@@ -36,6 +36,7 @@ $routes = [
 	// Other Pages
 	'companies' => 'companies',
 	'pageBySlug' => 'page/{slug}',
+	'letestNewsBySlug' => 'letest_news/{slug}',
 	'sitemap' => 'sitemap',
 	'countries' => 'countries',
 	'contact' => 'contact',

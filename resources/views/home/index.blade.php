@@ -61,7 +61,7 @@
 
 
 
- <!-- 
+    <!-- 
  <div class="preloader">
         <div class="loaderInner">
             <div id="top" class="mask">
@@ -78,7 +78,7 @@
     </div> -->
 
 
-    
+
     <section class="hero-banner-1 main" style="background-image: url(../assets/images/home/banner.png);">
 
         <div class="shape-wrap">
@@ -145,7 +145,7 @@
                         <h1 class="text_font_size_index">Your Course To Success</h1>
 
                         <form action="{{ \App\Helpers\UrlGen::search() }}" method="GET" class="row mt-5 box_filter2 search-box_filter2">
-                           
+
 
                             <div class="input-group">
                                 <div class="form-outline search-box-fix">
@@ -195,7 +195,7 @@
                                 ?>
                                     <div class="latest-course1 ppt">
                                         <a href="single-course.html"><img src="../assets/images/home/desktop1-image.png" alt=""></a>
-                                        
+
 
                                         <?php
                                         $name = json_decode($value->name);
@@ -219,38 +219,70 @@
                         <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
                             <aside class="widget h-75 d-inline-block">
                                 <h5 class="mb-1 ">LATEST NEWS</h5>
-                                <div class="info-course">
+
+                                @foreach($letest_news as $news)
+                                <div class="latest-course1 ppt">
                                     <!-- <a href="single-course.html"><img src="assets/images/course/1.jpg" alt=""></a> -->
-                                    <p>Python new version is released..</p>
-                                    <!-- <div class="course-price">
+                                    <!-- <p>{{$news->title}}</p> -->
+                                    <?php
+                                    $title = json_decode($news->title);
+                                    $ss = array();
+                                    foreach ($title as $key => $sub) {
+                                        $ss[$key] = $sub;
+                                    }
+
+
+                                    ?>
+
+                                    @if(!empty($news->picture))
+
+                                    <div class="strivre-img-wrapper">
+
+                                    <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
+
+                                        <img src="{{ imgUrl($news->picture, '') }}" alt="{{ $news->name }}">
+                                        <span class="f-17">{{$ss['en']}}</span>
+                                    
+                                    </a>
+                                </div>
+                                    @endif
+
+
+                                    @if(empty($news->picture))
+
+                                    <div class="strivre-img-wrapper">
+
+                                    <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
+
+                                        <img src="../assets/images/course/1.jpg" alt="">
+                                        <span class="f-17">{{$ss['en']}}</span>
+                                    </a>
+                                    </div>
+                                @endif
+                                        <!-- <div class="course-price">
                                     $24.00
                                 </div> -->
+
                                 </div>
-                                <div class="info-course">
-                                    <!-- <a href="single-course.html"><img src="assets/images/course/1.jpg" alt=""></a> -->
+                                @endforeach
+
+                                <!-- <div class="info-course">
+                                   
                                     <p>Python new version is released..</p>
-                                    <!-- <div class="course-price">
-                                    $24.00
-                                </div> -->
+                                    
                                 </div>
-                                <div class="info-course">
+                                    <div class="info-course">
 
                                     <p>Get ready for Bootstrap 4....</p>
-                                    
-                                    <div class="info-course">
-                                        <p>Read about Java update ...</p>
-                                        <!-- <div class="course-price">
-                                    $74
-                                    <span>$94.00</span>
-                                </div> -->
                                     </div>
                                     <div class="info-course">
                                         <p>Read about Java update ...</p>
-                                        <!-- <div class="course-price">
-                                    $74
-                                    <span>$94.00</span>
-                                </div> -->
+                                        
                                     </div>
+                                    <div class="info-course">
+                                        <p>Read about Java update ...</p>
+                                       
+                                    </div> -->
                             </aside>
                         </nav>
                     </div>

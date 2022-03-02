@@ -124,6 +124,9 @@ Route::group([
 		CRUD::resource('meta_tags', 'MetaTagController');
 		CRUD::resource('packages', 'PackageController');	
 		CRUD::resource('pages', 'PageController');
+
+		CRUD::resource('latest_news', 'LetestNewsController');
+		
 		CRUD::resource('payments', 'PaymentController');
 		CRUD::resource('payment_methods', 'PaymentMethodController');
 		CRUD::resource('permissions', 'PermissionController');
@@ -508,6 +511,7 @@ Route::group([
 		// PAGES
 		Route::get(dynamicRoute('routes.pricing'), 'PageController@pricing');
 		Route::get(dynamicRoute('routes.pageBySlug'), 'PageController@cms');
+		Route::get(dynamicRoute('routes.letestNewsBySlug'), 'PageController@letestCms');
 		Route::get(dynamicRoute('routes.contact'), 'PageController@contact');
 		Route::get(dynamicRoute('routes.aboutUs'), 'PageController@aboutUs');
 		

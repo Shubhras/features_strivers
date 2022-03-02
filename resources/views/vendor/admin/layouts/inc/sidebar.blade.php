@@ -48,6 +48,22 @@
 							<i data-feather="home" class="feather-icon"></i> <span class="hide-menu">{{ trans('admin.dashboard') }}</span>
 						</a>
 					</li>
+
+
+					
+
+
+					<!-- @if (auth()->user()->can('page-list') || userHasSuperAdminPermissions()) -->
+						<li class="sidebar-item">
+							<a href="{{ admin_url('latest_news') }}" class="sidebar-link">
+								<i data-feather="book-open" class="feather-icon"></i> <span class="hide-menu">{{ trans('admin.letest_news') }}</span>
+							</a>
+						</li>
+					<!-- @endif -->
+
+
+
+
 					@if (
 						auth()->user()->can('post-list')
 						|| auth()->user()->can('category-list')

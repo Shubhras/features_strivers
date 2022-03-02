@@ -460,6 +460,22 @@ class UrlGen
 		
 		return $url;
 	}
+
+	public static function letest_news($entry)
+	{
+		if (is_array($entry)) {
+			$entry = ArrayHelper::toObject($entry);
+		}
+		
+		if (isset($entry->slug)) {
+			$path = str_replace(['{slug}'], [$entry->slug], config('routes.letestNewsBySlug'));
+			$url = url($path);
+		} else {
+			$url = '#';
+		}
+		
+		return $url;
+	}
 	
 	/**
 	 * @param null $countryCode

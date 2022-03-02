@@ -62,7 +62,9 @@
     
             <div class="logo text-center mb-5">
                 <a href="{{ url('/') }}">
-                    <img src="{{ $logoUrl }}" alt="logo" class="img-fluid" style="width:250px; height:auto;">
+
+               <h1 style="color: blue;"><b>Coach Strivre Admin</b>  </h1>
+                    <!-- <img src="{{ $logoUrl }}" alt="logo" class="img-fluid" style="width:250px; height:auto;"> -->
                 </a>
                 <hr class="border-0 bg-secondary">
             </div>
