@@ -23,6 +23,7 @@
 @section('content')
 @includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
 
+<br><br>
 <?php if($user->user_type_id == 2){ ?>
 
 <div class="main-container">

@@ -38,8 +38,8 @@
 
     <link rel="stylesheet" href="../assets/css/master.css">
 <?php
-	$plugins = array_keys((array)config('plugins'));
-	$publicDisk = \Storage::disk(config('filesystems.default'));
+	$plugins = array_keys(config('plugins'));
+	$publicDisk = Illuminate\Support\Facades\Storage::disk(config('filesystems.default'));
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,6 +55,8 @@
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ $publicDisk->url('app/default/ico/apple-touch-icon-72-precomposed.png') . getPictureVersion() }}">
 	<link rel="apple-touch-icon-precomposed" href="{{ $publicDisk->url('app/default/ico/apple-touch-icon-57-precomposed.png') . getPictureVersion() }}">
 	<link rel="shortcut icon" href="{{ imgUrl(config('settings.app.favicon'), 'favicon') }}">
+
+	
 	<title>{!! MetaTag::get('title') !!}</title>
 	{!! MetaTag::tag('description') !!}{!! MetaTag::tag('keywords') !!}
 	<link rel="canonical" href="{{ request()->fullUrl() }}"/>
@@ -176,7 +178,7 @@
 	@section('wizard')
 	@show
 	
-	@if (isset($siteCountryInfo))
+	<!-- @if (isset($siteCountryInfo))
 		<div class="p-0 mt-lg-4 mt-md-3 mt-3"></div>
 		<div class="container">
 			<div class="row">
@@ -188,7 +190,7 @@
 				</div>
 			</div>
 		</div>
-	@endif
+	@endif -->
 	
 	@yield('content')
 	

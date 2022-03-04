@@ -120,7 +120,19 @@
                                     ${{$price}}</button>
                             </div>
                         </div>
+
+
                     </form>
+
+                    <div class="row">
+                        
+                            <div class="col-xs-12 col-md-12 col-xl-12r">
+                            <a href="pricing">
+                                <button class="btn btn-danger btn-lg btn-block" type="submit">Back To Subscriptions</button>
+                                </a>
+                            </div>
+                           
+                        </div>
                 </div>
             </div>
         </div>

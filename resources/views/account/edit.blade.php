@@ -48,7 +48,7 @@
     box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
 }
 	</style>
-@extends('layouts.master_new')
+
 
 
 
@@ -64,8 +64,12 @@
 
 <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
        
-    </section>
+ </section>
 
+<br>
+<br>
+<br>
+@extends('layouts.master_new')
 @section('content')
 	@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
 

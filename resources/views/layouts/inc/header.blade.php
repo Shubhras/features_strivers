@@ -5,26 +5,26 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Start Include All CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="assets/css/elegant-icons.css" />
-    <link rel="stylesheet" href="assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/lightcase.css">
-    <link rel="stylesheet" href="assets/css/preset.css" />
-    <link rel="stylesheet" href="assets/css/theme.css" />
-    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/elegant-icons.css" />
+    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="../assets/css/animate.css" />
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/lightcase.css">
+    <link rel="stylesheet" href="../assets/css/preset.css" />
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
 
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 
-    <link rel="stylesheet" href="assets/css/master.css"><?php
+    <link rel="stylesheet" href="../assets/css/master.css"><?php
 // Search parameters
 $queryString = (request()->getQueryString() ? ('?' . request()->getQueryString()) : '');
 
@@ -123,7 +123,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 
                             <?php 
 
-									$categories = DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();
+									$categories = Illuminate\Support\Facades\DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();
 									//print_r();die;
 									foreach($categories as $value){
 
@@ -303,46 +303,5 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 
         </div>
     </nav>
-    <div class="modal fade" id="catModal">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">What topics do you find interesting?</h4>
-                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    
-                    <div class = "category_container">
-                        <?php 
-
-                            $categories = DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();
-                            //print_r();die;
-                            foreach($categories as $value){
-                            $name = json_decode($value->name);
-                            $ss = array();
-                                foreach ($name as $key => $sub) {
-                                    $ss[$key] = $sub;
-                                }
-                            //print_r($ss['en']);
-
-                        ?>
-                        <div class = "category_data"><a href="{{url('/coach_list/'.$value->id) }}"> {{$ss['en']}}</a></div>
-
-                        <?php }?>
-                        <button id="sbmturintrst" class="" data-dismiss="modal">Submit Your Interest</button>
-                            </div>
-                </div>
-
-                <!-- Modal footer -->
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div> -->
-
-            </div>
-        </div>
-    </div>
+    
 </div>

@@ -101,12 +101,27 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
 .navbar-expand-lg .navbar-nav li>a {
     display: block;
     font-size: 16px;
-    line-height: 30px;
+    line-height: 48px;
     color: #fff;
     text-transform: capitalize;
     font-weight: 600;
     padding: 23px 0 26px;
     position: relative;
+}
+
+.navbar-expand-lg1 li>a {
+    display: block;
+    font-size: 16px;
+    line-height: 48px;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 600;
+    padding: 0px 0 0px!important;
+    position: relative;
+}
+
+.list-side-menu876 {
+    padding-left: 26px!important;
 }
 
 .navbar-expand-lg .navbar-nav li:hover>a {
@@ -282,6 +297,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     position: relative;
     padding: 265px 0 190px;
 }
+
 .hero-banner-245 {
     background-position: bottom right;
     background-size: cover;
@@ -533,7 +549,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
 
 .ab-thumb img {
     width: 70%;
-    height: 30%;
+    height: 80%;
 }
 
 .ab-content {
@@ -1276,6 +1292,13 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     background-repeat: no-repeat;
     position: relative;
     padding: 111px 0 238px;
+}
+
+.blog-section64 {
+    background-position: top center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 111px 0 0px;
 }
 
 .post-item-1 {
@@ -7543,7 +7566,7 @@ input#modal-description {
 }
 
 .main-section {
-    padding-top: 70px;
+    padding-top: 104px;
     padding-bottom: 70px;
     background: #ffffff;
 }

@@ -177,7 +177,7 @@
 	@section('wizard')
 	@show
 	
-	@if (isset($siteCountryInfo))
+	<!-- @if (isset($siteCountryInfo))
 		<div class="p-0 mt-lg-4 mt-md-3 mt-3"></div>
 		<div class="container">
 			<div class="row">
@@ -189,7 +189,7 @@
 				</div>
 			</div>
 		</div>
-	@endif
+	@endif -->
 	
 	@yield('content')
 	

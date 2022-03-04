@@ -19,7 +19,7 @@
 @section('search')
 @parent
 @endsection
-
+@section('content')
 <br>
 <?php
 $hideOnMobile = '';
@@ -178,6 +178,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                                 </div>
                                     </a>
                             </div> 
+                            
                             <div class="modal" id="myModal_{{$coach_list->id }}">
                             <div class="modal-dialog">
                             <div class="modal-content" style="margin-top: 172px;">
@@ -341,6 +342,21 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
         
     });
 </script>
+
+
+@endsection
+
+@section('after_styles')
+
+@if (config('lang.direction') == 'rtl')
+<!-- <link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput-rtl.min.css') }}" rel="stylesheet"> -->
+@endif
+
+
+
+@endsection
+
+@section('after_scripts')
 
 
 
