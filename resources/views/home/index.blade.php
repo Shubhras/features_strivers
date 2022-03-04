@@ -218,6 +218,7 @@
                     <div class="course-sidebar1">
                         <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
                             <aside class="widget h-75 d-inline-block">
+                            <aside class="widget ttr ">
                                 <h5 class="mb-1 ">LATEST NEWS</h5>
 
                                 @foreach($letest_news as $news)
@@ -283,6 +284,7 @@
                                         <p>Read about Java update ...</p>
                                        
                                     </div> -->
+                                    </aside>
                             </aside>
                         </nav>
                     </div>

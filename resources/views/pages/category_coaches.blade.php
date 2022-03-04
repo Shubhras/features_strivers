@@ -244,19 +244,18 @@
                                     <div class="teacher-meta">
 
                                         <!-- Large modal -->
-                                        <a type="button" href="#" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                        <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg" id="{{$coach_list->id }}">
                                             <!-- <h5>Dianne Ameter</h5> -->
                                             <h5>
                                             {{ $coach_list->name }}
                                             </h5>
-                                        </a>
-
-                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                            </a>
+                                        <div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="{{$coach_list->id }}">
                                             <div class="modal-dialog modal-xl">
                                                 <div class="modal-content p-5">
                                                     <img class="img-coches-main" width="15%" src="assets/images/home/teacher3.jpg" alt="">
 
-                                                    <h3 class=" text-center mt-5">Jimmy Chin</h3>
+                                                    <h3 class=" text-center mt-5">{{$coach_list->name}}</h3>
                                                     <h4 class=" text-center">
 
                                                         Teaches Adventure Photography
@@ -270,18 +269,18 @@
 
                                                     </p>
 
-                                                    <h5 class="coches-description text-center mt-5">Jimmy Chin has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
+                                                    <h5 class="coches-description text-center mt-5">{{$coach_list->name}} has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
                                                         breathtaking shots. In his photography class, learn different creative approaches for commercial shoots, editorial spreads, and passion projects. Gather the gear—and the perspective—to bring your
                                                         photography to new heights.</h5>
                                                     <div class="row center-button-modal">
 
                                                         <div class="col-lg-2">
-                                                            <a href="coach-details.html" class="bisylms-btn">Know more</a>
+                                                            <a href="{{url('/coachall_detail/'.$coach_list->id) }}" class="bisylms-btn">Know more</a>
 
 
                                                         </div>
                                                         <div class="col-lg-2">
-                                                            <a href="strivre-sign-up.html" class="bisylms-btn">Get Started</a>
+                                                            <a href="{{url('/pricing') }}" class="bisylms-btn">Get Started</a>
 
 
                                                         </div>

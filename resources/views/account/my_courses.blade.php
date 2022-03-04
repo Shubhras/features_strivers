@@ -597,146 +597,37 @@
 
 
 						<div class="row">
+							<?php 	
+						foreach ($coach_coarsee as  $coaches_corsee) {
+						?>				
                         <div class="col-lg-4 col-md-6">
                             <div class="feature-course-item-4">
                                 <div class="fcf-thumb">
-                                    <img src="../assets/images/profile/1.jpg" alt="">
+                                    <img src="{{ imgUrl($coaches_corsee->image, '') }}" alt="" style="height: 244px; weight: 244px;">
                                     <a class="enroll" href="#">Enroll Now</a>
                                 </div>
                                 <div class="fci-details">
-                                    <a href="#" class="c-cate"><i class="fas fa-tags"></i>Computer Science</a>
-                                    <h4><a href="single-course.html">Using Creative Problem Solving</a></h4>
+                                    <a href="#" class="c-cate"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
+                                    <h4><a href="#">Using Creative Problem Solving</a></h4>
                                     <div class="author">
-                                        <img src="../assets/images/home3/course/a1.png" alt="">
-                                        <a href="#">Anthony</a>
+                                        <img src="{{ imgUrl($coaches_corsee->photo, '') }}" alt="">
+                                        <a href="#">{{$coaches_corsee->name}}</a>
                                     </div>
                                     <div class="price-rate">
-                                        <div class="course-price">
-                                            20 Hours
-                                          
+                                        <div class="course-price"><a>
+										{{$coaches_corsee->course_hourse}} Hours
+										</a>
                                         </div>
                                        
                                     </div>
                                 </div>
                             </div>
+							
                         </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="feature-course-item-4">
-                                <div class="fcf-thumb">
-                                    <img src="../assets/images/profile/2.jpg" alt="">
-                                    <a class="enroll" href="#">Enroll Now</a>
-                                </div>
-                                <div class="fci-details">
-                                    <a href="#" class="c-cate"><i class="fas fa-tags"></i>Art &amp; Design</a>
-                                    <h4><a href="single-course.html">The Art of Black and White Photography</a>
-                                    </h4>
-                                    <div class="author">
-                                        <img src="../assets/images/home3/course/a2.png" alt="">
-                                        <a href="#">Giles Posture</a>
-                                    </div>
-                                    <div class="price-rate">
-                                        <div class="course-price">
-                                            20 Hours
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="feature-course-item-4">
-                                <div class="fcf-thumb">
-                                    <img src="../assets/images/profile/3.jpg" alt="">
-                                    <a class="enroll" href="#">Enroll Now</a>
-                                </div>
-                                <div class="fci-details">
-                                    <a href="#" class="c-cate"><i class="fas fa-tags"></i>Business Study</a>
-                                    <h4><a href="single-course.html">Learning jQuery mobile for Beginners</a>
-                                    </h4>
-                                    <div class="author">
-                                        <img src="../assets/images/home3/course/a3.png" alt="">
-                                        <a href="#">Hans Down</a>
-                                    </div>
-                                    <div class="price-rate">
-                                        <div class="course-price">
-                                            20 Hours
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="feature-course-item-4">
-                                <div class="fcf-thumb">
-                                    <img src="../assets/images/profile/4.jpg" alt="">
-                                    <a class="enroll" href="#">Enroll Now</a>
-                                </div>
-                                <div class="fci-details">
-                                    <a href="#" class="c-cate"><i class="fas fa-tags"></i>Data Science</a>
-                                    <h4><a href="single-course.html">Buddhism and modern Psychology</a></h4>
-                                    <div class="author">
-                                        <img src="../assets/images/home3/course/a4.png" alt="">
-                                        <a href="#">Richard Tea</a>
-                                    </div>
-                                    <div class="price-rate">
-                                        <div class="course-price">
-                                            30 Hours
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="feature-course-item-4">
-                                <div class="fcf-thumb">
-                                    <img src="../assets/images/profile/6.jpg" alt="">
-                                    <a class="enroll" href="#">Enroll Now</a>
-                                </div>
-                                <div class="fci-details">
-                                    <a href="#" class="c-cate"><i class="fas fa-tags"></i>UI/UX Design</a>
-                                    <h4><a href="single-course.html">Fundamentals of UI Design</a></h4>
-                                    <div class="author">
-                                        <img src="../assets/images/home3/course/a5.png" alt="">
-                                        <a href="#">Weir Doe</a>
-                                    </div>
-                                    <div class="price-rate">
-                                        <div class="course-price">
-                                            25 Hours
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="feature-course-item-4">
-                                <div class="fcf-thumb">
-                                    <img src="../assets/images/profile/5.jpg" alt="">
-                                    <a class="enroll" href="#">Enroll Now</a>
-                                </div>
-                                <div class="fci-details">
-                                    <a href="#" class="c-cate"><i class="fas fa-tags"></i>Web Development</a>
-                                    <h4><a href="single-course.html">Making music with Other people</a></h4>
-                                    <div class="author">
-                                        <img src="../assets/images/home3/course/a6.png" alt="">
-                                        <a href="#">Hilary Ouse</a>
-                                    </div>
-                                    <div class="price-rate">
-                                        <div class="course-price">
-                                            25 Hours
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-						</div>
-
-
-
+					 <?php } ?>	
 
 					</div>
 				</div>
-
 		<br>
 
 				<?php } ?>

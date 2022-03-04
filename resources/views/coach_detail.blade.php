@@ -12,48 +12,27 @@
  * Please read the full License from here - http://codecanyon.net/licenses/standard
 --}}
 @extends('layouts.master_new')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+
+<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
+<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+       
+    </section>
 @section('content')
+
 <div class="main-container">
                         
 <div class= "container">
 
     <div class="col-md-9 col-12">
         <br>
-    <div class="inner-box default-inner-box1" style="height: 90px;">
-                    
-                            
-                                {{-- Traffic Stats --}}
-                                <h3 >Coach</h3>
-                                <div class="hdata" style="float:right;">
-                                 
-                                    <div class="" >
-                                        <i class="fas fa-comments ln-shadow" style="margin-top: -43px;"></i>
-                                    </div>
-                                    <div class="mcol-bottom">
-                                        {{-- Number of visitors --}}
-                                        <p>
-                                            <em>{{ ('Chat') }}</em>
-                                           
-                                        </p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                {{-- Favorites Stats --}}
-                                <div class="hdata" style="float:right;">
-                                    <div class="mcol-left">
-                                        <i class="fas fa-bell ln-shadow" style="margin-top: -43px;"></i>
-                                    </div>
-                                    <div class="mcol-bottom">
-                                        {{-- Number of favorites --}}
-                                        <p>   
-                                                <em>{{ ('Notification') }} <em>                                      
-                                        </p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                     
-        </div>
+    
     </div>
     <br>
     <div class="col-md-9 page-content">
@@ -125,17 +104,18 @@
             </div>
             <br>
             <div class="" style="text-align: center;">
-            <a href="{{url('/subscription') }}">
-            <button type="button" class="btn btn-default btn-lg" >Get Started</button>
-                                </a>
+            <a href="{{url('/pricing') }}">
+            <button type="button" class="btn btn-success btn-lg" >Get Started</button>
+            </a>
             </div>
             		        
     </div>                            
 							
 </div>
-
+@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 
 @endsection()
+
 <style>
     .flex-container {
   display: flex;
