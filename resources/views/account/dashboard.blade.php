@@ -1,27 +1,25 @@
-
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Start Include All CSS -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../assets/css/elegant-icons.css" />
-    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="../assets/css/animate.css" />
-    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../assets/css/slick.css">
-    <link rel="stylesheet" href="../assets/css/nice-select.css">
-    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="../assets/css/lightcase.css">
-    <link rel="stylesheet" href="../assets/css/preset.css" />
-    <link rel="stylesheet" href="../assets/css/theme.css" />
-    <link rel="stylesheet" href="../assets/css/responsive.css" />
+<!-- Start Include All CSS -->
+<link rel="stylesheet" href="../assets/css/bootstrap.css" />
+<link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
+<link rel="stylesheet" href="../assets/css/elegant-icons.css" />
+<link rel="stylesheet" href="../assets/css/themify-icons.css" />
+<link rel="stylesheet" href="../assets/css/animate.css" />
+<link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+<link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="../assets/css/slick.css">
+<link rel="stylesheet" href="../assets/css/nice-select.css">
+<link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+<link rel="stylesheet" href="../assets/css/lightcase.css">
+<link rel="stylesheet" href="../assets/css/preset.css" />
+<link rel="stylesheet" href="../assets/css/theme.css" />
+<link rel="stylesheet" href="../assets/css/responsive.css" />
 
-@extends('layouts.master_new')
+
 
 
 
@@ -35,391 +33,395 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
 
+@extends('layouts.master_new')
 <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
-       
-    </section>
+
+</section>
 
 @section('content')
-	@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
+@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
 
-	
+<br>
+<br>
+<br>
+
 <section style="background-color: white;">
-	 <div class="main-container" >
-		<div class="container">
-
-
-    
+    <div class="main-container">
+        <div class="container">
 
 
 
-<?php
-
-// print_r(json_decode($coach_course));die;
-$cal_array=array();
-foreach ($coach_course as $key => $value) {
-    # code...
-    // foreach ($value as  $values) {
-        # code...
-        $cal_array[]=array(
-            'id'=>$value->id,
-            'course_name'=>$value->course_name,
-            "course_hourse"=>$value->course_hourse,
-            "starting_time"=>$value->starting_time,
-            "datad"=>$value->dated,
-        );
-        // }
-    }
-//     print_r($cal_array);
-// die;
-?>
-
-      
 
 
 
-        <?php if($user->user_type_id ==2){?>
+            <?php
+
+            // print_r(json_decode($coach_course));die;
+            $cal_array = array();
+            foreach ($coach_course as $key => $value) {
+                # code...
+                // foreach ($value as  $values) {
+                # code...
+                $cal_array[] = array(
+                    'id' => $value->id,
+                    'course_name' => $value->course_name,
+                    "course_hourse" => $value->course_hourse,
+                    "starting_time" => $value->starting_time,
+                    "datad" => $value->dated,
+                );
+                // }
+            }
+            //     print_r($cal_array);
+            // die;
+            ?>
 
 
 
-        <div class="row ">
-            <div class="col-md-3 page-sidebar">
-			  <div class="inner-box default-inner-box">
-                <h3 class="no-padding text-center-480 useradmin">
-                    <a href="">
-                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp; 
-                        {{ $user->name }}
-                    </a>
-                </h3>
-			  </div>
-            </div>
-
-            <div class="col-md-9 page-content ">
 
 
-					<div class="inner-box default-inner-box edit-file-chat">
-					<div class="row">
-                        <div class="col-md-4 col-sm-4 col-12">
+            <?php if ($user->user_type_id == 2) { ?>
+
+
+
+                <div class="row ">
+                    <div class="col-md-3 page-sidebar">
+                        <div class="inner-box default-inner-box">
                             <h3 class="no-padding text-center-480 useradmin">
-                               
-                                <b> Coach Dashboard </b>
+                                <a href="">
+                                    <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp;
+                                    {{ $user->name }}
+                                </a>
                             </h3>
                         </div>
-                        <div class="col-md-8 col-sm-8 col-12">
-                            <div class="header-data text-center-xs">
-                                {{-- Threads Stats --}}
-                                <div class="hdata">
-                                <a href="{{ url('account/messages') }}">
+                    </div>
 
-                                    <div class="mcol-left">
-                                        <i class="fas fa-phone-alt ln-shadow"></i>
-                                    </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of messages --}}
-                                        <p>
-                                            
-                                                {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-                                               
-                                                <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-                                           
-                                        </p>
-                                    </div>
-                                    </a>
-                                    <div class="clearfix"></div>
+                    <div class="col-md-9 page-content ">
+
+
+                        <div class="inner-box default-inner-box edit-file-chat">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-12">
+                                    <h3 class="no-padding text-center-480 useradmin">
+
+                                        <b> Coach Dashboard </b>
+                                    </h3>
                                 </div>
+                                <div class="col-md-8 col-sm-8 col-12">
+                                    <div class="header-data text-center-xs">
+                                        {{-- Threads Stats --}}
+                                        <div class="hdata">
+                                            <a href="{{ url('account/messages') }}">
 
-                                {{-- Traffic Stats --}}
-                                <div class="hdata">
-                                <a href="{{ url('account/chat') }}">
-                                    <div class="mcol-left">
-                                        <i class="fas fa-comments ln-shadow"></i>
-                                    </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of visitors --}}
-                                        <p>
-                                            
-                                                <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-                                                {{ \App\Helpers\Number::short($totalPostsVisits) }}
-                                    
-                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-                                           
-                                        </p>
-                                    </div>
+                                                <div class="mcol-left">
+                                                    <i class="fas fa-phone-alt ln-shadow"></i>
+                                                </div>
+                                                <div class="mcol-right">
+                                                    {{-- Number of messages --}}
+                                                    <p>
 
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
+                                                        {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
 
-                               
+                                                        <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
 
-                                {{-- Favorites Stats --}}
-                                <div class="hdata" style="width: 151px!important;margin-left: -38px;">
-                                <a href="{{ url('account/favourite') }}">
-                                    <div class="mcol-left" >
-                                        <i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+                                        {{-- Traffic Stats --}}
+                                        <div class="hdata">
+                                            <a href="{{ url('account/chat') }}">
+                                                <div class="mcol-left">
+                                                    <i class="fas fa-comments ln-shadow"></i>
+                                                </div>
+                                                <div class="mcol-right">
+                                                    {{-- Number of visitors --}}
+                                                    <p>
+
+                                                        <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+                                                        {{ \App\Helpers\Number::short($totalPostsVisits) }}
+
+                                                        <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+
+                                                    </p>
+                                                </div>
+
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+
+
+                                        {{-- Favorites Stats --}}
+                                        <div class="hdata" style="width: 151px!important;margin-left: -38px;">
+                                            <a href="{{ url('account/favourite') }}">
+                                                <div class="mcol-left">
+                                                    <i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
+                                                </div>
+                                                <div class="mcol-right">
+                                                    {{-- Number of favorites --}}
+                                                    <p>
+
+                                                        {{ \App\Helpers\Number::short($countFavoritePosts) }}
+                                                        <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
+
+                                                    </p>
+                                                </div>
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>
                                     </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of favorites --}}
-                                        <p>
-                                            
-                                                {{ \App\Helpers\Number::short($countFavoritePosts) }}
-                                                <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-                                           
-                                        </p>
-                                    </div>
-                                    </a>
-                                    <div class="clearfix"></div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
-				</div>
-
-			</div>
-	</div>
-
-
-
-
-
-        <div class="row">
-            <div class="col-md-3 page-sidebar">
-
-                @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
-            </div>
-
-
-            <div class="col-md-9 page-content">
-
-                @include('flash::message')
-
-                @if (isset($errors) && $errors->any())
-                <div class="alert alert-danger alert-dismissible">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
-                    <h5><strong>{{ t('oops_an_error_has_occurred') }}</strong></h5>
-                    <ul class="list list-check">
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
                 </div>
-                @endif
-
-                <div id="avatarUploadError" class="center-block" style="width:100%; display:none"></div>
-                <div id="avatarUploadSuccess" class="alert alert-success fade show" style="display:none;"></div>
-
-                <div class="inner-box default-inner-box">
-
-                    <div class="row">
 
 
 
-                        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
-                        <script>
-                            $(document).ready(function() {
-                                var date = new Date();
-                                var d = date.getDate();
-                                var m = date.getMonth();
-                                var y = date.getFullYear();
 
-                                /*  className colors
-                                
-                                className: default(transparent), important(red), chill(pink), success(green), info(blue)
-                                
-                                */
+                <div class="row">
+                    <div class="col-md-3 page-sidebar">
 
-                               valueArray = <?php echo json_encode($cal_array); ?>;
-                                    // console.log(valueArray[0]);
-                                /* initialize the external events
-                                
-                                -----------------------------------------------------------------*/
-                                var  events = []
-                                for (let index = 0; index < valueArray.length; index++) {
+                        @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
+                    </div>
+
+
+                    <div class="col-md-9 page-content">
+
+                        @include('flash::message')
+
+                        @if (isset($errors) && $errors->any())
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
+                            <h5><strong>{{ t('oops_an_error_has_occurred') }}</strong></h5>
+                            <ul class="list list-check">
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+
+                        <div id="avatarUploadError" class="center-block" style="width:100%; display:none"></div>
+                        <div id="avatarUploadSuccess" class="alert alert-success fade show" style="display:none;"></div>
+
+                        <div class="inner-box default-inner-box">
+
+                            <div class="row">
+
+
+
+                                <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+                                <script>
+                                    $(document).ready(function() {
+                                        var date = new Date();
+                                        var d = date.getDate();
+                                        var m = date.getMonth();
+                                        var y = date.getFullYear();
+
+                                        /*  className colors
+                                        
+                                        className: default(transparent), important(red), chill(pink), success(green), info(blue)
+                                        
+                                        */
+
+                                        valueArray = <?php echo json_encode($cal_array); ?>;
+                                        // console.log(valueArray[0]);
+                                        /* initialize the external events
+                                        
+                                        -----------------------------------------------------------------*/
+                                        var events = []
+                                        for (let index = 0; index < valueArray.length; index++) {
                                             //  events({valueArray[index]['course_name'],});
                                             // console.log(valueArray[index]);
-                                    // var dated = valueArray[index]['starting_time'];
-                                                events.push({
-                                                    title : valueArray[index]['course_name']+ "</span><br> " + " Start Time:"+valueArray[index]['starting_time'],
-                                                    start : new Date(valueArray[index]['datad']),
-                                                    // end :  new Date(valueArray[index]['datad']),
-                                                    
-                                                });
-                                                
+                                            // var dated = valueArray[index]['starting_time'];
+                                            events.push({
+                                                title: valueArray[index]['course_name'] + "</span><br> " + " Start Time:" + valueArray[index]['starting_time'],
+                                                start: new Date(valueArray[index]['datad']),
+                                                // end :  new Date(valueArray[index]['datad']),
+
+                                            });
+
                                         }
                                         // console.log(events);
-                                        
-                                $('#external-events div.external-event').each(function() {
 
-                                    // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-                                    // it doesn't need to have a start or end
-                                    var eventObject = {
-                                        title: $.trim($(this).events()) // use the element's text as the event title
-                                    };
+                                        $('#external-events div.external-event').each(function() {
 
-                                    // store the Event Object in the DOM element so we can get to it later
-                                    $(this).events('eventObject', eventObject);
+                                            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+                                            // it doesn't need to have a start or end
+                                            var eventObject = {
+                                                title: $.trim($(this).events()) // use the element's text as the event title
+                                            };
 
-                                    // make the event draggable using jQuery UI
-                                    $(this).draggable({
-                                        zIndex: 999,
-                                        revert: true, // will cause the event to go back to its
-                                        revertDuration: 0 //  original position after the drag
+                                            // store the Event Object in the DOM element so we can get to it later
+                                            $(this).events('eventObject', eventObject);
+
+                                            // make the event draggable using jQuery UI
+                                            $(this).draggable({
+                                                zIndex: 999,
+                                                revert: true, // will cause the event to go back to its
+                                                revertDuration: 0 //  original position after the drag
+                                            });
+
+                                        });
+
+
+                                        /* initialize the calendar
+                                        -----------------------------------------------------------------*/
+                                        ;
+
+                                        var calendar = $('#calendar').fullCalendar({
+                                            header: {
+                                                left: 'title',
+                                                center: 'agendaDay,agendaWeek,month',
+                                                right: 'prev,next today'
+                                            },
+                                            editable: true,
+                                            firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
+                                            selectable: true,
+                                            defaultView: 'month',
+
+                                            axisFormat: 'h:mm',
+                                            columnFormat: {
+                                                month: 'ddd', // Mon
+                                                week: 'ddd d', // Mon 7
+                                                day: 'dddd M/d', // Monday 9/7
+                                                agendaDay: 'dddd d'
+                                            },
+                                            titleFormat: {
+                                                month: 'MMMM yyyy', // September 2009
+                                                week: "MMMM yyyy", // September 2009
+                                                day: 'MMMM yyyy' // Tuesday, Sep 8, 2009
+                                            },
+                                            allDaySlot: false,
+                                            selectHelper: true,
+                                            select: function(start, end, allDay) {
+                                                var title = prompt('Event Title:');
+                                                if (title) {
+                                                    calendar.fullCalendar('renderEvent', {
+                                                            title: title,
+                                                            start: start,
+                                                            end: end,
+                                                            allDay: allDay
+                                                        },
+                                                        true // make the event "stick"
+                                                    );
+                                                }
+                                                calendar.fullCalendar('unselect');
+                                            },
+
+                                            events: events,
+
+                                            // {
+                                            //     title: 'Click for Google',
+                                            //     start: new Date(y, m, 28),
+                                            //     end: new Date(y, m, 29),
+                                            //     url: 'https://ccp.cloudaccess.net/aff.php?aff=5188',
+                                            //     className: 'success'
+                                            // }
+
+
+                                        });
+
+
+
                                     });
-
-                                });
-
-
-                                /* initialize the calendar
-                                -----------------------------------------------------------------*/
-                                ;
-                                
-                                var calendar = $('#calendar').fullCalendar({
-                                    header: {
-                                        left: 'title',
-                                        center: 'agendaDay,agendaWeek,month',
-                                        right: 'prev,next today'
-                                    },
-                                    editable: true,
-                                    firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
-                                    selectable: true,
-                                    defaultView: 'month',
-
-                                    axisFormat: 'h:mm',
-                                    columnFormat: {
-                                        month: 'ddd', // Mon
-                                        week: 'ddd d', // Mon 7
-                                        day: 'dddd M/d', // Monday 9/7
-                                        agendaDay: 'dddd d'
-                                    },
-                                    titleFormat: {
-                                        month: 'MMMM yyyy', // September 2009
-                                        week: "MMMM yyyy", // September 2009
-                                        day: 'MMMM yyyy' // Tuesday, Sep 8, 2009
-                                    },
-                                    allDaySlot: false,
-                                    selectHelper: true,
-                                    select: function(start, end, allDay) {
-                                        var title = prompt('Event Title:');
-                                        if (title) {
-                                            calendar.fullCalendar('renderEvent', {
-                                                    title: title,
-                                                    start: start,
-                                                    end: end,
-                                                    allDay: allDay
-                                                },
-                                                true // make the event "stick"
-                                            );
-                                        }
-                                        calendar.fullCalendar('unselect');
-                                    },
-                                                                       
-                                   events:events,
-                                   
-                                        // {
-                                        //     title: 'Click for Google',
-                                        //     start: new Date(y, m, 28),
-                                        //     end: new Date(y, m, 29),
-                                        //     url: 'https://ccp.cloudaccess.net/aff.php?aff=5188',
-                                        //     className: 'success'
-                                        // }
-                                        
-                                        
-                                });
-                                
-                                        
-                               
-                            });
-                        </script>
-                        <style>
-                            body {
-                                /* margin-bottom: 40px;
+                                </script>
+                                <style>
+                                    body {
+                                        /* margin-bottom: 40px;
                         margin-top: 40px; */
-                                /* text-align: center; */
-                                /* font-size: 14px; */
-                                font-family: 'Roboto', sans-serif;
-                                background: url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
-                            }
+                                        /* text-align: center; */
+                                        /* font-size: 14px; */
+                                        font-family: 'Roboto', sans-serif;
+                                        background: url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
+                                    }
 
-                            #wrap {
-                                width: 1100px;
-                                margin: 0 auto;
-                                background: url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
-                            }
+                                    #wrap {
+                                        width: 1100px;
+                                        margin: 0 auto;
+                                        background: url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
+                                    }
 
-                            #external-events {
-                                float: left;
-                                width: 150px;
-                                padding: 0 10px;
-                                text-align: left;
-                            }
+                                    #external-events {
+                                        float: left;
+                                        width: 150px;
+                                        padding: 0 10px;
+                                        text-align: left;
+                                    }
 
-                            #external-events h4 {
-                                font-size: 16px;
-                                margin-top: 0;
-                                padding-top: 1em;
-                            }
+                                    #external-events h4 {
+                                        font-size: 16px;
+                                        margin-top: 0;
+                                        padding-top: 1em;
+                                    }
 
-                            .external-event {
-                                /* try to mimick the look of a real event */
-                                margin: 10px 0;
-                                padding: 2px 4px;
-                                background: #3366CC;
-                                color: #fff;
-                                font-size: .85em;
-                                cursor: pointer;
-                            }
+                                    .external-event {
+                                        /* try to mimick the look of a real event */
+                                        margin: 10px 0;
+                                        padding: 2px 4px;
+                                        background: #3366CC;
+                                        color: #fff;
+                                        font-size: .85em;
+                                        cursor: pointer;
+                                    }
 
-                            #external-events p {
-                                margin: 1.5em 0;
-                                font-size: 11px;
-                                color: #666;
-                            }
+                                    #external-events p {
+                                        margin: 1.5em 0;
+                                        font-size: 11px;
+                                        color: #666;
+                                    }
 
-                            #external-events p input {
-                                margin: 0;
-                                vertical-align: middle;
-                            }
+                                    #external-events p input {
+                                        margin: 0;
+                                        vertical-align: middle;
+                                    }
 
-                            #calendar {
-                                /* 		float: right; */
-                                margin: 0 auto;
-                                width: 1000px;
-                                background-color: #FFFFFF;
-                                border-radius: 6px;
-                                box-shadow: 0 1px 2px #C3C3C3;
-                                -webkit-box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
-                                -moz-box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
-                                box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
-                            }
-                        </style>
+                                    #calendar {
+                                        /* 		float: right; */
+                                        margin: 0 auto;
+                                        width: 1000px;
+                                        background-color: #FFFFFF;
+                                        border-radius: 6px;
+                                        box-shadow: 0 1px 2px #C3C3C3;
+                                        -webkit-box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
+                                        -moz-box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
+                                        box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
+                                    }
+                                </style>
 
 
-                        <div id='wrap'>
+                                <div id='wrap'>
 
-                            <div id='calendar'></div>
+                                    <div id='calendar'></div>
 
-                            <div style='clear:both'></div>
+                                    <div style='clear:both'></div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
-
-            </div>
         </div>
-         </div>
-        </div>
-     </div>
+    </div>
+    </div>
 </section>
 
 
-    <div class="main-section">
-        <div class="container">
+<div class="main-section">
+    <div class="container">
 
-            <h2 class="sec-title" style="font-weight: 700;">
-                Suggested Strivre
+        <h2 class="sec-title" style="font-weight: 700;">
+            Suggested Strivre
 
-            </h2>
+        </h2>
 
-         <div class="row">
+        <div class="row">
             <?php foreach ($suggested_striver as $coach_list) { ?>
                 <div class="col-lg-3 col-md-6">
                     <div class="teacher-item">
@@ -442,51 +444,51 @@ foreach ($coach_course as $key => $value) {
                         </div>
                         <div class="teacher-meta">
                             <h5>
-                            {{ $coach_list->name }}
+                                {{ $coach_list->name }}
                             </h5>
                             <p>Stylist &amp; Author
                             </p>
                         </div>
                     </div>
                 </div>
-                <?php } ?>
-            </div>
+            <?php } ?>
         </div>
     </div>
+</div>
 
 
 
 
-        <?php } else{?>
+<?php } else { ?>
 
 
-        <div class="row ">
-            <div class="col-md-3 page-sidebar">
-			  <div class="inner-box default-inner-box">
+    <div class="row ">
+        <div class="col-md-3 page-sidebar">
+            <div class="inner-box default-inner-box">
                 <h3 class="no-padding text-center-480 useradmin">
                     <a href="">
-                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp; 
+                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp;
                         {{ $user->name }}
                     </a>
                 </h3>
-			  </div>
             </div>
+        </div>
 
-            <div class="col-md-9 page-content ">
+        <div class="col-md-9 page-content ">
 
 
-					<div class="inner-box default-inner-box edit-file-chat">
-					<div class="row">
-                        <div class="col-md-4 col-sm-4 col-12">
-                            <h3 class="no-padding text-center-480 useradmin">
-                               
-                                <b> Strivre Dashboard </b>
-                            </h3>
-                        </div>
-                        <div class="col-md-8 col-sm-8 col-12">
-                            <div class="header-data text-center-xs">
-                                {{-- Threads Stats --}}
-                                <div class="hdata">
+            <div class="inner-box default-inner-box edit-file-chat">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-12">
+                        <h3 class="no-padding text-center-480 useradmin">
+
+                            <b> Strivre Dashboard </b>
+                        </h3>
+                    </div>
+                    <div class="col-md-8 col-sm-8 col-12">
+                        <div class="header-data text-center-xs">
+                            {{-- Threads Stats --}}
+                            <div class="hdata">
                                 <a href="{{ url('account/messages') }}">
 
                                     <div class="mcol-left">
@@ -495,19 +497,19 @@ foreach ($coach_course as $key => $value) {
                                     <div class="mcol-right">
                                         {{-- Number of messages --}}
                                         <p>
-                                            
-                                                {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-                                               
-                                                <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-                                           
+
+                                            {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
+
+                                            <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
+
                                         </p>
                                     </div>
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
+                                </a>
+                                <div class="clearfix"></div>
+                            </div>
 
-                                {{-- Traffic Stats --}}
-                                <div class="hdata">
+                            {{-- Traffic Stats --}}
+                            <div class="hdata">
                                 <a href="{{ url('account/chat') }}">
                                     <div class="mcol-left">
                                         <i class="fas fa-comments ln-shadow"></i>
@@ -515,330 +517,329 @@ foreach ($coach_course as $key => $value) {
                                     <div class="mcol-right">
                                         {{-- Number of visitors --}}
                                         <p>
-                                            
-                                                <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-                                                {{ \App\Helpers\Number::short($totalPostsVisits) }}
-                                    
-                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-                                           
+
+                                            <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+                                            {{ \App\Helpers\Number::short($totalPostsVisits) }}
+
+                                            <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+
                                         </p>
                                     </div>
 
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
+                                </a>
+                                <div class="clearfix"></div>
+                            </div>
 
-                               
 
-                                {{-- Favorites Stats --}}
-                                <div class="hdata" style="width: 151px!important;margin-left: -38px;">
+
+                            {{-- Favorites Stats --}}
+                            <div class="hdata" style="width: 151px!important;margin-left: -38px;">
                                 <a href="{{ url('account/favourite') }}">
-                                    <div class="mcol-left" >
+                                    <div class="mcol-left">
                                         <i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
                                     </div>
                                     <div class="mcol-right">
                                         {{-- Number of favorites --}}
                                         <p>
-                                            
-                                                {{ \App\Helpers\Number::short($countFavoritePosts) }}
-                                                <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-                                           
+
+                                            {{ \App\Helpers\Number::short($countFavoritePosts) }}
+                                            <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
+
                                         </p>
                                     </div>
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
+                                </a>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
-				</div>
-
-			</div>
-	</div>
-
-
-
-
-        <div class="row">
-            <div class="col-md-3 page-sidebar">
-                @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
+                </div>
             </div>
 
-            <div class="col-md-9 page-content">
-
-               
-
-                <?php
-
-        // print_r(json_decode($coach_course));die;
-        $cal_array=array();
-    //    $suggested_striver_data = json_decode($suggested_striver_data);
-        // print_r(session()->has('langCode'));
-        foreach ($suggested_striver_data as $key => $value) {
-
-            $coach = $value->coach_id;
-			$data['suggested_striver_data1'] = DB::table('users')->select('users.name as coach_name')
-			->leftjoin('coach_course' ,'coach_course.coach_id' ,'=' ,'users.id')
-			->where('coach_course.coach_id',$coach)
-		    ->orderBy('users.id','asc')->first();
-			// print_r($data['suggested_striver_data1']);die;
-            $coaches = [];
-			 foreach ($data['suggested_striver_data1'] as $key => $valuess) {
-				
-				$coaches = $valuess;
-			 }
-
-
-            $slug = json_decode($value->subscription_name);
-            $ss = array();
-            foreach ($slug as $key => $sub) {
-                $ss[$key] = $sub;
-            }
-
-                $cal_array[]=array(
-                    'plan'=>$ss['en'],
-                    'course_name'=>$value->course_name,                   
-                    "datad"=>$value->dated,
-                    "starting_time"=> $value->starting_time,
-                    "course_name"=> $value->course_name,
-                    "coach_name"=> $coaches,
-                );
-            
-            }
-          
-     
-       
-        //print_r($cal_array);die;
-        ?>
-      
-
-                <div class="inner-box default-inner-box">
-
-
-                    <div class="row">
+        </div>
+    </div>
 
 
 
-                        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
-                        <script>
-                            $(document).ready(function() {
-                                var date = new Date();
-                                var d = date.getDate();
-                                var m = date.getMonth();
-                                var y = date.getFullYear();
+    <div class="row">
+        <div class="col-md-3 page-sidebar">
+            @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
+        </div>
 
-                                /*  className colors
-                                
-                                className: default(transparent), important(red), chill(pink), success(green), info(blue)
-                                
-                                */
-                                valueArray = <?php echo json_encode($cal_array); ?>;
-                                // console.log(valueArray);
-                                /* initialize the external events
-                                -----------------------------------------------------------------*/
-                               
+        <div class="col-md-9 page-content">
 
-                                
-                                var  events = []
-                                for (let index = 0; index < valueArray.length; index++) {
-                                            
-                                           
-                                    // var dated = valueArray[index]['plan'];
-                                                events.push({
-                                                    
-                                                    title : "coach_name:"+valueArray[index]['coach_name']+ "</span><br> " + " Start Time:"+valueArray[index]['starting_time']+"</span><br>" + "Subject:" +valueArray[index]['course_name'],
-                                                    start : new Date(valueArray[index]['datad']),
-                                                    
-                                                    // end :  new Date(valueArray[index]['datad']),
-                                                    
-                                                });
-                                                // console.log(dated);
-                                                
-                                        }
 
-                                        // console.log(events);
-                                $('#external-events div.external-event').each(function() {
 
-                                    // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-                                    // it doesn't need to have a start or end
-                                    var eventObject = {
-                                        title: $.trim($(this).events()) // use the element's text as the event title
-                                    };
+            <?php
 
-                                    // store the Event Object in the DOM element so we can get to it later
-                                    $(this).data('eventObject', eventObject);
+                // print_r(json_decode($coach_course));die;
+                $cal_array = array();
+                //    $suggested_striver_data = json_decode($suggested_striver_data);
+                // print_r(session()->has('langCode'));
+                foreach ($suggested_striver_data as $key => $value) {
 
-                                    // make the event draggable using jQuery UI
-                                    $(this).draggable({
-                                        zIndex: 999,
-                                        revert: true, // will cause the event to go back to its
-                                        revertDuration: 0 //  original position after the drag
-                                    });
+                    $coach = $value->coach_id;
+                    $data['suggested_striver_data1'] = DB::table('users')->select('users.name as coach_name')
+                        ->leftjoin('coach_course', 'coach_course.coach_id', '=', 'users.id')
+                        ->where('coach_course.coach_id', $coach)
+                        ->orderBy('users.id', 'asc')->first();
+                    // print_r($data['suggested_striver_data1']);die;
+                    $coaches = [];
+                    foreach ($data['suggested_striver_data1'] as $key => $valuess) {
+
+                        $coaches = $valuess;
+                    }
+
+
+                    $slug = json_decode($value->subscription_name);
+                    $ss = array();
+                    foreach ($slug as $key => $sub) {
+                        $ss[$key] = $sub;
+                    }
+
+                    $cal_array[] = array(
+                        'plan' => $ss['en'],
+                        'course_name' => $value->course_name,
+                        "datad" => $value->dated,
+                        "starting_time" => $value->starting_time,
+                        "course_name" => $value->course_name,
+                        "coach_name" => $coaches,
+                    );
+                }
+
+
+
+                //print_r($cal_array);die;
+            ?>
+
+
+            <div class="inner-box default-inner-box">
+
+
+                <div class="row">
+
+
+
+                    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+                    <script>
+                        $(document).ready(function() {
+                            var date = new Date();
+                            var d = date.getDate();
+                            var m = date.getMonth();
+                            var y = date.getFullYear();
+
+                            /*  className colors
+                            
+                            className: default(transparent), important(red), chill(pink), success(green), info(blue)
+                            
+                            */
+                            valueArray = <?php echo json_encode($cal_array); ?>;
+                            // console.log(valueArray);
+                            /* initialize the external events
+                            -----------------------------------------------------------------*/
+
+
+
+                            var events = []
+                            for (let index = 0; index < valueArray.length; index++) {
+
+
+                                // var dated = valueArray[index]['plan'];
+                                events.push({
+
+                                    title: "coach_name:" + valueArray[index]['coach_name'] + "</span><br> " + " Start Time:" + valueArray[index]['starting_time'] + "</span><br>" + "Subject:" + valueArray[index]['course_name'],
+                                    start: new Date(valueArray[index]['datad']),
+
+                                    // end :  new Date(valueArray[index]['datad']),
 
                                 });
+                                // console.log(dated);
 
+                            }
 
-                                /* initialize the calendar
-                                -----------------------------------------------------------------*/
+                            // console.log(events);
+                            $('#external-events div.external-event').each(function() {
 
-                                var calendar = $('#calendar').fullCalendar({
-                                    header: {
-                                        left: 'title',
-                                        center: 'agendaDay,agendaWeek,month',
-                                        right: 'prev,next today'
-                                    },
-                                    editable: true,
-                                    firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
-                                    selectable: true,
-                                    defaultView: 'month',
+                                // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+                                // it doesn't need to have a start or end
+                                var eventObject = {
+                                    title: $.trim($(this).events()) // use the element's text as the event title
+                                };
 
-                                    axisFormat: 'h:mm',
-                                    columnFormat: {
-                                        month: 'ddd', // Mon
-                                        week: 'ddd d', // Mon 7
-                                        day: 'dddd M/d', // Monday 9/7
-                                        agendaDay: 'dddd d'
-                                    },
-                                    titleFormat: {
-                                        month: 'MMMM yyyy', // September 2009
-                                        week: "MMMM yyyy", // September 2009
-                                        day: 'MMMM yyyy' // Tuesday, Sep 8, 2009
-                                    },
-                                    allDaySlot: false,
-                                    selectHelper: true,
-                                    select: function(start, end, allDay) {
-                                        var title = prompt('Event Title:');
-                                        if (title) {
-                                            calendar.fullCalendar('renderEvent', {
-                                                    title: title,
-                                                    start: start,
-                                                    end: end,
-                                                    allDay: allDay
-                                                },
-                                                true // make the event "stick"
-                                            );
-                                        }
-                                        calendar.fullCalendar('unselect');
-                                    },
-                                    droppable: true, // this allows things to be dropped onto the calendar !!!
-                                    drop: function(date, allDay) { // this function is called when something is dropped
+                                // store the Event Object in the DOM element so we can get to it later
+                                $(this).data('eventObject', eventObject);
 
-                                        // retrieve the dropped element's stored Event Object
-                                        var originalEventObject = $(this).data('eventObject');
-
-                                        // we need to copy it, so that multiple events don't have a reference to the same object
-                                        var copiedEventObject = $.extend({}, originalEventObject);
-
-                                        // assign it the date that was reported
-                                        copiedEventObject.start = date;
-                                        copiedEventObject.allDay = allDay;
-
-                                        // render the event on the calendar
-                                        // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                                        $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
-                                        // is the "remove after drop" checkbox checked?
-                                        if ($('#drop-remove').is(':checked')) {
-                                            // if so, remove the element from the "Draggable Events" list
-                                            $(this).remove();
-                                        }
-
-                                    },
-                                    events:events,
-
-                                    
+                                // make the event draggable using jQuery UI
+                                $(this).draggable({
+                                    zIndex: 999,
+                                    revert: true, // will cause the event to go back to its
+                                    revertDuration: 0 //  original position after the drag
                                 });
+
+                            });
+
+
+                            /* initialize the calendar
+                            -----------------------------------------------------------------*/
+
+                            var calendar = $('#calendar').fullCalendar({
+                                header: {
+                                    left: 'title',
+                                    center: 'agendaDay,agendaWeek,month',
+                                    right: 'prev,next today'
+                                },
+                                editable: true,
+                                firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
+                                selectable: true,
+                                defaultView: 'month',
+
+                                axisFormat: 'h:mm',
+                                columnFormat: {
+                                    month: 'ddd', // Mon
+                                    week: 'ddd d', // Mon 7
+                                    day: 'dddd M/d', // Monday 9/7
+                                    agendaDay: 'dddd d'
+                                },
+                                titleFormat: {
+                                    month: 'MMMM yyyy', // September 2009
+                                    week: "MMMM yyyy", // September 2009
+                                    day: 'MMMM yyyy' // Tuesday, Sep 8, 2009
+                                },
+                                allDaySlot: false,
+                                selectHelper: true,
+                                select: function(start, end, allDay) {
+                                    var title = prompt('Event Title:');
+                                    if (title) {
+                                        calendar.fullCalendar('renderEvent', {
+                                                title: title,
+                                                start: start,
+                                                end: end,
+                                                allDay: allDay
+                                            },
+                                            true // make the event "stick"
+                                        );
+                                    }
+                                    calendar.fullCalendar('unselect');
+                                },
+                                droppable: true, // this allows things to be dropped onto the calendar !!!
+                                drop: function(date, allDay) { // this function is called when something is dropped
+
+                                    // retrieve the dropped element's stored Event Object
+                                    var originalEventObject = $(this).data('eventObject');
+
+                                    // we need to copy it, so that multiple events don't have a reference to the same object
+                                    var copiedEventObject = $.extend({}, originalEventObject);
+
+                                    // assign it the date that was reported
+                                    copiedEventObject.start = date;
+                                    copiedEventObject.allDay = allDay;
+
+                                    // render the event on the calendar
+                                    // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+                                    $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+                                    // is the "remove after drop" checkbox checked?
+                                    if ($('#drop-remove').is(':checked')) {
+                                        // if so, remove the element from the "Draggable Events" list
+                                        $(this).remove();
+                                    }
+
+                                },
+                                events: events,
 
 
                             });
-                        </script>
-                        <style>
-                            body {
-                                /* margin-bottom: 40px;
+
+
+                        });
+                    </script>
+                    <style>
+                        body {
+                            /* margin-bottom: 40px;
                         margin-top: 40px; */
-                                /* text-align: center; */
-                                /* font-size: 14px; */
-                                font-family: 'Roboto', sans-serif;
-                                background: url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
-                            }
+                            /* text-align: center; */
+                            /* font-size: 14px; */
+                            font-family: 'Roboto', sans-serif;
+                            background: url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
+                        }
 
-                            #wrap {
-                                width: 1100px;
-                                margin: 0 auto;
-                                background: url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
-                            }
+                        #wrap {
+                            width: 1100px;
+                            margin: 0 auto;
+                            background: url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
+                        }
 
-                            #external-events {
-                                float: left;
-                                width: 150px;
-                                padding: 0 10px;
-                                text-align: left;
-                            }
+                        #external-events {
+                            float: left;
+                            width: 150px;
+                            padding: 0 10px;
+                            text-align: left;
+                        }
 
-                            #external-events h4 {
-                                font-size: 16px;
-                                margin-top: 0;
-                                padding-top: 1em;
-                            }
+                        #external-events h4 {
+                            font-size: 16px;
+                            margin-top: 0;
+                            padding-top: 1em;
+                        }
 
-                            .external-event {
-                                /* try to mimick the look of a real event */
-                                margin: 10px 0;
-                                padding: 2px 4px;
-                                background: #3366CC;
-                                color: #fff;
-                                font-size: .85em;
-                                cursor: pointer;
-                            }
+                        .external-event {
+                            /* try to mimick the look of a real event */
+                            margin: 10px 0;
+                            padding: 2px 4px;
+                            background: #3366CC;
+                            color: #fff;
+                            font-size: .85em;
+                            cursor: pointer;
+                        }
 
-                            #external-events p {
-                                margin: 1.5em 0;
-                                font-size: 11px;
-                                color: #666;
-                            }
+                        #external-events p {
+                            margin: 1.5em 0;
+                            font-size: 11px;
+                            color: #666;
+                        }
 
-                            #external-events p input {
-                                margin: 0;
-                                vertical-align: middle;
-                            }
+                        #external-events p input {
+                            margin: 0;
+                            vertical-align: middle;
+                        }
 
-                            #calendar {
-                                /* 		float: right; */
-                                margin: 0 auto;
-                                width: 1000px;
-                                background-color: #FFFFFF;
-                                border-radius: 6px;
-                                box-shadow: 0 1px 2px #C3C3C3;
-                                -webkit-box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
-                                -moz-box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
-                                box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
-                            }
-                        </style>
+                        #calendar {
+                            /* 		float: right; */
+                            margin: 0 auto;
+                            width: 1000px;
+                            background-color: #FFFFFF;
+                            border-radius: 6px;
+                            box-shadow: 0 1px 2px #C3C3C3;
+                            -webkit-box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
+                            -moz-box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
+                            box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
+                        }
+                    </style>
 
 
-                        <div id='wrap'>
+                    <div id='wrap'>
 
-                            <div id='calendar'></div>
+                        <div id='calendar'></div>
 
-                            <div style='clear:both'></div>
-                        </div>
+                        <div style='clear:both'></div>
                     </div>
                 </div>
-
             </div>
-            <!--/.page-content-->
-
 
         </div>
-        </div>
+        <!--/.page-content-->
 
 
-        <br>
+    </div>
+    </div>
 
-					
 
-         <div class="main-section">
+    <br>
+
+
+
+    <div class="main-section">
         <div class="container">
 
             <h2 class="sec-title" style="font-weight: 700;">
@@ -847,46 +848,46 @@ foreach ($coach_course as $key => $value) {
             </h2>
 
             <div class="row">
-            <?php foreach ($suggested_coaches as $coach_list) { ?>
-                <div class="col-lg-3 col-md-6">
-                    <div class="teacher-item">
-                        <div class="teacher-thumb coach-img-wrapper">
-                            <img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
-                            <div class="teacher-social">
-                                <a href="#">
-                                    <i aria-hidden="true" class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#">
-                                    <i aria-hidden="true" class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#">
-                                    <i aria-hidden="true" class="fab fa-pinterest-p"></i>
-                                </a>
-                                <a href="#">
-                                    <i aria-hidden="true" class="fab fa-vimeo-v"></i>
-                                </a>
+                <?php foreach ($suggested_coaches as $coach_list) { ?>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="teacher-item">
+                            <div class="teacher-thumb coach-img-wrapper">
+                                <img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
+                                <div class="teacher-social">
+                                    <a href="#">
+                                        <i aria-hidden="true" class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i aria-hidden="true" class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i aria-hidden="true" class="fab fa-pinterest-p"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i aria-hidden="true" class="fab fa-vimeo-v"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="teacher-meta">
+                                <h5 style="font-weight: 700;">
+                                    {{ $coach_list->name }}
+                                </h5>
+                                <p>Stylist &amp; Author
+                                </p>
                             </div>
                         </div>
-                        <div class="teacher-meta">
-                            <h5 style="font-weight: 700;">
-                            {{ $coach_list->name }}
-                            </h5>
-                            <p>Stylist &amp; Author
-                            </p>
-                        </div>
                     </div>
-                </div>
                 <?php } ?>
             </div>
         </div>
     </div>
 
-        <?php } ?>
-        <!--/.row-->
-    </div>
+<?php } ?>
+<!--/.row-->
+</div>
 
 
-    <!--/.container-->
+<!--/.container-->
 </div>
 
 @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
@@ -895,28 +896,28 @@ foreach ($coach_course as $key => $value) {
 
 
 <a href="#" id="back-to-top">
-        <i class="fal fa-angle-double-up"></i>
-    </a>
-    <!-- Back To Top -->
+    <i class="fal fa-angle-double-up"></i>
+</a>
+<!-- Back To Top -->
 
-    <!-- Start Include All JS -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/jquery.appear.js"></script>
-    <script src="../assets/js/owl.carousel.min.js"></script>
-    <script src="../assets/js/slick.js"></script>
-    <script src="../assets/js/jquery.nice-select.min.js"></script>
-    <script src="../assets/js/swiper-bundle.min.js"></script>
-    <script src="../assets/js/TweenMax.min.js"></script>
-    <script src="../assets/js/lightcase.js"></script>
-    <script src="../assets/js/jquery.plugin.min.js"></script>
-    <script src="../assets/js/jquery.countdown.min.js"></script>
-    <script src="../assets/js/jquery.easing.1.3.js"></script>
-    <script src="../assets/js/jquery.shuffle.min.js"></script>
+<!-- Start Include All JS -->
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/jquery.appear.js"></script>
+<script src="../assets/js/owl.carousel.min.js"></script>
+<script src="../assets/js/slick.js"></script>
+<script src="../assets/js/jquery.nice-select.min.js"></script>
+<script src="../assets/js/swiper-bundle.min.js"></script>
+<script src="../assets/js/TweenMax.min.js"></script>
+<script src="../assets/js/lightcase.js"></script>
+<script src="../assets/js/jquery.plugin.min.js"></script>
+<script src="../assets/js/jquery.countdown.min.js"></script>
+<script src="../assets/js/jquery.easing.1.3.js"></script>
+<script src="../assets/js/jquery.shuffle.min.js"></script>
 
-    <script src="../assets/js/theme.js"></script>
+<script src="../assets/js/theme.js"></script>
 
-    
+
 @endsection
 
 @section('after_styles')
@@ -932,8 +933,7 @@ foreach ($coach_course as $key => $value) {
 @section('after_scripts')
 
 <style>
-
-.madels {
+    .madels {
         width: 48px;
         height: 50px;
         border-radius: 50%;
@@ -1069,7 +1069,6 @@ foreach ($coach_course as $key => $value) {
         width: 100%;
         z-index: 1;
     }
-
 </style>
 <style>
     /*!
@@ -8057,23 +8056,20 @@ border-top-right-radius: 3px;
 </script>
 
 <style>
-.teacher-meta {
-    position: relative;
-    padding: 25px 15px 0;
-}
+    .teacher-meta {
+        position: relative;
+        padding: 25px 15px 0;
+    }
 
 
-.teacher-meta h5 {
-    font-size: 16px;
-    line-height: 24px;
-    color: #2c234d;
-    margin: 0 0 7px;
-    font-weight: 700!important;
-    
-}
+    .teacher-meta h5 {
+        font-size: 16px;
+        line-height: 24px;
+        color: #2c234d;
+        margin: 0 0 7px;
+        font-weight: 700 !important;
 
-
+    }
 </style>
 
 @endsection
-

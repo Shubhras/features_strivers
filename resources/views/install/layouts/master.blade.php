@@ -93,8 +93,8 @@
 <script>
 	/* Init. vars */
 	var siteUrl = '{{ url('/') }}';
-	var languageCode = '{{ config('app.locale') }}';
-	var countryCode = '{{ config('country.code', 0) }}';
+	var languageCode = '<?php echo config('app.locale'); ?>';
+	var countryCode = '<?php echo config('country.code', 0); ?>';
 	
 	/* Init. Translation vars */
 	var langLayout = {

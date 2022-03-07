@@ -1,11 +1,4 @@
-@extends('layouts.master_new')
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
 
     <!-- Start Include All CSS -->
@@ -29,9 +22,9 @@
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <!-- Favicon Icon -->
-</head>
-
-<body>
+    @extends('layouts.master_new')
+	
+    @section('content')
 
     <!-- Preloader Icon -->
     <!-- <div class="preloader">
@@ -47,7 +40,7 @@
             </div>
             <p>LOADING...</p>
         </div> -->
-    </div>
+    <!-- </div> -->
     <!-- Preloader Icon -->
 
     <!-- Header Start -->
@@ -168,28 +161,7 @@
     <!-- Footer Section End -->
 
     <!-- Back To Top -->
-    <a href="#" id="back-to-top">
-        <i class="fal fa-angle-double-up"></i>
-    </a>
-    <!-- Back To Top -->
-
-    <!-- Start Include All JS -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.appear.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/jquery.nice-select.min.js"></script>
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script src="assets/js/TweenMax.min.js"></script>
-    <script src="assets/js/lightcase.js"></script>
-    <script src="assets/js/jquery.plugin.min.js"></script>
-    <script src="assets/js/jquery.countdown.min.js"></script>
-    <script src="assets/js/jquery.easing.1.3.js"></script>
-    <script src="assets/js/jquery.shuffle.min.js"></script>
-
-    <script src="assets/js/theme.js"></script>
-    <!-- End Include All JS -->
+    
 
     <script>
         const chatService = (function() {
@@ -224,6 +196,54 @@
         });
     </script>
 
-</body>
+@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 
-</html>
+<a href="#" id="back-to-top">
+    <i class="fal fa-angle-double-up"></i>
+</a>
+<!-- Back To Top -->
+
+<!-- Start Include All JS -->
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/jquery.appear.js"></script>
+<script src="../assets/js/owl.carousel.min.js"></script>
+<script src="../assets/js/slick.js"></script>
+<script src="../assets/js/jquery.nice-select.min.js"></script>
+<script src="../assets/js/swiper-bundle.min.js"></script>
+<script src="../assets/js/TweenMax.min.js"></script>
+<script src="../assets/js/lightcase.js"></script>
+<script src="../assets/js/jquery.plugin.min.js"></script>
+<script src="../assets/js/jquery.countdown.min.js"></script>
+<script src="../assets/js/jquery.easing.1.3.js"></script>
+<script src="../assets/js/jquery.shuffle.min.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+<!-- End Include All JS -->
+
+@endsection
+
+@section('after_styles')
+
+@if (config('lang.direction') == 'rtl')
+<!-- <link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput-rtl.min.css') }}" rel="stylesheet"> -->
+@endif
+
+
+
+@endsection
+
+@section('after_scripts')
+@endsection
+
+@section('after_styles')
+
+@if (config('lang.direction') == 'rtl')
+<!-- <link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput-rtl.min.css') }}" rel="stylesheet"> -->
+@endif
+
+
+
+@endsection
+
+@section('after_scripts')

@@ -84,12 +84,12 @@
 @yield('before_scripts')
 
 <script>
-	{{-- Init. Root Vars --}}
+	// Init. Root Vars 
 	var siteUrl = '{{ url('/') }}';
-	var languageCode = '<?php echo config('app.locale'); ?>';
-	var countryCode = '<?php echo config('country.code', 0); ?>';
+	var languageCode = '<?php echo config('../app.locale'); ?>';
+	var countryCode = '<?php echo config('../country.code', 0); ?>';
 	
-	{{-- Init. Translation Vars --}}
+	// {{-- Init. Translation Vars --}}
 	var langLayout = {
 		'hideMaxListItems': {
 			'moreText': "{{ t('View More') }}",

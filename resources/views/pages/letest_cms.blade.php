@@ -1,13 +1,10 @@
-@extends('layouts.master_new')
+
 <style>
     .alert {
         display: none;
     }
 </style>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
     <title>Strivre</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
@@ -33,9 +30,8 @@
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="../assets/images/favicon.png">
     <!-- Favicon Icon -->
-</head>
-
-<body>
+    @extends('layouts.master_new')
+@section('content')
 
     <!-- Preloader Icon -->
     <!-- <div class="preloader">
@@ -51,7 +47,7 @@
             </div>
             <p>LOADING...</p>
         </div> -->
-    </div>
+    <!-- </div> -->
     <!-- Preloader Icon -->
 
     <!-- Header Start -->
@@ -192,3 +188,18 @@
 
 @section('info')
 @endsection
+
+
+
+
+@section('after_styles')
+
+@if (config('lang.direction') == 'rtl')
+<!-- <link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput-rtl.min.css') }}" rel="stylesheet"> -->
+@endif
+
+
+
+@endsection
+
+@section('after_scripts')

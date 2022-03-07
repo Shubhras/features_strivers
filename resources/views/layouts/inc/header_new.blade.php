@@ -289,19 +289,19 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                         </a>
                         @endif
 
-                        <ul id="userMenuDropdown" class="dropdown-menu user-menu dropdown-menu-right shadow-sm sidebar-menu-ul side-menu-dropdown">
-                            <li class="dropdown-item active dropdown-menu-sidebar">
+                        <ul id="userMenuDropdown" class="dropdown-menu user-menu dropdown-menu-right shadow-sm sidebar-menu-ul side-menu-dropdown navbar-expand-lg1">
+                            <li class="dropdown-item active dropdown-menu-sidebar list-side-menu876" >
                                 <a href="{{ url('account') }}" class="dropdown-menu-sidebar-a side-menu-li-user">
                                     <i class="fas fa-user-edit"></i> {{ t('Personal Home') }}
                                 </a>
                             </li>
-                            <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/dashboard') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
+                            <li class="dropdown-item dropdown-menu-sidebar list-side-menu876"><a href="{{ url('account/dashboard') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
                                         class="fas fa-th-list"></i> {{ t('dashboard') }} </a></li>
                 
-                            <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/my_courses') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
+                            <li class="dropdown-item dropdown-menu-sidebar list-side-menu876"><a href="{{ url('account/my_courses') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
                                         class="fas fa-hourglass-half"></i> {{ ('Consultation') }} </a></li>
                             
-                            <li class="dropdown-item dropdown-menu-sidebar">
+                            <li class="dropdown-item dropdown-menu-sidebar list-side-menu876">
                                 <a href="{{ url('account/chat') }}" class="dropdown-menu-sidebar-a side-menu-li-user">
                                     <i class="far fa-envelope"></i> {{ ('Chat') }}
                                     <span
@@ -310,13 +310,13 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                             </li>
                             <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/transactions') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
                                         class="fas fa-coins"></i> {{ t('Transactions') }}</a></li> -->
-                            <li class="dropdown-divider"></li>
-                            <li class="dropdown-item dropdown-menu-sidebar">
+                            <!-- <li class="dropdown-divider"></li> -->
+                            <li class="dropdown-item dropdown-menu-sidebar list-side-menu876" style="color: black;">
                                 @if (app('impersonate')->isImpersonating())
                                 <a href="{{ route('impersonate.leave') }}" class="dropdown-menu-sidebar-a"><i class="fas fa-sign-out-alt"></i>
                                     {{ t('Leave') }}</a>
                                 @else
-                                <a href="{{ \App\Helpers\UrlGen::logout() }}"><i class="fas fa-sign-out-alt"></i>
+                                <a href="{{ \App\Helpers\UrlGen::logout() }}" style="color: black;"><i class="fas fa-sign-out-alt dropdown-menu-sidebar-a" ></i>
                                     {{ t('log_out') }}</a>
                                 @endif
                             </li>
