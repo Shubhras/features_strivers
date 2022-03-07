@@ -281,27 +281,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
     </div>
 </div>
 <br>
-<div class="container{{ $hideOnMobile }}">
-    <div class="col-xl-12 content-box layout-section">
-    <div class="row row-featured row-featured-category">
-			   <h1 class="text-center title-1"><strong style="float: left;">FAQ</strong></h1>
-                        <!-- <hr class="center-block small mt-0" style="background-color:white ;"> -->
-                                        
-					<div class="col-md-12 page-content">
-						<div class="inner-box relative">
-							<div class="row">
-								<div class="col-sm-12 page-content">
-										<h3 class="text-center">Frequently Asked Questions</h3>
-									<div class="text-content text-start from-wysiwyg">
-										<p><b>How do I place an ad?</b></p><p>It's very easy to place an ad: click on the button "Post free Ads" above right.</p><p><b>What does it cost to advertise?</b></p><p>The publication is 100% free throughout the website.</p><p><b>If I post an ad, will I also get more spam e-mails?</b></p><p>Absolutely not because your email address is not visible on the website.</p><p><b>How long will my ad remain on the website?</b></p><p>In general, an ad is automatically deactivated from the website after 3 months. You will receive an email a week before D-Day and another on the day of deactivation. You have the ability to put them online in the following month by logging into your account on the site. After this delay, your ad will be automatically removed permanently from the website.</p><p><b>I sold my item. How do I delete my ad?</b></p><p>Once your product is sold or leased, log in to your account to remove your ad.</p>
-								    </div>
-							    </div>
-						    </div>
-					    </div>
-			        </div>				
-			</div>
-        </div>
-</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
