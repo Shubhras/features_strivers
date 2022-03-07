@@ -82,12 +82,12 @@
 		<div class="row ">
             <div class="col-md-3 page-sidebar">
 			  <div class="inner-box default-inner-box">
-                <h3 class="no-padding text-center-480 useradmin">
+                <!-- <h3 class="no-padding text-center-480 useradmin"> -->
                     <a href="">
                         <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp; 
                         {{ $user->name }}
                     </a>
-                </h3>
+                <!-- </h3> -->
 			  </div>
             </div>
 
@@ -97,10 +97,10 @@
 					<div class="inner-box default-inner-box edit-file-chat">
 					<div class="row">
                         <div class="col-md-4 col-sm-4 col-12">
-                            <h3 class="no-padding text-center-480 useradmin">
+                            <!-- <h3 class="no-padding text-center-480 useradmin"> -->
                                
                                 <b> Coach Update Profile </b>
-                            </h3>
+                            <!-- </h3> -->
                         </div>
                         <div class="col-md-8 col-sm-8 col-12">
                             <div class="header-data text-center-xs">
@@ -671,29 +671,29 @@
 				<?php } else {?>
 
 
-			<div class="row">
-
-				<div class="col-md-3 page-sidebar">
-				<div class="inner-box default-inner-box">
-                <h3 class="no-padding text-center-480 useradmin">
-                    <a href="">
-                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp; 
-                        {{ $user->name }}
-                    </a>
-                </h3>
-				</div>
+			<div class="row" style="padding: 6px; margin-left: -4px;">
+			
+				<div class="col-md-3 user-profile-img-data default-inner-box">
+				<!-- <div class="inner-box default-inner-box"> -->
+                
+                    <!-- <a href=""> -->
+                        <img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+                        <span> {{ $user->name }} </span>
+                    <!-- </a> -->
+                
+				<!-- </div> -->
             </div>
 
-		<div class="col-md-9 page-content">
+		<div class="col-md-9 user-profile-img-data default-inner-box">
 
 
-					<div class="inner-box default-inner-box edit-file-chat">
+					<!-- <div class="inner-box default-inner-box edit-file-chat"> -->
 					<div class="row">
                         <div class="col-md-4 col-sm-4 col-12">
-                            <h3 class="no-padding text-center-480 useradmin">
+                            <!-- <h3 class="no-padding text-center-480 useradmin"> -->
                             
                                 <b> Striver Update Profile </b>
-                            </h3>
+                            <!-- </h3> -->
                         </div>
                         <div class="col-md-8 col-sm-8 col-12">
                             <div class="header-data text-center-xs">
@@ -762,7 +762,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <!-- </div> -->
 				</div>
 
 			</div>

@@ -352,7 +352,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                     <div class = "category_container">
                         <?php 
 
-                            $categories = DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();
+                            $categories = Illuminate\Support\Facades\DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();
                             //print_r();die;
                             foreach($categories as $value){
                             $name = json_decode($value->name);
