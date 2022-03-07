@@ -247,7 +247,7 @@ Route::group([
 		
 
 		Route::get('/coach_details/{id}', 'PageController@coach_details');
-		Route::get('/coach_list/{id}', 'PageController@coach_list_category');
+		Route::get('/coach_list/{id}', 'PageController@coach_list_category2');
 		Route::get('/coach_list_sub/{id}', 'PageController@coach_list_sub_category');
 		Route::get('coachall_detail/{id}', 'PageController@coachall_detail');
 		Route::get('coaches', 'PageController@coaches');

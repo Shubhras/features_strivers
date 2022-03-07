@@ -598,7 +598,7 @@
 
 						<div class="row">
 							<?php 	
-						foreach ($coach_coarsee as  $coaches_corsee) {
+						foreach ($coach_striver as  $coaches_corsee) {
 						?>				
                         <div class="col-lg-4 col-md-6">
                             <div class="feature-course-item-4">

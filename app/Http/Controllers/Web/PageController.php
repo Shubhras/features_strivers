@@ -294,7 +294,7 @@ class PageController extends FrontController
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
 	 */
 
-	public function coach_list_category($id){
+	public function coach_list_category2($id){
 
 			// Get the Country's largest city for Google Maps
 			$cacheId = config('country.code') . '.city.population.desc.first';
@@ -308,12 +308,29 @@ class PageController extends FrontController
 			// print_r($id);die;
 	
 	
+			// $data['user'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			// ->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			// ->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			// ->where('users.category',$id)->where('users.user_type_id',2)->orWhere('users.sub_category',$id)->get();
+
 			$data['user'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
 			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
 			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
-			->where('users.category',$id)->where('users.user_type_id',2)->orWhere('users.sub_category',$id)->get();
+			->where('users.category',$id)->where('users.user_type_id',2)->get();
+
+			$data['my_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',2)->orderBy('users.id','asc')->limit(8)->get();
+
+			$data['suggested_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
+			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
+			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
+			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
+			->where('users.user_type_id',2)->orderBy('users.id','asc')->limit(8)->get();
 	
-	
+			$data['sub_cat_id'] =DB::table('categories')->select('categories.*')->orderBy('categories.name','asc')->where('categories.parent_id',$id)->get();
 			// $user_category = $data['user']->category;
 			//print_r($data['user'][0]);die;
 	
@@ -329,13 +346,14 @@ class PageController extends FrontController
 
 			// Meta Tags
 			$data['request_cat_id'] = $id;
+			// print_r($data['user']);die;
 	
 			[$title, $description, $keywords] = getMetaTag('contact');
 			MetaTag::set('title', $title);
 			MetaTag::set('description', strip_tags($description));
 			MetaTag::set('keywords', $keywords);
 			
-			 return appView('pages.category_coach_list',$data);
+			 return appView('pages.category_coaches',$data);
 
 			// return appView('pages.category_coaches',$data);
 
@@ -344,6 +362,7 @@ class PageController extends FrontController
 
 	public function coach_list_category_all(){
 
+		$data['request_cat_id'] = '';
 		// Get the Country's largest city for Google Maps
 		$cacheId = config('country.code') . '.city.population.desc.first';
 		$city = Cache::remember($cacheId, $this->cacheExpiration, function () {
@@ -373,11 +392,12 @@ class PageController extends FrontController
 			->where('users.user_type_id',2)->orderBy('users.id','asc')->limit(8)->get();
 
 			
-
+		
 		[$title, $description, $keywords] = getMetaTag('contact');
 		MetaTag::set('title', $title);
 		MetaTag::set('description', strip_tags($description));
 		MetaTag::set('keywords', $keywords);
+		
 		
 		
 		return appView('pages.category_coaches',$data);

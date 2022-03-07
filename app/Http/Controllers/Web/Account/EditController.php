@@ -276,6 +276,10 @@ class EditController extends AccountBaseController
 
 		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*')->orderBy('coach_course.id','asc')->where('coach_course.coach_id', $user->id)->get();
 		$data['coach_coarsee']= DB::table('coach_course')->select('coach_course.*','users.name','users.photo')
+		->where('coach_course.coach_id', $user->id)
+		->leftjoin('users' ,'users.id' ,'=', 'coach_course.coach_id')->orderBy('id','desc')
+		->limit(9)->get();
+		$data['coach_striver']= DB::table('coach_course')->select('coach_course.*','users.name','users.photo')
 		->leftjoin('users' ,'users.id' ,'=', 'coach_course.coach_id')->orderBy('id','desc')
 		->limit(9)->get();
 		// print_r($data['coach_coarsee']);die;
