@@ -104,10 +104,10 @@
 
                             <?php
 
-                            // if($request_cat_id == $cat->id){
+                            if($request_cat_id == $cat->id){
                             ?>
 
-                            <!-- <div>
+                            <div>
                                         <ul id="subcategory_data_cat_id_<?php echo $cat->id ?>">
                                             <?php
                                             $sub_categories = Illuminate\Support\Facades\DB::table('categories')->select('categories.name', 'categories.id')->orderBy('categories.name', 'asc')->where('categories.parent_id', $cat->id)->get();
@@ -151,7 +151,7 @@
                                                 ?>    
                                             @endforeach
                                         </ul>
-                                    </div> -->
+                                    </div>
 
                             <?php // }else {
                             ?>

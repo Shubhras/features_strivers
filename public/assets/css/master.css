@@ -370,7 +370,8 @@ select.browser-default.custom-select {
     box-sizing: border-box;
 }
 
-html,
+
+/* html,
 body {
     position: relative;
     height: 100%;
@@ -382,7 +383,7 @@ body {
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-}
+} */
 
 iframe {
     border: 0;

@@ -1,40 +1,3 @@
-{{--
- * LaraClassifier - Classified Ads Web Application
- * Copyright (c) BeDigit. All Rights Reserved
- *
- * Website: https://laraclassifier.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
---}}
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-	<script src="{{ url('../assets/js/theme.js') }}" type="text/javascript"></script>
-
-    <!-- Start Include All CSS -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../assets/css/elegant-icons.css" />
-    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="../assets/css/animate.css" />
-    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../assets/css/slick.css">
-    <link rel="stylesheet" href="../assets/css/nice-select.css">
-    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="../assets/css/lightcase.css">
-    <link rel="stylesheet" href="../assets/css/preset.css" />
-    <link rel="stylesheet" href="../assets/css/theme.css" />
-    <link rel="stylesheet" href="../assets/css/responsive.css" />
-
 	<style>
 		.fix-header {
     background: #012245;
@@ -66,9 +29,6 @@
        
  </section>
 
-<br>
-<br>
-<br>
 @extends('layouts.master_new')
 @section('content')
 	@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
@@ -79,101 +39,98 @@
 		<div class="container">
 			<?php if($user->user_type_id == 2){ ?>
 
-		<div class="row ">
-            <div class="col-md-3 page-sidebar">
-			  <div class="inner-box default-inner-box">
-                <!-- <h3 class="no-padding text-center-480 useradmin"> -->
-                    <a href="">
-                        <img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp; 
-                        {{ $user->name }}
-                    </a>
-                <!-- </h3> -->
-			  </div>
-            </div>
 
-            <div class="col-md-9 page-content ">
+				<h2>
 
+<h2 class="sec-title">My Update Profile</h2>
+</h2>
 
-					<div class="inner-box default-inner-box edit-file-chat">
-					<div class="row">
-                        <div class="col-md-4 col-sm-4 col-12">
-                            <!-- <h3 class="no-padding text-center-480 useradmin"> -->
-                               
-                                <b> Coach Update Profile </b>
-                            <!-- </h3> -->
-                        </div>
-                        <div class="col-md-8 col-sm-8 col-12">
-                            <div class="header-data text-center-xs">
-                                {{-- Threads Stats --}}
-                                <div class="hdata">
-                                <a href="{{ url('account/messages') }}">
+			<div class="row" style="padding: 6px; margin-left: -4px;">
+			
+			
+				<div class="col-md-12 user-profile-img-data default-inner-box">
 
-                                    <div class="mcol-left">
-                                        <i class="fas fa-phone-alt ln-shadow"></i>
-                                    </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of messages --}}
-                                        <p>
-                                            
-                                                {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-                                               
-                                                <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-                                           
-                                        </p>
-                                    </div>
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
+					<img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>  {{ $user->name }}</b> </span>
+				
 
-                                {{-- Traffic Stats --}}
-                                <div class="hdata">
-                                <a href="{{ url('account/chat') }}">
-                                    <div class="mcol-left">
-                                        <i class="fas fa-comments ln-shadow"></i>
-                                    </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of visitors --}}
-                                        <p>
-                                            
-                                                <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-                                                {{ \App\Helpers\Number::short($totalPostsVisits) }}
-                                    
-                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-                                           
-                                        </p>
-                                    </div>
+				<div class="row">
+				   
+					<div class="col-md-12 col-sm-8 col-12">
+					<span>
 
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
+					
+						<div class="header-data text-center-xs">
+							{{-- Threads Stats --}}
+							<div class="hdata">
+							<a href="{{ url('account/messages') }}">
 
-                               
+								<div class="mcol-left">
+									<i class="fas fa-phone-alt ln-shadow"></i>
+								</div>
+								<div class="mcol-right">
+									{{-- Number of messages --}}
+									<p>
+										
+											{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
+										   
+											<em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
+									   
+									</p>
+								</div>
+								</a>
+								<div class="clearfix"></div>
+							</div>
 
-                                {{-- Favorites Stats --}}
-                                <div class="hdata" style="width: 151px!important;margin-left: -38px;">
-                                <a href="{{ url('account/favourite') }}">
-                                    <div class="mcol-left" >
-                                        <i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
-                                    </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of favorites --}}
-                                        <p>
-                                            
-                                                {{ \App\Helpers\Number::short($countFavoritePosts) }}
-                                                <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-                                           
-                                        </p>
-                                    </div>
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-				</div>
+							{{-- Traffic Stats --}}
+							<div class="hdata">
+							<a href="{{ url('account/chat') }}">
+								<div class="mcol-left">
+									<i class="fas fa-comments ln-shadow"></i>
+								</div>
+								<div class="mcol-right">
+									{{-- Number of visitors --}}
+									<p>
+										
+											<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+											{{ \App\Helpers\Number::short($totalPostsVisits) }}
+								
+											<em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+									   
+									</p>
+								</div>
 
-			</div>
-		</div>
+								</a>
+								<div class="clearfix"></div>
+							</div>
+
+						   
+
+							{{-- Favorites Stats --}}
+							<div class="hdata" style="width: 151px!important;margin-left: -38px;">
+							<a href="{{ url('account/favourite') }}">
+								<div class="mcol-left" >
+									<i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
+								</div>
+								<div class="mcol-right">
+									{{-- Number of favorites --}}
+									<p>
+										
+											{{ \App\Helpers\Number::short($countFavoritePosts) }}
+											<em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
+									   
+									</p>
+								</div>
+								</a>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				
+			    </div>
+
+		      </div>
+        </div>
 
 
 
@@ -671,31 +628,32 @@
 				<?php } else {?>
 
 
+					<h2>
+
+<h2 class="sec-title">My Update Profile</h2>
+</h2>
+
 			<div class="row" style="padding: 6px; margin-left: -4px;">
 			
-				<div class="col-md-3 user-profile-img-data default-inner-box">
-				<!-- <div class="inner-box default-inner-box"> -->
+				<!-- <div class="col-md-3 user-profile-img-data default-inner-box" style="max-width: 266px;"> -->
+			
+                        <!-- <img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;  -->
+                        <!-- <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> {{ $user->name }} </span> -->
                 
-                    <!-- <a href=""> -->
-                        <img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-                        <span> {{ $user->name }} </span>
-                    <!-- </a> -->
-                
-				<!-- </div> -->
-            </div>
+            <!-- </div> -->
 
-		<div class="col-md-9 user-profile-img-data default-inner-box">
+		<div class="col-md-12 user-profile-img-data default-inner-box">
 
+		<img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+                        <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> Update Profile  {{ $user->name }}</b> </span>
+						<!-- <b> Striver Update Profile </b></span> -->
 
-					<!-- <div class="inner-box default-inner-box edit-file-chat"> -->
 					<div class="row">
-                        <div class="col-md-4 col-sm-4 col-12">
-                            <!-- <h3 class="no-padding text-center-480 useradmin"> -->
-                            
-                                <b> Striver Update Profile </b>
-                            <!-- </h3> -->
-                        </div>
-                        <div class="col-md-8 col-sm-8 col-12">
+                       
+                        <div class="col-md-12 col-sm-8 col-12">
+						<span>
+
+						
                             <div class="header-data text-center-xs">
                                 {{-- Threads Stats --}}
                                 <div class="hdata">
@@ -762,7 +720,7 @@
                                 </div>
                             </div>
                         </div>
-                    <!-- </div> -->
+                    
 				</div>
 
 			</div>

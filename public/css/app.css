@@ -19963,10 +19963,11 @@ fieldset:disabled .btn {
     border-color: #5897fb
 }
 
-html:not([theme=dark]) {
+
+/* html:not([theme=dark]) {
     --border-color: #ddd;
     --border-color-dark: #e1e1e1
-}
+} */
 
 html[theme=dark] {
     --text-color: #fff;
@@ -26427,7 +26428,7 @@ div.login-box .panel-footer label {
 }
 
 .header-data {
-    margin-top: 10px;
+    margin-top: -60px;
     text-align: right
 }
 
@@ -31362,10 +31363,10 @@ ul li {
 
 .user-profile-images {
     border: solid 1px var(--border-color);
-    border-radius: 60px;
+    /* border-radius: 60px; */
     display: inline-block;
-    padding: 3px;
-    width: 73px;
+    width: 71px;
+    margin-left: -11px;
 }
 
 .user-profile-img-data {

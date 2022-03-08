@@ -144,7 +144,8 @@
     }
 }
 
-@media (min-width: 1200px) {
+
+/* @media (min-width: 1200px) {
     .container,
     .container-sm,
     .container-md,
@@ -152,7 +153,7 @@
     .container-xl {
         max-width: 1170px;
     }
-}
+} */
 
 
 /*------------------------------------------------------------------------------------
