@@ -297,6 +297,17 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     position: relative;
     padding: 655px 0 190px;
 }
+@media (min-width: 780px) {
+    .hero-banner-1 {
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 780px 0 190px;
+    }
+  
+    
+}
 
 .hero-banner-245 {
     background-position: bottom right;
