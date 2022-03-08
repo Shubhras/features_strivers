@@ -83,30 +83,22 @@
 
                     <ul style="list-style: none;">
 
-                        @foreach($categories as $key => $cat)
-
-                        <li class="subject-title-name" id="cat_id_<?php echo $cat->id ?>">
-
-                            <a href="{{url('/coach_list_category_all/'.$cat->id) }}">
-
+                    @foreach($categories as $key => $cat)
+                        <li class="subject-title-name" id="cat_id_<?php echo $cat->id?>">
+                        <a href="{{url('/coach_list_category_all') }}">
+                            <a href="{{url('/coach_list/'.$cat->id) }}">
                                 <?php
-                                $name = json_decode($cat->name);
-                                $ss = array();
-                                foreach ($name as $key => $sub) {
+                                    $name = json_decode($cat->name);
+                                    $ss = array();
+                                    foreach ($name as $key => $sub) {
                                     $ss[$key] = $sub;
-                                }
-                                ?>
-                                <!-- &nbsp;<span class="text-color"><b>{{ $ss['en'] }}</b></span> -->
+                                    }
+                            //    print_r($name);die;
+                                    ?>
+                            
+                                     {{ $ss['en'] }}
 
-
-                            </a>
-                            {{ $ss['en'] }}
-
-                            <?php
-
-                            // if($request_cat_id == $cat->id){
-                            ?>
-
+                                    
                             <!-- <div>
                                         <ul id="subcategory_data_cat_id_<?php echo $cat->id ?>">
                                             <?php
@@ -153,39 +145,85 @@
                                         </ul>
                                     </div> -->
 
-                            <?php // }else {
-                            ?>
-                            <ul id="subcategory_data_cat_id_<?php echo $cat->id ?>" style="display:none;">
+                                    <?php
+                                if(!empty($request_cat_id == $cat->id)){ ?>
+
+                            <ul id="subcategory_data_cat_id_<?php echo $cat->id ?>" >
                                 <?php
                                 $sub_categories = Illuminate\Support\Facades\DB::table('categories')->select('categories.name', 'categories.id')->orderBy('categories.name', 'asc')->where('categories.parent_id', $cat->id)->get();
                                 ?>
                                 @foreach($sub_categories as $key => $sub_cat)
-                                <li id="sub_id_<?= $sub_cat->id ?>" value="<?= $sub_cat->id ?>" class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list">
-                                    <a href="{{url('/coach_list/'.$cat->id) }}">
-                                        <h4>
-                                            <?php
+                                    <li id="sub_id_<?= $sub_cat->id ?>" value="<?= $sub_cat->id ?>" class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list">
+                                        <a href="{{url('/coach_list/'.$cat->id) }}">
+                                            <h6>
+                                                <?php
 
-                                            $name = json_decode($sub_cat->name);
-                                            $sub_cat_id = ($sub_cat->id);
-                                            $ss = array();
-                                            foreach ($name as $key => $sub) {
-                                                $ss[$key] = $sub;
-                                            }
-                                            ?>&nbsp;
-                                            <span class="text-color">{{ $ss['en'] }}</span>
-                                        </h4>
-                                    </a>
-                                </li>
+                                                $name = json_decode($sub_cat->name);
+                                                $sub_cat_id = ($sub_cat->id);
+                                                $ss = array();
+                                                foreach ($name as $key => $sub) {
+                                                    $ss[$key] = $sub;
+                                                }
+                                                ?>
+                                                <span class="text-color" style="color: blue;">{{ $ss['en'] }}</span>
+                                            </h6>
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
-                            <?php //}
+                            <?php }
+
+                            
                             ?>
                         </li>
 
                         @endforeach
                     </ul>
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-8 col-md-3 col-sm-4 col-6" >
+                <div class="row" >
+                    <div class="col-sm-12">
+                        <h3 class="categories_list_by_coach">Coach List </h3>
+                    </div>
+                </div>
+                <?php if(isset($user[0])){ ?>
+                    <div class="row" id="coach_list_cat">
+                        <?php foreach ($user as $coach_list) {?>
+                          
+                            <div class="col-sm-4" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}">
+                              <a href="#" id="{{$coach_list->id }}">
+                                <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 200px;" alt="{{ $coach_list->name }}">
+                                <br>
+                                <?php
+                                    $name = json_decode($coach_list->slug);
+                                    //$sub_cat_id =($sub_cat->id);
+                                    $ss = array();
+                                    foreach ($name as $key => $sub) {
+                                        $ss[$key] = $sub;
+                                    }
+                                ?>
+                                <div>
+                                    <h4><b>{{ $coach_list->name }}</b></h4>
+                                    <p><b>{{ $ss['en'] }}</b></p>
+                                    <?php if($coach_list->year_of_experience!=''){?> 
+                                        <p><b>{{ $coach_list->year_of_experience }} years Experience</b></p>
+                                        <?php 
+                                    }
+                                    else{?>
+                                        <p><b>No Experience</b></p>  
+                                    <?php }?>
+                                </div>
+                                    </a>
+                            </div> 
+                            
+                            
+
+                        <?php }?> 
+                    </div>
+               
+                <?php } ?>
+            </div>
+                <div class="col-lg-9" >
                     <div class="row">
                         <?php foreach ($my_coaches as $coach_list) { ?>
                             <div class="col-lg-3 col-md-6">
