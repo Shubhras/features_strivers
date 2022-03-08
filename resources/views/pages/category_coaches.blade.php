@@ -67,50 +67,47 @@
 
 <!-- Banner End -->
 
-
-
 <div class="elementor-widget-container mt-120">
     <div class="main-section">
         <div class="container">
-            <h2>
-                <h2 class="sec-title">
-                    Project Management
+            <h2 class="sec-title-cat">
+                Project Management
 
-                </h2>
             </h2>
-            <div class="row">
-                <div class="col-lg-3 col-sm-4">
 
-                    <ul style="list-style: none;">
+            <div class="row inner-box default-inner-box">
+                <div class="col-md-3">
 
-                    @foreach($categories as $key => $cat)
-                        <li class="subject-title-name" id="cat_id_<?php echo $cat->id?>">
-                        <a href="{{url('/coach_list_category_all') }}">
-                            <a href="{{url('/coach_list/'.$cat->id) }}">
-                                <?php
-                                    $name = json_decode($cat->name);
-                                    $ss = array();
-                                    foreach ($name as $key => $sub) {
-                                    $ss[$key] = $sub;
-                                    }
-                            
-                                    ?>
-                            
-                                     {{ $ss['en'] }}
+                    <div class="row">
 
-                                    
-                            
-                                    <?php
-                                if(!empty($request_cat_id == $cat->id)){ ?>
+                        <ul style="list-style: none;">
 
-                            <ul id="subcategory_data_cat_id_<?php echo $cat->id ?>" >
-                                <?php
-                                $sub_categories = Illuminate\Support\Facades\DB::table('categories')->select('categories.name', 'categories.id')->orderBy('categories.name', 'asc')->where('categories.parent_id', $cat->id)->get();
-                                ?>
-                                @foreach($sub_categories as $key => $sub_cat)
-                                    <li id="sub_id_<?= $sub_cat->id ?>" value="<?= $sub_cat->id ?>" class="col-lg-12 col-md-3 col-sm-4 col-6 cat_show_list">
-                                        <a href="{{url('/coach_list/'.$sub_cat->id) }}">
-                                            <h6>
+                            @foreach($categories as $key => $cat)
+                            <li class="subject-title-name" id="cat_id_<?php echo $cat->id ?>">
+                                <a href="{{url('/coach_list_category_all') }}">
+                                    <a href="{{url('/coach_list/'.$cat->id) }}">
+                                        <?php
+                                        $name = json_decode($cat->name);
+                                        $ss = array();
+                                        foreach ($name as $key => $sub) {
+                                            $ss[$key] = $sub;
+                                        }
+                                        ?>
+
+                                        {{ $ss['en'] }}
+
+                                        <?php
+                                        if (!empty($request_cat_id == $cat->id)) { ?>
+
+                                            <ul id="subcategory_data_cat_id_<?php echo $cat->id ?>">
+
+                                                <?php
+                                                $sub_categories = Illuminate\Support\Facades\DB::table('categories')->select('categories.name', 'categories.id')->orderBy('categories.name', 'asc')->where('categories.parent_id', $cat->id)->get();
+
+
+                                                ?>
+                                                @foreach($sub_categories as $key => $sub_cat)
+
                                                 <?php
 
                                                 $name = json_decode($sub_cat->name);
@@ -119,204 +116,305 @@
                                                 foreach ($name as $key => $sub) {
                                                     $ss[$key] = $sub;
                                                 }
+
                                                 ?>
-                                                <span class="text-color" style="color: blue;">{{ $ss['en'] }}</span>
-                                            </h6>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                            <?php }
 
-                            
-                            ?>
-                           
-                            </a>
-                        </li>
+                                                <label class="subject-title-name"> <a href="{{url('/coach_list/'.$sub_cat->id) }}" id="sub_id_<?= $sub_cat->id ?>" value="<?= $sub_cat->id ?>" class="sub-cat-name"><b> {{ $ss['en'] }}</b>
+                                                    </a>
+                                                </label>
 
-                        @endforeach
-                    </ul>
+                                                @endforeach
+                                            </ul>
+
+                                        <?php }
+                                        ?>
+                                    </a>
+                            </li>
+
+                            @endforeach
+                        </ul>
+
+                    </div>
                 </div>
-       
-          
-            <div class="col-lg-9" style="float: right; margin: 350px; margin-top: -816px;" >
+
+
+                <div class="col-md-8">
+
                     <div class="row">
-                        <?php foreach ($my_coaches as $coach_list) { ?>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="teacher-item">
-                                    <div class="teacher-thumb coach-img-wrapper">
-                                        <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
 
-                                       
-                                        <div class="teacher-social">
-                                            <a href="#">
-                                                <i aria-hidden="true" class="fab fa-facebook-f"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i aria-hidden="true" class="fab fa-twitter"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i aria-hidden="true" class="fab fa-pinterest-p"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i aria-hidden="true" class="fab fa-vimeo-v"></i>
-                                            </a>
+                        <h3 class="categories_list_by_coach">Coach List </h3>
+
+                        <?php if (!empty($user)) {
+
+
+                        ?>
+
+
+                            <?php foreach ($user as $coach_list) { ?>
+
+                               
+
+
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="teacher-item">
+
+                                        <div class="teacher-thumb coach-img-wrapper">
+                                            <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
+
+
+                                            <div class="teacher-social">
+                                                <a href="#">
+                                                    <i aria-hidden="true" class="fab fa-facebook-f"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i aria-hidden="true" class="fab fa-twitter"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i aria-hidden="true" class="fab fa-pinterest-p"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i aria-hidden="true" class="fab fa-vimeo-v"></i>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="teacher-meta" id="coach_id_{{$coach_list->id }}">
-                                        <!-- Large modal -->
-                                        <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
-                                            <!-- <h5>Dianne Ameter</h5> -->
-                                            <h5>
-                                                {{ $coach_list->name }}
-                                            </h5>
-                                        </a>
-                                        <p>Illustrator
-                                        </p>
-                                        <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
-                                            <div class="modal-dialog modal-xl">
-                                                <div class="modal-content p-5">
-                                                    <!-- <img class="img-coches-main" width="15%" src="assets/images/home/teacher3.jpg" alt=""> -->
-                                                    <img src="{{ imgUrl($coach_list->photo, '') }}" class="img-coches-main" alt="{{ $coach_list->name }}">
-                                                    <h3 class=" text-center mt-5">{{$coach_list->name}}</h3>
-                                                    <h4 class=" text-center">
 
-                                                        Teaches Adventure Photography
-                                                    </h4>
-                                                    <p class=" text-center">
-                                                        National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.
-                                                    </p>
-                                                    <h5 class="coches-description text-center mt-5">{{$coach_list->name}} has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
-                                                        breathtaking shots. In his photography class, learn different creative approaches for commercial shoots, editorial spreads, and passion projects. Gather the gear—and the perspective—to bring your
-                                                        photography to new heights.</h5>
-                                                    <div class="row center-button-modal">
+                                        <div class="teacher-meta" id="coach_id_{{$coach_list->id }}">
 
-                                                        <div class="col-lg-2">
-                                                            <a href="{{url('/coachall_detail/'.$coach_list->id) }}" class="bisylms-btn">Know more</a>
-                                                        </div>
-                                                        <div class="col-lg-2">
-                                                            <a href="{{url('/pricing') }}" class="bisylms-btn">Get Started</a>
+                                            <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
+
+                                                <h5>
+                                                    {{ $coach_list->name }}
+                                                </h5>
+                                            </a>
+                                            <p>Illustrator
+                                            </p>
+
+
+                                            <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
+                                                <div class="modal-dialog modal-xl">
+                                                    <div class="modal-content p-5">
+
+                                                        <img src="{{ imgUrl($coach_list->photo, '') }}" class="img-coches-main" alt="{{ $coach_list->name }}">
+                                                        <h3 class=" text-center mt-5">{{$coach_list->name}}</h3>
+                                                        <h4 class=" text-center">
+
+                                                            Teaches Adventure Photography
+                                                        </h4>
+                                                        <p class=" text-center">
+                                                            National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.
+                                                        </p>
+                                                        <h5 class="coches-description text-center mt-5">{{$coach_list->name}} has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
+                                                            breathtaking shots. In his photography class, learn different creative approaches for commercial shoots, editorial spreads, and passion projects. Gather the gear—and the perspective—to bring your
+                                                            photography to new heights.</h5>
+                                                        <div class="row center-button-modal">
+
+                                                            <div class="col-lg-2">
+                                                                <a href="{{url('/coachall_detail/'.$coach_list->id) }}" class="bisylms-btn">Know more</a>
+                                                            </div>
+                                                            <div class="col-lg-2">
+                                                                <a href="{{url('/pricing') }}" class="bisylms-btn">Get Started</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
-                            </div>
+
+
+                            <?php } ?>
+                            
+
+
+
+
+
+
+
+
+
+                            <?php } else {
+                            foreach ($my_coaches as $coach_list) { ?>
+
+
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="teacher-item">
+
+                                        <div class="teacher-thumb coach-img-wrapper">
+                                            <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
+
+
+                                            <div class="teacher-social">
+                                                <a href="#">
+                                                    <i aria-hidden="true" class="fab fa-facebook-f"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i aria-hidden="true" class="fab fa-twitter"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i aria-hidden="true" class="fab fa-pinterest-p"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i aria-hidden="true" class="fab fa-vimeo-v"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="teacher-meta" id="coach_id_{{$coach_list->id }}">
+
+                                            <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
+
+                                                <h5>
+                                                    {{ $coach_list->name }}
+                                                </h5>
+                                            </a>
+                                            <p>Illustrator
+                                            </p>
+                                            <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
+                                                <div class="modal-dialog modal-xl">
+                                                    <div class="modal-content p-5">
+
+                                                        <img src="{{ imgUrl($coach_list->photo, '') }}" class="img-coches-main" alt="{{ $coach_list->name }}">
+                                                        <h3 class=" text-center mt-5">{{$coach_list->name}}</h3>
+                                                        <h4 class=" text-center">
+
+                                                            Teaches Adventure Photography
+                                                        </h4>
+                                                        <p class=" text-center">
+                                                            National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.
+                                                        </p>
+                                                        <h5 class="coches-description text-center mt-5">{{$coach_list->name}} has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
+                                                            breathtaking shots. In his photography class, learn different creative approaches for commercial shoots, editorial spreads, and passion projects. Gather the gear—and the perspective—to bring your
+                                                            photography to new heights.</h5>
+                                                        <div class="row center-button-modal">
+
+                                                            <div class="col-lg-2">
+                                                                <a href="{{url('/coachall_detail/'.$coach_list->id) }}" class="bisylms-btn">Know more</a>
+                                                            </div>
+                                                            <div class="col-lg-2">
+                                                                <a href="{{url('/pricing') }}" class="bisylms-btn">Get Started</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            <?php } ?>
+
+
                         <?php } ?>
+
                     </div>
-                    </div>
-                   
-            <center style="margin-top: -135;">
-                <a class="bisylms-btn" href="#">Explore Top Course </a>
-            </center>
-                
-            </div>
-            <?php if(!empty($user))
-       { ?>
-            <div class="col-lg-8 col-md-3 col-sm-4 col-6" >
-                <div class="row" >
-                    <div class="col-sm-12">
-                        <h3 class="categories_list_by_coach">Coach List </h3>
-                    </div>
+
                 </div>
-                <?php if(isset($user[0])){ ?>
-                    <div class="row" id="coach_list_cat">
-                        <?php foreach ($user as $coach_list) {?>
-                          
-                            <div class="col-sm-4" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}">
-                              <a href="#" id="{{$coach_list->id }}">
-                                <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 200px;" alt="{{ $coach_list->name }}">
-                                <br>
-                                <?php
-                                    $name = json_decode($coach_list->slug);
-                                    //$sub_cat_id =($sub_cat->id);
-                                    $ss = array();
-                                    foreach ($name as $key => $sub) {
-                                        $ss[$key] = $sub;
-                                    }
-                                ?>
-                                <div>
-                                    <h4><b>{{ $coach_list->name }}</b></h4>
-                                    <p><b>{{ $ss['en'] }}</b></p>
-                                    <?php if($coach_list->year_of_experience!=''){?> 
-                                        <p><b>{{ $coach_list->year_of_experience }} years Experience</b></p>
-                                        <?php 
-                                    }
-                                    else{?>
-                                        <p><b>No Experience</b></p>  
-                                    <?php }?>
-                                </div>
-                                    </a>
-                            </div> 
-                            
-                            
-
-                        <?php }?> 
-                    </div>
-               
-                <?php } ?>
-                </div>
+                <center>
+                    <a class="bisylms-btn" href="#">Explore Top Course </a>
+                </center>
             </div>
-            <?php } ?>
-                <!-- model -->
-
-            
-
-    </div>
-    <div class="main-section">
-        <div class="container">
-
-            <h2 class="sec-title">
-                Suggested Coaches
-
-            </h2>
-
-            <div class="row">
 
 
-                <?php foreach ($suggested_coaches as $coach_list) { ?>
 
-                    <div class="col-lg-3 col-md-6">
-                        <div class="teacher-item">
-                            <div class="teacher-thumb coach-img-wrapper">
 
-                                
-                                <img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
-
-                                <div class="teacher-social">
-                                    <a href="#">
-                                        <i aria-hidden="true" class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i aria-hidden="true" class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i aria-hidden="true" class="fab fa-pinterest-p"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i aria-hidden="true" class="fab fa-vimeo-v"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="teacher-meta">
-                                <h5 style="font-weight: 700;">
-                                    {{ $coach_list->name }}
-                                </h5>
-                                <p>Stylist &amp; Author
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
-
-            </div>
         </div>
     </div>
 
-
 </div>
+</div>
+
+<!-- <div class="main-section"> -->
+<div class="container">
+
+    <h2 class="sec-title-cat">
+        Suggested Coaches
+
+    </h2>
+
+    <div class="row">
+
+
+        <?php foreach ($suggested_coaches as $coach_list) { ?>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="teacher-item">
+                    <div class="teacher-thumb coach-img-wrapper">
+
+                        <!-- <img src="assets/images/home/f1.jpg" alt="Jim Séchen"> -->
+
+                        <img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
+
+                        <div class="teacher-social">
+                            <a href="#">
+                                <i aria-hidden="true" class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#">
+                                <i aria-hidden="true" class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#">
+                                <i aria-hidden="true" class="fab fa-pinterest-p"></i>
+                            </a>
+                            <a href="#">
+                                <i aria-hidden="true" class="fab fa-vimeo-v"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="teacher-meta">
+
+                    <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
+
+                        <h5 style="font-weight: 700;">
+                            {{ $coach_list->name }}
+                        </h5>
+                    </a>
+                        <p>Stylist &amp; Author
+                        </p>
+
+
+                        <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
+                                                <div class="modal-dialog modal-xl">
+                                                    <div class="modal-content p-5">
+
+                                                        <img src="{{ imgUrl($coach_list->photo, '') }}" class="img-coches-main" alt="{{ $coach_list->name }}">
+                                                        <h3 class=" text-center mt-5">{{$coach_list->name}}</h3>
+                                                        <h4 class=" text-center">
+
+                                                            Teaches Adventure Photography
+                                                        </h4>
+                                                        <p class=" text-center">
+                                                            National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.
+                                                        </p>
+                                                        <h5 class="coches-description text-center mt-5">{{$coach_list->name}} has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
+                                                            breathtaking shots. In his photography class, learn different creative approaches for commercial shoots, editorial spreads, and passion projects. Gather the gear—and the perspective—to bring your
+                                                            photography to new heights.</h5>
+                                                        <div class="row center-button-modal">
+
+                                                            <div class="col-lg-2">
+                                                                <a href="{{url('/coachall_detail/'.$coach_list->id) }}" class="bisylms-btn">Know more</a>
+                                                            </div>
+                                                            <div class="col-lg-2">
+                                                                <a href="{{url('/pricing') }}" class="bisylms-btn">Get Started</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+    </div>
+</div>
+<!-- </div> -->
+
+
+<!-- </div> -->
 <!-- Footer Section Start -->
 
 <!-- Footer Section End -->
@@ -381,8 +479,12 @@
 </script>
 <style>
     .btn i {
-        
-        top: -7px!important;
+
+        top: -7px !important;
+    }
+
+    .sub-cat-name {
+        color: blue !important;
     }
 </style>
 @endsection

@@ -19963,10 +19963,11 @@ fieldset:disabled .btn {
     border-color: #5897fb
 }
 
-html:not([theme=dark]) {
+
+/* html:not([theme=dark]) {
     --border-color: #ddd;
     --border-color-dark: #e1e1e1
-}
+} */
 
 html[theme=dark] {
     --text-color: #fff;
@@ -26427,7 +26428,7 @@ div.login-box .panel-footer label {
 }
 
 .header-data {
-    margin-top: 10px;
+    margin-top: -60px;
     text-align: right
 }
 
@@ -31360,6 +31361,22 @@ ul li {
     background: #4682b4
 }
 
+.user-profile-images {
+    border: solid 1px var(--border-color);
+    /* border-radius: 60px; */
+    display: inline-block;
+    width: 71px;
+    margin-left: -11px;
+}
+
+.user-profile-img-data {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e2e2e2;
+    height: 80px;
+    border-radius: 10px;
+}
+
 h1,
 h2,
 h3,
@@ -31890,9 +31907,9 @@ button.btn-search {
 }
 
 @media (max-width:767px) {
-    #wrapper {
+    /* #wrapper {
         padding-top: 81px
-    }
+    } */
     .navbar-site.navbar .navbar-identity {
         height: 80px;
         border-bottom: 0
@@ -31904,9 +31921,9 @@ button.btn-search {
 }
 
 @media (max-width:479px) {
-    #wrapper {
+    /* #wrapper {
         padding-top: 81px
-    }
+    } */
     .navbar-site.navbar .navbar-identity {
         height: 80px
     }

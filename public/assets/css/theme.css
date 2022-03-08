@@ -295,7 +295,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
-    padding: 265px 0 190px;
+    padding: 655px 0 190px;
 }
 @media (min-width: 780px) {
     .hero-banner-1 {
@@ -2191,8 +2191,9 @@ footer .widget ul li a:hover {
 }
 
 .teacher-item:hover .teacher-thumb img {
-    opacity: .1;
+    /* opacity: .1; */
     border-radius: 5px;
+    /* background-color: #DD4B39; */
 }
 
 .teacher-item:hover .teacher-thumb {
@@ -2232,7 +2233,7 @@ footer .widget ul li a:hover {
 
 .teacher-social a:hover {
     color: #E92AA4;
-    background: #fff;
+    background: rgb(255, 255, 255);
 }
 
 .teacher-item:hover .teacher-social {
@@ -7275,10 +7276,11 @@ a.btn01.btn-primary1 {
     margin-left: -2px
 }
 
-.text_font_size_index {
+
+/* .text_font_size_index {
     font-size: 49px!important;
     line-height: 55px!important;
-}
+} */
 
 .title-box-fix {
     margin-top: 100px;

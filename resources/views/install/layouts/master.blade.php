@@ -97,12 +97,12 @@
 	var countryCode = '<?php echo config('country.code', 0); ?>';
 	
 	/* Init. Translation vars */
-	var langLayout = {
-		'hideMaxListItems': {
-			'moreText': "{{ t('View More') }}",
-			'lessText': "{{ t('View Less') }}"
-		}
-	};
+	// var langLayout = {
+	// 	'hideMaxListItems': {
+	// 		'moreText': "{{ t('View More') }}",
+	// 		'lessText': "{{ t('View Less') }}"
+	// 	}
+	// };
 </script>
 
 <script src="{{ url(mix('js/app.js')) }}"></script>

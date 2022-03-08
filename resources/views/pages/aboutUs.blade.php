@@ -47,7 +47,7 @@
         <div class="row">
             <div class="col-lg-10 offset-lg-1 text-center">
                 <div class="video-banner" style="background-image: url(../assets/images/home/video-bg.jpg);">
-                    <a class="popup-video" href="#" data-rel="lightcase"><i class="fas fa-play"></i></a>
+                    <a class="popup-video" href="#" data-rel="lightcase"><i class="fas fa-play fass"></i></a>
                 </div>
             </div>
         </div>
@@ -132,6 +132,12 @@
 <script src="../assets/js/jquery.shuffle.min.js"></script>
 
 <script src="../assets/js/theme.js"></script>
+<style>
+    .fass {
+    
+    line-height: 5!important;
+}
+</style>
 <!-- End Include All JS -->
 
 @endsection

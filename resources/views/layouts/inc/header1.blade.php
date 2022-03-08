@@ -1,11 +1,11 @@
 
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Start Include All CSS -->
-    <link rel="stylesheet" href="assets/css/master.css">
+    <link rel="stylesheet" href="../assets/css/master.css">
 
     <link rel="stylesheet" href="../assets/css/bootstrap.css" />
     <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
@@ -61,7 +61,9 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                     <nav class="navbar navbar-expand-lg">
                         <!-- logo Start-->
                         <a class="navbar-brand" href="{{ url('/') }}">
+                            
                             <img src="../assets/images/logo.png" alt="">
+
                             <img class="sticky-logo" src="../assets/images/logo4.png" alt="">
                         </a>
 
@@ -187,7 +189,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
             
             @else
                     
-            <div class="collapse navbar-collapse" id="navbarsDefault" style="margin-right: -193px;">
+            <div class="collapse navbar-collapse" id="navbarsDefault" style="margin-right: -186px;">
 
                                 
                 <ul class="navbar-nav ">
@@ -264,31 +266,42 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                         </a>
                         @endif
                     </li>
+                    
                     <li class="nav-item dropdown no-arrow">
-                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+
+                    @if (config('settings.security.login_open_in_modal'))
+                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" style="margin-top: -5px">
                             <!-- <i class="fas fa-user-circle hidden-sm"></i> -->
                             <span>{{ auth()->user()->name }}</span>
                             <span
                                 class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">0</span>
                             <i class="fas fa-chevron-down"></i>
                         </a>
-                        <ul id="userMenuDropdown" class="dropdown-menu user-menu dropdown-menu-right shadow-sm sidebar-menu-ul side-menu-dropdown">
-                            <li class="dropdown-item active dropdown-menu-sidebar">
+                        @else
+
+
+                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" style="margin-top: -5px">
+                            <!-- <i class="fas fa-user-circle hidden-sm"></i> -->
+                            <span>{{ auth()->user()->name }}</span>
+                            <span
+                                class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">0</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        @endif
+
+                        <ul id="userMenuDropdown" class="dropdown-menu user-menu dropdown-menu-right shadow-sm sidebar-menu-ul side-menu-dropdown navbar-expand-lg1">
+                            <li class="dropdown-item active dropdown-menu-sidebar list-side-menu876" >
                                 <a href="{{ url('account') }}" class="dropdown-menu-sidebar-a side-menu-li-user">
                                     <i class="fas fa-user-edit"></i> {{ t('Personal Home') }}
                                 </a>
                             </li>
-                            <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/dashboard') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
+                            <li class="dropdown-item dropdown-menu-sidebar list-side-menu876"><a href="{{ url('account/dashboard') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
                                         class="fas fa-th-list"></i> {{ t('dashboard') }} </a></li>
-                            <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
-                                        class="fas fa-heart"></i> {{ ('Edit Profile') }} </a></li> -->
-                            <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/saved-search') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
-                                        class="fas fa-bookmark"></i> {{ t('Saved searches') }} </a></li> -->
-                            <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/my_courses') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
+                
+                            <li class="dropdown-item dropdown-menu-sidebar list-side-menu876"><a href="{{ url('account/my_courses') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
                                         class="fas fa-hourglass-half"></i> {{ ('Consultation') }} </a></li>
-                            <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/archived') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
-                                        class="fas fa-calendar-times"></i> {{ t('archived_ads') }}</a></li> -->
-                            <li class="dropdown-item dropdown-menu-sidebar">
+                            
+                            <li class="dropdown-item dropdown-menu-sidebar list-side-menu876">
                                 <a href="{{ url('account/chat') }}" class="dropdown-menu-sidebar-a side-menu-li-user">
                                     <i class="far fa-envelope"></i> {{ ('Chat') }}
                                     <span
@@ -297,13 +310,13 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                             </li>
                             <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/transactions') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
                                         class="fas fa-coins"></i> {{ t('Transactions') }}</a></li> -->
-                            <li class="dropdown-divider"></li>
-                            <li class="dropdown-item dropdown-menu-sidebar">
+                            <!-- <li class="dropdown-divider"></li> -->
+                            <li class="dropdown-item dropdown-menu-sidebar list-side-menu876" style="color: black;">
                                 @if (app('impersonate')->isImpersonating())
                                 <a href="{{ route('impersonate.leave') }}" class="dropdown-menu-sidebar-a"><i class="fas fa-sign-out-alt"></i>
                                     {{ t('Leave') }}</a>
                                 @else
-                                <a href="{{ \App\Helpers\UrlGen::logout() }}"><i class="fas fa-sign-out-alt"></i>
+                                <a href="{{ \App\Helpers\UrlGen::logout() }}" style="color: black;"><i class="fas fa-sign-out-alt dropdown-menu-sidebar-a" ></i>
                                     {{ t('log_out') }}</a>
                                 @endif
                             </li>
@@ -339,7 +352,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                     <div class = "category_container">
                         <?php 
 
-                            $categories = DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();
+                            $categories = Illuminate\Support\Facades\DB::table('categories')->select('categories.name','categories.id')->where('categories.parent_id' ,null)->orderBy('categories.name','asc')->get();
                             //print_r();die;
                             foreach($categories as $value){
                             $name = json_decode($value->name);
