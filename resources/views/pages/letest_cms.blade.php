@@ -78,7 +78,7 @@
                                 @if (!empty($page->picture))
                                 <div class="text-content">
                                     <center>
-                                        <img src="{{ imgUrl($page->picture, '') }}" alt="{{ $page->name }}" style="height: 200px; width: 5000px;">
+                                        <img src="{{ url('storage/'.$page->picture) }}" alt="{{ $page->name }}" style="height: 200px; width: 5000px;">
                                     </center>
                                 </div>
                                 @endif

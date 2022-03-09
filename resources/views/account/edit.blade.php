@@ -50,7 +50,7 @@
 			
 				<div class="col-md-12 user-profile-img-data default-inner-box">
 
-					<img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+					<img id="userImg" class="user-profile-images" src="{{ url($user->photo_url) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
 					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>  {{ $user->name }}</b> </span>
 				
 
@@ -644,7 +644,7 @@
 
 		<div class="col-md-12 user-profile-img-data default-inner-box">
 
-		<img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+		<img id="userImg" class="user-profile-images" src="{{ url('storage/'.$user->photo_url) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
                         <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> Update Profile  {{ $user->name }}</b> </span>
 						<!-- <b> Striver Update Profile </b></span> -->
 
@@ -1579,7 +1579,7 @@
 			/* Setup initial preview with data keys */
 			initialPreview: [
 				@if (isset($user->photo) && !empty($user->photo))
-					'{{ imgUrl($user->photo, 'user') }}'
+					"{{ url('storage/'.$user->photo, 'user') }}"
 				@endif
 			],
 			initialPreviewAsData: true,

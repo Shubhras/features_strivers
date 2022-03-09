@@ -7617,6 +7617,12 @@ input#modal-description {
     background: #ffffff;
 }
 
+.main-section-cat {
+    padding-top: 125px;
+    padding-bottom: 70px;
+    background: #ffffff;
+}
+
 .strivre-img-wrapper::before {
     background-color: var(--foreground);
     bottom: 0;

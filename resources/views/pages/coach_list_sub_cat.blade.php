@@ -1,7 +1,7 @@
 <?php foreach ($user as $coach_list) {
      ?>
           <div class="col-sm-4"  data-toggle="modal" data-target="#myModal_{{$coach_list->id }}">
-               <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 200px;" alt="{{ $coach_list->name }}">
+               <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" style="height: 200px;" alt="{{ $coach_list->name }}">
                <br>
                <?php
                     $name = json_decode($coach_list->sub_cat);
@@ -30,7 +30,7 @@
                                 
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 100px;padding-left: 237px;">
+                                <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" style="height: 100px;padding-left: 237px;">
                                 
                                     <h4><b><center>{{ $coach_list->name }}</center></b></h4>
                                     <p><b><center>{{ $ss['en'] }}</center></b></p>

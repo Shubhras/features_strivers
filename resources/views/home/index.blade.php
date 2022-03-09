@@ -91,15 +91,16 @@
                                     $ss[$key] = $sub;
                                 }
 
-
                                 ?>
-                                <a href="{{url('/coach_list/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>" class="sub-cat-name">
+                               
 
-
-
-                                    <span class="f-17">{{$ss['en']}}</span>
-
+                                <label class="f-17">
+                                <a href="{{url('/coach_list/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>">
+                                    {{$ss['en']}}
                                 </a>
+                                </label>
+
+                                
 
                             </div>
                         <?php } ?>
@@ -135,30 +136,33 @@
 
                             <div class="strivre-img-wrapper">
 
+                                
+                                <img src="{{ url('storage/'.$news->picture) }}" alt="{{ $news->name }}">
+
+                                <label class="f-17 sort_name">
                                 <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
-
-                                    <img src="{{ imgUrl($news->picture, '') }}" alt="{{ $news->name }}">
-                                    <span class="f-17 sort_name">{{$ss['en']}}</span>
-
+                                    {{$ss['en']}}
                                 </a>
+                                </label>
+
                             </div>
                             @endif
                             @if(empty($news->picture))
 
                             <div class="strivre-img-wrapper">
-
+                                <img src="../assets/images/course/1.jpg" alt="">
+                                <label class="f-17 sort_name">
                                 <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
-
-                                    <img src="../assets/images/course/1.jpg" alt="">
-                                    <span class="f-17 sort_name">{{$ss['en']}}</span>
+                                    {{$ss['en']}}
                                 </a>
+                                </label>
+
+
                             </div>
                             @endif
                         </div>
                         @endforeach
-                        <!-- </aside>
-                        </aside>
-                    </nav> -->
+                       
                     </div>
                 </div>
             </div>
@@ -178,13 +182,13 @@
                         <div class="teacher-item">
                             <div class="teacher-thumb coach-img-wrapper">
                                 <!-- <a href="{{url('/coach_details/'.$coach->id) }}"> -->
-                                <img src="{{ imgUrl($coach->photo, '') }}" alt="{{ $coach->name }}" class="lazyload img-fluid">
+                                <img src="{{ url('storage/'.$coach->photo) }}" alt="{{ $coach->name }}" class="lazyload img-fluid">
                             </div>
                             <div class="teacher-meta">
                                 <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
-                                    <h5>
-                                        {{$coach->name}}
-                                        </5>
+                                    <p>
+                                        <b>{{$coach->name}}</b>
+                        </p>
 
                                 </a>
                                 <p>Photographer
@@ -211,7 +215,7 @@
                                         <div class="modal-content p-5">
                                             
 
-                                            <img src="{{ imgUrl($coach->photo, '') }}" class="img-coches-main" alt="{{ $coach->name }}">
+                                            <img src="{{ url('storage/'.$coach->photo) }}" class="img-coches-main" alt="{{ $coach->name }}">
                                             <p class="coach-details-name">{{$coach->name}}</p>
                                             <h4 class=" text-center">
                                                 Teaches Adventure Photography
@@ -271,7 +275,7 @@
                                     <a href="single-course.html"><img src="../assets/images/course/1.jpg" alt=""></a>
 
                                 </div>
-                                <span class="f-17 sort_name">{{$value->course_name}}</span>
+                                <label class="f-17 sort_name">{{$value->course_name}}</label>
                                 <div class="course-price">
                                     {{$value->course_hourse}} Hourse
                                 </div>

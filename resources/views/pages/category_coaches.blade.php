@@ -1,48 +1,10 @@
-<title>Strivre</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<!-- Start Include All CSS -->
-<link rel="stylesheet" href="../assets/css/bootstrap.css" />
-<link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
-<link rel="stylesheet" href="../assets/css/elegant-icons.css" />
-<link rel="stylesheet" href="../assets/css/themify-icons.css" />
-<link rel="stylesheet" href="../assets/css/animate.css" />
-<link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
-<link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="../assets/css/slick.css">
-<link rel="stylesheet" href="../assets/css/nice-select.css">
-<link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
-<link rel="stylesheet" href="../assets/css/lightcase.css">
-<link rel="stylesheet" href="../assets/css/preset.css" />
-<link rel="stylesheet" href="../assets/css/theme.css" />
-<link rel="stylesheet" href="../assets/css/responsive.css" />
-
-
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
-
-<link rel="stylesheet" href="../assets/css/master.css">
-
-<!-- End Include All CSS -->
-
-<!-- Favicon Icon -->
-<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+<!-- <link rel="icon" type="image/png" href="../assets/images/favicon.png"> -->
 <!-- Favicon Icon -->
 @extends('layouts.master_new')
 @section('content')
 
 <section class="page-banner" style="background-image: url(../assets/images/home/cta-bg.jpg);">
-    <!-- shape -->
-
-
-
-    <!-- shape -->
 
 
 </section>
@@ -64,16 +26,17 @@
         </div>
     </div>
 </div>
-
+<!-- <br><br><br><br><br><br><br><br><br><br><br><br><br> -->
 <!-- Banner End -->
 
-<div class="elementor-widget-container mt-120">
-    <div class="main-section">
+<!-- <div class="mt-120"> -->
+    <br><br><br>
+    <div class="main-section-cat">
         <div class="container">
-            <h2 class="sec-title-cat">
-                Project Management
+            <label class="sec-title-cat">
+               <b>Project Management</b> 
 
-            </h2>
+            </label>
 
             <div class="row inner-box default-inner-box">
                 <div class="col-md-3">
@@ -159,7 +122,7 @@
                                     <div class="teacher-item">
 
                                         <div class="teacher-thumb coach-img-wrapper">
-                                            <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
+                                            <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
 
 
                                             <div class="teacher-social">
@@ -201,7 +164,7 @@
                                                     <div class="modal-content p-5">
 
 
-                                                        <img src="{{ imgUrl($coach_list->photo, '') }}" class="img-coches-main" alt="{{ $coach_list->name }}">
+                                                        <img src="{{ url('storage/'.$coach_list->photo) }}" class="img-coches-main" alt="{{ $coach_list->name }}">
                                                         <p class="coach-details-name">{{$coach_list->name}}</p>
                                                         <h4 class=" text-center">
                                                             Teaches Adventure Photography
@@ -250,7 +213,7 @@
                                     <div class="teacher-item">
 
                                         <div class="teacher-thumb coach-img-wrapper">
-                                            <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
+                                            <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
 
 
                                             <div class="teacher-social">
@@ -290,7 +253,7 @@
                                                     <div class="modal-content p-5">
 
 
-                                                        <img src="{{ imgUrl($coach_list->photo, '') }}" class="img-coches-main" alt="{{ $coach_list->name }}">
+                                                        <img src="{{ url('storage/'.$coach_list->photo) }}" class="img-coches-main" alt="{{ $coach_list->name }}">
                                                         <p class="coach-details-name">{{$coach_list->name}}</p>
                                                         <h4 class=" text-center">
                                                             Teaches Adventure Photography
@@ -338,9 +301,11 @@
     </div>
 
 </div>
-</div>
+<!-- </div> -->
 
 <!-- <div class="main-section"> -->
+
+<br><br>
 <div class="container">
 
     <h2 class="sec-title-cat">
@@ -359,7 +324,7 @@
 
                         <!-- <img src="assets/images/home/f1.jpg" alt="Jim Séchen"> -->
 
-                        <img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
+                        <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
 
                         <div class="teacher-social">
                             <a href="#">
@@ -427,7 +392,7 @@
                                 <div class="modal-content p-5">
 
 
-                                    <img src="{{ imgUrl($coach_list->photo, '') }}" class="img-coches-main" alt="{{ $coach_list->name }}">
+                                    <img src="{{ url('storage/'.$coach_list->photo) }}" class="img-coches-main" alt="{{ $coach_list->name }}">
                                     <p class="coach-details-name">{{$coach_list->name}}</p>
                                     <h4 class=" text-center">
                                         Teaches Adventure Photography
