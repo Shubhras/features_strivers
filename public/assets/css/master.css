@@ -79,7 +79,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
 .dashboard-nav {
     background-color: #fff;
     border: 1px solid #eae9ec;
-    border-radius: 0.3rem;
+    border-radius: 10px;
     padding: 0;
 }
 

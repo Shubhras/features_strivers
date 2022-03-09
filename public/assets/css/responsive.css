@@ -1320,10 +1320,14 @@
     .search-box_filter2 {
         margin-left: -2px
     }
-    /* .text_font_size_index {
+    .text_font_size_index {
         font-size: 49px!important;
         line-height: 55px!important;
-    } */
+    }
+    .text_font_size_color {
+        color: #2c234d!important;
+        font-weight: 700;
+    }
     .title-box-fix {
         margin-top: 100px;
     }

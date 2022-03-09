@@ -152,7 +152,7 @@
 
                             <?php foreach ($user as $coach_list) { ?>
 
-                               
+
 
 
                                 <div class="col-lg-3 col-md-6">
@@ -192,27 +192,34 @@
 
                                             <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
                                                 <div class="modal-dialog modal-xl">
+
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Top Coach Details</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+
                                                     <div class="modal-content p-5">
 
-                                                        <img src="{{ imgUrl($coach_list->photo, '') }}" class="img-coches-main" alt="{{ $coach_list->name }}">
-                                                        <h3 class=" text-center mt-5">{{$coach_list->name}}</h3>
-                                                        <h4 class=" text-center">
 
+                                                        <img src="{{ imgUrl($coach_list->photo, '') }}" class="img-coches-main" alt="{{ $coach_list->name }}">
+                                                        <p class="coach-details-name">{{$coach_list->name}}</p>
+                                                        <h4 class=" text-center">
                                                             Teaches Adventure Photography
                                                         </h4>
-                                                        <p class=" text-center">
-                                                            National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.
-                                                        </p>
-                                                        <h5 class="coches-description text-center mt-5">{{$coach_list->name}} has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
+                                                        <p class="text-center"><b>
+                                                                National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.</b>
+                                                        </p> <br>
+                                                        <label>{{$coach_list->name}} has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
                                                             breathtaking shots. In his photography class, learn different creative approaches for commercial shoots, editorial spreads, and passion projects. Gather the gear—and the perspective—to bring your
-                                                            photography to new heights.</h5>
+                                                            photography to new heights.</label>
+                                                        <br>
                                                         <div class="row center-button-modal">
 
                                                             <div class="col-lg-2">
-                                                                <a href="{{url('/coachall_detail/'.$coach_list->id) }}" class="bisylms-btn">Know more</a>
+                                                                <a href="{{url('/coachall_detail/'.$coach_list->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
                                                             </div>
                                                             <div class="col-lg-2">
-                                                                <a href="{{url('/pricing') }}" class="bisylms-btn">Get Started</a>
+                                                                <a href="{{url('/pricing') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -225,7 +232,7 @@
 
 
                             <?php } ?>
-                            
+
 
 
 
@@ -274,27 +281,34 @@
                                             </p>
                                             <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
                                                 <div class="modal-dialog modal-xl">
+
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Top Coach Details</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+
                                                     <div class="modal-content p-5">
 
-                                                        <img src="{{ imgUrl($coach_list->photo, '') }}" class="img-coches-main" alt="{{ $coach_list->name }}">
-                                                        <h3 class=" text-center mt-5">{{$coach_list->name}}</h3>
-                                                        <h4 class=" text-center">
 
+                                                        <img src="{{ imgUrl($coach_list->photo, '') }}" class="img-coches-main" alt="{{ $coach_list->name }}">
+                                                        <p class="coach-details-name">{{$coach_list->name}}</p>
+                                                        <h4 class=" text-center">
                                                             Teaches Adventure Photography
                                                         </h4>
-                                                        <p class=" text-center">
-                                                            National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.
-                                                        </p>
-                                                        <h5 class="coches-description text-center mt-5">{{$coach_list->name}} has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
+                                                        <p class="text-center"><b>
+                                                                National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.</b>
+                                                        </p> <br>
+                                                        <label>{{$coach_list->name}} has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
                                                             breathtaking shots. In his photography class, learn different creative approaches for commercial shoots, editorial spreads, and passion projects. Gather the gear—and the perspective—to bring your
-                                                            photography to new heights.</h5>
+                                                            photography to new heights.</label>
+                                                        <br>
                                                         <div class="row center-button-modal">
 
                                                             <div class="col-lg-2">
-                                                                <a href="{{url('/coachall_detail/'.$coach_list->id) }}" class="bisylms-btn">Know more</a>
+                                                                <a href="{{url('/coachall_detail/'.$coach_list->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
                                                             </div>
                                                             <div class="col-lg-2">
-                                                                <a href="{{url('/pricing') }}" class="bisylms-btn">Get Started</a>
+                                                                <a href="{{url('/pricing') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -364,17 +378,17 @@
                     </div>
                     <div class="teacher-meta">
 
-                    <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
+                        <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
 
-                        <h5 style="font-weight: 700;">
-                            {{ $coach_list->name }}
-                        </h5>
-                    </a>
+                            <h5 style="font-weight: 700;">
+                                {{ $coach_list->name }}
+                            </h5>
+                        </a>
                         <p>Stylist &amp; Author
                         </p>
 
 
-                        <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
+                        <!-- <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
                                                 <div class="modal-dialog modal-xl">
                                                     <div class="modal-content p-5">
 
@@ -398,18 +412,54 @@
                                                             <div class="col-lg-2">
                                                                 <a href="{{url('/pricing') }}" class="bisylms-btn">Get Started</a>
                                                             </div>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                             </div>
+                                     </div> -->
+
+                        <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
+                            <div class="modal-dialog modal-xl">
+
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Top Coach Details</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <div class="modal-content p-5">
 
 
+                                    <img src="{{ imgUrl($coach_list->photo, '') }}" class="img-coches-main" alt="{{ $coach_list->name }}">
+                                    <p class="coach-details-name">{{$coach_list->name}}</p>
+                                    <h4 class=" text-center">
+                                        Teaches Adventure Photography
+                                    </h4>
+                                    <p class="text-center"><b>
+                                            National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.</b>
+                                    </p> <br>
+                                    <label>{{$coach_list->name}} has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
+                                        breathtaking shots. In his photography class, learn different creative approaches for commercial shoots, editorial spreads, and passion projects. Gather the gear—and the perspective—to bring your
+                                        photography to new heights.</label>
+                                    <br>
+                                    <div class="row center-button-modal">
+
+                                        <div class="col-lg-2">
+                                            <a href="{{url('/coachall_detail/'.$coach_list->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <a href="{{url('/pricing') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                <!-- </div>
             </div>
-        <?php } ?>
-
+                </div> -->
+            </div>
     </div>
+<?php } ?>
+
+</div>
 </div>
 <!-- </div> -->
 

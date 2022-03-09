@@ -42,7 +42,6 @@ if (config('settings.geo_location.country_flag_activation')) {
 	}
 }
 
-// Logo Label
 $logoLabel = '';
 if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 	$logoLabel = config('settings.app.name') . ((!empty(config('country.name'))) ? ' ' . config('country.name') : '');
