@@ -120,7 +120,7 @@
 
 													<div class="pricing-item">
 														<h4>{{ $package->short_name}}</h4>
-														<img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2021/03/basic-1.svg" alt="Basic">
+														<img src="../assets/images/basic-1.svg" alt="Basic">
 														<div class="p-price">
 															<sup> $ </sup> {{$package->price}} <span>CONSULTATION {{$package->duration}} HOURS </span>
 														</div>
@@ -193,7 +193,7 @@
 
 													<div class="pricing-item">
 														<h4>{{ $package->short_name}}</h4>
-														<img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2021/03/Standerd-3.svg" alt="Standard">
+														<img src="../assets/images/Standerd-3.svg" alt="Standard">
 														<div class="p-price">
 															<sup> $ </sup> {{$package->price}}
 															<span> CONSULTATION {{$package->duration}} HOURS </span>
@@ -269,7 +269,7 @@
 
 													<div class="pricing-item">
 														<h4>{{$package->short_name}}</h4>
-														<img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2021/03/Premium-2.svg" alt="Platinum">
+														<img src="../assets/images/Premium-2.svg" alt="Platinum">
 														<div class="p-price">
 															<sup> $ </sup> {{$package->price}}
 															<span> CONSULTATION {{$package->duration}} HOURS </span>
