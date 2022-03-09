@@ -297,6 +297,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     position: relative;
     padding: 655px 0 190px;
 }
+
 @media (min-width: 780px) {
     .hero-banner-1 {
         background-position: bottom right;
@@ -305,8 +306,6 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
         position: relative;
         padding: 780px 0 190px;
     }
-  
-    
 }
 
 .hero-banner-245 {
@@ -7161,6 +7160,13 @@ Profile Page
     padding: 0px 12px 0px 15px;
 }
 
+.top-coach-widget {
+    position: relative;
+    border-radius: 10px;
+    margin: 0 0 30px;
+    padding: 0px 12px 0px 15px;
+}
+
 .latest-course1 img {
     width: 40px;
     height: 40px;
@@ -7175,6 +7181,33 @@ Profile Page
     min-height: 60px;
     padding-left: 70px;
     margin: 6px 0 3px;
+}
+
+.latest-course10 {
+    position: relative;
+    min-height: 40px;
+    padding-left: 70px;
+    margin: 6px 0 3px;
+}
+
+.latest-course10 img {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border-radius: 3px;
+    left: 0;
+    top: 4px;
+}
+
+.coach-details-name {
+    line-height: 0.5em!important;
+    font-size: 40px!important;
+    margin: 20px 0 10px 0!important;
+    font-style: normal;
+    font-family: 'Montserrat', sans-serif;
+    color: #2c234d!important;
+    font-weight: 700!important;
+    letter-spacing: 0;
 }
 
 .search_box_filter {
@@ -7580,6 +7613,12 @@ input#modal-description {
 
 .main-section {
     padding-top: 104px;
+    padding-bottom: 70px;
+    background: #ffffff;
+}
+
+.main-section-cat {
+    padding-top: 125px;
     padding-bottom: 70px;
     background: #ffffff;
 }

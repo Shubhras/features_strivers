@@ -14,7 +14,7 @@
 @extends('layouts.master_new')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
 @section('search')
 @parent
@@ -155,7 +155,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                           
                             <div class="col-sm-4" data-toggle="modal" data-target="#myModal_{{$coach_list->id }}">
                               <a href="#" id="{{$coach_list->id }}">
-                                <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 200px;" alt="{{ $coach_list->name }}">
+                                <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" style="height: 200px;" alt="{{ $coach_list->name }}">
                                 <br>
                                 <?php
                                     $name = json_decode($coach_list->slug);
@@ -189,7 +189,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                                 
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" style="height: 100px;padding-left: 237px;">
+                                <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" style="height: 100px;padding-left: 237px;">
                                 
                                     <h4><b><center>{{ $coach_list->name }}</center></b></h4>
                                     <p><b><center>{{ $ss['en'] }}</center></b></p>
@@ -261,7 +261,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
 
             <div class="col-lg-3 col-md-3 col-sm-4 col-6 f-coach">
                 <a href="{{url('/coach_details/'.$coachs->id) }}">
-                    <img src="{{ imgUrl($coachs->photo, '') }}" class="lazyload img-fluid" alt="{{ $coachs->name }}">
+                    <img src="{{ url('storage/'.$coachs->photo) }}" class="lazyload img-fluid" alt="{{ $coachs->name }}">
 
                     <h5 style="margin-top: -76px;font-size: xx-large;color: white; margin-bottom: 47px;">
                         <b>{{ $coachs->name }}</b>

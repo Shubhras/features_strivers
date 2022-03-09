@@ -12,10 +12,10 @@
  * Please read the full License from here - http://codecanyon.net/licenses/standard
 --}}
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
 <!-- Start Include All CSS -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
@@ -553,7 +553,7 @@
 								<div class="col-lg-3 col-md-6">
 									<div class="teacher-item">
 										<div class="teacher-thumb coach-img-wrapper">
-											<img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
+											<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
 											<div class="teacher-social">
 												<a href="#">
 													<i aria-hidden="true" class="fab fa-facebook-f"></i>
@@ -931,7 +931,7 @@
 								<div class="col-lg-3 col-md-6">
 									<div class="teacher-item">
 										<div class="teacher-thumb coach-img-wrapper">
-											<img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
+											<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
 											<div class="teacher-social">
 												<a href="#">
 													<i aria-hidden="true" class="fab fa-facebook-f"></i>

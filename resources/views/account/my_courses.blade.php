@@ -12,10 +12,10 @@
  * Please read the full License from here - http://codecanyon.net/licenses/standard
 --}}
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
 <!-- Start Include All CSS -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
@@ -511,14 +511,14 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="feature-course-item-4">
                                 <div class="fcf-thumb">
-                                    <img src="{{ imgUrl($coaches_corsee->photo, '') }}" alt="" style="height: 244px; weight: 244px;">
+                                    <img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="" style="height: 244px; weight: 244px;">
                                     <a class="enroll" href="#">Enroll Now</a>
                                 </div>
                                 <div class="fci-details">
                                     <a href="#" class="c-cate"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
                                     <h4><a href="single-course.html">Using Creative Problem Solving</a></h4>
                                     <div class="author">
-                                        <img src="{{ imgUrl($coaches_corsee->photo, '') }}" alt="">
+                                        <img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
                                         <a href="#">{{$coaches_corsee->name}}</a>
                                     </div>
                                     <div class="price-rate">
@@ -785,14 +785,14 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="feature-course-item-4">
                                 <div class="fcf-thumb">
-                                    <img src="{{ imgUrl($coaches_corsee->image, '') }}" alt="" style="height: 244px; weight: 244px;">
+                                    <img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px; weight: 244px;">
                                     <a class="enroll" href="#">Enroll Now</a>
                                 </div>
                                 <div class="fci-details">
                                     <a href="#" class="c-cate"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
                                     <h4><a href="#">Using Creative Problem Solving</a></h4>
                                     <div class="author">
-                                        <img src="{{ imgUrl($coaches_corsee->photo, '') }}" alt="">
+                                        <img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
                                         <a href="#">{{$coaches_corsee->name}}</a>
                                     </div>
                                     <div class="price-rate">
@@ -833,7 +833,7 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="teacher-item">
 						<div class="teacher-thumb coach-img-wrapper">
-							<img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
+							<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
 							<div class="teacher-social">
 								<a href="#">
 									<i aria-hidden="true" class="fab fa-facebook-f"></i>
