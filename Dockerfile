@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y \
 
 # Install extensions
 # RUN docker-php-ext-install bcmath bz2 calendar dba exif gettext opcache pcntl pdo_mysql pdo_pgsql pgsql shmop soap sockets sysvmsg sysvsem sysvshm wddx zip
-RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 RUN apt install libzip-dev
 
