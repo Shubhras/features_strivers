@@ -38,8 +38,8 @@
 
                     <div class="input-group">
                         <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more..." title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
-                        <button type="button" class="btn btn-primary btn_class">
-                            <i class="fas fa-search" alt="{{('find') }}"></i>
+                        <button type="button" class="btn btn-primary btn_class"><a href="{{url('/coach_list_category_all')}}">
+                        </a> <i class="fas fa-search" alt="{{ ('find') }}"></i>
                         </button>
                     </div>
 

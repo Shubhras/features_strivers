@@ -74,7 +74,7 @@
 	<div class="container ">
 		<div class="row">
 			<div class="col-lg-12">
-				<h2 class="hero-content_h2"> A global learning platform for all</h2> <br>
+				<p class="hero-content_h2"> A global learning platform for all</p> <br>
 				<div>
 					<!-- <a href=""> A global learning platform for all </a> -->
 					<p class="global_page">
@@ -98,7 +98,7 @@
 					<div class="elementor-row">
 						<br>
 
-						<h2 class="h22"> Choose a plan for after your 7-day Free trial</h2><br><br>
+						<p class="h22"> Choose a plan for after your 7-day Free trial</p><br><br>
 
 
 						<div class="row">
