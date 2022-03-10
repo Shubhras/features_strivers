@@ -180,7 +180,7 @@
                                             <!-- <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2020/11/teacher_5.png" alt="Hugh Saturation"> -->
 
                                             <div class="madels">
-                                                <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2021/03/Standerd-3.svg" alt="Standard">
+                                                <img src="../assets/images/basic-1.svg" alt="Standard">
 
                                                 <!-- <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid"  alt="{{ $coach_list->name }}">  -->
 
@@ -446,7 +446,7 @@
                                             <!-- <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2020/11/teacher_5.png" alt="Hugh Saturation"> -->
 
                                             <div class="madels">
-                                                <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2021/03/Standerd-3.svg" alt="Standard">
+                                                <img src="../assets/images/basic-1.svg" alt="Standard">
 
                                                 <!-- <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid"  alt="{{ $coach_list->name }}">  -->
 

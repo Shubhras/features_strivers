@@ -5,7 +5,7 @@
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
     <!-- Start Include All CSS -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <!-- <link rel="stylesheet" href="../assets/css/bootstrap.css" /> -->
     <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="../assets/css/elegant-icons.css" />
     <link rel="stylesheet" href="../assets/css/themify-icons.css" />

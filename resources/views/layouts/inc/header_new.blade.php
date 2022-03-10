@@ -252,19 +252,19 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 
 
                     
-                    <li class="nav-item hidden-sm">
+                    <!-- <li class="nav-item hidden-sm">
                         @if (app('impersonate')->isImpersonating())
                         <a href="{{ route('impersonate.leave') }}" class="nav-link">
-                            <!-- <i class="fas fa-sign-out-alt hidden-sm"></i>  -->
+                            
                             {{ t('Leave') }}
                         </a>
                         @else
                         <a href="{{ \App\Helpers\UrlGen::logout() }}" class="nav-link">
-                            <!-- <i class="fas fa-sign-out-alt hidden-sm"></i>  -->
+                            
                             {{ t('log_out') }}
                         </a>
                         @endif
-                    </li>
+                    </li> -->
                     
                     <li class="nav-item dropdown no-arrow">
 

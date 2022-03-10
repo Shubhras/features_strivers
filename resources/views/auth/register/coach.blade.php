@@ -120,21 +120,21 @@
                         <center><a class="b-btn bisylms-btn col-sm-12" href="payment-detail.html">Please Enter Your Card Details</a><br>
                         </center>
                     </div>
-                    <div class="col-md-12">
-                        <center><button class="btn01  btn-primary1" type="submit" id="signupBtn">
+                    <div class="col-md-12 register-btn-padding">
+                        <center><button class="btn01  btn-primary1 register-btn-primary register-btn-primary" type="submit" id="signupBtn">
                                 Register </button></center>
                     </div>
                     <br>
                     <br>
-                    <div class="col-sm-12">
-                        <center><button class="loginBtn loginBtn--google btn-primary1">
+                    <div class="col-sm-12 register-btn-padding">
+                        <center><button class="loginBtn loginBtn--google btn-primary1 google-fb-login">
                                 Login with Google
                             </button> </center>
                     </div>
                     <br>
                     <br>
-                    <div class="col-sm-12">
-                        <center><button class="loginBtn loginBtn--facebook btn-primary1">
+                    <div class="col-sm-12 register-btn-padding">
+                        <center><button class="loginBtn loginBtn--facebook btn-primary1 google-fb-login">
                                 Login with Facebook
                             </button>
                         </center>

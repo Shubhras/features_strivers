@@ -31,12 +31,12 @@
         <div class="col-lg-5 col-md-5 title-box-fix">
             <div class="hero-content">
 
-                <p class="text_font_size_index text_font_size_color">Your Course To Success</p>
+                <p class="text_font_size_index232">Your Course To Success</p>
 
                 <form action="{{ \App\Helpers\UrlGen::search() }}" method="GET" class="row mt-5 box_filter2 search-box_filter2">
 
 
-                    <div class="input-group">
+                    <div class="input-group location-search-coach-text">
                         <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more..." title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
                         <button type="button" class="btn btn-primary btn_class">
                             <i class="fas fa-search" alt="{{('find') }}"></i>
@@ -186,19 +186,17 @@
                             </div>
                             <div class="teacher-meta">
                                 <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
-                                    <p>
-                                        <b>{{$coach->name}}</b>
-                        </p>
+                                 <p class="top-coaches-name-list coach-cat-name12">{{$coach->name}} </p>
 
                                 </a>
                                 <p>Photographer
                                 </p>
 
-                                <span> <?php if ($coach->year_of_experience != '') { ?>
-                                        <p><b>{{ $coach->year_of_experience }} years Experience</b></p>
+                                <span class="top-coaches-name-list1"> <?php if ($coach->year_of_experience != '') { ?>
+                                        {{ $coach->year_of_experience }} years Experience
                                     <?php
                                         } else { ?>
-                                        <p><b>No Experience</b></p>
+                                        No Experience
 
                                     <?php } ?>
                                 </span>
@@ -455,7 +453,7 @@
 
         <div class="mt-120">
             <center>
-                <h2 class="fwhite">GET YOUR DREAM COURSE WITH BEST INSTRUCTOR
+                <h2 class="fwhite home-banner-page-text">GET YOUR DREAM COURSE WITH BEST INSTRUCTOR
                 </h2>
             </center>
             <div class="row">
@@ -491,8 +489,8 @@
             </div>
             <div class="col-lg-5 col-md-6">
                 <div class="ab-content">
-                    <h3>JOIN OUR LARGEST COACHING COMMUNITY.</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
+                    <p class="text_font_size_index234">JOIN OUR LARGEST COACHING COMMUNITY.</p>
+                    <p class="ab-content34">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
                         Aliquam euismod, elit vel bibendum vestibulum, nisl nisl mollis tortor, a rhoncus mi augue eleifend justo. Sed sed ullamcorper massa, at pretium tortor. Integer nunc tellus, elementum eu malesuada eu, pellentesque a tellus.
                     </p>
                     <a class="bisylms-btn" href="../pricing">Get Started</a>
@@ -504,7 +502,7 @@
 
 @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 <a href="#" id="back-to-top">
-    <i class="fal fa-angle-double-up"></i>
+    <i class="fal fa-angle-double-up scroll-top-footer"></i>
 </a>
 <!-- Back To Top -->
 <!-- Start Include All JS -->
@@ -524,6 +522,13 @@
 
 <script src="../assets/js/theme.js"></script>
 <!-- End Include All JS -->
+
+<style>
+        .scroll-top-footer{
+            line-height: 2!important;
+        }
+    </style>
+
 <style>
     aside.ttr {
 

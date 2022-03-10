@@ -178,25 +178,39 @@
     </div>
 </footer>
 <a href="#" id="back-to-top">
-    <i class="fal fa-angle-double-up"></i>
+    <i class="fal fa-angle-double-up scroll-top-footer"></i>
 </a>
 <!-- Back To Top -->
 
 <!-- Start Include All JS -->
 <style>
-    .fa, .fab, .fad, .fal, .far, .fas {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 3;
-}
-.fab {
-    font-family: "Font Awesome 5 Brands";
-}
-.fab, .far {
-    font-weight: 400;
-}
+    .fa,
+    .fab,
+    .fad,
+    .fal,
+    .far,
+    .fas {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        /* line-height: 3; */
+    }
+
+    .fab {
+        font-family: "Font Awesome 5 Brands";
+    }
+
+    .fab,
+    .far {
+        font-weight: 400;
+    }
+</style>
+
+<style>
+    .scroll-top-footer {
+        line-height: 2 !important;
+    }
 </style>

@@ -133,7 +133,7 @@ input[type=number] {
 
 .bisylms-btn-2 {
     border: none;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 600;
     color: #E92AA4;
     background: rgba(248, 84, 254, 0.1);
@@ -354,6 +354,15 @@ button:hover {
     color: #2c234d;
     margin: -50px 0 27px;
     position: relative;
+}
+
+.sec-title-cat21 {
+    font-size: 37px;
+    line-height: 49px;
+    color: #2c234d;
+    margin: -50px 0 27px;
+    position: relative;
+    font-weight: 700;
 }
 
 .sec-title span {
