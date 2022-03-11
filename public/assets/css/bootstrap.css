@@ -652,6 +652,44 @@ pre code {
     }
 }
 
+@media (min-width: 1278px) {
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 997px;
+    }
+    .text_font_size_index232 {
+        font-size: 50px!important;
+        /* line-height: 55px!important; */
+        font-weight: 700!important;
+        line-height: 1.5em!important;
+        font-family: 'Montserrat', sans-serif;
+        color: #1D1D1F!important;
+        margin: 20px 0 10px 0!important;
+    }
+}
+
+@media (min-width: 1440px) {
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 1170px;
+    }
+    .text_font_size_index232 {
+        font-size: 56px!important;
+        /* line-height: 55px!important; */
+        font-weight: 700!important;
+        line-height: 1.5em!important;
+        font-family: 'Montserrat', sans-serif;
+        color: #1D1D1F!important;
+        margin: 20px 0 10px 0!important;
+    }
+}
+
 .row {
     display: -ms-flexbox;
     display: flex;
