@@ -28,11 +28,24 @@
 
 @media (min-width: 1200px) and (max-width: 1600px) {
     /*--- Home  ---*/
+    /* .container,
+    .container-sm,
+    .container-md,
+    .container-lg {
+        max-width: 80%;
+    } */
+    /* .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 1170px;
+    } */
     .hero-menu-login-u32 {
         margin-top: -653px;
     }
     .nav-menu-login-u {
-        margin-right: -60px;
+        margin-right: -159px;
     }
     .hero-banner-1 {
         padding-top: 615px;
@@ -89,7 +102,7 @@
         height: 44px;
         border-radius: 3px;
         text-align: center;
-        font-size: 13px;
+        font-size: 16px;
         line-height: 42px;
         font-weight: 700;
         padding: 0px 0px;
@@ -169,10 +182,10 @@
 @media (min-width: 992px) and (max-width: 1199px) {
     .join-btn01 {
         margin-left: 10px;
-        padding: 0 25px;
+        padding: 0 13px;
     }
     .navbar-expand-lg .navbar-nav li {
-        margin: 0 17px 0 0;
+        margin: 0 11px 0 0;
     }
     .course-item-01 {
         position: relative;
@@ -496,6 +509,29 @@
     .hero-banner-1 {
         background-position: 56% 100%;
     }
+}
+
+@media (max-width: 1278px) {
+    /* .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 1090px;
+        width: 100%;
+    } */
+    /* .navbar-expand-lg .navbar-nav li {
+        position: relative;
+        list-style: none;
+        display: inline-block;
+        margin: 0 26px 0 0;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+    .nav-menu-login-u {
+        margin-right: -48px;
+    } */
 }
 
 
@@ -1173,14 +1209,24 @@
         padding: 276px 0 190px;
     }
     .hero-banner-1 {
-        padding-top: 591px;
+        padding-top: 662px;
         width: 100%;
     }
     .nav-menu-login-u {
-        margin-right: -56px;
+        margin-right: -33px;
     }
     .hero-menu-login-u32 {
         margin-top: -610px;
+    }
+    .navbar-expand-lg .navbar-nav li>a {
+        display: block;
+        font-size: 14px;
+        line-height: 48px;
+        color: #fff;
+        text-transform: capitalize;
+        font-weight: 600;
+        padding: 23px 0 26px;
+        position: relative;
     }
 }
 
