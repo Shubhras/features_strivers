@@ -79,7 +79,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
 .dashboard-nav {
     background-color: #fff;
     border: 1px solid #eae9ec;
-    border-radius: 0.3rem;
+    border-radius: 10px;
     padding: 0;
 }
 
@@ -153,6 +153,68 @@ li.subject-title-name:hover {
     background: #f1f1f1;
     padding: 10px;
     border: 1px ridge;
+}
+
+.subject-title-name-cat {
+    font-size: 18px;
+    font-weight: 700;
+    color: black;
+    padding: 10px;
+    border: 1px ridge;
+}
+
+.subject-title-name-cat:hover {
+    color: rgb(15, 55, 233);
+    background: #f1f1f1;
+    padding: 10px;
+    border: 1px ridge;
+}
+
+.subject-title-name-cat-sub {
+    font-size: 14px;
+    font-weight: 700;
+    color: black;
+    padding: 10px;
+    border: 2px groove;
+    border-radius: 4px;
+}
+
+.subject-title-name-cat-sub:hover {
+    color: #2c234d!important;
+    background: #ffffff;
+    padding: 10px;
+    border: 2px groove;
+    border-radius: 4px;
+}
+
+.coach-cat-name12 {
+    font-size: 18px!important;
+    font-weight: 700;
+    color: black;
+    /* padding: 10px; */
+    /* border: 2px groove;
+    border-radius: 4px; */
+}
+
+.coach-cat-name12:hover {
+    font-size: 18px;
+    font-weight: 700;
+    color: #3b07f7!important;
+    /* background: #ffffff; */
+    /* padding: 10px;
+    border: 2px groove;
+    border-radius: 4px; */
+}
+
+.subject-name-cat-sub {
+    color: black;
+}
+
+.subject-name-cat-sub:hover {
+    color: #4a2bbb!important;
+    background: #ffffff;
+    /* padding: 10px;
+    border: 1px ridge; */
 }
 
 p.coches-description.text-center.mt-5 {
@@ -297,7 +359,7 @@ ul.width {
 input.search-box-for-main {
     border-radius: 2px;
     border: 1px solid #b1b1b1;
-    height: 50px;
+    height: 60px;
 }
 
 select.browser-default.custom-select {
@@ -436,12 +498,13 @@ h4,
 h5,
 h6 {
     /* color: #1D1D1F; */
-    margin: 20px 0 10px 0;
+    /* margin: 20px 0 10px 0;
     font-style: normal;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif; */
 }
 
-h1,
+
+/* h1,
 h2,
 h3,
 h4,
@@ -454,14 +517,15 @@ h6,
 .h5,
 .h6 {
     line-height: 1.5em;
-}
+} */
 
 
 /* h1 {
     font-size: 58px;
 } */
 
-h2 {
+
+/* h2 {
     font-size: 40px;
 }
 
@@ -479,9 +543,10 @@ h5 {
 
 h6 {
     font-size: 14px;
-}
+} */
 
-h1 a,
+
+/* h1 a,
 h2 a,
 h3 a,
 h4 a,
@@ -501,9 +566,10 @@ h6 a:hover {
 
 p a:hover {
     color: #bf0731;
-}
+} */
 
-p {
+
+/* p {
     letter-spacing: normal;
     line-height: 24px;
     color: #888;
@@ -514,15 +580,16 @@ p {
 a {
     text-decoration: none;
     color: #212121;
-}
+} */
 
-a:hover,
+
+/* a:hover,
 a:focus,
 a:active {
     outline: none;
     text-decoration: none;
     color: #bf0731;
-}
+} */
 
 ul {
     list-style: disc;

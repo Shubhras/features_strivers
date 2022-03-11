@@ -26,7 +26,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
 						@foreach($categories as $key => $cat)
 							<div class="col-lg-2 col-md-3 col-sm-4 col-6 f-category">
 								<a href="{{ \App\Helpers\UrlGen::category($cat) }}">
-									<img src="{{ imgUrl($cat->picture, 'cat') }}" class="lazyload img-fluid" alt="{{ $cat->name }}">
+									<img src="{{ url('storage/'.$cat->picture, 'cat') }}" class="lazyload img-fluid" alt="{{ $cat->name }}">
 									<h6>
 										{{ $cat->name }}
 										@if (config('settings.listing.count_categories_posts'))

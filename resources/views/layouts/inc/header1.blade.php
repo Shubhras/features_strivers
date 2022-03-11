@@ -2,7 +2,7 @@
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
     <!-- Start Include All CSS -->
     <link rel="stylesheet" href="../assets/css/master.css">
@@ -49,7 +49,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 }
 ?><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
 
 
@@ -86,7 +86,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 
             @if (!auth()->check())
 
-            <div class="collapse navbar-collapse" id="navbarsDefault" style="margin-right: -103px;">
+            <div class="collapse navbar-collapse nav-menu-login-u" id="navbarsDefault">
 
                                 
                 <ul class="navbar-nav ">
@@ -152,27 +152,6 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                             {{ t('Contact') }}</a>
                         @endif
                     </li>
-
-
-                    <!-- <li class="nav-item">
-                        @if (config('settings.security.login_open_in_modal'))
-                        <a href="#quickLogin" class="join-btn01 " data-bs-toggle="modal">
-                            
-                            {{ t('log_in') }}</a>
-                        @else
-                        <a href="{{ \App\Helpers\UrlGen::login() }}" class="join-btn01 ">
-                           
-                            {{ t('log_in') }}</a>
-                        @endif
-                    </li>
-                    <li class="nav-item hidden-sm">
-                        <a href="{{ \App\Helpers\UrlGen::register() }}" class="join-btn01">
-                            
-                                {{ t('register') }}</a>
-                    </li> -->
-
-                    
-                   
                    
                 </ul>
 
@@ -189,7 +168,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
             
             @else
                     
-            <div class="collapse navbar-collapse" id="navbarsDefault" style="margin-right: -186px;">
+            <div class="collapse navbar-collapse nav-menu-login-u" id="navbarsDefault">
 
                                 
                 <ul class="navbar-nav ">
@@ -253,19 +232,19 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 
 
                     
-                    <li class="nav-item hidden-sm">
+                    <!-- <li class="nav-item hidden-sm">
                         @if (app('impersonate')->isImpersonating())
                         <a href="{{ route('impersonate.leave') }}" class="nav-link">
-                            <!-- <i class="fas fa-sign-out-alt hidden-sm"></i>  -->
+                           
                             {{ t('Leave') }}
                         </a>
                         @else
                         <a href="{{ \App\Helpers\UrlGen::logout() }}" class="nav-link">
-                            <!-- <i class="fas fa-sign-out-alt hidden-sm"></i>  -->
+                            
                             {{ t('log_out') }}
                         </a>
                         @endif
-                    </li>
+                    </li> -->
                     
                     <li class="nav-item dropdown no-arrow">
 
@@ -329,7 +308,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 
         </div>
         </div>
-    </nav>
+    <!-- </nav> -->
 
     </div>
 </div>

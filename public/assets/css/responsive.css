@@ -28,6 +28,12 @@
 
 @media (min-width: 1200px) and (max-width: 1600px) {
     /*--- Home  ---*/
+    .hero-menu-login-u32 {
+        margin-top: -653px;
+    }
+    .nav-menu-login-u {
+        margin-right: -106px;
+    }
     .hero-banner-1 {
         padding-top: 615px;
     }
@@ -1167,7 +1173,14 @@
         padding: 276px 0 190px;
     }
     .hero-banner-1 {
-        padding-top: 165px;
+        padding-top: 591px;
+        width: 100%;
+    }
+    .nav-menu-login-u {
+        margin-right: -56px;
+    }
+    .hero-menu-login-u32 {
+        margin-top: -610px;
     }
 }
 
@@ -1320,10 +1333,14 @@
     .search-box_filter2 {
         margin-left: -2px
     }
-    /* .text_font_size_index {
+    .text_font_size_index {
         font-size: 49px!important;
         line-height: 55px!important;
-    } */
+    }
+    .text_font_size_color {
+        color: #2c234d!important;
+        font-weight: 700;
+    }
     .title-box-fix {
         margin-top: 100px;
     }
@@ -1347,7 +1364,7 @@
         width: 474px;
     }
     .btn_class {
-        height: 50px;
+        height: 60px;
         /* margin-left: 350px;
         margin-top: -70px; */
         background-color: #012245!important;
@@ -1385,11 +1402,11 @@
         width: 474px;
     }
     .btn_class {
-        height: 50px;
+        height: 60px;
         background-color: #012245!important;
     }
     .btn_class_coaches {
-        height: 50px;
+        height: 60px;
         background-color: #43329f!important;
     }
     .search_box_filterss {
@@ -1409,7 +1426,7 @@
         width: 404px;
     }
     .search-box-fix1 {
-        width: 631px;
+        width: 701px;
     }
     .search-box-font {
         font-size: 16px!important;

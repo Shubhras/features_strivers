@@ -297,6 +297,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     position: relative;
     padding: 655px 0 190px;
 }
+
 @media (min-width: 780px) {
     .hero-banner-1 {
         background-position: bottom right;
@@ -305,8 +306,6 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
         position: relative;
         padding: 780px 0 190px;
     }
-  
-    
 }
 
 .hero-banner-245 {
@@ -2504,11 +2503,12 @@ footer .widget ul li a:hover {
 }
 
 .p-price span {
-    font-size: 14px;
+    font-size: 16px;
     line-height: .8;
     display: inline-block;
     color: #5d5a67;
     font-weight: 400;
+    padding-top: 16px;
 }
 
 .pricing-item ul {
@@ -7161,6 +7161,13 @@ Profile Page
     padding: 0px 12px 0px 15px;
 }
 
+.top-coach-widget {
+    position: relative;
+    border-radius: 10px;
+    margin: 0 0 30px;
+    padding: 0px 12px 0px 15px;
+}
+
 .latest-course1 img {
     width: 40px;
     height: 40px;
@@ -7175,6 +7182,33 @@ Profile Page
     min-height: 60px;
     padding-left: 70px;
     margin: 6px 0 3px;
+}
+
+.latest-course10 {
+    position: relative;
+    min-height: 40px;
+    padding-left: 70px;
+    margin: 6px 0 3px;
+}
+
+.latest-course10 img {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border-radius: 3px;
+    left: 0;
+    top: 4px;
+}
+
+.coach-details-name {
+    line-height: 0.5em!important;
+    font-size: 40px!important;
+    margin: 20px 0 10px 0!important;
+    font-style: normal;
+    font-family: 'Montserrat', sans-serif;
+    color: #2c234d!important;
+    font-weight: 700!important;
+    letter-spacing: 0;
 }
 
 .search_box_filter {
@@ -7259,6 +7293,23 @@ a.btn01.btn-primary1 {
     color: white;
 }
 
+.register-btn-primary {
+    width: 219px;
+    color: white;
+    padding: 13px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.google-fb-login {
+    height: 46px;
+    width: 219px;
+}
+
+.register-btn-padding {
+    padding-top: 15px;
+}
+
 
 /* #web {display: none;}
 #mobile {display: block;} */
@@ -7281,6 +7332,78 @@ a.btn01.btn-primary1 {
     font-size: 49px!important;
     line-height: 55px!important;
 } */
+
+.text_font_size_index232 {
+    font-size: 56px!important;
+    /* line-height: 55px!important; */
+    font-weight: 700!important;
+    line-height: 1.5em!important;
+    font-family: 'Montserrat', sans-serif;
+    color: #1D1D1F!important;
+    margin: 20px 0 10px 0!important;
+}
+
+.text_font_size_index234 {
+    font-size: 34px!important;
+    /* line-height: 55px!important; */
+    font-weight: 700!important;
+    line-height: 1.5em!important;
+    font-family: 'Montserrat', sans-serif;
+    color: #1D1D1F!important;
+    margin: 20px 0 10px 0!important;
+}
+
+.footer-old-12 {
+    margin-top: -99px;
+}
+
+.cta-wrapper-p {
+    font-size: 34px;
+    line-height: 44px;
+    margin: 52px 0 0 -115px;
+    width: 50%;
+    color: #1D1D1F;
+    font-weight: 700;
+    letter-spacing: 0;
+    font-style: normal;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.ab-content34 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.line-height-text-3 {
+    line-height: 41px!important;
+}
+
+.font-text-size-48px {
+    font-size: 48px!important;
+}
+
+.font-text-size-36px {
+    font-size: 36px!important;
+}
+
+.font-text-size-34px {
+    font-size: 34px!important;
+}
+
+.font-text-size-30px {
+    font-size: 30px!important;
+}
+
+.font-text-size-20px {
+    font-size: 20px!important;
+}
+
+.font-text-size-18px {
+    font-size: 18px!important;
+}
+
+.font-text-size-16px {
+    font-size: 16px!important;
+}
 
 .title-box-fix {
     margin-top: 100px;
@@ -7411,7 +7534,7 @@ a.btn01.btn-primary1 {
     color: #888;
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
-    padding: 21px 112px;
+    padding: 21px 70px;
     text-align: center;
     margin-top: -45px;
 }
@@ -7582,6 +7705,34 @@ input#modal-description {
     padding-top: 104px;
     padding-bottom: 70px;
     background: #ffffff;
+}
+
+.main-section-cat {
+    padding-top: 125px;
+    padding-bottom: 70px;
+    background: #ffffff;
+}
+
+.top-coaches-name-list {
+    font-size: 16px!important;
+    line-height: 24px!important;
+    color: #2c234d!important;
+    margin: 0 0 7px!important;
+}
+
+.top-coaches-name-list1 {
+    font-size: 16px!important;
+    line-height: 24px!important;
+    color: #888!important;
+    margin: 0 0 7px!important;
+}
+
+.home-banner-page-text {
+    font-size: 44px!important;
+}
+
+.location-search-coach-text {
+    margin-left: -11px;
 }
 
 .strivre-img-wrapper::before {

@@ -1,23 +1,11 @@
-{{--
- * LaraClassifier - Classified Ads Web Application
- * Copyright (c) BeDigit. All Rights Reserved
- *
- * Website: https://laraclassifier.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
---}}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
     <!-- Start Include All CSS -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <!-- <link rel="stylesheet" href="../assets/css/bootstrap.css" />
     <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="../assets/css/elegant-icons.css" />
     <link rel="stylesheet" href="../assets/css/themify-icons.css" />
@@ -37,7 +25,7 @@
 
 	
 
-    <link rel="stylesheet" href="../assets/css/master.css">
+    <link rel="stylesheet" href="../assets/css/master.css"> -->
 <?php
 	$plugins = array_keys((array)config('plugins'));
 	$publicDisk = \Storage::disk(config('filesystems.default'));

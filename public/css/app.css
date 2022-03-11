@@ -26428,8 +26428,28 @@ div.login-box .panel-footer label {
 }
 
 .header-data {
-    margin-top: -60px;
+    margin-top: -52px;
     text-align: right
+}
+
+
+/* @media only screen and (min-width: 1024px) {
+    .header-01 {
+        position: absolute;
+        left: 0;
+        top: 0px;
+        width: 100%;
+        z-index: 5;
+        background: transparent;
+        padding: 0;
+    }
+} */
+
+@media (max-width:767px) {
+    .header-data {
+        margin-top: -110px;
+        text-align: right
+    }
 }
 
 .header-data p {

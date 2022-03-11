@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
 <!-- Start Include All CSS -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
@@ -178,25 +178,39 @@
     </div>
 </footer>
 <a href="#" id="back-to-top">
-    <i class="fal fa-angle-double-up"></i>
+    <i class="fal fa-angle-double-up scroll-top-footer"></i>
 </a>
 <!-- Back To Top -->
 
 <!-- Start Include All JS -->
 <style>
-    .fa, .fab, .fad, .fal, .far, .fas {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 3;
-}
-.fab {
-    font-family: "Font Awesome 5 Brands";
-}
-.fab, .far {
-    font-weight: 400;
-}
+    .fa,
+    .fab,
+    .fad,
+    .fal,
+    .far,
+    .fas {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        /* line-height: 3; */
+    }
+
+    .fab {
+        font-family: "Font Awesome 5 Brands";
+    }
+
+    .fab,
+    .far {
+        font-weight: 400;
+    }
+</style>
+
+<style>
+    .scroll-top-footer {
+        line-height: 2 !important;
+    }
 </style>

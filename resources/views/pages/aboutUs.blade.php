@@ -32,7 +32,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h2 class="sec-title title-padding"> Get unlimited consultation across industries. </h2>
+                <h2 class="sec-title title-padding font-text-size-36px"> Get unlimited consultation across industries. </h2>
                 <!-- <p>
                         So I said codswallop car boot cheers mufty I don't want no agro are you taking the<br> piss cheeky my lady gutted mate excuse my french.
                     </p> -->
@@ -58,8 +58,8 @@
         <center>
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="sec-title">Our Global Community</h2>
-                    <p class="sec-desc">
+                    <h2 class="sec-title font-text-size-34px">Our Global Community</h2>
+                    <p class="sec-desc font-text-size-16px">
                         GET YOUR DREAM COURSE WITH BEST INSTRUCTOR
                     </p>
                 </div>
@@ -70,28 +70,28 @@
                 <div class="funfact-item-3">
                     <img src="assets/images/home3/f3.png" alt="">
                     <h2><span data-counter="27" class="timer">27</span></h2>
-                    <p>Million Learners</p>
+                    <p class="font-text-size-16px">Million Learners</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="funfact-item-3 ml-15">
                     <img src="../assets/images/home3/f4.png" alt="">
                     <h2><span data-counter="4" class="timer">4</span>.6</h2>
-                    <p>Million Graduates</p>
+                    <p class="font-text-size-16px">Million Graduates</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="funfact-item-3 ml-40">
                     <img src="../assets/images/home3/f5.png" alt="">
                     <h2><span data-counter="1400" class="timer">1<span>,</span>400</span>+</h2>
-                    <p>Online Courses</p>
+                    <p class="font-text-size-16px">Online Courses</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="funfact-item-3 righ-align">
                     <img src="assets/images/home3/f7.png" alt="">
                     <h2><span data-counter="175" class="timer">175</span></h2>
-                    <p>Countries</p>
+                    <p class="font-text-size-16px">Countries</p>
                 </div>
             </div>
         </div>
@@ -100,7 +100,7 @@
 </section>
 <section class="funfact-section-blue">
     <div class="container">
-        <p class="global_page_white"> “ Strivre is great for teams because it’s easy to get set up and the oferings touch on a<br>
+        <p class="global_page_white font-text-size-20px"> “ Strivre is great for teams because it’s easy to get set up and the oferings touch on a<br>
             vast array of soft skill focus areas, which not only build role-related talents but also<br>
             enable team members to grow their whole selves beyond work.”</p>
 
@@ -135,7 +135,7 @@
 <style>
     .fass {
     
-    line-height: 5!important;
+    line-height: 6!important;
 }
 </style>
 <!-- End Include All JS -->

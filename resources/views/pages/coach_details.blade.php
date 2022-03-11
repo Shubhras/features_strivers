@@ -18,7 +18,7 @@
 @endsection
 
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"> -->
 <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
 
 
@@ -106,7 +106,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                     </div>
                 </div>
 
-                <img src="{{ imgUrl($user->photo, '') }}" class="lazyload img-fluid images_height" alt="{{ $user->name }}">
+                <img src="{{ url('storage/'.$user->photo) }}" class="lazyload img-fluid images_height" alt="{{ $user->name }}">
 
                 <div class="row coach_detail_name">
 
@@ -391,7 +391,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
 
             <div class="col-lg-3 col-md-3 col-sm-4 col-6 f-coach">
                 <a href="{{url('/coach_details/'.$coachs->id) }}">
-                    <img src="{{ imgUrl($coachs->photo, '') }}" class="lazyload img-fluid" alt="{{ $coachs->name }}">
+                    <img src="{{ url('storage/'.$coachs->photo) }}" class="lazyload img-fluid" alt="{{ $coachs->name }}">
 
                     <h5 style="margin-top: -76px;font-size: xx-large;color: white; margin-bottom: 47px;">
                         <b>{{ $coachs->name }}</b>

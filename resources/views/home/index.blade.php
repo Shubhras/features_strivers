@@ -23,7 +23,7 @@
         </div>
     </div>
 </section>
-<div class="container" style="margin-top: -653px;">
+<div class="container hero-menu-login-u32">
 
     <div class="row">
 
@@ -31,21 +31,21 @@
         <div class="col-lg-5 col-md-5 title-box-fix">
             <div class="hero-content">
 
-                <h1 class="text_font_size_index">Your Course To Success</h1>
+                <p class="text_font_size_index232">Your Course To Success</p>
 
                 <form action="{{ \App\Helpers\UrlGen::search() }}" method="GET" class="row mt-5 box_filter2 search-box_filter2">
 
 
-                    <div class="input-group">
+                    <div class="input-group location-search-coach-text">
                         <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more..." title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
-                        <button type="button" class="btn btn-primary btn_class">
-                            <i class="fas fa-search" alt="{{('find') }}"></i>
+                        <button type="button" class="btn btn-primary btn_class"><a href="{{url('/coach_list_category_all')}}">
+                        </a> <i class="fas fa-search" alt="{{ ('find') }}"></i>
                         </button>
                     </div>
 
                 </form>
                 <br>
-                <a href="#" class="bisylms-btn">Ready to Get Started?</a>
+                <a href="{{'/register'}}" class="bisylms-btn">Ready to Get Started?</a>
             </div>
         </div>
 
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    
+
 
 </div>
 <br><br><br><br><br>
@@ -66,85 +66,104 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                <div class="course-sidebar1">
-                    <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
+                <div class="course-sidebar1 navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
+                    <!--<nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
 
-                        <aside class="widget ttr ">
-                            <h5 class="mb-1 ">FIND INTERESTING</h5>
+                        <aside class="widget ttr "> -->
+                    <!-- <aside class="widget ttr ">  -->
+                    <div class="top-coach-widget">
+
+
+                        <h5 class="mb-1 ">FIND INTERESTING</h5>
+                        <?php
+                        foreach ($categories_list_coach1 as $key => $value) {
+
+
+                        ?>
+                            <div class="latest-course1 ppt">
+                                <a href="single-course.html"><img src="../assets/images/home/desktop1-image.png" alt=""></a>
+
+
+                                <?php
+                                $name = json_decode($value->name);
+                                $ss = array();
+                                foreach ($name as $key => $sub) {
+                                    $ss[$key] = $sub;
+                                }
+
+                                ?>
+                               
+
+                                <label class="f-17">
+                                <a href="{{url('/coach_list/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>">
+                                    {{$ss['en']}}
+                                </a>
+                                </label>
+
+                                
+
+                            </div>
+                        <?php } ?>
+                        <!-- </aside> -->
+                        <!-- </aside>
+                    </nav> -->
+                    </div>
+                </div>
+                <br>
+                <div class="course-sidebar1 navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
+                    <div class="top-coach-widget">
+                        <!-- <div class="course-sidebar1 "> -->
+                        <!-- <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
+                        <aside class="widget h-75 d-inline-block">
+                            <aside class="widget ttr "> -->
+
+                        <h5 class="mb-1 ">LATEST NEWS</h5>
+
+                        @foreach($letest_news as $news)
+                        <div class="latest-course10 ppt">
+
                             <?php
-                            foreach ($categories_list_coach as $key => $value) {
+                            $title = json_decode($news->title);
+                            $ss = array();
+                            foreach ($title as $key => $sub) {
+                                $ss[$key] = $sub;
+                            }
 
 
                             ?>
-                                <div class="latest-course1 ppt">
-                                    <a href="single-course.html"><img src="../assets/images/home/desktop1-image.png" alt=""></a>
+
+                            @if(!empty($news->picture))
+
+                            <div class="strivre-img-wrapper">
+
+                                
+                                <img src="{{ url('storage/'.$news->picture) }}" alt="{{ $news->name }}">
+
+                                <label class="f-17 sort_name">
+                                <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
+                                    {{$ss['en']}}
+                                </a>
+                                </label>
+
+                            </div>
+                            @endif
+                            @if(empty($news->picture))
+
+                            <div class="strivre-img-wrapper">
+                                <img src="../assets/images/course/1.jpg" alt="">
+                                <label class="f-17 sort_name">
+                                <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
+                                    {{$ss['en']}}
+                                </a>
+                                </label>
 
 
-                                    <?php
-                                    $name = json_decode($value->name);
-                                    $ss = array();
-                                    foreach ($name as $key => $sub) {
-                                        $ss[$key] = $sub;
-                                    }
-
-
-                                    ?>
-                                    <span class="f-17">{{$ss['en']}}</span>
-
-                                </div>
-                            <?php } ?>
-
-                        </aside>
-                    </nav>
-                </div>
-                <br>
-                <div class="course-sidebar1">
-                    <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
-                        <aside class="widget h-75 d-inline-block">
-                            <aside class="widget ttr ">
-                                <h5 class="mb-1 ">LATEST NEWS</h5>
-
-                                @foreach($letest_news as $news)
-                                <div class="latest-course1 ppt">
-
-                                    <?php
-                                    $title = json_decode($news->title);
-                                    $ss = array();
-                                    foreach ($title as $key => $sub) {
-                                        $ss[$key] = $sub;
-                                    }
-
-
-                                    ?>
-
-                                    @if(!empty($news->picture))
-
-                                    <div class="strivre-img-wrapper">
-
-                                        <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
-
-                                            <img src="{{ imgUrl($news->picture, '') }}" alt="{{ $news->name }}">
-                                            <span class="f-17">{{$ss['en']}}</span>
-
-                                        </a>
-                                    </div>
-                                    @endif
-                                    @if(empty($news->picture))
-
-                                    <div class="strivre-img-wrapper">
-
-                                        <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
-
-                                            <img src="../assets/images/course/1.jpg" alt="">
-                                            <span class="f-17">{{$ss['en']}}</span>
-                                        </a>
-                                    </div>
-                                    @endif
-                                </div>
-                                @endforeach
-                            </aside>
-                        </aside>
-                    </nav>
+                            </div>
+                            @endif
+                        </div>
+                        @endforeach
+                       
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -162,41 +181,67 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="teacher-item">
                             <div class="teacher-thumb coach-img-wrapper">
-                                <a href="{{url('/coach_details/'.$coach->id) }}">
-                                    <img src="{{ imgUrl($coach->photo, '') }}" alt="{{ $coach->name }}"  class="lazyload img-fluid">
-                                    <!-- <div class="teacher-social">
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-facebook-f"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-twitter"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-pinterest-p"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-vimeo-v"></i>
-                                        </a>
-                                    </div> -->
-
+                                <!-- <a href="{{url('/coach_details/'.$coach->id) }}"> -->
+                                <img src="{{ url('storage/'.$coach->photo) }}" alt="{{ $coach->name }}" class="lazyload img-fluid">
                             </div>
                             <div class="teacher-meta">
-                                <h5>
-                                    {{$coach->name}}
-                                    </5>
+                                <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
+                                 <p class="top-coaches-name-list coach-cat-name12">{{$coach->name}} </p>
 
-                                    <p>Photographer
-                                    </p>
-                                    <span> <?php if ($coach->year_of_experience != '') { ?>
-                                            <p><b>{{ $coach->year_of_experience }} years Experience</b></p>
-                                        <?php
-                                            } else { ?>
-                                            <p><b>No Experience</b></p>
+                                </a>
+                                <p>Photographer
+                                </p>
 
-                                        <?php } ?>
-                                    </span>
+                                <span class="top-coaches-name-list1"> <?php if ($coach->year_of_experience != '') { ?>
+                                        {{ $coach->year_of_experience }} years Experience
+                                    <?php
+                                        } else { ?>
+                                        No Experience
+
+                                    <?php } ?>
+                                </span>
+
+
+                                <div class="modal fade bd-example-modal-lg_{{$coach->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach->id }}">
+                                    <div class="modal-dialog modal-xl">
+
+                                    <div class="modal-header">
+                                                <h4 class="modal-title">Top Coach Details</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+
+                                        <div class="modal-content p-5">
+                                            
+
+                                            <img src="{{ url('storage/'.$coach->photo) }}" class="img-coches-main" alt="{{ $coach->name }}">
+                                            <p class="coach-details-name">{{$coach->name}}</p>
+                                            <h4 class=" text-center">
+                                                Teaches Adventure Photography
+                                            </h4>
+                                            <p class="text-center"><b>
+                                                    National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.</b>
+                                            </p> <br>
+                                            <label>{{$coach->name}} has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
+                                                breathtaking shots. In his photography class, learn different creative approaches for commercial shoots, editorial spreads, and passion projects. Gather the gear—and the perspective—to bring your
+                                                photography to new heights.</label>
+                                            <br>
+                                            <div class="row center-button-modal">
+
+                                                <div class="col-lg-2">
+                                                    <a href="{{url('/coachall_detail/'.$coach->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <a href="{{url('/pricing') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- </div> -->
                             </div>
-                            </a>
+
                         </div>
                     </div>
                     @endforeach
@@ -208,31 +253,36 @@
                 </center>
             </div>
             <div class="col-lg-3">
-                <div class="course-sidebar1">
+
+                <div class="course-sidebar1 navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
+                    <div class="top-coach-widget">
+
+                        <!-- <div class="course-sidebar1">
                     <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
-                        <aside class="widget ppt">
-                            <h5 class="mb-1 ">LATEST OFFERING</h5>
-                            <?php
-                            foreach ($user_course as $key => $value) {
-                                # code...
+                        <aside class="widget ppt"> -->
+                        <h5 class="mb-1 ">LATEST OFFERING</h5>
+                        <?php
+                        foreach ($user_course as $key => $value) {
+                            # code...
 
-                            ?>
-                                <div class="latest-course">
+                        ?>
+                            <div class="latest-course">
 
-                                    <div class="strivre-img-wrapper">
+                                <div class="strivre-img-wrapper">
 
-                                        <a href="single-course.html"><img src="../assets/images/course/1.jpg" alt=""></a>
+                                    <a href="single-course.html"><img src="../assets/images/course/1.jpg" alt=""></a>
 
-                                    </div>
-                                    <span class="f-17">{{$value->course_name}}</span>
-                                    <div class="course-price">
-                                        {{$value->course_hourse}} Hourse
-                                    </div>
                                 </div>
-                            <?php } ?>
+                                <label class="f-17 sort_name">{{$value->course_name}}</label>
+                                <div class="course-price">
+                                    {{$value->course_hourse}} Hourse
+                                </div>
+                            </div>
+                        <?php } ?>
 
-                        </aside>
-                    </nav>
+                        <!-- </aside>
+                    </nav> -->
+                    </div>
                 </div>
                 <br>
                 <div class="course-sidebar1">
@@ -403,7 +453,7 @@
 
         <div class="mt-120">
             <center>
-                <h2 class="fwhite">GET YOUR DREAM COURSE WITH BEST INSTRUCTOR
+                <h2 class="fwhite home-banner-page-text">GET YOUR DREAM COURSE WITH BEST INSTRUCTOR
                 </h2>
             </center>
             <div class="row">
@@ -439,8 +489,8 @@
             </div>
             <div class="col-lg-5 col-md-6">
                 <div class="ab-content">
-                    <h3>JOIN OUR LARGEST COACHING COMMUNITY.</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
+                    <p class="text_font_size_index234">JOIN OUR LARGEST COACHING COMMUNITY.</p>
+                    <p class="ab-content34">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
                         Aliquam euismod, elit vel bibendum vestibulum, nisl nisl mollis tortor, a rhoncus mi augue eleifend justo. Sed sed ullamcorper massa, at pretium tortor. Integer nunc tellus, elementum eu malesuada eu, pellentesque a tellus.
                     </p>
                     <a class="bisylms-btn" href="../pricing">Get Started</a>
@@ -452,7 +502,7 @@
 
 @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 <a href="#" id="back-to-top">
-    <i class="fal fa-angle-double-up"></i>
+    <i class="fal fa-angle-double-up scroll-top-footer"></i>
 </a>
 <!-- Back To Top -->
 <!-- Start Include All JS -->
@@ -472,6 +522,13 @@
 
 <script src="../assets/js/theme.js"></script>
 <!-- End Include All JS -->
+
+<style>
+        .scroll-top-footer{
+            line-height: 2!important;
+        }
+    </style>
+
 <style>
     aside.ttr {
 
@@ -500,13 +557,48 @@
         line-height: 55px!important;
     }  */
 
-    ::-webkit-scrollbar {
+    /* ::-webkit-scrollbar {
         width: 4px;
     }
 
     ::-webkit-scrollbar-thumb {
         background: red;
         border-radius: 5px;
+    } */
+</style>
+
+<style>
+    .sort_name {
+        display: inline-block;
+        width: 120px;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+        font-weight: 500;
+    }
+
+
+    @media only screen and (max-width: 1440px) {
+        .sort_name {
+            display: inline-block;
+            width: 106px;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+            font-weight: 500;
+        }
+    }
+
+
+    @media only screen and (max-width: 1024px) {
+        .sort_name {
+            display: inline-block;
+            width: 85px;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+            font-weight: 500;
+        }
     }
 </style>
 

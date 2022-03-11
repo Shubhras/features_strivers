@@ -119,7 +119,7 @@ class HomeController extends FrontController
 		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
 		->where('users.id',2)->first();
 
-		$data['user_course']= DB::table('coach_course')->select('course_name','course_hourse')->get();
+		$data['user_course']= DB::table('coach_course')->select('course_name','course_hourse')->limit(4)->get();
 		$data['user_striver'] = DB::table('users')->select('users.*')->where('users.user_type_id',3)->whereNotIn('users.id', [1])->orderBy('users.id','desc')->limit(3)->get();
 
 		$packages = Package::query()->applyCurrency();
@@ -140,12 +140,31 @@ class HomeController extends FrontController
 		$this->setSeo($searchFormOptions);
 
 
-		$data['letest_news']= DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id','desc')->limit(6)->get();
+		$data['letest_news']= DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id','desc')->limit(5)->get();
 
-		$data['categories_list_coach'] = DB::table('categories')->select('categories.slug','categories.id','categories.name')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
-		// print_r($data['categories_list_coach']);die;
+		// $data['categories_list_coach'] = DB::table('categories')->select('categories.slug','categories.id','categories.name','users.category')->join('users' ,'categories.id' ,'=' ,'users.category')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
+
+
+		$data['categories_list_coach'] = DB::table('users')->select('categories.slug','categories.id','categories.name','users.category')->join('categories' ,'categories.id' ,'=' ,'users.category')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->where('users.user_type_id', 2)->get();
+
 		
-		// print_r($data['letest_news']);die;
+
+		$unique = array();
+		$uniques =array();
+		$keyss =array();
+
+		foreach ($data['categories_list_coach'] as $value)
+		{
+			$unique[$value->category] = $value;
+			$uniques['key'] = $value->category;
+			
+			
+		}
+		
+		$data['uniqueCat'] = array_values($unique);
+		
+		$data['categories_list_coach1'] = array_slice($data['uniqueCat'], 0, 5);
+	
 		return appView('home.index', $data);
 	}
 	
