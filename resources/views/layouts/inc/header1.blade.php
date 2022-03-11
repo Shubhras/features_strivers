@@ -86,7 +86,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 
             @if (!auth()->check())
 
-            <div class="collapse navbar-collapse" id="navbarsDefault" style="margin-right: -103px;">
+            <div class="collapse navbar-collapse nav-menu-login-u" id="navbarsDefault">
 
                                 
                 <ul class="navbar-nav ">
@@ -168,7 +168,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
             
             @else
                     
-            <div class="collapse navbar-collapse" id="navbarsDefault" style="margin-right: -186px;">
+            <div class="collapse navbar-collapse nav-menu-login-u" id="navbarsDefault">
 
                                 
                 <ul class="navbar-nav ">
@@ -308,7 +308,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 
         </div>
         </div>
-    </nav>
+    <!-- </nav> -->
 
     </div>
 </div>

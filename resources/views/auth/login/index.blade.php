@@ -1,59 +1,7 @@
-@extends('layouts.master')
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.master_new')
+@section('content')
 
-<head>
-    <title>Strivre</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-
-    <!-- Start Include All CSS -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../assets/css/elegant-icons.css" />
-    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="../assets/css/animate.css" />
-    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../assets/css/slick.css">
-    <link rel="stylesheet" href="../assets/css/nice-select.css">
-    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="../assets/css/lightcase.css">
-    <link rel="stylesheet" href="../assets/css/preset.css" />
-    <link rel="stylesheet" href="../assets/css/theme.css" />
-    <link rel="stylesheet" href="../assets/css/responsive.css" />
-    <!-- End Include All CSS -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
-    <!-- Favicon Icon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-    <!-- Favicon Icon -->
-</head>
-
-<body>
-
-    <!-- Preloader Icon -->
-    <!-- <div class="preloader">
-        <div class="loaderInner">
-            <div id="top" class="mask">
-                <div class="plane"></div>
-            </div>
-            <div id="middle" class="mask">
-                <div class="plane"></div>
-            </div>
-            <div id="bottom" class="mask">
-                <div class="plane"></div>
-            </div>
-            <p>LOADING...</p>
-        </div>
-    </div> -->
-    <!-- Preloader Icon -->
-
-    <!-- Header Start -->
-
-    <!-- Header End -->
-
-    <!-- Banner Start -->
+    
     <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
        
     </section>
@@ -226,7 +174,4 @@
         // const REST_API_KEY = 'f222190fc6464bc85ac5ccd03ebcee9f2977d654';
         const AUTH_KEY = '1f5c5fdd84024fdd7ee42c4cfd2e369bddc2f09f';
     </script>
-
-</body>
-
-</html>
+ @endsection
