@@ -37,6 +37,10 @@
 <section style="background-color: white;">
 	 <div class="main-container" >
 		<div class="container">
+
+		<?php $photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
+
+
 			<?php if($user->user_type_id == 2){ ?>
 
 
@@ -50,7 +54,7 @@
 			
 				<div class="col-md-12 user-profile-img-data default-inner-box">
 
-					<img id="userImg" class="user-profile-images" src="{{ url($user->photo_url) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+					<img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
 					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>  {{ $user->name }}</b> </span>
 				
 
@@ -644,7 +648,7 @@
 
 		<div class="col-md-12 user-profile-img-data default-inner-box">
 
-		<img id="userImg" class="user-profile-images" src="{{ url('storage/'.$user->photo_url) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+		<img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
                         <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> Update Profile  {{ $user->name }}</b> </span>
 						<!-- <b> Striver Update Profile </b></span> -->
 
@@ -1579,7 +1583,7 @@
 			/* Setup initial preview with data keys */
 			initialPreview: [
 				@if (isset($user->photo) && !empty($user->photo))
-					"{{ url('storage/'.$user->photo, 'user') }}"
+					"{{ url('storage/'.$user->photo) }}"
 				@endif
 			],
 			initialPreviewAsData: true,
