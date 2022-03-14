@@ -65,7 +65,7 @@
 <div class="main-section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-4">
                 <div class="course-sidebar1 navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
                     <!--<nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
 
@@ -166,7 +166,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-8">
                 <h2 class="sec-title">
                     TOP COACHES
                 </h2>
@@ -259,7 +259,7 @@
 
            
 
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-4 newmt123">
 
                 <div class="course-sidebar1 navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
                     <div class="top-coach-widget">
