@@ -1519,3 +1519,7 @@
     padding-left: 20px!important;
     color: black!important;
 }
+
+.coach-img-fix-height {
+    height: 178px;
+}
