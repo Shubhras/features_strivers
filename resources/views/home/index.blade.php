@@ -259,7 +259,7 @@
 
            
 
-            <div class="col-lg-3 col-md-4">
+            <div class="col-lg-3 col-md-4 newmt123">
 
                 <div class="course-sidebar1 navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
                     <div class="top-coach-widget">
