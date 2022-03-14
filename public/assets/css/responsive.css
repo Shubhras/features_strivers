@@ -20,7 +20,9 @@
 4. Responsive For Mobile & Tab
 5. Responsive For Mobile Device
 */
-
+input#phoneHidden {
+    margin-left: -10px!important;
+}
 
 /*------------------------------------------------------------------------------------
 / 1. Responsive For Extra large Device 2
@@ -1383,6 +1385,17 @@
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+    div#calendar{
+        margin-top:54PX
+    }
+
+.main-section{
+    padding-top:0px!important;
+}
+    .fc fc-ltr{
+        margin-top:56px!important;}
+    .header-data.text-center-xs{
+        margin-top:47px!important;}
     
     .hero-content_h2 {
         font-size: 28px!important;
