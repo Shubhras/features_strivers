@@ -98,6 +98,9 @@
 			
             {!! csrf_field() !!}
                         <div class="col-md-12">
+                        <?php $uiid = rand(10000,99990);
+		?>
+                       <input type="hidden" name="username" value="strivrecoach<?php echo $uiid;?>">
                         <?php $nameError = (isset($errors) and $errors->has('name')) ? ' is-invalid' : ''; ?>
                             <label class="form-label" for="Name ">Name 
                             </label>
