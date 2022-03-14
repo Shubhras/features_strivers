@@ -63,6 +63,8 @@ class EditController extends AccountBaseController
 
 		$data['subscription_plan']= Package::query()->get();
 
+		// $data['edit_user'] =DB::table('users')->select('users.*')->where('users.id' ,$user->id);
+
 		//$data['categories']= Category::query()->get();
 
 		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
@@ -70,6 +72,8 @@ class EditController extends AccountBaseController
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 		
+		// print_r($data);
+
 		return appView('account.edit', $data);
 		
 	}

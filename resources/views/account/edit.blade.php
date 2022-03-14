@@ -44,13 +44,21 @@
 
 <h2 class="sec-title">My Update Profile</h2>
 </h2>
+<?php 
+
+
+// $str = "White Tank Top";
+$photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1');
+
+// print_r($photo_url1);die;
+?>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
 			
 			
 				<div class="col-md-12 user-profile-img-data default-inner-box">
 
-					<img id="userImg" class="user-profile-images" src="{{ url($user->photo_url) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+					<img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
 					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>  {{ $user->name }}</b> </span>
 				
 
