@@ -501,7 +501,7 @@
 <style>
     .btn i {
 
-        top: -7px !important;
+        top: 0px !important;
     }
 
     .sub-cat-name {
