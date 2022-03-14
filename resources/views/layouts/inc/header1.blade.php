@@ -249,7 +249,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                     <li class="nav-item dropdown no-arrow">
 
                     @if (config('settings.security.login_open_in_modal'))
-                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" style="margin-top: -5px">
+                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" >
                             <!-- <i class="fas fa-user-circle hidden-sm"></i> -->
                             <span>{{ auth()->user()->name }}</span>
                             <span
@@ -259,7 +259,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                         @else
 
 
-                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" style="margin-top: -5px">
+                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" >
                             <!-- <i class="fas fa-user-circle hidden-sm"></i> -->
                             <span>{{ auth()->user()->name }}</span>
                             <span
