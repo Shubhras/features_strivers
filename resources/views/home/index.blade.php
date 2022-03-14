@@ -182,7 +182,13 @@
                         <div class="teacher-item">
                             <div class="teacher-thumb coach-img-wrapper">
                                 <!-- <a href="{{url('/coach_details/'.$coach->id) }}"> -->
+                                  <?php   if(!empty($coach->photo)) {?>
                                 <img src="{{ url('storage/'.$coach->photo) }}" alt="{{ $coach->name }}" class="lazyload img-fluid">
+                               
+                               <?php }else{?>
+
+                                <img src="../assets/images/course/1.jpg" alt="{{ $coach->name }}" class="lazyload img-fluid">
+                            <?php }?>
                             </div>
                             <div class="teacher-meta">
                                 <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
@@ -191,6 +197,7 @@
                                 </a>
                                 <p>Photographer
                                 </p>
+                                <!-- <img src="../assets/images/course/1.jpg" alt=""> -->
 
                                 <span class="top-coaches-name-list1"> <?php if ($coach->year_of_experience != '') { ?>
                                         {{ $coach->year_of_experience }} years Experience
@@ -247,11 +254,11 @@
                     @endforeach
                     @endif
                 </div>
-                <center>
-                    <button type="button" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">Explore Your
-                        Interest </button>
-                </center>
+                
             </div>
+
+           
+
             <div class="col-lg-3">
 
                 <div class="course-sidebar1 navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
@@ -314,6 +321,11 @@
 
             </div>
         </div>
+
+        <center>
+                    <button type="button" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">Explore Your
+                        Interest </button>
+                </center>
     </div>
 </div>
 
