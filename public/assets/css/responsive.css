@@ -25,9 +25,44 @@
 /*------------------------------------------------------------------------------------
 / 1. Responsive For Extra large Device 2
 --------------------------------------------------------------------------------------*/
-
+ @media (min-width: 1200px) and (max-width: 1277px){
+    .navbar-expand-lg .navbar-nav li {
+        margin: 0 21px 0 0!important;
+    }
+.nav-menu-login-u {
+    margin-right: -150px!important;
+}
+.container, .container-sm, .container-md, .container-lg, .container-xl {
+    max-width: 939px;
+}
+}
+/* @media (min-width: 1278px) and (max-width: 1600px) {
+.nav-menu-login-u {
+    margin-right: -159px;
+}
+}  */
 @media (min-width: 1200px) and (max-width: 1600px) {
     /*--- Home  ---*/
+    /* .container,
+    .container-sm,
+    .container-md,
+    .container-lg {
+        max-width: 80%;
+    } */
+    /* .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 1170px;
+    } */
+    .nav-menu-login-u {
+        margin-right: -159px;
+    }
+    .hero-menu-login-u32 {
+        margin-top: -653px;
+    }
+   
     .hero-banner-1 {
         padding-top: 615px;
     }
@@ -83,7 +118,7 @@
         height: 44px;
         border-radius: 3px;
         text-align: center;
-        font-size: 13px;
+        font-size: 16px;
         line-height: 42px;
         font-weight: 700;
         padding: 0px 0px;
@@ -163,10 +198,10 @@
 @media (min-width: 992px) and (max-width: 1199px) {
     .join-btn01 {
         margin-left: 10px;
-        padding: 0 25px;
+        padding: 0 13px;
     }
     .navbar-expand-lg .navbar-nav li {
-        margin: 0 17px 0 0;
+        margin: 0 11px 0 0;
     }
     .course-item-01 {
         position: relative;
@@ -375,6 +410,10 @@
 /--------------------------------------------------------------------------------------*/
 
 @media (min-width: 768px) and (max-width: 991px) {
+   
+    .btn_class {
+        height: 60px!important;
+    }
     .course-wrapper {
         display: block;
     }
@@ -492,6 +531,29 @@
     }
 }
 
+@media (max-width: 1278px) {
+    /* .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 1090px;
+        width: 100%;
+    } */
+    /* .navbar-expand-lg .navbar-nav li {
+        position: relative;
+        list-style: none;
+        display: inline-block;
+        margin: 0 26px 0 0;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+    .nav-menu-login-u {
+        margin-right: -48px;
+    } */
+}
+
 
 /*------------------------------------------------------------------------------------
 / 4. Responsive For Mobile & Tab
@@ -499,6 +561,9 @@
 
 @media (max-width: 991px) {
     /*--- Mobile Menu ---*/
+    .main-section-new {
+        padding-bottom: 100px!important;
+    }
     .navbar.navbar-expand-lg {
         padding: 0 0 0 0;
         margin: 0 0;
@@ -1167,7 +1232,24 @@
         padding: 276px 0 190px;
     }
     .hero-banner-1 {
-        padding-top: 165px;
+        padding-top: 662px;
+        width: 100%;
+    }
+    .nav-menu-login-u {
+        margin-right: -33px;
+    }
+    .hero-menu-login-u32 {
+        margin-top: -610px;
+    }
+    .navbar-expand-lg .navbar-nav li>a {
+        display: block;
+        font-size: 14px;
+        line-height: 48px;
+        color: #fff;
+        text-transform: capitalize;
+        font-weight: 600;
+        padding: 23px 0 26px;
+        position: relative;
     }
 }
 
@@ -1240,7 +1322,20 @@
     display: block;
 }
 
+@media (max-width: 400px) {
+    /* .newmt123 {
+        margin-top: -360px!important;
+    } */
+}
 @media (min-width: 320px) and (max-width: 425px) {
+    /* .sec-title-cat21
+    
+    {
+        text-align:center!important;
+    } */
+
+    
+    
     .navbar.navbar-expand-lg .navbar-collapse {
         position: absolute;
         left: -12px;
@@ -1253,9 +1348,14 @@
         -moz-box-shadow: 0px 6px 10px 0px rgba(11, 02, 55, 0.06);
         box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
     }
+  
 }
 
 @media screen and (min-width: 320px) {
+    button.btn.btn-primary.btn_class_coaches.search-box-font {
+        height: 60px!important;
+        background-color: #43329f!important;
+    }
     .hero-banner-1 {
         background-position: 48% 100%;
     }
@@ -1283,11 +1383,26 @@
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+    .hero-content_h2 {
+        font-size: 28px!important;
+        line-height: 1.5!important;
+    }
+    .subject-title-name-cat{
+        text-align:center!important
+    }
+    .funfact-item-3{
+        margin-left: 0px!important;
+    }
+   
     .knowbtn {
         margin-bottom: 8px!important;
     }
     button.bisylms-btn {
         margin-bottom: 50px;
+    }
+
+    p.sec-title-cat21 {
+        text-align: center;
     }
 }
 
@@ -1351,7 +1466,7 @@
         width: 474px;
     }
     .btn_class {
-        height: 50px;
+        height: 60px;
         /* margin-left: 350px;
         margin-top: -70px; */
         background-color: #012245!important;
@@ -1413,7 +1528,7 @@
         width: 404px;
     }
     .search-box-fix1 {
-        width: 701px;
+        width: 650px;
     }
     .search-box-font {
         font-size: 16px!important;
@@ -1459,4 +1574,8 @@
 .side-menu-li-user {
     padding-left: 20px!important;
     color: black!important;
+}
+
+.coach-img-fix-height {
+    height: 178px;
 }

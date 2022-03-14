@@ -23,7 +23,7 @@
         </div>
     </div>
 </section>
-<div class="container" style="margin-top: -653px;">
+<div class="container hero-menu-login-u32">
 
     <div class="row">
 
@@ -65,7 +65,7 @@
 <div class="main-section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-4">
                 <div class="course-sidebar1 navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
                     <!--<nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
 
@@ -166,7 +166,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-8">
                 <h2 class="sec-title">
                     TOP COACHES
                 </h2>
@@ -180,9 +180,15 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="teacher-item">
-                            <div class="teacher-thumb coach-img-wrapper">
+                            <div class="teacher-thumb coach-img-wrapper coach-img-fix-height">
                                 <!-- <a href="{{url('/coach_details/'.$coach->id) }}"> -->
+                                  <?php   if(!empty($coach->photo)) {?>
                                 <img src="{{ url('storage/'.$coach->photo) }}" alt="{{ $coach->name }}" class="lazyload img-fluid">
+                               
+                               <?php }else{?>
+
+                                <img src="../assets/images/course/1.jpg" alt="{{ $coach->name }}" class="lazyload img-fluid">
+                            <?php }?>
                             </div>
                             <div class="teacher-meta">
                                 <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
@@ -191,6 +197,7 @@
                                 </a>
                                 <p>Photographer
                                 </p>
+                                <!-- <img src="../assets/images/course/1.jpg" alt=""> -->
 
                                 <span class="top-coaches-name-list1"> <?php if ($coach->year_of_experience != '') { ?>
                                         {{ $coach->year_of_experience }} years Experience
@@ -247,12 +254,12 @@
                     @endforeach
                     @endif
                 </div>
-                <center>
-                    <button type="button" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">Explore Your
-                        Interest </button>
-                </center>
+                
             </div>
-            <div class="col-lg-3">
+
+           
+
+            <div class="col-lg-3 col-md-4 newmt123">
 
                 <div class="course-sidebar1 navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
                     <div class="top-coach-widget">
@@ -314,6 +321,11 @@
 
             </div>
         </div>
+
+        <center>
+                    <button type="button" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">Explore Your
+                        Interest </button>
+                </center>
     </div>
 </div>
 
