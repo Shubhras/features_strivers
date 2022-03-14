@@ -37,6 +37,9 @@
 <section style="background-color: white;">
 	 <div class="main-container" >
 		<div class="container">
+
+		<?php $photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1'); ?>
+
 			<?php if($user->user_type_id == 2){ ?>
 
 
@@ -44,14 +47,7 @@
 
 <h2 class="sec-title">My Update Profile</h2>
 </h2>
-<?php 
 
-
-// $str = "White Tank Top";
-$photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1');
-
-// print_r($photo_url1);die;
-?>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
 			
