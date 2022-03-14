@@ -75,16 +75,17 @@
                 <center>
                     <h4>Sign Up As Coach</h4>
                 </center><br>
-                <form role="form" method="POST" action="{{ url('/strivers_signup') }}" class="row">
+                <form id="signUpForm" role="form" method="POST" action="{{ url('/strivers_signup') }}" class="row">
                     <div class="col-md-12">
 
-                        
-
+                        <?php $uiid = rand(10000,99990);
+		?>
+                       <input type="hidden" name="username" value="strivrecoach<?php echo $uiid;?>">
 
                         <?php $nameError = (isset($errors) and $errors->has('name')) ? ' is-invalid' : ''; ?>
                         <label class="form-label" for="Name ">Name
                         </label>
-                        <input name="name" class="form-control input-md{{ $nameError }}" type="text" placeholder="First Name" value="{{ old('name') }}">
+                        <input name="name" class="form-control input-md{{ $nameError }}" id="name" type="text" placeholder="First Name" value="{{ old('name') }}">
                         <input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden" id="user_type_coach" value="2">
                     </div>
                     @if (isEnabledField('email'))
@@ -149,7 +150,30 @@
         </div>
 
         </div>
+<!-- <?php
 
+// $curl = curl_init();
+
+// curl_setopt_array($curl, array(
+//   CURLOPT_URL => 'https://205183157ed270ba.api-us.cometchat.io/v3/users',
+//   CURLOPT_RETURNTRANSFER => true,
+//   CURLOPT_ENCODING => '',
+//   CURLOPT_MAXREDIRS => 10,
+//   CURLOPT_TIMEOUT => 0,
+//   CURLOPT_FOLLOWLOCATION => true,
+//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//   CURLOPT_CUSTOMREQUEST => 'POST',
+//   CURLOPT_POSTFIELDS => array('uid' => 'ankit251095','name' => 'ankit251095'),
+//   CURLOPT_HTTPHEADER => array(
+//     'apiKey: 236c095fcf85e781a90fa0da6393f49272bcb201'
+//   ),
+// ));
+
+// $response = curl_exec($curl);
+
+// curl_close($curl);
+// echo $response;
+?> -->
 
 
 
@@ -161,40 +185,92 @@
     <!-- Footer Section End -->
 
     <!-- Back To Top -->
-    
+<script>
+// jQuery(document).ready(function(){
+//             jQuery('#signupBtn').click(function(e){
+//             }
+//         });
+// $.ajax({
+//     url: 'https://205183157ed270ba.api-us.cometchat.io/v3/users',
+//     headers: {"X-Test-Header": "header"}
+//     method: 'POST',
+//     type:'POST',
+//     contentType: 'application/json',
+//     data: {
+//                      name: jQuery('#name').val(),
+//                      uid: jQuery('#name').val(),
+                     
+//                   },
+//     success: function(response){
+//       console.log("response::::"+response);
+//       $("#output").text(response);
+//     },
+//     error: function( jqXHR,textStatus, errorThrown){
+//     //   console.log("Error askdjk");
+//       console.log(jqXHR);
+//       console.log(textStatus);
+//       console.log(errorThrown);
+//     }
+// });
 
-    <script>
-        const chatService = (function() {
+// var frm = $('#signUpForm');
 
-            var username = "raj123";
-            return {
-                createUserOnCometChat: function(username) {
-                    let url = `https://api-us.cometchat.io/v3.0/users`;
-                    let data = {
-                        uid: username,
-                        name: `${username} sample`,
-                        avatar: "https://data-us.cometchat.io/assets/images/avatars/captainamerica.png",
-                    };
+//     frm.submit(function (e) {
 
-                    fetch(url, {
-                            method: "POST",
-                            headers: new Headers({
-                                appid: APP_ID,
-                                apikey: REST_API_KEY,
-                                "Content-Type": "application/json",
-                            }),
-                            body: JSON.stringify(data),
-                        })
-                        .then((response) => response.json())
-                        .then((result) => {
-                            this.addUserToAGroup(result.data.uid);
-                            console.log(result, "User created");
-                        })
-                        .catch((error) => console.log(error));
-                }
-            }
-        });
-    </script>
+//         e.preventDefault();
+
+//         $.ajax({
+//             type: frm.attr('post'),
+//             url: frm.attr('https://205183157ed270ba.api-us.cometchat.io/v3/users'),
+//             headers: {"apiKey": "236c095fcf85e781a90fa0da6393f49272bcb201"},
+//             data: frm.serialize({'uid': 'demouser','name': 'demouser'}),
+            
+//             success: function (data) {
+//                 console.log('Submission was successful.');
+//                 console.log(data);
+
+//             },
+//             error: function (data) {
+//                 console.log('An error occurred.');
+//                 console.log(data);
+//             },
+//         });
+//     });
+
+</script>
+
+    // <script>
+    //     const chatService = (function() {
+
+    //         var username = "raj123";
+    //         return {
+    //             createUserOnCometChat: function(username) {
+    //                 let url = `https://205183157ed270ba.api-us.cometchat.io/v3/users`;
+    //                 let data = {
+    //                     uid: username,
+    //                     name: `${username} sample`,
+    //                     avatar: "https://data-us.cometchat.io/assets/images/avatars/captainamerica.png",
+    //                 };
+
+    //                 fetch(url, {
+    //                         method: "POST",
+    //                         headers: new Headers({
+    //                             appid: "205183157ed270ba",
+    //                             apikey: "236c095fcf85e781a90fa0da6393f49272bcb201",
+    //                             "Content-Type": "application/json",
+    //                         }),
+    //                         body: JSON.stringify(data),
+    //                     })
+    //                     .then((response) => response.json())
+    //                     .then((result) => {
+    //                         this.addUserToAGroup(result.data.uid);
+    //                         console.log(result, "User created");
+    //                     })
+    //                     .catch((error) => console.log(error));
+    //             }
+    //         }
+    //     });
+    // </script>
 
 @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 
