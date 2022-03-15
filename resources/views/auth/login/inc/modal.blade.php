@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="css/style.css" />
 <div class="modal fade" id="quickLogin" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog  modal-sm">
 		<div class="modal-content login-model-page">
@@ -57,11 +59,19 @@
 						<div class="input-group show-pwd-group">
 							<span class="input-group-text"><i class="fas fa-lock"></i></span>
 							<input id="mPassword" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('password') }}" autocomplete="off">
-							<span class="icon-append show-pwd">
+							<!-- <span class="icon-append show-pwd">
 								<button type="button" class="eyeOfPwd">
 									<i class="far fa-eye-slash"></i>
 								</button>
+							</span> -->
+							<span class="icon-append show-pwd">
+											<button type="button" class="eyeOfPwd">
+												<!-- <i class="far fa-eye-slash"></i> -->
+												<i class="far fa-eye-slash" id="togglePassword"></i>
+											</button>
 							</span>
+
+									
 						</div>
 					</div>
 					
@@ -94,3 +104,23 @@
 		</div>
 	</div>
 </div>
+
+<script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#mPassword");
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("fa-eye");
+        });
+
+        // prevent form submit
+        const form = document.querySelector("form");
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+        });
+    </script>

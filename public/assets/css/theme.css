@@ -1444,7 +1444,7 @@ footer .widget .widget-title {
 }
 
 .about-widget img {
-    max-width: 100%;
+    max-width: 60%;
     height: auto;
     margin: 0 0 23px;
 }
