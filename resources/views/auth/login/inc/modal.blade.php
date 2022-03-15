@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-    <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
 <div class="modal fade" id="quickLogin" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog  modal-sm">
 		<div class="modal-content login-model-page">
@@ -67,7 +67,8 @@
 							<span class="icon-append show-pwd">
 											<button type="button" class="eyeOfPwd">
 												<!-- <i class="far fa-eye-slash"></i> -->
-												<i class="far fa-eye-slash" id="togglePassword"></i>
+												<!-- <i class="far fa-eye-slash" id="togglePassword"></i> -->
+												<i class="far fa-eye login-icon-eyes " id="togglePassword"></i>
 											</button>
 							</span>
 
@@ -109,18 +110,14 @@
         const togglePassword = document.querySelector("#togglePassword");
         const password = document.querySelector("#mPassword");
 
-        togglePassword.addEventListener("click", function () {
-            // toggle the type attribute
-            const type = password.getAttribute("type") === "password" ? "text" : "password";
-            password.setAttribute("type", type);
-            
-            // toggle the icon
-            this.classList.toggle("fa-eye");
-        });
-
-        // prevent form submit
-        const form = document.querySelector("form");
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-        });
+// 		const togglePassword = document.querySelector('#togglePassword');
+//   const password = document.querySelector('#id_password');
+ 
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
     </script>

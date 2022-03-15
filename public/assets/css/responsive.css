@@ -20,41 +20,58 @@
 4. Responsive For Mobile & Tab
 5. Responsive For Mobile Device
 */
+
 input#phoneHidden {
     margin-left: -10px!important;
 }
 
+
 /*------------------------------------------------------------------------------------
 / 1. Responsive For Extra large Device 2
 --------------------------------------------------------------------------------------*/
- @media (min-width: 1200px) and (max-width: 1277px){
+
+@media (min-width: 1200px) and (max-width: 1277px) {
     .navbar-expand-lg .navbar-nav li {
         margin: 0 21px 0 0!important;
     }
-.nav-menu-login-u {
-    margin-right: -150px!important;
+    .nav-menu-login-u {
+        margin-right: -150px!important;
+    }
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 939px;
+    }
 }
-.container, .container-sm, .container-md, .container-lg, .container-xl {
-    max-width: 939px;
-}
-}
+
+
 /* @media (min-width: 1278px) and (max-width: 1600px) {
 .nav-menu-login-u {
     margin-right: -159px;
 }
 }  */
-@media (min-width: 1278px) and (max-width: 1440px) {
 
+@media (min-width: 1278px) and (max-width: 1440px) {
     .nav-menu-login-u {
         margin-right: -140px;
     }
+    .search-box-text {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .search-button-icon-width {
+        width: 40px!important;
+    }
 }
-@media (min-width: 1441px) and (max-width: 1600px) {
 
+@media (min-width: 1441px) and (max-width: 1600px) {
     .nav-menu-login-u {
         margin-right: -155px!important;
     }
 }
+
 @media (min-width: 1200px) and (max-width: 1600px) {
     /*--- Home  ---*/
     /* .container,
@@ -70,14 +87,16 @@ input#phoneHidden {
     .container-xl {
         max-width: 1170px;
     } */
-   
     .hero-menu-login-u32 {
         margin-top: -653px;
     }
-   
     .hero-banner-1 {
         padding-top: 615px;
     }
+    /* .banner-thumb img {
+        max-width: 100%;
+        height: auto;
+    } */
     .banner-thumb img {
         max-width: 115%;
         height: auto;
@@ -422,7 +441,6 @@ input#phoneHidden {
 /--------------------------------------------------------------------------------------*/
 
 @media (min-width: 768px) and (max-width: 991px) {
-   
     .btn_class {
         height: 60px!important;
     }
@@ -848,7 +866,7 @@ input#phoneHidden {
 
 @media (max-width: 767px) {
     .mbtn {
-         margin-left: 0px!important;
+        margin-left: 0px!important;
     }
     .ab-thumb {
         margin: 0;
@@ -1342,15 +1360,13 @@ input#phoneHidden {
         margin-top: -360px!important;
     } */
 }
+
 @media (min-width: 320px) and (max-width: 425px) {
     /* .sec-title-cat21
     
     {
         text-align:center!important;
     } */
-
-    
-    
     .navbar.navbar-expand-lg .navbar-collapse {
         position: absolute;
         left: -12px;
@@ -1363,7 +1379,6 @@ input#phoneHidden {
         -moz-box-shadow: 0px 6px 10px 0px rgba(11, 02, 55, 0.06);
         box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
     }
-  
 }
 
 @media screen and (min-width: 320px) {
@@ -1398,36 +1413,34 @@ input#phoneHidden {
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
-    div#calendar{
-        margin-top:54PX
+    div#calendar {
+        margin-top: 54PX
     }
-
-.main-section{
-    padding-top:0px!important;
-}
-    .fc fc-ltr{
-        margin-top:56px!important;}
-    .header-data.text-center-xs{
-        margin-top:47px!important;}
-    
+    .main-section {
+        padding-top: 0px!important;
+    }
+    .fc fc-ltr {
+        margin-top: 56px!important;
+    }
+    .header-data.text-center-xs {
+        margin-top: 47px!important;
+    }
     .hero-content_h2 {
         font-size: 28px!important;
         line-height: 1.5!important;
     }
-    .subject-title-name-cat{
-        text-align:center!important
+    .subject-title-name-cat {
+        text-align: center!important
     }
-    .funfact-item-3{
+    .funfact-item-3 {
         margin-left: 0px!important;
     }
-   
     .knowbtn {
         margin-bottom: 8px!important;
     }
     button.bisylms-btn {
         margin-bottom: 50px;
     }
-
     p.sec-title-cat21 {
         text-align: center;
     }

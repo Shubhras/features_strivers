@@ -35,11 +35,20 @@
 
                 <form action="{{ \App\Helpers\UrlGen::search() }}" method="GET" class="row mt-5 box_filter2 search-box_filter2">
 
+                    <div class="input-group">
 
-                    <div class="input-group location-search-coach-text">
-                        <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more..." title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
-                        <button type="button" class="btn btn-primary btn_class"><a href="{{url('/coach_list_category_all')}}">
-                        </a> <i class="fas fa-search" alt="{{ ('find') }}"></i>
+
+                        <div class="location-search-coach-text col-md-11 search-box-text">
+                            <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more..." title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
+
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn_class search-button-icon-width">
+                            <!-- <a href="{{url('/coach_list_category_all')}}"> -->
+
+                            <i class="fas fa-search" alt="{{ ('find') }}"></i>
+                            <!-- </a>  -->
                         </button>
                     </div>
 
@@ -92,15 +101,15 @@
                                 }
 
                                 ?>
-                               
+
 
                                 <label class="f-17">
-                                <a href="{{url('/coach_list/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>">
-                                    {{$ss['en']}}
-                                </a>
+                                    <a href="{{url('/coach_list/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>">
+                                        {{$ss['en']}}
+                                    </a>
                                 </label>
 
-                                
+
 
                             </div>
                         <?php } ?>
@@ -136,13 +145,13 @@
 
                             <div class="strivre-img-wrapper">
 
-                                
+
                                 <img src="{{ url('storage/'.$news->picture) }}" alt="{{ $news->name }}">
 
                                 <label class="f-17 sort_name">
-                                <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
-                                    {{$ss['en']}}
-                                </a>
+                                    <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
+                                        {{$ss['en']}}
+                                    </a>
                                 </label>
 
                             </div>
@@ -152,9 +161,9 @@
                             <div class="strivre-img-wrapper">
                                 <img src="../assets/images/course/1.jpg" alt="">
                                 <label class="f-17 sort_name">
-                                <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
-                                    {{$ss['en']}}
-                                </a>
+                                    <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
+                                        {{$ss['en']}}
+                                    </a>
                                 </label>
 
 
@@ -162,7 +171,7 @@
                             @endif
                         </div>
                         @endforeach
-                       
+
                     </div>
                 </div>
             </div>
@@ -182,17 +191,17 @@
                         <div class="teacher-item">
                             <div class="teacher-thumb coach-img-wrapper coach-img-fix-height">
                                 <!-- <a href="{{url('/coach_details/'.$coach->id) }}"> -->
-                                  <?php   if(!empty($coach->photo)) {?>
-                                <img src="{{ url('storage/'.$coach->photo) }}" alt="{{ $coach->name }}" class="lazyload img-fluid">
-                               
-                               <?php }else{?>
+                                <?php if (!empty($coach->photo)) { ?>
+                                    <img src="{{ url('storage/'.$coach->photo) }}" alt="{{ $coach->name }}" class="lazyload img-fluid">
 
-                                <img src="../assets/images/course/1.jpg" alt="{{ $coach->name }}" class="lazyload img-fluid">
-                            <?php }?>
+                                <?php } else { ?>
+
+                                    <img src="../assets/images/course/1.jpg" alt="{{ $coach->name }}" class="lazyload img-fluid">
+                                <?php } ?>
                             </div>
                             <div class="teacher-meta">
                                 <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
-                                 <p class="top-coaches-name-list coach-cat-name12">{{$coach->name}} </p>
+                                    <p class="top-coaches-name-list coach-cat-name12">{{$coach->name}} </p>
 
                                 </a>
                                 <p>Photographer
@@ -202,7 +211,7 @@
                                 <span class="top-coaches-name-list1"> <?php if ($coach->year_of_experience != '') { ?>
                                         {{ $coach->year_of_experience }} years Experience
                                     <?php
-                                        } else { ?>
+                                                                        } else { ?>
                                         No Experience
 
                                     <?php } ?>
@@ -212,13 +221,13 @@
                                 <div class="modal fade bd-example-modal-lg_{{$coach->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach->id }}">
                                     <div class="modal-dialog modal-xl">
 
-                                    <div class="modal-header">
-                                                <h4 class="modal-title">Top Coach Details</h4>
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Top Coach Details</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
 
                                         <div class="modal-content p-5">
-                                            
+
 
                                             <img src="{{ url('storage/'.$coach->photo) }}" class="img-coches-main" alt="{{ $coach->name }}">
                                             <p class="coach-details-name">{{$coach->name}}</p>
@@ -238,7 +247,7 @@
                                                     <a href="{{url('/coachall_detail/'.$coach->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
                                                 </div>
                                                 <div class="col-lg-2">
-                                                    <a href="{{url('/pricing') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
+                                                    <a href="{{url('/register') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -254,10 +263,10 @@
                     @endforeach
                     @endif
                 </div>
-                
+
             </div>
 
-           
+
 
             <div class="col-lg-3 col-md-4 newmt123">
 
@@ -323,9 +332,9 @@
         </div>
 
         <center>
-                    <button type="button" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">Explore Your
-                        Interest </button>
-                </center>
+            <button type="button" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">Explore Your
+                Interest </button>
+        </center>
     </div>
 </div>
 
@@ -477,7 +486,7 @@
                         <p style="color: #ffffff;">Strivre is great for teams because its easy to get set up and the offerings touch on a vast array of soft skill focus areas, which not only build role-related talents but also enable team members to grow their whole selves beyond
                             work.
                         </p>
-                        <a class="bisylms-btn-pink" href="../register">Sign Up </a>
+                        <a class="bisylms-btn-pink" href="{{url('/register') }}">Sign Up </a>
                     </div>
                 </div>
                 <div class=" col-lg-7 col-md-6">
@@ -505,7 +514,7 @@
                     <p class="ab-content34">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
                         Aliquam euismod, elit vel bibendum vestibulum, nisl nisl mollis tortor, a rhoncus mi augue eleifend justo. Sed sed ullamcorper massa, at pretium tortor. Integer nunc tellus, elementum eu malesuada eu, pellentesque a tellus.
                     </p>
-                    <a class="bisylms-btn" href="../pricing">Get Started</a>
+                    <a class="bisylms-btn" href="{{url('/register') }}">Get Started</a>
                 </div>
             </div>
         </div>
@@ -536,10 +545,10 @@
 <!-- End Include All JS -->
 
 <style>
-        .scroll-top-footer{
-            line-height: 2!important;
-        }
-    </style>
+    .scroll-top-footer {
+        line-height: 2 !important;
+    }
+</style>
 
 <style>
     aside.ttr {

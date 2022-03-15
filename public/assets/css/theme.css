@@ -74,7 +74,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
 }
 
 .navbar-brand img {
-    width:250px;
+    width: 250px;
     height: 100px;
 }
 
@@ -7852,4 +7852,18 @@ h4 {
 
 .logoh {
     height: 80px!important;
+}
+
+.login-icon-eyes {
+    padding-top: 5px;
+    margin-left: -34px;
+}
+
+.search-box-text {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.search-button-icon-width {
+    width: 40px!important;
 }

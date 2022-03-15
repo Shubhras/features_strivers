@@ -678,6 +678,7 @@ pre code {
     .container-lg,
     .container-xl {
         max-width: 1170px;
+        /* max-width: 1294px; */
     }
     .text_font_size_index232 {
         font-size: 56px!important;
