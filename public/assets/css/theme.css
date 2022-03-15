@@ -74,7 +74,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
 }
 
 .navbar-brand img {
-    width: auto;
+    width:250px;
     height: 100px;
 }
 
@@ -1444,7 +1444,7 @@ footer .widget .widget-title {
 }
 
 .about-widget img {
-    max-width: 100%;
+    max-width: 60%;
     height: auto;
     margin: 0 0 23px;
 }
@@ -1452,12 +1452,12 @@ footer .widget .widget-title {
 .about-widget p {
     font-size: 15px;
     margin-bottom: 33px;
-    margin-left: 28px;
+    margin-left: 15px;
 }
 
 .ab-social {
     position: relative;
-    margin-left: 28px;
+    margin-left: 15px;
 }
 
 .ab-social a {
@@ -7581,7 +7581,7 @@ i.fa.fa-edit {
 }
 
 .mbtn {
-    margin-left: 80px;
+    margin-left: 0px;
 }
 
 .mr {
