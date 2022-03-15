@@ -43,6 +43,18 @@ input#phoneHidden {
     margin-right: -159px;
 }
 }  */
+@media (min-width: 1278px) and (max-width: 1440px) {
+
+    .nav-menu-login-u {
+        margin-right: -140px;
+    }
+}
+@media (min-width: 1441px) and (max-width: 1600px) {
+
+    .nav-menu-login-u {
+        margin-right: -155px!important;
+    }
+}
 @media (min-width: 1200px) and (max-width: 1600px) {
     /*--- Home  ---*/
     /* .container,
@@ -58,9 +70,7 @@ input#phoneHidden {
     .container-xl {
         max-width: 1170px;
     } */
-    .nav-menu-login-u {
-        margin-right: -159px;
-    }
+   
     .hero-menu-login-u32 {
         margin-top: -653px;
     }
@@ -837,6 +847,9 @@ input#phoneHidden {
 --------------------------------------------------------------------------------------*/
 
 @media (max-width: 767px) {
+    .mbtn {
+         margin-left: 0px!important;
+    }
     .ab-thumb {
         margin: 0;
     }
