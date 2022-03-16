@@ -59,8 +59,8 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                 <nav class="navbar navbar-expand-lg">
                     <!-- logo Start-->
                     <a class="navbar-brand" href="index.html">
-                        <img src="assets/images/logo4.png" alt="">
-                        <img class="sticky-logo" src="assets/images/logo4.png" alt="">
+                        <img src="../assets/images/logo4.png" alt="">
+                        <img class="sticky-logo" src="../assets/images/logo4.png" alt="">
                     </a>
                     <!-- logo End-->
 
