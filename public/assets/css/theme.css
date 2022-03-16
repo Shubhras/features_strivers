@@ -7916,3 +7916,9 @@ h4 {
 .search-button-icon-width {
     width: 40px!important;
 }
+.subscription-nanme-by-user{
+box-sizing: border-box;
+color: red;
+font-size: 23px;
+font-weight: 600;
+}
