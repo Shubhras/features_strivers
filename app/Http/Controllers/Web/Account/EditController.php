@@ -335,11 +335,11 @@ class EditController extends AccountBaseController
 			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
 
 
-			$data['user_subscriptions1'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*','packages.name','users.name as username')
-			->leftjoin('packages','packages.id'  ,'=','user_subscription_payment.subscription_id')
-			->leftjoin('users' ,'users.id' ,'=', 'user_subscription_payment.user_id')
-			->where('user_subscription_payment.user_id',$user->id)
-			->where('user_subscription_payment.remaining_hours',0)
+			$data['user_subscriptions1'] = DB::table('user_subscription')->select('user_subscription.*','packages.name','users.name as username')
+			->leftjoin('packages','packages.id'  ,'=','user_subscription.subscription_id')
+			->leftjoin('users' ,'users.id' ,'=', 'user_subscription.user_id')
+			->where('user_subscription.user_id',$user->id)
+			// ->where('user_subscription.remaining_hours',0)
 			->get();
 		// print_r($data['user_subscription']);die;
 			// $data['user_subscription'] = DB::table('user_subscription_payment')
@@ -351,9 +351,40 @@ class EditController extends AccountBaseController
 			->leftjoin('packages','packages.id'  ,'=','user_subscription_payment.subscription_id')
 			->leftjoin('users' ,'users.id' ,'=', 'user_subscription_payment.user_id')
 			->where('user_subscription_payment.user_id', $user->id)
-			->first();
+			->get();
 
-		//  print_r($data['user_subscription']);die;
+			$totalsum = array();
+			$name = array();
+			$consumed_hours = array();
+			$remaining_hours = array();
+			$user_id = array();
+		foreach ($data['user_subscription'] as $key => $value) {
+		
+				$totalsum[$value->total_provided_hours] =$value->total_provided_hours;
+				$name[$value->name] =$value->name;
+				$consumed_hours[$value->consumed_hours] =$value->consumed_hours;
+				$remaining_hours[$value->remaining_hours] =$value->remaining_hours;
+				$user_id[$value->id] =$value->id;
+				// $consumed_hours[$value->consumed_hours] =$value->consumed_hours;
+		}
+
+		 
+		//  $dataa = sum($totalsum);
+
+	// $totalsum += $totalsum;
+	$ss  = array();
+	foreach ($name as $key => $sub) {
+		$ss[$sub] = $sub;
+	}
+
+	
+	$data['total_purchase_package'] = count($user_id);
+	$data['packagename'] = $ss;
+	$data['totalpoints'] = array_sum($totalsum);
+	$data['consumed_hours'] = array_sum($consumed_hours);
+
+	$data['remaining_hours'] = $data['totalpoints'] - $data['consumed_hours'];
+		//  print_r($data);die;
 		
 
 			//print_r($data['user_subscription']);die;
