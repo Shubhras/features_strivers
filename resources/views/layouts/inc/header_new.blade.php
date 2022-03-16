@@ -59,8 +59,8 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                 <nav class="navbar navbar-expand-lg">
                     <!-- logo Start-->
                     <a class="navbar-brand" href="index.html">
-                        <img src="../assets/images/logo4.png" alt="">
-                        <img class="sticky-logo" src="../assets/images/logo4.png" alt="">
+                        <img src="assets/images/logo4.png" alt="">
+                        <img class="sticky-logo" src="assets/images/logo4.png" alt="">
                     </a>
                     <!-- logo End-->
 
@@ -73,33 +73,35 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                     <!-- Nav Menu Start -->
                     <!-- <div class="collapse navbar-collapse" id="mobile"> -->
 
-                    <div class="collapse navbar-collapse">
+                    <div class="collapse navbar-collapse mobile-menu-fix32">
                         <ul class="navbar-nav ">
-                            <li class="menu-item-has-children">
+                            <li class="menu-item-has-children side-menu-content768">
 
                             
                                 <a href="{{('/')}}">Home</a>
 
                             </li>
-                            <li class="menu-item-has-children">
+                            <li class="menu-item-has-children side-menu-content768">
                                 <a href="{{ url('coach_list_category_all') }}">Categories</a>
 
                             </li>
-                            <li class="menu-item-has-children">
+                            <li class="menu-item-has-children side-menu-content768">
                                 <a href="{{url('aboutUs')}}">About Us</a>
 
                             </li>
-                            <li class="menu-item-has-children">
+                            <li class="menu-item-has-children side-menu-content768">
                                 <a href="{{url('pricing')}}">Pricing</a>
 
                             </li>
-                            <li>
+
+                            <li class="menu-item-has-children side-menu-content768">
                                 <a href="{{url('contact')}}">Contact</a>
                             </li>
+                            
 
                             @if (auth()->check())
 
-                            <li class="nav-item dropdown no-arrow">
+                            <li class="nav-item dropdown no-arrow side-menu-content768">
 
                                 @if (config('settings.security.login_open_in_modal'))
                                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
@@ -154,10 +156,9 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 
                         @if (!auth()->check())
 
-                        <a href="#quickLogin" class="join-btn01 " data-bs-toggle="modal">
+                        <a href="#quickLogin" class="join-btn01" data-bs-toggle="modal">
                         Login</a>
-                        <!-- <a href="login.html" class="join-btn01 ">Login</a> -->
-                        <!-- <a href="join-us.html" class="join-btn01">Sign Up</a> -->
+                        
 
                         <a href="{{ \App\Helpers\UrlGen::register() }}" class="join-btn01">
                         Sign Up</a>

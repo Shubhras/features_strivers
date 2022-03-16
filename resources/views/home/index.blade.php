@@ -1,6 +1,6 @@
 <title>Strivre - Your Course To Success</title>
 
-<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+<!-- <link rel="icon" type="image/png" href="../assets/images/favicon.png"> -->
 <!-- Favicon Icon -->
 
 @extends('layouts.master')
@@ -23,7 +23,8 @@
         </div>
     </div>
 </section>
-<div class="container hero-menu-login-u32">
+
+<div class="container hero-menu-login-u32 index-image-768">
 
     <div class="row">
 
@@ -45,10 +46,10 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary btn_class search-button-icon-width">
-                            <!-- <a href="{{url('/coach_list_category_all')}}"> -->
+                           
 
                             <i class="fas fa-search" alt="{{ ('find') }}"></i>
-                            <!-- </a>  -->
+                          
                         </button>
                     </div>
 
@@ -268,7 +269,7 @@
 
 
 
-            <div class="col-lg-3 col-md-4 newmt123">
+            <div class="col-lg-3 col-md-4 newmt123 letest-offering-home">
 
                 <div class="course-sidebar1 navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
                     <div class="top-coach-widget">

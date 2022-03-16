@@ -465,3 +465,16 @@ svg g path {
 .get_coaches_add_button {
     width: 246px;
 }
+
+.project-management-text {
+    line-height: 33px!important;
+}
+
+.sec-title-cat2198 {
+    font-size: 37px;
+    line-height: 49px;
+    color: #2c234d;
+    margin: -50px 0 27px;
+    position: relative;
+    font-weight: 700;
+}
