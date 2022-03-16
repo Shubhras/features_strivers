@@ -380,6 +380,7 @@
 
 
 																		$total_payment = $post->fee_deducte + $post->net_payment;
+																		print_r($total_payment);die;
 																		?>
 
 																		{{$total_provided_hours}}
@@ -799,41 +800,67 @@
 			<div class="inner-box default-inner-box edit-file-chat">
 
 				<!--/.row-box End-->
-				<div class="row">
+				
 
 
-
-					<div class="states">
+						<div class="row">
+							<div style="margin-left: 155px; margin-top: 41px;">
+					
 
 						<?php
-						if ($user_subscription) {
+						if ($packagename) {
 
 
-							$name = json_decode($user_subscription->name);
-							$ss = array();
-							foreach ($name as $key => $sub) {
-								$ss[$key] = $sub;
-							}
+							//  $names = json_decode($packagename);
+							 
+							$sub_name = array();
+							
+							// $sub_namess =[];
+							foreach ($packagename as $key => $sub) {
 
+								
+								$names = json_decode($sub);
+								
+								$ss = array();
+								foreach($names as $key=> $en){
 
+									$ss[$key] = $en;
+									
+								}
+								
+
+								$sub_name['en'] = $ss;
+								 
+							
+							// $name = ($user_subscription->total_provided_hours-$user_subscription->remaining_hours);
+							// print_r($ss);die;
+							// print_r($sub_name);die;
+							$sub_namess =$ss['en'];
+							// print_r($sub_namess);die;
 						?>
+								
+                  				<span class="subscription-nanme-by-user">{{$sub_namess }}</span>
 
+ 
+							<?php } ?>
 
+							</div>
+							</div>
 
-							<h5> Current Subscription: <span style="color: red;">{{$ss['en']}}</span></h5>
-							<h5> Total hours : <span style="color: red;">{{$user_subscription->total_provided_hours}} Hours.</span></h5>
-							<h5> Consumed Hours : <span style="color: red;">{{$user_subscription->consumed_hours}} Hours.</span></h5>
-							<h5> Remaining Hours : <span style="color: red;">{{$user_subscription->remaining_hours}} Hours.</span></h5>
+							<div class="row" style="margin-top: -27px;">
+							<div class="states">
+							<h5>  Subscription: </h5>
+							<h5> Total hours : <span style="color: red;">{{$totalpoints}} Hours.</span></h5>
+							<h5> Consumed Hours : <span style="color: red;">{{$consumed_hours}} Hours.</span></h5>
+							<h5> Remaining Hours : <span style="color: red;">{{$remaining_hours}} Hours.</span></h5>
 
-
-							<?php //}
-
-							?>
+								
+							
 					</div>
 				</div>
 				<br>
 				<?php
-							if (empty($user_subscription->remaining_hours)) {
+							if (empty($remaining_hours)) {
 				?>
 					<div class="col-md-12" style="text-align: center;">
 						<a href="{{ url('subscription') }}">
@@ -905,8 +932,8 @@
 						if (empty($user_subscriptions1->remaining_hours)) {
 						?>
 							<div class="col-md-12">
-								<h2> Old plan :{{$ss['en']}}</h2>
-								<h2> Old plan Hours :{{$value->total_provided_hours}} Hours.</h2>
+								<!-- <h2> Old plan :{{$ss['en']}}</h2>
+								<h2> Old plan Hours :{{$value->net_payment}} Hours.</h2> -->
 							</div>
 						<?php } ?>
 
@@ -917,6 +944,21 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		CometChat.getCallParticipantCount( '842c2ff7-f200-42a7-84c7-89c5f698f22a-422a5b96-9db5-4079-87cc-882f4b0fc692', CometChat.CALL_TYPE.VIDEO ).then((count) => {console.log(count)})
+
+		let sessionId = "842c2ff7-f200-42a7-84c7-89c5f698f22a-422a5b96-9db5-4079-87cc-882f4b0fc692";
+		let callType = "DEFAULT";
+
+		CometChat.getCallParticipantCount(sessionId, callType).then(
+		count => {
+		console.log("Participants count =", count);
+		}, error => {
+		console.log("Some error occurred =", error);
+		}
+		console.log(count);
+		);
+		</script>
 
 	<div class="main-section">
 					<div class="container">
