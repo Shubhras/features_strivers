@@ -31,6 +31,9 @@ input#phoneHidden {
 --------------------------------------------------------------------------------------*/
 
 @media (min-width: 1200px) and (max-width: 1277px) {
+    .index-image-768 {
+        margin-top: -477px!important;
+    }
     .contact-send-message {
         max-width: 50%!important;
     }
@@ -277,6 +280,9 @@ input#phoneHidden {
 /--------------------------------------------------------------------------------------*/
 
 @media (min-width: 992px) and (max-width: 1199px) {
+    .index-image-768 {
+        margin-top: -477px!important;
+    }
     .contact-send-message {
         max-width: 50%!important;
     }
@@ -1371,6 +1377,9 @@ input#phoneHidden {
 }
 
 @media (min-width: 1024px) and (max-width: 1200px) {
+    .index-image-768 {
+        margin-top: -686px!important;
+    }
     .contact-send-message {
         max-width: 50%!important;
     }
@@ -1682,13 +1691,13 @@ input#phoneHidden {
 }
 
 @media screen and (min-width: 768px) {
-    .hero-banner-1 {
-        padding: 400px 0px;
+    /* .hero-banner-1 {
+        padding: 298px 0px;
         height: auto;
-    }
-    .index-image-768 {
+    } */
+    /* .index-image-768 {
         margin-top: -477px;
-    }
+    } */
     .mobile-menu-fix32 {
         left: 512px;
         width: 27%;
@@ -1843,6 +1852,9 @@ input#phoneHidden {
 }
 
 @media screen and (min-width: 1224px) {
+    /* .index-image-768 {
+        margin-top: -477px!important;
+    } */
     .letest-offering-home {
         margin-top: 0px;
     }

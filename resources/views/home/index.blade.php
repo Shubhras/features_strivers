@@ -24,7 +24,7 @@
     </div>
 </section>
 
-<div class="container hero-menu-login-u32">
+<div class="container hero-menu-login-u32 index-image-768">
 
     <div class="row">
 
