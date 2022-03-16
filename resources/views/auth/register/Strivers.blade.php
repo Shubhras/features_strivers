@@ -100,19 +100,19 @@
                         <div class="col-md-12">
                         <?php $uiid = rand(10000,99990);
 		?>
-                       <input type="hidden" name="username" value="strivrecoach<?php echo $uiid;?>">
+                       <input type="hidden" name="username" value="strivre<?php echo $uiid;?>">
                         <?php $nameError = (isset($errors) and $errors->has('name')) ? ' is-invalid' : ''; ?>
                             <label class="form-label" for="Name ">Name 
                             </label>
-                            <input  name="name" class="form-control input-md{{ $nameError }}" type="text" placeholder="First Name" value="{{ old('name') }}">
-                            <input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden"  value="3">
+                            <input  name="name" class="form-control input-md{{ $nameError }}" type="text" placeholder="First Name" value="{{ old('name') }}" required>
+                            <input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden"  value="3" required>
                         </div>
                         @if (isEnabledField('email'))
                         <div class="col-md-6">
                         <?php $emailError = (isset($errors) and $errors->has('email')) ? ' is-invalid' : ''; ?>
                             <label class="form-label" for="email">Email 
                             </label>
-                            <input id="email"  name="email"	type="email" class="form-control{{ $emailError }}"placeholder="{{ t('email') }}"value="{{ old('email') }}">
+                            <input id="email"  name="email"	type="email" class="form-control{{ $emailError }}"placeholder="{{ t('email') }}"value="{{ old('email') }}" required>
                         </div>
                         @endif
                         @if (isEnabledField('phone'))
@@ -120,25 +120,19 @@
                         <?php $phoneError = (isset($errors) and $errors->has('phone')) ? ' is-invalid' : ''; ?>
                             <label class="form-label" for="phone">Phone Numbers
                             </label>
-                            <input name="phone"
-															   placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}"
-															   class="form-control input-md{{ $phoneError }}"
-															   type="text"
-															   value="{{ phoneFormat(old('phone'), old('country', config('country.code'))) }}"
-														>
+                            <input name="phone" placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}" class="form-control input-md{{ $phoneError }}" type="text" value="{{ phoneFormat(old('phone'), old('country', config('country.code'))) }}" required>
                         </div>
                         @endif
                         <div class="col-md-12">
                         <?php $passwordError = (isset($errors) and $errors->has('password')) ? ' is-invalid' : ''; ?>
                             <label class="form-label" for="address">Password
                             </label>
-                            <input id="password" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('password') }}" autocomplete="off">
+                            <input id="password" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('password') }}" autocomplete="off" required>
                         </div>
                         <div class="col-md-12">
-                            <label class="form-label" for="password">Password Confrmation
+                            <label class="form-label" for="password">Password Confirmation
                             </label>
-                            <input id="password_confirmation" name="password_confirmation" type="password" class="form-control{{ $passwordError }}"
-													   placeholder="{{ t('Password Confirmation') }}" autocomplete="off">
+                            <input id="password_confirmation" name="password_confirmation" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('Password Confirmation') }}" autocomplete="off" required>
 
                          <input type="hidden" name="accept_terms" value="1">
                         </div>

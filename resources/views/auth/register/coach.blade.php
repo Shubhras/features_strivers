@@ -26,39 +26,9 @@
 	
     @section('content')
 
-    <!-- Preloader Icon -->
-    <!-- <div class="preloader">
-        <div class="loaderInner">
-            <div id="top" class="mask">
-                <div class="plane"></div>
-            </div>
-            <div id="middle" class="mask">
-                <div class="plane"></div>
-            </div>
-            <div id="bottom" class="mask">
-                <div class="plane"></div>
-            </div>
-            <p>LOADING...</p>
-        </div> -->
-    <!-- </div> -->
-    <!-- Preloader Icon -->
-
-    <!-- Header Start -->
-
-    <!-- Header End -->
-
-    <!-- Banner Start -->
+   
     <section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="banner-title">Edit Profile</h2>
-                    <div class="bread-crumbs">
-                        <a href="index.html">Home</a> <span></span> Edit Profile
-                    </div>
-                </div>
-            </div>
-        </div> -->
+     
     </section>
     <!-- Banner End -->
 
@@ -66,12 +36,13 @@
     <section class="contact-section ">
 
         <div class="col-md-8 d-flex justify-content-center">
-            @if (isset($errors) && $errors->any())
+            <!-- @if (isset($errors) && $errors->any())
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
             @endforeach
-            @endif
+            @endif -->
             <div class="contact-form dform" id="Coaches">
+
                 <center>
                     <h4>Sign Up As Coach</h4>
                 </center><br>
@@ -80,12 +51,12 @@
 
                         <?php $uiid = rand(10000,99990);
 		?>
-                       <input type="hidden" name="username" value="strivrecoach<?php echo $uiid;?>">
+                       <input type="hidden" name="username" value="coach<?php echo $uiid;?>">
 
                         <?php $nameError = (isset($errors) and $errors->has('name')) ? ' is-invalid' : ''; ?>
                         <label class="form-label" for="Name ">Name
                         </label>
-                        <input name="name" class="form-control input-md{{ $nameError }}" id="name" type="text" placeholder="First Name" value="{{ old('name') }}">
+                        <input name="name" class="form-control input-md{{ $nameError }}" id="name" type="text" placeholder="First Name" value="{{ old('name') }}" required>
                         <input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden" id="user_type_coach" value="2">
                     </div>
                     @if (isEnabledField('email'))
@@ -93,7 +64,7 @@
                         <?php $emailError = (isset($errors) and $errors->has('email')) ? ' is-invalid' : ''; ?>
                         <label class="form-label" for="email">Email
                         </label>
-                        <input id="email" name="email" type="email" class="form-control{{ $emailError }}" placeholder="{{ t('email') }}" value="{{ old('email') }}">
+                        <input id="email" name="email" type="email" class="form-control{{ $emailError }}" placeholder="{{ t('email') }}" value="{{ old('email') }}" required>
                     </div>
                     @endif
                     @if (isEnabledField('phone'))
@@ -101,19 +72,19 @@
                         <?php $phoneError = (isset($errors) and $errors->has('phone')) ? ' is-invalid' : ''; ?>
                         <label class="form-label" for="phone">Phone Numbers
                         </label>
-                        <input name="phone" placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}" class="form-control input-md{{ $phoneError }}" type="text" value="{{ phoneFormat(old('phone'), old('country', config('country.code'))) }}">
+                        <input name="phone" placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}" class="form-control input-md{{ $phoneError }}" type="text" value="{{ phoneFormat(old('phone'), old('country', config('country.code'))) }}" required>
                     </div>
                     @endif
                     <div class="col-md-12">
                         <?php $passwordError = (isset($errors) and $errors->has('password')) ? ' is-invalid' : ''; ?>
                         <label class="form-label" for="address">Password
                         </label>
-                        <input id="password" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('password') }}" autocomplete="off">
+                        <input id="password" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('password') }}" autocomplete="off" required>
                     </div>
                     <div class="col-md-12">
-                        <label class="form-label" for="password">Password Confrmation
+                        <label class="form-label" for="password">Password Confirmation
                         </label>
-                        <input id="password_confirmation" name="password_confirmation" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('Password Confirmation') }}" autocomplete="off">
+                        <input id="password_confirmation" name="password_confirmation" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('Password Confirmation') }}" autocomplete="off" required>
 
                         <input type="hidden" name="accept_terms" value="1">
                     </div>
