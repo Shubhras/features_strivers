@@ -36,7 +36,7 @@
                     <div class="cta-wrapper footer-old-12">
                         <img src="../assets/images/home/2.png" alt="">
                         <p class="cta-wrapper-p ">You can be your own Guiding star with our help!</p>
-                        <a href="../pricing" class="bisylms-btn">Get Started Now</a>
+                        <a href="{{url('/register')}}" class="bisylms-btn">Get Started Now</a>
                     </div>
                 </div>
             </div>
