@@ -63,10 +63,9 @@ input#phoneHidden {
 }  */
 
 @media (min-width: 1278px) and (max-width: 1440px) {
-    .collapse.navbar-collapse.mobile-menu-fix32
-    {
-    margin-right: -122px;
-}
+    .collapse.navbar-collapse.mobile-menu-fix32 {
+        margin-right: -122px;
+    }
     .contact-send-message {
         max-width: 50%!important;
     }
@@ -115,6 +114,14 @@ input#phoneHidden {
 }
 
 @media (min-width: 1441px) and (max-width: 1600px) {
+    .hero-banner-1 {
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 655px 0 190px;
+        /* padding: 420px 0 27px; */
+    }
     .contact-send-message {
         max-width: 50%!important;
     }
@@ -156,6 +163,14 @@ input#phoneHidden {
 }
 
 @media (min-width: 1200px) and (max-width: 1600px) {
+    .hero-banner-1 {
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 655px 0 190px;
+        /* padding: 420px 0 27px; */
+    }
     .contact-send-message {
         max-width: 50%!important;
     }
@@ -400,7 +415,6 @@ input#phoneHidden {
     .cta-wrapper h3 {
         margin-left: 0;
     }
-    
     .hero-banner-2 .banner-thumb {
         margin-left: -15px;
         margin-right: 0;
@@ -682,11 +696,30 @@ input#phoneHidden {
         margin-right: -48px;
     } */
 }
+
 @media (min-width: 1601px) and (max-width: 2560px) {
-.container.hero-menu-login-u32.index-image-768 {
-    margin-top: -702px!important;
+    /* .hero-banner-1 {
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 655px 0 190px;
+        
+    } */
+    .hero-banner-1 {
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 655px 0 190px;
+        /* padding: 420px 0 27px; */
+    }
+    /* .container.hero-menu-login-u32.index-image-768 {
+        margin-top: -702px!important;
+    } */
 }
-}
+
+
 /*------------------------------------------------------------------------------------
 / 4. Responsive For Mobile & Tab
 /--------------------------------------------------------------------------------------*/
@@ -851,10 +884,10 @@ input#phoneHidden {
     .e-date {
         left: 22px;
     }
-    .hero-banner-1 {
+    /* .hero-banner-1 {
         padding: 150px 0;
         height: auto;
-    }
+    } */
     .hero-content {
         padding: 20px 0 40px;
     }
@@ -1391,6 +1424,9 @@ input#phoneHidden {
 }
 
 @media (min-width: 1024px) and (max-width: 1200px) {
+    .hero-banner-1 {
+        padding-top: 579px;
+    }
     .index-image-768 {
         margin-top: -686px!important;
     }
@@ -1994,5 +2030,14 @@ input#phoneHidden {
         -webkit-box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
         -moz-box-shadow: 0px 6px 10px 0px rgba(11, 02, 55, 0.06);
         box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
+    }
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+    /* .hero-banner-1 {
+        padding-top: 615px!important;
+    } */
+    .hero-banner-1 {
+        padding-top: 579px;
     }
 }

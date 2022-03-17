@@ -39,7 +39,7 @@
 
 /* ------------------AShish css */
 
-.tm{
+.tm {
     margin: 20px 0 10px 0;
 }
 
@@ -78,7 +78,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
 }
 
 .navbar-brand img {
-    width: 250px;
+    /* width: 250px; */
     height: 100px;
 }
 
@@ -348,7 +348,8 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
-    padding: 655px 0 190px;
+    /* padding: 655px 0 190px; */
+    /* padding: 420px 0 27px; */
 }
 
 @media (min-width: 780px) {
@@ -357,7 +358,110 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
         background-size: cover;
         background-repeat: no-repeat;
         position: relative;
-        padding: 780px 0 190px;
+        padding: 332px 0 190px;
+        /* padding: 780px 0 190px; */
+    }
+    /* .index-image-768 {
+        margin-top: -410px!important;
+    } */
+}
+
+@media (max-width: 320px) and (min-width: 768px) {
+    /* .hero-banner-1 {
+        padding-top: 615px!important;
+    } */
+    /* .index-image-768 {
+        margin-top: -410px!important;
+    } */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 780px) {
+    .index-image-768 {
+        margin-top: -410px!important;
+    }
+    .navbar.navbar-expand-lg .navbar-toggler {
+        width: 40px;
+        height: 35px;
+        padding: 1px;
+        outline: none;
+        border-radius: 3px;
+        color: #2c234d;
+        background: #fff;
+        border: none;
+        font-size: 20px;
+        line-height: 34px;
+    }
+    .mobile-menu-fix32 {
+        left: 512px;
+        width: 27%;
+    }
+    .navbar.navbar-expand-lg .navbar-collapse {
+        position: absolute;
+        /* left: 173px; */
+        top: 71%;
+        /* width: 27%; */
+        /* max-width: 50%; */
+        background: #fff;
+        border-radius: 0;
+        z-index: 99;
+        -webkit-box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
+        -moz-box-shadow: 0px 6px 10px 0px rgba(11, 02, 55, 0.06);
+        box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
+    }
+}
+
+@media only screen and (min-device-width: 1601px) and (max-device-width: 2560px) {
+    .index-image-768 {
+        margin-top: -410px!important;
+    }
+    .hero-banner-1 {
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 1136px 0 190px!important;
+        /* padding: 420px 0 27px; */
+    }
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 78%;
+        /* max-width: 1294px; */
+    }
+    .navbar-brand img {
+        width: 385px;
+        height: 194px;
+    }
+    .navbar-expand-lg .navbar-nav li>a {
+        display: block;
+        font-size: 31px;
+        line-height: 48px;
+        color: #fff;
+        text-transform: capitalize;
+        font-weight: 600;
+        padding: 23px 0 26px;
+        position: relative;
+    }
+    .join-btn01 {
+        width: 158px!important;
+        margin-left: 17px;
+        position: relative;
+        height: 80px!important;
+        border-radius: 3px;
+        text-align: center;
+        font-size: 31px!important;
+        line-height: 67px!important;
+        font-weight: 700;
+        padding: 0px 0px;
+        color: #fff;
+        display: inline-block;
+        background: transparent;
+        border: 3px solid rgb(255 255 255 / 92%);
+    }
+    .container.hero-menu-login-u32.index-image-768 {
+        margin-top: -1002px!important;
     }
 }
 
@@ -7920,9 +8024,10 @@ h4 {
 .search-button-icon-width {
     width: 40px!important;
 }
-.subscription-nanme-by-user{
-box-sizing: border-box;
-color: red;
-font-size: 23px;
-font-weight: 600;
+
+.subscription-nanme-by-user {
+    box-sizing: border-box;
+    color: red;
+    font-size: 23px;
+    font-weight: 600;
 }
