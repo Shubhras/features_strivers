@@ -88,13 +88,16 @@
                         <?php
                         // print_r($categories_list_coach1);die;
                         foreach ($categories_list_coach1 as $key => $value) {
-
+                            print_r(url('storage/'.$value->picture));die;
                             
                         ?>
                             <div class="latest-course1 ppt">
                                 <!-- <a href="single-course.html"><img src="../assets/images/home/desktop1-image.png" alt=""></a> -->
                                 <?php if(!empty($value->picture)){?>
-                                <a href="{{url('/coach_list/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="{{ url('storage/'.$value->picture) }}" ></a>
+
+                                <a href="{{url('/coach_list/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>">
+
+                                <img src="{{ url('storage/'.$value->picture) }}" ></a>
                                     <?php }else{?>
                                         <a href="{{url('/coach_list/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="../assets/images/home/desktop1-image.png" alt=""></a>
                                 <?php
