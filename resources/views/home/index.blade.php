@@ -45,7 +45,7 @@
 
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn_class search-button-icon-width">
+                        <button type="submit" class="btn btn87 btn-primary btn_class search-button-icon-width">
                            
 
                             <i class="fas fa-search" alt="{{ ('find') }}"></i>
