@@ -88,7 +88,7 @@
                         <?php
                         // print_r($categories_list_coach1);die;
                         foreach ($categories_list_coach1 as $key => $value) {
-                            print_r(url('storage/'.$value->picture));die;
+                            // print_r(url('storage/'.$value->picture));die;
                             
                         ?>
                             <div class="latest-course1 ppt">
