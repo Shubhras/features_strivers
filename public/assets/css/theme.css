@@ -77,7 +77,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
 }
 
 .navbar-brand img {
-    width:250px;
+    width: 250px;
     height: 100px;
 }
 
@@ -258,6 +258,8 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     border: 2px solid rgb(255 255 255 / 92%);
 }
 
+
+/* 
 .join-btn01 {
     margin-left: 20px;
     position: relative;
@@ -272,7 +274,54 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     display: inline-block;
     background: transparent;
     border: 2px solid rgb(255 255 255 / 92%);
-}
+} */
+
+
+/* @media (max-width: 768px) { */
+
+
+/* .join-btn01 { */
+
+
+/* margin-left: 20px;
+    position: relative;
+    height: 44px;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 40px;
+    font-weight: 600;
+    padding: 0 30px; */
+
+
+/* color: rgb(2, 0, 0); */
+
+
+/* color: #5d5a67;
+    display: inline-block;
+    background: transparent;
+    border: 2px solid rgb(255 255 255 / 92%); */
+
+
+/* margin-left: 20px;
+        position: relative;
+        height: 44px;
+        border-radius: 3px;
+        text-align: center;
+        font-size: 13px;
+        line-height: 40px;
+        font-weight: 600;
+        padding: 0 30px;
+        color: rgb(2, 0, 0);
+        display: inline-block;
+        background: transparent;
+        border: 2px solid rgb(255 255 255 / 92%); */
+
+
+/* } */
+
+
+/* } */
 
 .join-btn:hover {
     background: #fff;
@@ -7337,10 +7386,10 @@ a.btn01.btn-primary1 {
 } */
 
 .text_font_size_index232 {
-    font-size: 56px!important;
+    font-size: 49px!important;
     /* line-height: 55px!important; */
-    font-weight: 700!important;
-    line-height: 1.5em!important;
+    font-weight: 800!important;
+    line-height: 55px!important;
     font-family: 'Montserrat', sans-serif;
     color: #1D1D1F!important;
     margin: 20px 0 10px 0!important;
@@ -7855,4 +7904,24 @@ h4 {
 
 .logoh {
     height: 80px!important;
+}
+
+.login-icon-eyes {
+    padding-top: 5px;
+    margin-left: -34px;
+}
+
+.search-box-text {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.search-button-icon-width {
+    width: 40px!important;
+}
+.subscription-nanme-by-user{
+box-sizing: border-box;
+color: red;
+font-size: 23px;
+font-weight: 600;
 }

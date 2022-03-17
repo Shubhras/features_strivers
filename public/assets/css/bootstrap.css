@@ -653,18 +653,18 @@ pre code {
 }
 
 @media (min-width: 1278px) {
-    .container,
+    /* .container,
     .container-sm,
     .container-md,
     .container-lg,
     .container-xl {
         max-width: 997px;
-    }
+    } */
     .text_font_size_index232 {
-        font-size: 50px!important;
+        font-size: 49px!important;
         /* line-height: 55px!important; */
-        font-weight: 700!important;
-        line-height: 1.5em!important;
+        font-weight: 800!important;
+        line-height: 55px!important;
         font-family: 'Montserrat', sans-serif;
         color: #1D1D1F!important;
         margin: 20px 0 10px 0!important;
@@ -678,12 +678,13 @@ pre code {
     .container-lg,
     .container-xl {
         max-width: 1170px;
+        /* max-width: 1294px; */
     }
     .text_font_size_index232 {
-        font-size: 56px!important;
+        font-size: 49px!important;
         /* line-height: 55px!important; */
-        font-weight: 700!important;
-        line-height: 1.5em!important;
+        font-weight: 800!important;
+        line-height: 55px!important;
         font-family: 'Montserrat', sans-serif;
         color: #1D1D1F!important;
         margin: 20px 0 10px 0!important;

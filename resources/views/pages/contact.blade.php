@@ -165,7 +165,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 text-right">
-                                <input type="submit" name="submit" value="{{ t('Contact_submit') }}">
+                                <input type="submit" name="submit" value="Send Message" class="contact-send-message">
                             </div>
                         </form>
                     </div>
