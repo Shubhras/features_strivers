@@ -45,7 +45,7 @@
 
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn_class search-button-icon-width">
+                        <button type="submit" class="btn btn87 btn-primary btn_class search-button-icon-width">
                            
 
                             <i class="fas fa-search" alt="{{ ('find') }}"></i>
@@ -84,17 +84,21 @@
                     <div class="top-coach-widget">
 
 
-                        <h5 class="mb-1 ">FIND INTERESTING</h5>
+                        <h5 class="mb-1 tm">FIND INTERESTING</h5>
                         <?php
+                        // print_r($categories_list_coach1);die;
                         foreach ($categories_list_coach1 as $key => $value) {
 
-
+                            
                         ?>
                             <div class="latest-course1 ppt">
-                                <a href="single-course.html"><img src="../assets/images/home/desktop1-image.png" alt=""></a>
-
-
+                                <!-- <a href="single-course.html"><img src="../assets/images/home/desktop1-image.png" alt=""></a> -->
+                                <?php if(!empty($value->picture)){?>
+                                <a href="{{url('/coach_list/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="{{ url('storage/'.$value->picture) }}" ></a>
+                                    <?php }else{?>
+                                        <a href="{{url('/coach_list/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="../assets/images/home/desktop1-image.png" alt=""></a>
                                 <?php
+                                    }
                                 $name = json_decode($value->name);
                                 $ss = array();
                                 foreach ($name as $key => $sub) {
@@ -127,7 +131,7 @@
                         <aside class="widget h-75 d-inline-block">
                             <aside class="widget ttr "> -->
 
-                        <h5 class="mb-1 ">LATEST NEWS</h5>
+                        <h5 class="mb-1 tm">LATEST NEWS</h5>
 
                         @foreach($letest_news as $news)
                         <div class="latest-course10 ppt">
@@ -277,7 +281,7 @@
                         <!-- <div class="course-sidebar1">
                     <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
                         <aside class="widget ppt"> -->
-                        <h5 class="mb-1 ">LATEST OFFERING</h5>
+                        <h5 class="mb-1 tm">LATEST OFFERING</h5>
                         <?php
                         foreach ($user_course as $key => $value) {
                             # code...
