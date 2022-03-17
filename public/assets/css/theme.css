@@ -38,6 +38,9 @@
 
 
 /* ------------------AShish css */
+.tm{
+    margin: 20px 0 10px 0;
+}
 
 nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     border: 1px solid #cdcaca;

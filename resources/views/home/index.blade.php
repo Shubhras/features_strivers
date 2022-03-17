@@ -74,7 +74,7 @@
                     <div class="top-coach-widget">
 
 
-                        <h5 class="mb-1 ">FIND INTERESTING</h5>
+                        <h5 class="mb-1 tm">FIND INTERESTING</h5>
                         <?php
                         foreach ($categories_list_coach1 as $key => $value) {
 
@@ -117,7 +117,7 @@
                         <aside class="widget h-75 d-inline-block">
                             <aside class="widget ttr "> -->
 
-                        <h5 class="mb-1 ">LATEST NEWS</h5>
+                        <h5 class="mb-1 tm">LATEST NEWS</h5>
 
                         @foreach($letest_news as $news)
                         <div class="latest-course10 ppt">
@@ -267,7 +267,7 @@
                         <!-- <div class="course-sidebar1">
                     <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
                         <aside class="widget ppt"> -->
-                        <h5 class="mb-1 ">LATEST OFFERING</h5>
+                        <h5 class="mb-1 tm">LATEST OFFERING</h5>
                         <?php
                         foreach ($user_course as $key => $value) {
                             # code...
