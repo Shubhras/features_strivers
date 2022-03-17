@@ -173,11 +173,9 @@ li.subject-title-name:hover {
 .subject-title-name-cat-sub {
     font-size: 14px;
     font-weight: 700;
-    color: black;
+    color: #9a9a9a;
     padding: 10px;
-    /* border: 2px groove;
-    border-radius: 4px; */
-    border-bottom: 2px groove;
+    border-bottom: 1px solid #d9d7d7;
 }
 
 .subject-title-name-cat-sub:hover {
