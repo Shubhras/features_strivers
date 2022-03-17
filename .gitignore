@@ -1,4 +1,0 @@
-#env file
-.env
-storage/framework/*
-data
