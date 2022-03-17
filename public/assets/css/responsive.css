@@ -63,6 +63,10 @@ input#phoneHidden {
 }  */
 
 @media (min-width: 1278px) and (max-width: 1440px) {
+    .collapse.navbar-collapse.mobile-menu-fix32
+    {
+    margin-right: -122px;
+}
     .contact-send-message {
         max-width: 50%!important;
     }
@@ -280,6 +284,9 @@ input#phoneHidden {
 /--------------------------------------------------------------------------------------*/
 
 @media (min-width: 992px) and (max-width: 1199px) {
+    .cta-wrapper-p {
+        margin: 52px 0 0 0!important;
+    }
     .index-image-768 {
         margin-top: -477px!important;
     }
@@ -393,6 +400,7 @@ input#phoneHidden {
     .cta-wrapper h3 {
         margin-left: 0;
     }
+    
     .hero-banner-2 .banner-thumb {
         margin-left: -15px;
         margin-right: 0;
@@ -674,13 +682,19 @@ input#phoneHidden {
         margin-right: -48px;
     } */
 }
-
-
+@media (min-width: 1601px) and (max-width: 2560px) {
+.container.hero-menu-login-u32.index-image-768 {
+    margin-top: -702px!important;
+}
+}
 /*------------------------------------------------------------------------------------
 / 4. Responsive For Mobile & Tab
 /--------------------------------------------------------------------------------------*/
 
 @media (max-width: 991px) {
+    .cta-wrapper-p {
+        margin: 52px 0 0 0!important;
+    }
     .contact-send-message {
         max-width: 50%!important;
     }
