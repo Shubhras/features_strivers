@@ -297,13 +297,76 @@ input#phoneHidden {
 /*------------------------------------------------------------------------------------
 / 2. Desktop Device
 /--------------------------------------------------------------------------------------*/
+@media only screen and (min-device-width: 780px) and (max-device-width: 991px)
+{
+.index-image-768 {
+    margin-top: -410px!important;
+}
+.navbar.navbar-expand-lg .navbar-collapse {
+    position: absolute;
+    /* left: 173px; */
+    top: 71%;
+    /* width: 27%; */
+    /* max-width: 50%; */
+    background: #fff;
+    border-radius: 0;
+    z-index: 99;
+    -webkit-box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
+    -moz-box-shadow: 0px 6px 10px 0px rgba(11, 02, 55, 0.06);
+    box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
+}
+.mobile-menu-fix32 {
+    left: 512px;
+    width: 27%;
+}
+}
+@media (min-width: 992px) and (max-width: 1023px){
+    .index-image-768 {
+        margin-top: 0px!important;
+    }
+.letest-offering-home {
+    margin-top: 0px!important;
+}
 
+.navbar-expand-lg .navbar-nav li>a {
+    display: block;
+    font-size: 14px;
+    line-height: 48px;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 600;
+    padding: 23px 0 26px;
+    position: relative;
+}
+.join-btn01 {
+    width: 76px;
+    margin-left: 13px;
+    position: relative;
+    height: 44px;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 42px;
+    font-weight: 700;
+    padding: 0px 0px!important;
+    color: #fff!important;
+    display: inline-block;
+    background: transparent;
+    border: 3px solid rgb(255 255 255 / 92%);
+}
+button.btn.btn87.btn-primary.btn_class.search-button-icon-width {
+    height: 60px!important;
+}
+.hero-banner-1 {
+    padding-top: 375px;
+} 
+}
 @media (min-width: 992px) and (max-width: 1199px) {
     .cta-wrapper-p {
         margin: 52px 0 0 0!important;
     }
     .index-image-768 {
-        margin-top: -477px!important;
+        margin-top: -377px!important;
     }
     .contact-send-message {
         max-width: 50%!important;
@@ -373,9 +436,9 @@ input#phoneHidden {
     .banner-thumb img {
         max-width: 100%;
     }
-    .hero-banner-1 {
+    /* .hero-banner-1 {
         padding-top: 165px;
-    }
+    } */
     .hero-content {
         padding: 0;
     }
