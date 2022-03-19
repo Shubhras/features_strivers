@@ -428,7 +428,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     .container-md,
     .container-lg,
     .container-xl {
-        max-width: 78%;
+        max-width: 90%;
         /* max-width: 1294px; */
     }
     /* .navbar-brand img {
@@ -463,6 +463,11 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     }
     .container.hero-menu-login-u32.index-image-768 {
         margin-top: -1002px!important;
+    }
+    .main-section {
+        padding-top: 424px!important;
+        padding-bottom: 70px;
+        background: #ffffff;
     }
 }
 
