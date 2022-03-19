@@ -75,6 +75,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     padding: 22px 0;
     margin: 0;
     text-align: center;
+    /* margin-left: -114px; */
 }
 
 .navbar-brand img {
@@ -430,10 +431,10 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
         max-width: 78%;
         /* max-width: 1294px; */
     }
-    .navbar-brand img {
+    /* .navbar-brand img {
         width: 385px;
         height: 194px;
-    }
+    } */
     .navbar-expand-lg .navbar-nav li>a {
         display: block;
         font-size: 31px;
