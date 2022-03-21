@@ -808,6 +808,8 @@
 					
 
 						<?php
+
+						
 						if ($packagename) {
 
 
@@ -944,21 +946,66 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		CometChat.getCallParticipantCount( '842c2ff7-f200-42a7-84c7-89c5f698f22a-422a5b96-9db5-4079-87cc-882f4b0fc692', CometChat.CALL_TYPE.VIDEO ).then((count) => {console.log(count)})
+	<?php 
 
-		let sessionId = "842c2ff7-f200-42a7-84c7-89c5f698f22a-422a5b96-9db5-4079-87cc-882f4b0fc692";
-		let callType = "DEFAULT";
 
-		CometChat.getCallParticipantCount(sessionId, callType).then(
-		count => {
-		console.log("Participants count =", count);
-		}, error => {
-		console.log("Some error occurred =", error);
-		}
-		console.log(count);
-		);
-		</script>
+
+// $curl = curl_init();
+
+// curl_setopt_array($curl, array(
+// 	CURLOPT_URL => 'https://metrics-us.cometchat.io/v1/calls/sessions/v1.us.2040141e5d5dcef3.group_1647672948681/participants?beginningTimestamp=1647673278116&endingTimestamp=1647675469379',
+// 	CURLOPT_RETURNTRANSFER => true,
+// 	CURLOPT_ENCODING => '',
+// 	CURLOPT_MAXREDIRS => 10,
+// 	CURLOPT_TIMEOUT => 0,
+// 	CURLOPT_FOLLOWLOCATION => true,
+// 	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+// 	CURLOPT_CUSTOMREQUEST => 'GET',
+// 	CURLOPT_HTTPHEADER => array(
+// 	  'appId: 2040141e5d5dcef3',
+// 	  'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0NzY3OTEzOSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0NzY3NTUzOSwiZXhwIjoxNjUwMjcxMTM5LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.D90PKiDUNY2pZswn2UB-c5ZX7aGwvghvz-ftajIG4es',
+// 	  'uid: strivre82789'
+// 	),
+//   ));
+  
+//   $response = curl_exec($curl);
+  
+//   curl_close($curl);
+// //   echo $response;
+//   	$responsess= json_decode($response);
+// 	  $data = array();
+// 	  $data1 = array();
+// 	  $data2 = array();
+//   foreach($responsess as $key =>$uidkey){
+	  
+// 	//   $data[$uidkey->uid] =$uidkey;
+
+
+// 	  foreach($uidkey as $key =>$value){
+	  
+// 		$data[$value->uid] =$value->uid;
+// 		$data1[$value->uid] =$value->video_minutes;
+// 		$data2[$value->uid] =$value->audio_minutes;
+  
+		
+// 	}
+	
+
+	  
+//   }
+
+//   print_r($user->username);
+
+//   print_r($data);
+
+//   print_r($data1);
+//   print_r($data2);
+  
+
+	
+// echo date('m/d/Y H:i:s', 1647496224);
+	
+	?>
 
 	<div class="main-section">
 					<div class="container">
