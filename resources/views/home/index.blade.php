@@ -54,14 +54,14 @@
                     </div>
 
                 </form>
-                <br>
+                <!-- <br> -->
                 <a href="{{'/register'}}" class="bisylms-btn">Ready to Get Started?</a>
             </div>
         </div>
 
         <div class="col-lg-7 col-md-7">
             <div class="banner-thumb">
-                <img src="../assets/images/home/layer.png" alt="">
+                <!-- <img src="../assets/images/home/layer.png" alt=""> -->
             </div>
         </div>
     </div>

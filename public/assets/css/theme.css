@@ -469,6 +469,29 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
         padding-bottom: 70px;
         background: #ffffff;
     }
+    .search_box_filterss {
+        width: 853px!important;
+    }
+    input.search-box-for-main {
+        border-radius: 2px;
+        border: 1px solid #b1b1b1;
+        height: 90px!important;
+    }
+    .search-box-font {
+        font-size: 35px!important;
+    }
+    .btn_class {
+        height: 90px!important;
+        background-color: #012245!important;
+    }
+    .search-button-icon-width {
+        width: 58px!important;
+    }
+    .btn87 {
+        /* font-family: 'Montserrat', sans-serif; */
+        font-size: 27px!important;
+        padding: 8px 1px 7px 2px!important;
+    }
 }
 
 .hero-banner-245 {
