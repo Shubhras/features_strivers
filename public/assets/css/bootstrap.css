@@ -629,7 +629,7 @@ pre code {
     .container,
     .container-sm,
     .container-md {
-        max-width: 720px;
+        max-width: 910px;
     }
 }
 
@@ -643,7 +643,6 @@ pre code {
 }
 
 @media (min-width: 1200px) {
-    .container,
     .container-sm,
     .container-md,
     .container-lg,
@@ -653,13 +652,13 @@ pre code {
 }
 
 @media (min-width: 1278px) {
-    .container,
+    /* .container,
     .container-sm,
     .container-md,
     .container-lg,
     .container-xl {
         max-width: 997px;
-    }
+    } */
     .text_font_size_index232 {
         font-size: 49px!important;
         /* line-height: 55px!important; */

@@ -32,7 +32,7 @@ input#phoneHidden {
 
 @media (min-width: 1200px) and (max-width: 1277px) {
     .index-image-768 {
-        margin-top: -477px!important;
+        margin-top: -669px!important;
     }
     .contact-send-message {
         max-width: 50%!important;
@@ -51,7 +51,20 @@ input#phoneHidden {
     .container-md,
     .container-lg,
     .container-xl {
-        max-width: 939px;
+        max-width: 1045px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    /* .index-image-768 {
+        margin-top: -377px!important;
+    } */
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 1000px!important;
     }
 }
 
@@ -63,6 +76,9 @@ input#phoneHidden {
 }  */
 
 @media (min-width: 1278px) and (max-width: 1440px) {
+    .collapse.navbar-collapse.mobile-menu-fix32 {
+        margin-right: -122px;
+    }
     .contact-send-message {
         max-width: 50%!important;
     }
@@ -108,9 +124,27 @@ input#phoneHidden {
     .search-button-icon-width {
         width: 40px!important;
     }
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg {
+        /* max-width: 1020px!important; */
+        max-width: 1209px!important;
+    }
+    .nav-menu-fix23 {
+        width: 1024px;
+    }
 }
 
 @media (min-width: 1441px) and (max-width: 1600px) {
+    .hero-banner-1 {
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 655px 0 190px;
+        /* padding: 420px 0 27px; */
+    }
     .contact-send-message {
         max-width: 50%!important;
     }
@@ -152,6 +186,14 @@ input#phoneHidden {
 }
 
 @media (min-width: 1200px) and (max-width: 1600px) {
+    .hero-banner-1 {
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 655px 0 190px;
+        /* padding: 420px 0 27px; */
+    }
     .contact-send-message {
         max-width: 50%!important;
     }
@@ -279,9 +321,76 @@ input#phoneHidden {
 / 2. Desktop Device
 /--------------------------------------------------------------------------------------*/
 
-@media (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-device-width: 780px) and (max-device-width: 991px) {
     .index-image-768 {
-        margin-top: -477px!important;
+        margin-top: -410px!important;
+    }
+    .navbar.navbar-expand-lg .navbar-collapse {
+        position: absolute;
+        /* left: 173px; */
+        top: 71%;
+        /* width: 27%; */
+        /* max-width: 50%; */
+        background: #fff;
+        border-radius: 0;
+        z-index: 99;
+        -webkit-box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
+        -moz-box-shadow: 0px 6px 10px 0px rgba(11, 02, 55, 0.06);
+        box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
+    }
+    .mobile-menu-fix32 {
+        left: 512px;
+        width: 27%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1023px) {
+    .index-image-768 {
+        margin-top: 0px!important;
+    }
+    .letest-offering-home {
+        margin-top: 0px!important;
+    }
+    .navbar-expand-lg .navbar-nav li>a {
+        display: block;
+        font-size: 14px;
+        line-height: 48px;
+        color: #fff;
+        text-transform: capitalize;
+        font-weight: 600;
+        padding: 23px 0 26px;
+        position: relative;
+    }
+    .join-btn01 {
+        width: 76px;
+        margin-left: 13px;
+        position: relative;
+        height: 44px;
+        border-radius: 3px;
+        text-align: center;
+        font-size: 16px;
+        line-height: 42px;
+        font-weight: 700;
+        padding: 0px 0px!important;
+        color: #fff!important;
+        display: inline-block;
+        background: transparent;
+        border: 3px solid rgb(255 255 255 / 92%);
+    }
+    button.btn.btn87.btn-primary.btn_class.search-button-icon-width {
+        height: 60px!important;
+    }
+    .hero-banner-1 {
+        padding-top: 773px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .cta-wrapper-p {
+        margin: 52px 0 0 0!important;
+    }
+    .index-image-768 {
+        margin-top: -810px!important;
     }
     .contact-send-message {
         max-width: 50%!important;
@@ -323,7 +432,7 @@ input#phoneHidden {
         padding: 0 13px;
     }
     .navbar-expand-lg .navbar-nav li {
-        margin: 0 11px 0 0;
+        margin: 0 35px 0 0;
     }
     .course-item-01 {
         position: relative;
@@ -351,9 +460,9 @@ input#phoneHidden {
     .banner-thumb img {
         max-width: 100%;
     }
-    .hero-banner-1 {
+    /* .hero-banner-1 {
         padding-top: 165px;
-    }
+    } */
     .hero-content {
         padding: 0;
     }
@@ -533,7 +642,7 @@ input#phoneHidden {
 
 @media (min-width: 768px) and (max-width: 991px) {
     .btn_class {
-        height: 60px!important;
+        height: 50px!important;
     }
     .course-wrapper {
         display: block;
@@ -675,12 +784,37 @@ input#phoneHidden {
     } */
 }
 
+@media (min-width: 1601px) and (max-width: 2560px) {
+    /* .hero-banner-1 {
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 655px 0 190px;
+        
+    } */
+    .hero-banner-1 {
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 655px 0 190px;
+        /* padding: 420px 0 27px; */
+    }
+    /* .container.hero-menu-login-u32.index-image-768 {
+        margin-top: -702px!important;
+    } */
+}
+
 
 /*------------------------------------------------------------------------------------
 / 4. Responsive For Mobile & Tab
 /--------------------------------------------------------------------------------------*/
 
 @media (max-width: 991px) {
+    .cta-wrapper-p {
+        margin: 52px 0 0 0!important;
+    }
     .contact-send-message {
         max-width: 50%!important;
     }
@@ -837,10 +971,10 @@ input#phoneHidden {
     .e-date {
         left: 22px;
     }
-    .hero-banner-1 {
+    /* .hero-banner-1 {
         padding: 150px 0;
         height: auto;
-    }
+    } */
     .hero-content {
         padding: 20px 0 40px;
     }
@@ -1377,8 +1511,11 @@ input#phoneHidden {
 }
 
 @media (min-width: 1024px) and (max-width: 1200px) {
+    .hero-banner-1 {
+        padding-top: 579px;
+    }
     .index-image-768 {
-        margin-top: -686px!important;
+        margin-top: -545px!important;
     }
     .contact-send-message {
         max-width: 50%!important;
@@ -1432,7 +1569,7 @@ input#phoneHidden {
         padding: 276px 0 190px;
     }
     .hero-banner-1 {
-        padding-top: 662px;
+        padding-top: 455px;
         width: 100%;
     }
     .nav-menu-login-u {
@@ -1601,7 +1738,7 @@ input#phoneHidden {
         max-width: 57%!important;
     }
     button.btn.btn-primary.btn_class_coaches.search-box-font {
-        height: 60px!important;
+        height: 50px!important;
         background-color: #43329f!important;
     }
     .hero-banner-1 {
@@ -1699,8 +1836,8 @@ input#phoneHidden {
         margin-top: -477px;
     } */
     .mobile-menu-fix32 {
-        left: 512px;
-        width: 27%;
+        left: 705px;
+        width: 21%;
     }
     .contact-send-message {
         max-width: 50%!important;
@@ -1709,7 +1846,7 @@ input#phoneHidden {
         margin-top: -345px;
     }
     .location-search-coach-text {
-        margin-left: -19px;
+        /* margin-left: -19px; */
     }
     .join-btn01 {
         margin-left: 34px;
@@ -1786,14 +1923,14 @@ input#phoneHidden {
         margin-top: 0px;
     }
     .join-btn01 {
-        width: 76px;
-        margin-left: 13px;
+        width: 64px;
+        margin-left: 8px;
         position: relative;
-        height: 44px;
+        height: 40px;
         border-radius: 3px;
         text-align: center;
-        font-size: 16px;
-        line-height: 42px;
+        font-size: 13px;
+        line-height: 36px;
         font-weight: 700;
         padding: 0px 0px;
         color: #fff;
@@ -1818,7 +1955,7 @@ input#phoneHidden {
         width: 474px;
     }
     .btn_class {
-        height: 60px;
+        height: 50px;
         /* margin-left: 350px;
         margin-top: -70px; */
         background-color: #012245!important;
@@ -1847,7 +1984,7 @@ input#phoneHidden {
         width: 550px;
     }
     .search-box-font {
-        font-size: 14px!important;
+        font-size: 16px!important;
     }
 }
 
@@ -1980,5 +2117,14 @@ input#phoneHidden {
         -webkit-box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
         -moz-box-shadow: 0px 6px 10px 0px rgba(11, 02, 55, 0.06);
         box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
+    }
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+    /* .hero-banner-1 {
+        padding-top: 615px!important;
+    } */
+    .hero-banner-1 {
+        padding-top: 579px;
     }
 }

@@ -173,18 +173,18 @@ li.subject-title-name:hover {
 .subject-title-name-cat-sub {
     font-size: 14px;
     font-weight: 700;
-    color: black;
+    color: #9a9a9a;
     padding: 10px;
-    border: 2px groove;
-    border-radius: 4px;
+    border-bottom: 1px solid #d9d7d7;
 }
 
 .subject-title-name-cat-sub:hover {
     color: #2c234d!important;
     background: #ffffff;
     padding: 10px;
-    border: 2px groove;
-    border-radius: 4px;
+    /* border: 2px groove;
+    border-radius: 4px; */
+    border-bottom: 2px groove;
 }
 
 .coach-cat-name12 {
@@ -359,7 +359,7 @@ ul.width {
 input.search-box-for-main {
     border-radius: 2px;
     border: 1px solid #b1b1b1;
-    height: 60px;
+    height: 50px;
 }
 
 select.browser-default.custom-select {
@@ -12171,4 +12171,17 @@ section.big-block .client-logo {
 
 .portfolio-layout-slider .item-img img {
     box-shadow: 0 10px 30px 0 rgba(31, 35, 37, .1);
+}
+
+.btn87 {
+    /* font-family: 'Montserrat', sans-serif; */
+    font-size: 16px!important;
+    /* font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 1px; */
+    padding: 8px 1px 7px 2px!important;
+    /* border-color: transparent;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out; */
 }

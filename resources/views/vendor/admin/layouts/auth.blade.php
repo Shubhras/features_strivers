@@ -53,6 +53,7 @@
             $wrapperStyle = 'background:url(' . $bgImgUrl . ') no-repeat center center; background-size: cover;';
             $logoUrl = imgUrl(config('settings.app.logo_dark'), 'adminLogo');
         }
+        // print_r($bgImgUrl);die;
     } catch (\Throwable $e) {}
     ?>
     
