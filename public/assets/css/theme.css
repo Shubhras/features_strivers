@@ -472,11 +472,11 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     .search_box_filterss {
         width: 853px!important;
     }
-    input.search-box-for-main {
+    /* input.search-box-for-main {
         border-radius: 2px;
         border: 1px solid #b1b1b1;
         height: 90px!important;
-    }
+    } */
     .search-box-font {
         font-size: 35px!important;
     }
@@ -489,7 +489,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
         padding: 8px 1px 7px 2px!important;
     }
     .hero-banner-1 {
-        padding-top: 1144px!important;
+        padding-top: 951px!important;
     }
 }
 
