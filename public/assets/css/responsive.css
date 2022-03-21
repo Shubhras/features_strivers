@@ -1782,6 +1782,39 @@ input#phoneHidden {
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+    .global_page_white {
+        letter-spacing: normal;
+        line-height: 27px;
+        color: #ffffff;
+        font-weight: 400;
+        font-family: 'Roboto', sans-serif;
+        padding: 19px 0px;
+        text-align: center;
+        margin-top: -45px;
+    }
+    .funfact-item-3 img {
+        position: absolute;
+        left: 0;
+        top: 2px;
+        max-height: 40px;
+        max-width: 60px;
+    }
+    .funfact-item-3 h2 {
+        font-size: 18px;
+        line-height: .8;
+        color: #2c234d;
+        margin-bottom: 6px;
+    }
+    .font-text-size-16px {
+        font-size: 13px!important;
+    }
+    .global-community-fix {
+        width: 50%!important;
+    }
+    .funfact-section {
+        position: relative;
+        padding: 62px 5px 120px;
+    }
     /* .navbar.navbar-expand-lg .navbar-collapse {
         position: absolute;
         left: 173px;
@@ -1828,6 +1861,10 @@ input#phoneHidden {
 }
 
 @media screen and (min-width: 768px) {
+    .funfact-section {
+        position: relative;
+        padding: 62px 5px 120px;
+    }
     /* .hero-banner-1 {
         padding: 298px 0px;
         height: auto;
@@ -1984,7 +2021,7 @@ input#phoneHidden {
         width: 550px;
     }
     .search-box-font {
-        font-size: 16px!important;
+        font-size: 15px!important;
     }
 }
 

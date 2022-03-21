@@ -57,7 +57,7 @@
     <div class="container">
         <center>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-lg-12 col-md-12">
                     <h2 class="sec-title font-text-size-34px">Our Global Community</h2>
                     <p class="sec-desc font-text-size-16px">
                         GET YOUR DREAM COURSE WITH BEST INSTRUCTOR
@@ -66,28 +66,28 @@
             </div>
         </center>
         <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="funfact-item-3">
+            <div class="col-lg-3 col-md-6 col-sm-3 global-community-fix">
+                <div class="funfact-item-3 ml-40">
                     <img src="assets/images/home3/f3.png" alt="">
                     <h2><span data-counter="27" class="timer">27</span></h2>
                     <p class="font-text-size-16px">Million Learners</p>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 col-sm-3 global-community-fix">
                 <div class="funfact-item-3 ml-15">
                     <img src="../assets/images/home3/f4.png" alt="">
                     <h2><span data-counter="4" class="timer">4</span>.6</h2>
                     <p class="font-text-size-16px">Million Graduates</p>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 col-sm-3 global-community-fix">
                 <div class="funfact-item-3 ml-40">
                     <img src="../assets/images/home3/f5.png" alt="">
                     <h2><span data-counter="1400" class="timer">1<span>,</span>400</span>+</h2>
                     <p class="font-text-size-16px">Online Courses</p>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 col-sm-3 global-community-fix">
                 <div class="funfact-item-3 righ-align">
                     <img src="assets/images/home3/f7.png" alt="">
                     <h2><span data-counter="175" class="timer">175</span></h2>
@@ -106,7 +106,7 @@
 
     </div>
 </section>
-</div>
+<!-- </div> -->
 
 
 @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
