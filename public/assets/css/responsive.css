@@ -1687,6 +1687,9 @@ input#phoneHidden {
 }
 
 @media (min-width: 320px) and (max-width: 425px) {
+    .cta-wrapper-p {
+        width: 100%!important;
+    }
     .contact-send-message {
         max-width: 50%!important;
     }
