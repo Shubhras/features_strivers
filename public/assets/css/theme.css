@@ -480,10 +480,6 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     .search-box-font {
         font-size: 35px!important;
     }
-    .btn_class {
-        height: 90px!important;
-        background-color: #012245!important;
-    }
     .search-button-icon-width {
         width: 58px!important;
     }
@@ -491,6 +487,9 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
         /* font-family: 'Montserrat', sans-serif; */
         font-size: 27px!important;
         padding: 8px 1px 7px 2px!important;
+    }
+    .hero-banner-1 {
+        padding-top: 1144px!important;
     }
 }
 
