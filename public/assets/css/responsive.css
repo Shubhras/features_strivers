@@ -1687,6 +1687,7 @@ input#phoneHidden {
 }
 
 @media (min-width: 320px) and (max-width: 425px) {
+   
     .cta-wrapper-p {
         width: 100%!important;
     }
@@ -1781,6 +1782,7 @@ input#phoneHidden {
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+    
     /* .navbar.navbar-expand-lg .navbar-collapse {
         position: absolute;
         left: 173px;
