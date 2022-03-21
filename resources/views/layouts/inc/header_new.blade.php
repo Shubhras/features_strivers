@@ -56,7 +56,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <nav class="navbar navbar-expand-lg">
+                <nav class="navbar navbar-expand-lg nav-menu-fix23">
                     <!-- logo Start-->
                     <a class="navbar-brand" href="index.html">
                         <img src="../assets/images/logo4.png" alt="">
