@@ -2179,6 +2179,7 @@ input#phoneHidden {
         font-size: 11px;
         margin-bottom: 33px;
         margin-left: 4px;
+        color: #5d5a67;
     }
     footer .widget ul li {
         list-style: none;
@@ -2278,6 +2279,7 @@ input#phoneHidden {
         font-size: 11px;
         margin-bottom: 33px;
         margin-left: 4px;
+        color: #5d5a67;
     }
     footer .widget ul li {
         list-style: none;
@@ -2371,6 +2373,7 @@ input#phoneHidden {
         font-size: 11px;
         margin-bottom: 33px;
         margin-left: 4px;
+        color: #5d5a67;
     }
     footer .widget ul li {
         list-style: none;
@@ -2483,6 +2486,7 @@ input#phoneHidden {
         font-size: 16px;
         margin-bottom: 34px;
         margin-left: 15px;
+        color: #5d5a67;
     }
     footer .widget ul li {
         list-style: none;
@@ -2574,6 +2578,7 @@ input#phoneHidden {
         font-size: 16px;
         margin-bottom: 34px;
         margin-left: 15px;
+        color: #5d5a67;
     }
     footer .widget ul li {
         list-style: none;
@@ -2665,6 +2670,7 @@ input#phoneHidden {
         font-size: 15px;
         margin-bottom: 33px;
         margin-left: 28px;
+        color: #5d5a67;
     }
     footer .widget ul li {
         list-style: none;
@@ -2820,8 +2826,8 @@ input#phoneHidden {
 
 @media screen and (min-width: 768px) {
     .offset-lg-1 {
-    margin-left: 8.333333%;
-}
+        margin-left: 8.333333%;
+    }
     .search-category-find {
         margin-top: -117px;
         width: 96%;
