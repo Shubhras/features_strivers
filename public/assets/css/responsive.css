@@ -759,6 +759,12 @@ input#phoneHidden {
 /--------------------------------------------------------------------------------------*/
 
 @media (min-width: 768px) and (max-width: 991px) {
+    .line-height-text-3 {
+        line-height: 36px!important;
+    }
+    .contact-form input[type="submit"] {
+        padding: 0 0px!important;
+    }
     .btn_class {
         height: 50px!important;
     }
@@ -1758,6 +1764,9 @@ input#phoneHidden {
 }
 
 @media (min-width: 768px) {
+    .footer-row-fix {
+        margin-top: -75px!important;
+    }
     .navbar-brand img {
         /* width: 250px; */
         /* height: 70px; */
@@ -1765,6 +1774,16 @@ input#phoneHidden {
 }
 
 @media (max-width: 768px) {
+    .bisylms-btn-2 {
+        border: none;
+        font-size: 13px;
+    }
+    .p-price span {
+        font-size: 11px;
+    }
+    .pricing-item ul li {
+        font-size: 9px;
+    }
     .search-category-find {
         margin-top: -64px;
         width: 68%;
@@ -1858,6 +1877,9 @@ input#phoneHidden {
 }
 
 @media (min-width: 320px) and (max-width: 425px) {
+    .line-height-text-3 {
+        line-height: 20px!important;
+    }
     .cta-wrapper-p {
         font-size: 25px!important;
     }
@@ -2746,6 +2768,7 @@ input#phoneHidden {
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+    
     .global_page_white {
         letter-spacing: normal;
         line-height: 27px;
