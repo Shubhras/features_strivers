@@ -1858,6 +1858,34 @@ input#phoneHidden {
 }
 
 @media (min-width: 320px) and (max-width: 425px) {
+    .teacher-meta p {
+        font-size: 13px!important;
+    }
+    .coach-cat-name12 {
+        font-size: 15px!important;
+    }
+    .sec-title-cat {
+        font-size: 16px!important;
+    }
+    button.btn.btn-primary.btn_class_coaches.search-box-font {
+        height: 34px!important;
+        background-color: #43329f!important;
+    }
+    input.search-box-for-main {
+        height: 34px!important;
+    }
+    .search-category-find {
+        margin-top: -55px!important;
+        width: 68%;
+    }
+    .sec-title {
+        font-size: 16px!important;
+        margin: 15px 0 15px!important;
+        position: relative;
+    }
+    .subject-title-name-cat {
+        font-size: 14px!important;
+    }
     .cta-wrapper-p {
         width: 100%!important;
     }
@@ -1912,10 +1940,7 @@ input#phoneHidden {
         /* width: 250px; */
         /* height: 50px; */
     }
-    .search-category-find {
-        margin-top: -64px;
-        width: 68%;
-    }
+   
     .page-banner {
         position: relative;
         background-size: cover;
@@ -1977,7 +2002,7 @@ input#phoneHidden {
         height: 34px!important;
     }
     .search-category-find {
-        margin-top: -64px;
+       
         width: 77%;
     }
     .navbar-brand img {
@@ -2047,6 +2072,15 @@ input#phoneHidden {
 }
 
 @media only screen and (min-device-width: 768px) {
+    button.btn.btn-primary.btn_class_coaches.search-box-font {
+        height: 50px!important;
+        background-color: #43329f!important;
+    }
+    input.search-box-for-main {
+        border-radius: 2px;
+        border: 1px solid #b1b1b1;
+        height: 50px!important;
+    }
     .navbar-brand img {
         /* width: 250px!important; */
         height: 70px!important;
@@ -2083,21 +2117,13 @@ input#phoneHidden {
     .search-box-font {
         font-size: 14px!important;
     }
-    button.btn.btn-primary.btn_class_coaches.search-box-font {
-        height: 50px!important;
-        background-color: #43329f!important;
-    }
-    input.search-box-for-main {
-        border-radius: 2px;
-        border: 1px solid #b1b1b1;
-        height: 50px!important;
-    }
+    
     /* .navbar-brand img {
         width: 250px;
         height: 50px;
     } */
     .search-category-find {
-        margin-top: -64px;
+       
         width: 68%;
     }
     .page-banner {
