@@ -399,9 +399,12 @@ class EditController extends AccountBaseController
 		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 
 
-		
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
+
+		// print_r( $data['dataaudio_minutes']);
+
+		// print_r($videominuts);die;
 
 		return appView('account.payment_and_subscription', $data);
 		
@@ -690,8 +693,123 @@ class EditController extends AccountBaseController
 			$query->currentCountry();
 		})->where('user_id', $user->id)
 			->count();
+$curl = curl_init();
 
-// print_r($data['auth_user_name']);die;
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://metrics-us.cometchat.io/v1/calls/sessions',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'GET',
+  CURLOPT_HTTPHEADER => array(
+    'appId: 2040141e5d5dcef3',
+    'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0NzY3OTEzOSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0NzY3NTUzOSwiZXhwIjoxNjUwMjcxMTM5LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.D90PKiDUNY2pZswn2UB-c5ZX7aGwvghvz-ftajIG4es'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+// echo $response;
+$responsess= json_decode($response);
+	//   $datauid = array();
+	  
+	  $session_id = array();
+  foreach($responsess as $key =>$uidkey){
+	  
+	//   $data[$uidkey->uid] =$uidkey;
+
+
+	  foreach($uidkey as $key =>$value){
+	  
+		// $datauid[$value->uid] =$value->uid;
+		// $datavideo_minutes[$value->uid] =$value->video_minutes;
+		// $dataaudio_minutes[$value->uid] =$value->audio_minutes;
+
+		// if($value->uid == $user->username){
+
+			
+			$session_id[$user->username] =$value->session_id;
+
+		//}
+  
+		
+	
+// print_r($value->session_id);die;
+
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+	CURLOPT_URL => 'https://metrics-us.cometchat.io/v1/calls/sessions/$value->session_id/participants',
+	CURLOPT_RETURNTRANSFER => true,
+	CURLOPT_ENCODING => '',
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 0,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => 'GET',
+	CURLOPT_HTTPHEADER => array(
+	  'appId: 2040141e5d5dcef3',
+	  'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0NzY3OTEzOSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0NzY3NTUzOSwiZXhwIjoxNjUwMjcxMTM5LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.D90PKiDUNY2pZswn2UB-c5ZX7aGwvghvz-ftajIG4es',
+	  'uid: '.$user->username
+	),
+  ));
+}
+  }	
+
+  $response = curl_exec($curl);
+  
+  curl_close($curl);
+//   echo $response;
+  	$responsess= json_decode($response);
+	//   $datauid = array();
+	  $datavideo_minutes = array();
+	  $dataaudio_minutes = array();
+	  $session_id = array();
+  foreach($responsess as $key =>$uidkey){
+	  
+	//   $data[$uidkey->uid] =$uidkey;
+
+
+	  foreach($uidkey as $key =>$value){
+	  
+		// $datauid[$value->uid] =$value->uid;
+		// $datavideo_minutes[$value->uid] =$value->video_minutes;
+		// $dataaudio_minutes[$value->uid] =$value->audio_minutes;
+
+		if($value->uid == $user->username){
+
+			$datavideo_minutes[$value->uid] =$value->video_minutes;
+		    $dataaudio_minutes[$value->uid] =$value->audio_minutes;
+			$session_id[$value->uid] =$value->session_id;
+
+		}
+  
+		
+	}  
+  }
+
+//   print_r($value->video_minutes);die;
+
+  $data['datavideo_minutes'] = $datavideo_minutes + $dataaudio_minutes;
+
+$videominuts = implode('',$data['datavideo_minutes']);
+$videominuts = $value->video_minutes;
+//   $data['dataaudio_minutes'] = $dataaudio_minutes;
+  
+$consumed_hours = DB::table('user_subscription_payment')->select('user_subscription_payment.*')->where('user_subscription_payment.user_id',$user->id)->first();
+
+$videominutsTotal =$consumed_hours->consumed_hours + $videominuts;
+// print_r($videominutsTotal);die;
+// if(!empty($videominutsTotal))
+
+DB::table('user_subscription_payment')->where('user_subscription_payment.user_id',$user->id)->update(['user_subscription_payment.consumed_hours'=>$videominutsTotal]);
+
+// print_r($user->username);die;
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
