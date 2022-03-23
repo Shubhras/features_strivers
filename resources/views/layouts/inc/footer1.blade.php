@@ -109,8 +109,8 @@
                 </div>
             </div> -->
 
-        <div class="row">
-            <div class="col-lg-4 col-md-3">
+        <div class="row footer-row-fix">
+            <div class="col-lg-4 col-md-375">
                 <aside class="widget">
                     <div class="about-widget">
                         <a href="#"><img src="../assets/images/logo.png" alt=""></a>
@@ -126,7 +126,7 @@
                     </div>
                 </aside>
             </div>
-            <div class="col-lg-3 col-md-3">
+            <div class="col-lg-3 col-md-375">
                 <aside class="widget">
                     <h3 class="widget-title">Explore</h3>
                     <ul>
@@ -139,9 +139,9 @@
                     </ul>
                 </aside>
             </div>
-            <div class="col-lg-3 col-md-3">
+            <div class="col-lg-3 col-md-375">
                 <aside class="widget">
-                    <h3 class="widget-title">Catecories</h3>
+                    <h3 class="widget-title">Categories</h3>
                     <ul>
                         <li><a href="#">All Courses</a></li>
                         <li><a href="#">Storytelling & Voice Over</a></li>
@@ -152,7 +152,7 @@
                     </ul>
                 </aside>
             </div>
-            <div class="col-lg-2 col-md-3">
+            <div class="col-lg-2 col-md-375">
                 <aside class="widget">
                     <h3 class="widget-title">Support</h3>
                     <ul>
