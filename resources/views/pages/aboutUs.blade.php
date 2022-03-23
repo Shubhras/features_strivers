@@ -22,7 +22,7 @@
 <div class="video-section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10 offset-lg-1 text-center">
+            <div class="col-lg-10 col-md-10 col-sm-10 offset-lg-1 text-center">
                 <div class="video-banner" style="background-image: url(../assets/images/home/video-bg.jpg);">
                     <a class="popup-video" href="#" data-rel="lightcase"><i class="fas fa-play fass"></i></a>
                 </div>

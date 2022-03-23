@@ -2044,6 +2044,51 @@ input#phoneHidden {
         font-size: 18px;
         line-height: 26px;
     }
+    .font-text-size-36px {
+        font-size: 23px!important;
+    }
+    .video-banner {
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        min-height: 152px;
+        -webkit-box-shadow: 0px 40px 70px 0px rgb(11 2 55 / 16%);
+        -moz-box-shadow: 0px 40px 70px 0px rgba(11, 2, 55, 0.16);
+        box-shadow: 0px 40px 70px 0px rgb(11 2 55 / 16%);
+        position: relative;
+        z-index: 5;
+    }
+}
+
+@media only screen and (min-device-width: 375px) {
+    .video-banner {
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        min-height: 185px;
+        -webkit-box-shadow: 0px 40px 70px 0px rgb(11 2 55 / 16%);
+        -moz-box-shadow: 0px 40px 70px 0px rgba(11, 2, 55, 0.16);
+        box-shadow: 0px 40px 70px 0px rgb(11 2 55 / 16%);
+        position: relative;
+        z-index: 5;
+    }
+}
+
+@media only screen and (min-device-width: 425px) {
+    .video-banner {
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        min-height: 212px;
+        -webkit-box-shadow: 0px 40px 70px 0px rgb(11 2 55 / 16%);
+        -moz-box-shadow: 0px 40px 70px 0px rgba(11, 2, 55, 0.16);
+        box-shadow: 0px 40px 70px 0px rgb(11 2 55 / 16%);
+        position: relative;
+        z-index: 5;
+    }
 }
 
 @media only screen and (min-device-width: 768px) {
@@ -2063,6 +2108,21 @@ input#phoneHidden {
         font-size: 18px;
         line-height: 26px;
     }
+    .font-text-size-36px {
+        font-size: 30px!important;
+    }
+    .video-banner {
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        min-height: 343px;
+        -webkit-box-shadow: 0px 40px 70px 0px rgb(11 2 55 / 16%);
+        -moz-box-shadow: 0px 40px 70px 0px rgba(11, 2, 55, 0.16);
+        box-shadow: 0px 40px 70px 0px rgb(11 2 55 / 16%);
+        position: relative;
+        z-index: 5;
+    }
 }
 
 @media only screen and (min-device-width: 769px) and (max-device-width: 991px) {
@@ -2070,12 +2130,42 @@ input#phoneHidden {
         /* width: 250px!important; */
         height: 80px!important;
     }
+    .font-text-size-36px {
+        font-size: 30px!important;
+    }
+    .video-banner {
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        min-height: 460px;
+        -webkit-box-shadow: 0px 40px 70px 0px rgb(11 2 55 / 16%);
+        -moz-box-shadow: 0px 40px 70px 0px rgba(11, 2, 55, 0.16);
+        box-shadow: 0px 40px 70px 0px rgb(11 2 55 / 16%);
+        position: relative;
+        z-index: 5;
+    }
 }
 
 @media only screen and (min-device-width: 992px) and (max-device-width: 2560px) {
     .navbar-brand img {
         /* width: 250px!important; */
         height: 100px!important;
+    }
+    .font-text-size-36px {
+        font-size: 36px!important;
+    }
+    .video-banner {
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        min-height: 480px;
+        -webkit-box-shadow: 0px 40px 70px 0px rgb(11 2 55 / 16%);
+        -moz-box-shadow: 0px 40px 70px 0px rgba(11, 2, 55, 0.16);
+        box-shadow: 0px 40px 70px 0px rgb(11 2 55 / 16%);
+        position: relative;
+        z-index: 5;
     }
 }
 
