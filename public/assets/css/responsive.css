@@ -2820,8 +2820,8 @@ input#phoneHidden {
 
 @media screen and (min-width: 768px) {
     .offset-lg-1 {
-    margin-left: 8.333333%;
-}
+        margin-left: 8.333333%;
+    }
     .search-category-find {
         margin-top: -117px;
         width: 96%;
