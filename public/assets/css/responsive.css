@@ -237,6 +237,9 @@ input#phoneHidden {
 }
 
 @media (min-width: 1200px) and (max-width: 1600px) {
+    .footer-row-fix {
+        margin-top: -25px!important;
+    }
     .join-btn021 {
         margin-left: -9px;
         position: relative;
@@ -759,6 +762,9 @@ input#phoneHidden {
 /--------------------------------------------------------------------------------------*/
 
 @media (min-width: 768px) and (max-width: 991px) {
+    .footer-row-fix {
+        margin-top: -40px!important;
+    }
     .line-height-text-3 {
         line-height: 36px!important;
     }
@@ -909,6 +915,9 @@ input#phoneHidden {
 }
 
 @media (min-width: 1601px) and (max-width: 2560px) {
+    .footer-row-fix {
+        margin-top: -20px!important;
+    }
     /* .hero-banner-1 {
         background-position: bottom right;
         background-size: cover;
@@ -1652,6 +1661,9 @@ input#phoneHidden {
 }
 
 @media (min-width: 1024px) and (max-width: 1200px) {
+    .footer-row-fix {
+        margin-top: -30px!important;
+    }
     .search-category-find {
         margin-top: -162px;
         width: 82%;
@@ -1764,9 +1776,7 @@ input#phoneHidden {
 }
 
 @media (min-width: 768px) {
-    .footer-row-fix {
-        margin-top: -75px!important;
-    }
+   
     .navbar-brand img {
         /* width: 250px; */
         /* height: 70px; */
