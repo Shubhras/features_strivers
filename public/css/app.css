@@ -11348,7 +11348,7 @@ textarea.form-control-lg {
 
 .input-group .btn {
     position: relative;
-    z-index: 2
+    /* z-index: 2 */
 }
 
 .input-group .btn:focus {

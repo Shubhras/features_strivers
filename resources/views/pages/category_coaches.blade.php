@@ -5,24 +5,33 @@
 
 <section class="page-banner" style="background-image: url(../assets/images/home/cta-bg.jpg);">
 
-    <div class="container">
+    
+</section>
+
+
+<div class="container search-category-find">
         <div class="row height d-flex justify-content-center align-items-center">
-            <div class="col-md-9">
+            <div class="col-md-2">
+
+            </div>
+            <div class=" col-lg-8 col-md-8 ">
 
                 <div class="input-group">
                     <div class="form-outline search-box-fix1">
                         <input type="text" id="form1" class="form-control search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more..." />
 
                     </div>
-                    <button type="button" class="btn btn-primary btn_class_coaches search-box-font">
+                    <button type="button" class="btn btn-primary btn_class_coaches search-box-font form-outline">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
 
             </div>
+            <div class="col-md-2">
+
+            </div>
         </div>
     </div>
-</section>
 
 <!-- <div class="container" style="margin-top: -190px;">
     <div class="row height d-flex justify-content-center align-items-center">
@@ -51,7 +60,7 @@
 
     <div class="main-section">
 
-        <div class="container">
+        <div class="container project-manage">
 
             <h2 class="sec-title">
                 Project Management
