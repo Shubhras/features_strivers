@@ -413,6 +413,9 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
 }
 
 @media only screen and (min-device-width: 1601px) and (max-device-width: 2560px) {
+    .project-manage {
+        margin-top: -341px;
+    }
     .search-box-fix1 {
         width: 833px!important;
     }
