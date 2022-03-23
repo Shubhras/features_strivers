@@ -7945,7 +7945,7 @@ input#modal-description {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    box-shadow: 5px 5px #888888!important;
+    /* box-shadow: 5px 5px #888888!important; */
 }
 
 .card-block {
