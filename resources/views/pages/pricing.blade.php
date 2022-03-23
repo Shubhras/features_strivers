@@ -10,12 +10,10 @@
 @section('content')
 
 
-
 <section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
+ </section>
 
-</section>
-
- <section class="blog-section64">
+<section class="blog-section64">
 
 	<div class="container ">
 		<div class="row">
@@ -31,7 +29,7 @@
 			</div>
 		</div>
 	</div>
-<br><br>
+     <br><br>
 	<!-- </section>     -->
 	<div class="main-section-new">
 

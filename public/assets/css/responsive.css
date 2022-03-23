@@ -1943,7 +1943,6 @@ input#phoneHidden {
         /* width: 250px; */
         /* height: 50px; */
     }
-   
     .page-banner {
         position: relative;
         background-size: cover;
@@ -2005,7 +2004,6 @@ input#phoneHidden {
         height: 34px!important;
     }
     .search-category-find {
-       
         width: 77%;
     }
     .navbar-brand img {
@@ -2087,6 +2085,124 @@ input#phoneHidden {
         position: relative;
         z-index: 5;
     }
+    .login-model-page {
+        width: 272px!important;
+        /* height: 492px; */
+    }
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 18px;
+        z-index: 1050;
+        display: none;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        outline: 0;
+    }
+    .ab-content h3 {
+        font-size: 20px;
+        line-height: 38px;
+        margin-bottom: 10px;
+    }
+    .ab-content {
+        position: relative;
+        padding: 63px 0 0;
+    }
+    .col-md-8.d-flex.justify-content-center {
+        margin: auto;
+        width: 100%;
+    }
+    .contact-form {
+        position: relative;
+        background: #fff;
+        border-radius: 10px;
+        padding: 40px 20px 65px;
+        -webkit-box-shadow: 0px 1px 3px 0px rgb(11 2 55 / 6%);
+        -moz-box-shadow: 0px 1px 3px 0px rgba(11, 02, 55, 0.06);
+        box-shadow: 0px 1px 3px 0px rgb(11 2 55 / 6%);
+    }
+    .bisylms-btn {
+        border: none;
+        font-size: 13px;
+        font-weight: 600;
+        color: #fff;
+        background: #012245;
+        height: 50px;
+        padding: 17px 31px;
+        text-align: center;
+        display: inline-block;
+        line-height: .8;
+        letter-spacing: 0;
+        position: relative;
+        border-radius: 3px;
+        z-index: 1;
+        cursor: pointer;
+        outline: none;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+    .coach-register-pages {
+        margin-bottom: -119px;
+    }
+    .col-md-375 {
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .about-widget {
+        padding-right: 0;
+    }
+    .about-widget img {
+        max-width: 100%;
+        height: auto;
+        margin: 0 0 23px;
+    }
+    .ab-social {
+        position: relative;
+        margin-left: 4px;
+    }
+    .ab-social a {
+        display: inline-block;
+        width: 14px;
+        height: 18px;
+        background: #446bb9;
+        color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 17px;
+        font-size: 7px;
+        margin-right: 2px;
+    }
+    .about-widget p {
+        font-size: 11px;
+        margin-bottom: 33px;
+        margin-left: 4px;
+    }
+    footer .widget ul li {
+        list-style: none;
+        display: block;
+        font-size: 11px;
+        line-height: 21px;
+        color: #76747f;
+        font-weight: 600;
+    }
+    footer .widget .widget-title {
+        font-size: 12px;
+        line-height: 35px;
+        color: #2c234d;
+        margin-bottom: -8px;
+    }
+    .footer-1 {
+        position: relative;
+        z-index: 3;
+        padding: 24px 0px 0px;
+        background: #f7f6fa;
+    }
+    .footer-row-fix {
+        margin-right: 0px!important;
+    }
 }
 
 @media only screen and (min-device-width: 375px) {
@@ -2101,6 +2217,84 @@ input#phoneHidden {
         box-shadow: 0px 40px 70px 0px rgb(11 2 55 / 16%);
         position: relative;
         z-index: 5;
+    }
+    .login-model-page {
+        width: 272px!important;
+        /* height: 492px; */
+    }
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 40px;
+        z-index: 1050;
+        display: none;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        outline: 0;
+    }
+    .ab-content h3 {
+        font-size: 24px;
+        line-height: 38px;
+        margin-bottom: 10px;
+    }
+    .ab-content {
+        position: relative;
+        padding: 63px 0 0;
+    }
+    .coach-register-pages {
+        margin-bottom: -119px;
+    }
+    .col-md-375 {
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .about-widget {
+        padding-right: 0;
+    }
+    .about-widget img {
+        max-width: 100%;
+        height: auto;
+        margin: 0 0 23px;
+    }
+    .ab-social {
+        position: relative;
+        margin-left: 4px;
+    }
+    .ab-social a {
+        display: inline-block;
+        width: 14px;
+        height: 18px;
+        background: #446bb9;
+        color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 17px;
+        font-size: 7px;
+        margin-right: 2px;
+    }
+    .about-widget p {
+        font-size: 11px;
+        margin-bottom: 33px;
+        margin-left: 4px;
+    }
+    footer .widget ul li {
+        list-style: none;
+        display: block;
+        font-size: 11px;
+        line-height: 21px;
+        color: #76747f;
+        font-weight: 600;
+    }
+    footer .widget .widget-title {
+        font-size: 12px;
+        line-height: 35px;
+        color: #2c234d;
+        margin-bottom: -8px;
+    }
+    .footer-row-fix {
+        margin-right: 0px!important;
     }
 }
 
@@ -2117,9 +2311,93 @@ input#phoneHidden {
         position: relative;
         z-index: 5;
     }
+    .login-model-page {
+        width: 272px!important;
+        /* height: 492px; */
+    }
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 65px;
+        z-index: 1050;
+        display: none;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        outline: 0;
+    }
+    .ab-content h3 {
+        font-size: 28px;
+        line-height: 38px;
+        margin-bottom: 10px;
+    }
+    .ab-content {
+        position: relative;
+        padding: 63px 0 0;
+    }
+    .coach-register-pages {
+        margin-bottom: -119px;
+    }
+    .col-md-375 {
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .about-widget {
+        padding-right: 0;
+    }
+    .about-widget img {
+        max-width: 100%;
+        height: auto;
+        margin: 0 0 23px;
+    }
+    .ab-social {
+        position: relative;
+        margin-left: 4px;
+    }
+    .ab-social a {
+        display: inline-block;
+        width: 14px;
+        height: 18px;
+        background: #446bb9;
+        color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 17px;
+        font-size: 7px;
+        margin-right: 2px;
+    }
+    .about-widget p {
+        font-size: 11px;
+        margin-bottom: 33px;
+        margin-left: 4px;
+    }
+    footer .widget ul li {
+        list-style: none;
+        display: block;
+        font-size: 11px;
+        line-height: 21px;
+        color: #76747f;
+        font-weight: 600;
+    }
+    footer .widget .widget-title {
+        font-size: 12px;
+        line-height: 35px;
+        color: #2c234d;
+        margin-bottom: -8px;
+    }
+    .footer-row-fix {
+        margin-right: 0px!important;
+    }
 }
 
 @media only screen and (min-device-width: 768px) {
+    .footer-1 {
+        position: relative;
+        z-index: 3;
+        padding: 164px 0px 0px;
+        background: #f7f6fa;
+    }
     button.btn.btn-primary.btn_class_coaches.search-box-font {
         height: 50px!important;
         background-color: #43329f!important;
@@ -2160,9 +2438,78 @@ input#phoneHidden {
         position: relative;
         z-index: 5;
     }
+    .ab-content h3 {
+        font-size: 20px;
+        line-height: 38px;
+        margin-bottom: 10px;
+    }
+    .ab-content {
+        position: relative;
+        padding: 63px 0 0;
+    }
+    .coach-register-pages {
+        margin-bottom: -119px;
+    }
+    .col-md-375 {
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .about-widget {
+        padding-right: 0;
+    }
+    .about-widget img {
+        max-width: 100%;
+        height: auto;
+        margin: 0 0 23px;
+    }
+    .ab-social {
+        position: relative;
+        margin-left: 12px;
+    }
+    .ab-social a {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        background: #446bb9;
+        color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 16px;
+        font-size: 12px;
+        margin-right: 2px;
+    }
+    .about-widget p {
+        font-size: 16px;
+        margin-bottom: 34px;
+        margin-left: 15px;
+    }
+    footer .widget ul li {
+        list-style: none;
+        display: block;
+        font-size: 14px;
+        line-height: 30px;
+        color: #76747f;
+        font-weight: 600;
+    }
+    footer .widget .widget-title {
+        font-size: 20px;
+        line-height: 94px;
+        color: #2c234d;
+        margin-bottom: -8px;
+    }
+    .footer-row-fix {
+        margin-right: 0px!important;
+    }
 }
 
 @media only screen and (min-device-width: 769px) and (max-device-width: 991px) {
+    .footer-1 {
+        position: relative;
+        z-index: 3;
+        padding: 164px 0px 0px;
+        background: #f7f6fa;
+    }
     .navbar-brand img {
         /* width: 250px!important; */
         height: 80px!important;
@@ -2182,9 +2529,78 @@ input#phoneHidden {
         position: relative;
         z-index: 5;
     }
+    .ab-content h3 {
+        font-size: 28px;
+        line-height: 44px;
+        margin-bottom: 24px
+    }
+    .ab-content {
+        position: relative;
+        padding: 63px 0 0;
+    }
+    .coach-register-pages {
+        margin-bottom: -119px;
+    }
+    .col-md-375 {
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .about-widget {
+        padding-right: 0;
+    }
+    .about-widget img {
+        max-width: 100%;
+        height: auto;
+        margin: 0 0 23px;
+    }
+    .ab-social {
+        position: relative;
+        margin-left: 12px;
+    }
+    .ab-social a {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        background: #446bb9;
+        color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 16px;
+        font-size: 12px;
+        margin-right: 2px;
+    }
+    .about-widget p {
+        font-size: 16px;
+        margin-bottom: 34px;
+        margin-left: 15px;
+    }
+    footer .widget ul li {
+        list-style: none;
+        display: block;
+        font-size: 14px;
+        line-height: 30px;
+        color: #76747f;
+        font-weight: 600;
+    }
+    footer .widget .widget-title {
+        font-size: 20px;
+        line-height: 94px;
+        color: #2c234d;
+        margin-bottom: -8px;
+    }
+    .footer-row-fix {
+        margin-right: 0px!important;
+    }
 }
 
 @media only screen and (min-device-width: 992px) and (max-device-width: 2560px) {
+    .footer-1 {
+        position: relative;
+        z-index: 3;
+        padding: 164px 0px 0px;
+        background: #f7f6fa;
+    }
     .navbar-brand img {
         /* width: 250px!important; */
         height: 100px!important;
@@ -2204,19 +2620,80 @@ input#phoneHidden {
         position: relative;
         z-index: 5;
     }
+    .ab-content h3 {
+        font-size: 28px;
+        line-height: 44px;
+        margin-bottom: 24px
+    }
+    .ab-content {
+        position: relative;
+        padding: 63px 0 0;
+    }
+    .coach-register-pages {
+        margin-bottom: -119px;
+    }
+    .col-md-375 {
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .about-widget {
+        padding-right: 0;
+    }
+    .about-widget img {
+        max-width: 100%;
+        height: auto;
+        margin: 0 0 23px;
+    }
+    .ab-social {
+        position: relative;
+        margin-left: 28px;
+    }
+    .ab-social a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: #446bb9;
+        color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 42px;
+        font-size: 14px;
+        margin-right: 2px;
+    }
+    .about-widget p {
+        font-size: 15px;
+        margin-bottom: 33px;
+        margin-left: 28px;
+    }
+    footer .widget ul li {
+        list-style: none;
+        display: block;
+        font-size: 13px;
+        line-height: 32px;
+        color: #76747f;
+        font-weight: 600;
+    }
+    footer .widget .widget-title {
+        font-size: 16px;
+        line-height: 30px;
+        color: #2c234d;
+        margin-bottom: 20px;
+    }
+    .footer-row-fix {
+        margin-right: 0px!important;
+    }
 }
 
 @media screen and (min-width: 425px) {
     .search-box-font {
         font-size: 14px!important;
     }
-    
     /* .navbar-brand img {
         width: 250px;
         height: 50px;
     } */
     .search-category-find {
-       
         width: 68%;
     }
     .page-banner {
@@ -2294,7 +2771,7 @@ input#phoneHidden {
     }
     .funfact-section {
         position: relative;
-        padding: 62px 5px 120px;
+        padding: 129px 5px 120px;
     }
     /* .navbar.navbar-expand-lg .navbar-collapse {
         position: absolute;
@@ -2342,6 +2819,9 @@ input#phoneHidden {
 }
 
 @media screen and (min-width: 768px) {
+    .offset-lg-1 {
+    margin-left: 8.333333%;
+}
     .search-category-find {
         margin-top: -117px;
         width: 96%;
