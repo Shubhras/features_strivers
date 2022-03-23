@@ -79,9 +79,11 @@
 					{{-- remember --}}
 					<?php $rememberError = (isset($errors) && $errors->has('remember')) ? ' is-invalid' : ''; ?>
 					<div class="mb-3">
-						<label class="checkbox form-check-label float-start mt-2" style="font-weight: normal;">
+						<!-- <label class="checkbox form-check-label float-start mt-2" style="font-weight: normal;">
 							<input type="checkbox" value="1" name="remember" id="mRemember" class="{{ $rememberError }}"> {{ t('keep_me_logged_in') }}
-						</label>
+						</label> -->
+
+						
 						<p class="float-end mt-2">
 							<a href="{{ url('password/reset') }}">
 								{{ t('lost_your_password') }}
