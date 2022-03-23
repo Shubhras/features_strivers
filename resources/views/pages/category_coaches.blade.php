@@ -467,7 +467,7 @@
 <!-- Footer Section Start -->
 
 <!-- Footer Section End -->
-@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer', 'layouts.inc.footer'])
+@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 
 <!-- Back To Top -->
 <a href="#" id="back-to-top">
