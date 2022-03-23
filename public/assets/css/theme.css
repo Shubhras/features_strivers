@@ -106,7 +106,7 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
 
 .navbar-expand-lg .navbar-nav li>a {
     display: block;
-    font-size: 16px;
+    font-size: 25px;
     line-height: 48px;
     color: #fff;
     text-transform: capitalize;
@@ -442,16 +442,9 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
         width: 385px;
         height: 194px;
     } */
-    .navbar-expand-lg .navbar-nav li>a {
-        display: block;
-        font-size: 25px;
-        line-height: 48px;
-        color: #fff;
-        text-transform: capitalize;
-        font-weight: 600;
-        padding: 23px 0 26px;
-        position: relative;
-    }
+    /* .navbar-expand-lg .navbar-nav li>a {
+        font-size: 25px!important;
+    } */
     .join-btn01 {
         width: 158px!important;
         margin-left: 17px;

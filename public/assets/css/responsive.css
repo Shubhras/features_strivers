@@ -2294,7 +2294,7 @@ input#phoneHidden {
     }
     .funfact-section {
         position: relative;
-        padding: 62px 5px 120px;
+        padding: 129px 5px 120px;
     }
     /* .navbar.navbar-expand-lg .navbar-collapse {
         position: absolute;
@@ -2342,6 +2342,9 @@ input#phoneHidden {
 }
 
 @media screen and (min-width: 768px) {
+    .offset-lg-1 {
+    margin-left: 8.333333%;
+}
     .search-category-find {
         margin-top: -117px;
         width: 96%;
