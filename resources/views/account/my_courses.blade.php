@@ -287,7 +287,7 @@
 
 									<h2 class="title-2"> {{ ('My Courses') }}
 
-										<button id="myBtn" class="btn btn-primary" style="float: right;">+ Create Course</button>
+										<button id="myBtn" class="btn btn-primary" style="float: right;">+ Create Consultation</button>
 									</h2>
 
 
@@ -455,17 +455,17 @@
 											<div class="modal-content">
 												<div class="modal-header">
 
-													<h4 class="modal-title" id="exampleModalLabel">Create Course</h4>
+													<h4 class="modal-title" id="exampleModalLabel">Create Consultation</h4>
 												</div>
 												<div class="modal-body">
 
 
 													<div class="form-group">
-														<label for="recipient-name" class="control-label">Course Name</label>
+														<label for="recipient-name" class="control-label">Consultation Name</label>
 														<input type="text" class="form-control" id="course_name" name="course_name">
 													</div>
 													<div class="form-group">
-														<label for="recipient-name" class="control-label">Course Hours:</label>
+														<label for="recipient-name" class="control-label">Consultation Hours:</label>
 														<input type="text" class="form-control" id="course_hourse" name="course_hourse">
 													</div>
 													<div class="form-group">
@@ -473,7 +473,7 @@
 														<input type="text" class="form-control" id="starting_time" name="starting_time" placeholder="H:I:S">
 													</div>
 													<div class="form-group">
-														<label for="recipient-name" class="control-label">Course Dated:</label>
+														<label for="recipient-name" class="control-label">Consultation available from - Date:</label>
 														<input type="text" class="form-control" id="dated" name="dated" placeholder="yyyy/mm/dd">
 													</div>
 													<div class="form-group">
@@ -481,7 +481,7 @@
 														<textarea class="form-control" id="description" name="description" rows="4"></textarea>
 													</div>
 													<div class="form-group">
-														<label for="add-image" class="control-label">Add images:</label>
+														<label for="add-image" class="control-label">Featured image:</label>
 														<input type="file" class="form-control" id="image" name="image" action="image.*" placeholder="add images">
 													</div>
 
