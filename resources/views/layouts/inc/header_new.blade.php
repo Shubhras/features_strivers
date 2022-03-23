@@ -73,7 +73,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                     <!-- Nav Menu Start -->
                     <!-- <div class="collapse navbar-collapse" id="mobile"> -->
 
-                    <div class="collapse navbar-collapse mobile-menu-fix32">
+                    <div class="collapse navbar-collapse mobile-menu-fix-cat32">
                         <ul class="navbar-nav ">
                             <li class="menu-item-has-children side-menu-content768">
 
@@ -156,11 +156,11 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 
                         @if (!auth()->check())
 
-                        <a href="#quickLogin" class="join-btn01" data-bs-toggle="modal">
+                        <a href="#quickLogin" class="join-btn021" data-bs-toggle="modal">
                         Login</a>
                         
 
-                        <a href="{{ \App\Helpers\UrlGen::register() }}" class="join-btn01">
+                        <a href="{{ \App\Helpers\UrlGen::register() }}" class="join-btn021">
                         Sign Up</a>
                         @endif
 

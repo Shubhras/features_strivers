@@ -78,10 +78,11 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     /* margin-left: -114px; */
 }
 
-.navbar-brand img {
-    /* width: 250px; */
+
+/* .navbar-brand img {
+   
     height: 100px;
-}
+} */
 
 .navbar-expand-lg .navbar-collapse {
     justify-content: flex-end;
@@ -412,6 +413,9 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
 }
 
 @media only screen and (min-device-width: 1601px) and (max-device-width: 2560px) {
+    .search-category-find {
+        margin-top: -165px;
+    }
     .index-image-768 {
         margin-top: -410px!important;
     }
