@@ -290,7 +290,7 @@
 
 									<h2 class="title-2"> {{ ('My Courses') }}
 
-										<button id="myBtn" class="btn btn-primary" style="float: right;">+ Create Consultation</button>
+										<button id="myBtn" class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#myModal">+ Create Consultation</button>
 									</h2>
 
 
