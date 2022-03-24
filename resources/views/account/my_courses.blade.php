@@ -15,6 +15,9 @@
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
 <!-- Start Include All CSS -->
@@ -61,7 +64,7 @@
 
 
 
-			
+
 
 
 
@@ -69,12 +72,12 @@
 
 			?>
 
-<h2>
+				<h2>
 
-<h2 class="sec-title">My Career Path</h2>
-</h2>
+					<h2 class="sec-title">My Career Path</h2>
+				</h2>
 
-<!-- 
+				<!-- 
 				<div class="row ">
 					<div class="col-md-3 page-sidebar">
 						<div class="inner-box default-inner-box">
@@ -177,92 +180,92 @@
 <h2 class="sec-title">  My Course</h2>
 </h2> -->
 
-	<div class="row" style="padding: 6px; margin-left: -4px;">
-			
-			
-        <div class="col-md-12 user-profile-img-data default-inner-box">
+				<div class="row" style="padding: 6px; margin-left: -4px;">
 
-                <img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-                <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> {{ $user->name }} </b> </span>
-            
 
-            <div class="row">
-               
-                <div class="col-md-12 col-sm-8 col-12">
-                <span>
+					<div class="col-md-12 user-profile-img-data default-inner-box">
 
-                
-                    <div class="header-data text-center-xs">
-                        {{-- Threads Stats --}}
-                        <div class="hdata">
-                        <a href="{{ url('account/messages') }}">
+						<img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+						<span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
-                            <div class="mcol-left">
-                                <i class="fas fa-phone-alt ln-shadow"></i>
-                            </div>
-                            <div class="mcol-right">
-                                {{-- Number of messages --}}
-                                <p>
-                                    
-                                        {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-                                       
-                                        <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-                                   
-                                </p>
-                            </div>
-                            </a>
-                            <div class="clearfix"></div>
-                        </div>
 
-                        {{-- Traffic Stats --}}
-                        <div class="hdata">
-                        <a href="{{ url('account/chat') }}">
-                            <div class="mcol-left">
-                                <i class="fas fa-comments ln-shadow"></i>
-                            </div>
-                            <div class="mcol-right">
-                                {{-- Number of visitors --}}
-                                <p>
-                                    
-                                        <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-                                        {{ \App\Helpers\Number::short($totalPostsVisits) }}
-                            
-                                        <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-                                   
-                                </p>
-                            </div>
+						<div class="row">
 
-                            </a>
-                            <div class="clearfix"></div>
-                        </div>
+							<div class="col-md-12 col-sm-8 col-12">
+								<span>
 
-                       
 
-                        {{-- Favorites Stats --}}
-                        <div class="hdata" style="width: 151px!important;margin-left: -38px;">
-                        <a href="{{ url('account/favourite') }}">
-                            <div class="mcol-left" >
-                                <i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
-                            </div>
-                            <div class="mcol-right">
-                                {{-- Number of favorites --}}
-                                <p>
-                                    
-                                        {{ \App\Helpers\Number::short($countFavoritePosts) }}
-                                        <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-                                   
-                                </p>
-                            </div>
-                            </a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            
-            </div>
+									<div class="header-data text-center-xs">
+										{{-- Threads Stats --}}
+										<div class="hdata">
+											<a href="{{ url('account/messages') }}">
 
-          </div>
-    </div>
+												<div class="mcol-left">
+													<i class="fas fa-phone-alt ln-shadow"></i>
+												</div>
+												<div class="mcol-right">
+													{{-- Number of messages --}}
+													<p>
+
+														{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
+
+														<em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
+
+													</p>
+												</div>
+											</a>
+											<div class="clearfix"></div>
+										</div>
+
+										{{-- Traffic Stats --}}
+										<div class="hdata">
+											<a href="{{ url('account/chat') }}">
+												<div class="mcol-left">
+													<i class="fas fa-comments ln-shadow"></i>
+												</div>
+												<div class="mcol-right">
+													{{-- Number of visitors --}}
+													<p>
+
+														<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+														{{ \App\Helpers\Number::short($totalPostsVisits) }}
+
+														<em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+
+													</p>
+												</div>
+
+											</a>
+											<div class="clearfix"></div>
+										</div>
+
+
+
+										{{-- Favorites Stats --}}
+										<div class="hdata" style="width: 151px!important;margin-left: -38px;">
+											<a href="{{ url('account/favourite') }}">
+												<div class="mcol-left">
+													<i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
+												</div>
+												<div class="mcol-right">
+													{{-- Number of favorites --}}
+													<p>
+
+														{{ \App\Helpers\Number::short($countFavoritePosts) }}
+														<em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
+
+													</p>
+												</div>
+											</a>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
 
 
 
@@ -287,7 +290,7 @@
 
 									<h2 class="title-2"> {{ ('My Courses') }}
 
-										<button id="myBtn" class="btn btn-primary" style="float: right;">+ Create Course</button>
+										<button id="myBtn" class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#myModal">+ Create Course</button>
 									</h2>
 
 
@@ -341,7 +344,7 @@
 													if (isset($coach_course) && $coach_course->count() > 0) :
 														foreach ($coach_course as $key => $post) :
 															// Fixed 1
-															
+
 
 															// Get Post's URL
 
@@ -448,47 +451,85 @@
 
 								</div>
 
-								<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 									<div class="modal-dialog" role="document">
 
 										<form name="details" class="" role="form" method="POST" action="{{ url('/account/create_course') }}" id="create_course_id">
 											<div class="modal-content">
 												<div class="modal-header">
 
-													<h4 class="modal-title" id="exampleModalLabel">Create Course</h4>
+													<h4 class="modal-title" id="exampleModalLabel">Create Consultation</h4>
 												</div>
 												<div class="modal-body">
 
 
-													<div class="form-group">
-														<label for="recipient-name" class="control-label">Course Name</label>
-														<input type="text" class="form-control" id="course_name" name="course_name">
+													<div class="row">
+														<div class="col-md-6">
+															<label for="recipient-name" class="control-label create-consultation-modal">Consultation Name</label>
+
+															<input type="text" class="consultation-modal-text" id="course_name" name="course_name">
+
+
+
+														</div>
+														<div class="col-md-6">
+
+															<label for="recipient-name" class="control-label create-consultation-modal">Consultation Hours:</label>
+
+															<input type="text" class="consultation-modal-text" id="course_hourse" name="course_hourse">
+														</div>
 													</div>
-													<div class="form-group">
-														<label for="recipient-name" class="control-label">Course Hours:</label>
-														<input type="text" class="form-control" id="course_hourse" name="course_hourse">
+
+
+													<div class="row">
+
+
+														<div class="col-md-6">
+															<label for="recipient-name" class="control-label create-consultation-modal">Consultation available - Date:</label>
+															<input type="text" class="consultation-modal-text" id="dated" name="dated" placeholder="yyyy/mm/dd">
+														</div>
+
+
+														<div class="col-md-6">
+															<label for="recipient-name" class="control-label create-consultation-modal"> start time:</label>
+															<input type="text" class="consultation-modal-text" id="starting_time" name="starting_time" placeholder="H:I:S">
+														</div>
 													</div>
-													<div class="form-group">
-														<label for="recipient-name" class="control-label"> start time:</label>
-														<input type="text" class="form-control" id="starting_time" name="starting_time" placeholder="H:I:S">
+
+													<div class="row">
+
+
+														<div class="col-md-6">
+															<label for="add-image" class="control-label create-consultation-modal">Featured image:</label>
+
+														</div>
+														<div class="col-md-6">
+
+															<input type="file" class="consultation-modal-text" id="image" name="image" action="image.*" placeholder="add images">
+														</div>
+
+
 													</div>
+
+													<!-- <div class="row">
+														<div class="col-md-12">
+														<label for="message-text" class="control-label create-consultation-modal">Description:</label>
+														
+														<textarea id="editor"></textarea>
+													</div> -->
+
 													<div class="form-group">
-														<label for="recipient-name" class="control-label">Course Dated:</label>
-														<input type="text" class="form-control" id="dated" name="dated" placeholder="yyyy/mm/dd">
-													</div>
-													<div class="form-group">
-														<label for="message-text" class="control-label">Description:</label>
-														<textarea class="form-control" id="description" name="description" rows="4"></textarea>
-													</div>
-													<div class="form-group">
-														<label for="add-image" class="control-label">Add images:</label>
-														<input type="file" class="form-control" id="image" name="image" action="image.*" placeholder="add images">
+														<label>Describe the condition in detail</label>
+														<textarea id="editor"></textarea>
 													</div>
 
 												</div>
+
 												<div class="modal-footer">
 
-													<button type="button" class="btn btn-close close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="float: right;">Close</span></button>
+													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
 
 													<button type="submit" class="btn btn-primary">Submit</button>
 
@@ -501,54 +542,54 @@
 						</div>
 
 
-			<div class="inner-box default-inner-box">
-				
-				
-					<div class="row">
-							<?php 	
-						foreach ($coach_coarsee as  $coaches_corsee) {
-						?>				
-                        <div class="col-lg-4 col-md-6">
-                            <div class="feature-course-item-4">
-                                <div class="fcf-thumb">
-                                    <img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="" style="height: 244px; weight: 244px;">
-                                    <a class="enroll" href="#">Enroll Now</a>
-                                </div>
-                                <div class="fci-details">
-                                    <a href="#" class="c-cate"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
-                                    <h4><a href="single-course.html">Using Creative Problem Solving</a></h4>
-                                    <div class="author">
-                                        <img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
-                                        <a href="#">{{$coaches_corsee->name}}</a>
-                                    </div>
-                                    <div class="price-rate">
-                                        <div class="course-price"><a>
-										{{$coaches_corsee->course_hourse}} Hours
-										</a>
-                                        </div>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-							
-                        </div>
-					<?php } ?>	
-                    </div>
-					
-						
-
-					
- 
-
-			</div>
-					
-				
-				
-				<!--/.page-content-->
+						<div class="inner-box default-inner-box">
 
 
-				<br>
-				<!-- <div class="row">
+							<div class="row">
+								<?php
+								foreach ($coach_coarsee as  $coaches_corsee) {
+								?>
+									<div class="col-lg-4 col-md-6">
+										<div class="feature-course-item-4">
+											<div class="fcf-thumb">
+												<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="" style="height: 244px; weight: 244px;">
+												<a class="enroll" href="#">Enroll Now</a>
+											</div>
+											<div class="fci-details">
+												<a href="#" class="c-cate"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
+												<h4><a href="single-course.html">Using Creative Problem Solving</a></h4>
+												<div class="author">
+													<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
+													<a href="#">{{$coaches_corsee->name}}</a>
+												</div>
+												<div class="price-rate">
+													<div class="course-price"><a>
+															{{$coaches_corsee->course_hourse}} Hours
+														</a>
+													</div>
+
+												</div>
+											</div>
+										</div>
+
+									</div>
+								<?php } ?>
+							</div>
+
+
+
+
+
+
+						</div>
+
+
+
+						<!--/.page-content-->
+
+
+						<br>
+						<!-- <div class="row">
 					<h3><b> Suggested Strivers</b></h3>
 					<?php foreach ($suggested_striver as $coach_list) { ?>
 						<div class="col-sm-3">
@@ -569,15 +610,15 @@
 					<?php } ?>
 
 				</div> -->
-		
-
-	      <?php } else { ?>
 
 
+					<?php } else { ?>
 
 
 
-			<!-- <div class="row ">
+
+
+						<!-- <div class="row ">
 					<div class="col-md-3 page-sidebar">
 						<div class="inner-box default-inner-box">
 							<h3 class="no-padding text-center-480 useradmin">
@@ -673,151 +714,151 @@
 					</div>
 			</div> -->
 
-			<h2>
+						<h2>
 
-<h2 class="sec-title">All Course</h2>
-</h2>
+							<h2 class="sec-title">All Course</h2>
+						</h2>
 
-	<div class="row" style="padding: 6px; margin-left: -4px;">
-			
-			
-        <div class="col-md-12 user-profile-img-data default-inner-box">
-
-                <img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-                <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> {{ $user->name }} </b> </span>
-            
-
-            <div class="row">
-               
-                <div class="col-md-12 col-sm-8 col-12">
-                <span>
-
-                
-                    <div class="header-data text-center-xs">
-                        {{-- Threads Stats --}}
-                        <div class="hdata">
-                        <a href="{{ url('account/messages') }}">
-
-                            <div class="mcol-left">
-                                <i class="fas fa-phone-alt ln-shadow"></i>
-                            </div>
-                            <div class="mcol-right">
-                                {{-- Number of messages --}}
-                                <p>
-                                    
-                                        {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-                                       
-                                        <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-                                   
-                                </p>
-                            </div>
-                            </a>
-                            <div class="clearfix"></div>
-                        </div>
-
-                        {{-- Traffic Stats --}}
-                        <div class="hdata">
-                        <a href="{{ url('account/chat') }}">
-                            <div class="mcol-left">
-                                <i class="fas fa-comments ln-shadow"></i>
-                            </div>
-                            <div class="mcol-right">
-                                {{-- Number of visitors --}}
-                                <p>
-                                    
-                                        <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-                                        {{ \App\Helpers\Number::short($totalPostsVisits) }}
-                            
-                                        <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-                                   
-                                </p>
-                            </div>
-
-                            </a>
-                            <div class="clearfix"></div>
-                        </div>
-
-                       
-
-                        {{-- Favorites Stats --}}
-                        <div class="hdata" style="width: 151px!important;margin-left: -38px;">
-                        <a href="{{ url('account/favourite') }}">
-                            <div class="mcol-left" >
-                                <i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
-                            </div>
-                            <div class="mcol-right">
-                                {{-- Number of favorites --}}
-                                <p>
-                                    
-                                        {{ \App\Helpers\Number::short($countFavoritePosts) }}
-                                        <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-                                   
-                                </p>
-                            </div>
-                            </a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            
-            </div>
-
-          </div>
-    </div>
+						<div class="row" style="padding: 6px; margin-left: -4px;">
 
 
-			<div class="row">
+							<div class="col-md-12 user-profile-img-data default-inner-box">
 
-					<div class="col-md-3 page-sidebar">
-
-						@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
-					</div>
-					<div class="col-md-9 page-content">
+								<img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+								<span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 
-						<div class="inner-box default-inner-box">
+								<div class="row">
+
+									<div class="col-md-12 col-sm-8 col-12">
+										<span>
+
+
+											<div class="header-data text-center-xs">
+												{{-- Threads Stats --}}
+												<div class="hdata">
+													<a href="{{ url('account/messages') }}">
+
+														<div class="mcol-left">
+															<i class="fas fa-phone-alt ln-shadow"></i>
+														</div>
+														<div class="mcol-right">
+															{{-- Number of messages --}}
+															<p>
+
+																{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
+
+																<em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
+
+															</p>
+														</div>
+													</a>
+													<div class="clearfix"></div>
+												</div>
+
+												{{-- Traffic Stats --}}
+												<div class="hdata">
+													<a href="{{ url('account/chat') }}">
+														<div class="mcol-left">
+															<i class="fas fa-comments ln-shadow"></i>
+														</div>
+														<div class="mcol-right">
+															{{-- Number of visitors --}}
+															<p>
+
+																<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+																{{ \App\Helpers\Number::short($totalPostsVisits) }}
+
+																<em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+
+															</p>
+														</div>
+
+													</a>
+													<div class="clearfix"></div>
+												</div>
+
+
+
+												{{-- Favorites Stats --}}
+												<div class="hdata" style="width: 151px!important;margin-left: -38px;">
+													<a href="{{ url('account/favourite') }}">
+														<div class="mcol-left">
+															<i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
+														</div>
+														<div class="mcol-right">
+															{{-- Number of favorites --}}
+															<p>
+
+																{{ \App\Helpers\Number::short($countFavoritePosts) }}
+																<em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
+
+															</p>
+														</div>
+													</a>
+													<div class="clearfix"></div>
+												</div>
+											</div>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
 
 
 						<div class="row">
-							<?php 	
-						foreach ($coach_striver as  $coaches_corsee) {
-						?>				
-                        <div class="col-lg-4 col-md-6">
-                            <div class="feature-course-item-4">
-                                <div class="fcf-thumb">
-                                    <img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px; weight: 244px;">
-                                    <a class="enroll" href="#">Enroll Now</a>
-                                </div>
-                                <div class="fci-details">
-                                    <a href="#" class="c-cate"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
-                                    <h4><a href="#">Using Creative Problem Solving</a></h4>
-                                    <div class="author">
-                                        <img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
-                                        <a href="#">{{$coaches_corsee->name}}</a>
-                                    </div>
-                                    <div class="price-rate">
-                                        <div class="course-price"><a>
-										{{$coaches_corsee->course_hourse}} Hours
-										</a>
-                                        </div>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-							
-                        </div>
-					 <?php } ?>	
 
-					</div>
-				</div>
-		<br>
+							<div class="col-md-3 page-sidebar">
 
-				<?php } ?>
-				 
-		<!--/.row-->
-	</div>
+								@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
+							</div>
+							<div class="col-md-9 page-content">
 
-	</div>
+
+								<div class="inner-box default-inner-box">
+
+
+									<div class="row">
+										<?php
+										foreach ($coach_striver as  $coaches_corsee) {
+										?>
+											<div class="col-lg-4 col-md-6">
+												<div class="feature-course-item-4">
+													<div class="fcf-thumb">
+														<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px; weight: 244px;">
+														<a class="enroll" href="#">Enroll Now</a>
+													</div>
+													<div class="fci-details">
+														<a href="#" class="c-cate"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
+														<h4><a href="#">Using Creative Problem Solving</a></h4>
+														<div class="author">
+															<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
+															<a href="#">{{$coaches_corsee->name}}</a>
+														</div>
+														<div class="price-rate">
+															<div class="course-price"><a>
+																	{{$coaches_corsee->course_hourse}} Hours
+																</a>
+															</div>
+
+														</div>
+													</div>
+												</div>
+
+											</div>
+										<?php } ?>
+
+									</div>
+								</div>
+								<br>
+
+							<?php } ?>
+
+							<!--/.row-->
+							</div>
+
+						</div>
 </section>
 
 <div class="main-section">
@@ -873,26 +914,26 @@
 <!-- /.main-container -->
 
 <a href="#" id="back-to-top">
-        <i class="fal fa-angle-double-up"></i>
-    </a>
-    <!-- Back To Top -->
+	<i class="fal fa-angle-double-up"></i>
+</a>
+<!-- Back To Top -->
 
-    <!-- Start Include All JS -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/jquery.appear.js"></script>
-    <script src="../assets/js/owl.carousel.min.js"></script>
-    <script src="../assets/js/slick.js"></script>
-    <script src="../assets/js/jquery.nice-select.min.js"></script>
-    <script src="../assets/js/swiper-bundle.min.js"></script>
-    <script src="../assets/js/TweenMax.min.js"></script>
-    <script src="../assets/js/lightcase.js"></script>
-    <script src="../assets/js/jquery.plugin.min.js"></script>
-    <script src="../assets/js/jquery.countdown.min.js"></script>
-    <script src="../assets/js/jquery.easing.1.3.js"></script>
-    <script src="../assets/js/jquery.shuffle.min.js"></script>
+<!-- Start Include All JS -->
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/jquery.appear.js"></script>
+<script src="../assets/js/owl.carousel.min.js"></script>
+<script src="../assets/js/slick.js"></script>
+<script src="../assets/js/jquery.nice-select.min.js"></script>
+<script src="../assets/js/swiper-bundle.min.js"></script>
+<script src="../assets/js/TweenMax.min.js"></script>
+<script src="../assets/js/lightcase.js"></script>
+<script src="../assets/js/jquery.plugin.min.js"></script>
+<script src="../assets/js/jquery.countdown.min.js"></script>
+<script src="../assets/js/jquery.easing.1.3.js"></script>
+<script src="../assets/js/jquery.shuffle.min.js"></script>
 
-    <script src="../assets/js/theme.js"></script>
+<script src="../assets/js/theme.js"></script>
 
 @endsection
 
@@ -1058,23 +1099,55 @@
 </script>
 
 <style>
-.teacher-meta {
-    position: relative;
-    padding: 25px 15px 0;
-}
+	.teacher-meta {
+		position: relative;
+		padding: 25px 15px 0;
+	}
 
 
-.teacher-meta h5 {
-    font-size: 16px;
-    line-height: 24px;
-    color: #2c234d;
-    margin: 0 0 7px;
-    font-weight: 700!important;
-    
-}
+	.teacher-meta h5 {
+		font-size: 16px;
+		line-height: 24px;
+		color: #2c234d;
+		margin: 0 0 7px;
+		font-weight: 700 !important;
 
+	}
 
+	/* .modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+} */
 </style>
+
+
+<script>
+	tinymce.init({
+            selector:'#editor',
+            menubar: false,
+            statusbar: false,
+            plugins: 'autoresize anchor autolink charmap code codesample directionality fullpage help hr image imagetools insertdatetime link lists media nonbreaking pagebreak preview print searchreplace table template textpattern toc visualblocks visualchars',
+            toolbar: 'h1 h2 bold italic strikethrough blockquote bullist numlist backcolor | link image media | removeformat help fullscreen ',
+            skin: 'bootstrap',
+            toolbar_drawer: 'floating',
+            min_height: 200,           
+            autoresize_bottom_margin: 16,
+            setup: (editor) => {
+                editor.on('init', () => {
+                    editor.getContainer().style.transition="border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
+                });
+                editor.on('focus', () => {
+                    editor.getContainer().style.boxShadow="0 0 0 .2rem rgba(0, 123, 255, .25)",
+                    editor.getContainer().style.borderColor="#80bdff"
+                });
+                editor.on('blur', () => {
+                    editor.getContainer().style.boxShadow="",
+                    editor.getContainer().style.borderColor=""
+                });
+            }
+        });
+</script>
+
 
 
 @endsection

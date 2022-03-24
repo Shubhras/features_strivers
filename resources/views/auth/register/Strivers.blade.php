@@ -92,7 +92,7 @@
             @endforeach
             @endif
                 <div class="contact-form dform" id="Strivers" >
-                    <center><h4>Sign Up As Strivers</h4></center><br>
+                    <center><h4>Sign Up As Strivres</h4></center><br>
                   
                     <form role="form" method="POST" action="{{ url('/strivers_signup') }}" class="row">
 			

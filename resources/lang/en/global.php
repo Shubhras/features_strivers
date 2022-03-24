@@ -102,7 +102,7 @@ return [
 	
     
     // Signup
-    'create_your_account_it_is_stiver' => 'Create your account Strivers',
+    'create_your_account_it_is_stiver' => 'Create your account Strivres',
     'create_your_account_it_is_coach' => 'Create your account Coach',
     'year_of_experience' => ' Year of experience',
 

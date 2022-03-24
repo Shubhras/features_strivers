@@ -184,7 +184,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
     <!-- For demo purpose -->
     <div class="row mb-4">
         <div class="col-lg-8 mx-auto text-center">
-            <h3 class="display-6">Striver Payments</h3>
+            <h3 class="display-6">Strivre Payment</h3>
         </div>
     </div> <!-- End -->
 

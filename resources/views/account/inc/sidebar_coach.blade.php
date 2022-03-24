@@ -13,7 +13,7 @@
                                     <div class="d-flex align-items-center">
                                         <img src="../assets/images/avatar-1.png" alt="" class="rounded-circle avatar-lg">
                                         <div class="ms-3 lh-1">
-                                            <h5 class="mb-1 ">Striver Dashboard</h5>
+                                            <h5 class="mb-1 ">Strivre Dashboard</h5>
                                             <!-- <small>Free Member</small> -->
                                         </div>
                                     </div>
@@ -43,7 +43,7 @@
 										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_striver') }}">
 											<h5 class="collapse-title no-border">
 												<!-- <i class="fas fa-user-edit"></i> -->
-												{{ ('My Strivers') }}&nbsp;
+												{{ ('My Strivres') }}&nbsp;
 
 											</h5>
 										</a>
@@ -62,7 +62,7 @@
 										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_payments') }}">
 												<h5 class="collapse-title no-border">
 													<!-- <i class="fas fa-user-edit"></i> -->
-													{{ ('My payments') }} &nbsp;
+													{{ ('My payment') }} &nbsp;
 
 												</h5>
 										</a>
