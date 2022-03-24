@@ -196,7 +196,7 @@
 
 							<div class="row  coaches_payment_data">
 								<div class="col-lg-4 card bg-danger text-white card-body till_date_striver">
-									<span class="span_text_show">Total Strivers</span>
+									<span class="span_text_show">Total Strivres</span>
 									<span>12</span>
 
 

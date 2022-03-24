@@ -64,7 +64,7 @@
 
  <h2>
 
-<h2 class="sec-title">My Strivers</h2>
+<h2 class="sec-title">My Strivres</h2>
 </h2>
 
 	<div class="row" style="padding: 6px; margin-left: -4px;">

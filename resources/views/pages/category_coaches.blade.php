@@ -33,27 +33,7 @@
         </div>
     </div>
 
-<!-- <div class="container" style="margin-top: -190px;">
-    <div class="row height d-flex justify-content-center align-items-center">
-        <div class="col-md-9">
 
-            <div class="input-group">
-                <div class="form-outline search-box-fix1">
-                    <input type="text" id="form1" class="form-control search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more..." />
-
-                </div>
-                <button type="button" class="btn btn-primary btn_class_coaches search-box-font">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-
-        </div>
-    </div>
-</div> -->
-<!-- <br><br><br><br><br><br><br><br><br><br><br><br><br> -->
-<!-- Banner End -->
-
-<!-- <div class="mt-120"> -->
 
 <div class="elementor-widget-container">
 

@@ -63,12 +63,12 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label class="checkbox float-start mt-2 mb-2">
+                            <!-- <label class="checkbox float-start mt-2 mb-2">
                                 <label for="vehicle1">
                                     <input type="checkbox" value="1" name="remember" id="remember">
                                     Remember me</label>
 
-                            </label>
+                            </label> -->
                         </div>
                         <div class="col-md-6 text-right">
                             <div class="check">
