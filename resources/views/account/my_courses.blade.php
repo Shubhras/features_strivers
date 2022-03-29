@@ -44,7 +44,7 @@
 				</h2>
 
 				
-				<div class="row" style="padding: 6px; margin-left: -4px;">
+			<div class="row consultation" >
 
 
 					<div class="col-md-12 user-profile-img-data default-inner-box">
@@ -440,7 +440,7 @@
 									<div class="col-lg-4 col-md-6">
 										<div class="feature-course-item-4">
 											<div class="fcf-thumb">
-												<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="" style="height: 244px; weight: 244px;">
+												<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt=""class ="image-height" style="height: 244px; weight: 244px;">
 												<a class="enroll" href="#">Enroll Now</a>
 											</div>
 											<div class="fci-details">
@@ -485,7 +485,7 @@
 
 						<h2>
 
-							<h2 class="sec-title">All Course</h2>
+							<h2 class="sec-title sec-add">All Course</h2>
 						</h2>
 
 						<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -493,7 +493,7 @@
 
 							<div class="col-md-12 user-profile-img-data default-inner-box">
 
-								<img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+								<img  id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
 								<span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 
