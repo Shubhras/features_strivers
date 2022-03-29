@@ -1776,7 +1776,6 @@ input#phoneHidden {
 }
 
 @media (min-width: 768px) {
-   
     .navbar-brand img {
         /* width: 250px; */
         /* height: 70px; */
@@ -1906,6 +1905,10 @@ input#phoneHidden {
         height: 34px!important;
         background-color: #43329f!important;
     }
+    button.btn.btn-primary.btn_class_coaches12.search-box-font {
+        height: 34px!important;
+        background-color: #43329f!important;
+    }
     input.search-box-for-main {
         height: 34px!important;
     }
@@ -1994,6 +1997,14 @@ input#phoneHidden {
         height: 35px!important;
         background-color: #43329f!important;
     }
+    button.btn.btn-primary.btn_class_coaches12.search-box-font {
+        height: 35px!important;
+        background-color: #43329f!important;
+    }
+    .btn_class_coaches12 {
+        height: 35px;
+        background-color: #43329f!important;
+    }
     .hero-banner-1 {
         background-position: 48% 100%;
     }
@@ -2028,6 +2039,14 @@ input#phoneHidden {
     }
     button.btn.btn-primary.btn_class_coaches.search-box-font {
         height: 34px!important;
+        background-color: #43329f!important;
+    }
+    button.btn.btn-primary.btn_class_coaches12.search-box-font {
+        height: 34px!important;
+        background-color: #43329f!important;
+    }
+    .btn_class_coaches12 {
+        height: 34px;
         background-color: #43329f!important;
     }
     input.search-box-for-main {
@@ -2251,7 +2270,7 @@ input#phoneHidden {
     .consultation-modal-text {
         display: block;
         width: 100%;
-        height: calc(1.5em + 0.75rem + 2px);
+        height: calc(2.5em + 0.75rem + 2px);
         /* padding: 0.375rem 0.75rem; */
         /* font-size: 1rem; */
         font-size: 12px;
@@ -2263,6 +2282,13 @@ input#phoneHidden {
         border: 1px solid #ced4da;
         border-radius: 0.25rem;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    .top-coaches-by-category {
+        padding-bottom: 0px;
+    }
+    .btn_class_coaches12 {
+        height: 34px;
+        background-color: #43329f!important;
     }
 }
 
@@ -2373,7 +2399,7 @@ input#phoneHidden {
     .consultation-modal-text {
         display: block;
         width: 100%;
-        height: calc(1.5em + 0.75rem + 2px);
+        height: calc(2.5em + 0.75rem + 2px);
         /* padding: 0.375rem 0.75rem; */
         /* font-size: 1rem; */
         font-size: 12px;
@@ -2385,6 +2411,13 @@ input#phoneHidden {
         border: 1px solid #ced4da;
         border-radius: 0.25rem;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    .top-coaches-by-category {
+        padding-bottom: 0px;
+    }
+    .btn_class_coaches12 {
+        height: 35px;
+        background-color: #43329f!important;
     }
 }
 
@@ -2420,7 +2453,7 @@ input#phoneHidden {
     .modal {
         position: fixed;
         top: 0;
-        left: 65px;
+        left: 10px;
         z-index: 1050;
         display: none;
         width: 100%;
@@ -2495,7 +2528,7 @@ input#phoneHidden {
     .consultation-modal-text {
         display: block;
         width: 100%;
-        height: calc(1.5em + 0.75rem + 2px);
+        height: calc(2.5em + 0.75rem + 2px);
         /* padding: 0.375rem 0.75rem; */
         /* font-size: 1rem; */
         font-size: 12px;
@@ -2511,6 +2544,13 @@ input#phoneHidden {
     .modal-dialog {
         /* max-width: 500px; */
         margin: 0.75rem auto!important;
+    }
+    .top-coaches-by-category {
+        padding-bottom: 0px;
+    }
+    .btn_class_coaches12 {
+        height: 35px;
+        background-color: #43329f!important;
     }
 }
 
@@ -2535,6 +2575,14 @@ input#phoneHidden {
     }
     button.btn.btn-primary.btn_class_coaches.search-box-font {
         height: 50px!important;
+        background-color: #43329f!important;
+    }
+    button.btn.btn-primary.btn_class_coaches12.search-box-font {
+        height: 50px!important;
+        background-color: #43329f!important;
+    }
+    .btn_class_coaches12 {
+        height: 50px;
         background-color: #43329f!important;
     }
     input.search-box-for-main {
@@ -2640,7 +2688,7 @@ input#phoneHidden {
     .consultation-modal-text {
         display: block;
         width: 100%;
-        height: calc(1.5em + 0.75rem + 2px);
+        height: calc(2.5em + 0.75rem + 2px);
         /* padding: 0.375rem 0.75rem; */
         /* font-size: 1rem; */
         font-size: 12px;
@@ -2656,6 +2704,9 @@ input#phoneHidden {
     .modal-dialog {
         /* max-width: 500px; */
         margin: 0.75rem auto!important;
+    }
+    .top-coaches-by-category {
+        padding-bottom: 0px;
     }
 }
 
@@ -2764,7 +2815,7 @@ input#phoneHidden {
     .consultation-modal-text {
         display: block;
         width: 100%;
-        height: calc(1.5em + 0.75rem + 2px);
+        height: calc(2.5em + 0.75rem + 2px);
         /* padding: 0.375rem 0.75rem; */
         /* font-size: 1rem; */
         font-size: 12px;
@@ -2780,6 +2831,13 @@ input#phoneHidden {
     .modal-dialog {
         /* max-width: 500px; */
         margin: 0.75rem auto!important;
+    }
+    .top-coaches-by-category {
+        padding-bottom: 0px;
+    }
+    .btn_class_coaches12 {
+        height: 50px;
+        background-color: #43329f!important;
     }
 }
 
@@ -2887,12 +2945,12 @@ input#phoneHidden {
     }
     .modal-dialog {
         /* max-width: 500px; */
-        margin: 0.75rem auto!important;
+        margin: -0.25rem auto!important;
     }
     .consultation-modal-text {
         display: block;
         width: 100%;
-        height: calc(1.5em + 0.75rem + 2px);
+        height: calc(2.5em + 0.75rem + 2px);
         /* padding: 0.375rem 0.75rem; */
         /* font-size: 1rem; */
         font-size: 12px;
@@ -2904,6 +2962,13 @@ input#phoneHidden {
         border: 1px solid #ced4da;
         border-radius: 0.25rem;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    .top-coaches-by-category {
+        padding-bottom: 0px;
+    }
+    .btn_class_coaches12 {
+        height: 50px;
+        background-color: #43329f!important;
     }
 }
 
@@ -3169,6 +3234,10 @@ input#phoneHidden {
         height: 50px;
         background-color: #012245!important;
     }
+    .btn_class_coaches12 {
+        height: 50px;
+        background-color: #43329f!important;
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -3235,6 +3304,10 @@ input#phoneHidden {
         background-color: #012245!important;
     }
     .btn_class_coaches {
+        height: 50px;
+        background-color: #43329f!important;
+    }
+    .btn_class_coaches12 {
         height: 50px;
         background-color: #43329f!important;
     }
@@ -3326,6 +3399,10 @@ input#phoneHidden {
     }
     .btn_class_coaches {
         height: 60px;
+        background-color: #43329f!important;
+    }
+    .btn_class_coaches12 {
+        height: 50px;
         background-color: #43329f!important;
     }
     .search_box_filterss {

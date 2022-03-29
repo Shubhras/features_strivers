@@ -259,7 +259,7 @@ class EditController extends AccountBaseController
 			->leftjoin('coach_course','coach_course.id','=','user_subscription.course_id')
 			->where('user_subscription.student_id',$user->id)
 			->where('users.user_type_id',3)
-			->orderBy('users.id','asc')->get();
+			->orderBy('users.id','asc')->limit(6)->get();
 			
 		// print_r($data['users']);die;
 			
@@ -275,13 +275,15 @@ class EditController extends AccountBaseController
 
 
 		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*')->orderBy('coach_course.id','asc')->where('coach_course.coach_id', $user->id)->get();
+
 		$data['coach_coarsee']= DB::table('coach_course')->select('coach_course.*','users.name','users.photo')
 		->where('coach_course.coach_id', $user->id)
 		->leftjoin('users' ,'users.id' ,'=', 'coach_course.coach_id')->orderBy('id','desc')
-		->limit(9)->get();
+		->limit(6)->get();
+
 		$data['coach_striver']= DB::table('coach_course')->select('coach_course.*','users.name','users.photo')
 		->leftjoin('users' ,'users.id' ,'=', 'coach_course.coach_id')->orderBy('id','desc')
-		->limit(9)->get();
+		->limit(6)->get();
 		// print_r($data['coach_coarsee']);die;
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
@@ -548,11 +550,14 @@ class EditController extends AccountBaseController
 
 		// ]);
 		$datess = date('Y-m-d h:i:s');
-		// print_r($request->all());die;
+		//  print_r($request->all());die;
 		$data = array(
 			'coach_id' =>$user->id,
 			'course_name' =>$request->course_name,
+			'consultation_fee_per_hour' =>$request->consultation_fee_per_hour,
 			'course_hourse' => $request->course_hourse,
+			'total_consultation_fee' =>$request->total_consultation_fee,
+			'creadit_required' =>$request->creadit_required,
 			'description' => $request->description, 
 			'image' => $request->image, 
 			'starting_time' => $request->starting_time,
@@ -568,7 +573,8 @@ class EditController extends AccountBaseController
 
 		$tru = DB::table('coach_course')->insert($data);
 		
-		
+		// return redirect('my_courses')->back();
+		return redirect('/account/my_courses');
 		
 		
 
