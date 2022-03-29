@@ -676,8 +676,8 @@ pre code {
     .container-md,
     .container-lg,
     .container-xl {
-        max-width: 1170px;
-        /* max-width: 1294px; */
+        /* max-width: 1170px; */
+        max-width: 1294px;
     }
     .text_font_size_index232 {
         font-size: 49px!important;
@@ -698,16 +698,17 @@ pre code {
     margin-right: -15px;
     margin-left: -15px;
 }
+
 @media (min-width: 425px) {
-.row {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-    margin-top: 50px;
-}
+    .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        margin-top: 50px;
+    }
 }
 
 .no-gutters {
