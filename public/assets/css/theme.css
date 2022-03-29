@@ -2691,11 +2691,11 @@ footer .widget ul li a:hover {
 }
 
 .p-price span {
-    font-size: 16px;
+    font-size: 21px;
     line-height: .8;
     display: inline-block;
     color: #5d5a67;
-    font-weight: 400;
+    font-weight: 700;
     padding-top: 16px;
 }
 
@@ -3648,7 +3648,7 @@ footer .widget ul li a:hover {
 
 .fci-details .c-cate {
     font-size: 12px;
-    line-height: .8;
+    /* line-height: .8; */
     color: #5d5a67;
     text-transform: uppercase;
     font-weight: 600;
@@ -8065,4 +8065,22 @@ h4 {
     color: red;
     font-size: 23px;
     font-weight: 600;
+}
+
+.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    height: 130px;
+}
+
+
+/* 
+.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    border-color: var(--ck-color-base-border);
+    height: 120px;
+} */
+
+.ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-focused {
+    height: 130px;
+    outline: none;
+    border: var(--ck-focus-ring);
+    box-shadow: var(--ck-inner-shadow), 0 0;
 }

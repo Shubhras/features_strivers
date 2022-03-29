@@ -66,7 +66,7 @@
 														<h4>{{ $package->short_name}}</h4>
 														<img src="../assets/images/basic-1.svg" alt="Basic">
 														<div class="p-price">
-															<sup> $ </sup> {{$package->price}} <span>CONSULTATION {{$package->duration}} HOURS </span>
+															<sup> $ </sup> {{$package->price}} <span>GET {{$package->duration}} CREDIT </span>
 														</div>
 														<ul>
 
@@ -140,7 +140,7 @@
 														<img src="../assets/images/Standerd-3.svg" alt="Standard">
 														<div class="p-price">
 															<sup> $ </sup> {{$package->price}}
-															<span> CONSULTATION {{$package->duration}} HOURS </span>
+															<span> GET {{$package->duration}} CREDIT </span>
 														</div>
 														<ul>
 
@@ -216,7 +216,7 @@
 														<img src="../assets/images/Premium-2.svg" alt="Platinum">
 														<div class="p-price">
 															<sup> $ </sup> {{$package->price}}
-															<span> CONSULTATION {{$package->duration}} HOURS </span>
+															<span> GET {{$package->duration}} CREDIT </span>
 														</div>
 														<ul>
 

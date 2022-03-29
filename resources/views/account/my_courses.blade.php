@@ -43,7 +43,7 @@
 					<h2 class="sec-title">My Consultation</h2>
 				</h2>
 
-				
+
 				<div class="row" style="padding: 6px; margin-left: -4px;">
 
 
@@ -148,20 +148,20 @@
 
 						<!-- <div class="inner-box default-inner-box"> -->
 
-							<div class="row">
+						<div class="row">
 
-								<div class="inner-box">
+							<div class="inner-box">
 
-									<h2 class="title-2"> {{ ('My Consultation') }}
+								<h2 class="title-2"> {{ ('My Consultation') }}
 
-										<button id="myBtn" class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#myModal">+ Create Consultation</button>
-									</h2>
+									<button id="myBtn" class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#myModal">+ Create Consultation</button>
+								</h2>
 
 
-									<div class="table-responsive">
-										<form name="listForm" method="POST" action="{{ url('account/' . $pagePath . '/delete') }}">
-											{!! csrf_field() !!}
-											<!-- <div class="table-action">
+								<div class="table-responsive">
+									<form name="listForm" method="POST" action="{{ url('account/' . $pagePath . '/delete') }}">
+										{!! csrf_field() !!}
+										<!-- <div class="table-action">
 												<div class="btn-group hidden-sm" role="group">
 													<button type="button" class="btn btn-sm btn-secondary">
 														<input type="checkbox" id="checkAll" class="from-check-all">
@@ -306,14 +306,14 @@
 													<?php endif; ?>
 												</tbody>
 											</table> -->
-										</form>
-									</div>
+									</form>
+								</div>
 
-									<nav>
-										{{ (isset($posts)) ? $posts->links() : '' }}
-									</nav>
+								<nav>
+									{{ (isset($posts)) ? $posts->links() : '' }}
+								</nav>
 
-								
+
 
 								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 									<div class="modal-dialog" role="document">
@@ -329,47 +329,73 @@
 
 													<div class="row">
 														<div class="col-md-6">
-															<label for="recipient-name" class="control-label create-consultation-modal">Consultation Name</label>
+															<label for="recipient-name" class="control-label create-consultation-modal">Consultation Name:</label>
 
 															<input type="text" class="consultation-modal-text" id="course_name" name="course_name">
 
 
 
 														</div>
+
+														<div class="col-md-6">
+
+															<label for="recipient-name" class="control-label create-consultation-modal">Consultation Fee Per Hour ($) :</label>
+
+															<input type="number" class="consultation-modal-text" id="consultation_fee_per_hour" name="consultation_fee_per_hour" placeholder="Consultation fee per hour ($) ">
+
+
+														</div>
+
+
+													</div>
+
+
+													<div class="row">
+
 														<div class="col-md-6">
 
 															<label for="recipient-name" class="control-label create-consultation-modal">Consultation Hours:</label>
 
 															<input type="number" class="consultation-modal-text" id="course_hourse" name="course_hourse" placeholder="Enter Hours ">
 
-															
+
 														</div>
-													</div>
-
-
-													<div class="row">
 
 
 														<div class="col-md-6">
-															<label for="recipient-name" class="control-label create-consultation-modal">Consultation available - Date:</label>
+															<label for="recipient-name" class="control-label create-consultation-modal">Consultation Available - Date:</label>
 															<input type="date" class="consultation-modal-text" id="dated" name="dated" placeholder="yyyy/mm/dd">
 														</div>
 
 
-														<div class="col-md-6">
-															<label for="recipient-name" class="control-label create-consultation-modal"> start time:</label>
-															<input type="time" class="consultation-modal-text" id="starting_time" name="starting_time" placeholder="H:I:S">
-														</div>
+
 													</div>
 
 													<div class="row">
 
 
 														<div class="col-md-6">
-															<label for="add-image" class="control-label create-consultation-modal">Featured image:</label>
-
+															<label for="recipient-name" class="control-label create-consultation-modal"> Total Consultation Fee ($) :</label>
+															<input type="text" class="consultation-modal-text" id="total_consultation_fee" name="total_consultation_fee" placeholder="Total Consultation Fee">
 														</div>
 														<div class="col-md-6">
+
+															<label for="add-image" class="control-label create-consultation-modal">Creadit Required:</label>
+
+															<input type="text" class="consultation-modal-text" id="creadit_required" name="creadit_required" placeholder="Creadit Required">
+														</div>
+
+
+													</div>
+
+
+													<div class="row">
+
+
+														<div class="col-md-12">
+															<label for="add-image" class="control-label create-consultation-modal">Featured Image:</label>
+
+
 
 															<input type="file" class="consultation-modal-text" id="image" name="image" action="image.*" placeholder="add images">
 														</div>
@@ -380,14 +406,25 @@
 													<div class="row">
 														<div class="col-md-12">
 															<label for="message-text" class="control-label create-consultation-modal">Description:</label>
-															<!-- <textarea class="form-control" id="description" name="description" rows="4"></textarea> -->
 
-															<div id="editor" name="description" placeholder="This is some sample consultation content."></div>
+
+															<a href="#" style="margin-left: 177px;font-size: 14px;font-weight: 500;">Help</a>
+
+															<!-- <div id="editor" name="description" placeholder="This is some sample consultation content."> -->
+
+															<textarea name="description" id="description" rows="10" cols="80"></textarea>
+
+															<!-- </div> -->
 															<script>
 																ClassicEditor
-																	.create(document.querySelector('#editor'))
-																	.then(editor => {
-																		console.log(editor);
+																	.create(document.querySelector('#description'), {
+
+																		placeholder: 'Note  - Please work out a plan for this consultation and add detailed description of consultation package.  e.g.  Session 1 @ 1 hour (discovery)  Session 2 @ 1 hour (education review) Session 3 @ 1 hour (planning steps for success).... and so on '
+																		
+
+																	})
+																	.then(description => {
+																		console.log(description);
 																	})
 																	.catch(error => {
 																		console.error(error);
@@ -427,10 +464,10 @@
 							</div>
 
 
-						<!-- </div> -->
+							<!-- </div> -->
 
 
-						<!-- <div class="inner-box default-inner-box"> -->
+							<!-- <div class="inner-box default-inner-box"> -->
 
 
 							<div class="row">
@@ -440,11 +477,14 @@
 									<div class="col-lg-4 col-md-6">
 										<div class="feature-course-item-4">
 											<div class="fcf-thumb">
-												<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="" style="height: 244px; weight: 244px;">
+												<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt=""class ="image-height" style="height: 244px; weight: 244px;">
 												<a class="enroll" href="#">Enroll Now</a>
 											</div>
+
 											<div class="fci-details">
-												<a href="#" class="c-cate"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
+												<a href="#" class="c-cate">
+													<i class="fas fa-tags"></i>
+													{{$coaches_corsee->course_name}}</a>
 												<h4><a href="single-course.html">Using Creative Problem Solving</a></h4>
 												<div class="author">
 													<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
@@ -452,7 +492,7 @@
 												</div>
 												<div class="price-rate">
 													<div class="course-price"><a>
-															{{$coaches_corsee->course_hourse}} Hours
+															{{$coaches_corsee->total_consultation_fee}} fee
 														</a>
 													</div>
 
@@ -469,15 +509,15 @@
 
 
 
-						<!-- </div> -->
+							<!-- </div> -->
 
 
 
-						<!--/.page-content-->
+							<!--/.page-content-->
 						</div>
 
 						<br>
-						
+
 
 
 					<?php } else { ?>
@@ -485,7 +525,7 @@
 
 						<h2>
 
-							<h2 class="sec-title">All Course</h2>
+							<h2 class="sec-title sec-add">All Course</h2>
 						</h2>
 
 						<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -493,7 +533,7 @@
 
 							<div class="col-md-12 user-profile-img-data default-inner-box">
 
-								<img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+								<img  id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
 								<span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 
@@ -832,6 +872,35 @@
 </script>
 
 
+
+<script>
+   $('#course_hourse').keyup(function(){
+       var consultation_fee_per_hour;
+       var course_hourse;
+       consultation_fee_per_hour = parseFloat($('#consultation_fee_per_hour').val());
+       course_hourse = parseFloat($('#course_hourse').val());
+       var total_consultation_fee = consultation_fee_per_hour * course_hourse;
+	   var creadit_required = total_consultation_fee / 5; 
+       $('#total_consultation_fee').val(total_consultation_fee.toFixed(2));
+	   $('#creadit_required').val(creadit_required.toFixed(2));
+   });
+</script>
+
+<script>
+   $('#consultation_fee_per_hour').keyup(function(){
+       var consultation_fee_per_hour;
+       var course_hourse;
+       consultation_fee_per_hour = parseFloat($('#consultation_fee_per_hour').val());
+       course_hourse = parseFloat($('#course_hourse').val());
+       var total_consultation_fee = consultation_fee_per_hour * course_hourse;
+       var creadit_required = total_consultation_fee / 5; 
+       $('#total_consultation_fee').val(total_consultation_fee.toFixed(2));
+	   $('#creadit_required').val(creadit_required.toFixed(2));
+   });
+</script>
+
+
+
 <script>
 	// when category dropdown changes
 
@@ -844,7 +913,11 @@
 		$("form").submit(function(event) {
 			var formData = {
 				course_name: $("#course_name").val(),
+				consultation_fee_per_hour: $("#consultation_fee_per_hour").val(),
 				course_hourse: $("#course_hourse").val(),
+				total_consultation_fee: $("#total_consultation_fee").val(),
+				creadit_required: $("#creadit_required").val(),
+				image: $("#image").val(),
 				description: $("#description").val(),
 				starting_time: $("#starting_time").val(),
 				dated: $("#dated").val(),
@@ -883,10 +956,7 @@
 
 	}
 
-	/* .modal-body {
-    max-height: calc(100vh - 210px);
-    overflow-y: auto;
-} */
+
 </style>
 
 

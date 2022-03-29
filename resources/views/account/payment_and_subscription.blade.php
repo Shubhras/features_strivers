@@ -241,18 +241,18 @@
 									<form name="listForm" method="POST" action="{{ url('account/' . $pagePath . '/delete') }}">
 										{!! csrf_field() !!}
 										<div class="table-action">
-											<div class="btn-group hidden-sm" role="group">
-												<button type="button" class="btn btn-sm btn-secondary">
+											<!-- <div class="btn-group hidden-sm" role="group">
+												<!-- <button type="button" class="btn btn-sm btn-secondary">
 													<input type="checkbox" id="checkAll" class="from-check-all">
 												</button>
 												<button type="button" class="btn btn-sm btn-secondary from-check-all">
 													{{ t('Select') }}: {{ t('All') }}
-												</button>
-											</div>
+												</button> -->
+											</div> 
 
-											<button type="submit" class="btn btn-sm btn-default delete-action">
+											<!-- <button type="submit" class="btn btn-sm btn-default delete-action">
 												<i class="fa fa-trash"></i> {{ t('Delete') }}
-											</button>
+											</button> -->
 
 											<div class="table-search float-end col-sm-7">
 												<div class="form-group">
