@@ -3206,7 +3206,7 @@ input#phoneHidden {
         height: 410px;
     }
     .search_box_filterss {
-        width: 437px;
+        width: 496px;
     }
     .search-box_filter2 {
         margin-left: -2px
@@ -3407,7 +3407,7 @@ input#phoneHidden {
         background-color: #43329f!important;
     }
     .search_box_filterss {
-        width: 437px;
+        width: 496px;
     }
     .search-box_filter2 {
         margin-left: -2px
@@ -3479,7 +3479,6 @@ input#phoneHidden {
     height: 178px;
 }
 
-
 @media (min-width: 320px) and (max-width: 768px) {
     .navbar.navbar-expand-lg .navbar-collapse {
         position: absolute;
@@ -3504,6 +3503,7 @@ input#phoneHidden {
         padding-top: 579px;
     }
 }
+
 @media only screen and (min-device-width: 425px) {
     .row {
         display: -ms-flexbox;
@@ -3518,7 +3518,7 @@ input#phoneHidden {
         text-align: center;
         margin-bottom: -89px;
     }
-    .text-light{
+    .text-light {
         margin-left: 298px;
     }
     .header-01.fix-header .navbar-brand {
@@ -3579,14 +3579,12 @@ input#phoneHidden {
         line-height: 30px;
         width: 56px!important;
     }
-    
     table.fc-border-separate {
         border-collapse: separate;
         width: 63%!important;
     }
-    
-    
 }
+
 @media only screen and (min-device-width: 375px) {
     .row {
         display: -ms-flexbox;
@@ -3601,22 +3599,20 @@ input#phoneHidden {
         text-align: center;
         margin-bottom: -89px;
     }
-    .title-2{
-
+    .title-2 {
         font-size: 28px!important;
     }
-    .consultation{
-    padding: 6px;
-    margin-left: -4px;
-    margin-top: -33px;
-    
+    .consultation {
+        padding: 6px;
+        margin-left: -4px;
+        margin-top: -33px;
     }
     .sec-add {
         font-size: 16px!important;
         /* margin: -31px 0 -63px!important; */
         position: relative;
     }
-    .navbar-toggler{
+    .navbar-toggler {
         margin-left: 250px;
     }
     .feature-course-item-4 .fcf-thumb img {
@@ -3677,6 +3673,7 @@ input#phoneHidden {
         width: 63%!important;
     }
 }
+
 @media only screen and (min-device-width: 768px) {
     .row {
         display: -ms-flexbox;
@@ -3687,7 +3684,8 @@ input#phoneHidden {
         margin-left: -15px;
         margin-top: 0px!important;
     }
-    .result-table thead tr th, .result-table tbody tr td {
+    .result-table thead tr th,
+    .result-table tbody tr td {
         padding-left: 15px;
         padding-right: 15px;
         margin-bottom: -97px;
@@ -3767,8 +3765,8 @@ input#phoneHidden {
         border-collapse: separate;
         width: 100%;
     }
-    
 }
+
 @media only screen and (min-device-width: 320px) {
     .row {
         display: -ms-flexbox;
@@ -3783,11 +3781,10 @@ input#phoneHidden {
         text-align: center;
         margin-bottom: -89px;
     }
-    .title-2{
-       
+    .title-2 {
         font-size: 12px!important;
     }
-    .sec-add{
+    .sec-add {
         font-size: 22px!important;
         margin: -55px 0 -63px;
         position: relative;
@@ -3796,7 +3793,7 @@ input#phoneHidden {
         color: #fff;
         font-size: 8px;
     }
-    .navbar-toggler{
+    .navbar-toggler {
         /* margin-left: 195px; */
     }
     .input-group {
@@ -3878,6 +3875,7 @@ input#phoneHidden {
         width: 859px!important;
     }
 }
+
 @media only screen and (min-device-width: 1024px) {
     .row {
         display: -ms-flexbox;
@@ -3937,17 +3935,19 @@ input#phoneHidden {
         width: 1133!important;
     }
 }
+
 @media only screen and (min-device-width: 425px) {
     .modal-open .modal {
         overflow-x: hidden;
         overflow-y: auto;
         margin-left: -63px;
     }
-    .title-2{
-       
+    .title-2 {
         font-size: 17px!important;
     }
 }
+
+
 /* @media only screen and (min-device-width: 1920px) {
     .sec-title {
         font-size: 16px!important;
@@ -3955,14 +3955,15 @@ input#phoneHidden {
         position: relative;
     }
 } */
+
 @media only screen and (min-device-width: 1440px) {
-table.fc-border-separate {
-    border-collapse: separate;
-    width: 77%!important;
-}
-.fc-view {
-    width: 100%;
-    overflow: hidden;
-    width: 1130!important;
-}
+    table.fc-border-separate {
+        border-collapse: separate;
+        width: 77%!important;
+    }
+    .fc-view {
+        width: 100%;
+        overflow: hidden;
+        width: 1130!important;
+    }
 }
