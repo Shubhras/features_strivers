@@ -56,6 +56,9 @@ input#phoneHidden {
     .container-xl {
         max-width: 1045px;
     }
+    .btn_class {
+        height: 50px;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -94,6 +97,9 @@ input#phoneHidden {
     }
     .letest-offering-home {
         margin-top: 0px;
+    }
+    .btn_class {
+        height: 50px;
     }
     .join-btn021 {
         margin-left: -9px;
@@ -159,7 +165,7 @@ input#phoneHidden {
         max-width: 1209px!important;
     }
     .nav-menu-fix23 {
-        width: 1024px;
+        width: 1066px;
     }
 }
 
@@ -168,6 +174,9 @@ input#phoneHidden {
         /* width: 250px; */
         height: 100px;
     }
+    /* .btn_class {
+        height: 50px;
+    } */
     .project-manage {
         margin-top: 60px;
     }
@@ -419,12 +428,18 @@ input#phoneHidden {
         left: 512px;
         width: 27%;
     }
+    /* .btn_class {
+        height: 50px;
+    } */
 }
 
 @media (min-width: 992px) and (max-width: 1023px) {
     .project-manage {
         margin-top: 23px!important;
     }
+    /* .btn_class {
+        height: 50px;
+    } */
     .search-category-find {
         margin-top: -121px!important;
         width: 73%!important;
@@ -490,6 +505,9 @@ input#phoneHidden {
     .project-manage {
         margin-top: 57px!important;
     }
+    /* .btn_class {
+        height: 50px;
+    } */
     .cta-wrapper-p {
         margin: 52px 0 0 0!important;
     }
@@ -771,9 +789,9 @@ input#phoneHidden {
     .contact-form input[type="submit"] {
         padding: 0 0px!important;
     }
-    .btn_class {
-        height: 50px!important;
-    }
+    /* .btn_class {
+        height: 50px;
+    } */
     .course-wrapper {
         display: block;
     }
@@ -2711,6 +2729,13 @@ input#phoneHidden {
     }
 }
 
+@media only screen and (min-device-width: 768px) and (max-device-width: 2560px) {
+    .btn_class_320 {
+        height: 50px!important;
+        background-color: #012245!important;
+    }
+}
+
 @media only screen and (min-device-width: 769px) and (max-device-width: 991px) {
     .modal-title {
         margin-bottom: 0;
@@ -3521,11 +3546,16 @@ input#phoneHidden {
     .text-light {
         margin-left: 298px;
     }
-    .header-01.fix-header .navbar-brand {
-        padding: 17px -4px;
-        transition: all 0.1s ease-out;
-        margin-right: 317px;
+    .btn_class {
+        height: 35px;
+        background-color: #012245!important;
     }
+    /* .header-01.fix-header .navbar-brand {
+        padding: 17px -4px;
+        transition: all 0.1s ease-out; */
+    /* margin-right: 317px; */
+    /* margin-right: 186px;
+    } */
     .feature-course-item-4 .fcf-thumb img {
         width: 63%;
         height: auto;
@@ -3620,6 +3650,10 @@ input#phoneHidden {
         height: auto;
         border-radius: 15px 15px 0 0;
     }
+    .btn_class {
+        height: 35px;
+        background-color: #012245!important;
+    }
     /* .feature-course-item-4 .fci-details {
         padding: 15px 70px 0;
     }
@@ -3704,6 +3738,10 @@ input#phoneHidden {
         font-size: 16px!important;
         margin: -55px 0 -17px!important;
         position: relative;
+    }
+    .btn_class {
+        height: 50px;
+        background-color: #012245!important;
     }
     /* .feature-course-item-4 .fci-details {
         padding: 15px 70px 0;
@@ -3795,6 +3833,10 @@ input#phoneHidden {
     }
     .navbar-toggler {
         /* margin-left: 195px; */
+    }
+    .btn_class_320 {
+        height: 35px;
+        background-color: #012245!important;
     }
     .input-group {
         width: 100%;
@@ -3933,6 +3975,10 @@ input#phoneHidden {
         width: 100%;
         overflow: hidden;
         width: 1133!important;
+    }
+    .btn_class {
+        height: 50px;
+        background-color: #012245!important;
     }
 }
 
