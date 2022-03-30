@@ -3714,7 +3714,7 @@ input#phoneHidden {
         margin-top: 0px!important;
     } */
     .project-manage {
-        margin-top: 13px!important;
+        margin-top: 56px!important;
     }
     .result-table thead tr th,
     .result-table tbody tr td {
@@ -3803,9 +3803,15 @@ input#phoneHidden {
     }
 }
 
-@media only screen and (min-device-width: 769px) and (max-device-width: 2560px) {
+@media only screen and (min-device-width: 769px) and (max-device-width: 1560px) {
     .project-manage {
-        margin-top: 42px!important;
+        margin-top: 143px!important;
+    }
+}
+
+@media only screen and (min-device-width: 1562px) and (max-device-width: 2560px) {
+    .project-manage {
+        margin-top: -235px!important;
     }
 }
 
@@ -3820,7 +3826,7 @@ input#phoneHidden {
         margin-top: 45px;
     } */
     .project-manage {
-        margin-top: -53px;
+        margin-top: 53px;
     }
     .table-action {
         text-align: center;
