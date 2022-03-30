@@ -699,7 +699,8 @@ pre code {
     margin-left: -15px;
 }
 
-@media (min-width: 425px) {
+
+/* @media (min-width: 425px) {
     .row {
         display: -ms-flexbox;
         display: flex;
@@ -709,7 +710,7 @@ pre code {
         margin-left: -15px;
         margin-top: 50px;
     }
-}
+} */
 
 .no-gutters {
     margin-right: 0;
