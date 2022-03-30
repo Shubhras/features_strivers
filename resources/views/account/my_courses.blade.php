@@ -4,20 +4,9 @@
 
 @extends('layouts.master_new')
 
-
-
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
-
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script> -->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
-
-
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
-
 <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
-
 </section>
 
 @section('content')
@@ -27,12 +16,6 @@
 <section style="background-color: white;">
 	<div class="main-container">
 		<div class="container">
-
-
-
-
-
-
 
 			<?php if ($user->user_type_id == 2) {
 
@@ -443,16 +426,6 @@
 
 													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-													<!-- <div class="row">
-															<div class="col-md-6">
-															
-															<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-															</div>
-													</div> -->
-
-
-
 													<button type="submit" class="btn btn-primary">Submit</button>
 
 												</div>
@@ -482,7 +455,7 @@
 											</div>
 
 											<div class="fci-details">
-												<a href="#" class="c-cate">
+												<a href="#" class="c-cate sort_name">
 													<i class="fas fa-tags"></i>
 													{{$coaches_corsee->course_name}}</a>
 												<h4><a href="single-course.html">Using Creative Problem Solving</a></h4>
@@ -957,9 +930,80 @@
 	}
 
 
+
 </style>
 
 
+<style>
+    /* .sort_name {
+        display: inline-block;
+        width: 120px;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+        font-weight: 500;
+    } */
+
+
+    @media only screen and (max-width: 1440px) {
+        .sort_name {
+            display: inline-block;
+            width: 237px;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+            font-weight: 500;
+        }
+    }
+
+	@media only screen and (min-width: 1441px) and (max-width: 2560px) {
+        .sort_name {
+            display: inline-block;
+            width: 400px;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+            font-weight: 500;
+        }
+    }
+
+
+	/* @media only screen and (min-width: 320px) and (max-width: 425px) {
+        .sort_name {
+            display: inline-block;
+            width: 400px;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+            font-weight: 500;
+        }
+    }
+
+	@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+        .sort_name {
+            display: inline-block;
+            width: 237px;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+            font-weight: 500;
+        }
+    } */
+
+
+
+
+    @media only screen and (max-width: 1024px) {
+        .sort_name {
+            display: inline-block;
+            width: 191px;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+            font-weight: 500;
+        }
+    }
+</style>
 
 
 
