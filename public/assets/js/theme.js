@@ -256,7 +256,8 @@
 
         $('.navbar-nav li.menu-item-has-children').each(function() {
             var $this = $(this);
-            $this.append('<span class="submenu-toggler"><i class="fal fa-plus"></i></span>');
+            $this.append('<span class="submenu-toggler"></span>');
+            // <i class="fal fa-plus"></i>
         });
 
         $('.navbar-nav li.menu-item-has-children span.submenu-toggler').on('click', function() {

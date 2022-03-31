@@ -227,34 +227,31 @@
 
 
 
-						<div class="inner-box default-inner-box">
+						<!-- <div class="inner-box default-inner-box"> -->
 
 
 							<div class="row">
-
-
-
 
 
 								<div class="table-responsive">
 									<br>
 									<form name="listForm" method="POST" action="{{ url('account/' . $pagePath . '/delete') }}">
 										{!! csrf_field() !!}
-										<div class="table-action">
+										<!-- <div class="table-action"> -->
 											<!-- <div class="btn-group hidden-sm" role="group">
-												<!-- <button type="button" class="btn btn-sm btn-secondary">
+												 <button type="button" class="btn btn-sm btn-secondary">
 													<input type="checkbox" id="checkAll" class="from-check-all">
 												</button>
 												<button type="button" class="btn btn-sm btn-secondary from-check-all">
 													{{ t('Select') }}: {{ t('All') }}
 												</button> -->
-											</div> 
+											<!-- </div>  -->
 
 											<!-- <button type="submit" class="btn btn-sm btn-default delete-action">
 												<i class="fa fa-trash"></i> {{ t('Delete') }}
 											</button> -->
 
-											<div class="table-search float-end col-sm-7">
+											<!-- <div class="table-search float-end col-sm-7">
 												<div class="form-group">
 													<div class="row">
 														<label class="col-sm-5 control-label text-end">{{ t('search') }} <br>
@@ -265,8 +262,8 @@
 														</div>
 													</div>
 												</div>
-											</div>
-										</div>
+											</div> -->
+										<!-- </div> -->
 
 										<table id="addManageTable" class="result-table" data-filter="#filter" data-filter-text-only="true">
 											<thead>
@@ -430,98 +427,6 @@
 											</tbody>
 										</table>
 
-
-										<!-- <div class="tab-pane show in" id="finished" role="tabpanel">
-												<table class="result-table">
-													<thead>
-														<tr>
-															<th class="course">Course</th>
-															<th class="date">Date</th>
-															<th class="grade">Passing Grade</th>
-															<th class="progres">Progress</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td class="course">
-																<a href="#">Getting Started with LESS</a>
-															</td>
-															<td class="date">24/03/2020</td>
-															<td class="grade">50%</td>
-															<td class="progres">0% In Progress</td>
-														</tr>
-														<tr>
-															<td class="course">
-																<a href="#">LMS Interactive Content</a>
-															</td>
-															<td class="date">24/03/2020</td>
-															<td class="grade">40%</td>
-															<td class="progres">0% In Progress</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-											<div class="tab-pane show in" id="passed" role="tabpanel">
-												<table class="result-table">
-													<thead>
-														<tr>
-															<th class="course">Course</th>
-															<th class="date">Date</th>
-															<th class="grade">Passing Grade</th>
-															<th class="progres">Progress</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td class="course">
-																<a href="#">From Zero to Hero with Nodejs</a>
-															</td>
-															<td class="date">14/04/2019</td>
-															<td class="grade">70%</td>
-															<td class="progres">0% In Progress</td>
-														</tr>
-														<tr>
-															<td class="course">
-																<a href="#">Helping to change the world</a>
-															</td>
-															<td class="date">04/07/2018</td>
-															<td class="grade">50%</td>
-															<td class="progres">0% In Progress</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-											<div class="tab-pane show in" id="failed" role="tabpanel">
-												<table class="result-table">
-													<thead>
-														<tr>
-															<th class="course">Course</th>
-															<th class="date">Date</th>
-															<th class="grade">Passing Grade</th>
-															<th class="progres">Progress</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td class="course">
-																<a href="#">Getting Started with LESS</a>
-															</td>
-															<td class="date">24/03/2020</td>
-															<td class="grade">50%</td>
-															<td class="progres">0% In Progress</td>
-														</tr>
-														<tr>
-															<td class="course">
-																<a href="#">LMS Interactive Content</a>
-															</td>
-															<td class="date">24/03/2020</td>
-															<td class="grade">40%</td>
-															<td class="progres">0% In Progress</td>
-														</tr>
-													</tbody>
-												</table>
-											</div> -->
-
 									</form>
 								</div>
 							</div>
@@ -604,101 +509,7 @@
 		<h2 class="sec-title">My Subscriptions</h2>
 	</h2>
 
-	<!-- <div class="row ">
-		<div class="col-md-3 page-sidebar">
-			<div class="inner-box default-inner-box">
-				<h3 class="no-padding text-center-480 useradmin">
-					<a href="">
-						<img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp;
-						{{ $user->name }}
-					</a>
-				</h3>
-			</div>
-		</div>
-
-		<div class="col-md-9 page-content ">
-
-
-			<div class="inner-box default-inner-box edit-file-chat">
-				<div class="row">
-					<div class="col-md-4 col-sm-4 col-12">
-						<h3 class="no-padding text-center-480 useradmin">
-
-							<b> My Subscriptions </b>
-						</h3>
-					</div>
-					<div class="col-md-8 col-sm-8 col-12">
-                            <div class="header-data text-center-xs">
-                                {{-- Threads Stats --}}
-                                <div class="hdata">
-                                <a href="{{ url('account/messages') }}">
-
-                                    <div class="mcol-left">
-                                        <i class="fas fa-phone-alt ln-shadow"></i>
-                                    </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of messages --}}
-                                        <p>
-                                            
-                                                {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-                                               
-                                                <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-                                           
-                                        </p>
-                                    </div>
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                {{-- Traffic Stats --}}
-                                <div class="hdata">
-                                <a href="{{ url('account/chat') }}">
-                                    <div class="mcol-left">
-                                        <i class="fas fa-comments ln-shadow"></i>
-                                    </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of visitors --}}
-                                        <p>
-                                            
-                                                <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-                                                {{ \App\Helpers\Number::short($totalPostsVisits) }}
-                                    
-                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-                                           
-                                        </p>
-                                    </div>
-
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                               
-
-                                {{-- Favorites Stats --}}
-                                <div class="hdata" style="width: 151px!important;margin-left: -38px;">
-                                <a href="{{ url('account/favourite') }}">
-                                    <div class="mcol-left" >
-                                        <i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
-                                    </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of favorites --}}
-                                        <p>
-                                            
-                                                {{ \App\Helpers\Number::short($countFavoritePosts) }}
-                                                <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-                                           
-                                        </p>
-                                    </div>
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-				</div>
-			</div>
-
-		</div>
-	</div> -->
+	
 
 	<div class="row" style="padding: 6px; margin-left: -4px;">
 			
