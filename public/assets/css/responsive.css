@@ -3283,7 +3283,7 @@ input#phoneHidden {
         width: 249px;
     }
     .search-box-fix1 {
-        width: 406px;
+        width: 392px;
     }
     .search-box-font {
         font-size: 14px!important;
@@ -3757,6 +3757,14 @@ input#phoneHidden {
         border-collapse: separate;
         width: 63%;
     }
+    .btn.btn-link {
+        font-size: 11px!important;
+        color: black;
+    }
+    .btn.sub-categorry {
+        font-size: 15px;
+        color: cornflowerblue;
+    }
 }
 
 @media only screen and (min-device-width: 768px) {
@@ -3874,6 +3882,17 @@ input#phoneHidden {
         padding-left: 2px;
         padding-right: 4px;
     }
+    .btn.btn-link {
+        font-size: 7px!important;
+        color: black;
+    }
+    .btn.btn-link:hover {
+        color: blue;
+    }
+    .btn.sub-categorry {
+        font-size: 8px!important;
+        color: cornflowerblue;
+    }
 }
 
 
@@ -3929,6 +3948,17 @@ input#phoneHidden {
         font-size: 13px;
         padding-left: 2px;
         padding-right: 4px;
+    }
+    .btn.btn-link {
+        font-size: 27px!important;
+        color: black;
+        padding-left: 0px;
+        width: 100%;
+        flex-flow: column;
+    }
+    .btn.sub-categorry {
+        font-size: 15px;
+        color: cornflowerblue;
     }
 }
 
@@ -4075,6 +4105,14 @@ input#phoneHidden {
         overflow: hidden;
         width: 859px!important;
     }
+    .btn.btn-link {
+        font-size: 8px;
+        color: black;
+    }
+    .btn.sub-categorry {
+        font-size: 9px;
+        color: cornflowerblue;
+    }
 }
 
 @media only screen and (min-device-width: 1024px) {
@@ -4135,6 +4173,17 @@ input#phoneHidden {
         overflow: hidden;
         width: 1133!important;
     }
+    .btn.btn-link {
+        font-size: 10px!important;
+        color: black;
+        padding-left: 0px;
+        width: 100%;
+        flex-flow: column;
+    }
+    .btn.sub-categorry {
+        font-size: 15px;
+        color: cornflowerblue;
+    }
     .btn_class {
         height: 50px;
         background-color: #012245!important;
@@ -4165,6 +4214,14 @@ input#phoneHidden {
         padding-left: 4px;
         padding-right: 4px;
     } */
+    .btn.btn-link {
+        font-size: 6px;
+        color: black;
+    }
+    .btn.sub-categorry {
+        font-size: 15px;
+        color: cornflowerblue;
+    }
 }
 
 
@@ -4226,4 +4283,25 @@ table.fc-header {
 table.fc-border-separate {
     border-collapse: separate;
     width: 86%;
+}
+
+.collapsed {
+    font-size: 15px;
+}
+
+.btn.btn-link {
+    font-size: 15px!important;
+    color: black;
+}
+
+.btn.sub-categorry {
+    font-size: 15px;
+    color: cornflowerblue;
+}
+
+
+/* } */
+
+.accordion {
+    background-color: #ffff;
 }
