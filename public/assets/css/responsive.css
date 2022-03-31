@@ -3057,6 +3057,7 @@ input#phoneHidden {
         background: transparent;
         border: 2px solid rgb(255 255 255 / 92%);
     }
+    
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
@@ -3258,7 +3259,7 @@ input#phoneHidden {
         width: 249px;
     }
     .search-box-fix1 {
-        width: 406px;
+        width: 392px;
     }
     .search-box-font {
         font-size: 14px!important;
@@ -3701,6 +3702,15 @@ input#phoneHidden {
         border-collapse: separate;
         width: 63%!important;
     }
+    .btn.btn-link{
+        font-size: 11px!important;
+        color: black;
+        
+    }
+    .btn.sub-categorry{
+        font-size: 15px;
+        color:cornflowerblue;
+    }
 }
 
 @media only screen and (min-device-width: 768px) {
@@ -3801,17 +3811,44 @@ input#phoneHidden {
         border-collapse: separate;
         width: 100%;
     }
+    .btn.btn-link{
+        font-size: 7px!important;
+        color: black;
+        
+    }
+    .btn.btn-link:hover{
+        
+        color: blue;
+        
+    }
+    .btn.sub-categorry{
+        font-size: 8px!important;
+        color:cornflowerblue;
+    }
 }
 
 @media only screen and (min-device-width: 769px) and (max-device-width: 1560px) {
     .project-manage {
         margin-top: 143px!important;
     }
+
 }
 
 @media only screen and (min-device-width: 1562px) and (max-device-width: 2560px) {
     .project-manage {
         margin-top: -235px!important;
+    }
+    .btn.btn-link{
+    font-size: 27px!important;
+    color: black;
+    padding-left: 0px;
+    width: 100%;
+    flex-flow: column;
+    }
+    
+    .btn.sub-categorry{
+        font-size: 15px;
+        color:cornflowerblue;
     }
 }
 
@@ -3936,11 +3973,11 @@ input#phoneHidden {
         width: 859px!important;
     }
     .btn.btn-link{
-        font-size: 18px;
+        font-size: 8px;
         color: black;
     }
     .btn.sub-categorry{
-        font-size: 15px;
+        font-size: 9px;
         color:cornflowerblue;
     }
 }
@@ -4004,9 +4041,13 @@ input#phoneHidden {
         width: 1133!important;
     }
     .btn.btn-link{
-        font-size: 18px;
-        color: black;
+        font-size: 10px!important;
+    color: black;
+    padding-left: 0px;
+    width: 100%;
+    flex-flow: column;
     }
+    
     .btn.sub-categorry{
         font-size: 15px;
         color:cornflowerblue;
@@ -4027,7 +4068,7 @@ input#phoneHidden {
         font-size: 17px!important;
     }
     .btn.btn-link{
-        font-size: 18px;
+        font-size: 6px;
         color: black;
     }
     .btn.sub-categorry{
@@ -4061,11 +4102,14 @@ input#phoneHidden {
         font-size: 15px;
     }
     .btn.btn-link{
-        font-size: 18px;
+        font-size: 15px!important;
         color: black;
     }
     .btn.sub-categorry{
         font-size: 15px;
         color:cornflowerblue;
     }
+}
+.accordion{
+    background-color: #ffff;
 }

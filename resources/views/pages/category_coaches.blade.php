@@ -68,11 +68,12 @@ h1 {
     padding: 12px 16px;
     background-color: white;
     cursor: pointer;
-    font-size:20px;
+    font-size: 20px;
 }
 
 .btn:hover {
     background-color: #ddd;
+    color: blue;
 }
 
 .btn.active {
@@ -127,7 +128,7 @@ h1 {
             </h2>
 
             <!-- <div class="row"> -->
-                <!-- <div class="col-md-3">
+            <!-- <div class="col-md-3">
 
                     <div class="row">
 
@@ -161,9 +162,9 @@ h1 {
                 </div> -->
 
 
-                <!-- <div class="col-md-8"> -->
+            <!-- <div class="col-md-8"> -->
 
-                <!-- <div class="row">
+            <!-- <div class="row">
 
                         <?php
 
@@ -263,16 +264,16 @@ h1 {
 
                 </div> -->
 
-                <div class="row">
-                <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-4">
 
                     <div id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('all')">
                         <!-- <li class="btn active" onclick="filterSelection('all')"></button> -->
-                        
+
                     </div>
                     <div class="accordion" id="accordionExample">
-                    @foreach($categories as $key => $cat)
-                    <?php
+                        @foreach($categories as $key => $cat)
+                        <?php
                                 $name = json_decode($cat->name);
                                 $ss = array();
                                 foreach ($name as $key => $sub) {
@@ -280,38 +281,43 @@ h1 {
                                 }
                                 ?>
 
-                                
-                        <div class="card">
+
+                        <div class="subject-title-name-cat">
                             <div class="card-header" id="heading{{ $cat->id }}">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}">
-                                {{ $ss['en'] }}
-                                </button>
-                            </h5>
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse"
+                                        data-target="#collapse{{ $cat->id }}" aria-expanded="true"
+                                        aria-controls="collapse{{ $cat->id }}">
+                                        {{ $ss['en'] }}
+                                    </button><i class="fa fa-angle-up" id="donar" style="float: right;"></i>
+                                </h5>
                             </div>
 
-                            <div id="collapse{{ $cat->id }}" class="collapse" aria-labelledby="heading{{ $cat->id }}" data-parent="#accordionExample">
-                            <div class="card-body">
-                            @foreach($sub_categories as $key => $sub_cat)
-                                @if($sub_cat->parent_id == $cat->id)
-                                <?php
+                            <div id="collapse{{ $cat->id }}" class="collapse" aria-labelledby="heading{{ $cat->id }}"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    @foreach($sub_categories as $key => $sub_cat)
+                                    @if($sub_cat->parent_id == $cat->id)
+                                    <?php
                                 $name = json_decode($sub_cat->name);
                                 $ss = array();
                                 foreach ($name as $key => $sub) {
                                     $ss[$key] = $sub;
                                 }
                                 ?>
-                                <li> <button class="btn sub-categorry" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}</button> </li>
+                                    <li style=" border-bottom: 1px solid;"> <button class="btn sub-categorry"
+                                            onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}</button>
+                                    </li>
 
-                                @endif
-                            @endforeach
-                            </div>
+                                    @endif
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-                    @endforeach
+                        @endforeach
                     </div>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-8">
 
 
                     <div class="row">
@@ -320,7 +326,8 @@ h1 {
                         ?>
                         <div class="column {{$coach_list->slug_name}}">
                             <div class="teacher-thumb coach-img-wrapper">
-                                <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Mountains" style="width:100%" alt="{{ $coach_list->name }}">
+                                <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Mountains" style="width:100%"
+                                    alt="{{ $coach_list->name }}">
                                 <div class="teacher-social">
                                     <a href="#">
                                         <i aria-hidden="true" class="fab fa-facebook-f"></i>
@@ -335,19 +342,21 @@ h1 {
                                         <i aria-hidden="true" class="fab fa-vimeo-v"></i>
                                     </a>
                                 </div>
-                            </div>  
-                                <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
+                            </div>
+                            <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal"
+                                data-target=".bd-example-modal-lg_{{$coach_list->id }}"
+                                id="coach_id_{{$coach_list->id }}">
 
-                                            <h5 class="coach-cat-name12">
-                                                {{ $coach_list->name }}
-                                            </h5>
-                                    </a>
-                                        <p>Stylist &amp; Author
-                                        </p>
+                                <h5 class="coach-cat-name12">
+                                    {{ $coach_list->name }}
+                                </h5>
+                            </a>
+                            <p>Stylist &amp; Author
+                            </p>
 
-                            
+
                         </div>
-                    <?php } ?>
+                        <?php } ?>
                     </div>
 
                     <script>
@@ -636,6 +645,3 @@ $(function() {
 @endsection
 
 @section('after_scripts')
-
-
-
