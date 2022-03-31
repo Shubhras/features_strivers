@@ -39,13 +39,13 @@
                     <div class="input-group">
 
 
-                        <div class="location-search-coach-text col-md-11 search-box-text">
+                        <div class="location-search-coach-text col-md-10 search-box-text">
                             <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more..." title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
 
 
                         </div>
 
-                        <button type="submit" class="btn btn87 btn-primary btn_class search-button-icon-width">
+                        <button type="submit" class="btn btn87 btn-primary btn_class search-button-icon-width btn_class_320">
                            
 
                             <i class="fas fa-search" alt="{{ ('find') }}"></i>

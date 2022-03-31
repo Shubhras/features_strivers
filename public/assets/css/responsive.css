@@ -56,6 +56,9 @@ input#phoneHidden {
     .container-xl {
         max-width: 1045px;
     }
+    .btn_class {
+        height: 50px;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -94,6 +97,9 @@ input#phoneHidden {
     }
     .letest-offering-home {
         margin-top: 0px;
+    }
+    .btn_class {
+        height: 50px;
     }
     .join-btn021 {
         margin-left: -9px;
@@ -159,7 +165,7 @@ input#phoneHidden {
         max-width: 1209px!important;
     }
     .nav-menu-fix23 {
-        width: 1024px;
+        width: 1066px;
     }
 }
 
@@ -168,6 +174,9 @@ input#phoneHidden {
         /* width: 250px; */
         height: 100px;
     }
+    /* .btn_class {
+        height: 50px;
+    } */
     .project-manage {
         margin-top: 60px;
     }
@@ -419,12 +428,18 @@ input#phoneHidden {
         left: 512px;
         width: 27%;
     }
+    /* .btn_class {
+        height: 50px;
+    } */
 }
 
 @media (min-width: 992px) and (max-width: 1023px) {
     .project-manage {
         margin-top: 23px!important;
     }
+    /* .btn_class {
+        height: 50px;
+    } */
     .search-category-find {
         margin-top: -121px!important;
         width: 73%!important;
@@ -490,6 +505,9 @@ input#phoneHidden {
     .project-manage {
         margin-top: 57px!important;
     }
+    /* .btn_class {
+        height: 50px;
+    } */
     .cta-wrapper-p {
         margin: 52px 0 0 0!important;
     }
@@ -771,9 +789,9 @@ input#phoneHidden {
     .contact-form input[type="submit"] {
         padding: 0 0px!important;
     }
-    .btn_class {
-        height: 50px!important;
-    }
+    /* .btn_class {
+        height: 50px;
+    } */
     .course-wrapper {
         display: block;
     }
@@ -2448,8 +2466,9 @@ input#phoneHidden {
         z-index: 5;
     }
     .login-model-page {
-        width: 272px!important;
+        width: 337px!important;
         /* height: 492px; */
+        margin-left: 83px
     }
     .modal {
         position: fixed;
@@ -2560,6 +2579,12 @@ input#phoneHidden {
         margin-bottom: 0;
         /* line-height: 1.5; */
         font-size: 14px!important;
+    }
+    .login-model-page {
+        width: 337px!important;
+        /* height: 492px; */
+        margin-left: 46px;
+        margin-top: 12px;
     }
     .create-consultation-modal {
         margin-bottom: 6px;
@@ -2708,6 +2733,13 @@ input#phoneHidden {
     }
     .top-coaches-by-category {
         padding-bottom: 0px;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 2560px) {
+    .btn_class_320 {
+        height: 50px!important;
+        background-color: #012245!important;
     }
 }
 
@@ -3505,14 +3537,8 @@ input#phoneHidden {
 }
 
 @media only screen and (min-device-width: 425px) {
-    .row {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
-        margin-top: 50px;
+    .project-manage {
+        margin-top: -53px;
     }
     .table-action {
         text-align: center;
@@ -3521,11 +3547,16 @@ input#phoneHidden {
     .text-light {
         margin-left: 298px;
     }
-    .header-01.fix-header .navbar-brand {
-        padding: 17px -4px;
-        transition: all 0.1s ease-out;
-        margin-right: 317px;
+    .btn_class {
+        height: 35px;
+        background-color: #012245!important;
     }
+    /* .header-01.fix-header .navbar-brand {
+        padding: 17px -4px;
+        transition: all 0.1s ease-out; */
+    /* margin-right: 317px; */
+    /* margin-right: 186px;
+    } */
     .feature-course-item-4 .fcf-thumb img {
         width: 63%;
         height: auto;
@@ -3586,14 +3617,8 @@ input#phoneHidden {
 }
 
 @media only screen and (min-device-width: 375px) {
-    .row {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
-        margin-top: 45px;
+    .project-manage {
+        margin-top: -53px;
     }
     .table-action {
         text-align: center;
@@ -3619,6 +3644,10 @@ input#phoneHidden {
         width: 63%;
         height: auto;
         border-radius: 15px 15px 0 0;
+    }
+    .btn_class {
+        height: 35px;
+        background-color: #012245!important;
     }
     /* .feature-course-item-4 .fci-details {
         padding: 15px 70px 0;
@@ -3675,7 +3704,7 @@ input#phoneHidden {
 }
 
 @media only screen and (min-device-width: 768px) {
-    .row {
+    /* .row {
         display: -ms-flexbox;
         display: flex;
         -ms-flex-wrap: wrap;
@@ -3683,6 +3712,9 @@ input#phoneHidden {
         margin-right: -15px;
         margin-left: -15px;
         margin-top: 0px!important;
+    } */
+    .project-manage {
+        margin-top: 56px!important;
     }
     .result-table thead tr th,
     .result-table tbody tr td {
@@ -3704,6 +3736,10 @@ input#phoneHidden {
         font-size: 16px!important;
         margin: -55px 0 -17px!important;
         position: relative;
+    }
+    .btn_class {
+        height: 50px;
+        background-color: #012245!important;
     }
     /* .feature-course-item-4 .fci-details {
         padding: 15px 70px 0;
@@ -3767,8 +3803,20 @@ input#phoneHidden {
     }
 }
 
+@media only screen and (min-device-width: 769px) and (max-device-width: 1560px) {
+    .project-manage {
+        margin-top: 143px!important;
+    }
+}
+
+@media only screen and (min-device-width: 1562px) and (max-device-width: 2560px) {
+    .project-manage {
+        margin-top: -235px!important;
+    }
+}
+
 @media only screen and (min-device-width: 320px) {
-    .row {
+    /* .row {
         display: -ms-flexbox;
         display: flex;
         -ms-flex-wrap: wrap;
@@ -3776,6 +3824,9 @@ input#phoneHidden {
         margin-right: -15px;
         margin-left: -15px;
         margin-top: 45px;
+    } */
+    .project-manage {
+        margin-top: 53px;
     }
     .table-action {
         text-align: center;
@@ -3796,10 +3847,20 @@ input#phoneHidden {
     .navbar-toggler {
         /* margin-left: 195px; */
     }
+    .btn_class_320 {
+        height: 35px;
+        background-color: #012245!important;
+    }
     .input-group {
         width: 100%;
         box-sizing: border-box;
-        padding: 11px 5px 56px 0;
+        /* padding: 11px 5px 56px 0; */
+        flex-flow: row wrap;
+    }
+    .input-group-login {
+        width: 100%;
+        box-sizing: border-box;
+        /* padding: 11px 5px 56px 0; */
         flex-flow: row wrap;
     }
     .feature-course-item-4 .fcf-thumb img {
@@ -3949,6 +4010,10 @@ input#phoneHidden {
     .btn.sub-categorry{
         font-size: 15px;
         color:cornflowerblue;
+    }
+    .btn_class {
+        height: 50px;
+        background-color: #012245!important;
     }
 }
 
