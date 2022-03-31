@@ -363,9 +363,9 @@
 														</div>
 														<div class="col-md-6">
 
-															<label for="add-image" class="control-label create-consultation-modal">Creadit Required:</label>
+															<label for="add-image" class="control-label create-consultation-modal">Credit Required:</label>
 
-															<input type="text" class="consultation-modal-text" id="creadit_required" name="creadit_required" placeholder="Creadit Required">
+															<input type="text" class="consultation-modal-text" id="creadit_required" name="creadit_required" placeholder="Credit Required">
 														</div>
 
 
@@ -498,7 +498,7 @@
 
 						<h2>
 
-							<h2 class="sec-title sec-add">All Course</h2>
+							<h3 class="sec-title sec-add">All Consultation</h3>
 						</h2>
 
 						<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -612,7 +612,7 @@
 														<a class="enroll" href="#">Enroll Now</a>
 													</div>
 													<div class="fci-details">
-														<a href="#" class="c-cate"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
+														<a href="#" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
 														<h4><a href="#">Using Creative Problem Solving</a></h4>
 														<div class="author">
 															<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
@@ -945,7 +945,7 @@
     } */
 
 
-    @media only screen and (max-width: 1440px) {
+    /* @media only screen and (max-width: 1440px) {
         .sort_name {
             display: inline-block;
             width: 237px;
@@ -965,34 +965,13 @@
             text-overflow: ellipsis;
             font-weight: 500;
         }
-    }
-
-
-	/* @media only screen and (min-width: 320px) and (max-width: 425px) {
-        .sort_name {
-            display: inline-block;
-            width: 400px;
-            white-space: nowrap;
-            overflow: hidden !important;
-            text-overflow: ellipsis;
-            font-weight: 500;
-        }
-    }
-
-	@media only screen and (min-width: 1025px) and (max-width: 1440px) {
-        .sort_name {
-            display: inline-block;
-            width: 237px;
-            white-space: nowrap;
-            overflow: hidden !important;
-            text-overflow: ellipsis;
-            font-weight: 500;
-        }
     } */
 
 
 
 
+
+/* 
     @media only screen and (max-width: 1024px) {
         .sort_name {
             display: inline-block;
@@ -1002,7 +981,7 @@
             text-overflow: ellipsis;
             font-weight: 500;
         }
-    }
+    } */
 </style>
 
 

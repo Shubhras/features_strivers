@@ -331,14 +331,14 @@ class EditController extends AccountBaseController
 			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
 			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
 			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
-			->where('users.user_type_id',2)->orderBy('users.id','asc')->get();
+			->where('users.user_type_id',2)->orderBy('users.id','asc')->limit(8)->get();
 
 			$data['suggested_striver'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
 			->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
 			->leftjoin('categories as sub' ,'sub.id' ,'=' ,'users.sub_category')
 			->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
 			
-			->where('users.user_type_id',3)->orderBy('users.id','asc')->get();
+			->where('users.user_type_id',3)->orderBy('users.id','asc')->limit(8)->get();
 
 
 			$data['user_subscriptions1'] = DB::table('user_subscription')->select('user_subscription.*','packages.name','users.name as username')

@@ -1416,16 +1416,16 @@ input#phoneHidden {
         right: 0;
         margin: 15px 0;
     }
-    .result-table thead tr th {
-        font-size: 12px;
+    /* .result-table thead tr th {
+        font-size: 12px!important;
         padding-left: 10px;
         padding-right: 10px;
     }
     .result-table tbody tr td {
-        font-size: 12px;
+        font-size: 12px!important;
         padding-left: 10px;
         padding-right: 10px;
-    }
+    } */
     .post-tags {
         display: block;
     }
@@ -2173,7 +2173,7 @@ input#phoneHidden {
     .modal {
         position: fixed;
         top: 0;
-        left: 18px;
+        left: 0px;
         z-index: 1050;
         display: none;
         width: 100%;
@@ -2343,7 +2343,7 @@ input#phoneHidden {
     .modal {
         position: fixed;
         top: 0;
-        left: 40px;
+        left: 0px;
         z-index: 1050;
         display: none;
         width: 100%;
@@ -3006,6 +3006,14 @@ input#phoneHidden {
 }
 
 @media screen and (min-width: 425px) {
+    .sort_name {
+        display: inline-block;
+        width: 237px;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+        font-weight: 500;
+    }
     .search-box-font {
         font-size: 14px!important;
     }
@@ -3060,6 +3068,19 @@ input#phoneHidden {
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+    .fci-details .c-cate {
+        font-size: 10px;
+        /* line-height: .8; */
+        color: #5d5a67;
+        text-transform: uppercase;
+        font-weight: 600;
+        display: block;
+        margin: 0 0 13px;
+    }
+    .feature-course-item-4 .fci-details h4 {
+        font-size: 13px;
+        margin-bottom: -9px;
+    }
     .global_page_white {
         letter-spacing: normal;
         line-height: 27px;
@@ -3115,7 +3136,11 @@ input#phoneHidden {
         margin-top: 56px!important;
     }
     .header-data.text-center-xs {
-        margin-top: 47px!important;
+        /* margin-top: 47px!important; */
+        margin-top: -137px!important;
+        margin-left: -15px;
+        padding-top: 18px;
+        padding-bottom: 16px;
     }
     .hero-content_h2 {
         font-size: 28px!important;
@@ -3258,7 +3283,7 @@ input#phoneHidden {
         width: 249px;
     }
     .search-box-fix1 {
-        width: 406px;
+        width: 392px;
     }
     .search-box-font {
         font-size: 14px!important;
@@ -3537,6 +3562,22 @@ input#phoneHidden {
 }
 
 @media only screen and (min-device-width: 425px) {
+    /* .edit-profile-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: #2c234d;
+    }
+    .hdata i {
+        border-radius: 50px;
+        box-shadow: 0 0 1px #777 inset;
+        color: #fff;
+        display: inline-block;
+        font-size: 12px;
+        height: 26px;
+        line-height: 27px;
+        text-align: center;
+        width: 28px;
+    } */
     .project-manage {
         margin-top: -53px;
     }
@@ -3583,20 +3624,20 @@ input#phoneHidden {
     table.fc-header {
         background-color: #FFFFFF;
         border-radius: 6px 6px 0 0;
-        width: 72%!important;
+        width: 39%;
     }
     .fc-header-left {
-        width: 15%!important;
+        width: 25%!important;
         text-align: left;
     }
     .fc-header-right {
-        width: 51%!important;
+        width: 40%!important;
         text-align: right;
     }
     .fc-header-title h2 {
         margin-top: 0;
         white-space: nowrap;
-        font-size: 16px!important;
+        font-size: 15px!important;
         font-weight: 500;
         margin-bottom: 10px;
         font-family: 'Roboto', sans-serif;
@@ -3612,11 +3653,39 @@ input#phoneHidden {
     }
     table.fc-border-separate {
         border-collapse: separate;
-        width: 63%!important;
+        width: 63%;
+    }
+    .fc-header-title {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 3px;
+    }
+    .fc-header td {
+        white-space: nowrap;
+        padding: 11px 5px 0px;
+    }
+    .fc-header .fc-button {
+        margin-right: -8px;
     }
 }
 
 @media only screen and (min-device-width: 375px) {
+    /* .edit-profile-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: #2c234d;
+    }
+    .hdata i {
+        border-radius: 50px;
+        box-shadow: 0 0 1px #777 inset;
+        color: #fff;
+        display: inline-block;
+        font-size: 12px;
+        height: 26px;
+        line-height: 27px;
+        text-align: center;
+        width: 28px;
+    } */
     .project-manage {
         margin-top: -53px;
     }
@@ -3649,19 +3718,6 @@ input#phoneHidden {
         height: 35px;
         background-color: #012245!important;
     }
-    /* .feature-course-item-4 .fci-details {
-        padding: 15px 70px 0;
-    }
-    .teacher-item {
-        position: relative;
-        text-align: center;
-        margin: 0 90px 51px;
-        -webkit-transition: all 0.4s ease;
-        -o-transition: all 0.4s ease;
-        transition: all 0.4s ease;
-        height: 150px;
-        width: 200px;
-    } */
     .fc-content {
         position: relative;
         margin-left: 0px;
@@ -3670,7 +3726,7 @@ input#phoneHidden {
     table.fc-header {
         background-color: #FFFFFF;
         border-radius: 6px 6px 0 0;
-        width: 72%!important;
+        width: 72%;
     }
     .fc-header-left {
         width: 15%!important;
@@ -3699,20 +3755,56 @@ input#phoneHidden {
     }
     table.fc-border-separate {
         border-collapse: separate;
-        width: 63%!important;
+        width: 63%;
+    }
+    .btn.btn-link {
+        font-size: 11px!important;
+        color: black;
+    }
+    .btn.sub-categorry {
+        font-size: 15px;
+        color: cornflowerblue;
     }
 }
 
 @media only screen and (min-device-width: 768px) {
-    /* .row {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
-        margin-top: 0px!important;
+    /* .edit-profile-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: #2c234d;
+    }
+    .hdata i {
+        border-radius: 50px;
+        box-shadow: 0 0 1px #777 inset;
+        color: #fff;
+        display: inline-block;
+        font-size: 8px;
+        height: 18px;
+        line-height: 18px;
+        text-align: center;
+        width: 19px;
+    }
+    .hdata {
+        display: inline-block;
+        margin-right: 7px;
+        width: 46px;
     } */
+    .navbar-brand-23 {
+        position: relative;
+        /* padding: 22px 0; */
+        padding: 0px 0;
+        margin: 0;
+        text-align: center;
+        margin-left: -623px!important;
+    }
+    .navbar-brand-23 img {
+        /* width: 250px!important; */
+        height: 70px!important;
+    }
+    .edit-profile-coach {
+        padding-right: 6px;
+        margin-top: -41px;
+    }
     .project-manage {
         margin-top: 56px!important;
     }
@@ -3741,27 +3833,6 @@ input#phoneHidden {
         height: 50px;
         background-color: #012245!important;
     }
-    /* .feature-course-item-4 .fci-details {
-        padding: 15px 70px 0;
-    }
-    .teacher-item {
-        position: relative;
-        text-align: center;
-        margin: 0 90px 51px;
-        -webkit-transition: all 0.4s ease;
-        -o-transition: all 0.4s ease;
-        transition: all 0.4s ease;
-        height: 200px!important;
-        width: 221px!important;
-    } */
-    /* .fc-header{
-        width: 95%;
-    } */
-    /* .fc-content{
-
-    position: relative;
-    margin-left: -30px;
-    } */
     .fc-content {
         position: relative;
         margin-left: 0px;
@@ -3770,7 +3841,7 @@ input#phoneHidden {
     table.fc-header {
         background-color: #FFFFFF;
         border-radius: 6px 6px 0 0;
-        width: 72%!important;
+        width: 72%!important
     }
     .fc-header-left {
         width: 15%!important;
@@ -3801,11 +3872,50 @@ input#phoneHidden {
         border-collapse: separate;
         width: 100%;
     }
+    .result-table tbody tr td {
+        font-size: 13px;
+        padding-left: -1px;
+        padding-right: 0px;
+    }
+    .result-table thead tr th {
+        font-size: 13px;
+        padding-left: 2px;
+        padding-right: 4px;
+    }
+    .btn.btn-link {
+        font-size: 7px!important;
+        color: black;
+    }
+    .btn.btn-link:hover {
+        color: blue;
+    }
+    .btn.sub-categorry {
+        font-size: 8px!important;
+        color: cornflowerblue;
+    }
 }
+
+
+/* @media only screen and (min-width: 1278px) and (max-width: 1440px) {
+    .result-table tbody tr td {
+        font-size: 13px!important;
+        padding-left: -1px;
+        padding-right: 0px;
+    }
+    .result-table thead tr th {
+        font-size: 13px!important;
+        padding-left: 2px;
+        padding-right: 4px;
+    }
+} */
 
 @media only screen and (min-device-width: 769px) and (max-device-width: 1560px) {
     .project-manage {
         margin-top: 143px!important;
+    }
+    .edit-profile-coach {
+        padding-right: 6px;
+        margin-top: -41px;
     }
 }
 
@@ -3813,17 +3923,76 @@ input#phoneHidden {
     .project-manage {
         margin-top: -235px!important;
     }
+    .edit-profile-coach {
+        padding-right: 6px;
+        margin-top: -41px;
+    }
+    .navbar-brand-23 {
+        position: relative;
+        /* padding: 22px 0; */
+        padding: 0px 0;
+        margin: 0;
+        text-align: center;
+        margin-left: -22px!important;
+    }
+    .navbar-brand-23 img {
+        /* width: 250px!important; */
+        height: 70px!important;
+    }
+    .result-table tbody tr td {
+        font-size: 13px;
+        padding-left: -1px;
+        padding-right: 0px;
+    }
+    .result-table thead tr th {
+        font-size: 13px;
+        padding-left: 2px;
+        padding-right: 4px;
+    }
+    .btn.btn-link {
+        font-size: 27px!important;
+        color: black;
+        padding-left: 0px;
+        width: 100%;
+        flex-flow: column;
+    }
+    .btn.sub-categorry {
+        font-size: 15px;
+        color: cornflowerblue;
+    }
 }
 
 @media only screen and (min-device-width: 320px) {
-    /* .row {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
-        margin-top: 45px;
+    /* .result-table tbody tr td {
+        font-size: 9px!important;
+        padding-left: -1px;
+        padding-right: 0px;
+    }
+    .result-table thead tr th {
+        font-size: 9px!important;
+        padding-left: 2px;
+        padding-right: 4px;
+    } */
+    /* .edit-profile-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: #2c234d;
+    }
+    .hdata i {
+        border-radius: 50px;
+        box-shadow: 0 0 1px #777 inset;
+        color: #fff;
+        display: inline-block;
+        font-size: 8px;
+        height: 18px;
+        line-height: 18px;
+        text-align: center;
+        width: 19px;
+    }
+    .hdata {
+        display: inline-block;
+        margin-right: 7px;
+        width: 46px;
     } */
     .project-manage {
         margin-top: 53px;
@@ -3886,11 +4055,6 @@ input#phoneHidden {
         margin-left: 0px;
         width: 54%;
     }
-    table.fc-header {
-        background-color: #FFFFFF;
-        border-radius: 6px 6px 0 0;
-        width: 72%!important;
-    }
     .fc-content {
         position: relative;
         margin-left: 0px;
@@ -3899,11 +4063,17 @@ input#phoneHidden {
     table.fc-header {
         background-color: #FFFFFF;
         border-radius: 6px 6px 0 0;
-        width: 72%!important;
+        width: 72%;
     }
     .fc-header-left {
-        width: 15%!important;
+        width: 12%!important;
         text-align: left;
+    }
+    .agendaDay.fc-state-default {
+        min-width: 23px!important;
+        text-align: center;
+        transition: all 0.2s;
+        -webkit-transition: all 0.2s;
     }
     .fc-header-right {
         width: 51%!important;
@@ -3912,7 +4082,7 @@ input#phoneHidden {
     .fc-header-title h2 {
         margin-top: 0;
         white-space: nowrap;
-        font-size: 16px!important;
+        font-size: 12px!important;
         font-weight: 500;
         margin-bottom: 10px;
         font-family: 'Roboto', sans-serif;
@@ -3928,12 +4098,20 @@ input#phoneHidden {
     }
     table.fc-border-separate {
         border-collapse: separate;
-        width: 63%!important;
+        width: 33%;
     }
     .fc-view {
         width: 100%;
         overflow: hidden;
         width: 859px!important;
+    }
+    .btn.btn-link {
+        font-size: 8px;
+        color: black;
+    }
+    .btn.sub-categorry {
+        font-size: 9px;
+        color: cornflowerblue;
     }
 }
 
@@ -3959,7 +4137,11 @@ input#phoneHidden {
     table.fc-header {
         background-color: #FFFFFF;
         border-radius: 6px 6px 0 0;
-        width: 72%!important;
+        width: 71%;
+    }
+    table.fc-border-separate {
+        border-collapse: separate;
+        width: 63%;
     }
     .fc-header-left {
         width: 15%!important;
@@ -3986,14 +4168,21 @@ input#phoneHidden {
         line-height: 30px;
         width: 77px;
     }
-    table.fc-border-separate {
-        border-collapse: separate;
-        width: 100%;
-    }
     .fc-view {
         width: 100%;
         overflow: hidden;
         width: 1133!important;
+    }
+    .btn.btn-link {
+        font-size: 10px!important;
+        color: black;
+        padding-left: 0px;
+        width: 100%;
+        flex-flow: column;
+    }
+    .btn.sub-categorry {
+        font-size: 15px;
+        color: cornflowerblue;
     }
     .btn_class {
         height: 50px;
@@ -4005,10 +4194,33 @@ input#phoneHidden {
     .modal-open .modal {
         overflow-x: hidden;
         overflow-y: auto;
-        margin-left: -63px;
+        margin-left: -10px;
     }
     .title-2 {
         font-size: 17px!important;
+    }
+    .fc-header-title {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 3px!important;
+    }
+    /* .result-table tbody tr td {
+        font-size: 9px!important;
+        padding-left: -1px;
+        padding-right: 0px;
+    }
+    .result-table thead tr th {
+        font-size: 9px!important;
+        padding-left: 4px;
+        padding-right: 4px;
+    } */
+    .btn.btn-link {
+        font-size: 6px;
+        color: black;
+    }
+    .btn.sub-categorry {
+        font-size: 15px;
+        color: cornflowerblue;
     }
 }
 
@@ -4022,13 +4234,74 @@ input#phoneHidden {
 } */
 
 @media only screen and (min-device-width: 1440px) {
-    table.fc-border-separate {
-        border-collapse: separate;
-        width: 77%!important;
-    }
     .fc-view {
         width: 100%;
         overflow: hidden;
         width: 1130!important;
     }
+    table.fc-header {
+        background-color: #FFFFFF;
+        border-radius: 6px 6px 0 0;
+        width: 87%;
+    }
+    table.fc-border-separate {
+        border-collapse: separate;
+        width: 77%;
+    }
+}
+
+@media only screen and (min-device-width: 1278px) {
+    table.fc-header {
+        background-color: #FFFFFF;
+        border-radius: 6px 6px 0 0;
+        width: 88%;
+    }
+    table.fc-border-separate {
+        border-collapse: separate;
+        width: 77%;
+    }
+}
+
+@media only screen and (min-device-width: 1279px) and (max-device-width: 1350) {
+    table.fc-header {
+        background-color: #FFFFFF;
+        border-radius: 6px 6px 0 0;
+        width: 88%;
+    }
+    table.fc-border-separate {
+        border-collapse: separate;
+        width: 77%!;
+    }
+}
+
+table.fc-header {
+    background-color: #FFFFFF;
+    border-radius: 6px 6px 0 0;
+    width: 94%;
+}
+
+table.fc-border-separate {
+    border-collapse: separate;
+    width: 86%;
+}
+
+.collapsed {
+    font-size: 15px;
+}
+
+.btn.btn-link {
+    font-size: 15px!important;
+    color: black;
+}
+
+.btn.sub-categorry {
+    font-size: 15px;
+    color: cornflowerblue;
+}
+
+
+/* } */
+
+.accordion {
+    background-color: #ffff;
 }

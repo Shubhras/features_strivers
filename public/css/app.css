@@ -29535,6 +29535,17 @@ table.checkboxtable th {
         font-size: 11px;
         padding: 4.5px 8px
     }
+    .hdata i {
+        border-radius: 50px;
+        box-shadow: 0 0 1px #777 inset;
+        color: #fff;
+        display: inline-block;
+        font-size: 12px;
+        height: 26px;
+        line-height: 26px;
+        text-align: center;
+        width: 26px;
+    }
 }
 
 @media (max-width:320px) {

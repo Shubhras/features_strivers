@@ -71,8 +71,9 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
 }
 
 .navbar-brand {
-    position: relative;
-    padding: 22px 0;
+    /* position: relative; */
+    /* padding: 22px 0; */
+    padding: 0px 0;
     margin: 0;
     text-align: center;
     /* margin-left: -114px; */
