@@ -3874,6 +3874,14 @@ input#phoneHidden {
         overflow: hidden;
         width: 859px!important;
     }
+    .btn.btn-link{
+        font-size: 18px;
+        color: black;
+    }
+    .btn.sub-categorry{
+        font-size: 15px;
+        color:cornflowerblue;
+    }
 }
 
 @media only screen and (min-device-width: 1024px) {
@@ -3934,6 +3942,14 @@ input#phoneHidden {
         overflow: hidden;
         width: 1133!important;
     }
+    .btn.btn-link{
+        font-size: 18px;
+        color: black;
+    }
+    .btn.sub-categorry{
+        font-size: 15px;
+        color:cornflowerblue;
+    }
 }
 
 @media only screen and (min-device-width: 425px) {
@@ -3945,7 +3961,16 @@ input#phoneHidden {
     .title-2 {
         font-size: 17px!important;
     }
+    .btn.btn-link{
+        font-size: 18px;
+        color: black;
+    }
+    .btn.sub-categorry{
+        font-size: 15px;
+        color:cornflowerblue;
+    }
 }
+
 
 
 /* @media only screen and (min-device-width: 1920px) {
@@ -3965,5 +3990,17 @@ input#phoneHidden {
         width: 100%;
         overflow: hidden;
         width: 1130!important;
+    }
+    .collapsed{
+
+        font-size: 15px;
+    }
+    .btn.btn-link{
+        font-size: 18px;
+        color: black;
+    }
+    .btn.sub-categorry{
+        font-size: 15px;
+        color:cornflowerblue;
     }
 }
