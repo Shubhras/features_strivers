@@ -272,7 +272,7 @@ class PageController extends FrontController
 		//print_r($data['related_coaches']);die;
 
 		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id', 'categories.name')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
-		
+
 
 		$data['sub_categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->whereNotIn('categories.parent_id', ['null'])->get();
 		//print_r($data['user']);die;
@@ -396,15 +396,9 @@ class PageController extends FrontController
 		// print_r($id);die;
 
 		$data['categories'] = DB::table('categories')->select('categories.name', 'categories.id')->where('categories.parent_id', null)->orderBy('categories.name', 'asc')->get();
-		// print_r($data['categories']);die
-		$sub_cat = [];
-		foreach ($data['categories'] as $key => $value) {
-			$sub_cat[] = $value->id;
-		}
-		// print_r($sub_cat);die();
-		// $data['sub_categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.name', 'asc')->where('categories.parent_id',$sub_cat)->get();
-		// print_r($data['sub_categories']);die;
-		$data['sub_categories'] = DB::table('categories')->select('categories.name', 'categories.id', 'categories.parent_id','categories.slug')->where('categories.parent_id','!=', null)->orderBy('categories.name', 'asc')->get();
+
+		// print_r($data['categories']);die;
+
 		$data['my_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
@@ -415,7 +409,7 @@ class PageController extends FrontController
 
 			if (empty($id)) {
 				
-				$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
+				$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 					->leftjoin('categories', 'categories.id', '=', 'users.category')
 					->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 					->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
