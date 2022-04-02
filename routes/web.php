@@ -253,7 +253,8 @@ Route::group([
 		Route::get('coaches', 'PageController@coaches');
 		Route::get('subscription', 'PageController@show1');
 		Route::get('/coach_list_category_all', 'PageController@coach_list_category_all');
-		
+
+		Route::get('get_coach_coarse/{id}', 'HomeController@coach_coarsess');
 
 		
 		Route::get('category_list', 'SitemapController@category_list');
@@ -439,6 +440,7 @@ Route::group([
 				Route::get('getSubcategories', 'EditController@getSubcategories');
 				Route::put('photo/delete', 'EditController@updatePhoto');
 				Route::put('photo', 'EditController@updatePhoto');
+				
 
 				Route::get('chat', 'EditController@comet_chat');
 

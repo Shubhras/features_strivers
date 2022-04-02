@@ -451,17 +451,17 @@
 										<div class="feature-course-item-4">
 											<div class="fcf-thumb">
 												<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt=""class ="image-height" style="height: 244px; weight: 244px;">
-												<a class="enroll" href="#">Enroll Now</a>
+												<a class="enroll" href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Enroll Now</a>
 											</div>
 
 											<div class="fci-details">
-												<a href="#" class="c-cate sort_name">
+												<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}" class="c-cate sort_name">
 													<i class="fas fa-tags"></i>
 													{{$coaches_corsee->course_name}}</a>
-												<h4><a href="single-course.html">Using Creative Problem Solving</a></h4>
+												<h4><a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
 												<div class="author">
 													<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
-													<a href="#">{{$coaches_corsee->name}}</a>
+													<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
 												</div>
 												<div class="price-rate">
 													<div class="course-price"><a>
@@ -609,14 +609,14 @@
 												<div class="feature-course-item-4">
 													<div class="fcf-thumb">
 														<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px; weight: 244px;">
-														<a class="enroll" href="#">Enroll Now</a>
+														<a class="enroll" href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Enroll Now</a>
 													</div>
 													<div class="fci-details">
-														<a href="#" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
-														<h4><a href="#">Using Creative Problem Solving</a></h4>
+														<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
+														<h4><a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
 														<div class="author">
 															<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
-															<a href="#">{{$coaches_corsee->name}}</a>
+															<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
 														</div>
 														<div class="price-rate">
 															<div class="course-price"><a>

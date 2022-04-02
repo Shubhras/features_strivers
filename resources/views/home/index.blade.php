@@ -86,10 +86,10 @@
 
                         <h5 class="mb-1 tm">FIND INTERESTING</h5>
                         <?php
-                        // print_r($categories_list_coach1);die;
+                        
                         foreach ($categories_list_coach1 as $key => $value) {
 
-                            
+                            // print_r($value);die;
                         ?>
                             <div class="latest-course1 ppt">
                                 <!-- <a href="single-course.html"><img src="../assets/images/home/desktop1-image.png" alt=""></a> -->
@@ -288,12 +288,13 @@
 
                         ?>
                             <div class="latest-course">
-
+                            <a  href="{{url('../get_coach_coarse/'.$value->id)}}" alt="#">
                                 <div class="strivre-img-wrapper">
 
-                                    <a href="single-course.html"><img src="../assets/images/course/1.jpg" alt=""></a>
+                                   <img src="../assets/images/course/1.jpg" alt="">
 
                                 </div>
+                                </a>
                                 <label class="f-17 sort_name">{{$value->course_name}}</label>
                                 <div class="course-price">
                                     {{$value->course_hourse}} Hourse

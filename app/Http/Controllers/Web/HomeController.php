@@ -119,7 +119,7 @@ class HomeController extends FrontController
 		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
 		->where('users.id',2)->first();
 
-		$data['user_course']= DB::table('coach_course')->select('course_name','course_hourse')->limit(4)->get();
+		$data['user_course']= DB::table('coach_course')->select('coach_course.*','course_name','course_hourse')->orderBy('coach_course.id','desc')->limit(4)->get();
 		$data['user_striver'] = DB::table('users')->select('users.*')->where('users.user_type_id',3)->whereNotIn('users.id', [1])->orderBy('users.id','desc')->limit(3)->get();
 
 		$packages = Package::query()->applyCurrency();
@@ -155,6 +155,7 @@ class HomeController extends FrontController
 
 		foreach ($data['categories_list_coach'] as $value)
 		{
+			// print_r($value);die;
 			$unique[$value->category] = $value;
 			$uniques['key'] = $value->category;
 			
@@ -793,5 +794,27 @@ class HomeController extends FrontController
 		
 		
 		return redirect($nextUrl);
+	}
+
+
+	public function coach_coarsess($id){
+		$data = [];
+		
+		// $data['genders'] = Gender::query()->get();
+		
+		
+		
+		// $user = auth()->user();
+		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*','users.name','users.photo')
+		->leftjoin('users' ,'users.id' ,'=', 'coach_course.coach_id')		
+		// ->where('coach_course.coach_id', $user->id)
+		->where('coach_course.id', $id)
+		->orderBy('coach_course.id','asc')
+		->first();
+
+	// print_r($data);die;
+
+		return appView('pages.coach_coarse', $data);
+
 	}
 }
