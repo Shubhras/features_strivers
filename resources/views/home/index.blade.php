@@ -34,26 +34,32 @@
 
                 <p class="text_font_size_index232">Your Course To Success</p>
 
-                <form action="{{ \App\Helpers\UrlGen::search() }}" method="GET" class="row mt-5 box_filter2 search-box_filter2">
+            <form action="{{ \App\Helpers\UrlGen::search() }}" method="GET" class="row mt-5 box_filter2 search-box_filter2">
 
-                    <div class="input-group">
-
+                <div class="input-group">
+                    <div class="row">
 
                         <div class="location-search-coach-text col-md-10 search-box-text">
-                            <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more..." title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
-
-
+                        <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search" title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
+                         </div>
+                         <div class="location-search-coach-text col-md-10 search-box-text">
+                         <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" location" title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
                         </div>
-
+                       
+                        <div class="location-search-coach-text col-md-10 search-box-text">
+                         <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" location" title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
+                        </div>
+                    </div>
+<!-- 
                         <button type="submit" class="btn btn87 btn-primary btn_class search-button-icon-width btn_class_320">
                            
 
                             <i class="fas fa-search" alt="{{ ('find') }}"></i>
                           
-                        </button>
-                    </div>
+                        </button> -->
+                </div>
 
-                </form>
+            </form>
                 <!-- <br> -->
                 <a href="{{'/register'}}" class="bisylms-btn">Ready to Get Started?</a>
             </div>
@@ -515,8 +521,8 @@
             </div>
             <div class="col-lg-5 col-md-6">
                 <div class="ab-content">
-                    <p class="text_font_size_index234">JOIN OUR LARGEST COACHING COMMUNITY.</p>
-                    <p class="ab-content34">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
+                    <h3 class="fblack">JOIN OUR LARGEST COACHING COMMUNITY.</h3>
+                    <p class="fblack">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
                         Aliquam euismod, elit vel bibendum vestibulum, nisl nisl mollis tortor, a rhoncus mi augue eleifend justo. Sed sed ullamcorper massa, at pretium tortor. Integer nunc tellus, elementum eu malesuada eu, pellentesque a tellus.
                     </p>
                     <a class="bisylms-btn" href="{{url('/register') }}">Get Started</a>

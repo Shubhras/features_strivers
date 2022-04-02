@@ -8039,6 +8039,9 @@ h4 {
 .fwhite {
     color: #ffffff;
 }
+.fblack {
+    color: #000000;
+}
 
 .logoh {
     height: 80px!important;
