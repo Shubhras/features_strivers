@@ -43,7 +43,8 @@
 }
 
 html {
-    font-family: 'Montserrat', sans-serif;;
+    font-family: 'Montserrat', sans-serif;
+    ;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -194,7 +195,8 @@ pre,
 code,
 kbd,
 samp {
-    font-family: 'Montserrat', sans-serif;;
+    font-family: 'Montserrat', sans-serif;
+    ;
     font-size: 1em;
 }
 
@@ -254,7 +256,8 @@ select,
 optgroup,
 textarea {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;;
+    font-family: 'Montserrat', sans-serif;
+    ;
     font-size: inherit;
     line-height: inherit;
 }
@@ -6843,6 +6846,21 @@ a.close.disabled {
     position: relative;
     width: 100%;
     overflow: hidden;
+    margin-left: 29px;
+    height: 299px;
+    margin-top: 25px;
+}
+
+.carousel-inner2 {
+    margin-bottom: 1rem;
+    margin-top: 50px!important;
+    font-weight: 700!important;
+    font-size: 13px;
+}
+
+.carousel-inner-img {
+    width: 228px;
+    height: 226px;
 }
 
 .carousel-inner::after {
@@ -10355,7 +10373,8 @@ button.bg-dark:focus {
 }
 
 .text-monospace {
-    font-family: 'Montserrat', sans-serif;;
+    font-family: 'Montserrat', sans-serif;
+    ;
 }
 
 .text-justify {
