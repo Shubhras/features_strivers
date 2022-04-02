@@ -141,157 +141,6 @@
 								</h2>
 
 
-								<div class="table-responsive">
-									<form name="listForm" method="POST" action="{{ url('account/' . $pagePath . '/delete') }}">
-										{!! csrf_field() !!}
-										<!-- <div class="table-action">
-												<div class="btn-group hidden-sm" role="group">
-													<button type="button" class="btn btn-sm btn-secondary">
-														<input type="checkbox" id="checkAll" class="from-check-all">
-													</button>
-													<button type="button" class="btn btn-sm btn-secondary from-check-all">
-														{{ t('Select') }}: {{ t('All') }}
-													</button>
-												</div>
-
-												<button type="submit" class="btn btn-sm btn-default delete-action">
-													<i class="fa fa-trash"></i> {{ t('Delete') }}
-												</button>
-
-												<div class="table-search float-end col-sm-7">
-													<div class="form-group">
-														<div class="row">
-															<label class="col-sm-5 control-label text-end">{{ t('search') }} <br>
-																<a title="clear filter" class="clear-filter" href="#clear">[{{ t('clear') }}]</a>
-															</label>
-															<div class="col-sm-7 searchpan">
-																<input type="text" class="form-control" id="filter">
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<table id="addManageTable" class="table table-striped table-bordered add-manage-table table demo" data-filter="#filter" data-filter-text-only="true">
-												<thead>
-													<tr>
-														<th data-type="numeric" data-sort-initial="true">sn</th>
-														<th>{{ ('Course name') }}</th>
-														<th data-sort-ignore="true">{{ ('Course Hourse') }}</th>
-														<th data-type="numeric">{{ ('Description') }}</th>
-														<th data-type="numeric">{{ ('Starting Time') }}</th>
-
-														<th>{{ t('Option') }}</th>
-													</tr>
-												</thead>
-												<tbody>
-
-													<?php
-													$i = 0;
-													if (isset($coach_course) && $coach_course->count() > 0) :
-														foreach ($coach_course as $key => $post) :
-															// Fixed 1
-
-
-															// Get Post's URL
-
-															$i =	$i + 1;
-
-													?>
-															<tr>
-
-																<td style="width:5%" class="items-details-td">
-																	<div>
-
-																		<p>
-																			<strong>
-																				{{$i}}
-																			</strong>
-
-																		</p>
-																		<p>
-
-																		</p>
-																	</div>
-																</td>
-																<td style="width:30%" class="price-td">
-																	<div>
-																		<strong>
-																			&nbsp;{{ $post->course_name }}
-
-
-																		</strong>
-																	</div>
-																</td>
-
-
-																<td style="width:5%" class="price-td">
-																	<div>
-																		<strong>
-																			{{ $post->course_hourse }}
-
-
-																		</strong>
-																	</div>
-																</td>
-																<td style="width:45%" class="price-td">
-																	<div>
-																		<strong>
-
-																			{{ $post->description }}
-
-																		</strong>
-																	</div>
-																</td>
-																<td style="width:5%" class="price-td">
-																	<div>
-																		<strong>
-
-																			{{ $post->starting_time }}
-
-																		</strong>
-																	</div>
-																</td>
-
-
-																<td style="width:10%" class="action-td">
-																	<div>
-																		@if (in_array($pagePath, ['my-posts', 'pending-approval']) and $post->user_id==$user->id and $post->archived==0)
-																		<p>
-																			<a class="btn btn-primary btn-sm" href="{{ \App\Helpers\UrlGen::editPost($post) }}">
-																				<i class="fa fa-edit"></i> {{ t('Edit') }}
-																			</a>
-																		</p>
-																		@endif
-																		@if (in_array($pagePath, ['my-posts']) and isVerifiedPost($post) and $post->archived==0)
-																		<p>
-																			<a class="btn btn-warning btn-sm confirm-action" href="{{ url('account/'.$pagePath.'/'.$post->id.'/offline') }}">
-																				<i class="fas fa-eye-slash"></i> {{ t('Offline') }}
-																			</a>
-																		</p>
-																		@endif
-																		@if (in_array($pagePath, ['archived']) and $post->user_id==$user->id and $post->archived==1)
-																		<p>
-																			<a class="btn btn-info btn-sm confirm-action" href="{{ url('account/'.$pagePath.'/'.$post->id.'/repost') }}">
-																				<i class="fa fa-recycle"></i> {{ t('Repost') }}
-																			</a>
-																		</p>
-																		@endif
-																		<p>
-																			<a class="btn btn-danger btn-sm delete-action" href="{{ url('account/'.$pagePath.'/'.$post->id.'/delete') }}">
-																				<i class="fa fa-trash"></i> {{ t('Delete') }}
-																			</a>
-																		</p>
-																	</div>
-																</td>
-															</tr>
-														<?php endforeach; ?>
-													<?php endif; ?>
-												</tbody>
-											</table> -->
-									</form>
-								</div>
-
 								<nav>
 									{{ (isset($posts)) ? $posts->links() : '' }}
 								</nav>
@@ -465,7 +314,7 @@
 												</div>
 												<div class="price-rate">
 													<div class="course-price"><a>
-															{{$coaches_corsee->total_consultation_fee}} fee
+															{{$coaches_corsee->total_consultation_fee}} $ fee
 														</a>
 													</div>
 
@@ -618,13 +467,25 @@
 															<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
 															<a href="#">{{$coaches_corsee->name}}</a>
 														</div>
+
+
 														<div class="price-rate">
-															<div class="course-price"><a>
-																	{{$coaches_corsee->course_hourse}} Hours
+															<div class="course-price">
+
+															@if($coaches_corsee->total_consultation_fee != null)
+																
+															<a>
+																	{{$coaches_corsee->total_consultation_fee}}$ fee
 																</a>
+																@else 
+																	0 $ fee
+																@endif
 															</div>
 
 														</div>
+
+
+														
 													</div>
 												</div>
 

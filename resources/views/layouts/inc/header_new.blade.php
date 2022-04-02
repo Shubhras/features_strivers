@@ -81,8 +81,9 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                                 <a href="{{('/')}}">Home</a>
 
                             </li>
+                            <?php $id = '0';?>
                             <li class="menu-item-has-children side-menu-content768">
-                                <a href="{{ url('coach_list_category_all') }}">Categories</a>
+                                <a href="{{ url('coach_list_category_all/'.$id) }}">Categories</a>
 
                             </li>
                             <li class="menu-item-has-children side-menu-content768">

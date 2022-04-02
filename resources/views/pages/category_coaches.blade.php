@@ -7,12 +7,12 @@
 * {
     box-sizing: border-box;
 }
-
+/* 
 body {
     background-color: #f1f1f1;
     padding: 20px;
-    font-family: Arial;
-}
+    font-family: Arial; */
+/* } */
 
 /* Center website */
 .main {
@@ -267,7 +267,7 @@ h1 {
             <div class="row">
                 <div class="col-md-4">
 
-                    <div id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('all')">
+                    <div id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('0')">
                         <!-- <li class="btn active" onclick="filterSelection('all')"></button> -->
 
                     </div>
@@ -360,13 +360,13 @@ h1 {
                     </div>
 
                     <script>
-                    filterSelection("all")
+                    filterSelection("0")
                     subCatListCoach(uid)
 
                     function filterSelection(c) {
                         var x, i;
                         x = document.getElementsByClassName("column");
-                        if (c == "all") c = "";
+                        if (c == "0") c = "";
                         for (i = 0; i < x.length; i++) {
                             w3RemoveClass(x[i], "show");
                             if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");

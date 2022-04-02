@@ -1,3 +1,4 @@
+
 <?php
 $hideOnMobile = '';
 if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categoriesOptions['hide_on_mobile'] == '1') {

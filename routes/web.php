@@ -249,10 +249,12 @@ Route::group([
 		Route::get('/coach_details/{id}', 'PageController@coach_details');
 		Route::get('/coach_list/{id}', 'PageController@coach_list_category2');
 		Route::get('/coach_list_sub/{id}', 'PageController@coach_list_sub_category');
-		Route::get('coachall_detail/{id}', 'PageController@coachall_detail');
+		Route::get('top_coach_detail/{id}', 'PageController@top_coach_detail');
 		Route::get('coaches', 'PageController@coaches');
 		Route::get('subscription', 'PageController@show1');
-		Route::get('/coach_list_category_all', 'PageController@coach_list_category_all');
+		Route::get('/coach_list_category_all/{id}', 'PageController@coach_list_category_all');
+
+		Route::get('/findtopcoach/{id}', 'PageController@coach_list_category_interesting');
 		
 
 		
