@@ -33,7 +33,7 @@
             <div class="hero-content">
 
                 <p class="text_font_size_index232">Your Course To Success</p>
-                <?php $id = '0';?>
+                <?php $id = '0'; ?>
                 <form action="{{ url('/coach_list_category_all/'.$id) }}" method="GET" class="row mt-5 box_filter2 search-box_filter2">
 
                     <div class="input-group">
@@ -46,10 +46,10 @@
                     </div>
 
                         <button type="submit" class="btn btn87 btn-primary btn_class search-button-icon-width btn_class_320">
-                           
+
 
                             <i class="fas fa-search" alt="{{ ('find') }}"></i>
-                          
+
                         </button>
                 </div>
 
@@ -86,19 +86,19 @@
 
                         <h5 class="mb-1 tm">FIND INTERESTING</h5>
                         <?php
-                        
+
                         foreach ($categories_list_coach1 as $key => $value) {
 
                             // print_r($value);die;
                         ?>
                             <div class="latest-course1 ppt">
-                                <!-- <a href="single-course.html"><img src="../assets/images/home/desktop1-image.png" alt=""></a> -->
-                                <?php if(!empty($value->picture)){?>
-                                <a href="{{url('/coach_list_category_all/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="{{ url('storage/'.$value->picture) }}" ></a>
-                                    <?php }else{?>
-                                        <a href="{{url('/coach_list_category_all/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="../assets/images/home/desktop1-image.png" alt=""></a>
+                              
+                                <?php if (!empty($value->picture)) { ?>
+                                    <a class="index-34" href="{{url('/coach_list_category_all/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="{{ url('storage/'.$value->picture) }}"></a>
+                                <?php } else { ?>
+                                    <a class="index-34" href="{{url('/coach_list_category_all/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="../assets/images/home/desktop1-image.png" alt=""></a>
                                 <?php
-                                    }
+                                }
                                 $name = json_decode($value->name);
                                 $ss = array();
                                 foreach ($name as $key => $sub) {
@@ -108,8 +108,8 @@
                                 ?>
 
 
-                                <label class="f-17">
-                                    <a href="{{url('/coach_list_category_all/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>">
+                                <label class="f-17 find-letest-news">
+                                    <a class="index-34" href="{{url('/coach_list_category_all/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>">
                                         {{$ss['en']}}
                                     </a>
                                 </label>
@@ -134,7 +134,7 @@
                         <h5 class="mb-1 tm">LATEST NEWS</h5>
 
                         @foreach($letest_news as $news)
-                        <div class="latest-course10 ppt">
+                        <div class="latest-course ppt">
 
                             <?php
                             $title = json_decode($news->title);
@@ -153,9 +153,8 @@
 
                                 <img src="{{ url('storage/'.$news->picture) }}" alt="{{ $news->name }}">
 
-                                <label class="f-17 sort_name">
-                                    <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
-                                        {{$ss['en']}}
+                                <label class="f-17 sort_name find-letest-news1">
+                                    <a class="index-34" href="{{url('/letest_news/'.$news->slug) }}" target="_blank">{{$ss['en']}}
                                     </a>
                                 </label>
 
@@ -165,13 +164,12 @@
 
                             <div class="strivre-img-wrapper">
                                 <img src="../assets/images/course/1.jpg" alt="">
-                                <label class="f-17 sort_name">
-                                    <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
-                                        {{$ss['en']}}
+                                <label class="f-17 sort_name find-letest-news1">
+                                <a class="index-34" href="{{url('/letest_news/'.$news->slug)}}" target="_blank">{{$ss['en']}}
                                     </a>
                                 </label>
 
-
+                                
                             </div>
                             @endif
                         </div>
@@ -288,16 +286,16 @@
 
                         ?>
                             <div class="latest-course">
-                            <a  href="{{url('../get_coach_coarse/'.$value->id)}}" alt="#">
-                                <div class="strivre-img-wrapper">
+                                <a class="index-34" href="{{url('../get_coach_coarse/'.$value->id)}}" alt="#">
+                                    <div class="strivre-img-wrapper">
 
-                                   <img src="../assets/images/course/1.jpg" alt="">
+                                        <img src="../assets/images/course/1.jpg" alt="">
 
-                                </div>
+                                    </div>
                                 </a>
-                                <label class="f-17 sort_name">{{$value->course_name}}</label>
+                                <label class="f-17 sort_name index-34 find-letest-news">{{$value->course_name}}</label>
                                 <div class="course-price">
-                                    {{$value->course_hourse}} Hourse
+                                    {{$value->course_hourse}} Credits
                                 </div>
                             </div>
                         <?php } ?>
@@ -313,18 +311,18 @@
                             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="../assets/images/home/2.png" src="..." alt="">
-                                        <P>440 Strivres are
+                                        <img src="../assets/images/home/2.png" src="..." alt="" class="carousel-inner-img">
+                                        <P class="carousel-inner2">440 Strivres are
                                             making career</P>
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="../assets/images/home/11.png" src="..." alt="">
-                                        <P>440 Strivres are
+                                        <img src="../assets/images/home/11.png" src="..." alt="" class="carousel-inner-img">
+                                        <P class="carousel-inner2">440 Strivres are
                                             making career</P>
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="../assets/images/home/12.png" src="..." alt="">
-                                        <P>440 Strivres are
+                                        <img src="../assets/images/home/12.png" src="..." alt="" class="carousel-inner-img">
+                                        <P class="carousel-inner2">440 Strivres are
                                             making career</P>
                                     </div>
                                 </div>
@@ -592,12 +590,19 @@
         background: red;
         border-radius: 5px;
     } */
+
+    .index-34 {
+        color: #888 !important;
+        font-size: 14px !important;
+        font-weight: 400 !important;
+
+    }
 </style>
 
 <style>
     .sort_name {
         display: inline-block;
-        width: 120px;
+        width: 208px;
         white-space: nowrap;
         overflow: hidden !important;
         text-overflow: ellipsis;
