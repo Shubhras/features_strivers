@@ -292,6 +292,7 @@ class EditController extends AccountBaseController
 
 
 	}
+	
 
 
 
@@ -548,6 +549,10 @@ class EditController extends AccountBaseController
 		
 
 
+
+			
+
+
 		// ]);
 		$datess = date('Y-m-d h:i:s');
 		//  print_r($request->all());die;
@@ -559,7 +564,7 @@ class EditController extends AccountBaseController
 			'total_consultation_fee' =>$request->total_consultation_fee,
 			'creadit_required' =>$request->creadit_required,
 			'description' => $request->description, 
-			'image' => $request->image, 
+			'image' => 'course_image/'.$request->image, 
 			'starting_time' => $request->starting_time,
 			'dated' => $request->dated,
 	
@@ -938,4 +943,75 @@ class EditController extends AccountBaseController
 		return appView('account.cometchat', $data);
 
 	}
+
+
+	public function coach_list_category_interesting(Request $request)
+	{
+		print_r($request);die;
+
+		$data['request_cat_id'] = '';
+		// Get the Country's largest city for Google Maps
+		$cacheId = config('country.code') . '.city.population.desc.first';
+		$city = Cache::remember($cacheId, $this->cacheExpiration, function () {
+			$city = City::currentCountry()->orderBy('population', 'desc')->first();
+
+			return $city;
+		});
+		view()->share('city', $city);
+
+		// print_r($id);die;
+
+		$data['categories'] = DB::table('categories')->select('categories.name', 'categories.id')->where('categories.parent_id', null)->orderBy('categories.name', 'asc')->get();
+		// print_r($data['categories']);die
+		$sub_cat = [];
+		foreach ($data['categories'] as $key => $value) {
+			$sub_cat[] = $value->id;
+		}
+		// print_r($sub_cat);die();
+		// $data['sub_categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.name', 'asc')->where('categories.parent_id',$sub_cat)->get();
+		// print_r($data['sub_categories']);die;
+
+		$data['sub_categories'] = DB::table('categories')->select('categories.name', 'categories.id', 'categories.parent_id','categories.slug')->where('categories.parent_id','!=', null)->orderBy('categories.name', 'asc')->get();
+
+
+		$data['my_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+
+
+
+			if (empty($id)) {
+				
+				$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
+					->leftjoin('categories', 'categories.id', '=', 'users.category')
+					->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+					->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+					->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+
+					// print_r($data['user']);die;
+
+			} 
+
+
+		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+
+
+
+		[$title, $description, $keywords] = getMetaTag('contact');
+		MetaTag::set('title', $title);
+		MetaTag::set('description', strip_tags($description));
+		MetaTag::set('keywords', $keywords);
+
+
+
+		return appView('pages.category_coaches', $data);
+	
+	}
+
 }

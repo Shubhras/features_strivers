@@ -33,30 +33,24 @@
             <div class="hero-content">
 
                 <p class="text_font_size_index232">Your Course To Success</p>
+                <?php $id = '0';?>
+                <form action="{{ url('/coach_list_category_all/'.$id) }}" method="GET" class="row mt-5 box_filter2 search-box_filter2">
 
-            <form action="{{ \App\Helpers\UrlGen::search() }}" method="GET" class="row mt-5 box_filter2 search-box_filter2">
+                    <div class="input-group">
 
                 <div class="input-group">
                     <div class="row">
 
                         <div class="location-search-coach-text col-md-10 search-box-text">
                         <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search" title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
-                         </div>
-                         <div class="location-search-coach-text col-md-10 search-box-text">
-                         <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" location" title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
-                        </div>
-                       
-                        <div class="location-search-coach-text col-md-10 search-box-text">
-                         <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" location" title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
-                        </div>
                     </div>
-<!-- 
+
                         <button type="submit" class="btn btn87 btn-primary btn_class search-button-icon-width btn_class_320">
                            
 
                             <i class="fas fa-search" alt="{{ ('find') }}"></i>
                           
-                        </button> -->
+                        </button>
                 </div>
 
             </form>
@@ -92,17 +86,17 @@
 
                         <h5 class="mb-1 tm">FIND INTERESTING</h5>
                         <?php
-                        // print_r($categories_list_coach1);die;
+                        
                         foreach ($categories_list_coach1 as $key => $value) {
 
-                            
+                            // print_r($value);die;
                         ?>
                             <div class="latest-course1 ppt">
                                 <!-- <a href="single-course.html"><img src="../assets/images/home/desktop1-image.png" alt=""></a> -->
                                 <?php if(!empty($value->picture)){?>
-                                <a href="{{url('/coach_list/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="{{ url('storage/'.$value->picture) }}" ></a>
+                                <a href="{{url('/coach_list_category_all/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="{{ url('storage/'.$value->picture) }}" ></a>
                                     <?php }else{?>
-                                        <a href="{{url('/coach_list/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="../assets/images/home/desktop1-image.png" alt=""></a>
+                                        <a href="{{url('/coach_list_category_all/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="../assets/images/home/desktop1-image.png" alt=""></a>
                                 <?php
                                     }
                                 $name = json_decode($value->name);
@@ -115,7 +109,7 @@
 
 
                                 <label class="f-17">
-                                    <a href="{{url('/coach_list/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>">
+                                    <a href="{{url('/coach_list_category_all/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>">
                                         {{$ss['en']}}
                                     </a>
                                 </label>
@@ -255,7 +249,7 @@
                                             <div class="row center-button-modal">
 
                                                 <div class="col-lg-2">
-                                                    <a href="{{url('/coachall_detail/'.$coach->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
+                                                    <a href="{{url('/top_coach_detail/'.$coach->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
                                                 </div>
                                                 <div class="col-lg-2">
                                                     <a href="{{url('/register') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
@@ -294,12 +288,13 @@
 
                         ?>
                             <div class="latest-course">
-
+                            <a  href="{{url('../get_coach_coarse/'.$value->id)}}" alt="#">
                                 <div class="strivre-img-wrapper">
 
-                                    <a href="single-course.html"><img src="../assets/images/course/1.jpg" alt=""></a>
+                                   <img src="../assets/images/course/1.jpg" alt="">
 
                                 </div>
+                                </a>
                                 <label class="f-17 sort_name">{{$value->course_name}}</label>
                                 <div class="course-price">
                                     {{$value->course_hourse}} Hourse
