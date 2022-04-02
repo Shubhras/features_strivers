@@ -48,6 +48,7 @@ return [
 			'root'   => storage_path('app'),
 		],
 		
+		
 		'public' => [
 			'driver' 	 => 'local',
 			'root' 		 => storage_path('app/public'),
@@ -67,6 +68,12 @@ return [
             'driver' => 'local',
             'root'   => storage_path(),
         ],
+
+		'course_image' => [
+            'driver' => 'local',
+            'root'   => storage_path(),
+        ],
+
 
         // Used for Admin -> Backup
         'backups' => [

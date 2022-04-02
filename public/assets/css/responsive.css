@@ -2309,6 +2309,33 @@ input#phoneHidden {
         height: 34px;
         background-color: #43329f!important;
     }
+    /* .result-table thead tr th,
+    .result-table tbody tr td {
+        padding-left: 1px;
+        padding-right: 1px;
+    } */
+    .result-table thead tr th {
+        font-size: 9px;
+        color: #fff;
+        background: #012245;
+        padding: 17px 30px 14px;
+        font-weight: 700;
+        line-height: 12px;
+        border: none;
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+    .result-table tbody tr td {
+        border-bottom: 1px solid #ecf0f1;
+        border-left: 1px solid #ecf0f1;
+        color: #686875;
+        font-size: 9px;
+        padding: 19px 29px 7px;
+        line-height: 30px;
+        font-weight: 600;
+        padding-left: 1px;
+        padding-right: 1px;
+    }
 }
 
 @media only screen and (min-device-width: 375px) {
@@ -2437,6 +2464,11 @@ input#phoneHidden {
     .btn_class_coaches12 {
         height: 35px;
         background-color: #43329f!important;
+    }
+    .result-table thead tr th,
+    .result-table tbody tr td {
+        padding-left: 0px;
+        padding-right: 0px;
     }
 }
 
@@ -3086,7 +3118,7 @@ input#phoneHidden {
         line-height: 27px;
         color: #ffffff;
         font-weight: 400;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Montserrat', sans-serif;;
         padding: 19px 0px;
         text-align: center;
         margin-top: -45px;
@@ -3640,7 +3672,7 @@ input#phoneHidden {
         font-size: 15px!important;
         font-weight: 500;
         margin-bottom: 10px;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         color: blueviolet;
     }
     .fc-border-separate tr.fc-last th {
@@ -3742,7 +3774,7 @@ input#phoneHidden {
         font-size: 16px!important;
         font-weight: 500;
         margin-bottom: 10px;
-        font-family: 'Roboto', sans-serif;
+        font-family:'Montserrat', sans-serif;
         color: blueviolet;
     }
     .fc-border-separate tr.fc-last th {
@@ -3849,7 +3881,7 @@ input#phoneHidden {
         font-size: 16px!important;
         font-weight: 500;
         margin-bottom: 10px;
-        font-family: 'Roboto', sans-serif;
+        font-family:'Montserrat', sans-serif;
         color: blueviolet;
     }
     .fc-border-separate tr.fc-last th {
@@ -4055,7 +4087,7 @@ input#phoneHidden {
         font-size: 12px!important;
         font-weight: 500;
         margin-bottom: 10px;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         color: blueviolet;
     }
     .fc-border-separate tr.fc-last th {
@@ -4119,7 +4151,7 @@ input#phoneHidden {
         font-size: 16px!important;
         font-weight: 500;
         margin-bottom: 10px;
-        font-family: 'Roboto', sans-serif;
+        font-family:'Montserrat', sans-serif;
         color: blueviolet;
     }
     .fc-border-separate tr.fc-last th {
@@ -4165,6 +4197,11 @@ input#phoneHidden {
         padding-left: 4px;
         padding-right: 4px;
     } */
+    .result-table thead tr th,
+    .result-table tbody tr td {
+        padding-left: 6px;
+        padding-right: 3px;
+    }
 }
 
 
