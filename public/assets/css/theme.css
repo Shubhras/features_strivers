@@ -3383,7 +3383,7 @@ footer .widget ul li a:hover {
     z-index: 2;
     float: left;
     display: inline-block;
-    font-family: 'Open Sans', sans-serif;
+    font-family:'Montserrat', sans-serif;;
     padding: 0;
     margin-right: 10px;
     width: 120px;
@@ -4368,7 +4368,7 @@ footer .widget ul li a:hover {
 .condition-check input:checked+label::after {
     background: transparent;
     bottom: 0;
-    font-family: 'ElegantIcons';
+    font-family: 'Montserrat', sans-serif;;
     content: "\4e";
     color: #012245;
     font-size: 10px;
@@ -4651,7 +4651,7 @@ footer .widget ul li a:hover {
     left: 0;
     top: 0;
     content: "\35";
-    font-family: 'ElegantIcons';
+    font-family: 'Montserrat', sans-serif;;
     font-size: 20px;
     line-height: 40px;
     font-weight: 400;
@@ -4825,7 +4825,7 @@ blockquote:before {
     left: 50px;
     top: 68px;
     content: ",,";
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 100px;
     line-height: 25px;
     color: #012245;
@@ -4840,7 +4840,7 @@ blockquote:after {
     right: 44px;
     bottom: 122px;
     content: ",,";
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 200px;
     line-height: 25px;
     color: #f0f0f0;
@@ -5260,7 +5260,7 @@ blockquote cite {
 .save-comment input:checked+label::after {
     background: transparent;
     bottom: 0;
-    font-family: 'ElegantIcons';
+    font-family:'Montserrat', sans-serif;
     content: "\4e";
     color: #012245;
     font-size: 10px;
@@ -5717,7 +5717,7 @@ Profile Page
 
 .sorting:after {
     content: "\33";
-    font-family: 'ElegantIcons';
+    font-family: 'Montserrat', sans-serif;
     display: inline-block;
     font-size: 20px;
     line-height: 44px;
@@ -5977,7 +5977,7 @@ Profile Page
     bottom: 0;
     margin: auto;
     content: "\56";
-    font-family: 'ElegantIcons';
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 40px;
@@ -6708,7 +6708,7 @@ Profile Page
 
 .curriculum-item h5 button:after {
     content: "\33";
-    font-family: 'ElegantIcons';
+    font-family: 'Montserrat', sans-serif;
     display: inline-block;
     font-size: 24px;
     line-height: 70px;
@@ -7560,7 +7560,7 @@ a.btn01.btn-primary1 {
 }
 
 .ab-content34 {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .line-height-text-3 {
@@ -7712,7 +7712,7 @@ a.btn01.btn-primary1 {
     line-height: 24px;
     color: #ffffff;
     font-weight: 400;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     padding: 21px 112px;
     text-align: center;
     margin-top: -45px;
@@ -7723,7 +7723,7 @@ a.btn01.btn-primary1 {
     line-height: 24px;
     color: #888;
     font-weight: 400;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     padding: 21px 70px;
     text-align: center;
     margin-top: -45px;
@@ -7993,7 +7993,7 @@ h4 {
 }
 
 .feather {
-    font-family: 'feather' !important;
+    font-family: 'Montserrat', sans-serif;
     speak: none;
     font-style: normal;
     font-weight: normal;

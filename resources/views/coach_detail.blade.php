@@ -1,4 +1,3 @@
-
 @extends('layouts.master_new')
 
 
@@ -19,15 +18,15 @@
 			<div class="row">
 
 				<h2 class="sec-title-cat">
-					Top coach {{ $top_coach_detail->name }}
+				<h3 style="font-family: 'Roboto', sans-serif; text-align:center"><b>Coach Detail</b></h3>
 
 				</h2>
 
 				<div class="col-md-12 page-content">
 
 					<div class="">
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus magnam eligendi corporis cumque maiores in esse neque optio, iusto consectetur? Fugit libero laborum odit quis vitae, inventore debitis dolor commodi voluptatum accusantium ducimus doloribus error facilis magni aspernatur! Enim quibusdam aliquid inventore dicta! A debitis iusto similique dolorum voluptas, incidunt velit ipsum, unde vitae molestiae laboriosam illo maiores blanditiis aliquam consectetur ratione magnam reprehenderit obcaecati tempora fuga sunt accusantium?</p>
-						<p> Dolorum quae, qui atque dolorem nemo voluptates minus explicabo hic sint laudantium, voluptate, quidem velit dolores. Totam itaque culpa quasi, hic voluptas doloribus assumenda harum. Vel corporis magnam blanditiis impedit molestiae?</p>
+						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus magnam eligendi corporis cumque maiores in esse neque optio, iusto consectetur? Fugit libero laborum odit quis vitae, inventore debitis dolor commodi voluptatum accusantium ducimus doloribus error facilis magni aspernatur! Enim quibusdam aliquid inventore dicta! A debitis iusto similique dolorum voluptas, incidunt velit ipsum, unde vitae molestiae laboriosam illo maiores blanditiis aliquam consectetur ratione magnam reprehenderit obcaecati tempora fuga sunt accusantium?</p>
+						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;"> Dolorum quae, qui atque dolorem nemo voluptates minus explicabo hic sint laudantium, voluptate, quidem velit dolores. Totam itaque culpa quasi, hic voluptas doloribus assumenda harum. Vel corporis magnam blanditiis impedit molestiae?</p>
 
 					</div>
 				</div>
@@ -38,37 +37,54 @@
 
 
 				<div class="col-md-6">
-					<h3><b>Coach Detail</b></h3>
+					<!-- <h3 style="font-family: 'Roboto', sans-serif; font-size: 20px;"><b>Coach Detail</b></h3> -->
 
-					<p> Coach Name: {{ $top_coach_detail->name }}</p>
+					<p style="font-family: 'Roboto', sans-serif; font-size: 20px;"> Coach Name: {{ $top_coach_detail->name }}</p>
 
 					<?php if ($top_coach_detail->year_of_experience != '') { ?>
-						<p>p>Year of Experience : {{ $top_coach_detail->year_of_experience }}</p>
+						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Year of Experience : {{ $top_coach_detail->year_of_experience }}</p>
 					<?php
 					} else { ?>
-						<p>Year of Experience : No Experience</p>
+						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Year of Experience : No Experience</p>
 
 					<?php } ?>
 					<?php
 
-
-					$slug = json_decode($top_coach_detail->slug);
-					$ss = array();
-					foreach ($slug as $key => $sub) {
-						$ss[$key] = $sub;
-					}
-					// print_r($ss['en']);
+					if (!empty($top_coach_detail->slug)) {
+						$slug = json_decode($top_coach_detail->slug);
 
 
-					$sub_cat = json_decode($top_coach_detail->sub_cat);
-					$aaa = array();
-					foreach ($sub_cat as $key => $subc) {
-						$aaa[$key] = $subc;
-					}
 
+
+						$ss = array();
+						foreach ($slug as $key => $sub) {
+							$ss[$key] = $sub;
+						}
 					?>
-					<p>Industry:  {{ $ss['en'] }}</p>
-					<p>Speciality:   {{ $aaa['en'] }}</p>
+						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Industry: {{ $ss['en'] }}</p>
+					<?php
+					} else { ?>
+
+						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Industry: No Industry</p>
+
+					<?php }
+					if (!empty($top_coach_detail->sub_cat)) {
+
+
+						$sub_cat = json_decode($top_coach_detail->sub_cat);
+						$aaa = array();
+						foreach ($sub_cat as $key => $subc) {
+							$aaa[$key] = $subc;
+						}
+					?>
+						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Speciality: {{ $aaa['en'] }}</p>
+					<?php
+					} else { ?>
+						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Speciality: No Speciality</p>
+					<?php }
+					?>
+
+
 				</div>
 				<br>
 				<div class="col-md-6">
@@ -80,7 +96,7 @@
 	<br>
 	<div class="" style="text-align: center;">
 		<a href="{{url('/pricing') }}">
-			<button type="button" class="btn btn-success btn-lg">Get Started</button>
+			<button type="button" class="btn btn-lg" style="background: #012245; color: #ffffff">Get Started</button>
 		</a>
 	</div>
 

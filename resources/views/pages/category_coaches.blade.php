@@ -7,12 +7,12 @@
 * {
     box-sizing: border-box;
 }
-
+/* 
 body {
     background-color: #f1f1f1;
     padding: 20px;
-    font-family: Arial;
-}
+    font-family: Arial; */
+/* } */
 
 /* Center website */
 .main {
@@ -256,10 +256,10 @@ h1 {
 
                             </div>
 
-
-                        <?php }
+                            <?php }
                         // } 
                         ?>
+                       
 
 
                 </div> -->
@@ -267,11 +267,11 @@ h1 {
             <div class="row">
                 <div class="col-md-4">
 
-                    <div id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('all')">
+                    <div id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('0')">
                         <!-- <li class="btn active" onclick="filterSelection('all')"></button> -->
 
                     </div>
-                    <div class="accordion" id="accordionExample">
+                    <div class="accordion" id="accordionExample" onclick="subCatListCoach('{{ $cat->id }}')">
                         @foreach($categories as $key => $cat)
                         <?php
                                 $name = json_decode($cat->name);
@@ -280,8 +280,6 @@ h1 {
                                     $ss[$key] = $sub;
                                 }
                                 ?>
-
-
                         <div class="subject-title-name-cat">
                             <div class="card-header" id="heading{{ $cat->id }}">
                                 <h5 class="mb-0">
@@ -291,8 +289,7 @@ h1 {
                                         {{ $ss['en'] }}
                                     </button><i class="fa fa-angle-up" id="donar" style="float: right;"></i>
                                 </h5>
-                            </div>
-
+                            </div>                 
                             <div id="collapse{{ $cat->id }}" class="collapse" aria-labelledby="heading{{ $cat->id }}"
                                 data-parent="#accordionExample">
                                 <div class="card-body">
@@ -316,6 +313,7 @@ h1 {
                         </div>
                         @endforeach
                     </div>
+                   
                 </div>
                 <div class="col-md-8">
 
@@ -360,13 +358,13 @@ h1 {
                     </div>
 
                     <script>
-                    filterSelection("all")
-                    subCatListCoach(uid)
+                    filterSelection("0")
+                    subCatListCoach('{{ $cat->id }}')
 
                     function filterSelection(c) {
                         var x, i;
                         x = document.getElementsByClassName("column");
-                        if (c == "all") c = "";
+                        if (c == "0") c = "";
                         for (i = 0; i < x.length; i++) {
                             w3RemoveClass(x[i], "show");
                             if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
