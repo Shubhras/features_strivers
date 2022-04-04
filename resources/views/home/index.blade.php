@@ -34,26 +34,28 @@
 
                 <p class="text_font_size_index232">Your Course To Success</p>
                 <?php $id = '0'; ?>
-                <form action="{{ url('/coach_list_category_all/'.$id) }}" method="GET" class="row mt-5 box_filter2 search-box_filter2">
+                <!-- <form action="{{ url('/coach_list_category_all/'.$id) }}" method="GET" class="row mt-5 box_filter2 search-box_filter2"> -->
+
+                <form action="{{ url('/findtopcoach') }}" method="post" class="row mt-5 box_filter2 search-box_filter2">
 
                     <div class="input-group">
 
-                <div class="input-group">
-                    <div class="row">
+                        <div class="input-group">
+                            <div class="row">
 
-                        <div class="location-search-coach-text col-md-10 search-box-text">
-                        <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more" title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
-                    </div>
+                                <div class="location-search-coach-text col-md-10 search-box-text">
+                                    <input type="search" name="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more" title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
+                                </div>
 
-                        <button type="submit" class="btn btn87 btn-primary btn_class search-button-icon-width btn_class_320">
+                                <button type="submit" class="btn btn87 btn-primary btn_class search-button-icon-width btn_class_320">
 
 
-                            <i class="fas fa-search" alt="{{ ('find') }}"></i>
+                                    <i class="fas fa-search" alt="{{ ('find') }}"></i>
 
-                        </button>
-                </div>
+                                </button>
+                            </div>
 
-            </form>
+                </form>
                 <!-- <br> -->
                 <a href="{{'/register'}}" class="bisylms-btn">Ready to Get Started?</a>
             </div>
@@ -92,7 +94,7 @@
                             // print_r($value);die;
                         ?>
                             <div class="latest-course1 ppt">
-                              
+
                                 <?php if (!empty($value->picture)) { ?>
                                     <a class="index-34" href="{{url('/coach_list_category_all/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="{{ url('storage/'.$value->picture) }}"></a>
                                 <?php } else { ?>
@@ -165,11 +167,11 @@
                             <div class="strivre-img-wrapper">
                                 <img src="../assets/images/course/1.jpg" alt="">
                                 <label class="f-17 sort_name find-letest-news1">
-                                <a class="index-34" href="{{url('/letest_news/'.$news->slug)}}" target="_blank">{{$ss['en']}}
+                                    <a class="index-34" href="{{url('/letest_news/'.$news->slug)}}" target="_blank">{{$ss['en']}}
                                     </a>
                                 </label>
 
-                                
+
                             </div>
                             @endif
                         </div>
@@ -207,8 +209,26 @@
                                     <p class="top-coaches-name-list coach-cat-name12">{{$coach->name}} </p>
 
                                 </a>
-                                <p>Photographer
+                                <?php
+
+                                if(!empty($coach->categories_slug)){
+
+                               
+                                $name = json_decode($coach->categories_slug);
+                                $ss = array();
+                                foreach ($name as $key => $sub) {
+                                    $ss[$key] = $sub;
+                                }
+
+                                ?>
+
+                                <p>{{$ss['en']}}
                                 </p>
+                                <?php  }else{
+                                    ?>
+                                    <p>No Category select
+                                </p>
+                                    <?php }?>
                                 <!-- <img src="../assets/images/course/1.jpg" alt=""> -->
 
                                 <span class="top-coaches-name-list1"> <?php if ($coach->year_of_experience != '') { ?>
@@ -304,9 +324,9 @@
                     </nav> -->
                     </div>
                     <br>
-               
+
                 </div>
-                
+
                 <div class="course-sidebar1 letest-offering-data">
                     <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
                         <aside class="widget h-75 d-inline-block">
@@ -506,25 +526,25 @@
     </div>
 </section>
 <!-- <section class="main-section"> -->
-    <div class="container">
+<div class="container">
 
-        <div class="row mt-120">
-            <div class="col-lg-7 col-md-6">
-                <div class="ab-thumb">
-                    <img src="assets/images/edu_1.png" alt="">
-                </div>
+    <div class="row mt-120">
+        <div class="col-lg-7 col-md-6">
+            <div class="ab-thumb">
+                <img src="assets/images/edu_1.png" alt="">
             </div>
-            <div class="col-lg-5 col-md-6">
-                <div class="ab-content">
-                    <h3 class="fblack">JOIN OUR LARGEST COACHING COMMUNITY.</h3>
-                    <p class="fblack">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
-                        Aliquam euismod, elit vel bibendum vestibulum, nisl nisl mollis tortor, a rhoncus mi augue eleifend justo. Sed sed ullamcorper massa, at pretium tortor. Integer nunc tellus, elementum eu malesuada eu, pellentesque a tellus.
-                    </p>
-                    <a class="bisylms-btn" href="{{url('/register') }}">Get Started</a>
-                </div>
+        </div>
+        <div class="col-lg-5 col-md-6">
+            <div class="ab-content">
+                <h3 class="fblack">JOIN OUR LARGEST COACHING COMMUNITY.</h3>
+                <p class="fblack">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
+                    Aliquam euismod, elit vel bibendum vestibulum, nisl nisl mollis tortor, a rhoncus mi augue eleifend justo. Sed sed ullamcorper massa, at pretium tortor. Integer nunc tellus, elementum eu malesuada eu, pellentesque a tellus.
+                </p>
+                <a class="bisylms-btn" href="{{url('/register') }}">Get Started</a>
             </div>
         </div>
     </div>
+</div>
 <!-- </section> -->
 
 @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])

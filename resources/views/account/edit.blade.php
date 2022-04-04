@@ -315,20 +315,14 @@
 											foreach($all_countries as $top_coach_detail){
 
 											
-												$slug = json_decode($top_coach_detail->name);
-
-
-
-
-													$ss = array();
-													foreach ($slug as $key => $sub) {
-														$ss[$key] = $sub;
-													}
+												
 												?>
 												
 
-													<option value="{{ $top_coach_detail->code }}" {{ (old('country_code', $user->country_code)==$top_coach_detail->code) ? 'selected="selected"' : '' }}>
-													{{ $ss['en'] }}
+													
+
+															<option value="{{ $top_coach_detail->code }}" {{ (old('country_code', $user->country_code)==$top_coach_detail->code) ? 'selected="selected"' : '' }}>
+													{{ $top_coach_detail->name }}
 															</option>
 												<?php  } ?>
 

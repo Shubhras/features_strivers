@@ -367,6 +367,8 @@ class PageController extends FrontController
 		MetaTag::set('description', strip_tags($description));
 		MetaTag::set('keywords', $keywords);
 
+		$data['search_key']= ' ';
+
 		 return appView('pages.category_coaches',$data);
 		$data42['category'] = $data;
 		return $data42;
@@ -374,90 +376,7 @@ class PageController extends FrontController
 	
 
 
-	public function coach_list_category_interesting($id)
-	{
-		// print_r($id);die;
-
-		$data['request_cat_id'] = '';
-		// Get the Country's largest city for Google Maps
-		$cacheId = config('country.code') . '.city.population.desc.first';
-		$city = Cache::remember($cacheId, $this->cacheExpiration, function () {
-			$city = City::currentCountry()->orderBy('population', 'desc')->first();
-
-			return $city;
-		});
-		view()->share('city', $city);
-
-		// print_r($id);die;
-
-		$data['categories'] = DB::table('categories')->select('categories.name', 'categories.id')->where('categories.parent_id', null)->orderBy('categories.name', 'asc')->get();
-		// print_r($data['categories']);die
-		$sub_cat = [];
-		foreach ($data['categories'] as $key => $value) {
-			$sub_cat[] = $value->id;
-		}
-		// print_r($sub_cat);die();
-		// $data['sub_categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.name', 'asc')->where('categories.parent_id',$sub_cat)->get();
-		// print_r($data['sub_categories']);die;
-		// $data['sub_categories'] = DB::table('categories')->select('categories.name', 'categories.id', 'categories.parent_id','categories.slug')->where('categories.parent_id','!=', null)->orderBy('categories.name', 'asc')->get();
-
-		$data['sub_categories'] = DB::table('categories')->select('categories.name', 'categories.id', 'categories.parent_id','categories.slug')->where('categories.parent_id','!=', null)->orderBy('categories.name', 'asc')->get();
-
-
-		$data['my_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)
-			->orderBy('users.id', 'asc')->limit(8)->get();
-
-
-
-			if (empty($id)) {
-				
-				$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
-					->leftjoin('categories', 'categories.id', '=', 'users.category')
-					->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-					->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-					->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
-
-					// print_r($data['user']);die;
-
-			} else {
-
-				
-				
-					$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
-						->leftjoin('categories', 'categories.id', '=', 'users.category')
-						->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-						->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-						->where('users.user_type_id', 2)->where('users.category',$id)->orderBy('users.id', 'asc')->limit(8)->get();
 	
-						// print_r($data['user']);die;
-	
-				
-			}
-
-
-		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
-
-
-
-		[$title, $description, $keywords] = getMetaTag('contact');
-		MetaTag::set('title', $title);
-		MetaTag::set('description', strip_tags($description));
-		MetaTag::set('keywords', $keywords);
-
-
-
-		return appView('pages.category_coaches', $data);
-	
-	}
-
 	public function coach_list_category_all($id)
 	{
 		
@@ -534,7 +453,7 @@ class PageController extends FrontController
 		MetaTag::set('description', strip_tags($description));
 		MetaTag::set('keywords', $keywords);
 
-
+		$data['search_key']= '';
 
 		return appView('pages.category_coaches', $data);
 	}
