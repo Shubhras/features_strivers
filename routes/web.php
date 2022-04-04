@@ -238,6 +238,7 @@ Route::group([
 		if (!doesCountriesPageCanBeHomepage()) {
 			Route::get('/', 'HomeController@index');
 
+			Route::post('/findtopcoach', 'HomeController@coach_list_category_interesting');
 			Route::post('user_login', 'HomeController@user_login');
 			Route::post('strivers_signup', 'HomeController@register_new_user');
 			Route::get(dynamicRoute('routes.countries'), 'CountriesController@index');
@@ -257,7 +258,7 @@ Route::group([
 		Route::get('get_coach_coarse/{id}', 'HomeController@coach_coarsess');
 		Route::get('/coach_list_category_all/{id}', 'PageController@coach_list_category_all');
 
-		Route::get('/findtopcoach/{id}', 'PageController@coach_list_category_interesting');
+		
 		
 
 		
@@ -445,7 +446,10 @@ Route::group([
 				Route::put('photo/delete', 'EditController@updatePhoto');
 				Route::put('photo', 'EditController@updatePhoto');
 
-				Route::get('allcities/{id}','EditController@getCountryLocation');
+				// Route::get('allcities/{id}','EditController@getCountryLocation');
+
+				// Route::get('/findtopcoach', 'EditController@coach_list_category_interesting');
+				Route::get('allcities','EditController@getCountryLocation');
 				
 
 				Route::get('chat', 'EditController@comet_chat');
