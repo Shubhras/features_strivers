@@ -106,7 +106,9 @@ class User extends BaseUser
 		'year_of_experience',
 		'current_level',
 		'location',
-		'subscription_plans'
+		'subscription_plans',
+		'youtube_link',
+		'coach_summary'
 	];
 	
 	/**

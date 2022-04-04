@@ -315,7 +315,16 @@
 											foreach($all_countries as $top_coach_detail){
 
 											
-												
+												$slug = json_decode($top_coach_detail->name);
+
+
+
+
+													$ss = array();
+													foreach ($slug as $key => $sub) {
+														$ss[$key] = $sub;
+													}
+													// print_r($top_coach_detail);
 												?>
 												
 
@@ -346,9 +355,22 @@
 														<!-- <option value="0" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
 															{{ t('select_your_location') }}
 														</option>
-														@foreach ($categories as $item)
-															<option value="{{ $item->id }}" {{ (old('location', $user->location)==$item->id) ? 'selected="selected"' : '' }}>
-																{{ $item->slug }}
+														
+														@foreach ($categoriese as $item)
+															<option value="{{ $item->country_code }}" {{(old('location', $top_coach_detail->code) == $item->country_code) ? 'selected="selected"' : '' }}> -->
+															<?php
+															// $slug = json_decode($item->name);
+
+
+
+
+															// 		$ss = array();
+															// 		foreach ($slug as $key => $sub) {
+															// 			$ss[$key] = $sub;
+															// 		}
+																	
+																	?>
+																<!-- {{$ss['en']  }}
 															</option>
 														@endforeach -->
 													</select>
@@ -417,6 +439,24 @@
 															   class="form-control{{$currentlevelError}}"
 															   placeholder="{{ t('Current_level') }}"
 															   value="{{ old('current_level', $user->current_level) }}"
+														>
+													</div>
+												</div>
+											</div>
+											{{--Youtube link--}}
+											
+											<div class="row mb-3 required">
+												<label class="col-md-12" for="link">{{ t('youtube link') }} <sup>*</sup>
+											     </label>
+												<div class="col-md-12">
+													<div class="input-group">
+														<span class="input-group-text"></span>
+														<input id="youtube_link"
+															   name="youtube_link"
+															   type="url"
+															   class="form-control"
+															   placeholder="link"
+															   
 														>
 													</div>
 												</div>
@@ -1829,18 +1869,62 @@
     function getLocation(id)
     {
 		
-		// var ids = $('#country_code' + id).val();
-		alert(id);
+		var ids = $('#id').val();
+		// alert(id);
+		// console.log(url);
         $.ajax({
-			type: 'GET',
+			type: 'get',
             dataType: 'Json',
-			url: "{{ url('account/allcities') }}",
+			url: "{{ url('account/allcities') }}?id=" + id,
 			data: {'id': id},
+			
             // dataType: 'json',
             success: function(Response) {
+				
 
-			console.log('resend', Response);
+				if (Response) {
+							
+							// $("#location").empty();
+							// $("#location").append('<option value=0>Select a subcategory</option>');
+							
+							$.each(Response, function(key, value) {
+								
+								$.each(value, function(keys, cityvalue) {
+									
+									// myObject = JSON.parse(cityvalue.name);
+									myObject = JSON.stringify(cityvalue.name);
+									$("#location").append('<option value="' + cityvalue.id + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' + myObject +
+								'</option>');
+
+								// 	$.each(cityvalue, function(keyss, cityvaluek) {
+									
+								// 		alert(cityvaluek.id);
+										
+								// 	 myObject = JSON.parse(cityvaluek.name);
+									
+								// 		console.log('key',myObject);
+								// 		$.each(myObject, function(keyss3, cityvalue9) {
+									
+
+								// 		});
+
+									
+									
+
+								// 	});
+								
+								
+								});
+
+							});
+
+						} else {
+
+							$("#location").empty();
+						}
+
             }
+			
             // error: function(res){
             //     $('#message').text('Error!');
             //     $('.dvLoading').hide();

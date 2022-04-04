@@ -711,7 +711,7 @@ class HomeController extends FrontController
 		// print_r($request->all());die;
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://2040141e5d5dcef3.api-us.cometchat.io/v3/users',
+		  CURLOPT_URL => 'https://206672f6b5d16174.api-us.cometchat.io/v3/users',
 		  CURLOPT_RETURNTRANSFER => true,
 		  CURLOPT_ENCODING => '',
 		  CURLOPT_MAXREDIRS => 10,
@@ -721,7 +721,7 @@ class HomeController extends FrontController
 		  CURLOPT_CUSTOMREQUEST => 'POST',
 		  CURLOPT_POSTFIELDS => array('uid' => $request->username,'name' => $request->name),
 		  CURLOPT_HTTPHEADER => array(
-			'apiKey: f103a714cbc337ddecefc06b6afb70a0c37dcc3b'
+			'apiKey: 37e9caaa45ca1ea8240082bbef437450bce73aa5'
 		  ),
 		));
 		
