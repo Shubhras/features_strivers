@@ -63,7 +63,8 @@ class EditController extends AccountBaseController
 
 		$data['subscription_plan']= Package::query()->get();
 
-		//$data['categories']= Category::query()->get();
+		// $data['categoriese']= cities::query()->get();
+		$data['categoriese'] = DB::table('cities')->get();
 
 		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 
@@ -78,9 +79,10 @@ class EditController extends AccountBaseController
 	}
 
 
-	public function getCountryLocation($id){
+	public function getCountryLocation(UserRequest $request){
 
-		$data['cities'] = DB::table('cities')->where('cities.country_code',$id)->get();
+// print_r(($request->id));die;
+		$data['cities'] = DB::table('cities')->select('cities.id','cities.country_code','cities.name')->where('cities.country_code',$request->id)->get();
 
 		return $data;
 
@@ -958,7 +960,7 @@ class EditController extends AccountBaseController
 
 	public function coach_list_category_interesting(Request $request)
 	{
-		print_r($request);die;
+		// print_r($request);die;
 
 		$data['request_cat_id'] = '';
 		// Get the Country's largest city for Google Maps
