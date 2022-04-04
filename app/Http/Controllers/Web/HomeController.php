@@ -109,7 +109,7 @@ class HomeController extends FrontController
 
 		
 
-		$data['user'] = DB::table('users')->select('users.*')->where('users.user_type_id',2)->whereNotIn('users.id', [1])->orderBy('users.id','desc')->limit(6)->get();
+		$data['user'] = DB::table('users')->select('users.*')->where('users.user_type_id',2)->whereNotIn('users.id', [1])->inRandomOrder()->limit(6)->get();
 
 		$data['our_reviews'] = DB::table('users')->select('users.*')->where('users.user_type_id',2)->whereNotIn('users.id', [1])->orderBy('users.id','asc')->limit(3)->get();
 
@@ -140,7 +140,7 @@ class HomeController extends FrontController
 		$this->setSeo($searchFormOptions);
 
 
-		$data['letest_news']= DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id','desc')->limit(5)->get();
+		$data['letest_news']= DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id','desc')->limit(4)->get();
 
 		// $data['categories_list_coach'] = DB::table('categories')->select('categories.slug','categories.id','categories.name','users.category')->join('users' ,'categories.id' ,'=' ,'users.category')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 
@@ -164,10 +164,14 @@ class HomeController extends FrontController
 		
 		$data['uniqueCat'] = array_values($unique);
 		
-		$data['categories_list_coach1'] = array_slice($data['uniqueCat'], 0, 5);
+		$data['categories_list_coach1'] = array_slice($data['uniqueCat'], 0, 6);
+
+		// print_r($data['categories_list_coach1']);die;
 	
 		return appView('home.index', $data);
 	}
+
+
 	
 	/**
 	 * Get search form (Always in Top)
@@ -184,6 +188,10 @@ class HomeController extends FrontController
 	 *
 	 * @param array $value
 	 */
+
+	
+
+
 	protected function getLocations($value = [])
 	{
 		// Get the default Max. Items

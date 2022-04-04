@@ -262,9 +262,9 @@
 																		console.error(error);
 																	});
 															</script>
-															<!-- <script>
-																CKEDITOR.replace('editor');
-															</script> -->
+														
+
+															
 														</div>
 
 													</div>

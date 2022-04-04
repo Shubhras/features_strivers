@@ -3118,7 +3118,8 @@ input#phoneHidden {
         line-height: 27px;
         color: #ffffff;
         font-weight: 400;
-        font-family: 'Montserrat', sans-serif;;
+        font-family: 'Montserrat', sans-serif;
+        ;
         padding: 19px 0px;
         text-align: center;
         margin-top: -45px;
@@ -3328,6 +3329,16 @@ input#phoneHidden {
         height: 50px;
         background-color: #43329f!important;
     }
+    .line_bottom {
+        font-size: 19px !important;
+        outline: 20px;
+        float: left;
+        font-weight: 600;
+        letter-spacing: 0;
+        margin: 2px 161px 9px;
+        line-height: 2.2;
+        flex: 0 0 50%;
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -3432,6 +3443,16 @@ input#phoneHidden {
         padding: 240px 0 0;
         min-height: 400px;
         width: 100%;
+    }
+    .line_bottom {
+        font-size: 12px!important;
+        outline: 20px;
+        float: left;
+        font-weight: 700;
+        letter-spacing: 0;
+        margin: 1px -21px 6px;
+        line-height: 5.2;
+        flex: 0 0 50%;
     }
 }
 
@@ -3774,7 +3795,7 @@ input#phoneHidden {
         font-size: 16px!important;
         font-weight: 500;
         margin-bottom: 10px;
-        font-family:'Montserrat', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         color: blueviolet;
     }
     .fc-border-separate tr.fc-last th {
@@ -3839,7 +3860,7 @@ input#phoneHidden {
         margin-bottom: -97px;
     }
     .main-section {
-        padding-top: 104px;
+        padding-top: 332px;
         padding-bottom: 70px;
         background: #ffffff;
         margin-top: -75px;
@@ -3881,7 +3902,7 @@ input#phoneHidden {
         font-size: 16px!important;
         font-weight: 500;
         margin-bottom: 10px;
-        font-family:'Montserrat', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         color: blueviolet;
     }
     .fc-border-separate tr.fc-last th {
@@ -4151,7 +4172,7 @@ input#phoneHidden {
         font-size: 16px!important;
         font-weight: 500;
         margin-bottom: 10px;
-        font-family:'Montserrat', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         color: blueviolet;
     }
     .fc-border-separate tr.fc-last th {

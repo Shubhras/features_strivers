@@ -71,8 +71,8 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
 }
 
 .navbar-brand {
-    /* position: relative; */
-    /* padding: 22px 0; */
+    position: relative;
+    padding: 22px 0!important;
     padding: 0px 0;
     margin: 0;
     text-align: center;
@@ -3383,7 +3383,8 @@ footer .widget ul li a:hover {
     z-index: 2;
     float: left;
     display: inline-block;
-    font-family:'Montserrat', sans-serif;;
+    font-family: 'Montserrat', sans-serif;
+    ;
     padding: 0;
     margin-right: 10px;
     width: 120px;
@@ -4368,7 +4369,8 @@ footer .widget ul li a:hover {
 .condition-check input:checked+label::after {
     background: transparent;
     bottom: 0;
-    font-family: 'Montserrat', sans-serif;;
+    font-family: 'Montserrat', sans-serif;
+    ;
     content: "\4e";
     color: #012245;
     font-size: 10px;
@@ -4651,7 +4653,8 @@ footer .widget ul li a:hover {
     left: 0;
     top: 0;
     content: "\35";
-    font-family: 'Montserrat', sans-serif;;
+    font-family: 'Montserrat', sans-serif;
+    ;
     font-size: 20px;
     line-height: 40px;
     font-weight: 400;
@@ -5260,7 +5263,7 @@ blockquote cite {
 .save-comment input:checked+label::after {
     background: transparent;
     bottom: 0;
-    font-family:'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     content: "\4e";
     color: #012245;
     font-size: 10px;
@@ -6105,7 +6108,7 @@ Profile Page
     position: relative;
     min-height: 60px;
     padding-left: 70px;
-    margin: 9px 0 28px;
+    margin: 9px 0 10px;
 }
 
 .latest-course:last-child {
@@ -6136,10 +6139,22 @@ Profile Page
     color: #012245;
 }
 
+.find-letest-news1 {
+    margin-top: 19px!important;
+}
+
+.letest-offering-data {
+    margin-top: 28px;
+}
+
+.letest-offering-data2 {
+    margin-bottom: 38px;
+}
+
 .latest-course .course-price {
     display: block;
     font-size: 14px;
-    line-height: .8;
+    line-height: 0px;
     color: #3fb65f;
     font-weight: 600;
     margin: 0;
@@ -7348,7 +7363,7 @@ Profile Page
     position: relative;
     border-radius: 10px;
     margin: 0 0 30px;
-    padding: 0px 12px 0px 15px;
+    padding: 13px 12px 0px 15px;
 }
 
 .top-coach-widget {
@@ -7369,9 +7384,13 @@ Profile Page
 
 .latest-course1 {
     position: relative;
-    min-height: 60px;
-    padding-left: 70px;
+    min-height: 45px;
+    padding-left: 55px;
     margin: 6px 0 3px;
+}
+
+.find-letest-news {
+    margin-top: 12px!important;
 }
 
 .latest-course10 {
@@ -7935,7 +7954,7 @@ input#modal-description {
     position: absolute;
     right: 0;
     top: 0;
-    width: 28%;
+    width: 20%;
     z-index: 1;
 }
 
@@ -8038,6 +8057,10 @@ h4 {
 
 .fwhite {
     color: #ffffff;
+}
+
+.fblack {
+    color: #000000;
 }
 
 .logoh {

@@ -444,6 +444,8 @@ Route::group([
 				Route::get('getSubcategories', 'EditController@getSubcategories');
 				Route::put('photo/delete', 'EditController@updatePhoto');
 				Route::put('photo', 'EditController@updatePhoto');
+
+				Route::get('allcities/{id}','EditController@getCountryLocation');
 				
 
 				Route::get('chat', 'EditController@comet_chat');

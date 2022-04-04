@@ -48,126 +48,165 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
 
 <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
-	@extends('layouts.master_new')
-	@section('content')
+    @extends('layouts.master_new')
+    @section('content')
 
 
-	<section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
-	</section>
+    <section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
+    </section>
 
 
-	<?php
+    <?php
 
 
 	?>
-	<center><h2 class=" header font-text-size-48px">Consultation Detail</h2></center>
-	<section class="blog-section64">
-		
-
-		<div class="container ">
-			<div class="row">
-				<div class="col-lg-12">
-					<h2 class="hero-content_h2 font-text-size-40px">{{$coach_course->course_name}}</h2> <br>
-
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-6">
-					<center> <img src="{{ url('storage/'.$coach_course->photo) }}" class="lazyload img-fluid images_height" style="height: 800px; width: 900px;"></center>
-
-				</div>
-				<div class="col-lg-6">
-					<ul class="line_bottom" >
-						
-							<li style="font-size: 30px; text-align:center; font-family: 'Roboto', sans-serif; font-weight: 600;">  Total Consultation: {{$coach_course->total_consultation_fee}} / $ Fees
-							</li>
-							<li style="font-size: 30px; text-align:center; font-family: 'Roboto', sans-serif;font-weight: 600;">  Consultation_fee_per_hour: {{$coach_course->consultation_fee_per_hour}}
-							</li>
-							<li style="font-size: 30px; text-align:center; font-family: 'Roboto', sans-serif;"> <span style="font-size:30px; font-weight:700;"> Creadit_required: </span>{{$coach_course->creadit_required}}
-							</li>
-							<li style="font-size: 30px; text-align:center; font-family: 'Roboto', sans-serif;font-weight: 600;">  Dated: {{$coach_course->dated}}
-							</li>
-							<li style="font-size: 30px; text-align:center; font-family: 'Roboto', sans-serif;font-weight: 600;">  Coach Name: {{$coach_course->name}}
-							</li>
-						
-					</ul>
-				</div>
-			</div>
-
-		</div>
-
-		<br><br>
-		<!-- </section>     -->
+    <center>
+        <h2 class=" header font-text-size-48px">Consultation Detail</h2>
+    </center>
+    <section class="blog-section64">
 
 
-		<div class="container">
+        <div class="container ">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="hero-content_h2 font-text-size-40px">{{$coach_course->course_name}}</h2> <br>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <center> <img src="{{ url('storage/'.$coach_course->photo) }}"
+                            class="lazyload img-fluid images_height" ></center>
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+
+                        <div class="line_bottom">
+                            <p> Total Consultation: {{$coach_course->total_consultation_fee}} / $ Fees
+                            </p>
+                            <p> Consultation_fee_per_hour: {{$coach_course->consultation_fee_per_hour}}
+                            </p>
+                            <p> Creadit_required: {{$coach_course->creadit_required}}
+                            </p>
+                            <p> Dated: {{$coach_course->dated}}
+                            </p>
+                            <p> Coach Name: {{$coach_course->name}}
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <br><br>
+        <!-- </section>     -->
 
 
-
-			<div class="row">
-				<div class="col-lg-12">
-					<h5 style="font-weight: 700;">Discription:</h5>
-					<p style="font-size: 30px; text-align:center; font-family: 'Roboto', sans-serif;">  {{$coach_course->description}}
-					</p>
-				</div>
-			</div>
-
-		</div>
-	</section>
-
-
-	@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
-
-	<a href="#" id="back-to-top">
-		<i class="fal fa-angle-double-up"></i>
-	</a>
-	<!-- Back To Top -->
-
-	<!-- Start Include All JS -->
-	<script src="assets/js/jquery.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/jquery.appear.js"></script>
-	<script src="assets/js/owl.carousel.min.js"></script>
-	<script src="assets/js/slick.js"></script>
-	<script src="assets/js/jquery.nice-select.min.js"></script>
-	<script src="assets/js/swiper-bundle.min.js"></script>
-	<script src="assets/js/TweenMax.min.js"></script>
-	<script src="assets/js/lightcase.js"></script>
-	<script src="assets/js/jquery.plugin.min.js"></script>
-	<script src="assets/js/jquery.countdown.min.js"></script>
-	<script src="assets/js/jquery.easing.1.3.js"></script>
-	<script src="assets/js/jquery.shuffle.min.js"></script>
-
-	<script src="assets/js/theme.js"></script>
-	<!-- End Include All JS -->
-	<style>
-		.line_bottom{
-	outline: 20px;
-	float:left; 
-	font-weight: 700;
-    letter-spacing: 0;
-    margin: 0 0 15px;
-    line-height: 3.2;
-		}
-		h2{
-
-font-weight: 700px;			
-		}
-	</style>
-
-	<style>
-		
-	</style>
-	@endsection
-
-	@section('after_styles')
-
-	@if (config('lang.direction') == 'rtl')
-	<!-- <link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput-rtl.min.css') }}" rel="stylesheet"> -->
-	@endif
+        <div class="container">
 
 
 
-	@endsection
+            <div class="row">
+                <div class="col-lg-12">
+                    <h5 style="font-weight: 700; font-size:35px; margin: 0px 191px 15px;">Discription:</h5>
+                    <?php
+					$descriptions = strip_tags($coach_course->description)
 
-	@section('after_scripts')
+					 ?>
+                    <p style="font-size: 30px; text-align:center; font-family: 'Roboto', sans-serif;margin: 0px 191px 15px;"> {{$descriptions}}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer', 'layouts.inc.footer'])
+
+    <a href="#" id="back-to-top">
+        <i class="fal fa-angle-double-up"></i>
+    </a>
+    <!-- Back To Top -->
+
+    <!-- Start Include All JS -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.appear.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/TweenMax.min.js"></script>
+    <script src="assets/js/lightcase.js"></script>
+    <script src="assets/js/jquery.plugin.min.js"></script>
+    <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/jquery.shuffle.min.js"></script>
+
+    <script src="assets/js/theme.js"></script>
+    <!-- End Include All JS -->
+    <style>
+    .line_bottom {
+        font-size: 28px !important;
+        outline: 20px;
+        float: left;
+        font-weight: 600;
+        letter-spacing: 0;
+        margin: 1px -20px 9px;
+        line-height: 2.2;
+        flex: 0 0 50%;
+    }
+
+    h2 {
+
+        font-weight: 700px;
+    }
+	.img-fluid{
+			height: 341px;
+			 width: 672px;
+
+	}
+	/* @media screen and (min-width: 1024px) {
+		.line_bottom {
+		font-size: 23px !important;
+		outline: 20px;
+		float: left;
+		font-weight: 700;
+		letter-spacing: 0;
+		margin: 1px 9px 9px;
+		line-height: 1.2;
+		flex: 0 0 50%;
+    	}
+		.images_height{
+			height: 414px;
+			 width: 900px;
+
+		 }
+            
+    } */
+
+	   
+    </style>
+    <style>
+    .scroll-top-footer {
+        line-height: 2 !important;
+    }
+    </style>
+
+    @endsection
+
+    @section('after_styles')
+
+    @if (config('lang.direction') == 'rtl')
+    <!-- <link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput-rtl.min.css') }}" rel="stylesheet"> -->
+    @endif
+
+
+
+    @endsection
+
+    @section('after_scripts')
