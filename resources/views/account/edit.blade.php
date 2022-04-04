@@ -328,10 +328,8 @@
 												?>
 												
 
-													
-
-															<option value="{{ $top_coach_detail->code }}" {{ (old('country_code', $user->country_code)==$top_coach_detail->code) ? 'selected="selected"' : '' }}>
-													{{ $top_coach_detail->name }}
+													<option value="{{ $top_coach_detail->code }}" {{ (old('country_code', $user->country_code)==$top_coach_detail->code) ? 'selected="selected"' : '' }}>
+													{{ $ss['en'] }}
 															</option>
 												<?php  } ?>
 
@@ -443,7 +441,7 @@
 													</div>
 												</div>
 											</div>
-											{{--Youtube link--}}
+											{{-- Youtube link--}}
 											
 											<div class="row mb-3 required">
 												<label class="col-md-12" for="link">{{ t('youtube link') }} <sup>*</sup>

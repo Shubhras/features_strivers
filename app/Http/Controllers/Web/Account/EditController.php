@@ -1026,3 +1026,4 @@ class EditController extends AccountBaseController
 		return appView('pages.category_coaches', $data);
 	
 }
+}
