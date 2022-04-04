@@ -6143,6 +6143,14 @@ Profile Page
     margin-top: 19px!important;
 }
 
+.letest-offering-data {
+    margin-top: 28px;
+}
+
+.letest-offering-data2 {
+    margin-bottom: 38px;
+}
+
 .latest-course .course-price {
     display: block;
     font-size: 14px;
@@ -7355,7 +7363,7 @@ Profile Page
     position: relative;
     border-radius: 10px;
     margin: 0 0 30px;
-    padding: 0px 12px 0px 15px;
+    padding: 13px 12px 0px 15px;
 }
 
 .top-coach-widget {
@@ -8050,6 +8058,7 @@ h4 {
 .fwhite {
     color: #ffffff;
 }
+
 .fblack {
     color: #000000;
 }

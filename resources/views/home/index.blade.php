@@ -42,7 +42,7 @@
                     <div class="row">
 
                         <div class="location-search-coach-text col-md-10 search-box-text">
-                        <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search" title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
+                        <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more" title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
                     </div>
 
                         <button type="submit" class="btn btn87 btn-primary btn_class search-button-icon-width btn_class_320">
@@ -274,7 +274,7 @@
             <div class="col-lg-3 col-md-4 newmt123 letest-offering-home">
 
                 <div class="course-sidebar1 navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
-                    <div class="top-coach-widget">
+                    <div class="top-coach-widget letest-offering-data2">
 
                         <!-- <div class="course-sidebar1">
                     <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
@@ -303,9 +303,11 @@
                         <!-- </aside>
                     </nav> -->
                     </div>
+                    <br>
+               
                 </div>
-                <br>
-                <div class="course-sidebar1">
+                
+                <div class="course-sidebar1 letest-offering-data">
                     <nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
                         <aside class="widget h-75 d-inline-block">
                             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
@@ -503,7 +505,7 @@
         </div>
     </div>
 </section>
-<section class="main-section">
+<!-- <section class="main-section"> -->
     <div class="container">
 
         <div class="row mt-120">
@@ -523,7 +525,7 @@
             </div>
         </div>
     </div>
-</section>
+<!-- </section> -->
 
 @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 <a href="#" id="back-to-top">

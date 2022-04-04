@@ -67,7 +67,7 @@ class EditController extends AccountBaseController
 
 		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 
-		$data['all_countries']= DB::table('countries')->select()->get();
+		$data['all_countries']= DB::table('countries')->get();
 		// print_r($data['all_countries']);die;
 
 		MetaTag::set('title', t('my_account'));
@@ -77,6 +77,14 @@ class EditController extends AccountBaseController
 		
 	}
 
+
+	public function getCountryLocation($id){
+
+		$data['cities'] = DB::table('cities')->where('cities.country_code',$id)->get();
+
+		return $data;
+
+	}
 
 
 	public function dashboard()
