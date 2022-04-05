@@ -1658,8 +1658,8 @@
 			showCancel: true,
 			showUpload: false,
 			showRemove: false,
-			minFileSize: {{ (int)config('settings.upload.min_image_size', 0) }}, {{-- in KB --}}
-			maxFileSize: {{ (int)config('settings.upload.max_image_size', 1000) }}, {{-- in KB --}}
+			minFileSize: {{ (int)config('settings.upload.min_image_size', 0) }}, 
+			maxFileSize: {{ (int)config('settings.upload.max_image_size', 1000) }},
 			browseOnZoneClick: true,
 			minFileCount: 0,
 			maxFileCount: 1,
