@@ -63,11 +63,12 @@ class EditController extends AccountBaseController
 
 		$data['subscription_plan']= Package::query()->get();
 
-		//$data['categories']= Category::query()->get();
+		// $data['categoriese']= cities::query()->get();
+		$data['categoriese'] = DB::table('cities')->get();
 
 		$data['categories'] = DB::table('categories')->select('categories.slug','categories.id')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 
-		$data['all_countries']= DB::table('countries')->select()->get();
+		$data['all_countries']= DB::table('countries')->get();
 		// print_r($data['all_countries']);die;
 
 		MetaTag::set('title', t('my_account'));
@@ -77,6 +78,15 @@ class EditController extends AccountBaseController
 		
 	}
 
+
+	public function getCountryLocation(UserRequest $request){
+
+// print_r(($request->id));die;
+		$data['cities'] = DB::table('cities')->select('cities.id','cities.country_code','cities.name')->where('cities.country_code',$request->id)->get();
+
+		return $data;
+
+	}
 
 
 	public function dashboard()
@@ -950,7 +960,7 @@ class EditController extends AccountBaseController
 
 	public function coach_list_category_interesting(Request $request)
 	{
-		print_r($request);die;
+		// print_r($request);die;
 
 		$data['request_cat_id'] = '';
 		// Get the Country's largest city for Google Maps
@@ -1015,6 +1025,5 @@ class EditController extends AccountBaseController
 
 		return appView('pages.category_coaches', $data);
 	
-	}
-
+}
 }

@@ -287,26 +287,94 @@
                                                 
                                                       {{-- country_code --}}
 
-										     <?php $countryCodeError = (isset($errors) and $errors->has('country_code')) ? ' is-invalid' : ''; ?>
+										     <?php //$countryCodeError = (isset($errors) and $errors->has('country_code')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label class="col-md-12{{ $countryCodeError }}" for="country_code">
+												<label class="col-md-12" for="country_code">
 													{{ ('Country') }} <sup>*</sup>
 												</label>
+
+
 												<div class="col-md-12">
-													<select name="country_code" id="countryCode" class="form-control large-data-selecter{{ $countryCodeError }}">
-														<option value="0" {{ (!old('country_code') or old('country_code')==0) ? 'selected="selected"' : '' }}>
+													<select name="country_code" id="country_code" class="form-control" onchange="getLocation(this.value)">
+														<!-- <option value="0" {{ (!old('country_code') or old('country_code')==0) ? 'selected="selected"' : '' }}>
 															{{ t('select_a_country') }}
-														</option>
-														@foreach ($countries as $item)
+														</option> -->
+
+														<!-- @foreach ($countries as $item)
 															<option value="{{ $item->get('code') }}" {{ (old('country_code', $user->country_code)==$item->get('code')) ? 'selected="selected"' : '' }}>
 																{{ $item->get('name') }}
 															</option>
-														@endforeach
+														@endforeach -->
+
+
+
+
+												<?php 
+												
+												// print_r($all_countries);die;
+											foreach($all_countries as $top_coach_detail){
+
+											
+												$slug = json_decode($top_coach_detail->name);
+
+
+
+
+													$ss = array();
+													foreach ($slug as $key => $sub) {
+														$ss[$key] = $sub;
+													}
+													// print_r($top_coach_detail);
+												?>
+												
+
+													<option value="{{ $top_coach_detail->code }}" {{ (old('country_code', $user->country_code)==$top_coach_detail->code) ? 'selected="selected"' : '' }}>
+													{{ $ss['en'] }}
+															</option>
+												<?php  } ?>
+
+
 													</select>
 												</div>
 											</div>
 
-                                            			<!-- <input name="country_code" type="hidden" value="{{ $user->country_code }}"> -->
+											
+
+											<?php $locationError = (isset($errors) and $errors->has('location')) ? ' is-invalid' : ''; ?>
+
+											<div class="row mb-3 required">
+
+											<label class="col-md-12">
+													{{ t('location') }} <sup>*</sup>
+												</label>
+
+												<div class="col-md-12">
+													<select name="location" id="location" class="form-control large-data-selecter">
+														<!-- <option value="0" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
+															{{ t('select_your_location') }}
+														</option>
+														
+														@foreach ($categoriese as $item)
+															<option value="{{ $item->country_code }}" {{(old('location', $top_coach_detail->code) == $item->country_code) ? 'selected="selected"' : '' }}> -->
+															<?php
+															// $slug = json_decode($item->name);
+
+
+
+
+															// 		$ss = array();
+															// 		foreach ($slug as $key => $sub) {
+															// 			$ss[$key] = $sub;
+															// 		}
+																	
+																	?>
+																<!-- {{$ss['en']  }}
+															</option>
+														@endforeach -->
+													</select>
+												</div>
+											</div>
+                                            			
 												
 											{{-- phone --}}
 											<?php $phoneError = (isset($errors) && $errors->has('phone')) ? ' is-invalid' : ''; ?>
@@ -353,27 +421,7 @@
 													</div>
 												</div>
 											</div>
-											<?php $locationError = (isset($errors) and $errors->has('location')) ? ' is-invalid' : ''; ?>
-
-											<div class="row mb-3 required">
-
-											<label class="col-md-12{{ $countryCodeError }}" for="country_code">
-													{{ t('location') }} <sup>*</sup>
-												</label>
-
-												<div class="col-md-12">
-													<select name="location" class="form-control large-data-selecter{{ $countryCodeError }}">
-														<option value="0" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
-															{{ t('select_your_location') }}
-														</option>
-														@foreach ($categories as $item)
-															<option value="{{ $item->id }}" {{ (old('location', $user->location)==$item->id) ? 'selected="selected"' : '' }}>
-																{{ $item->slug }}
-															</option>
-														@endforeach
-													</select>
-												</div>
-											</div>
+											
 
 											{{-- Current level --}}
 											<?php $currentlevelError = (isset($errors) && $errors->has('current_level')) ? ' is-invalid' : ''; ?>
@@ -389,6 +437,24 @@
 															   class="form-control{{$currentlevelError}}"
 															   placeholder="{{ t('Current_level') }}"
 															   value="{{ old('current_level', $user->current_level) }}"
+														>
+													</div>
+												</div>
+											</div>
+											{{-- Youtube link--}}
+											
+											<div class="row mb-3 required">
+												<label class="col-md-12" for="link">{{ t('youtube link') }} <sup>*</sup>
+											     </label>
+												<div class="col-md-12">
+													<div class="input-group">
+														<span class="input-group-text"></span>
+														<input id="youtube_link"
+															   name="youtube_link"
+															   type="url"
+															   class="form-control"
+															   placeholder="link"
+															   
 														>
 													</div>
 												</div>
@@ -658,7 +724,7 @@
 		<div class="col-md-12 user-profile-img-data default-inner-box">
 
 		<img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-                        <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> {{ $user->name }}</b> </span>
+                        <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> Update Profile  {{ $user->name }}</b> </span>
 						<!-- <b> Striver Update Profile </b></span> -->
 
 					<div class="row">
@@ -842,7 +908,7 @@
 											{{-- gender_id --}}
 											<?php $genderIdError = (isset($errors) && $errors->has('gender_id')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label class="col-md-3">{{ t('gender') }}</label>
+												<label class="col-md-3 col-form-label">{{ t('gender') }}</label>
 												<div class="col-md-12">
 													@if ($genders->count() > 0)
                                                         @foreach ($genders as $gender)
@@ -1168,7 +1234,7 @@
 
 
 											<div class="form-group row required">
-												<label class="col-md-12{{ $countryCodeError }}" for="country_code">
+												<label class="col-md-12{{ $countryCodeError }}">
                                             		{{ t('subscription_palne') }} <sup>*</sup>
                                             	</label>
 												<div class="col-md-12">
@@ -1191,7 +1257,7 @@
 
 
 											<div class="form-group row required">
-												<label class="col-md-12{{ $countryCodeError }}" for="country_code">
+												<label class="col-md-12{{ $countryCodeError }}">
                                             		{{ t('subscription_Price') }} <sup>*</sup>
                                             	</label>
 												<div class="col-md-12">
@@ -1713,6 +1779,8 @@
 					$("#sub_category").empty();
 				}
 			});
+
+
 			var categoryID = $('#category').val();	
 			if (categoryID) {
 				
@@ -1745,4 +1813,121 @@
 			}
 		});
      </script>
+
+<script>
+
+
+
+
+    // $(document).ready(function(){
+
+			
+	// 		$('#country_code').change(function() {
+	// 			var categoryID = $('#country_code').val();
+	// 			console.log(categoryID);
+	// 			alert(categoryID);
+	// 			if (categoryID) {
+	// 				$.ajax({
+	// 					type: "GET",
+	// 					url: "{{ url('account/cities') }}?id=" + categoryID,
+
+	// 					success: function(res) {
+
+	// 						if (res) {
+
+	// 							$("#location").empty();
+	// 							$("#location").append('<option value=0>Select a subcategory</option>');
+	// 							$.each(res, function(key, value) {
+	// 								$("#location").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
+	// 								'</option>');
+
+	// 							});
+
+	// 						} else {
+
+	// 							$("#location").empty();
+	// 						}
+							
+	// 					}
+	// 				});
+	// 			} else {
+	// 				$("#location").empty();
+	// 			}
+	// 		});
+	// 	});
+
+
+
+		
+
+		
+</script>
+
+<script>
+    function getLocation(id)
+    {
+		
+		var ids = $('#id').val();
+		// alert(id);
+		// console.log(url);
+        $.ajax({
+			type: 'get',
+            dataType: 'Json',
+			url: "{{ url('account/allcities') }}?id=" + id,
+			data: {'id': id},
+			
+            // dataType: 'json',
+            success: function(Response) {
+				
+
+				if (Response) {
+							
+							// $("#location").empty();
+							// $("#location").append('<option value=0>Select a subcategory</option>');
+							
+							$.each(Response, function(key, value) {
+								
+								$.each(value, function(keys, cityvalue) {
+									
+									// myObject = JSON.parse(cityvalue.name);
+									myObject = JSON.stringify(cityvalue.name);
+									$("#location").append('<option value="' + cityvalue.id + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' + myObject +
+								'</option>');
+
+								// 	$.each(cityvalue, function(keyss, cityvaluek) {
+									
+								// 		alert(cityvaluek.id);
+										
+								// 	 myObject = JSON.parse(cityvaluek.name);
+									
+								// 		console.log('key',myObject);
+								// 		$.each(myObject, function(keyss3, cityvalue9) {
+									
+
+								// 		});
+
+									
+									
+
+								// 	});
+								
+								
+								});
+
+							});
+
+						} else {
+
+							$("#location").empty();
+						}
+
+            }
+			
+            // error: function(res){
+            //     $('#message').text('Error!');
+            //     $('.dvLoading').hide();
+            // }
+        });
+    }
+</script>
 @endsection
