@@ -3934,7 +3934,7 @@ input#phoneHidden {
 
 @media only screen and (min-device-width: 1562px) and (max-device-width: 2560px) {
     .project-manage {
-        margin-top: -235px!important;
+        margin-top: -235px;
     }
     .edit-profile-coach {
         padding-right: 6px;

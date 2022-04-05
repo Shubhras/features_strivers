@@ -349,7 +349,7 @@ h1 {
                                     {{ $coach_list->name }}
                                 </h5>
                             </a>
-                            <p>Stylist &amp; Author
+                            <p class="font-text-size-16px">Stylist &amp; Author
                             </p>
 
 

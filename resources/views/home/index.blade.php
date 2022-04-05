@@ -29,30 +29,39 @@
     <div class="row">
 
 
-        <div class="col-lg-5 col-md-5 title-box-fix">
+        <div class="col-lg-8 col-md-6 title-box-fix">
             <div class="hero-content">
 
-                <p class="text_font_size_index232">Your Course To Success</p>
+                <p class="text_font_size_index232">Your Course To <br>Success</p>
                 <?php $id = '0'; ?>
                 <form action="{{ url('/coach_list_category_all/'.$id) }}" method="GET" class="row mt-5 box_filter2 search-box_filter2">
 
                     <div class="input-group">
 
-                <div class="input-group">
-                    <div class="row">
+                     <div class="row">
 
-                        <div class="location-search-coach-text col-md-10 search-box-text">
-                        <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" placeholder=" Search" title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}" />
-                    </div>
+                        <div class=" col-md-4 search-box-text">
+                        <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" style="border: 1px solid #eee;" placeholder=" Search for Coach and more..." title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}"/>
+                        
+                     </div>
+                    
+                     <div class=" col-md-2 search-box-text">
+                        <select name="" id="" style="color: black;height: 50px; background-color: white;font-size: 16px;">
+                            <option value="1">Industry</option>
+                        </select>
+                     </div>
+                           <div class="col-md-2 search-box-text">
+                        <select name="" id="" style="color: black;height: 50px; background-color: white; font-size: 16px;">
+                            <option value="1">Location</option>
+                        </select>
+                       </div>
 
+                       <div class="col-md-2 " style= "margin-left: -12px;">
                         <button type="submit" class="btn btn87 btn-primary btn_class search-button-icon-width btn_class_320">
-
-
-                            <i class="fas fa-search" alt="{{ ('find') }}"></i>
-
+                        <i class="fas fa-search" alt="{{ ('find') }}"></i>
                         </button>
                 </div>
-
+</div>
             </form>
                 <!-- <br> -->
                 <a href="{{'/register'}}" class="bisylms-btn">Ready to Get Started?</a>
@@ -525,7 +534,14 @@
     </div>
 </section>
 
+
+
+   
+
+
 @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
+
+
 <a href="#" id="back-to-top">
     <i class="fal fa-angle-double-up scroll-top-footer"></i>
 </a>
@@ -632,6 +648,7 @@
             font-weight: 500;
         }
     }
+
 </style>
 
 
