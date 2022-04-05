@@ -355,7 +355,7 @@
 														</option>
 														
 														@foreach ($categoriese as $item)
-															<option value="{{ $item->country_code }}" {{(old('location', $top_coach_detail->code) == $item->country_code) ? 'selected="selected"' : '' }}> -->
+															<option id ="location" value="{{ $item->country_code }}" {{(old('location', $top_coach_detail->code) == $item->country_code) ? 'selected="selected"' : '' }}>
 															<?php
 															// $slug = json_decode($item->name);
 
@@ -365,10 +365,10 @@
 															// 		$ss = array();
 															// 		foreach ($slug as $key => $sub) {
 															// 			$ss[$key] = $sub;
-															// 		}
+																	// }
 																	
 																	?>
-																<!-- {{$ss['en']  }}
+																{{$ss['en'] }}
 															</option>
 														@endforeach -->
 													</select>
@@ -451,7 +451,7 @@
 														<span class="input-group-text"></span>
 														<input id="youtube_link"
 															   name="youtube_link"
-															   type="url"
+															   type="URL"
 															   class="form-control"
 															   placeholder="link"
 															   
@@ -989,9 +989,21 @@
 														<option value="0" {{ (!old('country_code') or old('country_code')==0) ? 'selected="selected"' : '' }}>
 															{{ t('select_a_country') }}
 														</option>
-														@foreach ($countries as $item)
+														@foreach ($all_countries as $item)
+														<?php
+														$slug = json_decode($item->name);
+
+
+
+
+													$ss = array();
+													foreach ($slug as $key => $sub) {
+														$ss[$key] = $sub;
+													}
+													// print_r($top_coach_detail);
+												?>
 															<option value="{{ $item->get('code') }}" {{ (old('country_code', $user->country_code)==$item->get('code')) ? 'selected="selected"' : '' }}>
-																{{ $item->get('name') }}
+																{{ ss['en'] }}
 															</option>
 														@endforeach
 													</select>
@@ -1888,29 +1900,13 @@
 							$.each(Response, function(key, value) {
 								
 								$.each(value, function(keys, cityvalue) {
-									
+									// delete object["en"];
 									// myObject = JSON.parse(cityvalue.name);
+									// delete(cityvalue.en)+cityvalue.name,
 									myObject = JSON.stringify(cityvalue.name);
-									$("#location").append('<option value="' + cityvalue.id + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' + myObject +
+									
+									$("#location").append('<option value="' + cityvalue.id + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' +  myObject +
 								'</option>');
-
-								// 	$.each(cityvalue, function(keyss, cityvaluek) {
-									
-								// 		alert(cityvaluek.id);
-										
-								// 	 myObject = JSON.parse(cityvaluek.name);
-									
-								// 		console.log('key',myObject);
-								// 		$.each(myObject, function(keyss3, cityvalue9) {
-									
-
-								// 		});
-
-									
-									
-
-								// 	});
-								
 								
 								});
 
