@@ -73,16 +73,20 @@ class EditController extends AccountBaseController
 		$data['subscription_plan'] = Package::query()->get();
 
 		// $data['categoriese']= cities::query()->get();
-		$data['categoriese'] = DB::table('cities')->get();
+		$data['all_citiesssss'] = DB::table('cities')->get();
 
 		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
 
 		$data['all_countries'] = DB::table('countries')->get();
+
+		
+		
 		// print_r($data['all_countries']);die;
 
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
+		// print_r($data);die;
 		return appView('account.edit', $data);
 	}
 
