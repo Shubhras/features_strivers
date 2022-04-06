@@ -74,9 +74,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6">
+            <div class="col-lg-6">
+                <div class="col-lg-8 imgb">
                     <center> <img src="{{ url('storage/'.$coach_course->image) }}"
-                            class="lazyload img-fluid images_height" ></center>
+               
+                            class="lazyload img-fluid images_height" style="width: 100%;"></center>
 
                 </div>
 </div>

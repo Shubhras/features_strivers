@@ -301,13 +301,8 @@
 								?>
 									<div class="col-lg-4 col-md-6">
 										<div class="feature-course-item-4">
-<<<<<<< HEAD
-											<div class="fcf-thumb text-center">
-												<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt=""class ="height-img img-fluid" >
-=======
 											<div class="fcf-thumb">
 												<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt=""class ="image-height" style="height: 244px; weight: 244px;">
->>>>>>> e26e19a06ad05ed163163bb6f2120465c174b87b
 												<a class="enroll" href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Enroll Now</a>
 											</div>
 
