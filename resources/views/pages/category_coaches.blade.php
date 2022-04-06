@@ -281,11 +281,9 @@ body {
             <div class="row">
                 <div class="col-md-4">
 
-                    <div id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('0')">
-                        <!-- <li class="btn active" onclick="filterSelection('all')"></button> -->
-
-                    </div>
-                    <div class="accordion " id="accordionExample" onclick="subCatListCoach('{{ $cat->id }}')">
+                    <!-- <div  id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('0')">
+                    </div> -->
+                    <div class="accordion" id="accordionExample" onclick="subCatListCoach('{{ $cat->id }}')">
                         @foreach($categories as $key => $cat)
                         <?php
                         $name = json_decode($cat->name);
@@ -294,16 +292,17 @@ body {
                             $ss[$key] = $sub;
                         }
                         ?>
-                        <div class="subject-title-name-cat">
-                            <div class="card-header" id="heading{{ $cat->id }}">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}">
+                        <div>
+                            <!-- <div class="subject-title-name-cat" id="heading{{ $cat->id }}"> -->
+                                <h5 class="mb-0 subject-title-name-cat">
+                                    <button class="btn btn-link " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
                                         {{ $ss['en'] }}
                                     </button><i class="fa fa-angle-up" id="donar" style="float: right;"></i>
                                 </h5>
-                            </div>
+                            <!-- </div> -->
                             <div id="collapse{{ $cat->id }}" class="collapse" aria-labelledby="heading{{ $cat->id }}" data-parent="#accordionExample">
-                                <div class="card-body">
+                                <!-- <div class="card-body"> -->
+                                <!-- <ul> -->
                                     @foreach($sub_categories as $key => $sub_cat)
                                     @if($sub_cat->parent_id == $cat->id)
                                     <?php
@@ -313,12 +312,17 @@ body {
                                         $ss[$key] = $sub;
                                     }
                                     ?>
-                                    <li style=" border-bottom: 1px solid;"> <button class="btn sub-categorry" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}</button>
-                                    </li>
+                                    
+                                    <h5 class="mb-0 subject-title-name-cat">
+                                    
+                                    <button style="margin-left: 5px; border-bottom: 1px;" class="btn sub-categorry subject-title-name-cat-sub" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}
+                                </button>
+                                    </h5>
 
                                     @endif
                                     @endforeach
-                                </div>
+                                    <!-- </ul> -->
+                                <!-- </div> -->
                             </div>
                         </div>
                         @endforeach
