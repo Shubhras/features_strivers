@@ -288,7 +288,7 @@ return [
     'Choose a city' => 'Elige una ciudad',
     'More cities' => 'Más ciudades',
     'Phishing' => 'Phishing',
-    'Personal Home' => 'Personal Home',
+    'Personal Home' => 'My Account',
     'Payment history' => 'Payment history',
     'Top Ads' => 'Top',
     'Featured Ads' => 'Representado',

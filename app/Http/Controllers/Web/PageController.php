@@ -433,11 +433,11 @@ class PageController extends FrontController
 						->where('users.user_type_id', 2)->where('users.category',$id)->orderBy('users.id', 'asc')->limit(8)->get();
 			}
 
-			$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
-					->leftjoin('categories', 'categories.id', '=', 'users.category')
-					->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-					->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-					->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+			// $data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
+			// 		->leftjoin('categories', 'categories.id', '=', 'users.category')
+			// 		->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			// 		->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			// 		->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
 
 
 		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')

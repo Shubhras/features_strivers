@@ -339,7 +339,7 @@ body {
                                     @else
                                     <img src="../assets/images/course/1.jpg" alt="{{ $coach_list->name }}" class="lazyload img-fluid">
                                     @endif
-                                    <div class="teacher-social">
+                                    <!-- <div class="teacher-social">
                                         <a href="#">
                                             <i aria-hidden="true" class="fab fa-facebook-f"></i>
                                         </a>
@@ -352,7 +352,7 @@ body {
                                         <a href="#">
                                             <i aria-hidden="true" class="fab fa-vimeo-v"></i>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
 
@@ -379,7 +379,7 @@ body {
                                     </p>
                                 <?php  } else {
                                 ?>
-                                    <p>No Category select
+                                    <p>Others
                                     </p>
                                 <?php } ?>
                                 <!-- <p>Stylist &amp; Author
@@ -476,7 +476,7 @@ body {
 
                         <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
 
-                        <div class="teacher-social">
+                        <!-- <div class="teacher-social">
                             <a href="#">
                                 <i aria-hidden="true" class="fab fa-facebook-f"></i>
                             </a>
@@ -489,7 +489,7 @@ body {
                             <a href="#">
                                 <i aria-hidden="true" class="fab fa-vimeo-v"></i>
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="teacher-meta">
 
