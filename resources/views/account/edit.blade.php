@@ -349,28 +349,22 @@
 												</label>
 
 												<div class="col-md-12">
-													<select value="{{ $user->location }}" name="location" id="location" class="form-control large-data-selecter">
-														<option value="{{ $user->location }}" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
-															{{  $user->location }}
-														</option>
-														//
-														<!-- @foreach ($categoriese as $item)
-															<option id ="location" value="{{ $item->country_code }}" {{(old('location', $top_coach_detail->code) == $item->country_code) ? 'selected="selected"' : '' }}>
-															<?php 
-															// $slug = json_decode($item->name);
+													<select name="location" id="location" class="form-control large-data-selecter">
 
-
-
-
-															// 		$ss = array();
-															// 		foreach ($slug as $key => $sub) {
-															// 			$ss[$key] = $sub;
-																	// }
-																	
-																	?>
-																{{$ss['en'] }}
-															</option>
-														@endforeach -->
+													<?php
+													foreach ($categoriese as $key =>$value) {
+														
+													
+													if($user->country_code== $value->country_code){
+													// print_r($value->id);die;
+													?>
+														<option  value="{{ $value->id }}" {{(old('location', $user->location) == $value->id) ? 'selected="selected"' : '' }}>
+															{{  $value->name }}
+														</option>	
+													<?php
+													}
+												} ?>
+														
 													</select>
 												</div>
 											</div>
@@ -486,15 +480,14 @@
 												<div class="col-md-6">
 													<select name="sub_category" id="sub_category" class="form-control large-data-selecter{{ $countryCodeError }}">
 														<?php
-														// foreach ($getSubcategories as $value) {
-														// 	// print_r($value->slug);die;
-														// }
+														foreach ($categoriess as $value) {
+															// print_r($value);die;
 														
-														// print_r($value->slug);die;
-														// ?>
-													<option value="{{ $item->id }}" {{ (old('category', $user->sub_category)==$item->id) ? 'selected="selected"' : '' }}>{{$item->slug}}
+														?>
+													<option value="{{ $value->id }}" {{ (old('category', $user->sub_category)==$value->id) ? 'selected="selected"' : '' }}>{{$value->slug}}
 																
 															</option>
+													<?php } ?>
 												</select>
 												</div>
 											</div>
@@ -1772,7 +1765,7 @@
 	     // when category dropdown changes
 		
 			function getsubcategory(id){
-			var sub_cat_id = {{ old('sub_category', $user->sub_category) }}
+			var sub_cat_id = {{ old('sub_category', $user->category) }}
 			$('#category').change(function() {
 				var categoryID = $('#category').val();
 				if (categoryID) {
@@ -1820,7 +1813,7 @@
 							$("#sub_category").empty();
 							$("#sub_category").append('<option value=""}">Select a subcategory</option>');
 							$.each(res, function(key, value) {
-								$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
+								$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value.id +
 								'</option>');
 
 							});
@@ -1917,7 +1910,7 @@
 									// delete(cityvalue.en)+cityvalue.name,
 									myObject = JSON.stringify(cityvalue.name);
 									
-									$("#location").append('<option value="' + cityvalue.name + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' +  myObject +
+									$("#location").append('<option value="' + cityvalue.id + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' +  myObject +
 								'</option>');
 								
 								});

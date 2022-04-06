@@ -73,9 +73,12 @@ class EditController extends AccountBaseController
 		$data['subscription_plan'] = Package::query()->get();
 
 		// $data['categoriese']= cities::query()->get();
-		$data['categoriese'] = DB::table('cities')->get();
+		$data['categoriese'] = DB::table('cities')->select('cities.name','cities.id','cities.country_code')
+		->where('cities.country_code',$user->country_code)
+		->get();
 
 		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+		$data['categoriess'] = DB::table('categories')->select('categories.slug', 'categories.id')->where('categories.parent_id', $user->category)->get();
 
 		$data['all_countries'] = DB::table('countries')->get();
 		// print_r($data['all_countries']);die;
