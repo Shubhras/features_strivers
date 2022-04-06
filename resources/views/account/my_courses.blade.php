@@ -301,8 +301,13 @@
 								?>
 									<div class="col-lg-4 col-md-6">
 										<div class="feature-course-item-4">
+<<<<<<< HEAD
+											<div class="fcf-thumb text-center">
+												<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt=""class ="height-img img-fluid" >
+=======
 											<div class="fcf-thumb">
 												<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt=""class ="image-height" style="height: 244px; weight: 244px;">
+>>>>>>> e26e19a06ad05ed163163bb6f2120465c174b87b
 												<a class="enroll" href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Enroll Now</a>
 											</div>
 
@@ -460,7 +465,7 @@
 											<div class="col-lg-4 col-md-6">
 												<div class="feature-course-item-4">
 													<div class="fcf-thumb">
-														<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px; weight: 244px;">
+														<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
 														<a class="enroll" href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Enroll Now</a>
 													</div>
 													<div class="fci-details">
@@ -537,10 +542,10 @@
 							</div> -->
 						</div>
 						<div class="teacher-meta">
-							<h5 style="font-weight: 700;">
+						<p class="top-coaches-name-list coach-cat-name12 ">
 								{{ $coach_list->name }}
-							</h5>
-							<p>Stylist &amp; Author
+			</p>
+							<p class="lh">Stylist &amp; Author
 							</p>
 						</div>
 					</div>

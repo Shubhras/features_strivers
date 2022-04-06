@@ -3124,7 +3124,8 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-secondary {
-    color: #6c757d;
+    color: #fff;
+    background-color: #012245;
     border-color: #6c757d;
 }
 

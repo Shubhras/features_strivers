@@ -16,36 +16,39 @@
 			<br>
 
 			<div class="row">
-
-				<h2 class="sec-title-cat">
+			<h2 class="sec-title"style="text-align: center;">
+            Coach Detail    
+            </h2>
+				<!-- <h2 class="sec-title-cat">
 				<h3 style="font-family: 'Roboto', sans-serif; text-align:center"><b>Coach Detail</b></h3>
 
-				</h2>
+				</h2> -->
 
 				<div class="col-md-12 page-content">
 
 					<div class="">
-						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus magnam eligendi corporis cumque maiores in esse neque optio, iusto consectetur? Fugit libero laborum odit quis vitae, inventore debitis dolor commodi voluptatum accusantium ducimus doloribus error facilis magni aspernatur! Enim quibusdam aliquid inventore dicta! A debitis iusto similique dolorum voluptas, incidunt velit ipsum, unde vitae molestiae laboriosam illo maiores blanditiis aliquam consectetur ratione magnam reprehenderit obcaecati tempora fuga sunt accusantium?</p>
-						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;"> Dolorum quae, qui atque dolorem nemo voluptates minus explicabo hic sint laudantium, voluptate, quidem velit dolores. Totam itaque culpa quasi, hic voluptas doloribus assumenda harum. Vel corporis magnam blanditiis impedit molestiae?</p>
+						<p style="font-family: 'Montserrat', sans-serif;font-size: 16px;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus magnam eligendi corporis cumque maiores in esse neque optio, iusto consectetur? Fugit libero laborum odit quis vitae, inventore debitis dolor commodi voluptatum accusantium ducimus doloribus error facilis magni aspernatur! Enim quibusdam aliquid inventore dicta! A debitis iusto similique dolorum voluptas, incidunt velit ipsum, unde vitae molestiae laboriosam illo maiores blanditiis aliquam consectetur ratione magnam reprehenderit obcaecati tempora fuga sunt accusantium?</p>
+						<p style="font-family: 'Montserrat', sans-serif; font-size: 16px;"> Dolorum quae, qui atque dolorem nemo voluptates minus explicabo hic sint laudantium, voluptate, quidem velit dolores. Totam itaque culpa quasi, hic voluptas doloribus assumenda harum. Vel corporis magnam blanditiis impedit molestiae?</p>
 
 					</div>
 				</div>
 			</div>
 			<br>
-
+<br>
+<br>
 			<div class="row">
 
 
-				<div class="col-md-6">
+				<div class="col-md-4 box">
 					<!-- <h3 style="font-family: 'Roboto', sans-serif; font-size: 20px;"><b>Coach Detail</b></h3> -->
 
-					<p style="font-family: 'Roboto', sans-serif; font-size: 20px;"> Coach Name: {{ $top_coach_detail->name }}</p>
+					<p style="font-family: 'Montserrat', sans-serif; font-size: 16px;"> Coach Name: {{ $top_coach_detail->name }}</p>
 
 					<?php if ($top_coach_detail->year_of_experience != '') { ?>
-						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Year of Experience : {{ $top_coach_detail->year_of_experience }}</p>
+						<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Year of Experience : {{ $top_coach_detail->year_of_experience }}</p>
 					<?php
 					} else { ?>
-						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Year of Experience : No Experience</p>
+						<p style="font-family: 'Montserrat', sans-serif;font-size: 18px;">Year of Experience : No Experience</p>
 
 					<?php } ?>
 					<?php
@@ -61,11 +64,11 @@
 							$ss[$key] = $sub;
 						}
 					?>
-						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Industry: {{ $ss['en'] }}</p>
+						<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Industry: {{ $ss['en'] }}</p>
 					<?php
 					} else { ?>
 
-						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Industry: No Industry</p>
+						<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Industry: No Industry</p>
 
 					<?php }
 					if (!empty($top_coach_detail->sub_cat)) {
@@ -77,29 +80,33 @@
 							$aaa[$key] = $subc;
 						}
 					?>
-						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Speciality: {{ $aaa['en'] }}</p>
+						<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Speciality: {{ $aaa['en'] }}</p>
 					<?php
 					} else { ?>
-						<p style="font-family: 'Roboto', sans-serif; font-size: 20px;">Speciality: No Speciality</p>
+						<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Speciality: No Speciality</p>
 					<?php }
 					?>
 
 
 				</div>
 				<br>
-				<div class="col-md-6">
-					<iframe width="500" height="345" src="https://www.youtube.com/embed/xJ3vatsNQDU?autoplay=1&mute=1&loop=1"></iframe>
+				<div class="col-md-8">
+					<iframe width="100%" height="450" src="https://www.youtube.com/embed/xJ3vatsNQDU?autoplay=1&mute=1&loop=1"></iframe>
 				</div>
 			</div>
 		</div>
 	</div>
+	<br>
+	<br>
 	<br>
 	<div class="" style="text-align: center;">
 		<a href="{{url('/pricing') }}">
 			<button type="button" class="btn btn-lg" style="background: #012245; color: #ffffff">Get Started</button>
 		</a>
 	</div>
+<br>
 
+<br>
 	</div>
 
 	</div>
