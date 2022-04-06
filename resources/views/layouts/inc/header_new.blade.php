@@ -59,7 +59,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                 <nav class="navbar navbar-expand-lg nav-menu-fix23">
                     <!-- logo Start-->
                     <a class="navbar-brand" href="{{'/'}}">
-                        <img src="../assets/images/logo4.png" alt="">
+                        <img src="../assets/images/logo.png" alt="">
                         <img class="sticky-logo" src="../assets/images/logo4.png" alt="">
                     </a>
                     <!-- logo End-->
