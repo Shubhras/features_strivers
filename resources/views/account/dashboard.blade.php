@@ -1324,6 +1324,7 @@
     }
 
     .fc-header-center {
+        display: none;
         text-align: center;
     }
 

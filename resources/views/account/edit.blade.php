@@ -181,7 +181,7 @@
 							<div class="card card-default">
 								<div class="card-header">
 									<h4 class="card-title">
-										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or User') }}</a>
+										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ ('Profile Picture') }}</a>
 									</h4>
 								</div>
 								<?php
@@ -350,13 +350,13 @@
 
 												<div class="col-md-12">
 													<select name="location" id="location" class="form-control large-data-selecter">
-														 <option value="0" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
-															{{ t('select_your_location') }}
+														<option value="{{ $user->location }}" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
+															{{  $user->location }}
 														</option>
-														<!--
-														@foreach ($categoriese as $item)
+										
+														<!-- @foreach ($categoriese as $item)
 															<option id ="location" value="{{ $item->country_code }}" {{(old('location', $top_coach_detail->code) == $item->country_code) ? 'selected="selected"' : '' }}>
-															<?php
+															<?php 
 															// $slug = json_decode($item->name);
 
 
@@ -400,6 +400,7 @@
 											</div>
 
 											{{-- experience and location --}}
+
 											<?php $experienceError = (isset($errors) && $errors->has('year_of_experience')) ? ' is-invalid' : ''; ?>
 											
 
@@ -454,6 +455,8 @@
 															   type="URL"
 															   class="form-control"
 															   placeholder="link"
+															   value="{{ old('youtube_link', $user->youtube_link) }}"
+															   
 															   
 														>
 													</div>
@@ -470,7 +473,7 @@
 													{{ ('Subcategories') }} <sup>*</sup>
 												</label>
 												<div class="col-md-6">
-													<select name="category" id="category" class="form-control large-data-selecter{{ $countryCodeError }}">
+													<select name="category" id="category" class="form-control large-data-selecter{{ $countryCodeError }}" onchange="getsubcategory(this.value)">
 														<option value="0" {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }}>
 															{{ t('select_a_category') }}
 														</option>
@@ -483,7 +486,10 @@
 												</div>
 												<div class="col-md-6">
 													<select name="sub_category" id="sub_category" class="form-control large-data-selecter{{ $countryCodeError }}">
-													</select>
+													<option value="{{ $item->id }}" {{ (old('category', $user->sub_category)==$item->id) ? 'selected="selected"' : '' }}>
+																
+															</option>
+												</select>
 												</div>
 											</div>
 
@@ -850,7 +856,7 @@
 							<div class="card card-default">
 								<div class="card-header">
 									<h4 class="card-title">
-										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or User') }}</a>
+										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ ('Profile Picture') }}</a>
 									</h4>
 								</div>
 								<?php
@@ -991,20 +997,14 @@
 														</option>
 														@foreach ($all_countries as $item)
 														<?php
-														$slug = json_decode($item->name);
+													// 	$slug = json_decode($item->name);
 
 
 
 
-													$ss = array();
-													foreach ($slug as $key => $sub) {
-														$ss[$key] = $sub;
-													}
-													// print_r($top_coach_detail);
+													
 												?>
-															<option value="{{ $item->get('code') }}" {{ (old('country_code', $user->country_code)==$item->get('code')) ? 'selected="selected"' : '' }}>
-																{{ ss['en'] }}
-															</option>
+															
 														@endforeach
 													</select>
 												</div>
@@ -1758,8 +1758,8 @@
 
 	<script>
 	     // when category dropdown changes
-		$(document).ready(function(){
-
+		
+			function getsubcategory(id){
 			var sub_cat_id = {{ old('sub_category', $user->sub_category) }}
 			$('#category').change(function() {
 				var categoryID = $('#category').val();
@@ -1773,13 +1773,13 @@
 							if (res) {
 
 								$("#sub_category").empty();
-								$("#sub_category").append('<option value=0>Select a subcategory</option>');
+								$("#sub_category").append('<option value={{$user->sub_category}}>Select a subcategory</option>');
 								$.each(res, function(key, value) {
 									$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
 									'</option>');
-
+									
 								});
-
+								
 							} else {
 
 								$("#sub_category").empty();
@@ -1806,7 +1806,7 @@
 						if (res) {
 							
 							$("#sub_category").empty();
-							$("#sub_category").append('<option value=0>Select a subcategory</option>');
+							$("#sub_category").append('<option value=""}">Select a subcategory</option>');
 							$.each(res, function(key, value) {
 								$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
 								'</option>');
@@ -1823,7 +1823,7 @@
 			} else {
 				$("#sub_category").empty();
 			}
-		});
+		};
      </script>
 
 <script>
@@ -1890,9 +1890,24 @@
 			
             // dataType: 'json',
             success: function(Response) {
+
+
+
+
+				// console.log('jkjkdd', res);
+                   
+                //    $('#company').html("");
+                //    $.each(res, function(index, obj) {
+                //        $.each(obj, function(i, v) {
+                //            $('#company').append($('<option>', {
+                //                value: v.id,
+                //                text: v.company_name
+                //            }))
+                //        });
+                //    });
 				
 
-				if (Response) {
+				// if (Response) {
 							
 							// $("#location").empty();
 							// $("#location").append('<option value=0>Select a subcategory</option>');
@@ -1912,10 +1927,10 @@
 
 							});
 
-						} else {
+						// } else {
 
-							$("#location").empty();
-						}
+						// 	$("#location").empty();
+						// }
 
             }
 			
