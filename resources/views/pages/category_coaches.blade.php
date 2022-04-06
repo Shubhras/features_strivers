@@ -381,7 +381,7 @@ body {
                                     </p>
                                 <?php  } else {
                                 ?>
-                                    <p>Others
+                                    <p class=" text-center">Others
                                     </p>
                                 <?php } ?>
                                 <!-- <p>Stylist &amp; Author

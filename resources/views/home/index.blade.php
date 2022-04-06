@@ -226,7 +226,7 @@
                                 </p>
                                 <?php  }else{
                                     ?>
-                                    <p>Others
+                                    <p class=" text-center">Others
                                 </p>
                                     <?php }?>
                                 <!-- <img src="../assets/images/course/1.jpg" alt=""> -->
