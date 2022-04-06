@@ -339,7 +339,7 @@ body {
                                     @else
                                     <img src="../assets/images/course/1.jpg" alt="{{ $coach_list->name }}" class="lazyload img-fluid">
                                     @endif
-                                    <div class="teacher-social">
+                                    <!-- <div class="teacher-social">
                                         <a href="#">
                                             <i aria-hidden="true" class="fab fa-facebook-f"></i>
                                         </a>
@@ -352,7 +352,7 @@ body {
                                         <a href="#">
                                             <i aria-hidden="true" class="fab fa-vimeo-v"></i>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 
                             <div class="teacher-meta text-center">
@@ -381,7 +381,7 @@ body {
                                     </p>
                                 <?php  } else {
                                 ?>
-                                    <p class="text-center">No Category select
+                                    <p>Others
                                     </p>
                                 <?php } ?>
                                 <!-- <p>Stylist &amp; Author
@@ -475,7 +475,7 @@ body {
 
                         <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
 
-                        <div class="teacher-social">
+                        <!-- <div class="teacher-social">
                             <a href="#">
                                 <i aria-hidden="true" class="fab fa-facebook-f"></i>
                             </a>
@@ -488,7 +488,7 @@ body {
                             <a href="#">
                                 <i aria-hidden="true" class="fab fa-vimeo-v"></i>
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="teacher-meta">
 

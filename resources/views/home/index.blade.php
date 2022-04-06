@@ -226,7 +226,7 @@
                                 </p>
                                 <?php  }else{
                                     ?>
-                                    <p class="lh">No Category select
+                                    <p>Others
                                 </p>
                                     <?php }?>
                                 <!-- <img src="../assets/images/course/1.jpg" alt=""> -->

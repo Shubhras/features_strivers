@@ -17,6 +17,8 @@
 	<div class="main-container">
 		<div class="container">
 
+		<?php $photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
+
 			<?php if ($user->user_type_id == 2) {
 
 			?>
@@ -32,7 +34,8 @@
 
 					<div class="col-md-12 user-profile-img-data default-inner-box">
 
-						<img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+						<!-- <img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; -->
+						<img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
 						<span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 
@@ -150,7 +153,7 @@
 								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 									<div class="modal-dialog" role="document">
 
-										<form name="details" class="" role="form" method="POST" action="{{ url('/account/create_course') }}" id="create_course_id">
+										<form name="details" class="" role="form" method="POST" action="{{ url('/account/create_course') }}" id="create_course_id" enctype="multipart/form-data">
 											<div class="modal-content">
 												<div class="modal-header">
 
@@ -298,8 +301,13 @@
 								?>
 									<div class="col-lg-4 col-md-6">
 										<div class="feature-course-item-4">
+<<<<<<< HEAD
 											<div class="fcf-thumb text-center">
 												<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt=""class ="height-img img-fluid" >
+=======
+											<div class="fcf-thumb">
+												<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt=""class ="image-height" style="height: 244px; weight: 244px;">
+>>>>>>> e26e19a06ad05ed163163bb6f2120465c174b87b
 												<a class="enroll" href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Enroll Now</a>
 											</div>
 
@@ -314,7 +322,7 @@
 												</div>
 												<div class="price-rate">
 													<div class="course-price"><a>
-															{{$coaches_corsee->total_consultation_fee}} $ fee
+															{{$coaches_corsee->total_consultation_fee}} $ Credit
 														</a>
 													</div>
 
@@ -355,7 +363,7 @@
 
 							<div class="col-md-12 user-profile-img-data default-inner-box">
 
-								<img  id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+								<img  id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
 								<span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 
@@ -475,10 +483,10 @@
 															@if($coaches_corsee->total_consultation_fee != null)
 																
 															<a>
-																	{{$coaches_corsee->total_consultation_fee}}$ fee
+																	{{$coaches_corsee->total_consultation_fee}}$ Credit
 																</a>
 																@else 
-																	0 $ fee
+																	0 $ Credit
 																@endif
 															</div>
 
@@ -518,7 +526,7 @@
 					<div class="teacher-item">
 						<div class="teacher-thumb coach-img-wrapper">
 							<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
-							<div class="teacher-social">
+							<!-- <div class="teacher-social">
 								<a href="#">
 									<i aria-hidden="true" class="fab fa-facebook-f"></i>
 								</a>
@@ -531,7 +539,7 @@
 								<a href="#">
 									<i aria-hidden="true" class="fab fa-vimeo-v"></i>
 								</a>
-							</div>
+							</div> -->
 						</div>
 						<div class="teacher-meta">
 						<p class="top-coaches-name-list coach-cat-name12 ">

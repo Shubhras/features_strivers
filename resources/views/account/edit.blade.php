@@ -46,7 +46,7 @@
 
 				<h2>
 
-<h2 class="sec-title">My Update Profile</h2>
+<h2 class="sec-title">My Profile</h2>
 </h2>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -181,7 +181,7 @@
 							<div class="card card-default">
 								<div class="card-header">
 									<h4 class="card-title">
-										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or User') }}</a>
+										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ ('Profile Picture') }}</a>
 									</h4>
 								</div>
 								<?php
@@ -350,27 +350,21 @@
 
 												<div class="col-md-12">
 													<select name="location" id="location" class="form-control large-data-selecter">
-														<!-- <option value="0" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
-															{{ t('select_your_location') }}
-														</option>
+
+													<?php
+													foreach ($categoriese as $key =>$value) {
 														
-														@foreach ($categoriese as $item)
-															<option value="{{ $item->country_code }}" {{(old('location', $top_coach_detail->code) == $item->country_code) ? 'selected="selected"' : '' }}> -->
-															<?php
-															// $slug = json_decode($item->name);
-
-
-
-
-															// 		$ss = array();
-															// 		foreach ($slug as $key => $sub) {
-															// 			$ss[$key] = $sub;
-															// 		}
-																	
-																	?>
-																<!-- {{$ss['en']  }}
-															</option>
-														@endforeach -->
+													
+													if($user->country_code== $value->country_code){
+													// print_r($value->id);die;
+													?>
+														<option  value="{{ $value->id }}" {{(old('location', $user->location) == $value->id) ? 'selected="selected"' : '' }}>
+															{{  $value->name }}
+														</option>	
+													<?php
+													}
+												} ?>
+														
 													</select>
 												</div>
 											</div>
@@ -451,9 +445,11 @@
 														<span class="input-group-text"></span>
 														<input id="youtube_link"
 															   name="youtube_link"
-															   type="url"
+															   type="URL"
 															   class="form-control"
 															   placeholder="link"
+															   value="{{ old('youtube_link', $user->youtube_link) }}"
+															   
 															   
 														>
 													</div>
@@ -470,7 +466,7 @@
 													{{ ('Subcategories') }} <sup>*</sup>
 												</label>
 												<div class="col-md-6">
-													<select name="category" id="category" class="form-control large-data-selecter{{ $countryCodeError }}">
+													<select name="category" id="category" class="form-control large-data-selecter{{ $countryCodeError }}" onchange="getsubcategory(this.value)">
 														<option value="0" {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }}>
 															{{ t('select_a_category') }}
 														</option>
@@ -483,7 +479,16 @@
 												</div>
 												<div class="col-md-6">
 													<select name="sub_category" id="sub_category" class="form-control large-data-selecter{{ $countryCodeError }}">
-													</select>
+														<?php
+														foreach ($categoriess as $value) {
+															// print_r($value);die;
+														
+														?>
+													<option value="{{ $value->id }}" {{ (old('category', $user->sub_category)==$value->id) ? 'selected="selected"' : '' }}>{{$value->slug}}
+																
+															</option>
+													<?php } ?>
+												</select>
 												</div>
 											</div>
 
@@ -709,7 +714,7 @@
 
 					<h2>
 
-<h2 class="sec-title">My Update Profile</h2>
+<h2 class="sec-title">My Profile</h2>
 </h2>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -850,7 +855,7 @@
 							<div class="card card-default">
 								<div class="card-header">
 									<h4 class="card-title">
-										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or User') }}</a>
+										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ ('Profile Picture') }}</a>
 									</h4>
 								</div>
 								<?php
@@ -989,9 +994,21 @@
 														<option value="0" {{ (!old('country_code') or old('country_code')==0) ? 'selected="selected"' : '' }}>
 															{{ t('select_a_country') }}
 														</option>
-														@foreach ($countries as $item)
+														@foreach ($all_countries as $item)
+														<?php
+														$slug = json_decode($item->name);
+
+
+
+
+													$ss = array();
+													foreach ($slug as $key => $sub) {
+														$ss[$key] = $sub;
+													}
+													// print_r($top_coach_detail);
+												?>
 															<option value="{{ $item->get('code') }}" {{ (old('country_code', $user->country_code)==$item->get('code')) ? 'selected="selected"' : '' }}>
-																{{ $item->get('name') }}
+																{{ ss['en'] }}
 															</option>
 														@endforeach
 													</select>
@@ -1646,8 +1663,8 @@
 			showCancel: true,
 			showUpload: false,
 			showRemove: false,
-			minFileSize: {{ (int)config('settings.upload.min_image_size', 0) }}, {{-- in KB --}}
-			maxFileSize: {{ (int)config('settings.upload.max_image_size', 1000) }}, {{-- in KB --}}
+			minFileSize: {{ (int)config('settings.upload.min_image_size', 0) }}, 
+			maxFileSize: {{ (int)config('settings.upload.max_image_size', 1000) }},
 			browseOnZoneClick: true,
 			minFileCount: 0,
 			maxFileCount: 1,
@@ -1746,9 +1763,9 @@
 
 	<script>
 	     // when category dropdown changes
-		$(document).ready(function(){
-
-			var sub_cat_id = {{ old('sub_category', $user->sub_category) }}
+		
+			function getsubcategory(id){
+			var sub_cat_id = {{ old('sub_category', $user->category) }}
 			$('#category').change(function() {
 				var categoryID = $('#category').val();
 				if (categoryID) {
@@ -1761,13 +1778,13 @@
 							if (res) {
 
 								$("#sub_category").empty();
-								$("#sub_category").append('<option value=0>Select a subcategory</option>');
+								$("#sub_category").append('<option value={{$user->sub_category}}>Select a subcategory</option>');
 								$.each(res, function(key, value) {
 									$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
 									'</option>');
-
+									
 								});
-
+								
 							} else {
 
 								$("#sub_category").empty();
@@ -1794,9 +1811,9 @@
 						if (res) {
 							
 							$("#sub_category").empty();
-							$("#sub_category").append('<option value=0>Select a subcategory</option>');
+							$("#sub_category").append('<option value=""}">Select a subcategory</option>');
 							$.each(res, function(key, value) {
-								$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
+								$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value.id +
 								'</option>');
 
 							});
@@ -1811,7 +1828,7 @@
 			} else {
 				$("#sub_category").empty();
 			}
-		});
+		};
      </script>
 
 <script>
@@ -1888,29 +1905,13 @@
 							$.each(Response, function(key, value) {
 								
 								$.each(value, function(keys, cityvalue) {
-									
+									// delete object["en"];
 									// myObject = JSON.parse(cityvalue.name);
+									// delete(cityvalue.en)+cityvalue.name,
 									myObject = JSON.stringify(cityvalue.name);
-									$("#location").append('<option value="' + cityvalue.id + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' + myObject +
+									
+									$("#location").append('<option value="' + cityvalue.id + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' +  myObject +
 								'</option>');
-
-								// 	$.each(cityvalue, function(keyss, cityvaluek) {
-									
-								// 		alert(cityvaluek.id);
-										
-								// 	 myObject = JSON.parse(cityvaluek.name);
-									
-								// 		console.log('key',myObject);
-								// 		$.each(myObject, function(keyss3, cityvalue9) {
-									
-
-								// 		});
-
-									
-									
-
-								// 	});
-								
 								
 								});
 

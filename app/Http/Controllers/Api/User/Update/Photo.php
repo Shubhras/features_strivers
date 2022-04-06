@@ -147,4 +147,81 @@ trait Photo
 		
 		return $data;
 	}
+
+
+	public function create_coursesss(User $user, $request)
+	{
+		$data = [
+			'success' => true,
+			'result'  => null,
+		];
+		
+		if (empty($user)) {
+			$data['success'] = false;
+			$data['message'] = t('User not found');
+		}
+		
+		// Check logged User
+		if (auth('sanctum')->user()->id != $user->id) {
+			$data['success'] = false;
+			$data['message'] = t('Unauthorized action');
+		}
+		
+		$file = $request->file('image');
+		if (empty($file)) {
+			$data['success'] = false;
+			$data['message'] = 'File is empty.';
+		}
+		
+		if (!isset($data['success']) || !$data['success']) {
+			return $data;
+		}
+		
+		$extra = [];
+		
+		// Save the picture
+		$user->image = $file;
+		$user->save();
+		
+		$data['message'] = t('Your photo or avatar have been updated');
+		$data['result'] = (new UserResource($user))->toArray($request);
+		
+		if (request()->header('X-AppType') == 'web') {
+			// Get the FileInput plugin's data
+			$fileInput = [];
+			$fileInput['initialPreview'] = [];
+			$fileInput['initialPreviewConfig'] = [];
+			
+			if (!empty($user->image)) {
+				// Get Deletion Url
+				$initialPreviewConfigUrl = url('account/image/delete');
+				
+				// Extra Fields for AJAX file removal (related to the $initialPreviewConfigUrl)
+				$initialPreviewConfigExtra = [
+					'_token'       => csrf_token(),
+					'_method'      => 'PUT',
+					'name'         => $user->name,
+					'phone'        => $user->phone,
+					'email'        => $user->email,
+					'remove_photo' => 1,
+				];
+				
+				// Build Bootstrap-FileInput plugin's parameters
+				$fileInput['initialPreview'][] = imgUrl($user->image, 'user');
+				
+				$fileInput['initialPreviewConfig'][] = [
+					'caption' => basename($user->image),
+					'size'    => (isset($this->disk) && $this->disk->exists($user->image)) ? (int)$this->disk->size($user->image) : 0,
+					'url'     => $initialPreviewConfigUrl,
+					'key'     => $user->id,
+					'extra'   => $initialPreviewConfigExtra,
+				];
+			}
+			$extra['fileInput'] = $fileInput;
+		}
+		
+		$data['extra'] = $extra;
+		
+		return $data;
+	}
 }
