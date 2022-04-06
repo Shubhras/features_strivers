@@ -358,7 +358,7 @@
 													if($user->country_code== $value->country_code){
 													// print_r($value->id);die;
 													?>
-														<option  value="{{ $value->id }}" {{(old('location', $user->location) == $value->id) ? 'selected="selected"' : '' }}>
+														<option id="location" value="{{ $value->id }}" {{(old('location', $user->location) == $value->id) ? 'selected="selected"' : '' }}>
 															{{  $value->name }}
 														</option>	
 													<?php
@@ -438,7 +438,7 @@
 											{{-- Youtube link--}}
 											
 											<div class="row mb-3 required">
-												<label class="col-md-12" for="link">{{ t('youtube link') }} <sup>*</sup>
+												<label class="col-md-12" for="link">{{ ('youtube link') }} <sup>*</sup>
 											     </label>
 												<div class="col-md-12">
 													<div class="input-group">
