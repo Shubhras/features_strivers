@@ -7929,6 +7929,20 @@ input#modal-description {
     z-index: 1;
 }
 
+.coach-img-wrapper1::before {
+    background-color: var(--foreground);
+    bottom: 0;
+    content: '';
+    height: 100%;
+    left: 0;
+    mix-blend-mode: var(--fg-blend);
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
 .main-section {
     padding-top: 104px;
     padding-bottom: 70px;
