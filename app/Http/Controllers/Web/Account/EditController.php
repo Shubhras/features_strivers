@@ -669,6 +669,7 @@ class EditController extends AccountBaseController
 		$subcategories = DB::table("categories")
 			->where("parent_id", $request->id)
 			->pluck("slug", "id");
+			// print_r($subcategories);die;
 		return response()->json($subcategories);
 	}
 

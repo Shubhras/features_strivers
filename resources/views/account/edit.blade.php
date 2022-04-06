@@ -485,7 +485,14 @@
 												</div>
 												<div class="col-md-6">
 													<select name="sub_category" id="sub_category" class="form-control large-data-selecter{{ $countryCodeError }}">
-													<option value="{{ $item->id }}" {{ (old('category', $user->sub_category)==$item->id) ? 'selected="selected"' : '' }}>
+														<?php
+														// foreach ($getSubcategories as $value) {
+														// 	// print_r($value->slug);die;
+														// }
+														
+														// print_r($value->slug);die;
+														// ?>
+													<option value="{{ $item->id }}" {{ (old('category', $user->sub_category)==$item->id) ? 'selected="selected"' : '' }}>{{$item->slug}}
 																
 															</option>
 												</select>
