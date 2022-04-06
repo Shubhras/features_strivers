@@ -46,7 +46,7 @@
 
 				<h2>
 
-<h2 class="sec-title">My Update Profile</h2>
+<h2 class="sec-title">My Profile</h2>
 </h2>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -181,7 +181,7 @@
 							<div class="card card-default">
 								<div class="card-header">
 									<h4 class="card-title">
-										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or User') }}</a>
+										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ ('Profile Picture') }}</a>
 									</h4>
 								</div>
 								<?php
@@ -349,14 +349,14 @@
 												</label>
 
 												<div class="col-md-12">
-													<select name="location" id="location" class="form-control large-data-selecter">
-														<!-- <option value="0" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
-															{{ t('select_your_location') }}
+													<select value="{{ $user->location }}" name="location" id="location" class="form-control large-data-selecter">
+														<option value="{{ $user->location }}" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
+															{{  $user->location }}
 														</option>
-														
-														@foreach ($categoriese as $item)
+														//
+														<!-- @foreach ($categoriese as $item)
 															<option id ="location" value="{{ $item->country_code }}" {{(old('location', $top_coach_detail->code) == $item->country_code) ? 'selected="selected"' : '' }}>
-															<?php
+															<?php 
 															// $slug = json_decode($item->name);
 
 
@@ -454,6 +454,8 @@
 															   type="URL"
 															   class="form-control"
 															   placeholder="link"
+															   value="{{ old('youtube_link', $user->youtube_link) }}"
+															   
 															   
 														>
 													</div>
@@ -470,7 +472,7 @@
 													{{ ('Subcategories') }} <sup>*</sup>
 												</label>
 												<div class="col-md-6">
-													<select name="category" id="category" class="form-control large-data-selecter{{ $countryCodeError }}">
+													<select name="category" id="category" class="form-control large-data-selecter{{ $countryCodeError }}" onchange="getsubcategory(this.value)">
 														<option value="0" {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }}>
 															{{ t('select_a_category') }}
 														</option>
@@ -483,7 +485,10 @@
 												</div>
 												<div class="col-md-6">
 													<select name="sub_category" id="sub_category" class="form-control large-data-selecter{{ $countryCodeError }}">
-													</select>
+													<option value="{{ $item->id }}" {{ (old('category', $user->sub_category)==$item->id) ? 'selected="selected"' : '' }}>
+																
+															</option>
+												</select>
 												</div>
 											</div>
 
@@ -850,7 +855,7 @@
 							<div class="card card-default">
 								<div class="card-header">
 									<h4 class="card-title">
-										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or User') }}</a>
+										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ ('Profile Picture') }}</a>
 									</h4>
 								</div>
 								<?php
@@ -1758,8 +1763,8 @@
 
 	<script>
 	     // when category dropdown changes
-		$(document).ready(function(){
-
+		
+			function getsubcategory(id){
 			var sub_cat_id = {{ old('sub_category', $user->sub_category) }}
 			$('#category').change(function() {
 				var categoryID = $('#category').val();
@@ -1773,13 +1778,13 @@
 							if (res) {
 
 								$("#sub_category").empty();
-								$("#sub_category").append('<option value=0>Select a subcategory</option>');
+								$("#sub_category").append('<option value={{$user->sub_category}}>Select a subcategory</option>');
 								$.each(res, function(key, value) {
 									$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
 									'</option>');
-
+									
 								});
-
+								
 							} else {
 
 								$("#sub_category").empty();
@@ -1806,7 +1811,7 @@
 						if (res) {
 							
 							$("#sub_category").empty();
-							$("#sub_category").append('<option value=0>Select a subcategory</option>');
+							$("#sub_category").append('<option value=""}">Select a subcategory</option>');
 							$.each(res, function(key, value) {
 								$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
 								'</option>');
@@ -1823,7 +1828,7 @@
 			} else {
 				$("#sub_category").empty();
 			}
-		});
+		};
      </script>
 
 <script>
@@ -1905,7 +1910,7 @@
 									// delete(cityvalue.en)+cityvalue.name,
 									myObject = JSON.stringify(cityvalue.name);
 									
-									$("#location").append('<option value="' + cityvalue.id + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' +  myObject +
+									$("#location").append('<option value="' + cityvalue.name + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' +  myObject +
 								'</option>');
 								
 								});
