@@ -64,7 +64,7 @@
 
  <h2>
 
-<h2 class="sec-title">My Strivres</h2>
+<h2 class="sec-title">My Strivre</h2>
 </h2>
 
 	<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -186,7 +186,7 @@
 
 
                                             </div>
-                                            <div class="teacher-social">
+                                            <!-- <div class="teacher-social">
                                                 <a href="#">
                                                     <i aria-hidden="true" class="fab fa-facebook-f"></i>
                                                 </a>
@@ -199,7 +199,7 @@
                                                 <a href="#">
                                                     <i aria-hidden="true" class="fab fa-vimeo-v"></i>
                                                 </a>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="teacher-meta">
                                             <h5>
@@ -452,7 +452,7 @@
 
 
                                             </div>
-                                            <div class="teacher-social">
+                                            <!-- <div class="teacher-social">
                                                 <a href="#">
                                                     <i aria-hidden="true" class="fab fa-facebook-f"></i>
                                                 </a>
@@ -465,7 +465,7 @@
                                                 <a href="#">
                                                     <i aria-hidden="true" class="fab fa-vimeo-v"></i>
                                                 </a>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="teacher-meta">
                                             <h5>
