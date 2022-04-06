@@ -83,8 +83,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="contact--info-area">
-                        <h3 class="font-text-size-34px">Get in touch</h3>
-                        <p class="font-text-size-18px">
+                        <h3 class="font-text-size-30px">Get in touch</h3>
+                        <p class="font-text-size-16px">
                             Looking for help? Fill the form and start a new adventure.
                         </p>
                         <div class="single-info">
@@ -118,7 +118,7 @@
                 <div class="col-md-8">
                     <div class="contact-form">
                         <h4>Let’s Connect</h4>
-                        <p class="font-text-size-18px">Integer at lorem eget diam facilisis lacinia ac id massa.</p>
+                        <p class="font-text-size-16px">Integer at lorem eget diam facilisis lacinia ac id massa.</p>
                         <form  method="post" class="row" action="{{ \App\Helpers\UrlGen::contact() }}">
                             <div class="col-md-6">
 							<?php $firstNameError = (isset($errors) and $errors->has('first_name')) ? ' is-invalid' : ''; ?>

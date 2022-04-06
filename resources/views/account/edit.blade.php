@@ -46,7 +46,7 @@
 
 				<h2>
 
-<h2 class="sec-title">My Profile</h2>
+<h2 class="sec-title">My Update Profile</h2>
 </h2>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -287,29 +287,24 @@
                                                 
                                                       {{-- country_code --}}
 
-										     <?php //$countryCodeError = (isset($errors) and $errors->has('country_code')) ? ' is-invalid' : ''; ?>
+										     <?php $countryCodeError = (isset($errors) and $errors->has('country_code')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label class="col-md-12" for="country_code">
+												<label class="col-md-12{{ $countryCodeError }}" for="country_code">
 													{{ ('Country') }} <sup>*</sup>
 												</label>
-
-
 												<div class="col-md-12">
-													<select name="country_code" id="country_code" class="form-control" onchange="getLocation(this.value)">
+													<select name="country_code" id="countryCode" class="form-control large-data-selecter{{ $countryCodeError }}" onchange="this.form.submit()">
 														<!-- <option value="0" {{ (!old('country_code') or old('country_code')==0) ? 'selected="selected"' : '' }}>
 															{{ t('select_a_country') }}
-														</option> -->
-
-														<!-- @foreach ($countries as $item)
+														</option>
+														@foreach ($countries as $item)
 															<option value="{{ $item->get('code') }}" {{ (old('country_code', $user->country_code)==$item->get('code')) ? 'selected="selected"' : '' }}>
 																{{ $item->get('name') }}
 															</option>
 														@endforeach -->
 
 
-
-
-												<?php 
+														<?php 
 												
 												// print_r($all_countries);die;
 											foreach($all_countries as $top_coach_detail){
@@ -332,8 +327,6 @@
 													{{ $ss['en'] }}
 															</option>
 												<?php  } ?>
-
-
 													</select>
 												</div>
 											</div>
@@ -348,29 +341,46 @@
 													{{ t('location') }} <sup>*</sup>
 												</label>
 
+
+<!-- <script type="text/javascript">
+    $(function () {
+        $("#countryCode").change(function () {
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+            alert(" Value: " + selectedValue);
+			$("#locationcode").text(selectedValue);
+			
+        });
+    });
+</script> -->
+
+
+													
+
 												<div class="col-md-12">
+												<input type="hidden" id="locationcode" value="">
 													<select name="location" id="location" class="form-control large-data-selecter">
-														<!-- <option value="0" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
-															{{ t('select_your_location') }}
-														</option>
 														
-														@foreach ($categoriese as $item)
-															<option id ="location" value="{{ $item->country_code }}" {{(old('location', $top_coach_detail->code) == $item->country_code) ? 'selected="selected"' : '' }}>
-															<?php
-															// $slug = json_decode($item->name);
 
+													<?php
+													foreach ($cities_data as $key =>$value) {
 
+														if(isset($_GET["country_code"])){
+															$country=$_GET["country_code"];
+															
+														}
 
-
-															// 		$ss = array();
-															// 		foreach ($slug as $key => $sub) {
-															// 			$ss[$key] = $sub;
-																	// }
-																	
-																	?>
-																{{$ss['en'] }}
-															</option>
-														@endforeach -->
+													
+													if($user->country_code== $value->country_code){
+													// print_r($value->id);die;
+													?>
+														<option id="location" value="{{ $value->id }}" {{(old('location', $user->location) == $value->id) ? 'selected="selected"' : '' }}>
+															{{  $value->name }}
+														</option>	
+													<?php
+													}
+												} ?>
+														
 													</select>
 												</div>
 											</div>
@@ -421,7 +431,39 @@
 													</div>
 												</div>
 											</div>
-											
+											<?php //$locationError = (isset($errors) and $errors->has('location')) ? ' is-invalid' : ''; ?>
+
+											<!-- <div class="row mb-3 required">
+
+											<label class="col-md-12" for="country_code">
+													{{ t('location') }} <sup>*</sup>
+												</label>
+
+												<div class="col-md-12">
+													<select name="location" id="location"  class="form-control large-data-selecter">
+														<option value="0" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
+															{{ t('select_your_location') }}
+														</option> -->
+
+														<!-- <option value="0" {{ (!old('location') or old('location')> 0) ? 'selected="selected"' : '' }}>
+															{{$user->location }}
+														</option> -->
+														
+														
+														<!-- @foreach ($all_citiesssss as $item)
+
+														@if($item->country_code == $user->country_code)
+															<option value="{{ $item->id }}" {{ (old('location', $user->location)==$item->id) ? 'selected="selected"' : '' }}>
+																{{ $item->name }}
+															</option>
+
+															
+
+															@endif
+														@endforeach
+													</select>
+												</div>
+											</div> -->
 
 											{{-- Current level --}}
 											<?php $currentlevelError = (isset($errors) && $errors->has('current_level')) ? ' is-invalid' : ''; ?>
@@ -441,10 +483,13 @@
 													</div>
 												</div>
 											</div>
+
+
+
 											{{-- Youtube link--}}
 											
 											<div class="row mb-3 required">
-												<label class="col-md-12" for="link">{{ t('youtube link') }} <sup>*</sup>
+												<label class="col-md-12" for="link">{{ ('youtube link') }} <sup>*</sup>
 											     </label>
 												<div class="col-md-12">
 													<div class="input-group">
@@ -454,12 +499,13 @@
 															   type="URL"
 															   class="form-control"
 															   placeholder="link"
+															   value="{{ old('youtube_link', $user->youtube_link) }}"
+															   
 															   
 														>
 													</div>
 												</div>
 											</div>
-
 											{{--industry/area of expertise and subcategories --}}
 											<?php $countryCodeError = (isset($errors) and $errors->has('category')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
@@ -483,7 +529,16 @@
 												</div>
 												<div class="col-md-6">
 													<select name="sub_category" id="sub_category" class="form-control large-data-selecter{{ $countryCodeError }}">
-													</select>
+														<?php
+														foreach ($categoriess as $value) {
+															// print_r($value);die;
+														
+														?>
+													<option value="{{ $value->id }}" {{ (old('category', $user->sub_category)==$value->id) ? 'selected="selected"' : '' }}>{{$value->slug}}
+																
+															</option>
+													<?php } ?>
+												</select>
 												</div>
 											</div>
 
@@ -526,7 +581,7 @@
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-9">
+												<div class=" col-md-9">
 													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
 												</div>
 											</div>
@@ -709,7 +764,7 @@
 
 					<h2>
 
-<h2 class="sec-title">My Profile</h2>
+<h2 class="sec-title">My Update Profile</h2>
 </h2>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -724,7 +779,7 @@
 		<div class="col-md-12 user-profile-img-data default-inner-box">
 
 		<img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-                        <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> Update Profile  {{ $user->name }}</b> </span>
+                        <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> {{ $user->name }}</b> </span>
 						<!-- <b> Striver Update Profile </b></span> -->
 
 					<div class="row">
@@ -908,7 +963,7 @@
 											{{-- gender_id --}}
 											<?php $genderIdError = (isset($errors) && $errors->has('gender_id')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label class="col-md-3 col-form-label">{{ t('gender') }}</label>
+												<label class="col-md-3">{{ t('gender') }}</label>
 												<div class="col-md-12">
 													@if ($genders->count() > 0)
                                                         @foreach ($genders as $gender)
@@ -989,21 +1044,9 @@
 														<option value="0" {{ (!old('country_code') or old('country_code')==0) ? 'selected="selected"' : '' }}>
 															{{ t('select_a_country') }}
 														</option>
-														@foreach ($all_countries as $item)
-														<?php
-														$slug = json_decode($item->name);
-
-
-
-
-													$ss = array();
-													foreach ($slug as $key => $sub) {
-														$ss[$key] = $sub;
-													}
-													// print_r($top_coach_detail);
-												?>
+														@foreach ($countries as $item)
 															<option value="{{ $item->get('code') }}" {{ (old('country_code', $user->country_code)==$item->get('code')) ? 'selected="selected"' : '' }}>
-																{{ ss['en'] }}
+																{{ $item->get('name') }}
 															</option>
 														@endforeach
 													</select>
@@ -1246,7 +1289,7 @@
 
 
 											<div class="form-group row required">
-												<label class="col-md-12{{ $countryCodeError }}">
+												<label class="col-md-12{{ $countryCodeError }}" for="country_code">
                                             		{{ t('subscription_palne') }} <sup>*</sup>
                                             	</label>
 												<div class="col-md-12">
@@ -1269,7 +1312,7 @@
 
 
 											<div class="form-group row required">
-												<label class="col-md-12{{ $countryCodeError }}">
+												<label class="col-md-12{{ $countryCodeError }}" for="country_code">
                                             		{{ t('subscription_Price') }} <sup>*</sup>
                                             	</label>
 												<div class="col-md-12">
@@ -1658,8 +1701,8 @@
 			showCancel: true,
 			showUpload: false,
 			showRemove: false,
-			minFileSize: {{ (int)config('settings.upload.min_image_size', 0) }}, 
-			maxFileSize: {{ (int)config('settings.upload.max_image_size', 1000) }},
+			minFileSize: {{ (int)config('settings.upload.min_image_size', 0) }}, {{-- in KB --}}
+			maxFileSize: {{ (int)config('settings.upload.max_image_size', 1000) }}, {{-- in KB --}}
 			browseOnZoneClick: true,
 			minFileCount: 0,
 			maxFileCount: 1,
@@ -1758,9 +1801,9 @@
 
 	<script>
 	     // when category dropdown changes
-		$(document).ready(function(){
-
-			var sub_cat_id = {{ old('sub_category', $user->sub_category) }}
+		
+			function getsubcategory(id){
+			var sub_cat_id = {{ old('sub_category', $user->category) }}
 			$('#category').change(function() {
 				var categoryID = $('#category').val();
 				if (categoryID) {
@@ -1791,8 +1834,6 @@
 					$("#sub_category").empty();
 				}
 			});
-
-
 			var categoryID = $('#category').val();	
 			if (categoryID) {
 				
@@ -1808,7 +1849,7 @@
 							$("#sub_category").empty();
 							$("#sub_category").append('<option value=0>Select a subcategory</option>');
 							$.each(res, function(key, value) {
-								$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
+								$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value.id +
 								'</option>');
 
 							});
@@ -1826,54 +1867,6 @@
 		});
      </script>
 
-<script>
-
-
-
-
-    // $(document).ready(function(){
-
-			
-	// 		$('#country_code').change(function() {
-	// 			var categoryID = $('#country_code').val();
-	// 			console.log(categoryID);
-	// 			alert(categoryID);
-	// 			if (categoryID) {
-	// 				$.ajax({
-	// 					type: "GET",
-	// 					url: "{{ url('account/cities') }}?id=" + categoryID,
-
-	// 					success: function(res) {
-
-	// 						if (res) {
-
-	// 							$("#location").empty();
-	// 							$("#location").append('<option value=0>Select a subcategory</option>');
-	// 							$.each(res, function(key, value) {
-	// 								$("#location").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
-	// 								'</option>');
-
-	// 							});
-
-	// 						} else {
-
-	// 							$("#location").empty();
-	// 						}
-							
-	// 					}
-	// 				});
-	// 			} else {
-	// 				$("#location").empty();
-	// 			}
-	// 		});
-	// 	});
-
-
-
-		
-
-		
-</script>
 
 <script>
     function getLocation(id)
@@ -1903,10 +1896,12 @@
 									// delete object["en"];
 									// myObject = JSON.parse(cityvalue.name);
 									// delete(cityvalue.en)+cityvalue.name,
-									myObject = JSON.stringify(cityvalue.name);
+									// myObject = JSON.stringify(cityvalue.name);
 									
-									$("#location").append('<option value="' + cityvalue.id + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' +  myObject +
+									$("#location").append('<option value="' + cityvalue.id + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' +  cityvalue.name +
 								'</option>');
+
+								
 								
 								});
 

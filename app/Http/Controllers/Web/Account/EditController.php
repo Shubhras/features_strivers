@@ -76,16 +76,28 @@ class EditController extends AccountBaseController
 
 		//$data['categories']= Category::query()->get();
 		// $data['categoriese']= cities::query()->get();
-		$data['categoriese'] = DB::table('cities')->get();
+		$data['cities_data'] = DB::table('cities')->select('cities.name','cities.id','cities.country_code')
+		->where('cities.country_code',$user->country_code)
+		->get();
+
+
+		$data['all_citiesssss'] = DB::table('cities')->select('cities.name','cities.id','cities.country_code')
+		->where('cities.country_code')
+		->get();
 
 		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+		$data['categoriess'] = DB::table('categories')->select('categories.slug', 'categories.id')->where('categories.parent_id', $user->category)->get();
 
 		$data['all_countries'] = DB::table('countries')->get();
+
+		
+		
 		// print_r($data['all_countries']);die;
 
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
+		// print_r($data);die;
 		return appView('account.edit', $data);
 	}
 
@@ -672,6 +684,7 @@ class EditController extends AccountBaseController
 		$subcategories = DB::table("categories")
 			->where("parent_id", $request->id)
 			->pluck("slug", "id");
+			// print_r($subcategories);die;
 		return response()->json($subcategories);
 	}
 

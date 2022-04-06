@@ -424,7 +424,7 @@
                         margin-top: 40px; */
                                         /* text-align: center; */
                                         /* font-size: 14px; */
-                                        font-family: 'Roboto', sans-serif;
+                                        font-family: 'Montserrat', sans-serif;
                                         background: url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
                                     }
 
@@ -529,10 +529,10 @@
                             </div> -->
                         </div>
                         <div class="teacher-meta">
-                            <h5>
+                            <p class="top-coaches-name-list coach-cat-name12">
                                 {{ $coach_list->name }}
-                            </h5>
-                            <p>Stylist &amp; Author
+            </p>
+                            <p class="lh">Stylist &amp; Author
                             </p>
                         </div>
                     </div>
@@ -935,7 +935,7 @@
                         margin-top: 40px; */
                             /* text-align: center; */
                             /* font-size: 14px; */
-                            font-family: 'Roboto', sans-serif;
+                            font-family: 'Montserrat', sans-serif;
                             background: url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
                         }
 
@@ -1044,10 +1044,10 @@
                                 </div> -->
                             </div>
                             <div class="teacher-meta">
-                                <h5 style="font-weight: 700;">
+                                <p class="top-coaches-name-list coach-cat-name12 ">
                                     {{ $coach_list->name }}
-                                </h5>
-                                <p>Stylist &amp; Author
+                </p>
+                                <p class="lh">Stylist &amp; Author
                                 </p>
                             </div>
                         </div>
@@ -1153,6 +1153,7 @@
         opacity: var(--opacity);
         position: relative;
         width: 100%;
+        height: 300px!important;
     }
 
 
@@ -1256,7 +1257,7 @@
     td.fc-day {
 
         background: #FFF !important;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Montserrat', sans-serif;
 
     }
 
@@ -1268,8 +1269,8 @@
     }
 
     .fc-first th {
-        font-family: 'Roboto', sans-serif;
-        background: #9675ce !important;
+        font-family: 'Montserrat', sans-serif;
+        background: #426998!important;
         color: #FFF;
         font-size: 14px !important;
         font-weight: 500 !important;
@@ -1277,12 +1278,12 @@
     }
 
     .fc-event-inner {
-        font-family: 'Roboto', sans-serif;
-        background: #03a9f3 !important;
+        font-family: 'Montserrat', sans-serif;
+        background: #426998 !important;
         color: #FFF !important;
-        font-size: 12px !important;
+        font-size: 10px !important;
         font-weight: 500 !important;
-        padding: 5px 0px !important;
+        padding: 5px 5px !important;
     }
 
     .fc {
@@ -1324,6 +1325,7 @@
     }
 
     .fc-header-center {
+        display: none;
         text-align: center;
     }
 
@@ -1344,19 +1346,19 @@
         font-size: 25px;
         font-weight: 500;
         margin-bottom: 10px;
-        font-family: 'Roboto', sans-serif;
-        color: blueviolet;
+        font-family: 'Montserrat', sans-serif;
+        color: #426998;
     }
 
     span.fc-button {
-        font-family: 'Roboto', sans-serif;
-        border-color: #9675ce;
-        color: #9675ce;
+        font-family: 'Montserrat', sans-serif;
+        border-color: #426998;
+        color: #426998;
     }
 
     .fc-state-down,
     .fc-state-active {
-        background-color: #9675ce !important;
+        background-color: #426998 !important;
         color: #FFF !important;
     }
 
@@ -4373,7 +4375,7 @@ border-top-right-radius: 3px;
 
             function buildTableHTML() {
                 var html =
-                    "<table class='fc-border-separate' style='width:100%' cellspacing='0'>" +
+                    "<table class='fc-border-separate'cellspacing='0'>" +
                     buildHeadHTML() +
                     buildBodyHTML() +
                     "</table>";

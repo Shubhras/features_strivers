@@ -3,7 +3,7 @@
 <!-- <link rel="icon" type="image/png" href="../assets/images/favicon.png"> -->
 <!-- Favicon Icon -->
 
-@extends('layouts.master')
+@extends('layouts.master_new')
 @section('content')
 <!-- @includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer']) -->
 <section class="hero-banner-1 main" style="background-image: url(../assets/images/home/banner.png); ">
@@ -29,10 +29,10 @@
     <div class="row">
 
 
-        <div class="col-lg-5 col-md-5 title-box-fix">
+        <div class="col-lg-8 col-md-6 title-box-fix">
             <div class="hero-content">
 
-                <p class="text_font_size_index232">Your Course To Success</p>
+                <p class="text_font_size_index232">Your Course To <br>Success</p>
                 <?php $id = '0'; ?>
                 <!-- <form action="{{ url('/coach_list_category_all/'.$id) }}" method="GET" class="row mt-5 box_filter2 search-box_filter2"> -->
 
@@ -206,7 +206,7 @@
                             </div>
                             <div class="teacher-meta">
                                 <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
-                                    <p class="top-coaches-name-list coach-cat-name12">{{$coach->name}} </p>
+                                    <p class="top-coaches-name-list coach-cat-name12 ">{{$coach->name}} </p>
 
                                 </a>
                                 <?php
@@ -222,16 +222,16 @@
 
                                 ?>
 
-                                <p>{{$ss['en']}}
+                                <p class="lh">{{$ss['en']}}
                                 </p>
                                 <?php  }else{
                                     ?>
-                                    <p>Others
+                                    <p class=" text-center">Others
                                 </p>
                                     <?php }?>
                                 <!-- <img src="../assets/images/course/1.jpg" alt=""> -->
 
-                                <span class="top-coaches-name-list1"> <?php if ($coach->year_of_experience != '') { ?>
+                                <span class="top-coaches-name-list1 "> <?php if ($coach->year_of_experience != '') { ?>
                                         {{ $coach->year_of_experience }} years Experience
                                     <?php
                                                                         } else { ?>
@@ -525,7 +525,7 @@
         </div>
     </div>
 </section>
-<!-- <section class="main-section"> -->
+<section class="main-section">
 <div class="container">
 
     <div class="row mt-120">
@@ -545,9 +545,16 @@
         </div>
     </div>
 </div>
-<!-- </section> -->
+</section>
+
+
+
+   
+
+
 
 @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
+
 <a href="#" id="back-to-top">
     <i class="fal fa-angle-double-up scroll-top-footer"></i>
 </a>
@@ -654,6 +661,7 @@
             font-weight: 500;
         }
     }
+
 </style>
 
 

@@ -95,12 +95,12 @@ body {
         </div>
 
         
-
+         <center>
             <div class=" col-lg-8 col-md-8 ">
 
             <form action="{{ url('/findtopcoach') }}" method="post">
 
-                <div class="input-group">
+                <div class="input-group wi">
                     <div class="form-outline search-box-fix1">
                         <input type="search" name="search" id="form1" class="form-control search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more..." />
 
@@ -112,7 +112,7 @@ body {
                 </form>
 
             </div>
-
+          </center>
        
         <div class="col-md-2">
 
@@ -281,10 +281,8 @@ body {
             <div class="row">
                 <div class="col-md-4">
 
-                    <div id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('0')">
-                        <!-- <li class="btn active" onclick="filterSelection('all')"></button> -->
-
-                    </div>
+                    <!-- <div  id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('0')">
+                    </div> -->
                     <div class="accordion" id="accordionExample" onclick="subCatListCoach('{{ $cat->id }}')">
                         @foreach($categories as $key => $cat)
                         <?php
@@ -294,16 +292,17 @@ body {
                             $ss[$key] = $sub;
                         }
                         ?>
-                        <div class="subject-title-name-cat">
-                            <div class="card-header" id="heading{{ $cat->id }}">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}">
+                        <div>
+                            <!-- <div class="subject-title-name-cat" id="heading{{ $cat->id }}"> -->
+                                <h5 class="mb-0 subject-title-name-cat">
+                                    <button class="btn btn-link " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
                                         {{ $ss['en'] }}
                                     </button><i class="fa fa-angle-up" id="donar" style="float: right;"></i>
                                 </h5>
-                            </div>
+                            <!-- </div> -->
                             <div id="collapse{{ $cat->id }}" class="collapse" aria-labelledby="heading{{ $cat->id }}" data-parent="#accordionExample">
-                                <div class="card-body">
+                                <!-- <div class="card-body"> -->
+                                <!-- <ul> -->
                                     @foreach($sub_categories as $key => $sub_cat)
                                     @if($sub_cat->parent_id == $cat->id)
                                     <?php
@@ -313,12 +312,17 @@ body {
                                         $ss[$key] = $sub;
                                     }
                                     ?>
-                                    <li style=" border-bottom: 1px solid;"> <button class="btn sub-categorry" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}</button>
-                                    </li>
+                                    
+                                    <h5 class="mb-0 subject-title-name-cat">
+                                    
+                                    <button style="margin-left: 5px; border-bottom: 1px;" class="btn sub-categorry subject-title-name-cat-sub" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}
+                                </button>
+                                    </h5>
 
                                     @endif
                                     @endforeach
-                                </div>
+                                    <!-- </ul> -->
+                                <!-- </div> -->
                             </div>
                         </div>
                         @endforeach
@@ -354,14 +358,16 @@ body {
                                         </a>
                                     </div> -->
                                 </div>
+                                
+                            <div class="teacher-meta text-center">
                                 <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
 
-                                    <h5 class="coach-cat-name12">
+                                    <p class=" top-coaches-name-list coach-cat-name12 text-center ">
                                         {{ $coach_list->name }}
-                                    </h5>
+                                      </p>
                                 </a>
 
-
+                            </div>
                                 <?php
 
                                 if (!empty($coach_list->slug)) {
@@ -375,11 +381,11 @@ body {
 
                                 ?>
 
-                                    <p>{{$ss['en']}}
+                                    <p class="text-center">{{$ss['en']}}
                                     </p>
                                 <?php  } else {
                                 ?>
-                                    <p>Others
+                                    <p class=" text-center">Others
                                     </p>
                                 <?php } ?>
                                 <!-- <p>Stylist &amp; Author
@@ -457,15 +463,12 @@ body {
 
 <br><br>
 <div class="container">
-
-    <h2 class="sec-title-cat">
-        Suggested Coaches
-
-    </h2>
+    
+        <h2 class="sec-title-cat">
+            Suggested Coaches   
+        </h2>
 
     <div class="row">
-
-
         <?php foreach ($suggested_coaches as $coach_list) { ?>
 
             <div class="col-lg-3 col-md-6">
@@ -493,14 +496,14 @@ body {
                     </div>
                     <div class="teacher-meta">
 
-                        <a type="button" href="{{url('/top_coach_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
+                            <a type="button" href="{{url('/top_coach_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
 
-                            <h5 class="coach-cat-name12" style="text-align:center;">
-                                {{ $coach_list->name }}
-                            </h5>
-                        </a>
-                        <p>Stylist &amp; Author
-                        </p>
+                                <p class=" top-coaches-name-list coach-cat-name12" >
+                                    {{ $coach_list->name }}
+        </p>
+                            </a>
+                            <p>Stylist &amp; Author
+                            </p>
 
 
                         <!-- <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
@@ -572,13 +575,9 @@ body {
                             </div>
                         </div>
                     </div>
-                    <!-- </div>
-            </div>
-                </div> -->
                 </div>
             </div>
         <?php } ?>
-
     </div>
 </div>
 <br><br><br>
