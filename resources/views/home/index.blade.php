@@ -194,7 +194,7 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="teacher-item">
-                            <div class="teacher-thumb coach-img-wrapper coach-img-fix-height">
+                            <div class="teacher-thumb coach-img-wrapper1 coach-img-fix-height">
                                 <!-- <a href="{{url('/coach_details/'.$coach->id) }}"> -->
                                 <?php if (!empty($coach->photo)) { ?>
                                     <img src="{{ url('storage/'.$coach->photo) }}" alt="{{ $coach->name }}" class="lazyload img-fluid">

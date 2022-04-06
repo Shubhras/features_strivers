@@ -7905,6 +7905,16 @@ input#modal-description {
     height: 300px!important;
 }
 
+.coach-img-wrapper1 img {
+    filter: grayscale(100%) contrast(1) blur(var(--blur));
+    mix-blend-mode: var(--bg-blend);
+    object-fit: cover;
+    opacity: var(--opacity);
+    position: relative;
+    width: 100%;
+    height: 200px!important;
+}
+
 .coach-img-wrapper::before {
     background-color: var(--foreground);
     bottom: 0;
