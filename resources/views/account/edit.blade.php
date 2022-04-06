@@ -714,7 +714,7 @@
 
 					<h2>
 
-<h2 class="sec-title">My Update Profile</h2>
+<h2 class="sec-title">My Profile</h2>
 </h2>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">

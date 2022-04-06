@@ -1768,11 +1768,11 @@
                 'aria-labelledby="' + tModalLabel + '" {tabIndexConfig}></div>';
             tModal = '<div class="modal-dialog modal-lg{rtl}" role="document">\n' +
                 '  <div class="modal-content">\n' +
-                '    <div class="modal-header">\n' +
-                '      <h5 class="modal-title" id="' + tModalLabel + '">{heading}</h5>\n' +
-                '      <span class="kv-zoom-title"></span>\n' +
-                '      <div class="kv-zoom-actions">{toggleheader}{fullscreen}{borderless}{close}</div>\n' +
-                '    </div>\n' +
+                // '    <div class="modal-header">\n' +
+                // '      <h5 class="modal-title" id="' + tModalLabel + '">{heading}</h5>\n' +
+                // '      <span class="kv-zoom-title"></span>\n' +
+                // '      <div class="kv-zoom-actions">{toggleheader}{fullscreen}{borderless}{close}</div>\n' +
+                // '    </div>\n' +
                 '    <div class="modal-body">\n' +
                 '      <div class="floating-buttons"></div>\n' +
                 '      <div class="kv-zoom-body file-zoom-content {zoomFrameClass}"></div>\n' + '{prev} {next}\n' +
@@ -3110,7 +3110,7 @@
             cap = $frame.data('caption') || '';
             size = $frame.data('size') || '';
             title = cap + ' ' + size;
-            $modal.find('.kv-zoom-title').attr('title', $('<div/>').html(title).text()).html(title);
+            $modal.find('.kv-zoom-title');
             $body = $modal.find('.kv-zoom-body');
             $modal.removeClass('kv-single-content');
             if (animate) {
@@ -6508,7 +6508,7 @@
         msgCancelled: 'Cancelled',
         msgPaused: 'Paused',
         msgPlaceholder: 'Select {files} ...',
-        msgZoomModalHeading: 'Detailed Preview',
+        msgZoomModalHeading: '',
         msgFileRequired: 'You must select a file to upload.',
         msgSizeTooSmall: 'File "{name}" (<b>{size} KB</b>) is too small and must be larger than <b>{minSize} KB</b>.',
         msgSizeTooLarge: 'File "{name}" (<b>{size} KB</b>) exceeds maximum allowed upload size of <b>{maxSize} KB</b>.',
