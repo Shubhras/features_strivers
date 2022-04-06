@@ -7756,6 +7756,14 @@ a.btn01.btn-primary1 {
     text-align: center;
 }
 
+.hero-content_h23 {
+    font-size: 43px;
+    line-height: 72px;
+    font-weight: 800;
+    margin: 43px 20px 20px 0;
+    text-align: center;
+}
+
 .editdp {
     width: 70px;
     height: 70px;
@@ -8093,10 +8101,11 @@ h4 {
     height: 130px;
 }
 
-.height-img
-{
+.height-img {
     height: 45%;
 }
+
+
 /* 
 .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
     border-color: var(--ck-color-base-border);
@@ -8110,16 +8119,13 @@ h4 {
     box-shadow: var(--ck-inner-shadow), 0 0;
 }
 
-.lh
-{
+.lh {
     line-height: 1.2!important;
 }
 
-.box
-{
-        padding: 50px;
-        background-color: #012245;
-        border-radius: 8px;
-        color: #fff;
-    
+.box {
+    padding: 50px;
+    background-color: #012245;
+    border-radius: 8px;
+    color: #fff;
 }
