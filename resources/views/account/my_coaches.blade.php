@@ -202,12 +202,12 @@
                                             </div>
                                         </div>
                                         <div class="teacher-meta">
-                                            <h5>
+                                            <p class="top-coaches-name-list coach-cat-name12">
                                                 <!-- Hugh Saturation -->
                                                 {{ $coach_list->name }}
 
-                                            </h5>
-                                            <p>Photographer
+                            </p>
+                                            <p class="lh">Photographer
                                             </p>
                                         </div>
                                     </div>
@@ -640,6 +640,7 @@
             opacity: var(--opacity);
             position: relative;
             width: 100%;
+            height: 300px!important;
         }
 
 

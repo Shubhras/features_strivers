@@ -47,12 +47,12 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
 
-<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+<!-- <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);"> -->
     @extends('layouts.master_new')
     @section('content')
 
 
-    <section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
+    <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
     </section>
 
 
@@ -61,7 +61,7 @@
 
 	?>
     <center>
-        <h2 class=" header font-text-size-48px">Consultation Detail</h2>
+        <h2  class="sec-title " style="text-align: center; margin-top: 61px;">Consultation Detail</h2>
     </center>
     <section class="blog-section64">
 
@@ -69,17 +69,19 @@
         <div class="container ">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="hero-content_h2 font-text-size-40px">{{$coach_course->course_name}}</h2> <br>
+                    <h2 class="text-center">{{$coach_course->course_name}}</h2> <br>
 
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6">
+            <div class="col-lg-6">
+                <div class="col-lg-8 imgb">
                     <center> <img src="{{ url('storage/'.$coach_course->photo) }}"
                             class="lazyload img-fluid images_height" ></center>
 
                 </div>
-                <div class="col-lg-6">
+</div>
+                <div class="col-lg-6 box">
                     <div class="row">
 
                         <div class="line_bottom">
@@ -93,10 +95,21 @@
                             </p>
                             <p> Coach Name: {{$coach_course->name}}
                             </p>
+                           
                         </div>
 
                     </div>
-                </div>
+                    <div class="row" style="margin-left: -33px;">
+                
+                    <h3 style="font-weight: 700; color: #fff;">Discription:</h3>
+                    <?php
+					$descriptions = strip_tags($coach_course->description)
+
+					 ?>
+                    <p style="font-size: 16px; font-family: 'Montserrat', sans-serif; "> {{$descriptions}}
+                    </p>
+</div>
+                
             </div>
 
         </div>
@@ -109,17 +122,17 @@
 
 
 
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-12">
-                    <h5 style="font-weight: 700; font-size:35px; margin: 0px 191px 15px;">Discription:</h5>
+                    <h2 style="font-weight: 700;  margin: 0px 191px 15px;">Discription:</h2>
                     <?php
 					$descriptions = strip_tags($coach_course->description)
 
 					 ?>
-                    <p style="font-size: 30px; text-align:center; font-family: 'Roboto', sans-serif;margin: 0px 191px 15px;"> {{$descriptions}}
+                    <p style="font-size: 16px; text-align:center; font-family: 'Montserrat', sans-serif; margin: 0px 191px 15px;"> {{$descriptions}}
                     </p>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </section>
@@ -151,13 +164,13 @@
     <!-- End Include All JS -->
     <style>
     .line_bottom {
-        font-size: 28px !important;
+        font-size: 16px !important;
         outline: 20px;
         float: left;
         font-weight: 600;
         letter-spacing: 0;
         margin: 1px -20px 9px;
-        line-height: 2.2;
+        line-height: 1.8;
         flex: 0 0 50%;
     }
 

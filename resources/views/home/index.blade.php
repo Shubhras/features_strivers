@@ -3,7 +3,7 @@
 <!-- <link rel="icon" type="image/png" href="../assets/images/favicon.png"> -->
 <!-- Favicon Icon -->
 
-@extends('layouts.master')
+@extends('layouts.master_new')
 @section('content')
 <!-- @includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer']) -->
 <section class="hero-banner-1 main" style="background-image: url(../assets/images/home/banner.png); ">
@@ -40,33 +40,6 @@
 
                     <div class="input-group">
 
-<<<<<<< HEAD
-                     <div class="row">
-
-                        <div class=" col-md-4 search-box-text">
-                        <input type="search" id="form1" class="form-control search_box_filterss search-box-for-main search-box-font" style="border: 1px solid #eee;" placeholder=" Search for Coach and more..." title="{{ t('Enter a city name OR a state name with the prefix', ['prefix' => t('area')]) . t('State Name') }}"/>
-                        
-                     </div>
-                    
-                     <div class=" col-md-2 search-box-text">
-                        <select name="" id="" style="color: black;height: 50px; background-color: white;font-size: 16px;">
-                            <option value="1">Industry</option>
-                        </select>
-                     </div>
-                           <div class="col-md-2 search-box-text">
-                        <select name="" id="" style="color: black;height: 50px; background-color: white; font-size: 16px;">
-                            <option value="1">Location</option>
-                        </select>
-                       </div>
-
-                       <div class="col-md-2 " style= "margin-left: -12px;">
-                        <button type="submit" class="btn btn87 btn-primary btn_class search-button-icon-width btn_class_320">
-                        <i class="fas fa-search" alt="{{ ('find') }}"></i>
-                        </button>
-                </div>
-</div>
-            </form>
-=======
                         <div class="input-group">
                             <div class="row">
 
@@ -83,7 +56,6 @@
                             </div>
 
                 </form>
->>>>>>> e9cca8f2f75d299fa335e713d3f5fcce00920e03
                 <!-- <br> -->
                 <a href="{{'/register'}}" class="bisylms-btn">Ready to Get Started?</a>
             </div>
@@ -234,7 +206,7 @@
                             </div>
                             <div class="teacher-meta">
                                 <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
-                                    <p class="top-coaches-name-list coach-cat-name12">{{$coach->name}} </p>
+                                    <p class="top-coaches-name-list coach-cat-name12 ">{{$coach->name}} </p>
 
                                 </a>
                                 <?php
@@ -250,16 +222,16 @@
 
                                 ?>
 
-                                <p>{{$ss['en']}}
+                                <p class="lh">{{$ss['en']}}
                                 </p>
                                 <?php  }else{
                                     ?>
-                                    <p>No Category select
+                                    <p class="lh">No Category select
                                 </p>
                                     <?php }?>
                                 <!-- <img src="../assets/images/course/1.jpg" alt=""> -->
 
-                                <span class="top-coaches-name-list1"> <?php if ($coach->year_of_experience != '') { ?>
+                                <span class="top-coaches-name-list1 "> <?php if ($coach->year_of_experience != '') { ?>
                                         {{ $coach->year_of_experience }} years Experience
                                     <?php
                                                                         } else { ?>
@@ -553,7 +525,7 @@
         </div>
     </div>
 </section>
-<!-- <section class="main-section"> -->
+<section class="main-section">
 <div class="container">
 
     <div class="row mt-120">
@@ -573,15 +545,15 @@
         </div>
     </div>
 </div>
-<!-- </section> -->
+</section>
 
 
 
    
 
 
-@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 
+@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 
 <a href="#" id="back-to-top">
     <i class="fal fa-angle-double-up scroll-top-footer"></i>

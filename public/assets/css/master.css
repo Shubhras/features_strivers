@@ -72,7 +72,7 @@ Designed and Development by: Incognito Themes
 /* Ashish */
 
 nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
-    border: 1px solid #cdcaca;
+    border: 1px solid #eae9ec;
     border-radius: 10px;
 }
 
@@ -3449,7 +3449,7 @@ button:focus {
 }
 
 .btn.btn-lg {
-    padding: 13px 40px;
+    padding: 20px 35px;
     font-size: 12px;
 }
 
@@ -12185,3 +12185,4 @@ section.big-block .client-logo {
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out; */
 }
+

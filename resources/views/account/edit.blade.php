@@ -526,7 +526,7 @@
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-9">
+												<div class=" col-md-9">
 													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
 												</div>
 											</div>
