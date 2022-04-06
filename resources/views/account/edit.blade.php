@@ -350,10 +350,10 @@
 
 												<div class="col-md-12">
 													<select name="location" id="location" class="form-control large-data-selecter">
-														<!-- <option value="0" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
+														 <option value="0" {{ (!old('location') or old('location')==0) ? 'selected="selected"' : '' }}>
 															{{ t('select_your_location') }}
 														</option>
-														
+														<!--
 														@foreach ($categoriese as $item)
 															<option id ="location" value="{{ $item->country_code }}" {{(old('location', $top_coach_detail->code) == $item->country_code) ? 'selected="selected"' : '' }}>
 															<?php
@@ -526,8 +526,8 @@
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-9">
-													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
+												<div class="col-md-12">
+													<button type="submit" class="btn btn-primary" style="float: left;">{{ t('Update') }}</button>
 												</div>
 											</div>
 										</form>
@@ -683,11 +683,11 @@
 													</div>
 												</div>
 											</div>
-											
+											<!-- offset-md-3  -->
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
-													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
+												<div class="col-md-12">
+													<button type="submit" class="btn btn-primary" style="float: left;">{{ t('Update') }}</button>
 												</div>
 											</div>
 										</form>
@@ -1041,8 +1041,8 @@
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
-													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
+												<div class="col-md-12">
+													<button type="submit" class="btn btn-primary" style="float: left;">{{ t('Update') }}</button>
 												</div>
 											</div>
 										</form>
@@ -1182,8 +1182,8 @@
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
-													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
+												<div class="col-md-12">
+													<button type="submit" class="btn btn-primary" style="float: left;">{{ t('Update') }}</button>
 												</div>
 											</div>
 										</form>
@@ -1334,8 +1334,8 @@
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
-													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
+												<div class="col-md-12">
+													<button type="submit" class="btn btn-primary" style="float: left;">{{ t('Update') }}</button>
 												</div>
 											</div>
 										</form>
@@ -1494,8 +1494,8 @@
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
-													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
+												<div class="col-md-12">
+													<button type="submit" class="btn btn-primary" style="float: left;">{{ t('Update') }}</button>
 												</div>
 											</div>
 										</form>
@@ -1700,7 +1700,7 @@
 			fileActionSettings: {
 				showDrag: false, /* Show/hide move (rearrange) icon */
 				removeIcon: '<i class="far fa-trash-alt"></i>',
-				removeClass: 'btn btn-sm btn-danger',
+				removeClass: 'btn btn-sm btn-primary',
 				removeTitle: '{{ t('Remove file') }}'
 			},
 			
@@ -1903,9 +1903,9 @@
 									// delete object["en"];
 									// myObject = JSON.parse(cityvalue.name);
 									// delete(cityvalue.en)+cityvalue.name,
-									myObject = JSON.stringify(cityvalue.name);
+									// myObject = JSON.stringify(cityvalue.name);
 									
-									$("#location").append('<option value="' + cityvalue.id + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' +  myObject +
+									$("#location").append('<option value="' + cityvalue.id + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' +  cityvalue.name +
 								'</option>');
 								
 								});

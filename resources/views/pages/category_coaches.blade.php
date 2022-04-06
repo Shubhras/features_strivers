@@ -285,7 +285,7 @@ body {
                         <!-- <li class="btn active" onclick="filterSelection('all')"></button> -->
 
                     </div>
-                    <div class="accordion" id="accordionExample" onclick="subCatListCoach('{{ $cat->id }}')">
+                    <div class="accordion " id="accordionExample" onclick="subCatListCoach('{{ $cat->id }}')">
                         @foreach($categories as $key => $cat)
                         <?php
                         $name = json_decode($cat->name);
