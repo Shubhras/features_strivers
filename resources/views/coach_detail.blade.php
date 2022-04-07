@@ -16,15 +16,26 @@
 			<br>
 
 			<div class="row">
-			<!-- <h2 class="sec-title"style="text-align: center;">
-            Coach Detail    
-            </h2> -->
 			<center>
-			<img src="http://127.0.0.1:8000/storage/avatars/in/4/610aae80089859af5a1a8d5c7422d37f.jpg" class="img-coches-main1" alt="Jim Séchen"></center>
-            <p  class="coach-details-name text-center">Jim Séchen</p>
+			<img class="img-coches-main1" src="{{ url('storage/'.$top_coach_detail->photo) }}" alt="{{ $top_coach_detail->name }}">
+            <p  class="coach-details-name text-center">{{ $top_coach_detail->name }}</p>
             <h4 class=" text-center">
-             Teaches Adventure Photography
+            <?php
+
+if (!empty($top_coach_detail->slug)) {
+                            $title = json_decode($top_coach_detail->slug);
+                            $ss = array();
+                            foreach ($title as $key => $sub) {
+                                $ss[$key] = $sub;
+                            }
+
+
+                            ?>
+							{{$ss['en']}}
+
+							<?php }?>
              </h4>
+			 </center>
                                 
 				<!-- <h2 class="sec-title-cat">
 				<h3 style="font-family: 'Roboto', sans-serif; text-align:center"><b>Coach Detail</b></h3>
@@ -34,8 +45,8 @@
 				<div class="col-md-12 page-content">
 
 					<div class="">
-						<p style="font-family: 'Montserrat', sans-serif;font-size: 16px;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus magnam eligendi corporis cumque maiores in esse neque optio, iusto consectetur? Fugit libero laborum odit quis vitae, inventore debitis dolor commodi voluptatum accusantium ducimus doloribus error facilis magni aspernatur! Enim quibusdam aliquid inventore dicta! A debitis iusto similique dolorum voluptas, incidunt velit ipsum, unde vitae molestiae laboriosam illo maiores blanditiis aliquam consectetur ratione magnam reprehenderit obcaecati tempora fuga sunt accusantium?</p>
-						<p style="font-family: 'Montserrat', sans-serif; font-size: 16px;"> Dolorum quae, qui atque dolorem nemo voluptates minus explicabo hic sint laudantium, voluptate, quidem velit dolores. Totam itaque culpa quasi, hic voluptas doloribus assumenda harum. Vel corporis magnam blanditiis impedit molestiae?</p>
+						<p style="font-family: 'Montserrat', sans-serif;font-size: 16px;">{{ $top_coach_detail->coach_summary }}</p>
+						
 
 					</div>
 				</div>
@@ -97,8 +108,11 @@
 
 				</div>
 				<br>
+
+				
 				<div class="col-md-8">
-					<iframe width="100%" height="450" src="https://www.youtube.com/embed/xJ3vatsNQDU?autoplay=1&mute=1&loop=1"></iframe>
+				<!-- <iframe width="100%" height="450" src="https://www.youtube.com/embed/xJ3vatsNQDU?autoplay=1&mute=1&loop=1"></iframe> -->
+					<iframe width="100%" height="450" src="{{$top_coach_detail->youtube_link}}?autoplay=1&mute=1&loop=1"></iframe>
 				</div>
 			</div>
 		</div>

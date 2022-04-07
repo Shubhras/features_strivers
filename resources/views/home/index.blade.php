@@ -152,8 +152,9 @@
 
                             <div class="strivre-img-wrapper">
 
-
+                            <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
                                 <img src="{{ url('storage/'.$news->picture) }}" alt="{{ $news->name }}">
+                            </a>
 
                                 <label class="f-17 sort_name find-letest-news1">
                                     <a class="index-34" href="{{url('/letest_news/'.$news->slug) }}" target="_blank">{{$ss['en']}}
@@ -165,7 +166,9 @@
                             @if(empty($news->picture))
 
                             <div class="strivre-img-wrapper">
+                            <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
                                 <img src="../assets/images/course/1.jpg" alt="">
+                            </a>
                                 <label class="f-17 sort_name find-letest-news1">
                                     <a class="index-34" href="{{url('/letest_news/'.$news->slug)}}" target="_blank">{{$ss['en']}}
                                     </a>
@@ -194,7 +197,7 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="teacher-item">
-                            <div class="teacher-thumb coach-img-wrapper coach-img-fix-height">
+                            <div class="teacher-thumb coach-img-wrapper1 coach-img-fix-height">
                                 <!-- <a href="{{url('/coach_details/'.$coach->id) }}"> -->
                                 <?php if (!empty($coach->photo)) { ?>
                                     <img src="{{ url('storage/'.$coach->photo) }}" alt="{{ $coach->name }}" class="lazyload img-fluid">
@@ -260,9 +263,7 @@
                                             <p class="text-center"><b>
                                                     National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.</b>
                                             </p> <br>
-                                            <label>{{$coach->name}} has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
-                                                breathtaking shots. In his photography class, learn different creative approaches for commercial shoots, editorial spreads, and passion projects. Gather the gear—and the perspective—to bring your
-                                                photography to new heights.</label>
+                                            <label>{{$coach->name}} . {{$coach->coach_summary}}</label>
                                             <br>
                                             <div class="row center-button-modal">
 
@@ -312,11 +313,12 @@
                                         <img src="../assets/images/course/1.jpg" alt="">
 
                                     </div>
-                                </a>
+                              
                                 <label class="f-17 sort_name index-34 find-letest-news">{{$value->course_name}}</label>
                                 <div class="course-price">
                                     {{$value->course_hourse}} Credits
                                 </div>
+                                </a>
                             </div>
                         <?php } ?>
 

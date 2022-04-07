@@ -7928,6 +7928,30 @@ input#modal-description {
     z-index: 1;
 }
 
+.coach-img-wrapper1::before {
+    background-color: var(--foreground);
+    bottom: 0;
+    content: '';
+    height: 100%;
+    left: 0;
+    mix-blend-mode: var(--fg-blend);
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.coach-img-wrapper1 img {
+    filter: grayscale(100%) contrast(1) blur(var(--blur));
+    mix-blend-mode: var(--bg-blend);
+    object-fit: cover;
+    opacity: var(--opacity);
+    position: relative;
+    width: 100%;
+    height: 200px!important;
+}
+
 .main-section {
     padding-top: 104px;
     padding-bottom: 70px;
@@ -8152,4 +8176,10 @@ font-weight: 600!important;
 .ptop
 {
     padding-top: 25px!important;
+}
+.fc td, .fc th {
+    border-style: none!important;
+    border-width: none!important;
+    padding: 0;
+    vertical-align: top;
 }

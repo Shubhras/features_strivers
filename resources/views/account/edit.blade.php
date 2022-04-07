@@ -46,7 +46,7 @@
 
 				<h2>
 
-<h2 class="sec-title">My Update Profile</h2>
+<h2 class="sec-title">My Profile</h2>
 </h2>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -465,25 +465,7 @@
 												</div>
 											</div> -->
 
-											{{-- Current level --}}
-											<?php $currentlevelError = (isset($errors) && $errors->has('current_level')) ? ' is-invalid' : ''; ?>
-											<div class="row mb-3 required">
-												<label class="col-md-12" for="email">{{ t('Current_level') }} <sup>*</sup>
-											     </label>
-												<div class="col-md-12">
-													<div class="input-group">
-														<span class="input-group-text"><i class="fas fa-level-up-alt"></i></span>
-														<input id="current_level"
-															   name="current_level"
-															   type="text"
-															   class="form-control{{$currentlevelError}}"
-															   placeholder="{{ t('Current_level') }}"
-															   value="{{ old('current_level', $user->current_level) }}"
-														>
-													</div>
-												</div>
-											</div>
-
+											
 
 
 											{{-- Youtube link--}}
@@ -576,7 +558,7 @@
 											</div>
 
 											<div class="row mb-3">
-												<div class="offset-md-3 col-md-12"></div>
+												<div class="col-md-12"></div>
 											</div>
 											
 											{{-- button --}}
@@ -764,7 +746,7 @@
 
 					<h2>
 
-<h2 class="sec-title">My Update Profile</h2>
+<h2 class="sec-title">My Profile</h2>
 </h2>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -865,13 +847,13 @@
 
 				<div class="row">
 
-				<div class="col-md-3 page-sidebar">
+				<div class="col-md-3 page-sidebar ptop">
 				
 					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
 				</div>
 				
 
-					<div class="col-md-9 page-content">
+					<div class="col-md-9 page-content ptop">
 
 					@include('flash::message')
 
@@ -1079,12 +1061,12 @@
 											</div>
 
 											<div class="row mb-3">
-												<div class="offset-md-3 col-md-12"></div>
+												<div class="col-md-12"></div>
 											</div>
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
+												<div class="ocol-md-12">
 													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
 												</div>
 											</div>
@@ -1225,7 +1207,7 @@
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
+												<div class="col-md-12">
 													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
 												</div>
 											</div>
@@ -1377,7 +1359,7 @@
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
+												<div class="col-md-12">
 													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
 												</div>
 											</div>
@@ -1482,7 +1464,7 @@
 											
 											{{-- accept_marketing_offers --}}
 											<?php $acceptMarketingOffersError = (isset($errors) && $errors->has('accept_marketing_offers')) ? ' is-invalid' : ''; ?>
-											<div class="row mb-3 required">
+											<!-- <div class="row mb-3 required">
 												<label class="col-md-12"></label>
 												<div class="col-md-12">
 													<div class="form-check">
@@ -1498,11 +1480,11 @@
 													</div>
 													<div style="clear:both"></div>
 												</div>
-											</div>
+											</div> -->
 											
 											{{-- time_zone --}}
 											<?php $timeZoneError = (isset($errors) && $errors->has('time_zone')) ? ' is-invalid' : ''; ?>
-											<div class="row mb-4 required">
+											<!-- <div class="row mb-4 required">
 												<label class="col-md-12 {{ $timeZoneError }}" for="time_zone">
 													{{ t('preferred_time_zone_label') }}
 												</label>
@@ -1533,11 +1515,11 @@
 														@endif
 													</div>
 												</div>
-											</div>
+											</div> -->
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
+												<div class="col-md-12">
 													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
 												</div>
 											</div>
