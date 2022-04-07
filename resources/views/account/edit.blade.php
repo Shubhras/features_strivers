@@ -1023,19 +1023,35 @@
                                             	</label>
 												<div class="col-md-12">
 													<select name="country_code" class="form-control large-data-selecter{{ $countryCodeError }}">
-														<option value="0" {{ (!old('country_code') or old('country_code')==0) ? 'selected="selected"' : '' }}>
-															{{ t('select_a_country') }}
-														</option>
-														@foreach ($countries as $item)
-															<option value="{{ $item->get('code') }}" {{ (old('country_code', $user->country_code)==$item->get('code')) ? 'selected="selected"' : '' }}>
-																{{ $item->get('name') }}
+													<?php 
+												
+												// print_r($all_countries);die;
+											foreach($all_countries as $top_coach_detail){
+
+											
+												$slug = json_decode($top_coach_detail->name);
+
+
+
+
+													$ss = array();
+													foreach ($slug as $key => $sub) {
+														$ss[$key] = $sub;
+													}
+													// print_r($top_coach_detail);
+												?>
+												
+
+													<option value="{{ $top_coach_detail->code }}" {{ (old('country_code', $user->country_code)==$top_coach_detail->code) ? 'selected="selected"' : '' }}>
+													{{ $ss['en'] }}
 															</option>
-														@endforeach
+												<?php  } ?>
+														
 													</select>
 												</div>
 											</div>
                                             
-                                            <input name="country_code" type="hidden" value="{{ $user->country_code }}">
+                                            <!-- <input name="country_code" type="hidden" value="{{ $user->country_code }}"> -->
 												
 											{{-- phone --}}
 											<?php $phoneError = (isset($errors) && $errors->has('phone')) ? ' is-invalid' : ''; ?>
@@ -1075,7 +1091,7 @@
 								</div>
 							</div>
 							
-							{{-- Payment details --}}
+							<!-- {{-- Payment details --}}
 							<div class="card card-default">
 								<div class="card-header">
 									<h4 class="card-title"><a href="#Bank_account_Details_panel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Payment Details') }}</a></h4>
@@ -1366,7 +1382,7 @@
 										</form>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 						
 
@@ -1687,12 +1703,29 @@
 			maxFileSize: {{ (int)config('settings.upload.max_image_size', 1000) }}, {{-- in KB --}}
 			browseOnZoneClick: true,
 			minFileCount: 0,
+			
 			maxFileCount: 1,
 			validateInitialCount: true,
 			uploadClass: 'btn btn-primary',
 			defaultPreviewContent: '<img src="{{ url('images/user.jpg') }}" alt="{{ t('Your Photo or Avatar') }}">' + photoInfo,
 			/* Retrieve current images */
 			/* Setup initial preview with data keys */
+
+			
+			// [FreeType Support] => 1
+			// [FreeType Linkage] => with freetype
+			// [T1Lib Support] => 
+			// [GIF Read Support] => 1
+			// [GIF Create Support] => 1
+			// [JPEG Support] => 1        
+			// [PNG Support] => 1
+			// [WBMP Support] => 1
+			// [XPM Support] => 
+			// [XBM Support] => 1
+			
+			
+
+
 			initialPreview: [
 				@if (isset($user->photo) && !empty($user->photo))
 					"{{ url('storage/'.$user->photo) }}"

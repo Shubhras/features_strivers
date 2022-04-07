@@ -115,7 +115,7 @@ class StripePaymentController extends Controller
                     ));
                 
         }
-        return redirect("/");
+        return redirect("/account/my_subscription");
     }
 
 

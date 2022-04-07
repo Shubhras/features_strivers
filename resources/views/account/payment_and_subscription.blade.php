@@ -622,41 +622,36 @@
 						<?php
 
 						
-						if ($packagename) {
+						if ($user_subscription) {
 
 
 							//  $names = json_decode($packagename);
 							 
-							$sub_name = array();
+							
 							
 							// $sub_namess =[];
-							foreach ($packagename as $key => $sub) {
+							foreach ($user_subscription as $key => $sub) {
 
 								
-								$names = json_decode($sub);
-								
+								$name = json_decode($sub->name);
 								$ss = array();
-								foreach($names as $key=> $en){
-
-									$ss[$key] = $en;
-									
+								foreach ($name as $key => $subs) {
+									$ss[$key] = $subs;
 								}
-								
-
-								$sub_name['en'] = $ss;
+							// 	$sub_name['en'] = $ss;
 								 
 							
-							// $name = ($user_subscription->total_provided_hours-$user_subscription->remaining_hours);
-							// print_r($ss);die;
-							// print_r($sub_name);die;
-							$sub_namess =$ss['en'];
+							// // $name = ($user_subscription->total_provided_hours-$user_subscription->remaining_hours);
+							// // print_r($ss);die;
+							// // print_r($sub_name);die;
+							// $sub_namess =$ss['en'];
 							// print_r($sub_namess);die;
 						?>
-								
-                  				<span class="subscription-nanme-by-user">{{$sub_namess }}</span>
+								<?php } ?>
+                  				<span class="subscription-nanme-by-user">{{$ss['en'] }}</span>
 
  
-							<?php } ?>
+							
 
 							</div>
 							</div>
@@ -664,9 +659,9 @@
 							<div class="row" style="margin-top: -27px;">
 							<div class="states">
 							<h5>  Subscription: </h5>
-							<h5> Total hours : <span style="color: red;">{{$totalpoints}} Hours.</span></h5>
-							<h5> Consumed Hours : <span style="color: red;">{{$consumed_hours}} Hours.</span></h5>
-							<h5> Remaining Hours : <span style="color: red;">{{$remaining_hours}} Hours.</span></h5>
+							<h5> Total hours : <span style="color: red;">{{$sub->total_provided_hours}} Hours.</span></h5>
+							<h5> Consumed Hours : <span style="color: red;">{{$sub->consumed_hours}} Hours.</span></h5>
+							<h5> Remaining Hours : <span style="color: red;">{{$sub->remaining_hours}} Hours.</span></h5>
 
 								
 							
@@ -674,7 +669,7 @@
 				</div>
 				<br>
 				<?php
-							if (empty($remaining_hours)) {
+							if (empty($sub->remaining_hours)) {
 				?>
 					<div class="col-md-12" style="text-align: center;">
 						<a href="{{ url('subscription') }}">
@@ -712,8 +707,8 @@
 			<br>
 
 
-			<h2 style="text-align:center;"><b>
-					old Subscriptions </b></h2>
+			<!-- <h2 style="text-align:center;"><b>
+					old Subscriptions </b></h2> -->
 			<?php
 
 				// 	}

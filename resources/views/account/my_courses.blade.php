@@ -499,18 +499,6 @@
 	</div>
 </div>
 
-<<<<<<< HEAD
-															@if($coaches_corsee->total_consultation_fee != null)
-																
-															<a>
-																	{{$coaches_corsee->total_consultation_fee}} Credits
-																</a>
-																@else 
-																	0 $ Credit
-																@endif
-															</div>
-=======
->>>>>>> cbdbe22c3f9e69ccb84c8a6490a39c59964a26e6
 
 <div class="row">
 

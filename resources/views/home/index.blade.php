@@ -258,10 +258,10 @@
                                             <img src="{{ url('storage/'.$coach->photo) }}" class="img-coches-main" alt="{{ $coach->name }}">
                                             <p class="coach-details-name">{{$coach->name}}</p>
                                             <h4 class=" text-center">
-                                                Teaches Adventure Photography
+                                            {{$ss['en']}}
                                             </h4>
                                             <p class="text-center"><b>
-                                                    National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.</b>
+                                            </b>
                                             </p> <br>
                                             <label>{{$coach->name}} . {{$coach->coach_summary}}</label>
                                             <br>
