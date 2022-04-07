@@ -447,9 +447,9 @@ body {
                         }
                     </script>
                 </div>
-                <center>
+                <!-- <center>
                     <a class="bisylms-btn" href="#">Explore Top Course </a>
-                </center>
+                </center> -->
             </div>
 
 

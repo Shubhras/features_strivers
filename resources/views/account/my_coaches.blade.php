@@ -158,12 +158,12 @@
 
                 <div class="row">
 
-                    <div class="col-md-3 page-sidebar">
+                    <div class="col-md-3 page-sidebar ptop">
                         @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
                     </div>
 
 
-                    <div class="col-md-9 page-content">
+                    <div class="col-md-9 page-content ptop">
 
 
                         <div class="row">

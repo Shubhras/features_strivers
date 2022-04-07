@@ -140,14 +140,14 @@
 
 <div class="row">
 
-         <div class="col-md-3 page-sidebar">
+         <div class="col-md-3 page-sidebar ptop">
 
 		 
 					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
 		
 		 </div>
 
-		 <div class="col-md-9 page-content">
+		 <div class="col-md-9 page-content ptop">
 
 					@include('flash::message')
 
@@ -660,7 +660,7 @@
 												</div>
 											</div>
 											
-											@if ($user->accept_terms != 1)
+											<!-- @if ($user->accept_terms != 1)
 												{{-- accept_terms --}}
 												<?php $acceptTermsError = (isset($errors) && $errors->has('accept_terms')) ? ' is-invalid' : ''; ?>
 												<div class="row mb-1 required">
@@ -682,9 +682,9 @@
 												</div>
 												
 												<input type="hidden" name="user_accept_terms" value="{{ (int)$user->accept_terms }}">
-											@endif
+											@endif -->
 											
-											{{-- accept_marketing_offers --}}
+											<!-- {{-- accept_marketing_offers --}}
 											<?php $acceptMarketingOffersError = (isset($errors) && $errors->has('accept_marketing_offers')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
 												<label class="col-md-12"></label>
@@ -705,8 +705,8 @@
 											</div>
 											
 											{{-- time_zone --}}
-											<?php $timeZoneError = (isset($errors) && $errors->has('time_zone')) ? ' is-invalid' : ''; ?>
-											<div class="row mb-4 required">
+											<?php $timeZoneError = (isset($errors) && $errors->has('time_zone')) ? ' is-invalid' : ''; ?> -->
+											<!-- <div class="row mb-4 required">
 												<label class="col-md-12 {{ $timeZoneError }}" for="time_zone">
 													{{ t('preferred_time_zone_label') }}
 												</label>
@@ -737,11 +737,11 @@
 														@endif
 													</div>
 												</div>
-											</div>
+											</div> -->
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
+												<div class=" col-md-12">
 													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
 												</div>
 											</div>

@@ -121,11 +121,11 @@
 
 				<div class="row">
 
-					<div class="col-md-3 page-sidebar">
+					<div class="col-md-3 page-sidebar ptop">
 
 						@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
 					</div>
-					<div class="col-md-9 page-content">
+					<div class="col-md-9 page-content ptop">
 
 
 						@include('flash::message')
@@ -317,7 +317,7 @@
 												</div>
 												<div class="price-rate">
 													<div class="course-price"><a>
-															{{$coaches_corsee->total_consultation_fee}} $ Credit
+															{{$coaches_corsee->total_consultation_fee}} Credits
 														</a>
 													</div>
 

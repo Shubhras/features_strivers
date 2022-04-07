@@ -92,7 +92,7 @@
             @endforeach
             @endif
                 <div class="contact-form dform" id="Strivers" >
-                    <center><h4>Sign Up As Strivres</h4></center><br>
+                    <center><h4>Sign Up As Strivre</h4></center><br>
                   
                     <form role="form" method="POST" action="{{ url('/strivers_signup') }}" class="row">
 			
@@ -150,7 +150,7 @@
                                 
                          </div>
                          
-                            <div class="col-sm-12 register-btn-padding">
+                            <!-- <div class="col-sm-12 register-btn-padding">
                                 <center><button class="loginBtn loginBtn--google btn-primary1 google-fb-login">
                                 Login with Google
                               </button>  </center>
@@ -161,7 +161,7 @@
                                     Login with Facebook
                                   </button>
                                 </center>
-                                </div>
+                                </div> -->
                         <!-- <center>
                             <div class="col-md-12>
                         <div class="col-md-3">

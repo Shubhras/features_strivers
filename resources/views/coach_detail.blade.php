@@ -16,9 +16,16 @@
 			<br>
 
 			<div class="row">
-			<h2 class="sec-title"style="text-align: center;">
+			<!-- <h2 class="sec-title"style="text-align: center;">
             Coach Detail    
-            </h2>
+            </h2> -->
+			<center>
+			<img src="http://127.0.0.1:8000/storage/avatars/in/4/610aae80089859af5a1a8d5c7422d37f.jpg" class="img-coches-main1" alt="Jim Séchen"></center>
+            <p  class="coach-details-name text-center">Jim Séchen</p>
+            <h4 class=" text-center">
+             Teaches Adventure Photography
+             </h4>
+                                
 				<!-- <h2 class="sec-title-cat">
 				<h3 style="font-family: 'Roboto', sans-serif; text-align:center"><b>Coach Detail</b></h3>
 
