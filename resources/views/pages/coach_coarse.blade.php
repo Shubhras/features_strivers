@@ -64,12 +64,10 @@
         <h2  class="sec-title " style="text-align: center; margin-top: 61px;">Consultation Detail</h2>
     </center>
     <section class="blog-section64">
-
-
-        <div class="container ">
+  <div class="container ">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="text-center">{{$coach_course->course_name}}</h2> <br>
+                    <h3 class="text-center">{{$coach_course->course_name}}</h3> <br>
 
                 </div>
             </div>
@@ -91,10 +89,10 @@
 
             <div class="row">
             <div class="col-lg-6">
-                <div class="col-lg-8 imgb">
+                <div class="col-lg-12 imgb">
                     <center> <img src="{{ url('storage/'.$coach_course->image) }}"
                
-                            class="lazyload img-fluid images_height" style="width: 100%;"></center>
+                            class="lazyload img-fluid1 images_height" style="width: 100%;"></center>
 
                 </div>
 </div>
@@ -102,15 +100,15 @@
                     <div class="row">
 
                         <div class="line_bottom">
-                            <p> Total Consultation: {{$coach_course->total_consultation_fee}} / $ Fees
+                            <p> Total Consultation Fees:<span class="boxfont"> $ {{$coach_course->total_consultation_fee}} </span>
+                </p>
+                            <p> Consultation Fees Per Hour:<span class="boxfont"> $ {{$coach_course->consultation_fee_per_hour}}</span>
                             </p>
-                            <p> Consultation_fee_per_hour: {{$coach_course->consultation_fee_per_hour}}
+                            <p> Credits Required:<span class="boxfont"> {{$coach_course->creadit_required}}</span>
                             </p>
-                            <p> Creadit_required: {{$coach_course->creadit_required}}
+                            <p> Date:<span class="boxfont"> {{$coach_course->dated}}</span>
                             </p>
-                            <p> Dated: {{$coach_course->dated}}
-                            </p>
-                            <p> Coach Name: {{$coach_course->name}}
+                            <p> Coach:<span class="boxfont"> {{$coach_course->name}}</span>
                             </p>
                            
                         </div>
@@ -184,19 +182,19 @@
         font-size: 16px !important;
         outline: 20px;
         float: left;
-        font-weight: 600;
+        font-weight: 400;
         letter-spacing: 0;
         margin: 1px -20px 9px;
         line-height: 1.8;
-        flex: 0 0 50%;
+        /* flex: 0 0 50%; */
     }
 
     h2 {
 
         font-weight: 700px;
     }
-	.img-fluid{
-			height: 341px;
+	.img-fluid1{
+			height: 454px;
 			 width: 672px;
 
 	}

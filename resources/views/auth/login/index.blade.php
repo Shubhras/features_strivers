@@ -85,7 +85,7 @@
                         <div class="col-md-6 text-left">
                             <button id="loginBtn" class="b-btn bisylms-btn"> {{ t('log_in') }} </button>
                         </div>
-                        <div class="col-sm-12">
+                        <!-- <div class="col-sm-12">
                             <center><button class="loginBtn loginBtn--google btn-primary1">
                                     Login with Google
                                 </button> </center>
@@ -97,7 +97,7 @@
                                     Login with Facebook
                                 </button>
                             </center>
-                        </div>
+                        </div> -->
                         <!-- <center>
                             <div class="col-md-12>
                         <div class="col-md-3">

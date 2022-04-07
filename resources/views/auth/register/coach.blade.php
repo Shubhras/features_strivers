@@ -76,7 +76,7 @@
                     </div>
                     <br>
                     <br>
-                    <div class="col-sm-12 register-btn-padding">
+                    <!-- <div class="col-sm-12 register-btn-padding">
                         <center><button class="loginBtn loginBtn--google btn-primary1 google-fb-login">
                                 Login with Google
                             </button> </center>
@@ -88,7 +88,7 @@
                                 Login with Facebook
                             </button>
                         </center>
-                    </div>
+                    </div> -->
                     <!-- <center>
                             <div class="col-md-12>
                         <div class="col-md-3">

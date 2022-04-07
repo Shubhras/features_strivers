@@ -258,14 +258,12 @@
                                             <img src="{{ url('storage/'.$coach->photo) }}" class="img-coches-main" alt="{{ $coach->name }}">
                                             <p class="coach-details-name">{{$coach->name}}</p>
                                             <h4 class=" text-center">
-                                                Teaches Adventure Photography
+                                            {{$ss['en']}}
                                             </h4>
                                             <p class="text-center"><b>
-                                                    National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.</b>
+                                            </b>
                                             </p> <br>
-                                            <label>{{$coach->name}} has built his career taking photos at the top of the world, earning him the cover of National Geographic and multiple awards. Now he’s taking you on location to teach you techniques for capturing
-                                                breathtaking shots. In his photography class, learn different creative approaches for commercial shoots, editorial spreads, and passion projects. Gather the gear—and the perspective—to bring your
-                                                photography to new heights.</label>
+                                            <label>{{$coach->name}} . {{$coach->coach_summary}}</label>
                                             <br>
                                             <div class="row center-button-modal">
 
@@ -315,11 +313,12 @@
                                         <img src="../assets/images/course/1.jpg" alt="">
 
                                     </div>
-                                </a>
+                              
                                 <label class="f-17 sort_name index-34 find-letest-news">{{$value->course_name}}</label>
                                 <div class="course-price">
                                     {{$value->course_hourse}} Credits
                                 </div>
+                                </a>
                             </div>
                         <?php } ?>
 
