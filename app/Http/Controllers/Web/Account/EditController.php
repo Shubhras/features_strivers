@@ -636,7 +636,7 @@ class EditController extends AccountBaseController
 				$this->attributes[$attribute_name] = $destination_path . '/'. $image;
 				
 
-		$datess = date('Y-m-d h:i:s');
+		$datess = date('d-m-y h:i:s');
 		//  print_r($request->all());die;
 		$data = array(
 			'coach_id' => $user->id,
@@ -648,7 +648,7 @@ class EditController extends AccountBaseController
 			'description' => $request->description,
 			'image' => $courseimg,
 			'starting_time' => $request->starting_time,
-			'dated' => $request->dated,
+			'dated' => $request->datess,
 
 
 		);

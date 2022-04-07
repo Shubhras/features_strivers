@@ -90,7 +90,7 @@
                             </p>
                             <p> Consultation_fee_per_hour: {{$coach_course->consultation_fee_per_hour}}
                             </p>
-                            <p> Creadit_required: {{$coach_course->creadit_required}}
+                            <p> Creadit_Required: {{$coach_course->creadit_required}}
                             </p>
                             <p> Dated: {{$coach_course->dated}}
                             </p>

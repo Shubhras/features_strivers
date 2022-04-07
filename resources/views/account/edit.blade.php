@@ -417,24 +417,7 @@
 											</div>
 											
 
-											{{-- Current level --}}
-											<?php $currentlevelError = (isset($errors) && $errors->has('current_level')) ? ' is-invalid' : ''; ?>
-											<div class="row mb-3 required">
-												<label class="col-md-12" for="email">{{ t('Current_level') }} <sup>*</sup>
-											     </label>
-												<div class="col-md-12">
-													<div class="input-group">
-														<span class="input-group-text"><i class="fas fa-level-up-alt"></i></span>
-														<input id="current_level"
-															   name="current_level"
-															   type="text"
-															   class="form-control{{$currentlevelError}}"
-															   placeholder="{{ t('Current_level') }}"
-															   value="{{ old('current_level', $user->current_level) }}"
-														>
-													</div>
-												</div>
-											</div>
+											
 											{{-- Youtube link--}}
 											
 											<div class="row mb-3 required">

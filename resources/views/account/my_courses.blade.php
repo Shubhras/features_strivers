@@ -199,7 +199,7 @@
 
 														<div class="col-md-6">
 															<label for="recipient-name" class="control-label create-consultation-modal">Consultation Available - Date:</label>
-															<input type="date" class="consultation-modal-text" id="dated" name="dated" placeholder="yyyy/mm/dd">
+															<input type="date" class="consultation-modal-text" id="dated" name="dated" placeholder="dd/mm/yyyy">
 														</div>
 
 
@@ -317,7 +317,7 @@
 												</div>
 												<div class="price-rate">
 													<div class="course-price"><a>
-															{{$coaches_corsee->total_consultation_fee}} $ Credit
+															{{$coaches_corsee->total_consultation_fee}}  Credits
 														</a>
 													</div>
 
@@ -478,7 +478,7 @@
 															@if($coaches_corsee->total_consultation_fee != null)
 																
 															<a>
-																	{{$coaches_corsee->total_consultation_fee}}$ Credit
+																	{{$coaches_corsee->total_consultation_fee}} Credits
 																</a>
 																@else 
 																	0 $ Credit
@@ -718,8 +718,8 @@
        course_hourse = parseFloat($('#course_hourse').val());
        var total_consultation_fee = consultation_fee_per_hour * course_hourse;
 	   var creadit_required = total_consultation_fee / 5; 
-       $('#total_consultation_fee').val(total_consultation_fee.toFixed(2));
-	   $('#creadit_required').val(creadit_required.toFixed(2));
+       $('#total_consultation_fee').val(total_consultation_fee);
+	   $('#creadit_required').val(creadit_required);
    });
 </script>
 
@@ -731,8 +731,8 @@
        course_hourse = parseFloat($('#course_hourse').val());
        var total_consultation_fee = consultation_fee_per_hour * course_hourse;
        var creadit_required = total_consultation_fee / 5; 
-       $('#total_consultation_fee').val(total_consultation_fee.toFixed(2));
-	   $('#creadit_required').val(creadit_required.toFixed(2));
+       $('#total_consultation_fee').val(total_consultation_fee);
+	   $('#creadit_required').val(creadit_required);
    });
 </script>
 
@@ -753,7 +753,7 @@
 				consultation_fee_per_hour: $("#consultation_fee_per_hour").val(),
 				course_hourse: $("#course_hourse").val(),
 				total_consultation_fee: $("#total_consultation_fee").val(),
-				creadit_required: $("#creadit_required").val(),
+				creadit_Required: $("#creadit_required").val(),
 				image: $("#image").val(),
 				description: $("#description").val(),
 				starting_time: $("#starting_time").val(),

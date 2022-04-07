@@ -27,8 +27,8 @@
 				<div class="col-md-12 page-content">
 
 					<div class="">
-						<p style="font-family: 'Montserrat', sans-serif;font-size: 16px;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus magnam eligendi corporis cumque maiores in esse neque optio, iusto consectetur? Fugit libero laborum odit quis vitae, inventore debitis dolor commodi voluptatum accusantium ducimus doloribus error facilis magni aspernatur! Enim quibusdam aliquid inventore dicta! A debitis iusto similique dolorum voluptas, incidunt velit ipsum, unde vitae molestiae laboriosam illo maiores blanditiis aliquam consectetur ratione magnam reprehenderit obcaecati tempora fuga sunt accusantium?</p>
-						<p style="font-family: 'Montserrat', sans-serif; font-size: 16px;"> Dolorum quae, qui atque dolorem nemo voluptates minus explicabo hic sint laudantium, voluptate, quidem velit dolores. Totam itaque culpa quasi, hic voluptas doloribus assumenda harum. Vel corporis magnam blanditiis impedit molestiae?</p>
+						<p style="font-family: 'Montserrat', sans-serif;font-size: 16px;">{{ $top_coach_detail->coach_summary }}</p>
+						
 
 					</div>
 				</div>
