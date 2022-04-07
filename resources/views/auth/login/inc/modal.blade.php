@@ -48,7 +48,7 @@
 						<label for="login" class="control-label">{{ t('login') . ' (' . getLoginLabel() . ')' }}</label>
 						<div class="input-group">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
-							<input id="mLogin" name="login" type="text" placeholder="{{ getLoginLabel() }}" class="form-control{{ $loginError }}" value="{{ $loginValue }}">
+							<input id="mLogin" name="login" type="text" placeholder="email" class="form-control{{ $loginError }}" value="{{ $loginValue }}">
 						</div>
 					</div>
 					
