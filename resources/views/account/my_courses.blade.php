@@ -13,15 +13,17 @@
 @includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
 
 
+<?php if ($user->user_type_id == 2) {
+
+?>
+
 <section style="background-color: white;">
 	<div class="main-container">
 		<div class="container">
 
-		<?php $photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
+			<?php $photo_url1 = ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
 
-			<?php if ($user->user_type_id == 2) {
-
-			?>
+			
 
 				<h2>
 
@@ -121,11 +123,11 @@
 
 				<div class="row">
 
-					<div class="col-md-3 page-sidebar">
+					<div class="col-md-3 page-sidebar ptop">
 
 						@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
 					</div>
-					<div class="col-md-9 page-content">
+					<div class="col-md-9 page-content ptop">
 
 
 						@include('flash::message')
@@ -138,7 +140,7 @@
 
 							<div class="inner-box">
 
-								<h2 class="title-2"> {{ ('My Consultation') }}
+								<h2 class="title-2"> {{ ('Credit by him') }}
 
 									<button id="myBtn" class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#myModal">+ Create Consultation</button>
 								</h2>
@@ -255,7 +257,7 @@
 																	.create(document.querySelector('#description'), {
 
 																		placeholder: 'Note  - Please work out a plan for this consultation and add detailed description of consultation package.  e.g.  Session 1 @ 1 hour (discovery)  Session 2 @ 1 hour (education review) Session 3 @ 1 hour (planning steps for success).... and so on '
-																		
+
 
 																	})
 																	.then(description => {
@@ -265,9 +267,9 @@
 																		console.error(error);
 																	});
 															</script>
-														
 
-															
+
+
 														</div>
 
 													</div>
@@ -302,18 +304,18 @@
 									<div class="col-lg-4 col-md-6">
 										<div class="feature-course-item-4">
 											<div class="fcf-thumb">
-												<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt=""class ="image-height" style="height: 244px; weight: 244px;">
-												<a class="enroll" href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Enroll Now</a>
+												<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" class="image-height" style="height: 244px; weight: 244px;">
+												<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Enroll Now</a>
 											</div>
 
 											<div class="fci-details">
-												<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}" class="c-cate sort_name">
+												<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name">
 													<i class="fas fa-tags"></i>
 													{{$coaches_corsee->course_name}}</a>
-												<h4><a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
+												<h4><a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
 												<div class="author">
 													<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
-													<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
+													<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
 												</div>
 												<div class="price-rate">
 													<div class="course-price"><a>
@@ -345,177 +347,283 @@
 
 
 
-					<?php } else { ?>
+					
 
-
-						<h2>
-
-							<h3 class="sec-title sec-add">All Consultation</h3>
-						</h2>
-
-						<div class="row" style="padding: 6px; margin-left: -4px;">
-
-
-							<div class="col-md-12 user-profile-img-data default-inner-box">
-
-								<img  id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
-								<span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
-
-
-								<div class="row">
-
-									<div class="col-md-12 col-sm-8 col-12">
-										<span>
-
-
-											<div class="header-data text-center-xs">
-												{{-- Threads Stats --}}
-												<div class="hdata">
-													<a href="{{ url('account/messages') }}">
-
-														<div class="mcol-left">
-															<i class="fas fa-phone-alt ln-shadow"></i>
-														</div>
-														<div class="mcol-right">
-															{{-- Number of messages --}}
-															<p>
-
-																{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-
-																<em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-
-															</p>
-														</div>
-													</a>
-													<div class="clearfix"></div>
-												</div>
-
-												{{-- Traffic Stats --}}
-												<div class="hdata">
-													<a href="{{ url('account/chat') }}">
-														<div class="mcol-left">
-															<i class="fas fa-comments ln-shadow"></i>
-														</div>
-														<div class="mcol-right">
-															{{-- Number of visitors --}}
-															<p>
-
-																<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-																{{ \App\Helpers\Number::short($totalPostsVisits) }}
-
-																<em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-
-															</p>
-														</div>
-
-													</a>
-													<div class="clearfix"></div>
-												</div>
-
-
-
-												{{-- Favorites Stats --}}
-												<div class="hdata" style="width: 151px!important;margin-left: -38px;">
-													<a href="{{ url('account/favourite') }}">
-														<div class="mcol-left">
-															<i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
-														</div>
-														<div class="mcol-right">
-															{{-- Number of favorites --}}
-															<p>
-
-																{{ \App\Helpers\Number::short($countFavoritePosts) }}
-																<em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-
-															</p>
-														</div>
-													</a>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-									</div>
-
-								</div>
-
-							</div>
-						</div>
-
-
-						<div class="row">
-
-							<div class="col-md-3 page-sidebar">
-
-								@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
-							</div>
-							<div class="col-md-9 page-content">
-
-
-								<div class="inner-box default-inner-box">
-
-
-									<div class="row">
-										<?php
-										foreach ($coach_striver as  $coaches_corsee) {
-										?>
-											<div class="col-lg-4 col-md-6">
-												<div class="feature-course-item-4">
-													<div class="fcf-thumb">
-														<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
-														<a class="enroll" href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Enroll Now</a>
-													</div>
-													<div class="fci-details">
-														<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
-														<h4><a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
-														<div class="author">
-															<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
-															<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
-														</div>
-
-
-														<div class="price-rate">
-															<div class="course-price">
-
-															@if($coaches_corsee->total_consultation_fee != null)
-																
-															<a>
-																	{{$coaches_corsee->total_consultation_fee}}$ Credit
-																</a>
-																@else 
-																	0 $ Credit
-																@endif
-															</div>
-
-														</div>
-
-
-														
-													</div>
-												</div>
-
-											</div>
-										<?php } ?>
-
-									</div>
-								</div>
-								<br>
-
-							<?php } ?>
-
-							<!--/.row-->
-							</div>
-
-						</div>
+	</div>
 </section>
+
 
 <div class="main-section">
 	<div class="container">
 
 		<h2 class="sec-title" style="font-weight: 700;">
-			Suggested Coaches
+			Suggested Strivre
 
 		</h2>
 
 		<div class="row">
+			<?php foreach ($suggested_striver as $coach_list) { ?>
+				<div class="col-lg-3 col-md-6">
+					<div class="teacher-item">
+						<div class="teacher-thumb coach-img-wrapper">
+							<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+							<!-- <div class="teacher-social">
+								<a href="#">
+									<i aria-hidden="true" class="fab fa-facebook-f"></i>
+								</a>
+								<a href="#">
+									<i aria-hidden="true" class="fab fa-twitter"></i>
+								</a>
+								<a href="#">
+									<i aria-hidden="true" class="fab fa-pinterest-p"></i>
+								</a>
+								<a href="#">
+									<i aria-hidden="true" class="fab fa-vimeo-v"></i>
+								</a>
+							</div> -->
+						</div>
+						<div class="teacher-meta">
+							<p class="top-coaches-name-list coach-cat-name12 ">
+								{{ $coach_list->name }}
+							</p>
+							<p class="lh">Stylist &amp; Author
+							</p>
+						</div>
+					</div>
+				</div>
+			<?php } ?>
+		</div>
+	</div>
+</div>
+
+
+<?php } else{ ?>
+
+	<br>
+	<section style="background-color: white;">
+	<div class="main-container">
+		<div class="container">
+
+			<?php $photo_url1 = ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
+
+
+<h2>
+
+<h2 class="sec-title">My Consultation</h2>
+</h2>
+
+<div class="row" style="padding: 6px; margin-left: -4px;">
+
+
+	<div class="col-md-12 user-profile-img-data default-inner-box">
+
+		<img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+		<span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
+
+
+		<div class="row">
+
+			<div class="col-md-12 col-sm-8 col-12">
+				<span>
+
+
+					<div class="header-data text-center-xs">
+						{{-- Threads Stats --}}
+						<div class="hdata">
+							<a href="{{ url('account/messages') }}">
+
+								<div class="mcol-left">
+									<i class="fas fa-phone-alt ln-shadow"></i>
+								</div>
+								<div class="mcol-right">
+									{{-- Number of messages --}}
+									<p>
+
+										{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
+
+										<em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
+
+									</p>
+								</div>
+							</a>
+							<div class="clearfix"></div>
+						</div>
+
+						{{-- Traffic Stats --}}
+						<div class="hdata">
+							<a href="{{ url('account/chat') }}">
+								<div class="mcol-left">
+									<i class="fas fa-comments ln-shadow"></i>
+								</div>
+								<div class="mcol-right">
+									{{-- Number of visitors --}}
+									<p>
+
+										<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+										{{ \App\Helpers\Number::short($totalPostsVisits) }}
+
+										<em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+
+									</p>
+								</div>
+
+							</a>
+							<div class="clearfix"></div>
+						</div>
+
+
+
+						{{-- Favorites Stats --}}
+						<div class="hdata" style="width: 151px!important;margin-left: -38px;">
+							<a href="{{ url('account/favourite') }}">
+								<div class="mcol-left">
+									<i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
+								</div>
+								<div class="mcol-right">
+									{{-- Number of favorites --}}
+									<p>
+
+										{{ \App\Helpers\Number::short($countFavoritePosts) }}
+										<em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
+
+									</p>
+								</div>
+							</a>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+
+<div class="row">
+
+	<div class="col-md-3 page-sidebar ptop">
+
+		@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
+	</div>
+	<div class="col-md-9 page-content ptop">
+
+
+		<div class="inner-box default-inner-box">
+               <h2 class="title-2"> {{ ('My Consultation') }}</h2>
+						
+
+			<div class="row">
+				<?php
+				foreach ($enroll_coach_coarse as  $coaches_corsee) {
+				?>
+					<div class="col-lg-4 col-md-6">
+						<div class="feature-course-item-4">
+							<div class="fcf-thumb">
+								<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
+								<!-- <a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Enroll Now</a> -->
+							</div>
+							<div class="fci-details">
+								<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
+								<h4><a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
+								<div class="author">
+									<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
+									<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
+								</div>
+
+
+								<div class="price-rate">
+									<div class="course-price">
+
+										@if($coaches_corsee->total_consultation_fee != null)
+
+										<a>
+											{{$coaches_corsee->total_consultation_fee}}$ Credits
+										</a>
+										@else
+										0 $ Credit
+										@endif
+									</div>
+
+								</div>
+
+
+
+							</div>
+						</div>
+
+					</div>
+				<?php } ?>
+
+			</div>
+		</div>
+		<br>
+
+	
+
+	<!--/.row-->
+	</div>
+</section>
+
+<div class="main-section">
+	<div class="container">
+
+		<div class="row">
+
+		<h2 class="sec-title" style="font-weight: 700;">
+			Suggested Consultation
+
+		</h2>
+
+		<?php
+				foreach ($coach_striver as  $coaches_corsee) {
+				?>
+					<div class="col-lg-3 col-md-6">
+						<div class="feature-course-item-4">
+							<div class="fcf-thumb">
+								<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
+								<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Enroll Now</a>
+							</div>
+							<div class="fci-details">
+								<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
+								<h4><a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
+								<div class="author">
+									<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
+									<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
+								</div>
+
+
+								<div class="price-rate">
+									<div class="course-price">
+
+										@if($coaches_corsee->total_consultation_fee != null)
+
+										<a>
+											{{$coaches_corsee->total_consultation_fee}}$ Credits
+										</a>
+										@else
+										0 $ Credit
+										@endif
+									</div>
+
+								</div>
+
+
+
+							</div>
+						</div>
+
+					</div>
+				<?php } ?>
+		</div>
+<br>
+
+		<div class="row">
+
+		<h2 class="sec-title" style="font-weight: 700;">
+			Suggested Coaches
+
+		</h2>
 			<?php foreach ($suggested_coaches as $coach_list) { ?>
 				<div class="col-lg-3 col-md-6">
 					<div class="teacher-item">
@@ -537,9 +645,9 @@
 							</div> -->
 						</div>
 						<div class="teacher-meta">
-						<p class="top-coaches-name-list coach-cat-name12 ">
+							<p class="top-coaches-name-list coach-cat-name12 ">
 								{{ $coach_list->name }}
-			</p>
+							</p>
 							<p class="lh">Stylist &amp; Author
 							</p>
 						</div>
@@ -549,6 +657,10 @@
 		</div>
 	</div>
 </div>
+
+<?php } ?>
+
+
 
 
 
@@ -711,29 +823,29 @@
 
 
 <script>
-   $('#course_hourse').keyup(function(){
-       var consultation_fee_per_hour;
-       var course_hourse;
-       consultation_fee_per_hour = parseFloat($('#consultation_fee_per_hour').val());
-       course_hourse = parseFloat($('#course_hourse').val());
-       var total_consultation_fee = consultation_fee_per_hour * course_hourse;
-	   var creadit_required = total_consultation_fee / 5; 
-       $('#total_consultation_fee').val(total_consultation_fee.toFixed(2));
-	   $('#creadit_required').val(creadit_required.toFixed(2));
-   });
+	$('#course_hourse').keyup(function() {
+		var consultation_fee_per_hour;
+		var course_hourse;
+		consultation_fee_per_hour = parseFloat($('#consultation_fee_per_hour').val());
+		course_hourse = parseFloat($('#course_hourse').val());
+		var total_consultation_fee = consultation_fee_per_hour * course_hourse;
+		var creadit_required = total_consultation_fee / 5;
+		$('#total_consultation_fee').val(total_consultation_fee.toFixed(2));
+		$('#creadit_required').val(creadit_required.toFixed(2));
+	});
 </script>
 
 <script>
-   $('#consultation_fee_per_hour').keyup(function(){
-       var consultation_fee_per_hour;
-       var course_hourse;
-       consultation_fee_per_hour = parseFloat($('#consultation_fee_per_hour').val());
-       course_hourse = parseFloat($('#course_hourse').val());
-       var total_consultation_fee = consultation_fee_per_hour * course_hourse;
-       var creadit_required = total_consultation_fee / 5; 
-       $('#total_consultation_fee').val(total_consultation_fee.toFixed(2));
-	   $('#creadit_required').val(creadit_required.toFixed(2));
-   });
+	$('#consultation_fee_per_hour').keyup(function() {
+		var consultation_fee_per_hour;
+		var course_hourse;
+		consultation_fee_per_hour = parseFloat($('#consultation_fee_per_hour').val());
+		course_hourse = parseFloat($('#course_hourse').val());
+		var total_consultation_fee = consultation_fee_per_hour * course_hourse;
+		var creadit_required = total_consultation_fee / 5;
+		$('#total_consultation_fee').val(total_consultation_fee.toFixed(2));
+		$('#creadit_required').val(creadit_required.toFixed(2));
+	});
 </script>
 
 
@@ -792,14 +904,11 @@
 		font-weight: 700 !important;
 
 	}
-
-
-
 </style>
 
 
 <style>
-    /* .sort_name {
+	/* .sort_name {
         display: inline-block;
         width: 120px;
         white-space: nowrap;
@@ -809,7 +918,7 @@
     } */
 
 
-    /* @media only screen and (max-width: 1440px) {
+	/* @media only screen and (max-width: 1440px) {
         .sort_name {
             display: inline-block;
             width: 237px;
@@ -835,7 +944,7 @@
 
 
 
-/* 
+	/* 
     @media only screen and (max-width: 1024px) {
         .sort_name {
             display: inline-block;

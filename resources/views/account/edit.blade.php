@@ -46,7 +46,7 @@
 
 				<h2>
 
-<h2 class="sec-title">My Update Profile</h2>
+<h2 class="sec-title">My Profile</h2>
 </h2>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -140,14 +140,14 @@
 
 <div class="row">
 
-         <div class="col-md-3 page-sidebar">
+         <div class="col-md-3 page-sidebar ptop">
 
 		 
 					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
 		
 		 </div>
 
-		 <div class="col-md-9 page-content">
+		 <div class="col-md-9 page-content ptop">
 
 					@include('flash::message')
 
@@ -465,25 +465,7 @@
 												</div>
 											</div> -->
 
-											{{-- Current level --}}
-											<?php $currentlevelError = (isset($errors) && $errors->has('current_level')) ? ' is-invalid' : ''; ?>
-											<div class="row mb-3 required">
-												<label class="col-md-12" for="email">{{ t('Current_level') }} <sup>*</sup>
-											     </label>
-												<div class="col-md-12">
-													<div class="input-group">
-														<span class="input-group-text"><i class="fas fa-level-up-alt"></i></span>
-														<input id="current_level"
-															   name="current_level"
-															   type="text"
-															   class="form-control{{$currentlevelError}}"
-															   placeholder="{{ t('Current_level') }}"
-															   value="{{ old('current_level', $user->current_level) }}"
-														>
-													</div>
-												</div>
-											</div>
-
+											
 
 
 											{{-- Youtube link--}}
@@ -576,7 +558,7 @@
 											</div>
 
 											<div class="row mb-3">
-												<div class="offset-md-3 col-md-12"></div>
+												<div class="col-md-12"></div>
 											</div>
 											
 											{{-- button --}}
@@ -660,7 +642,7 @@
 												</div>
 											</div>
 											
-											@if ($user->accept_terms != 1)
+											<!-- @if ($user->accept_terms != 1)
 												{{-- accept_terms --}}
 												<?php $acceptTermsError = (isset($errors) && $errors->has('accept_terms')) ? ' is-invalid' : ''; ?>
 												<div class="row mb-1 required">
@@ -682,9 +664,9 @@
 												</div>
 												
 												<input type="hidden" name="user_accept_terms" value="{{ (int)$user->accept_terms }}">
-											@endif
+											@endif -->
 											
-											{{-- accept_marketing_offers --}}
+											<!-- {{-- accept_marketing_offers --}}
 											<?php $acceptMarketingOffersError = (isset($errors) && $errors->has('accept_marketing_offers')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
 												<label class="col-md-12"></label>
@@ -705,8 +687,8 @@
 											</div>
 											
 											{{-- time_zone --}}
-											<?php $timeZoneError = (isset($errors) && $errors->has('time_zone')) ? ' is-invalid' : ''; ?>
-											<div class="row mb-4 required">
+											<?php $timeZoneError = (isset($errors) && $errors->has('time_zone')) ? ' is-invalid' : ''; ?> -->
+											<!-- <div class="row mb-4 required">
 												<label class="col-md-12 {{ $timeZoneError }}" for="time_zone">
 													{{ t('preferred_time_zone_label') }}
 												</label>
@@ -737,11 +719,11 @@
 														@endif
 													</div>
 												</div>
-											</div>
+											</div> -->
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
+												<div class=" col-md-12">
 													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
 												</div>
 											</div>
@@ -764,7 +746,7 @@
 
 					<h2>
 
-<h2 class="sec-title">My Update Profile</h2>
+<h2 class="sec-title">My Profile</h2>
 </h2>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -865,13 +847,13 @@
 
 				<div class="row">
 
-				<div class="col-md-3 page-sidebar">
+				<div class="col-md-3 page-sidebar ptop">
 				
 					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
 				</div>
 				
 
-					<div class="col-md-9 page-content">
+					<div class="col-md-9 page-content ptop">
 
 					@include('flash::message')
 
@@ -1041,19 +1023,35 @@
                                             	</label>
 												<div class="col-md-12">
 													<select name="country_code" class="form-control large-data-selecter{{ $countryCodeError }}">
-														<option value="0" {{ (!old('country_code') or old('country_code')==0) ? 'selected="selected"' : '' }}>
-															{{ t('select_a_country') }}
-														</option>
-														@foreach ($countries as $item)
-															<option value="{{ $item->get('code') }}" {{ (old('country_code', $user->country_code)==$item->get('code')) ? 'selected="selected"' : '' }}>
-																{{ $item->get('name') }}
+													<?php 
+												
+												// print_r($all_countries);die;
+											foreach($all_countries as $top_coach_detail){
+
+											
+												$slug = json_decode($top_coach_detail->name);
+
+
+
+
+													$ss = array();
+													foreach ($slug as $key => $sub) {
+														$ss[$key] = $sub;
+													}
+													// print_r($top_coach_detail);
+												?>
+												
+
+													<option value="{{ $top_coach_detail->code }}" {{ (old('country_code', $user->country_code)==$top_coach_detail->code) ? 'selected="selected"' : '' }}>
+													{{ $ss['en'] }}
 															</option>
-														@endforeach
+												<?php  } ?>
+														
 													</select>
 												</div>
 											</div>
                                             
-                                            <input name="country_code" type="hidden" value="{{ $user->country_code }}">
+                                            <!-- <input name="country_code" type="hidden" value="{{ $user->country_code }}"> -->
 												
 											{{-- phone --}}
 											<?php $phoneError = (isset($errors) && $errors->has('phone')) ? ' is-invalid' : ''; ?>
@@ -1079,12 +1077,12 @@
 											</div>
 
 											<div class="row mb-3">
-												<div class="offset-md-3 col-md-12"></div>
+												<div class="col-md-12"></div>
 											</div>
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
+												<div class="ocol-md-12">
 													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
 												</div>
 											</div>
@@ -1093,7 +1091,7 @@
 								</div>
 							</div>
 							
-							{{-- Payment details --}}
+							<!-- {{-- Payment details --}}
 							<div class="card card-default">
 								<div class="card-header">
 									<h4 class="card-title"><a href="#Bank_account_Details_panel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Payment Details') }}</a></h4>
@@ -1225,7 +1223,7 @@
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
+												<div class="col-md-12">
 													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
 												</div>
 											</div>
@@ -1377,14 +1375,14 @@
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
+												<div class="col-md-12">
 													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
 												</div>
 											</div>
 										</form>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 						
 
@@ -1482,7 +1480,7 @@
 											
 											{{-- accept_marketing_offers --}}
 											<?php $acceptMarketingOffersError = (isset($errors) && $errors->has('accept_marketing_offers')) ? ' is-invalid' : ''; ?>
-											<div class="row mb-3 required">
+											<!-- <div class="row mb-3 required">
 												<label class="col-md-12"></label>
 												<div class="col-md-12">
 													<div class="form-check">
@@ -1498,11 +1496,11 @@
 													</div>
 													<div style="clear:both"></div>
 												</div>
-											</div>
+											</div> -->
 											
 											{{-- time_zone --}}
 											<?php $timeZoneError = (isset($errors) && $errors->has('time_zone')) ? ' is-invalid' : ''; ?>
-											<div class="row mb-4 required">
+											<!-- <div class="row mb-4 required">
 												<label class="col-md-12 {{ $timeZoneError }}" for="time_zone">
 													{{ t('preferred_time_zone_label') }}
 												</label>
@@ -1533,11 +1531,11 @@
 														@endif
 													</div>
 												</div>
-											</div>
+											</div> -->
 											
 											{{-- button --}}
 											<div class="row">
-												<div class="offset-md-3 col-md-12">
+												<div class="col-md-12">
 													<button type="submit" class="btn btn-primary">{{ t('Update') }}</button>
 												</div>
 											</div>
@@ -1705,12 +1703,29 @@
 			maxFileSize: {{ (int)config('settings.upload.max_image_size', 1000) }}, {{-- in KB --}}
 			browseOnZoneClick: true,
 			minFileCount: 0,
+			
 			maxFileCount: 1,
 			validateInitialCount: true,
 			uploadClass: 'btn btn-primary',
 			defaultPreviewContent: '<img src="{{ url('images/user.jpg') }}" alt="{{ t('Your Photo or Avatar') }}">' + photoInfo,
 			/* Retrieve current images */
 			/* Setup initial preview with data keys */
+
+			
+			// [FreeType Support] => 1
+			// [FreeType Linkage] => with freetype
+			// [T1Lib Support] => 
+			// [GIF Read Support] => 1
+			// [GIF Create Support] => 1
+			// [JPEG Support] => 1        
+			// [PNG Support] => 1
+			// [WBMP Support] => 1
+			// [XPM Support] => 
+			// [XBM Support] => 1
+			
+			
+
+
 			initialPreview: [
 				@if (isset($user->photo) && !empty($user->photo))
 					"{{ url('storage/'.$user->photo) }}"

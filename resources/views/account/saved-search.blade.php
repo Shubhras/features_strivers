@@ -29,12 +29,12 @@
 					</div>
 				@endif
 
-				<div class="col-md-3 page-sidebar">
+				<div class="col-md-3 page-sidebar ptop">
 					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
 				</div>
 				<!--/.page-sidebar-->
 
-				<div class="col-md-9 page-content">
+				<div class="col-md-9 page-content ptop">
 					<div class="inner-box">
 						<h2 class="title-2"><i class="fas fa-bookmark"></i> {{ t('Saved searches') }} </h2>
 						<div class="row">

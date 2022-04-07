@@ -87,6 +87,12 @@ img.img-coches-main {
     align-self: center;
     width: 175px;
 }
+.img-coches-main1 {
+    height: 400px;
+    margin-bottom: 30px;
+    width: 400px;
+}
+
 
 .col-lg-3.boxes-of-course {
     border: 1px solid;
@@ -3350,6 +3356,18 @@ button:focus {
     outline: none !important;
 }
 
+/* .btn-new{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 1px;
+    padding: 8px 10px 7px 10px;
+    border-color: #053568;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+} */
 .btn {
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;
@@ -3362,7 +3380,6 @@ button:focus {
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
 }
-
 .btn:hover,
 .btn:focus,
 .btn.focus,

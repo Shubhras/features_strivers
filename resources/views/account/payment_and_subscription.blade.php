@@ -161,10 +161,10 @@
 
 				<div class="row">
 
-					<div class="col-md-3 page-sidebar">
+					<div class="col-md-3 page-sidebar ptop">
 						@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
 					</div>
-					<div class="col-md-9 page-content">
+					<div class="col-md-9 page-content ptop">
 
 
 
@@ -602,14 +602,14 @@
 
 	<div class="row">
 
-		<div class="col-md-3 page-sidebar">
+		<div class="col-md-3 page-sidebar box">
 			@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
 		</div>
 
-		<div class="col-md-9 page-content">
+		<div class="col-md-9 page-content ptop box1">
 
 
-			<div class="inner-box default-inner-box edit-file-chat">
+			<div class="inner-box default-inner-box edit-file-chat ">
 
 				<!--/.row-box End-->
 				
@@ -622,51 +622,48 @@
 						<?php
 
 						
-						if ($packagename) {
+						if ($user_subscription) {
 
 
 							//  $names = json_decode($packagename);
 							 
-							$sub_name = array();
+							
 							
 							// $sub_namess =[];
-							foreach ($packagename as $key => $sub) {
+							foreach ($user_subscription as $key => $sub) {
 
 								
-								$names = json_decode($sub);
-								
+								$name = json_decode($sub->name);
 								$ss = array();
-								foreach($names as $key=> $en){
-
-									$ss[$key] = $en;
-									
+								foreach ($name as $key => $subs) {
+									$ss[$key] = $subs;
 								}
-								
-
-								$sub_name['en'] = $ss;
+							// 	$sub_name['en'] = $ss;
 								 
 							
-							// $name = ($user_subscription->total_provided_hours-$user_subscription->remaining_hours);
-							// print_r($ss);die;
-							// print_r($sub_name);die;
-							$sub_namess =$ss['en'];
+							// // $name = ($user_subscription->total_provided_hours-$user_subscription->remaining_hours);
+							// // print_r($ss);die;
+							// // print_r($sub_name);die;
+							// $sub_namess =$ss['en'];
 							// print_r($sub_namess);die;
 						?>
-								
-                  				<span class="subscription-nanme-by-user">{{$sub_namess }}</span>
+								<?php } ?>
+                  				<span class="subscription-nanme-by-user">{{$ss['en'] }}</span>
 
  
-							<?php } ?>
+							
 
 							</div>
 							</div>
 
 							<div class="row" style="margin-top: -27px;">
-							<div class="states">
-							<h5>  Subscription: </h5>
-							<h5> Total hours : <span style="color: red;">{{$totalpoints}} Hours.</span></h5>
-							<h5> Consumed Hours : <span style="color: red;">{{$consumed_hours}} Hours.</span></h5>
-							<h5> Remaining Hours : <span style="color: red;">{{$remaining_hours}} Hours.</span></h5>
+							
+							
+							<div class="line_bottom">
+							<p>  Subscription: </p>
+							<p> Total hours : <span class="boxfont">{{$sub->total_provided_hours}} Hours.</span></p>
+							<p> Consumed Hours : <span class="boxfont">{{$sub->consumed_hours}} Hours.</span></p>
+							<p> Remaining Hours : <span class="boxfont">{{$sub->remaining_hours}} Hours.</span></p>
 
 								
 							
@@ -674,21 +671,21 @@
 				</div>
 				<br>
 				<?php
-							if (empty($remaining_hours)) {
+							if (empty($sub->remaining_hours)) {
 				?>
 					<div class="col-md-12" style="text-align: center;">
-						<a href="{{ url('subscription') }}">
+						<a class="bisylms-btn-pink" href="{{ url('subscription') }}">
 
-							<button style="font-size: 20px; ">Renew Subscriptions</button>
+							Renew Subscriptions
 						</a>
 					</div>
 
 
 				<?php } ?>
 				<div class="col-md-12" style="text-align: center;">
-					<a href="{{ url('pricing') }}">
+					<a  class="bisylms-btn-pink" href="{{ url('pricing') }}">
 
-						<button style="font-size: 20px; ">Get Subscriptions</button>
+						Get Subscriptions
 					</a>
 
 				</div>
@@ -698,9 +695,10 @@
 					<h2>Please Get Subscription First!</h2>
 				</div>
 				<div class="col-md-12" style="text-align: center;">
-					<a href="{{ url('pricing') }}">
+					<a class="bisylms-btn-pink" href="{{ url('pricing') }}">
 
-						<button style="font-size: 20px; ">Get Subscriptions</button>
+						Get Subscriptions
+						
 					</a>
 
 				</div>
@@ -712,8 +710,8 @@
 			<br>
 
 
-			<h2 style="text-align:center;"><b>
-					old Subscriptions </b></h2>
+			<!-- <h2 style="text-align:center;"><b>
+					old Subscriptions </b></h2> -->
 			<?php
 
 				// 	}

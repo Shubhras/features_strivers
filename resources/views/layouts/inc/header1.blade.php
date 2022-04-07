@@ -157,7 +157,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 
                         @if (!auth()->check())
 
-                        <a href="#quickLogin" class="join-btn01 " data-bs-toggle="modal">
+                       <a href="#quickLogin" class="join-btn01 text-center" data-bs-toggle="modal">
                         Login</a>
                         
 

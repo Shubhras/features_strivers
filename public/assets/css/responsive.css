@@ -126,7 +126,7 @@ input#phoneHidden {
         border-radius: 3px;
         text-align: center;
         font-size: 16px;
-        line-height: 42px;
+        /* line-height: 42px; */
         font-weight: 700;
         padding: 0px 0px;
         color: #fff;
@@ -216,7 +216,7 @@ input#phoneHidden {
         border-radius: 3px;
         text-align: center;
         font-size: 16px;
-        line-height: 42px;
+        /* line-height: 42px; */
         font-weight: 700;
         padding: 0px 0px;
         color: #fff;
@@ -288,7 +288,7 @@ input#phoneHidden {
         border-radius: 3px;
         text-align: center;
         font-size: 16px;
-        line-height: 42px;
+        /* line-height: 42px; */
         font-weight: 700;
         padding: 0px 0px;
         color: #fff;
@@ -482,7 +482,7 @@ input#phoneHidden {
         border-radius: 3px;
         text-align: center;
         font-size: 16px;
-        line-height: 42px;
+        /* line-height: 42px; */
         font-weight: 700;
         padding: 0px 0px!important;
         color: #fff!important;
@@ -542,7 +542,7 @@ input#phoneHidden {
         border-radius: 3px;
         text-align: center;
         font-size: 16px;
-        line-height: 42px;
+        /* line-height: 42px; */
         font-weight: 700;
         padding: 0px 0px;
         color: #fff;
@@ -996,7 +996,7 @@ input#phoneHidden {
         border-radius: 3px;
         text-align: center;
         font-size: 13px;
-        line-height: 40px;
+        /* line-height: 40px; */
         font-weight: 600;
         padding: 0 30px;
         /* color: rgb(2, 0, 0); */
@@ -1728,7 +1728,7 @@ input#phoneHidden {
         border-radius: 3px;
         text-align: center;
         font-size: 13px;
-        line-height: 40px;
+        /* line-height: 40px; */
         font-weight: 600;
         padding: 0 30px;
         /* color: rgb(2, 0, 0); */
@@ -1856,7 +1856,7 @@ input#phoneHidden {
         border-radius: 3px;
         text-align: center;
         font-size: 13px;
-        line-height: 40px;
+        /* line-height: 40px; */
         font-weight: 600;
         padding: 0 30px;
         color: rgb(2, 0, 0);
@@ -3276,7 +3276,7 @@ input#phoneHidden {
         border-radius: 3px;
         text-align: center;
         font-size: 13px;
-        line-height: 40px;
+        line-height: 38px;
         font-weight: 600;
         padding: 0 30px;
         /* color: rgb(2, 0, 0); */
@@ -3345,11 +3345,11 @@ input#phoneHidden {
         font-size: 16px !important;
         outline: 20px;
         float: left;
-        font-weight: 600;
+        font-weight: 400;
         letter-spacing: 0;
         margin: 2px 161px 9px;
         line-height: 1.8;
-        flex: 0 0 50%;
+        /* flex: 0 0 50%; */
     }
 }
 
@@ -3386,7 +3386,7 @@ input#phoneHidden {
         border-radius: 3px;
         text-align: center;
         font-size: 13px;
-        line-height: 36px;
+        line-height: 32px;
         font-weight: 700;
         padding: 0px 0px;
         color: #fff;
@@ -3464,7 +3464,7 @@ input#phoneHidden {
         letter-spacing: 0;
         margin: 1px -21px 6px;
         line-height: 1.8;
-        flex: 0 0 50%;
+        /* flex: 0 0 50%; */
     }
 }
 
@@ -3492,7 +3492,7 @@ input#phoneHidden {
         border-radius: 3px;
         text-align: center;
         font-size: 16px;
-        line-height: 42px;
+        line-height: 40px;
         font-weight: 700;
         padding: 0px 0px;
         color: #fff;
@@ -4221,7 +4221,7 @@ input#phoneHidden {
     }
     .btn_class {
         height: 50px;
-        background-color: #012245!important;
+        background-color: #053568!important;
     }
 }
 

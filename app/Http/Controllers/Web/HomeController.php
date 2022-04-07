@@ -813,14 +813,14 @@ class HomeController extends FrontController
 	}
 
 
-	public function coach_coarsess($id){
+	public function coach_coursess($id){
 		$data = [];
 		
 		// $data['genders'] = Gender::query()->get();
 		
 		
 		
-		// $user = auth()->user();
+		$user = auth()->user();
 		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*','users.name','users.photo')
 		->leftjoin('users' ,'users.id' ,'=', 'coach_course.coach_id')		
 		// ->where('coach_course.coach_id', $user->id)
@@ -828,7 +828,9 @@ class HomeController extends FrontController
 		->orderBy('coach_course.id','asc')
 		->first();
 
-	// print_r($data);die;
+		$data['auth_id'] = auth()->user()->id;
+
+	// print_r($data['auth_id']);die;
 
 		return appView('pages.coach_coarse', $data);
 

@@ -31,6 +31,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 // use Illuminate\Support\Facades\File;
 use App\Helpers\Files\Storage\StorageDisk;
+use Illuminate\Database\Eloquent\Model;
 use Intervention\Image\Facades\Image;
 
 use Illuminate\Support\Str;
@@ -254,6 +255,24 @@ class EditController extends AccountBaseController
 	}
 
 
+	public function enroll_course_striver(Request $request){
+
+
+		// print_r($request->all());die;
+		$date = date('d-m-yy');
+		$data =array(
+			'user_id' =>$request->user_id,
+			'coach_id' =>$request->coach_id,
+			'course_id'=>$request->course_id,
+			'created_at' =>$date
+		);
+
+		DB::table('enroll_course')->insert($data);
+
+		return redirect('account/my_courses');
+
+	}
+
 	public function my_courses_by_striver()
 	{
 
@@ -289,13 +308,13 @@ class EditController extends AccountBaseController
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->get();
+			->where('users.user_type_id', 2)->inRandomOrder()->limit(8)->get();
 
 		$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 3)->orderBy('users.id', 'asc')->get();
+			->where('users.user_type_id', 3)->inRandomOrder()->limit(8)->get();
 
 		// print_r();die;
 		$data['users'] = DB::table('user_subscription')->select('coach_course.*')
@@ -323,13 +342,21 @@ class EditController extends AccountBaseController
 
 		$data['coach_coarsee'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
 			->where('coach_course.coach_id', $user->id)
-			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->orderBy('id', 'desc')
+			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
+			->limit(6)->get();
+
+
+			$data['enroll_coach_coarse'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo','enroll_course.user_id')
+			->leftJoin('enroll_course','enroll_course.course_id' ,'=','coach_course.id')
+			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
+			->where('enroll_course.user_id', $user->id)
+			->inRandomOrder()
 			->limit(6)->get();
 
 		$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
-			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->orderBy('id', 'desc')
-			->limit(6)->get();
-		// print_r($data['coach_coarsee']);die;
+			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
+			->limit(8)->get();
+		// print_r($data['enroll_coach_coarse']);die;
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
@@ -397,41 +424,41 @@ class EditController extends AccountBaseController
 		$data['user_subscription'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*', 'packages.name', 'users.name as username')
 			->leftjoin('packages', 'packages.id', '=', 'user_subscription_payment.subscription_id')
 			->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')
-			->where('user_subscription_payment.user_id', $user->id)
+			->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
 			->get();
 
-		$totalsum = array();
-		$name = array();
-		$consumed_hours = array();
-		$remaining_hours = array();
-		$user_id = array();
-		foreach ($data['user_subscription'] as $key => $value) {
+		// $totalsum = array();
+		// $name = array();
+		// $consumed_hours = array();
+		// $remaining_hours = array();
+		// $user_id = array();
+		// foreach ($data['user_subscription'] as $key => $value) {
 
-			$totalsum[$value->total_provided_hours] = $value->total_provided_hours;
-			$name[$value->name] = $value->name;
-			$consumed_hours[$value->consumed_hours] = $value->consumed_hours;
-			$remaining_hours[$value->remaining_hours] = $value->remaining_hours;
-			$user_id[$value->id] = $value->id;
-			// $consumed_hours[$value->consumed_hours] =$value->consumed_hours;
-		}
-
-
-		//  $dataa = sum($totalsum);
-
-		// $totalsum += $totalsum;
-		$ss  = array();
-		foreach ($name as $key => $sub) {
-			$ss[$sub] = $sub;
-		}
+		// 	$totalsum[$value->total_provided_hours] = $value->total_provided_hours;
+		// 	$name[$value->name] = $value->name;
+		// 	$consumed_hours[$value->consumed_hours] = $value->consumed_hours;
+		// 	$remaining_hours[$value->remaining_hours] = $value->remaining_hours;
+		// 	$user_id[$value->id] = $value->id;
+		// 	// $consumed_hours[$value->consumed_hours] =$value->consumed_hours;
+		// }
 
 
-		$data['total_purchase_package'] = count($user_id);
-		$data['packagename'] = $ss;
-		$data['totalpoints'] = array_sum($totalsum);
-		$data['consumed_hours'] = array_sum($consumed_hours);
+		// //  $dataa = sum($totalsum);
 
-		$data['remaining_hours'] = $data['totalpoints'] - $data['consumed_hours'];
-		//  print_r($data);die;
+		// // $totalsum += $totalsum;
+		// $ss  = array();
+		// foreach ($name as $key => $sub) {
+		// 	$ss[$sub] = $sub;
+		// }
+
+
+		// $data['total_purchase_package'] = count($user_id);
+		// $data['packagename'] = $ss;
+		// $data['totalpoints'] = array_sum($totalsum);
+		// $data['consumed_hours'] = array_sum($consumed_hours);
+
+		// $data['remaining_hours'] = $data['totalpoints'] - $data['consumed_hours'];
+		// //  print_r($data);die;
 
 
 		//print_r($data['user_subscription']);die;
@@ -648,7 +675,7 @@ class EditController extends AccountBaseController
 				$this->attributes[$attribute_name] = $destination_path . '/'. $image;
 				
 
-		$datess = date('Y-m-d h:i:s');
+		$datess = date('d-m-y h:i:s');
 		//  print_r($request->all());die;
 		$data = array(
 			'coach_id' => $user->id,
@@ -660,7 +687,7 @@ class EditController extends AccountBaseController
 			'description' => $request->description,
 			'image' => $courseimg,
 			'starting_time' => $request->starting_time,
-			'dated' => $request->dated,
+			'dated' => $request->datess,
 
 
 		);
