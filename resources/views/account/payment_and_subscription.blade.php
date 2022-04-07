@@ -602,21 +602,21 @@
 
 	<div class="row">
 
-		<div class="col-md-3 page-sidebar box">
+		<div class="col-md-3 page-sidebar ptop">
 			@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
 		</div>
 
-		<div class="col-md-9 page-content ptop box1">
+		<div class="col-md-9 page-content ptop">
 
 
-			<div class="inner-box default-inner-box edit-file-chat ">
+			<div class="inner-box default-inner-box edit-file-chat box ">
 
 				<!--/.row-box End-->
 				
 
 
 						<div class="row">
-							<div style="margin-left: 155px; margin-top: 41px;">
+							<div style="margin-left: 100px; margin-top: 41px;">
 					
 
 						<?php
@@ -648,7 +648,7 @@
 							// print_r($sub_namess);die;
 						?>
 								<?php } ?>
-                  				<span class="subscription-nanme-by-user">{{$ss['en'] }}</span>
+                  				<span class="subscription-nanme-by-user boxfont">{{$ss['en'] }}</span>
 
  
 							
