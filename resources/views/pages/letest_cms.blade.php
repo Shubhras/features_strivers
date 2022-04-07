@@ -50,7 +50,7 @@
   <div class="container ">
             <div class="row">
 
-            <h2 class="sec-title text-center"  style="margin-top: 61px;">{{ $page->title }}</h2>
+            <h2 class="sec-title text-center"  style="margin-top: 61px;font-size: 40px;">{{ $page->title }}</h2>
             <div class="col-lg-6">
 
             @if (!empty($page->picture))
@@ -73,7 +73,7 @@
                 <div class="col-lg-6">
                     <div class="row">
 
-                        <div class="line_bottom">
+                        <div class="line_bottom newm">
                             <!-- <p> Total Consultation Fees:<span class="boxfont"> $  </span>
                 </p>
                             <p> Consultation Fees Per Hour:<span class="boxfont"> $ </span>
