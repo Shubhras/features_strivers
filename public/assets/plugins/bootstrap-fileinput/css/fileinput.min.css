@@ -304,7 +304,7 @@ input[type=file].file-loading {
 }
 
 .krajee-default .file-footer-buttons {
-    float: right
+    float: center
 }
 
 .krajee-default .file-footer-caption {

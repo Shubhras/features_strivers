@@ -18,7 +18,7 @@
 	<div class="container ">
 		<div class="row">
 			<div class="col-lg-12">
-				<h2 class="hero-content_h2 font-text-size-43px"> A global learning platform for all</h2> <br>
+				<h2 class="hero-content_h23 font-text-size-43px"> A global learning platform for all</h2> <br>
 				<div>
 					<!-- <a href=""> A global learning platform for all </a> -->
 					<p class="global_page font-text-size-16px">

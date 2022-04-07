@@ -31,8 +31,7 @@ input#phoneHidden {
 --------------------------------------------------------------------------------------*/
 
 @media (min-width: 1200px) and (max-width: 1277px) {
-    .height-img
-    {
+    .height-img {
         height: 50%!important;
     }
     .project-manage {
@@ -90,7 +89,6 @@ input#phoneHidden {
         /* width: 250px; */
         height: 100px;
     }
-  
     .collapse.navbar-collapse.mobile-menu-fix32 {
         margin-right: -122px;
     }
@@ -179,7 +177,6 @@ input#phoneHidden {
     /* .btn_class {
         height: 50px;
     } */
-  
     .hero-banner-1 {
         background-position: bottom right;
         background-size: cover;
@@ -780,8 +777,7 @@ input#phoneHidden {
 /--------------------------------------------------------------------------------------*/
 
 @media (min-width: 768px) and (max-width: 991px) {
-    .height-img
-    {
+    .height-img {
         height: 45%!important;
     }
     .footer-row-fix {
@@ -1683,13 +1679,12 @@ input#phoneHidden {
 }
 
 @media (min-width: 1024px) and (max-width: 1200px) {
-    .height-img
-    {
+    .height-img {
         height: 40%!important;
     }
     .enroll {
         right: 55px!important;
-}
+    }
     .footer-row-fix {
         margin-top: -30px!important;
     }
@@ -1805,7 +1800,6 @@ input#phoneHidden {
 }
 
 @media (min-width: 768px) {
-   
     .navbar-brand img {
         /* width: 250px; */
         /* height: 70px; */
@@ -1916,7 +1910,6 @@ input#phoneHidden {
 }
 
 @media (min-width: 320px) and (max-width: 425px) {
-   
     .line-height-text-3 {
         line-height: 20px!important;
     }
@@ -2066,7 +2059,6 @@ input#phoneHidden {
 
 @media screen and (min-width: 375px) {
     .search-box-font {
-    
         font-size: 14px!important;
     }
     button.btn.btn-primary.btn_class_coaches.search-box-font {
@@ -3537,7 +3529,7 @@ input#phoneHidden {
         background-color: #43329f!important;
     }
     .search_box_filterss {
-        width: 496px;
+        width: 643px;
     }
     .search-box_filter2 {
         margin-left: -2px
@@ -3553,7 +3545,7 @@ input#phoneHidden {
         width: 404px;
     }
     .search-box-fix1 {
-        width: 584px;
+        width: 552px;
     }
     .search-category-find {
         margin-top: -164px;
@@ -3874,7 +3866,6 @@ input#phoneHidden {
         padding-right: 6px;
         margin-top: -41px;
     }
-    
     .result-table thead tr th,
     .result-table tbody tr td {
         padding-left: 15px;
@@ -3964,18 +3955,20 @@ input#phoneHidden {
         padding-right: 4px;
     }
 } */
+
 @media only screen and (min-device-width: 769px) and (max-device-width: 1440px) {
     .project-manage {
         margin-top: 143px!important;
     }
 }
+
 @media only screen and (min-device-width: 1440px) and (max-device-width: 2560px) {
     .project-manage {
         margin-top: 150px!important;
     }
 }
+
 @media only screen and (min-device-width: 769px) and (max-device-width: 1560px) {
-    
     .edit-profile-coach {
         padding-right: 6px;
         margin-top: -41px;
@@ -4166,7 +4159,7 @@ input#phoneHidden {
 }
 
 @media only screen and (min-device-width: 1024px) {
-    .wi{
+    .wi {
         width: 81%!important;
     }
     .row {
@@ -4276,13 +4269,12 @@ input#phoneHidden {
     .wi {
         width: 84%!important;
     }
-    .height-img
-    {
+    .height-img {
         height: 47%!important;
     }
     .enroll {
         right: 90px!important;
-}
+    }
     .fc-view {
         width: 100%;
         overflow: hidden;
@@ -4333,28 +4325,28 @@ table.fc-border-separate {
     border-collapse: separate;
     width: 86%;
 }
-.imgb
-{
+
+.imgb {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border: 1px solid #eae9ec;
-padding-top: 15px;
-padding-bottom: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
-    .height-img
-    {
+    .height-img {
         height: 45%!important;
     }
     .enroll {
         right: 90px!important;
+    }
 }
-}
+
 @media only screen and (min-device-width: 375px) and (max-device-width: 425px) {
-    .height-img
-    {
+    .height-img {
         height: 50%!important;
     }
     .enroll {
         right: 120px!important;
-}
+    }
 }

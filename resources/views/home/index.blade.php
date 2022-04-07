@@ -56,7 +56,7 @@
                             </div>
 
                 </form>
-                <!-- <br> -->
+                <br>
                 <a href="{{'/register'}}" class="bisylms-btn">Ready to Get Started?</a>
             </div>
         </div>
