@@ -111,8 +111,8 @@ if (!empty($top_coach_detail->slug)) {
 
 				
 				<div class="col-md-8">
-				<!-- <iframe width="100%" height="450" src="https://www.youtube.com/embed/xJ3vatsNQDU?autoplay=1&mute=1&loop=1"></iframe> -->
-					<iframe width="100%" height="450" src="{{$top_coach_detail->youtube_link}}?autoplay=1&mute=1&loop=1"></iframe>
+				<iframe width="100%" height="450" src="https://www.youtube.com/embed/R5jIoLnL_nE?autoplay=1&mute=1&loop=1"></iframe>
+					<!-- <iframe width="100%" height="450" src="{{$top_coach_detail->youtube_link}}?autoplay=1&mute=1&loop=1"></iframe> -->
 				</div>
 			</div>
 		</div>

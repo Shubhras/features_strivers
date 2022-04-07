@@ -616,7 +616,7 @@
 
 
 						<div class="row">
-							<div style="margin-left: 100px; margin-top: 41px;">
+							<div style="margin-left: 125px; margin-top: 41px;">
 					
 
 						<?php
@@ -656,7 +656,7 @@
 							</div>
 							</div>
 
-							<div class="row" style="margin-top: -27px;">
+							<div class="row" style="margin-top: -27px;    margin-left: 25px;">
 							
 							
 							<div class="line_bottom">
@@ -682,7 +682,7 @@
 
 
 				<?php } ?>
-				<div class="col-md-12" style="text-align: center;">
+				<div class="col-md-12" style="text-align: left;">
 					<a  class="bisylms-btn-pink" href="{{ url('pricing') }}">
 
 						Get Subscriptions
