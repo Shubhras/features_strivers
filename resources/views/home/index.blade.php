@@ -152,8 +152,9 @@
 
                             <div class="strivre-img-wrapper">
 
-
+                            <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
                                 <img src="{{ url('storage/'.$news->picture) }}" alt="{{ $news->name }}">
+                            </a>
 
                                 <label class="f-17 sort_name find-letest-news1">
                                     <a class="index-34" href="{{url('/letest_news/'.$news->slug) }}" target="_blank">{{$ss['en']}}
@@ -165,7 +166,9 @@
                             @if(empty($news->picture))
 
                             <div class="strivre-img-wrapper">
+                            <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
                                 <img src="../assets/images/course/1.jpg" alt="">
+                            </a>
                                 <label class="f-17 sort_name find-letest-news1">
                                     <a class="index-34" href="{{url('/letest_news/'.$news->slug)}}" target="_blank">{{$ss['en']}}
                                     </a>
@@ -194,7 +197,7 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="teacher-item">
-                            <div class="teacher-thumb coach-img-wrapper coach-img-fix-height">
+                            <div class="teacher-thumb coach-img-wrapper1 coach-img-fix-height">
                                 <!-- <a href="{{url('/coach_details/'.$coach->id) }}"> -->
                                 <?php if (!empty($coach->photo)) { ?>
                                     <img src="{{ url('storage/'.$coach->photo) }}" alt="{{ $coach->name }}" class="lazyload img-fluid">
