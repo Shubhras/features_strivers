@@ -17,6 +17,7 @@ class EnrollCourse extends Migration
             $table->increments('id');
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->bigInteger('course_id')->unsigned()->nullable();
+            $table->bigInteger('coach_id')->unsigned()->nullable();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
             

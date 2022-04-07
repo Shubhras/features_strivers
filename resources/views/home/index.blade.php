@@ -307,7 +307,7 @@
 
                         ?>
                             <div class="latest-course">
-                                <a class="index-34" href="{{url('../get_coach_coarse/'.$value->id)}}" alt="#">
+                                <a class="index-34" href="{{url('../get_coach_course/'.$value->id)}}" alt="#">
                                     <div class="strivre-img-wrapper">
 
                                         <img src="../assets/images/course/1.jpg" alt="">
