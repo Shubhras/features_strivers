@@ -157,12 +157,12 @@
 											
                             </div>
                             <div class="col-md-6">
-                                <div class="condition-check">
+                                <!-- <div class="condition-check">
                                     <input id="terms-conditions" type="checkbox">
                                     <label for="terms-conditions">
                                             I agree to the <a href="#">Terms & Conditions</a>      
                                         </label>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-md-6 text-right">
                                 <input type="submit" name="submit" value="Send Message" class="contact-send-message">

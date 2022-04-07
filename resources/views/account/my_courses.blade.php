@@ -515,13 +515,13 @@
 
 			<div class="row">
 				<?php
-				foreach ($coach_striver as  $coaches_corsee) {
+				foreach ($enroll_coach_coarse as  $coaches_corsee) {
 				?>
 					<div class="col-lg-4 col-md-6">
 						<div class="feature-course-item-4">
 							<div class="fcf-thumb">
 								<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
-								<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Enroll Now</a>
+								<!-- <a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Enroll Now</a> -->
 							</div>
 							<div class="fci-details">
 								<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>

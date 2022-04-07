@@ -258,10 +258,10 @@
                                             <img src="{{ url('storage/'.$coach->photo) }}" class="img-coches-main" alt="{{ $coach->name }}">
                                             <p class="coach-details-name">{{$coach->name}}</p>
                                             <h4 class=" text-center">
-                                                Teaches Adventure Photography
+                                            {{$ss['en']}}
                                             </h4>
                                             <p class="text-center"><b>
-                                                    National Geographic photographer teaches his techniques for planning, capturing, and editing breathtaking photos.</b>
+                                            </b>
                                             </p> <br>
                                             <label>{{$coach->name}} . {{$coach->coach_summary}}</label>
                                             <br>
@@ -307,7 +307,7 @@
 
                         ?>
                             <div class="latest-course">
-                                <a class="index-34" href="{{url('../get_coach_coarse/'.$value->id)}}" alt="#">
+                                <a class="index-34" href="{{url('../get_coach_course/'.$value->id)}}" alt="#">
                                     <div class="strivre-img-wrapper">
 
                                         <img src="../assets/images/course/1.jpg" alt="">
