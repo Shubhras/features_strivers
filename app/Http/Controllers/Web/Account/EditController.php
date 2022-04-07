@@ -286,13 +286,13 @@ class EditController extends AccountBaseController
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->get();
+			->where('users.user_type_id', 2)->inRandomOrder()->limit(8)->get();
 
 		$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 3)->orderBy('users.id', 'asc')->get();
+			->where('users.user_type_id', 3)->inRandomOrder()->limit(8)->get();
 
 		// print_r();die;
 		$data['users'] = DB::table('user_subscription')->select('coach_course.*')
@@ -320,12 +320,12 @@ class EditController extends AccountBaseController
 
 		$data['coach_coarsee'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
 			->where('coach_course.coach_id', $user->id)
-			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->orderBy('id', 'desc')
+			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
 			->limit(6)->get();
 
 		$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
-			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->orderBy('id', 'desc')
-			->limit(6)->get();
+			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
+			->limit(8)->get();
 		// print_r($data['coach_coarsee']);die;
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
