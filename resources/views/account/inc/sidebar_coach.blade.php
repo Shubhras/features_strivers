@@ -33,7 +33,7 @@
                                         <li class="nav-item ">
 										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account') }}">
 										<h5 class="collapse-title no-border">
-											<!-- <i class="fas fa-user-edit"></i> -->
+											<i class="fas fa-user-edit"></i>
 											{{ t('Edit_Profile') }}&nbsp;
 
 										</h5>
@@ -42,7 +42,7 @@
                                         <li class="nav-item  ">
 										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_striver') }}">
 											<h5 class="collapse-title no-border">
-												<!-- <i class="fas fa-user-edit"></i> -->
+												<i class="fas fa-users"></i>
 												{{ ('My Strivres') }}&nbsp;
 
 											</h5>
@@ -52,6 +52,7 @@
 										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_courses') }}">
 											<h5 class="collapse-title no-border">
 												<!-- <i class="fas fa-user-edit"></i> -->
+                                                <i class="fas fa-book-open"></i>
 												Consultation &nbsp;
 
 											</h5>
@@ -62,6 +63,7 @@
 										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_payments') }}">
 												<h5 class="collapse-title no-border">
 													<!-- <i class="fas fa-user-edit"></i> -->
+                                                    <i class="fas fa-credit-card"></i>
 													{{ ('My payment') }} &nbsp;
 
 												</h5>

@@ -102,7 +102,7 @@ class User extends BaseUser
 		'last_activity',
 		'category',
 		'sub_category',
-		'coach_summary',
+		// 'coach_summary',
 		'year_of_experience',
 		'current_level',
 		'location',
