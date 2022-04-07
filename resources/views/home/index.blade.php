@@ -3,7 +3,7 @@
 <!-- <link rel="icon" type="image/png" href="../assets/images/favicon.png"> -->
 <!-- Favicon Icon -->
 
-@extends('layouts.master_new')
+@extends('layouts.master')
 @section('content')
 <!-- @includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer']) -->
 <section class="hero-banner-1 main" style="background-image: url(../assets/images/home/banner.png); ">
