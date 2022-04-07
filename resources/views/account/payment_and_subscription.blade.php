@@ -161,10 +161,10 @@
 
 				<div class="row">
 
-					<div class="col-md-3 page-sidebar">
+					<div class="col-md-3 page-sidebar ptop">
 						@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
 					</div>
-					<div class="col-md-9 page-content">
+					<div class="col-md-9 page-content ptop">
 
 
 
@@ -602,14 +602,14 @@
 
 	<div class="row">
 
-		<div class="col-md-3 page-sidebar">
+		<div class="col-md-3 page-sidebar box">
 			@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
 		</div>
 
-		<div class="col-md-9 page-content">
+		<div class="col-md-9 page-content ptop box1">
 
 
-			<div class="inner-box default-inner-box edit-file-chat">
+			<div class="inner-box default-inner-box edit-file-chat ">
 
 				<!--/.row-box End-->
 				
@@ -657,11 +657,13 @@
 							</div>
 
 							<div class="row" style="margin-top: -27px;">
-							<div class="states">
-							<h5>  Subscription: </h5>
-							<h5> Total hours : <span style="color: red;">{{$sub->total_provided_hours}} Hours.</span></h5>
-							<h5> Consumed Hours : <span style="color: red;">{{$sub->consumed_hours}} Hours.</span></h5>
-							<h5> Remaining Hours : <span style="color: red;">{{$sub->remaining_hours}} Hours.</span></h5>
+							
+							
+							<div class="line_bottom">
+							<p>  Subscription: </p>
+							<p> Total hours : <span class="boxfont">{{$sub->total_provided_hours}} Hours.</span></p>
+							<p> Consumed Hours : <span class="boxfont">{{$sub->consumed_hours}} Hours.</span></p>
+							<p> Remaining Hours : <span class="boxfont">{{$sub->remaining_hours}} Hours.</span></p>
 
 								
 							
@@ -672,18 +674,18 @@
 							if (empty($sub->remaining_hours)) {
 				?>
 					<div class="col-md-12" style="text-align: center;">
-						<a href="{{ url('subscription') }}">
+						<a class="bisylms-btn-pink" href="{{ url('subscription') }}">
 
-							<button style="font-size: 20px; ">Renew Subscriptions</button>
+							Renew Subscriptions
 						</a>
 					</div>
 
 
 				<?php } ?>
 				<div class="col-md-12" style="text-align: center;">
-					<a href="{{ url('pricing') }}">
+					<a  class="bisylms-btn-pink" href="{{ url('pricing') }}">
 
-						<button style="font-size: 20px; ">Get Subscriptions</button>
+						Get Subscriptions
 					</a>
 
 				</div>
@@ -693,9 +695,10 @@
 					<h2>Please Get Subscription First!</h2>
 				</div>
 				<div class="col-md-12" style="text-align: center;">
-					<a href="{{ url('pricing') }}">
+					<a class="bisylms-btn-pink" href="{{ url('pricing') }}">
 
-						<button style="font-size: 20px; ">Get Subscriptions</button>
+						Get Subscriptions
+						
 					</a>
 
 				</div>

@@ -123,11 +123,11 @@
 
 				<div class="row">
 
-					<div class="col-md-3 page-sidebar">
+					<div class="col-md-3 page-sidebar ptop">
 
 						@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
 					</div>
-					<div class="col-md-9 page-content">
+					<div class="col-md-9 page-content ptop">
 
 
 						@include('flash::message')
@@ -201,7 +201,7 @@
 
 														<div class="col-md-6">
 															<label for="recipient-name" class="control-label create-consultation-modal">Consultation Available - Date:</label>
-															<input type="date" class="consultation-modal-text" id="dated" name="dated" placeholder="dd/mm/yyyy">
+															<input type="date" class="consultation-modal-text" id="dated" name="dated" placeholder="yyyy/mm/dd">
 														</div>
 
 
@@ -305,21 +305,21 @@
 										<div class="feature-course-item-4">
 											<div class="fcf-thumb">
 												<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" class="image-height" style="height: 244px; weight: 244px;">
-												<a class="enroll" href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Enroll Now</a>
+												<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Enroll Now</a>
 											</div>
 
 											<div class="fci-details">
-												<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}" class="c-cate sort_name">
+												<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name">
 													<i class="fas fa-tags"></i>
 													{{$coaches_corsee->course_name}}</a>
-												<h4><a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
+												<h4><a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
 												<div class="author">
 													<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
-													<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
+													<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
 												</div>
 												<div class="price-rate">
 													<div class="course-price"><a>
-															{{$coaches_corsee->total_consultation_fee}}  Credits
+															{{$coaches_corsee->total_consultation_fee}} $ Credit
 														</a>
 													</div>
 
@@ -502,11 +502,11 @@
 
 <div class="row">
 
-	<div class="col-md-3 page-sidebar">
+	<div class="col-md-3 page-sidebar ptop">
 
 		@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
 	</div>
-	<div class="col-md-9 page-content">
+	<div class="col-md-9 page-content ptop">
 
 
 		<div class="inner-box default-inner-box">
@@ -521,14 +521,14 @@
 						<div class="feature-course-item-4">
 							<div class="fcf-thumb">
 								<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
-								<a class="enroll" href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Enroll Now</a>
+								<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Enroll Now</a>
 							</div>
 							<div class="fci-details">
-								<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
-								<h4><a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
+								<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
+								<h4><a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
 								<div class="author">
 									<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
-									<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
+									<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
 								</div>
 
 
@@ -582,14 +582,14 @@
 						<div class="feature-course-item-4">
 							<div class="fcf-thumb">
 								<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
-								<a class="enroll" href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Enroll Now</a>
+								<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Enroll Now</a>
 							</div>
 							<div class="fci-details">
-								<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
-								<h4><a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
+								<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
+								<h4><a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
 								<div class="author">
 									<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
-									<a href="{{url('../get_coach_coarse/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
+									<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
 								</div>
 
 
@@ -830,8 +830,8 @@
 		course_hourse = parseFloat($('#course_hourse').val());
 		var total_consultation_fee = consultation_fee_per_hour * course_hourse;
 		var creadit_required = total_consultation_fee / 5;
-		$('#total_consultation_fee').val(total_consultation_fee);
-		$('#creadit_required').val(creadit_required);
+		$('#total_consultation_fee').val(total_consultation_fee.toFixed(2));
+		$('#creadit_required').val(creadit_required.toFixed(2));
 	});
 </script>
 
@@ -843,8 +843,8 @@
 		course_hourse = parseFloat($('#course_hourse').val());
 		var total_consultation_fee = consultation_fee_per_hour * course_hourse;
 		var creadit_required = total_consultation_fee / 5;
-		$('#total_consultation_fee').val(total_consultation_fee);
-		$('#creadit_required').val(creadit_required);
+		$('#total_consultation_fee').val(total_consultation_fee.toFixed(2));
+		$('#creadit_required').val(creadit_required.toFixed(2));
 	});
 </script>
 
@@ -865,7 +865,7 @@
 				consultation_fee_per_hour: $("#consultation_fee_per_hour").val(),
 				course_hourse: $("#course_hourse").val(),
 				total_consultation_fee: $("#total_consultation_fee").val(),
-				creadit_Required: $("#creadit_required").val(),
+				creadit_required: $("#creadit_required").val(),
 				image: $("#image").val(),
 				description: $("#description").val(),
 				starting_time: $("#starting_time").val(),

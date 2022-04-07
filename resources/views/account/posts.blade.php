@@ -34,12 +34,12 @@
 					</div>
 				@endif
 				
-				<div class="col-md-3 page-sidebar">
+				<div class="col-md-3 page-sidebar ptop">
 					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
 				</div>
 				<!--/.page-sidebar-->
 
-				<div class="col-md-9 page-content">
+				<div class="col-md-9 page-content ptop">
 					<div class="inner-box">
 						@if ($pagePath=='my-posts')
 							<h2 class="title-2"><i class="fas fa-bullhorn"></i> {{ t('my_ads') }} </h2>

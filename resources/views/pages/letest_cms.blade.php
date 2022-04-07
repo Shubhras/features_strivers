@@ -40,69 +40,69 @@
 
 @section('content')
 @includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
-<div class="main-container inner-page">
-    <div class="container">
-        <div class="section-content">
 
-            <h3 class="text-center">{{ $page->title }}</h3>
 
+
+
+
+
+<section class="blog-section64">
+  <div class="container ">
             <div class="row">
 
+            <h2 class="sec-title text-center"  style="margin-top: 61px;">{{ $page->title }}</h2>
+            <div class="col-lg-6">
 
+            @if (!empty($page->picture))
+                <div class="col-lg-12 imgb">
+                    <center> <img src="{{ url('storage/'.$page->picture) }}" class="lazyload img-fluid1 images_height" style="width: 100%;"></center>
 
-                <div class="col-md-12 page-content" style="padding: 20px;">
-                    <div class="inner-box relative">
-                        <div class="row">
+                </div>
+                @else
 
+                <div class="col-lg-12 imgb">
+                    <center> <img src="url(../assets/images/avtar_imag_default.jpg)" class="lazyload img-fluid1 images_height" style="width: 100%;"></center>
 
-
-                            <div class="col-sm-12 page-content">
-                                @if (empty($page->picture))
-                                <!-- <h3 class="text-center" style="color: {!! $page->title_color !!};">{{ $page->title }}</h3> -->
-
-                                <div class="text-content">
-                                    <center>
-                                        <!-- <h3 class="text-center" style="color: {!! $page->title_color !!};">{{ $page->title }}</h3> -->
-
-                                        <!-- <img src="url('../assets/images/avtar_imag_default.jpg')" alt="{{ $page->name }}" style="height: 400px; width: 9000px;"> -->
-
-                                        <section class="page-banner01" style="background-image: url(../assets/images/avtar_imag_default.jpg); position: relative; background-size: cover; background-repeat: no-repeat; background-position: center center; height: 500px;" alt="{{ $page->name }}">
-
-                                        </section>
-
-                                    </center>
-                                </div>
-
-                                @endif
-
-                                @if (!empty($page->picture))
-                                <div class="text-content">
-                                    <center>
-                                        <img src="{{ url('storage/'.$page->picture) }}" alt="{{ $page->name }}" style="height: 200px; width: 5000px;">
-                                    </center>
-                                </div>
-                                @endif
-                                <br>
-                                <div class="text-content text-start from-wysiwyg">
-                                    {!! $page->content !!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
+
+
+                @endif
+                
+</div>
+                <div class="col-lg-6">
+                    <div class="row">
+
+                        <div class="line_bottom">
+                            <!-- <p> Total Consultation Fees:<span class="boxfont"> $  </span>
+                </p>
+                            <p> Consultation Fees Per Hour:<span class="boxfont"> $ </span>
+                            </p>
+                            <p> Credits Required:<span class="boxfont"> </span>
+                            </p>
+                            <p> Date:<span class="boxfont"> 0000-00-00</span>
+                            </p>
+                            <p> Coach:<span class="boxfont"> Coaches343</span>
+                            </p>
+                            -->
+                            {!! $page->content !!}
+                        </div>
+
+                    </div>
+                   
+                
             </div>
 
-            @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.social.horizontal', 'layouts.inc.social.horizontal'])
-
         </div>
-    </div>
-</div>
 
-@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
+        <br><br>
+        
+    </div></section>
+
+<!-- @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 <a href="#" id="back-to-top">
     <i class="fal fa-angle-double-up"></i>
-</a>
+</a> -->
 <!-- Back To Top -->
 <!-- Start Include All JS -->
 <script src="../assets/js/jquery.js"></script>
