@@ -255,7 +255,7 @@ Route::group([
 		Route::get('subscription', 'PageController@show1');
 		// Route::get('/coach_list_category_all', 'PageController@coach_list_category_all');
 
-		Route::get('get_coach_coarse/{id}', 'HomeController@coach_coarsess');
+		Route::get('get_coach_course/{id}', 'HomeController@coach_coursess');
 		Route::get('/coach_list_category_all/{id}', 'PageController@coach_list_category_all');
 
 		
@@ -445,6 +445,7 @@ Route::group([
 				Route::get('getSubcategories', 'EditController@getSubcategories');
 				Route::put('photo/delete', 'EditController@updatePhoto');
 				Route::put('photo', 'EditController@updatePhoto');
+				Route::post('enroll_course', 'EditController@enroll_course_striver');
 
 				// Route::get('allcities/{id}','EditController@getCountryLocation');
 

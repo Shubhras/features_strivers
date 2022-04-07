@@ -73,6 +73,22 @@
 
                 </div>
             </div>
+            
+            <div class="row">
+                <div class="col-md-3">
+                    <form action="{{ url('/account/enroll_course') }}" method="post">
+                    <input type="hidden" name="user_id" id="user_id" value="{{$auth_id}}" class="form-control">
+                    <input type="hidden" name="coach_id" id="coach_id" value="{{$coach_course->coach_id}}" class="form-control">
+                    <input type="hidden" name="course_id" id="course_id" value="{{$coach_course->id}}" class="form-control">
+                    
+            <button type="submit" class="btn btn-primary">
+                Enroll Now
+            </button>
+            </form>
+            </div>
+            </div>
+            <br>
+
             <div class="row">
             <div class="col-lg-6">
                 <div class="col-lg-8 imgb">
