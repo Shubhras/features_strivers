@@ -40,7 +40,7 @@
 									</a>
 															</li>
                                         <li class="nav-item  ">
-										<a {!! ($pagePath=='' ) ? 'class="active current"' : '' !!} href="{{ url('account/my_striver') }}">
+										<a {!! ($pagePath=='' ) ? 'class=" "' : '' !!} href="{{ url('account/my_striver') }}">
 											<h5 class="collapse-title no-border">
 												<i class="fas fa-users"></i>
 												{{ ('My Strivres') }}&nbsp;
