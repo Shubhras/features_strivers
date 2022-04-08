@@ -133,8 +133,61 @@ if (!empty($top_coach_detail->slug)) {
 	</div>
 	</div>
 </section>
+<div class="main-section">
+	<div class="container">
 
+		<div class="row">
+
+		<h2 class="sec-title" style="font-weight: 700;">
+		Choose Consultancy package
+
+		</h2>
+
+		<?php
+				foreach ($create_my_course as  $coaches_corsee) {
+				?>
+					<div class="col-lg-3 col-md-6">
+						<div class="feature-course-item-4">
+							<div class="fcf-thumb">
+								<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
+								<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" onclick="customSession()">View Package</a>
+							</div>
+							<div class="fci-details">
+								<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
+								<h4><a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
+								<div class="author">
+									<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
+									<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
+								</div>
+
+
+								<div class="price-rate">
+									<div class="course-price">
+
+										@if($coaches_corsee->total_consultation_fee != null)
+
+										<a>
+											<!-- {{$coaches_corsee->total_consultation_fee}}$ Credits -->
+
+											{{$coaches_corsee->creadit_required}}$ Credits
+										</a>
+										@else
+										0 $ Credits
+										@endif
+									</div>
+
+								</div>
+
+
+
+							</div>
+						</div>
+
+					</div>
+				<?php } ?>
+		</div>
 <br>
+
 
 
 
