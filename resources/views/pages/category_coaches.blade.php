@@ -94,26 +94,26 @@ body {
 
         </div>
 
-        
-         <center>
+
+        <center>
             <div class=" col-lg-8 col-md-8 ">
 
-            <form action="{{ url('/findtopcoach') }}" method="post">
+                <form action="{{ url('/findtopcoach') }}" method="post">
 
-                <div class="input-group wi">
-                    <div class="form-outline search-box-fix1">
-                        <input type="search" name="search" id="form1" class="form-control search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more..." />
+                    <div class="input-group wi">
+                        <div class="form-outline search-box-fix1">
+                            <input type="search" name="search" id="form1" class="form-control search-box-for-main search-box-font" placeholder=" Search for Coach, Industry, Location and more..." />
 
+                        </div>
+                        <button type="submit" class="btn btn87 btn-primary btn_class btn_class_coaches12 search-button-icon-width">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
-                    <button type="submit" class="btn btn87 btn-primary btn_class btn_class_coaches12 search-button-icon-width">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
                 </form>
 
             </div>
-          </center>
-       
+        </center>
+
         <div class="col-md-2">
 
         </div>
@@ -127,22 +127,22 @@ body {
 
     <!-- <div class="main-section"> -->
 
-        <div class="container project-manage">
+    <div class="container project-manage">
 
-            <h2 class="sec-title">
-                <!-- Project Management -->
-                @if(!empty($search_key))
+        <h2 class="sec-title">
+            <!-- Project Management -->
+            @if(!empty($search_key))
 
 
-                Top Coaches for You :- {{$search_key}}
-                @else
-                Top Coaches for You
-                @endif
+            Top Coaches for You :- {{$search_key}}
+            @else
+            Top Coaches for You
+            @endif
 
-            </h2>
+        </h2>
 
-            <!-- <div class="row"> -->
-            <!-- <div class="col-md-3">
+        <!-- <div class="row"> -->
+        <!-- <div class="col-md-3">
 
                     <div class="row">
 
@@ -176,9 +176,9 @@ body {
                 </div> -->
 
 
-            <!-- <div class="col-md-8"> -->
+        <!-- <div class="col-md-8"> -->
 
-            <!-- <div class="row">
+        <!-- <div class="row">
 
                         <?php
 
@@ -278,96 +278,91 @@ body {
 
                 </div> -->
 
-            <div class="row">
-                <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-4">
 
-                    <!-- <div  id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('0')">
+                <!-- <div  id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('0')">
                     </div> -->
-                    <div class="accordion" id="accordionExample" onclick="subCatListCoach('{{ $cat->id }}')">
-                        @foreach($categories as $key => $cat)
-                        <?php
-                        $name = json_decode($cat->name);
-                        $ss = array();
-                        foreach ($name as $key => $sub) {
-                            $ss[$key] = $sub;
-                        }
-                        ?>
-                        <div>
-                            <!-- <div class="subject-title-name-cat" id="heading{{ $cat->id }}"> -->
-                                <h5 class="mb-0 subject-title-name-cat">
-                                    <button class="btn btn-link " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
-                                        {{ $ss['en'] }}
-                                    </button><i class="fa fa-angle-up" id="donar" style="float: right;"></i>
-                                </h5>
-                            <!-- </div> -->
-                            <div id="collapse{{ $cat->id }}" class="collapse" aria-labelledby="heading{{ $cat->id }}" data-parent="#accordionExample">
-                                <!-- <div class="card-body"> -->
-                                <!-- <ul> -->
-                                    @foreach($sub_categories as $key => $sub_cat)
-                                    @if($sub_cat->parent_id == $cat->id)
-                                    <?php
-                                    $name = json_decode($sub_cat->name);
-                                    $ss = array();
-                                    foreach ($name as $key => $sub) {
-                                        $ss[$key] = $sub;
-                                    }
-                                    ?>
-                                    
-                                    <h5 class="mb-0 subject-title-name-cat">
-                                    
-                                    <button style="margin-left: 5px; border-bottom: 1px;" class="btn sub-categorry subject-title-name-cat-sub" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}
+                <div class="accordion" id="accordionExample" onclick="subCatListCoach('{{ $cat->id }}')">
+                    @foreach($categories as $key => $cat)
+                    <?php
+                    $name = json_decode($cat->name);
+                    $ss = array();
+                    foreach ($name as $key => $sub) {
+                        $ss[$key] = $sub;
+                    }
+                    ?>
+                    <div>
+                        <!-- <div class="subject-title-name-cat" id="heading{{ $cat->id }}"> -->
+                        <h5 class="mb-0 subject-title-name-cat">
+                            <button class="btn btn-link " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
+                                {{ $ss['en'] }}
+                            </button><i class="fa fa-angle-up" id="donar" style="float: right;"></i>
+                        </h5>
+                        <!-- </div> -->
+                        <div id="collapse{{ $cat->id }}" class="collapse" aria-labelledby="heading{{ $cat->id }}" data-parent="#accordionExample">
+                            <!-- <div class="card-body"> -->
+                            <!-- <ul> -->
+                            @foreach($sub_categories as $key => $sub_cat)
+                            @if($sub_cat->parent_id == $cat->id)
+                            <?php
+                            $name = json_decode($sub_cat->name);
+                            $ss = array();
+                            foreach ($name as $key => $sub) {
+                                $ss[$key] = $sub;
+                            }
+                            ?>
+
+                            <h5 class="mb-0 subject-title-name-cat">
+
+                                <button style="margin-left: 5px; border-bottom: 1px;" class="btn sub-categorry subject-title-name-cat-sub" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}
                                 </button>
-                                    </h5>
+                            </h5>
 
-                                    @endif
-                                    @endforeach
-                                    <!-- </ul> -->
-                                <!-- </div> -->
-                            </div>
+                            @endif
+                            @endforeach
+                            <!-- </ul> -->
+                            <!-- </div> -->
                         </div>
-                        @endforeach
                     </div>
-
+                    @endforeach
                 </div>
-                <div class="col-md-8">
+
+            </div>
+            <div class="col-md-8">
 
 
-                    <div class="row">
-                        <?php
-                        foreach ($user as $coach_list) {
-                        ?>
+                <div class="row">
+                    <?php
+                    foreach ($user as $coach_list) {
+                    ?>
+                        
+
+                       
+                        
+
                             <div class="column {{$coach_list->slug_name}} teacher-meta">
+
+                            <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
+                                
                                 <div class="teacher-thumb coach-img-wrapper">
                                     @if(!empty($coach_list->photo))
                                     <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Mountains" style="width:100%" alt="{{ $coach_list->name }}">
                                     @else
                                     <img src="../assets/images/course/1.jpg" alt="{{ $coach_list->name }}" class="lazyload img-fluid">
                                     @endif
-                                    <!-- <div class="teacher-social">
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-facebook-f"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-twitter"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-pinterest-p"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i aria-hidden="true" class="fab fa-vimeo-v"></i>
-                                        </a>
-                                    </div> -->
+
                                 </div>
-                                
-                            <div class="teacher-meta text-center">
-                                <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
+
+                                <div class="teacher-meta text-center">
+                                    <!-- <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}"> -->
 
                                     <p class=" top-coaches-name-list coach-cat-name12 text-center ">
                                         {{ $coach_list->name }}
-                                      </p>
-                                </a>
+                                    </p>
+                                    <!-- </a> -->
 
-                            </div>
+                                </div>
                                 <?php
 
                                 if (!empty($coach_list->slug)) {
@@ -390,123 +385,140 @@ body {
                                 <?php } ?>
                                 <!-- <p>Stylist &amp; Author
                                 </p> -->
-
+                                </a>
 
                             </div>
+                            
+                        
                         <?php } ?>
-                    </div>
-
-                    <script>
-                        filterSelection("0")
-                        subCatListCoach('{{ $cat->id }}')
-
-                        function filterSelection(c) {
-                            var x, i;
-                            x = document.getElementsByClassName("column");
-                            if (c == "0") c = "";
-                            for (i = 0; i < x.length; i++) {
-                                w3RemoveClass(x[i], "show");
-                                if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-                            }
-                        }
-
-                        function w3AddClass(element, name) {
-                            // console.log(name);
-                            var i, arr1, arr2;
-                            arr1 = element.className.split(" ");
-                            arr2 = name.split(" ");
-                            for (i = 0; i < arr2.length; i++) {
-                                if (arr1.indexOf(arr2[i]) == -1) {
-                                    element.className += " " + arr2[i];
-                                }
-                            }
-                        }
-
-                        function w3RemoveClass(element, name) {
-                            var i, arr1, arr2;
-                            arr1 = element.className.split(" ");
-                            arr2 = name.split(" ");
-                            for (i = 0; i < arr2.length; i++) {
-                                while (arr1.indexOf(arr2[i]) > -1) {
-                                    arr1.splice(arr1.indexOf(arr2[i]), 1);
-                                }
-                            }
-                            element.className = arr1.join(" ");
-                        }
-
-
-                        // Add active class to the current button (highlight it)
-                        var btnContainer = document.getElementById("myBtnContainer");
-                        var btns = btnContainer.getElementsByClassName("btn");
-                        for (var i = 0; i < btns.length; i++) {
-                            btns[i].addEventListener("click", function() {
-                                var current = document.getElementsByClassName("active");
-                                current[0].className = current[0].className.replace(" active", "");
-                                this.className += " active";
-                            });
-                        }
-                    </script>
                 </div>
-                <!-- <center>
+
+                <script>
+                    filterSelection("0")
+                    subCatListCoach('{{ $cat->id }}')
+
+                    function filterSelection(c) {
+                        var x, i;
+                        x = document.getElementsByClassName("column");
+                        if (c == "0") c = "";
+                        for (i = 0; i < x.length; i++) {
+                            w3RemoveClass(x[i], "show");
+                            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+                        }
+                    }
+
+                    function w3AddClass(element, name) {
+                        // console.log(name);
+                        var i, arr1, arr2;
+                        arr1 = element.className.split(" ");
+                        arr2 = name.split(" ");
+                        for (i = 0; i < arr2.length; i++) {
+                            if (arr1.indexOf(arr2[i]) == -1) {
+                                element.className += " " + arr2[i];
+                            }
+                        }
+                    }
+
+                    function w3RemoveClass(element, name) {
+                        var i, arr1, arr2;
+                        arr1 = element.className.split(" ");
+                        arr2 = name.split(" ");
+                        for (i = 0; i < arr2.length; i++) {
+                            while (arr1.indexOf(arr2[i]) > -1) {
+                                arr1.splice(arr1.indexOf(arr2[i]), 1);
+                            }
+                        }
+                        element.className = arr1.join(" ");
+                    }
+
+
+                    // Add active class to the current button (highlight it)
+                    var btnContainer = document.getElementById("myBtnContainer");
+                    var btns = btnContainer.getElementsByClassName("btn");
+                    for (var i = 0; i < btns.length; i++) {
+                        btns[i].addEventListener("click", function() {
+                            var current = document.getElementsByClassName("active");
+                            current[0].className = current[0].className.replace(" active", "");
+                            this.className += " active";
+                        });
+                    }
+                </script>
+            </div>
+            <!-- <center>
                     <a class="bisylms-btn" href="#">Explore Top Course </a>
                 </center> -->
-            </div>
-
-
-
-
         </div>
+
+
+
+
+    </div>
     <!-- </div> -->
 </div>
 
 
 
 <br><br>
+<br><br>
 <div class="container">
-    
-        <h2 class="sec-title-cat">
-            Suggested Coaches   
-        </h2>
+
+    <h2 class="sec-title-cat">
+        Suggested Coaches
+    </h2>
 
     <div class="row">
-        <?php foreach ($suggested_coaches as $coach_list) { ?>
+        <?php
+
+
+        foreach ($suggested_coaches as $coach_list) { ?>
 
             <div class="col-lg-3 col-md-6">
-                <div class="teacher-item">
-                    <div class="teacher-thumb coach-img-wrapper">
 
-                        <!-- <img src="assets/images/home/f1.jpg" alt="Jim Séchen"> -->
+                <a type="button" href="{{url('/top_coach_detail/'.$coach_list->id) }}" id="coach_id_{{$coach_list->id }}">
 
-                        <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+                    <div class="teacher-item">
+                        <div class="teacher-thumb coach-img-wrapper">
 
-                        <!-- <div class="teacher-social">
-                            <a href="#">
-                                <i aria-hidden="true" class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#">
-                                <i aria-hidden="true" class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#">
-                                <i aria-hidden="true" class="fab fa-pinterest-p"></i>
-                            </a>
-                            <a href="#">
-                                <i aria-hidden="true" class="fab fa-vimeo-v"></i>
-                            </a>
-                        </div> -->
-                    </div>
-                    <div class="teacher-meta">
+                            <!-- <img src="assets/images/home/f1.jpg" alt="Jim Séchen"> -->
+
+                            <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+
+
+                        </div>
+                        <div class="teacher-meta">
 
                             <a type="button" href="{{url('/top_coach_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
 
-                                <p class=" top-coaches-name-list coach-cat-name12" >
+                                <p class=" top-coaches-name-list coach-cat-name12">
                                     {{ $coach_list->name }}
-        </p>
+                                </p>
                             </a>
-                            <p>Stylist &amp; Author
-                            </p>
 
 
-                        <!-- <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
+                            <?php
+
+                            if (!empty($coach_list->slug)) {
+
+
+                                $name = json_decode($coach_list->slug);
+                                $ss = array();
+                                foreach ($name as $key => $sub) {
+                                    $ss[$key] = $sub;
+                                }
+
+                            ?>
+
+                                <p class="text-center">{{$ss['en']}}
+                                </p>
+                            <?php  } else {
+                            ?>
+                                <p class=" text-center">Others
+                                </p>
+                            <?php } ?>
+
+
+
+                            <!-- <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
                                                 <div class="modal-dialog modal-xl">
                                                     <div class="modal-content p-5">
 
@@ -534,48 +546,50 @@ body {
                                              </div>
                                      </div> -->
 
-                        <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
-                            <div class="modal-dialog modal-xl">
+                            <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
+                                <div class="modal-dialog modal-xl">
 
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Top Coach Details</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Top Coach Details</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
 
-                                <div class="modal-content p-5">
+                                    <div class="modal-content p-5">
 
 
-                                    <img src="{{ url('storage/'.$coach_list->photo) }}" class="img-coches-main" alt="{{ $coach_list->name }}">
-                                    <p class="coach-details-name">{{$coach_list->name}}</p>
-                                    <h4 class=" text-center">
-                                        Teaches Adventure Photography
-                                    </h4>
-                                    <p class="text-center"><b>
-                                            National Geographic photographer teaches his techniques for planning, capturing,
-                                            and editing breathtaking photos.</b>
-                                    </p> <br>
-                                    <label>{{$coach_list->name}} has built his career taking photos at the top of the world,
-                                        earning him the cover of National Geographic and multiple awards. Now he’s taking
-                                        you on location to teach you techniques for capturing
-                                        breathtaking shots. In his photography class, learn different creative approaches
-                                        for commercial shoots, editorial spreads, and passion projects. Gather the gear—and
-                                        the perspective—to bring your
-                                        photography to new heights.</label>
-                                    <br>
-                                    <div class="row center-button-modal">
+                                        <img src="{{ url('storage/'.$coach_list->photo) }}" class="img-coches-main" alt="{{ $coach_list->name }}">
+                                        <p class="coach-details-name">{{$coach_list->name}}</p>
+                                        <h4 class=" text-center">
+                                            Teaches Adventure Photography
+                                        </h4>
+                                        <p class="text-center"><b>
+                                                National Geographic photographer teaches his techniques for planning, capturing,
+                                                and editing breathtaking photos.</b>
+                                        </p> <br>
+                                        <label>{{$coach_list->name}} has built his career taking photos at the top of the world,
+                                            earning him the cover of National Geographic and multiple awards. Now he’s taking
+                                            you on location to teach you techniques for capturing
+                                            breathtaking shots. In his photography class, learn different creative approaches
+                                            for commercial shoots, editorial spreads, and passion projects. Gather the gear—and
+                                            the perspective—to bring your
+                                            photography to new heights.</label>
+                                        <br>
+                                        <div class="row center-button-modal">
 
-                                        <div class="col-lg-2">
-                                            <a href="{{url('/top_coach_detail/'.$coach_list->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <a href="{{url('/pricing') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
+                                            <div class="col-lg-2">
+                                                <a href="{{url('/top_coach_detail/'.$coach_list->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <a href="{{url('/pricing') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                </a>
             </div>
         <?php } ?>
     </div>
