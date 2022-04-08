@@ -24,7 +24,7 @@
     </div>
 </section>
 
-<div class="container hero-menu-login-u32 index-image-768">
+<div class="container1 hero-menu-login-u32 index-image-768">
 
     <div class="row">
 
@@ -75,7 +75,7 @@
 <!-- Banner End -->
 
 <div class="main-section">
-    <div class="container">
+    <div class="container1">
         <div class="row">
             <div class="col-lg-3 col-md-4">
                 <div class="course-sidebar1 navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 ">
@@ -196,6 +196,11 @@
                     @foreach($user as $key => $coach)
 
                     <div class="col-lg-4 col-md-6">
+
+                    <!-- <a type="button" href="{{url('/top_coach_detail/'.$coach->id) }}" id="coach_id_{{$coach->id }}"> -->
+
+                    <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
+                        
                         <div class="teacher-item">
                             <div class="teacher-thumb coach-img-wrapper1 coach-img-fix-height">
                             <a href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
@@ -304,7 +309,7 @@
                                             <p class="text-center"><b>
                                             </b>
                                             </p> <br>
-                                            <label>{{$coach->name}} . {{$coach->coach_summary}}</label>
+                                            <label>{{$coach->coach_summary}}</label>
                                             <br>
                                             <div class="row center-button-modal">
 
@@ -324,6 +329,7 @@
                             </div>
 
                         </div>
+                    </a>
                     </div>
                     @endforeach
                     @endif
@@ -541,7 +547,7 @@
 
 <div style="background: #012245; width: 100%!important;">
 <section class="main-section-new">
-    <div class="container">
+    <div class="container1">
 
         <div class="mt-120">
             <center>
@@ -573,7 +579,7 @@
 </div>
 
 <section class="main-section topp" style="margin-top: 0px!important; ">
-<div class="container">
+<div class="container1">
 
     <div class="row mt-120">
         <div class="col-lg-7 col-md-6">
@@ -586,7 +592,7 @@
                 <h3 class="fblack">JOIN OUR LARGEST COACHING COMMUNITY.</h3>
                 <p class="fblack">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
                     Aliquam euismod, elit vel bibendum vestibulum, nisl nisl mollis tortor, a rhoncus mi augue eleifend justo. Sed sed ullamcorper massa, at pretium tortor. Integer nunc tellus, elementum eu malesuada eu, pellentesque a tellus.
-                </p>
+                </p>•••••••••
                 <a class="bisylms-btn" href="{{url('/register') }}">Get Started</a>
             </div>
         </div>
