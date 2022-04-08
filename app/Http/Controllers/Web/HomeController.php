@@ -817,10 +817,17 @@ class HomeController extends FrontController
 		$data = [];
 		
 		// $data['genders'] = Gender::query()->get();
-		
-		
-		
 		$user = auth()->user();
+		
+		if(empty($user)){
+
+			return redirect('/login');
+		}
+		
+		
+
+		$data['auth_id'] = auth()->user()->id;
+
 		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*','users.name','users.photo')
 		->leftjoin('users' ,'users.id' ,'=', 'coach_course.coach_id')		
 		// ->where('coach_course.coach_id', $user->id)
@@ -828,7 +835,7 @@ class HomeController extends FrontController
 		->orderBy('coach_course.id','asc')
 		->first();
 
-		$data['auth_id'] = auth()->user()->id;
+		
 
 	// print_r($data['auth_id']);die;
 

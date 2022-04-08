@@ -537,6 +537,12 @@ class PageController extends FrontController
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 			->where('users.id', $id)->where('users.user_type_id', 2)->first();
 
+
+			$data['create_my_course'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+			->where('coach_course.coach_id', $id)
+			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
+			->limit(6)->get();
+
 		// print_r($data['top_coach_detail']);die;
 
 		return appView('coach_detail', $data);
