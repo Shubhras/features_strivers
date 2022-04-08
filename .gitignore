@@ -1,0 +1,6 @@
+#env file
+.env
+
+storage/framework/*
+storage
+data
