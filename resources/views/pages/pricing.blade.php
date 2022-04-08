@@ -3,81 +3,25 @@
 		display: none;
 	}
 </style>
-<title>Strivre</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
 
-<!-- Start Include All CSS -->
-<link rel="stylesheet" href="../assets/css/bootstrap.css" />
-<link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
-<link rel="stylesheet" href="../assets/css/elegant-icons.css" />
-<link rel="stylesheet" href="../assets/css/themify-icons.css" />
-<link rel="stylesheet" href="../assets/css/animate.css" />
-<link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
-<link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="../assets/css/slick.css">
-<link rel="stylesheet" href="../assets/css/nice-select.css">
-<link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
-<link rel="stylesheet" href="../assets/css/lightcase.css">
-<link rel="stylesheet" href="../assets/css/preset.css" />
-<link rel="stylesheet" href="../assets/css/theme.css" />
-<link rel="stylesheet" href="../assets/css/responsive.css" />
-<!-- End Include All CSS -->
-
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-<!-- Favicon Icon -->
 <link rel="icon" type="image/png" href="../assets/images/favicon.png">
 <!-- Favicon Icon -->
 @extends('layouts.master_new')
 @section('content')
 
-<!-- Preloader Icon -->
-<!-- <div class="preloader">
-        <div class="loaderInner">
-            <div id="top" class="mask">
-                <div class="plane"></div>
-            </div>
-            <div id="middle" class="mask">
-                <div class="plane"></div>
-            </div>
-            <div id="bottom" class="mask">
-                <div class="plane"></div>
-            </div>
-            <p>LOADING...</p>
-        </div> -->
-<!-- </div> -->
-<!-- Preloader Icon -->
-
-<!-- Header Start -->
-
-<!-- Header End -->
-
-<!-- Banner Start -->
-<!-- <section class="page-banner" style="background-image: url(assets/images/banner.jpg);">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                   <center> <h2 class="banner-title">A global learning platform for all</h2></center>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-<!-- Banner Start -->
 
 <section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
+ </section>
 
-</section>
-
- <section class="blog-section64">
+<section class="blog-section64">
 
 	<div class="container ">
 		<div class="row">
 			<div class="col-lg-12">
-				<h2 class="hero-content_h2"> A global learning platform for all</h2> <br>
+				<h2 class="hero-content_h23 font-text-size-43px"> A global learning platform for all</h2> <br>
 				<div>
 					<!-- <a href=""> A global learning platform for all </a> -->
-					<p class="global_page">
+					<p class="global_page font-text-size-16px">
 						Unlimited access to 6,000+ top courses selected – anytime, on any device Fresh content taught by global instructors – for any learning style
 						Actionable learning insights and admin functionality
 					</p>
@@ -85,7 +29,7 @@
 			</div>
 		</div>
 	</div>
-
+     <br><br>
 	<!-- </section>     -->
 	<div class="main-section-new">
 
@@ -98,7 +42,7 @@
 					<div class="elementor-row">
 						<br>
 
-						<h2 class="h22"> Choose a plan for after your 7-day Free trial</h2><br><br>
+						<h2 class="h22 font-text-size-30px"> Choose a plan for after your 7-day Free trial</h2><br><br>
 
 
 						<div class="row">
@@ -120,9 +64,9 @@
 
 													<div class="pricing-item">
 														<h4>{{ $package->short_name}}</h4>
-														<img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2021/03/basic-1.svg" alt="Basic">
+														<img src="../assets/images/basic-1.svg" alt="Basic">
 														<div class="p-price">
-															<sup> $ </sup> {{$package->price}} <span>CONSULTATION {{$package->duration}} HOURS </span>
+															<sup> $ </sup> {{$package->price}} <span>GET {{$package->duration}} CREDIT </span>
 														</div>
 														<ul>
 
@@ -193,10 +137,10 @@
 
 													<div class="pricing-item">
 														<h4>{{ $package->short_name}}</h4>
-														<img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2021/03/Standerd-3.svg" alt="Standard">
+														<img src="../assets/images/Standerd-3.svg" alt="Standard">
 														<div class="p-price">
 															<sup> $ </sup> {{$package->price}}
-															<span> CONSULTATION {{$package->duration}} HOURS </span>
+															<span> GET {{$package->duration}} CREDIT </span>
 														</div>
 														<ul>
 
@@ -269,10 +213,10 @@
 
 													<div class="pricing-item">
 														<h4>{{$package->short_name}}</h4>
-														<img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2021/03/Premium-2.svg" alt="Platinum">
+														<img src="../assets/images/Premium-2.svg" alt="Platinum">
 														<div class="p-price">
 															<sup> $ </sup> {{$package->price}}
-															<span> CONSULTATION {{$package->duration}} HOURS </span>
+															<span> GET {{$package->duration}} CREDIT </span>
 														</div>
 														<ul>
 

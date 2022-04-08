@@ -13,7 +13,7 @@
                                     <div class="d-flex align-items-center">
                                         <img src="../assets/images/avatar-1.png" alt="" class="rounded-circle avatar-lg">
                                         <div class="ms-3 lh-1">
-                                            <h5 class="mb-1 ">Striver Dashboard</h5>
+                                            <h5 class="mb-1 ">Coach Dashboard</h5>
                                             <!-- <small>Free Member</small> -->
                                         </div>
                                     </div>
@@ -33,7 +33,7 @@
                                         <li class="nav-item ">
 										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account') }}">
 										<h5 class="collapse-title no-border">
-											<!-- <i class="fas fa-user-edit"></i> -->
+											<i class="fas fa-user-edit"></i>
 											{{ t('Edit_Profile') }}&nbsp;
 
 										</h5>
@@ -42,8 +42,8 @@
                                         <li class="nav-item  ">
 										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_striver') }}">
 											<h5 class="collapse-title no-border">
-												<!-- <i class="fas fa-user-edit"></i> -->
-												{{ ('My Strivers') }}&nbsp;
+												<i class="fas fa-users"></i>
+												{{ ('My Strivres') }}&nbsp;
 
 											</h5>
 										</a>
@@ -52,6 +52,7 @@
 										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_courses') }}">
 											<h5 class="collapse-title no-border">
 												<!-- <i class="fas fa-user-edit"></i> -->
+                                                <i class="fas fa-book-open"></i>
 												Consultation &nbsp;
 
 											</h5>
@@ -62,7 +63,8 @@
 										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_payments') }}">
 												<h5 class="collapse-title no-border">
 													<!-- <i class="fas fa-user-edit"></i> -->
-													{{ ('My payments') }} &nbsp;
+                                                    <i class="fas fa-credit-card"></i>
+													{{ ('My payment') }} &nbsp;
 
 												</h5>
 										</a>

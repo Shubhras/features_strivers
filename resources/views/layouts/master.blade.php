@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<!-- <meta charset="utf-8">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	@includeFirst([config('larapen.core.customizedViewPath') . 'common.meta-robots', 'common.meta-robots'])
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,18 +17,18 @@
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ $publicDisk->url('app/default/ico/apple-touch-icon-114-precomposed.png') . getPictureVersion() }}">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ $publicDisk->url('app/default/ico/apple-touch-icon-72-precomposed.png') . getPictureVersion() }}">
 	<link rel="apple-touch-icon-precomposed" href="{{ $publicDisk->url('app/default/ico/apple-touch-icon-57-precomposed.png') . getPictureVersion() }}">
-	<link rel="shortcut icon" href="{{ imgUrl(config('settings.app.favicon'), 'favicon') }}">
+	<link rel="shortcut icon" href="{{ imgUrl(config('settings.app.favicon'), 'favicon') }}"> -->
 
 
 
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
     <!-- Start Include All CSS -->
     <!-- <link rel="stylesheet" href="../assets/css/bootstrap.css" /> -->
-    <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
+    <!-- <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="../assets/css/elegant-icons.css" />
     <link rel="stylesheet" href="../assets/css/themify-icons.css" />
     <link rel="stylesheet" href="../assets/css/animate.css" />
@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 
-    <link rel="stylesheet" href="../assets/css/master.css">
+    <link rel="stylesheet" href="../assets/css/master.css"> -->
 	
 
 	

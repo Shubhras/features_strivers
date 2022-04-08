@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
 <div class="modal fade" id="quickLogin" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog  modal-sm">
 		<div class="modal-content login-model-page">
@@ -46,7 +48,7 @@
 						<label for="login" class="control-label">{{ t('login') . ' (' . getLoginLabel() . ')' }}</label>
 						<div class="input-group">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
-							<input id="mLogin" name="login" type="text" placeholder="{{ getLoginLabel() }}" class="form-control{{ $loginError }}" value="{{ $loginValue }}">
+							<input id="mLogin" name="login" type="text" placeholder="email" class="form-control{{ $loginError }}" value="{{ $loginValue }}">
 						</div>
 					</div>
 					
@@ -57,20 +59,31 @@
 						<div class="input-group show-pwd-group">
 							<span class="input-group-text"><i class="fas fa-lock"></i></span>
 							<input id="mPassword" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('password') }}" autocomplete="off">
-							<span class="icon-append show-pwd">
+							<!-- <span class="icon-append show-pwd">
 								<button type="button" class="eyeOfPwd">
 									<i class="far fa-eye-slash"></i>
 								</button>
+							</span> -->
+							<span class="icon-append show-pwd">
+											<button type="button" class="eyeOfPwd">
+												<!-- <i class="far fa-eye-slash"></i> -->
+												<!-- <i class="far fa-eye-slash" id="togglePassword"></i> -->
+												<i class="far fa-eye login-icon-eyes " id="togglePassword"></i>
+											</button>
 							</span>
+
+									
 						</div>
 					</div>
 					
 					{{-- remember --}}
 					<?php $rememberError = (isset($errors) && $errors->has('remember')) ? ' is-invalid' : ''; ?>
 					<div class="mb-3">
-						<label class="checkbox form-check-label float-start mt-2" style="font-weight: normal;">
+						<!-- <label class="checkbox form-check-label float-start mt-2" style="font-weight: normal;">
 							<input type="checkbox" value="1" name="remember" id="mRemember" class="{{ $rememberError }}"> {{ t('keep_me_logged_in') }}
-						</label>
+						</label> -->
+
+						
 						<p class="float-end mt-2">
 							<a href="{{ url('password/reset') }}">
 								{{ t('lost_your_password') }}
@@ -94,3 +107,19 @@
 		</div>
 	</div>
 </div>
+
+<script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#mPassword");
+
+// 		const togglePassword = document.querySelector('#togglePassword');
+//   const password = document.querySelector('#id_password');
+ 
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+    </script>

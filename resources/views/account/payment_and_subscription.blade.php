@@ -12,10 +12,10 @@
  * Please read the full License from here - http://codecanyon.net/licenses/standard
 --}}
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
 <!-- Start Include All CSS -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
@@ -59,6 +59,7 @@
 	<div class="main-container">
 		<div class="container">
 
+		<?php $photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
 			<?php if ($user->user_type_id == 2) {
 
 			?>
@@ -74,7 +75,7 @@
 			
         <div class="col-md-12 user-profile-img-data default-inner-box">
 
-                <img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+                <img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
                 <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> {{ $user->name }} </b> </span>
             
 
@@ -160,10 +161,10 @@
 
 				<div class="row">
 
-					<div class="col-md-3 page-sidebar">
+					<div class="col-md-3 page-sidebar ptop">
 						@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
 					</div>
-					<div class="col-md-9 page-content">
+					<div class="col-md-9 page-content ptop">
 
 
 
@@ -196,7 +197,7 @@
 
 							<div class="row  coaches_payment_data">
 								<div class="col-lg-4 card bg-danger text-white card-body till_date_striver">
-									<span class="span_text_show">Total Strivers</span>
+									<span class="span_text_show">Total Strivres</span>
 									<span>12</span>
 
 
@@ -227,34 +228,31 @@
 
 
 
-						<div class="inner-box default-inner-box">
+						<!-- <div class="inner-box default-inner-box"> -->
 
 
 							<div class="row">
-
-
-
 
 
 								<div class="table-responsive">
 									<br>
 									<form name="listForm" method="POST" action="{{ url('account/' . $pagePath . '/delete') }}">
 										{!! csrf_field() !!}
-										<div class="table-action">
-											<div class="btn-group hidden-sm" role="group">
-												<button type="button" class="btn btn-sm btn-secondary">
+										<!-- <div class="table-action"> -->
+											<!-- <div class="btn-group hidden-sm" role="group">
+												 <button type="button" class="btn btn-sm btn-secondary">
 													<input type="checkbox" id="checkAll" class="from-check-all">
 												</button>
 												<button type="button" class="btn btn-sm btn-secondary from-check-all">
 													{{ t('Select') }}: {{ t('All') }}
-												</button>
-											</div>
+												</button> -->
+											<!-- </div>  -->
 
-											<button type="submit" class="btn btn-sm btn-default delete-action">
+											<!-- <button type="submit" class="btn btn-sm btn-default delete-action">
 												<i class="fa fa-trash"></i> {{ t('Delete') }}
-											</button>
+											</button> -->
 
-											<div class="table-search float-end col-sm-7">
+											<!-- <div class="table-search float-end col-sm-7">
 												<div class="form-group">
 													<div class="row">
 														<label class="col-sm-5 control-label text-end">{{ t('search') }} <br>
@@ -265,8 +263,8 @@
 														</div>
 													</div>
 												</div>
-											</div>
-										</div>
+											</div> -->
+										<!-- </div> -->
 
 										<table id="addManageTable" class="result-table" data-filter="#filter" data-filter-text-only="true">
 											<thead>
@@ -380,6 +378,7 @@
 
 
 																		$total_payment = $post->fee_deducte + $post->net_payment;
+																		print_r($total_payment);die;
 																		?>
 
 																		{{$total_provided_hours}}
@@ -429,98 +428,6 @@
 											</tbody>
 										</table>
 
-
-										<!-- <div class="tab-pane show in" id="finished" role="tabpanel">
-												<table class="result-table">
-													<thead>
-														<tr>
-															<th class="course">Course</th>
-															<th class="date">Date</th>
-															<th class="grade">Passing Grade</th>
-															<th class="progres">Progress</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td class="course">
-																<a href="#">Getting Started with LESS</a>
-															</td>
-															<td class="date">24/03/2020</td>
-															<td class="grade">50%</td>
-															<td class="progres">0% In Progress</td>
-														</tr>
-														<tr>
-															<td class="course">
-																<a href="#">LMS Interactive Content</a>
-															</td>
-															<td class="date">24/03/2020</td>
-															<td class="grade">40%</td>
-															<td class="progres">0% In Progress</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-											<div class="tab-pane show in" id="passed" role="tabpanel">
-												<table class="result-table">
-													<thead>
-														<tr>
-															<th class="course">Course</th>
-															<th class="date">Date</th>
-															<th class="grade">Passing Grade</th>
-															<th class="progres">Progress</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td class="course">
-																<a href="#">From Zero to Hero with Nodejs</a>
-															</td>
-															<td class="date">14/04/2019</td>
-															<td class="grade">70%</td>
-															<td class="progres">0% In Progress</td>
-														</tr>
-														<tr>
-															<td class="course">
-																<a href="#">Helping to change the world</a>
-															</td>
-															<td class="date">04/07/2018</td>
-															<td class="grade">50%</td>
-															<td class="progres">0% In Progress</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-											<div class="tab-pane show in" id="failed" role="tabpanel">
-												<table class="result-table">
-													<thead>
-														<tr>
-															<th class="course">Course</th>
-															<th class="date">Date</th>
-															<th class="grade">Passing Grade</th>
-															<th class="progres">Progress</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td class="course">
-																<a href="#">Getting Started with LESS</a>
-															</td>
-															<td class="date">24/03/2020</td>
-															<td class="grade">50%</td>
-															<td class="progres">0% In Progress</td>
-														</tr>
-														<tr>
-															<td class="course">
-																<a href="#">LMS Interactive Content</a>
-															</td>
-															<td class="date">24/03/2020</td>
-															<td class="grade">40%</td>
-															<td class="progres">0% In Progress</td>
-														</tr>
-													</tbody>
-												</table>
-											</div> -->
-
 									</form>
 								</div>
 							</div>
@@ -553,8 +460,8 @@
 								<div class="col-lg-3 col-md-6">
 									<div class="teacher-item">
 										<div class="teacher-thumb coach-img-wrapper">
-											<img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
-											<div class="teacher-social">
+											<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+											<!-- <div class="teacher-social">
 												<a href="#">
 													<i aria-hidden="true" class="fab fa-facebook-f"></i>
 												</a>
@@ -567,7 +474,7 @@
 												<a href="#">
 													<i aria-hidden="true" class="fab fa-vimeo-v"></i>
 												</a>
-											</div>
+											</div> -->
 										</div>
 										<div class="teacher-meta">
 											<h5>
@@ -603,108 +510,14 @@
 		<h2 class="sec-title">My Subscriptions</h2>
 	</h2>
 
-	<!-- <div class="row ">
-		<div class="col-md-3 page-sidebar">
-			<div class="inner-box default-inner-box">
-				<h3 class="no-padding text-center-480 useradmin">
-					<a href="">
-						<img id="userImg" class="userImg user_profile_img" src="{{ $user->photo_url }}" alt="user"> &nbsp;
-						{{ $user->name }}
-					</a>
-				</h3>
-			</div>
-		</div>
-
-		<div class="col-md-9 page-content ">
-
-
-			<div class="inner-box default-inner-box edit-file-chat">
-				<div class="row">
-					<div class="col-md-4 col-sm-4 col-12">
-						<h3 class="no-padding text-center-480 useradmin">
-
-							<b> My Subscriptions </b>
-						</h3>
-					</div>
-					<div class="col-md-8 col-sm-8 col-12">
-                            <div class="header-data text-center-xs">
-                                {{-- Threads Stats --}}
-                                <div class="hdata">
-                                <a href="{{ url('account/messages') }}">
-
-                                    <div class="mcol-left">
-                                        <i class="fas fa-phone-alt ln-shadow"></i>
-                                    </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of messages --}}
-                                        <p>
-                                            
-                                                {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-                                               
-                                                <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-                                           
-                                        </p>
-                                    </div>
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                {{-- Traffic Stats --}}
-                                <div class="hdata">
-                                <a href="{{ url('account/chat') }}">
-                                    <div class="mcol-left">
-                                        <i class="fas fa-comments ln-shadow"></i>
-                                    </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of visitors --}}
-                                        <p>
-                                            
-                                                <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-                                                {{ \App\Helpers\Number::short($totalPostsVisits) }}
-                                    
-                                                <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-                                           
-                                        </p>
-                                    </div>
-
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                               
-
-                                {{-- Favorites Stats --}}
-                                <div class="hdata" style="width: 151px!important;margin-left: -38px;">
-                                <a href="{{ url('account/favourite') }}">
-                                    <div class="mcol-left" >
-                                        <i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
-                                    </div>
-                                    <div class="mcol-right">
-                                        {{-- Number of favorites --}}
-                                        <p>
-                                            
-                                                {{ \App\Helpers\Number::short($countFavoritePosts) }}
-                                                <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-                                           
-                                        </p>
-                                    </div>
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-				</div>
-			</div>
-
-		</div>
-	</div> -->
+	
 
 	<div class="row" style="padding: 6px; margin-left: -4px;">
 			
 			
         <div class="col-md-12 user-profile-img-data default-inner-box">
 
-                <img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+                <img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
                 <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> {{ $user->name }}  </b> </span>
             
 
@@ -789,65 +602,90 @@
 
 	<div class="row">
 
-		<div class="col-md-3 page-sidebar">
+		<div class="col-md-3 page-sidebar ptop">
 			@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
 		</div>
 
-		<div class="col-md-9 page-content">
+		<div class="col-md-9 page-content ptop">
 
 
-			<div class="inner-box default-inner-box edit-file-chat">
+			<div class="inner-box default-inner-box edit-file-chat box ">
 
 				<!--/.row-box End-->
-				<div class="row">
+				
 
 
-
-					<div class="states">
+						<div class="row">
+							<div style="margin-left: 125px; margin-top: 41px;">
+					
 
 						<?php
+
+						
 						if ($user_subscription) {
 
 
-							$name = json_decode($user_subscription->name);
-							$ss = array();
-							foreach ($name as $key => $sub) {
-								$ss[$key] = $sub;
-							}
+							//  $names = json_decode($packagename);
+							 
+							
+							
+							// $sub_namess =[];
+							foreach ($user_subscription as $key => $sub) {
 
-
+								
+								$name = json_decode($sub->name);
+								$ss = array();
+								foreach ($name as $key => $subs) {
+									$ss[$key] = $subs;
+								}
+							// 	$sub_name['en'] = $ss;
+								 
+							
+							// // $name = ($user_subscription->total_provided_hours-$user_subscription->remaining_hours);
+							// // print_r($ss);die;
+							// // print_r($sub_name);die;
+							// $sub_namess =$ss['en'];
+							// print_r($sub_namess);die;
 						?>
+								<?php } ?>
+                  				<span class="subscription-nanme-by-user boxfont">{{$ss['en'] }}</span>
 
+ 
+							
 
+							</div>
+							</div>
 
-							<h5> Current Subscription: <span style="color: red;">{{$ss['en']}}</span></h5>
-							<h5> Total hours : <span style="color: red;">{{$user_subscription->total_provided_hours}} Hours.</span></h5>
-							<h5> Consumed Hours : <span style="color: red;">{{$user_subscription->consumed_hours}} Hours.</span></h5>
-							<h5> Remaining Hours : <span style="color: red;">{{$user_subscription->remaining_hours}} Hours.</span></h5>
+							<div class="row" style="margin-top: -27px;    margin-left: 25px;">
+							
+							
+							<div class="line_bottom">
+							<p>  Subscription: </p>
+							<p> Total hours : <span class="boxfont">{{$sub->total_provided_hours}} Hours.</span></p>
+							<p> Consumed Hours : <span class="boxfont">{{$sub->consumed_hours}} Hours.</span></p>
+							<p> Remaining Hours : <span class="boxfont">{{$sub->remaining_hours}} Hours.</span></p>
 
-
-							<?php //}
-
-							?>
+								
+							
 					</div>
 				</div>
 				<br>
 				<?php
-							if (empty($user_subscription->remaining_hours)) {
+							if (empty($sub->remaining_hours)) {
 				?>
 					<div class="col-md-12" style="text-align: center;">
-						<a href="{{ url('subscription') }}">
+						<a class="bisylms-btn-pink" href="{{ url('subscription') }}">
 
-							<button style="font-size: 20px; ">Renew Subscriptions</button>
+							Renew Subscriptions
 						</a>
 					</div>
 
 
 				<?php } ?>
-				<div class="col-md-12" style="text-align: center;">
-					<a href="{{ url('pricing') }}">
+				<div class="col-md-12" style="text-align: left;">
+					<a  class="bisylms-btn-pink" href="{{ url('pricing') }}">
 
-						<button style="font-size: 20px; ">Get Subscriptions</button>
+						Get Subscriptions
 					</a>
 
 				</div>
@@ -857,9 +695,10 @@
 					<h2>Please Get Subscription First!</h2>
 				</div>
 				<div class="col-md-12" style="text-align: center;">
-					<a href="{{ url('pricing') }}">
+					<a class="bisylms-btn-pink" href="{{ url('pricing') }}">
 
-						<button style="font-size: 20px; ">Get Subscriptions</button>
+						Get Subscriptions
+						
 					</a>
 
 				</div>
@@ -871,8 +710,8 @@
 			<br>
 
 
-			<h2 style="text-align:center;"><b>
-					old Subscriptions </b></h2>
+			<!-- <h2 style="text-align:center;"><b>
+					old Subscriptions </b></h2> -->
 			<?php
 
 				// 	}
@@ -905,8 +744,8 @@
 						if (empty($user_subscriptions1->remaining_hours)) {
 						?>
 							<div class="col-md-12">
-								<h2> Old plan :{{$ss['en']}}</h2>
-								<h2> Old plan Hours :{{$value->total_provided_hours}} Hours.</h2>
+								<!-- <h2> Old plan :{{$ss['en']}}</h2>
+								<h2> Old plan Hours :{{$value->net_payment}} Hours.</h2> -->
 							</div>
 						<?php } ?>
 
@@ -917,6 +756,66 @@
 			</div>
 		</div>
 	</div>
+	<?php 
+
+
+
+// $curl = curl_init();
+
+// curl_setopt_array($curl, array(
+// 	CURLOPT_URL => 'https://metrics-us.cometchat.io/v1/calls/sessions/v1.us.2040141e5d5dcef3.group_1647672948681/participants?beginningTimestamp=1647673278116&endingTimestamp=1647675469379',
+// 	CURLOPT_RETURNTRANSFER => true,
+// 	CURLOPT_ENCODING => '',
+// 	CURLOPT_MAXREDIRS => 10,
+// 	CURLOPT_TIMEOUT => 0,
+// 	CURLOPT_FOLLOWLOCATION => true,
+// 	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+// 	CURLOPT_CUSTOMREQUEST => 'GET',
+// 	CURLOPT_HTTPHEADER => array(
+// 	  'appId: 2040141e5d5dcef3',
+// 	  'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0NzY3OTEzOSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0NzY3NTUzOSwiZXhwIjoxNjUwMjcxMTM5LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.D90PKiDUNY2pZswn2UB-c5ZX7aGwvghvz-ftajIG4es',
+// 	  'uid: strivre82789'
+// 	),
+//   ));
+  
+//   $response = curl_exec($curl);
+  
+//   curl_close($curl);
+// //   echo $response;
+//   	$responsess= json_decode($response);
+// 	  $data = array();
+// 	  $data1 = array();
+// 	  $data2 = array();
+//   foreach($responsess as $key =>$uidkey){
+	  
+// 	//   $data[$uidkey->uid] =$uidkey;
+
+
+// 	  foreach($uidkey as $key =>$value){
+	  
+// 		$data[$value->uid] =$value->uid;
+// 		$data1[$value->uid] =$value->video_minutes;
+// 		$data2[$value->uid] =$value->audio_minutes;
+  
+		
+// 	}
+	
+
+	  
+//   }
+
+//   print_r($user->username);
+
+//   print_r($data);
+
+//   print_r($data1);
+//   print_r($data2);
+  
+
+	
+// echo date('m/d/Y H:i:s', 1647496224);
+	
+	?>
 
 	<div class="main-section">
 					<div class="container">
@@ -931,8 +830,8 @@
 								<div class="col-lg-3 col-md-6">
 									<div class="teacher-item">
 										<div class="teacher-thumb coach-img-wrapper">
-											<img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
-											<div class="teacher-social">
+											<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+											<!-- <div class="teacher-social">
 												<a href="#">
 													<i aria-hidden="true" class="fab fa-facebook-f"></i>
 												</a>
@@ -945,7 +844,7 @@
 												<a href="#">
 													<i aria-hidden="true" class="fab fa-vimeo-v"></i>
 												</a>
-											</div>
+											</div> -->
 										</div>
 										<div class="teacher-meta">
 											<h5>

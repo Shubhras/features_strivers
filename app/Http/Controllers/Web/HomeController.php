@@ -109,7 +109,15 @@ class HomeController extends FrontController
 
 		
 
-		$data['user'] = DB::table('users')->select('users.*')->where('users.user_type_id',2)->whereNotIn('users.id', [1])->orderBy('users.id','desc')->limit(6)->get();
+		$data['user'] = DB::table('users')->select('users.*','categories.name as categories_slug')
+		->leftjoin('categories', 'categories.id','=','users.category')
+		->where('users.user_type_id',2)
+		->whereNotIn('users.id', [1])
+		->inRandomOrder()
+		->limit(6)
+		->get();
+
+		// print_r($data['user']);die;
 
 		$data['our_reviews'] = DB::table('users')->select('users.*')->where('users.user_type_id',2)->whereNotIn('users.id', [1])->orderBy('users.id','asc')->limit(3)->get();
 
@@ -119,7 +127,7 @@ class HomeController extends FrontController
 		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
 		->where('users.id',2)->first();
 
-		$data['user_course']= DB::table('coach_course')->select('course_name','course_hourse')->get();
+		$data['user_course']= DB::table('coach_course')->select('coach_course.*','course_name','course_hourse')->orderBy('coach_course.id','desc')->limit(4)->get();
 		$data['user_striver'] = DB::table('users')->select('users.*')->where('users.user_type_id',3)->whereNotIn('users.id', [1])->orderBy('users.id','desc')->limit(3)->get();
 
 		$packages = Package::query()->applyCurrency();
@@ -140,14 +148,38 @@ class HomeController extends FrontController
 		$this->setSeo($searchFormOptions);
 
 
-		$data['letest_news']= DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id','desc')->limit(6)->get();
+		$data['letest_news']= DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id','desc')->limit(4)->get();
 
-		$data['categories_list_coach'] = DB::table('categories')->select('categories.slug','categories.id','categories.name')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
-		// print_r($data['categories_list_coach']);die;
+		// $data['categories_list_coach'] = DB::table('categories')->select('categories.slug','categories.id','categories.name','users.category')->join('users' ,'categories.id' ,'=' ,'users.category')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
+
+
+		$data['categories_list_coach'] = DB::table('users')->select('categories.slug','categories.id','categories.name','users.category','categories.picture','categories.icon_class')->join('categories' ,'categories.id' ,'=' ,'users.category')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->where('users.user_type_id', 2)->get();
+
 		
-		// print_r($data['letest_news']);die;
+
+		$unique = array();
+		$uniques =array();
+		$keyss =array();
+
+		foreach ($data['categories_list_coach'] as $value)
+		{
+			// print_r($value);die;
+			$unique[$value->category] = $value;
+			$uniques['key'] = $value->category;
+			
+			
+		}
+		
+		$data['uniqueCat'] = array_values($unique);
+		
+		$data['categories_list_coach1'] = array_slice($data['uniqueCat'], 0, 6);
+
+		// print_r($data['categories_list_coach1']);die;
+	
 		return appView('home.index', $data);
 	}
+
+
 	
 	/**
 	 * Get search form (Always in Top)
@@ -164,6 +196,10 @@ class HomeController extends FrontController
 	 *
 	 * @param array $value
 	 */
+
+	
+
+
 	protected function getLocations($value = [])
 	{
 		// Get the default Max. Items
@@ -668,10 +704,31 @@ class HomeController extends FrontController
 		return redirect('/');
 
 	}
-	public function register_new_user(Request $request)
+	public function register_new_user(Request $request )
 	{
+
 		
-	
+		// print_r($request->all());die;
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+		  CURLOPT_URL => 'https://206672f6b5d16174.api-us.cometchat.io/v3/users',
+		  CURLOPT_RETURNTRANSFER => true,
+		  CURLOPT_ENCODING => '',
+		  CURLOPT_MAXREDIRS => 10,
+		  CURLOPT_TIMEOUT => 0,
+		  CURLOPT_FOLLOWLOCATION => true,
+		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		  CURLOPT_CUSTOMREQUEST => 'POST',
+		  CURLOPT_POSTFIELDS => array('uid' => $request->username,'name' => $request->name),
+		  CURLOPT_HTTPHEADER => array(
+			'apiKey: 37e9caaa45ca1ea8240082bbef437450bce73aa5'
+		  ),
+		));
+		
+		$response = curl_exec($curl);
+		
+		curl_close($curl);
+		// echo $response;
 
 
 		
@@ -726,6 +783,7 @@ class HomeController extends FrontController
 				// Go to Phone Number verification
 				$nextUrl = url('users/verify/phone/');
 			}
+			return redirect('login.js');
 		} else {
 			if (
 				!empty(data_get($data, 'extra.authToken'))
@@ -737,6 +795,7 @@ class HomeController extends FrontController
 					$nextUrl = url('account');
 				}
 			}
+
 		}
 		
 		// Mail Notification Message
@@ -752,4 +811,148 @@ class HomeController extends FrontController
 		
 		return redirect($nextUrl);
 	}
+
+
+	public function coach_coursess($id){
+		$data = [];
+		
+		// $data['genders'] = Gender::query()->get();
+		
+		
+		
+		$user = auth()->user();
+		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*','users.name','users.photo')
+		->leftjoin('users' ,'users.id' ,'=', 'coach_course.coach_id')		
+		// ->where('coach_course.coach_id', $user->id)
+		->where('coach_course.id', $id)
+		->orderBy('coach_course.id','asc')
+		->first();
+
+		$data['auth_id'] = auth()->user()->id;
+
+	// print_r($data['auth_id']);die;
+
+		return appView('pages.coach_coarse', $data);
+
+	}
+
+	public function coach_list_category_interesting(Request $request)
+	{
+		// print_r($request->search);die;
+
+		$data['request_cat_id'] = '';
+		// Get the Country's largest city for Google Maps
+		$cacheId = config('country.code') . '.city.population.desc.first';
+		$city = Cache::remember($cacheId, $this->cacheExpiration, function () {
+			$city = City::currentCountry()->orderBy('population', 'desc')->first();
+
+			return $city;
+		});
+		view()->share('city', $city);
+
+		// print_r($id);die;
+
+		$data['categories'] = DB::table('categories')->select('categories.name', 'categories.id')->where('categories.parent_id', null)->orderBy('categories.name', 'asc')->get();
+		// print_r($data['categories']);die
+		$sub_cat = [];
+		foreach ($data['categories'] as $key => $value) {
+			$sub_cat[] = $value->id;
+		}
+		// print_r($sub_cat);die();
+		// $data['sub_categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.name', 'asc')->where('categories.parent_id',$sub_cat)->get();
+		// print_r($data['sub_categories']);die;
+		// $data['sub_categories'] = DB::table('categories')->select('categories.name', 'categories.id', 'categories.parent_id','categories.slug')->where('categories.parent_id','!=', null)->orderBy('categories.name', 'asc')->get();
+
+		$data['sub_categories'] = DB::table('categories')->select('categories.name', 'categories.id', 'categories.parent_id','categories.slug')->where('categories.parent_id','!=', null)->orderBy('categories.name', 'asc')->get();
+
+
+		$data['my_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			->where('users.user_type_id', 2)
+			->orderBy('users.id', 'asc')->limit(8)->get();
+
+
+			// $data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
+			// 			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			// 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			// 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			// 			->where('users.user_type_id', 2)->where('users.name','LIKE','%'.$request->search .'%')->orderBy('users.id', 'asc')->limit(8)->get();
+	
+			// 			print_r($data['user']);die;
+
+
+
+			// if (empty($id)) {
+				if (empty($request->search)) {
+				
+				$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
+					->leftjoin('categories', 'categories.id', '=', 'users.category')
+					->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+					->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+					->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+
+					// print_r($data['user']);die;
+
+			} else {
+
+				
+				
+					// $data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
+					// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
+					// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+					// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+					// 	->where('users.user_type_id', 2)->where('users.category',$id)->orderBy('users.id', 'asc')->limit(8)->get();
+					$key = $request->search;
+
+					$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name','countries.name as countries_name','cities.name as cities_name')
+						->leftjoin('categories', 'categories.id', '=', 'users.category')
+						->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+						->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+						->leftjoin('countries', 'countries.code','=','users.country_code')
+						->leftjoin('cities','cities.id','=','users.location')
+						->where('users.user_type_id', 2)
+						->where(
+							function($query)use ($key) {
+								
+							  return $query
+									 ->where('users.name','LIKE','%'.$key .'%')->orWhere('countries.name','LIKE','%'.$key .'%')->orWhere('categories.name','LIKE','%'.$key .'%')->orWhere('cities.name','LIKE','%'.$key .'%');
+							 })
+
+
+
+						// ->where('users.name','LIKE','%'.$request->search .'%')->orWhere('countries.name','LIKE','%'.$request->search .'%')->orWhere('categories.name','LIKE','%'.$request->search .'%')->orWhere('cities.name','LIKE','%'.$request->search .'%')->orderBy('users.id', 'asc')
+						->orderBy('users.id', 'asc')
+						->get();
+	
+						// print_r($data['user']);die;
+	
+				
+			}
+
+
+		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+
+
+
+		[$title, $description, $keywords] = getMetaTag('contact');
+		MetaTag::set('title', $title);
+		MetaTag::set('description', strip_tags($description));
+		MetaTag::set('keywords', $keywords);
+
+		$data['search_key']= $key;
+
+		// print_r($data);die;
+
+
+
+		return appView('pages.category_coaches', $data);
+	
+	}
+
 }

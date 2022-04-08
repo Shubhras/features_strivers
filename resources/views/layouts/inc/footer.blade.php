@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
     <!-- Start Include All CSS -->
     <link rel="stylesheet" href="../assets/css/bootstrap.css" />
@@ -26,90 +26,25 @@
     <link rel="stylesheet" href="../assets/css/master.css">
 
     
-<!-- <footer class="footer-1 pd-top-90">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-3">
-                    <aside class="widget">
-                        <div class="about-widget">
-                            <a href="index.html"><img src="assets/images/logo.png" alt=""></a>
-                            <p>
-                                Lost the plot Richard you mug cup of tea knackered boot bender.
-                            </p>
-                            <div class="ab-social">
-                                <a class="fac" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="twi" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="you" href="#"><i class="fab fa-youtube"></i></a>
-                                <a class="lin" href="#"><i class="fab fa-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </aside>
-                </div>
-                <div class="col-lg-3 col-md-3">
-                    <aside class="widget">
-                        <h3 class="widget-title">Explore</h3>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Success Story</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Resource Center</a></li>
-                            <li><a href="#">Courses</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                        </ul>
-                    </aside>
-                </div>
-                <div class="col-lg-3 col-md-3">
-                    <aside class="widget">
-                        <h3 class="widget-title">Catecories</h3>
-                        <ul>
-                            <li><a href="#">All Courses</a></li>
-                            <li><a href="#">Storytelling & Voice Over</a></li>
-                            <li><a href="#">Digital Marketing</a></li>
-                            <li><a href="#">Design & Branding</a></li>
-                            <li><a href="#">Nanodegree Plus</a></li>
-                            <li><a href="#">Veterans</a></li>
-                        </ul>
-                    </aside>
-                </div>
-                <div class="col-lg-2 col-md-3">
-                    <aside class="widget">
-                        <h3 class="widget-title">Support</h3>
-                        <ul>
-                            <li><a href="#">Help Center</a></li>
-                            <li><a href="#">System Requirements</a></li>
-                            <li><a href="#">Register Activation Key</a></li>
-                            <li><a href="#">Site Feedback</a></li>
-                            <li><a href="#">Documentation</a></li>
-                            <li><a href="#">Forums</a></li>
-                        </ul>
-                    </aside>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="copyright">
-                        <p>© 2021 Copyright all Right Reserved Design by <a href="#">Strivre</a></p>
-                    </div>
-                </div>
-            </div>
-           
-        </div>
-</footer> -->
+
 
 <footer class="footer-1">
         <div class="container">
+
             <div class="row">
                 <div class="col-md-12">
-                    <div class="cta-wrapper">
+                    <div class="cta-wrapper footer-old-12">
                         <img src="../assets/images/home/2.png" alt="">
-                        <h3>You can be your own Guiding star with our help!</h3>
-                        <a href="../pricing" class="bisylms-btn">Get Started Now</a>
+                        <p class="cta-wrapper-p ">You can be your own Guiding star with our help!</p>
+                        <a href="{{url('/register')}}" class="bisylms-btn">Get Started Now</a>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-3">
+            <br><br>
+            <br><br>
+            <br>
+            <div class="row footer-row-fix">
+                <div class="col-lg-4 col-md-375">
                     <aside class="widget">
                         <div class="about-widget">
                             <a href="#"><img src="../assets/images/logo.png" alt=""></a>
@@ -125,7 +60,7 @@
                         </div>
                     </aside>
                 </div>
-                <div class="col-lg-3 col-md-3">
+                <div class="col-lg-3 col-md-375">
                     <aside class="widget">
                         <h3 class="widget-title">Explore</h3>
                         <ul>
@@ -138,9 +73,9 @@
                         </ul>
                     </aside>
                 </div>
-                <div class="col-lg-3 col-md-3">
+                <div class="col-lg-3 col-md-375">
                     <aside class="widget">
-                        <h3 class="widget-title">Catecories</h3>
+                        <h3 class="widget-title">Categories</h3>
                         <ul>
                             <li><a href="#">All Courses</a></li>
                             <li><a href="#">Storytelling & Voice Over</a></li>
@@ -151,7 +86,7 @@
                         </ul>
                     </aside>
                 </div>
-                <div class="col-lg-2 col-md-3">
+                <div class="col-lg-2 col-md-375">
                     <aside class="widget">
                         <h3 class="widget-title">Support</h3>
                         <ul>
@@ -177,8 +112,13 @@
         </div>
     </footer>
     <a href="#" id="back-to-top">
-        <i class="fal fa-angle-double-up"></i>
+        <i class="fal fa-angle-double-up scroll-top-footer"></i>
     </a>
+    <style>
+        .scroll-top-footer{
+            line-height: 2!important;
+        }
+    </style>
     <!-- Back To Top -->
 
     <!-- Start Include All JS -->

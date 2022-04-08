@@ -102,7 +102,7 @@ return [
 	
     
     // Signup
-    'create_your_account_it_is_stiver' => 'Create your account Strivers',
+    'create_your_account_it_is_stiver' => 'Create your account Strivres',
     'create_your_account_it_is_coach' => 'Create your account Coach',
     'year_of_experience' => ' Year of experience',
 
@@ -350,7 +350,8 @@ return [
     
     'Phishing' => 'Phishing',
     
-    'Personal Home' => 'Personal Home',
+    // 'Personal Home' => 'Personal Home',
+    'Personal Home' => 'My Account',
     'Payment history' => 'Payment history',
     
     'Top Ads' => 'Top',
@@ -923,7 +924,7 @@ return [
     'Edit_Profile' =>'Edit Profile',
     'my_subscription' => 'My Subscription',
     'my_courses' => 'My Courses',
-    'Photo or User' =>'Photo or User',
+    'Photo or User' =>'Profile Picture',
     'Contact_submit'=>'Send Massage'
 
 

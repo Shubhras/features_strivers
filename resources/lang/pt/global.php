@@ -292,7 +292,7 @@ return [
     'Choose a city' => 'Selecione uma cidade ou região',
     'More cities' => 'Mais cidades',
     'Phishing' => 'Phishing',
-    'Personal Home' => 'Personal Home',
+    'Personal Home' => 'My Account',
     'Payment history' => 'Hístorico de Pagamentos',
     'Top Ads' => 'Top',
     'Featured Ads' => 'Destaque',

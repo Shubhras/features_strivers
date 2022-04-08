@@ -8129,7 +8129,7 @@
 }
 
 @font-face {
-    font-family: Font Awesome\ 5 Brands;
+    font-family:'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-display: block;
@@ -8138,11 +8138,11 @@
 }
 
 .fab {
-    font-family: Font Awesome\ 5 Brands
+    font-family: 'Montserrat', sans-serif;
 }
 
 @font-face {
-    font-family: Font Awesome\ 5 Free;
+    font-family:'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-display: block;
@@ -8156,7 +8156,7 @@
 }
 
 @font-face {
-    font-family: Font Awesome\ 5 Free;
+    font-family:'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 900;
     font-display: block;
@@ -8167,7 +8167,7 @@
 .fa,
 .far,
 .fas {
-    font-family: Font Awesome\ 5 Free
+    font-family:'Montserrat', sans-serif;
 }
 
 .fa,
@@ -8185,7 +8185,7 @@
     cursor: pointer;
     display: block;
     float: left;
-    font-family: inherit;
+    font-family:'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 400;
     height: 42px;
@@ -8794,7 +8794,7 @@
 
 body {
     margin: 0;
-    font-family: var(--bs-font-sans-serif);
+    font-family:'Montserrat', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -8995,7 +8995,7 @@ code,
 kbd,
 pre,
 samp {
-    font-family: var(--bs-font-monospace);
+    font-family: 'Montserrat', sans-serif;
     font-size: 1em;
     direction: ltr;
     unicode-bidi: bidi-override
@@ -9010,7 +9010,7 @@ pre {
 }
 
 pre code {
-    font-size: inherit;
+    font-size: 'Montserrat', sans-serif;
     color: inherit;
     word-break: normal
 }
@@ -9094,7 +9094,7 @@ optgroup,
 select,
 textarea {
     margin: 0;
-    font-family: inherit;
+    font-family: 'Montserrat', sans-serif;
     font-size: inherit;
     line-height: inherit
 }
@@ -11348,7 +11348,7 @@ textarea.form-control-lg {
 
 .input-group .btn {
     position: relative;
-    z-index: 2
+    /* z-index: 2 */
 }
 
 .input-group .btn:focus {
@@ -13322,7 +13322,7 @@ fieldset:disabled .btn {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, .125);
+    /* border: 1px solid rgba(0, 0, 0, .125); */
     border-radius: .25rem
 }
 
@@ -13383,7 +13383,7 @@ fieldset:disabled .btn {
     padding: .5rem 1rem;
     margin-bottom: 0;
     background-color: rgba(0, 0, 0, .03);
-    border-bottom: 1px solid rgba(0, 0, 0, .125)
+    /* border-bottom: 1px solid rgba(0, 0, 0, .125) */
 }
 
 .card-header:first-child {
@@ -14703,7 +14703,7 @@ fieldset:disabled .btn {
     z-index: 1080;
     display: block;
     margin: 0;
-    font-family: var(--bs-font-sans-serif);
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -14828,7 +14828,7 @@ fieldset:disabled .btn {
     z-index: 1070;
     display: block;
     max-width: 276px;
-    font-family: var(--bs-font-sans-serif);
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -16490,7 +16490,7 @@ fieldset:disabled .btn {
 }
 
 .font-monospace {
-    font-family: var(--bs-font-monospace)!important
+    font-family:'Montserrat', sans-serif;
 }
 
 .fs-1 {
@@ -20021,7 +20021,7 @@ html[theme=dark] {
 }
 
 html {
-    font-family: sans-serif;
+    font-family:'Montserrat', sans-serif;
     line-height: 1.15;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%
@@ -20063,7 +20063,7 @@ hr {
 }
 
 pre {
-    font-family: monospace, monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1em
 }
 
@@ -20096,7 +20096,7 @@ strong {
 code,
 kbd,
 samp {
-    font-family: monospace, monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1em
 }
 
@@ -20152,7 +20152,7 @@ input,
 optgroup,
 select,
 textarea {
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 100%;
     line-height: 1.15;
     margin: 0
@@ -20281,7 +20281,7 @@ html {
 }
 
 body {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-size: .85rem;
     font-weight: 400;
     line-height: 1.5;
@@ -20502,7 +20502,7 @@ h4,
 h5,
 h6 {
     margin-bottom: .5rem;
-    font-family: inherit;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     line-height: 1.1;
     color: inherit
@@ -21801,7 +21801,7 @@ input[type=submit].btn-block {
 }
 
 .btn-post {
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-weight: 400;
     text-transform: uppercase
 }
@@ -22055,7 +22055,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-weight: 400;
     margin: 0;
     padding-bottom: 15px;
@@ -22174,7 +22174,7 @@ h6 {
 }
 
 .title-5 {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     border-bottom: 1px solid #e6e6e6;
     color: #080808;
     font-size: 16px;
@@ -22187,7 +22187,7 @@ h6 {
 
 .title-6 {
     font-size: 4rem;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     line-height: 1;
     padding-bottom: 0
@@ -22347,7 +22347,7 @@ label {
 
 .logo,
 .logo-title {
-    font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 28px;
     font-weight: 700;
     text-transform: uppercase;
@@ -22377,7 +22377,7 @@ label {
 .intro h1,
 .intro-title {
     color: #fff;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-size: 2.5rem;
     line-height: normal;
     font-weight: 700;
@@ -22685,7 +22685,7 @@ html[dir=rtl] body .intro-title {
         line-height: normal;
         padding: 12px;
         font-size: 12px;
-        font-family: "Roboto Condensed", Helvetica, Arial, sans-serif
+        font-family: 'Montserrat', sans-serif;
     }
     .navbar.navbar-light .navbar-nav>li.lang-menu .caret,
     .navbar.navbar-site .navbar-nav>li.lang-menu .caret {
@@ -22771,7 +22771,7 @@ html[dir=rtl] body .intro-title {
         text-transform: uppercase;
         font-weight: 500;
         letter-spacing: .5px;
-        font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+        font-family:'Montserrat', sans-serif;
         font-size: 13px;
         padding: 15px 15px!important
     }
@@ -22900,7 +22900,7 @@ html[dir=rtl] body .intro-title {
 
 .navbar-nav .flag-menu a {
     padding: 8px 10px;
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 
 .modalHasList .flag-icon {
@@ -22977,7 +22977,7 @@ html[dir=rtl] body .intro-title {
 
 .footer-title {
     color: #000;
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-size: 15px;
     font-weight: 700;
     margin-bottom: 10px;
@@ -23289,7 +23289,7 @@ html[dir=rtl] body .intro-title {
 }
 
 .autocomplete-suggestions .autocomplete-suggestion:after {
-    font-family: "Font Awesome 5 Free";
+    font-family:'Montserrat', sans-serif;
     font-weight: 900;
     content: "\f3c5";
     color: #949494;
@@ -23347,7 +23347,7 @@ html[dir=rtl] body .intro-title {
 
 .cat-list h3,
 .title-3 {
-    font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-weight: 700;
     text-transform: uppercase
 }
@@ -23510,7 +23510,7 @@ html[dir=rtl] body .intro-title {
 .item-carousel .item-name {
     clear: both;
     display: block;
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 16px;
@@ -23634,7 +23634,7 @@ html[dir=rtl] body .intro-title {
 
 .iconbox-wrap-text {
     color: #aaa;
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-size: 16px;
     text-transform: uppercase
 }
@@ -23674,7 +23674,7 @@ html[dir=rtl] body .intro-title {
 }
 
 .page-bottom-info-content h1 {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-weight: 500;
     letter-spacing: 1px;
     margin-bottom: 15px;
@@ -23782,7 +23782,7 @@ html[dir=rtl] body .intro-title {
 }
 
 .f-category h6 {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0;
@@ -23870,7 +23870,7 @@ html[dir=rtl] body .intro-title {
 .featured-list-slider .item .item-name {
     display: block;
     line-height: normal;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0;
@@ -24275,7 +24275,7 @@ nav.slider-nav a.next {
 
 .tab-lite .nav-tabs>li>a {
     border-radius: 0!important;
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: normal;
@@ -24515,11 +24515,11 @@ nav.slider-nav a.next {
     -moz-transition: all .25s ease;
     -o-transition: all .25s ease;
     transition: all .25s ease;
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 
 .category-list:not(.make-compact):not(.make-grid) .item-list .item-price {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 1.3rem
 }
@@ -24764,7 +24764,7 @@ nav.slider-nav a.next {
 .cornerRibbons a {
     color: #fff;
     display: block;
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-size: 12px;
     font-weight: 400;
     text-align: center;
@@ -25272,7 +25272,7 @@ hr.thin {
 
 .prop-info span.text {
     font-size: 12px;
-    font-family: Roboto Condensed, Helvetica, Arial, sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 
 .prop-info-block {
@@ -25677,7 +25677,7 @@ hr.thin {
 }
 
 .items-details-wrapper>h2 {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-weight: 700
 }
 
@@ -25953,7 +25953,7 @@ h1.trtri span {
 }
 
 .card-header {
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-size: 1rem;
     text-transform: uppercase
 }
@@ -25979,7 +25979,7 @@ h1.trtri span {
     border-radius: 3px;
     color: #fff;
     content: "nexts";
-    font-family: "Font Awesome 5 Free";
+    font-family:'Montserrat', sans-serif;
     font-weight: 900;
     font-size: 200%;
     line-height: 1.3;
@@ -26060,7 +26060,7 @@ h1.trtri span {
 }
 
 .list-check>li:before {
-    font-family: "Font Awesome 5 Free";
+    font-family:'Montserrat', sans-serif;
     font-weight: 900;
     content: '\f00c';
     display: inline-block;
@@ -26077,7 +26077,7 @@ h1.trtri span {
 }
 
 .posts-action {
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 
 .posts-action li i {
@@ -26189,7 +26189,7 @@ h1.trtri span {
     position: relative;
     display: block;
     padding-right: 130px;
-    font-family: Roboto, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-weight: 700
 }
 
@@ -26428,8 +26428,28 @@ div.login-box .panel-footer label {
 }
 
 .header-data {
-    margin-top: -60px;
+    margin-top: -55px;
     text-align: right
+}
+
+
+/* @media only screen and (min-width: 1024px) {
+    .header-01 {
+        position: absolute;
+        left: 0;
+        top: 0px;
+        width: 100%;
+        z-index: 5;
+        background: transparent;
+        padding: 0;
+    }
+} */
+
+@media (max-width:767px) {
+    .header-data {
+        margin-top: -110px;
+        text-align: right
+    }
 }
 
 .header-data p {
@@ -26612,7 +26632,7 @@ div.login-box .panel-footer label {
 .user-panel-sidebar ul li a {
     background: #fff;
     display: block;
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     color: #2a3744;
     font-size: 12px;
     height: auto;
@@ -26815,7 +26835,7 @@ td.items-details-td {
 }
 
 .title-1 {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-weight: 300;
     text-transform: uppercase;
     display: block;
@@ -26894,7 +26914,7 @@ td.items-details-td {
     color: inherit;
     content: "\f107";
     float: right;
-    font-family: FontAwesome;
+    font-family: 'Montserrat', sans-serif;
     font-size: 20px
 }
 
@@ -27384,7 +27404,7 @@ td.items-details-td {
 }
 
 .jobs-s-tag:after {
-    font-family: "Font Awesome 5 Free";
+    font-family:'Montserrat', sans-serif;
     font-weight: 900;
     content: '\f00d';
     display: inline-block;
@@ -27399,7 +27419,7 @@ td.items-details-td {
     border: solid 1px var(--border-color);
     height: 44px;
     line-height: 44px;
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     background-color: #fafafa;
     border-top: none
 }
@@ -27798,7 +27818,7 @@ td.items-details-td {
 .card-event .event-badges .badge {
     font-weight: lighter;
     letter-spacing: .3px;
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     padding: 3px 6px;
     border-radius: 2px
 }
@@ -27817,7 +27837,7 @@ td.items-details-td {
     background: #f3f3f3;
     line-height: 1;
     color: #000;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     padding: 6px 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -28194,7 +28214,7 @@ td.items-details-td {
     margin: 0 auto;
     text-align: center;
     text-transform: uppercase;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-weight: 700
 }
 
@@ -28649,7 +28669,7 @@ img {
 
 .panel-details ul li {
     margin-bottom: 3px;
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 
 .panel-details ul li strong {
@@ -28747,7 +28767,7 @@ img {
     width: 20px;
     height: 20px;
     line-height: 1;
-    font-family: serif
+    font-family: 'Montserrat', sans-serif;
 }
 
 .carousel-control .icon-prev:before {
@@ -28759,7 +28779,7 @@ img {
 }
 
 .tooltip-inner {
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif!important;
+    font-family: 'Montserrat', sans-serif!important;
     font-size: 12px!important
 }
 
@@ -28845,7 +28865,7 @@ ul.list-number li {
     padding-left: 10px;
     text-transform: capitalize;
     width: auto;
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 
 .themeControll .nicescroll-cursors {
@@ -29022,7 +29042,7 @@ table.checkboxtable th {
 }
 
 .message-list .list-group-item .list-box-content .title {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-weight: 700;
     color: #292b2c;
     font-size: .875rem;
@@ -29515,6 +29535,17 @@ table.checkboxtable th {
         font-size: 11px;
         padding: 4.5px 8px
     }
+    .hdata i {
+        border-radius: 50px;
+        box-shadow: 0 0 1px #777 inset;
+        color: #fff;
+        display: inline-block;
+        font-size: 12px;
+        height: 26px;
+        line-height: 26px;
+        text-align: center;
+        width: 26px;
+    }
 }
 
 @media (max-width:320px) {
@@ -29608,7 +29639,7 @@ table.checkboxtable th {
 
 .demo-intro .intro-title {
     color: #fff;
-    font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-size: 48px;
     line-height: 1.4;
     font-weight: lighter;
@@ -29625,7 +29656,7 @@ table.checkboxtable th {
 
 .demo-intro html[dir=rtl] body .intro-title,
 html[dir=rtl] body .demo-intro .intro-title {
-    font-family: Cairo, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.4
 }
 
@@ -30314,7 +30345,7 @@ a.bg-inverse:hover {
 
 .card {
     border-radius: 6px;
-    box-shadow: 0 0 20px rgba(110, 162, 173, .1)
+    /* box-shadow: 0 0 20px rgba(110, 162, 173, .1) */
 }
 
 .card .card-header {
@@ -31383,7 +31414,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: Roboto, Helvetica, Arial, sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 
 .link-color,
@@ -31402,7 +31433,7 @@ a:hover {
 }
 
 .btn-post {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-weight: 400;
     text-transform: none
 }
@@ -31765,7 +31796,7 @@ a:hover {
 }
 
 .card-header {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-size: 1rem;
     text-transform: none
 }
@@ -32301,7 +32332,7 @@ nav.search-breadcrumb>ol.breadcrumb {
 }
 
 .intro .intro-title {
-    font-family: Open Sans Condensed, Helvetica Neue, sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 
 .intro h1 {
@@ -32713,7 +32744,7 @@ aside .inner-box.enable-long-words {
 }
 
 .tooltip-inner {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif!important
+    font-family: 'Montserrat', sans-serif;
 }
 
 #search .tooltip-inner {
@@ -33079,7 +33110,7 @@ li.postadd.nav-item>a.btn-add-listing:hover {
 }
 
 .mobile-filter-bar {
-    font-family: Roboto, Helvetica, Arial, sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 
 .form-group.required sup {
@@ -33103,7 +33134,7 @@ ul.dropdown-menu.user-menu>li {
 
 @media (min-width:768px) {
     li.lang-menu ul.dropdown-menu>li a {
-        font-family: Roboto, Helvetica, Arial, sans-serif;
+        font-family:'Montserrat', sans-serif;
         font-size: 13px;
         font-weight: 400;
         padding: 5px 12px

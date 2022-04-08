@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
 <!-- Start Include All CSS -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
@@ -73,7 +73,7 @@
 
 
 
-
+<?php $photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
 
             <?php if ($user->user_type_id == 2) { ?>
 
@@ -186,7 +186,7 @@
 			
 				<div class="col-md-12 user-profile-img-data default-inner-box">
 
-					<img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+					<img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
 					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>   {{ $user->name }} </b> </span>
 				
 
@@ -270,13 +270,13 @@
 
 
                 <div class="row">
-                    <div class="col-md-3 page-sidebar">
+                    <div class="col-md-3 page-sidebar ptop">
 
                         @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
                     </div>
 
 
-                    <div class="col-md-9 page-content">
+                    <div class="col-md-9 page-content ptop">
 
                         @include('flash::message')
 
@@ -424,7 +424,7 @@
                         margin-top: 40px; */
                                         /* text-align: center; */
                                         /* font-size: 14px; */
-                                        font-family: 'Roboto', sans-serif;
+                                        font-family: 'Montserrat', sans-serif;
                                         background: url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
                                     }
 
@@ -512,8 +512,8 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="teacher-item">
                         <div class="teacher-thumb coach-img-wrapper">
-                            <img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
-                            <div class="teacher-social">
+                            <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+                            <!-- <div class="teacher-social">
                                 <a href="#">
                                     <i aria-hidden="true" class="fab fa-facebook-f"></i>
                                 </a>
@@ -526,13 +526,13 @@
                                 <a href="#">
                                     <i aria-hidden="true" class="fab fa-vimeo-v"></i>
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="teacher-meta">
-                            <h5>
+                            <p class="top-coaches-name-list coach-cat-name12">
                                 {{ $coach_list->name }}
-                            </h5>
-                            <p>Stylist &amp; Author
+            </p>
+                            <p class="lh">Stylist &amp; Author
                             </p>
                         </div>
                     </div>
@@ -654,7 +654,7 @@
 			
             <div class="col-md-12 user-profile-img-data default-inner-box">
 
-                <img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+                <img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
                 <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>   {{ $user->name }}  </b> </span>
             
 
@@ -737,11 +737,11 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3 page-sidebar">
+        <div class="col-md-3 page-sidebar ptop">
             @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
         </div>
 
-        <div class="col-md-9 page-content">
+        <div class="col-md-9 page-content ptop">
 
 
 
@@ -935,7 +935,7 @@
                         margin-top: 40px; */
                             /* text-align: center; */
                             /* font-size: 14px; */
-                            font-family: 'Roboto', sans-serif;
+                            font-family: 'Montserrat', sans-serif;
                             background: url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
                         }
 
@@ -1027,8 +1027,8 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="teacher-item">
                             <div class="teacher-thumb coach-img-wrapper">
-                                <img src="{{ imgUrl($coach_list->photo, '') }}" alt="Jim Séchen">
-                                <div class="teacher-social">
+                                <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+                                <!-- <div class="teacher-social">
                                     <a href="#">
                                         <i aria-hidden="true" class="fab fa-facebook-f"></i>
                                     </a>
@@ -1041,13 +1041,13 @@
                                     <a href="#">
                                         <i aria-hidden="true" class="fab fa-vimeo-v"></i>
                                     </a>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="teacher-meta">
-                                <h5 style="font-weight: 700;">
+                                <p class="top-coaches-name-list coach-cat-name12 ">
                                     {{ $coach_list->name }}
-                                </h5>
-                                <p>Stylist &amp; Author
+                </p>
+                                <p class="lh">Stylist &amp; Author
                                 </p>
                             </div>
                         </div>
@@ -1153,6 +1153,7 @@
         opacity: var(--opacity);
         position: relative;
         width: 100%;
+        height: 300px!important;
     }
 
 
@@ -1256,7 +1257,7 @@
     td.fc-day {
 
         background: #FFF !important;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Montserrat', sans-serif;
 
     }
 
@@ -1268,8 +1269,8 @@
     }
 
     .fc-first th {
-        font-family: 'Roboto', sans-serif;
-        background: #9675ce !important;
+        font-family: 'Montserrat', sans-serif;
+        background: #426998!important;
         color: #FFF;
         font-size: 14px !important;
         font-weight: 500 !important;
@@ -1277,12 +1278,12 @@
     }
 
     .fc-event-inner {
-        font-family: 'Roboto', sans-serif;
-        background: #03a9f3 !important;
+        font-family: 'Montserrat', sans-serif;
+        background: #426998 !important;
         color: #FFF !important;
-        font-size: 12px !important;
+        font-size: 10px !important;
         font-weight: 500 !important;
-        padding: 5px 0px !important;
+        padding: 5px 5px !important;
     }
 
     .fc {
@@ -1324,6 +1325,7 @@
     }
 
     .fc-header-center {
+        display: none;
         text-align: center;
     }
 
@@ -1344,19 +1346,19 @@
         font-size: 25px;
         font-weight: 500;
         margin-bottom: 10px;
-        font-family: 'Roboto', sans-serif;
-        color: blueviolet;
+        font-family: 'Montserrat', sans-serif;
+        color: #426998;
     }
 
     span.fc-button {
-        font-family: 'Roboto', sans-serif;
-        border-color: #9675ce;
-        color: #9675ce;
+        font-family: 'Montserrat', sans-serif;
+        border-color: #426998;
+        color: #426998;
     }
 
     .fc-state-down,
     .fc-state-active {
-        background-color: #9675ce !important;
+        background-color: #426998 !important;
         color: #FFF !important;
     }
 
@@ -4373,7 +4375,7 @@ border-top-right-radius: 3px;
 
             function buildTableHTML() {
                 var html =
-                    "<table class='fc-border-separate' style='width:100%' cellspacing='0'>" +
+                    "<table class='fc-border-separate'cellspacing='0'>" +
                     buildHeadHTML() +
                     buildBodyHTML() +
                     "</table>";

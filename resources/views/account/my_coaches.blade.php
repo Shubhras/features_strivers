@@ -12,10 +12,10 @@
  * Please read the full License from here - http://codecanyon.net/licenses/standard
 --}}
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
 <!-- Start Include All CSS -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
@@ -64,7 +64,7 @@
 
  <h2>
 
-<h2 class="sec-title">My Strivers</h2>
+<h2 class="sec-title">My Strivre</h2>
 </h2>
 
 	<div class="row" style="padding: 6px; margin-left: -4px;">
@@ -72,7 +72,7 @@
 			
         <div class="col-md-12 user-profile-img-data default-inner-box">
 
-                <img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+                <img id="userImg" class="user-profile-images" src="{{ url('storage/'.$user->photo_url) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
                 <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> {{ $user->name }} </b> </span>
             
 
@@ -158,12 +158,12 @@
 
                 <div class="row">
 
-                    <div class="col-md-3 page-sidebar">
+                    <div class="col-md-3 page-sidebar ptop">
                         @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
                     </div>
 
 
-                    <div class="col-md-9 page-content">
+                    <div class="col-md-9 page-content ptop">
 
 
                         <div class="row">
@@ -175,18 +175,18 @@
                                     <div class="teacher-item">
                                         <div class="teacher-thumb coach-img-wrapper">
 
-                                            <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
+                                            <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
 
                                             <!-- <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2020/11/teacher_5.png" alt="Hugh Saturation"> -->
 
                                             <div class="madels">
-                                                <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2021/03/Standerd-3.svg" alt="Standard">
+                                                <img src="../assets/images/basic-1.svg" alt="Standard">
 
                                                 <!-- <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid"  alt="{{ $coach_list->name }}">  -->
 
 
                                             </div>
-                                            <div class="teacher-social">
+                                            <!-- <div class="teacher-social">
                                                 <a href="#">
                                                     <i aria-hidden="true" class="fab fa-facebook-f"></i>
                                                 </a>
@@ -199,15 +199,15 @@
                                                 <a href="#">
                                                     <i aria-hidden="true" class="fab fa-vimeo-v"></i>
                                                 </a>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="teacher-meta">
-                                            <h5>
+                                            <p class="top-coaches-name-list coach-cat-name12">
                                                 <!-- Hugh Saturation -->
                                                 {{ $coach_list->name }}
 
-                                            </h5>
-                                            <p>Photographer
+                            </p>
+                                            <p class="lh">Photographer
                                             </p>
                                         </div>
                                     </div>
@@ -424,11 +424,11 @@
 
                 <div class="row">
 
-                    <div class="col-md-3 page-sidebar">
+                    <div class="col-md-3 page-sidebar ptop">
                         @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar', 'account.inc.sidebar'])
                     </div>
 
-                    <div class="col-md-9 page-content">
+                    <div class="col-md-9 page-content ptop">
 
 
 
@@ -441,18 +441,18 @@
                                     <div class="teacher-item">
                                         <div class="teacher-thumb coach-img-wrapper">
 
-                                            <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
+                                            <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
 
                                             <!-- <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2020/11/teacher_5.png" alt="Hugh Saturation"> -->
 
                                             <div class="madels">
-                                                <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2021/03/Standerd-3.svg" alt="Standard">
+                                                <img src="../assets/images/basic-1.svg" alt="Standard">
 
                                                 <!-- <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid"  alt="{{ $coach_list->name }}">  -->
 
 
                                             </div>
-                                            <div class="teacher-social">
+                                            <!-- <div class="teacher-social">
                                                 <a href="#">
                                                     <i aria-hidden="true" class="fab fa-facebook-f"></i>
                                                 </a>
@@ -465,14 +465,14 @@
                                                 <a href="#">
                                                     <i aria-hidden="true" class="fab fa-vimeo-v"></i>
                                                 </a>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="teacher-meta">
-                                            <h5>
+                                            <p class="top-coaches-name-list coach-cat-name12">
                                                 <!-- Hugh Saturation -->
                                                 {{ $coach_list->name }}
 
-                                            </h5>
+                            </p>
                                             <p>Photographer
                                             </p>
                                         </div>
@@ -640,6 +640,7 @@
             opacity: var(--opacity);
             position: relative;
             width: 100%;
+            height: 300px!important;
         }
 
 

@@ -238,6 +238,7 @@ Route::group([
 		if (!doesCountriesPageCanBeHomepage()) {
 			Route::get('/', 'HomeController@index');
 
+			Route::post('/findtopcoach', 'HomeController@coach_list_category_interesting');
 			Route::post('user_login', 'HomeController@user_login');
 			Route::post('strivers_signup', 'HomeController@register_new_user');
 			Route::get(dynamicRoute('routes.countries'), 'CountriesController@index');
@@ -249,10 +250,15 @@ Route::group([
 		Route::get('/coach_details/{id}', 'PageController@coach_details');
 		Route::get('/coach_list/{id}', 'PageController@coach_list_category2');
 		Route::get('/coach_list_sub/{id}', 'PageController@coach_list_sub_category');
-		Route::get('coachall_detail/{id}', 'PageController@coachall_detail');
+		Route::get('top_coach_detail/{id}', 'PageController@top_coach_detail');
 		Route::get('coaches', 'PageController@coaches');
 		Route::get('subscription', 'PageController@show1');
-		Route::get('/coach_list_category_all', 'PageController@coach_list_category_all');
+		// Route::get('/coach_list_category_all', 'PageController@coach_list_category_all');
+
+		Route::get('get_coach_course/{id}', 'HomeController@coach_coursess');
+		Route::get('/coach_list_category_all/{id}', 'PageController@coach_list_category_all');
+
+		
 		
 
 		
@@ -439,6 +445,13 @@ Route::group([
 				Route::get('getSubcategories', 'EditController@getSubcategories');
 				Route::put('photo/delete', 'EditController@updatePhoto');
 				Route::put('photo', 'EditController@updatePhoto');
+				Route::post('enroll_course', 'EditController@enroll_course_striver');
+
+				// Route::get('allcities/{id}','EditController@getCountryLocation');
+
+				// Route::get('/findtopcoach', 'EditController@coach_list_category_interesting');
+				Route::get('allcities','EditController@getCountryLocation');
+				
 
 				Route::get('chat', 'EditController@comet_chat');
 

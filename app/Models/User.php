@@ -102,11 +102,13 @@ class User extends BaseUser
 		'last_activity',
 		'category',
 		'sub_category',
-		'coach_summary',
+		// 'coach_summary',
 		'year_of_experience',
 		'current_level',
 		'location',
-		'subscription_plans'
+		'subscription_plans',
+		'youtube_link',
+		'coach_summary'
 	];
 	
 	/**
