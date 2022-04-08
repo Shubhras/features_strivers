@@ -14,11 +14,11 @@
  </section>
 
 <section class="blog-section64">
-
-	<div class="container ">
+<br><br><br><br>
+	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h2 class="hero-content_h23 font-text-size-43px"> A global learning platform for all</h2> <br>
+				<h2 class="hero-content_h2 font-text-size-43px"> A global learning platform for all</h2> <br>
 				<div>
 					<!-- <a href=""> A global learning platform for all </a> -->
 					<p class="global_page font-text-size-16px">
@@ -31,7 +31,7 @@
 	</div>
      <br><br>
 	<!-- </section>     -->
-	<div class="main-section-new">
+	<div class="main-section-new_pricing">
 
 		<div class="container">
 
@@ -66,7 +66,7 @@
 														<h4>{{ $package->short_name}}</h4>
 														<img src="../assets/images/basic-1.svg" alt="Basic">
 														<div class="p-price">
-															<sup> $ </sup> {{$package->price}} <span>GET {{$package->duration}} CREDIT </span>
+															<sup> $ </sup> {{$package->price}} <span>GET {{$package->duration}} CREDITS </span>
 														</div>
 														<ul>
 
@@ -140,7 +140,7 @@
 														<img src="../assets/images/Standerd-3.svg" alt="Standard">
 														<div class="p-price">
 															<sup> $ </sup> {{$package->price}}
-															<span> GET {{$package->duration}} CREDIT </span>
+															<span> GET {{$package->duration}} CREDITS </span>
 														</div>
 														<ul>
 
@@ -216,7 +216,7 @@
 														<img src="../assets/images/Premium-2.svg" alt="Platinum">
 														<div class="p-price">
 															<sup> $ </sup> {{$package->price}}
-															<span> GET {{$package->duration}} CREDIT </span>
+															<span> GET {{$package->duration}} CREDITS </span>
 														</div>
 														<ul>
 
