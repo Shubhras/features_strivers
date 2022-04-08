@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
 <!-- Start Include All CSS -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
@@ -109,8 +109,8 @@
                 </div>
             </div> -->
 
-        <div class="row">
-            <div class="col-lg-4 col-md-3">
+        <div class="row footer-row-fix">
+            <div class="col-lg-4 col-md-375">
                 <aside class="widget">
                     <div class="about-widget">
                         <a href="#"><img src="../assets/images/logo.png" alt=""></a>
@@ -126,7 +126,7 @@
                     </div>
                 </aside>
             </div>
-            <div class="col-lg-3 col-md-3">
+            <div class="col-lg-3 col-md-375">
                 <aside class="widget">
                     <h3 class="widget-title">Explore</h3>
                     <ul>
@@ -139,9 +139,9 @@
                     </ul>
                 </aside>
             </div>
-            <div class="col-lg-3 col-md-3">
+            <div class="col-lg-3 col-md-375">
                 <aside class="widget">
-                    <h3 class="widget-title">Catecories</h3>
+                    <h3 class="widget-title">Categories</h3>
                     <ul>
                         <li><a href="#">All Courses</a></li>
                         <li><a href="#">Storytelling & Voice Over</a></li>
@@ -152,7 +152,7 @@
                     </ul>
                 </aside>
             </div>
-            <div class="col-lg-2 col-md-3">
+            <div class="col-lg-2 col-md-375">
                 <aside class="widget">
                     <h3 class="widget-title">Support</h3>
                     <ul>
@@ -178,25 +178,39 @@
     </div>
 </footer>
 <a href="#" id="back-to-top">
-    <i class="fal fa-angle-double-up"></i>
+    <i class="fal fa-angle-double-up scroll-top-footer"></i>
 </a>
 <!-- Back To Top -->
 
 <!-- Start Include All JS -->
 <style>
-    .fa, .fab, .fad, .fal, .far, .fas {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 3;
-}
-.fab {
-    font-family: "Font Awesome 5 Brands";
-}
-.fab, .far {
-    font-weight: 400;
-}
+    .fa,
+    .fab,
+    .fad,
+    .fal,
+    .far,
+    .fas {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        /* line-height: 3; */
+    }
+
+    .fab {
+        font-family: "Font Awesome 5 Brands";
+    }
+
+    .fab,
+    .far {
+        font-weight: 400;
+    }
+</style>
+
+<style>
+    .scroll-top-footer {
+        line-height: 2 !important;
+    }
 </style>

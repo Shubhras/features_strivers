@@ -2123,7 +2123,7 @@ textarea.form-control {
 }
 
 .form-check-label {
-    margin-bottom: 0;
+    margin-bottom: 0px;
 }
 
 .form-check-inline {
@@ -3658,7 +3658,7 @@ input[type="button"].btn-block {
 .input-group-text {
     display: flex;
     align-items: center;
-    padding: 0.375rem 0.75rem;
+    padding: 0.375em 0.75rem;
     margin-bottom: 0;
     font-size: 1rem;
     font-weight: 400;
@@ -4701,7 +4701,7 @@ input[type="button"].btn-block {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    /* border: 1px solid rgba(0, 0, 0, 0.125); */
     border-radius: 0.25rem;
 }
 
@@ -9980,5 +9980,6 @@ a.text-dark:focus {
         border-color: #dee2e6;
     }
 }
+
 
 /*# sourceMappingURL=bootstrap.css.map */

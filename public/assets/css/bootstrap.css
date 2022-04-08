@@ -43,7 +43,8 @@
 }
 
 html {
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    ;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -194,7 +195,8 @@ pre,
 code,
 kbd,
 samp {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: 'Montserrat', sans-serif;
+    ;
     font-size: 1em;
 }
 
@@ -254,7 +256,8 @@ select,
 optgroup,
 textarea {
     margin: 0;
-    font-family: inherit;
+    font-family: 'Montserrat', sans-serif;
+    ;
     font-size: inherit;
     line-height: inherit;
 }
@@ -629,7 +632,7 @@ pre code {
     .container,
     .container-sm,
     .container-md {
-        max-width: 720px;
+        max-width: 910px;
     }
 }
 
@@ -643,12 +646,50 @@ pre code {
 }
 
 @media (min-width: 1200px) {
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 1170px;
+    }
+}
+
+@media (min-width: 1278px) {
+    /* .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 997px;
+    } */
+    .text_font_size_index232 {
+        font-size: 49px!important;
+        /* line-height: 55px!important; */
+        font-weight: 800!important;
+        line-height: 55px!important;
+        font-family: 'Montserrat', sans-serif;
+        color: #1D1D1F!important;
+        margin: 20px 0 10px 0!important;
+    }
+}
+
+@media (min-width: 1440px) {
     .container,
     .container-sm,
     .container-md,
     .container-lg,
     .container-xl {
-        max-width: 1140px;
+        /* max-width: 1170px; */
+        max-width: 1294px;
+    }
+    .text_font_size_index232 {
+        font-size: 49px!important;
+        /* line-height: 55px!important; */
+        font-weight: 800!important;
+        line-height: 55px!important;
+        font-family: 'Montserrat', sans-serif;
+        color: #1D1D1F!important;
+        margin: 20px 0 10px 0!important;
     }
 }
 
@@ -660,6 +701,19 @@ pre code {
     margin-right: -15px;
     margin-left: -15px;
 }
+
+
+/* @media (min-width: 425px) {
+    .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        margin-top: 50px;
+    }
+} */
 
 .no-gutters {
     margin-right: 0;
@@ -2336,7 +2390,7 @@ textarea.form-control {
 }
 
 .form-check-label {
-    margin-bottom: 0;
+    margin-bottom: 20px;
 }
 
 .form-check-inline {
@@ -3070,7 +3124,8 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-secondary {
-    color: #6c757d;
+    color: #fff;
+    background-color: #012245;
     border-color: #6c757d;
 }
 
@@ -3914,7 +3969,7 @@ input[type="button"].btn-block {
     display: flex;
     -ms-flex-align: center;
     align-items: center;
-    padding: 0.375rem 0.75rem;
+    padding: 0.100rem 0.75rem;
     margin-bottom: 0;
     font-size: 1rem;
     font-weight: 400;
@@ -5023,7 +5078,7 @@ input[type="button"].btn-block {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    /* border: 1px solid rgba(0, 0, 0, 0.125); */
     border-radius: 0.25rem;
 }
 
@@ -5074,7 +5129,7 @@ input[type="button"].btn-block {
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
     background-color: rgba(0, 0, 0, 0.03);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.125); */
 }
 
 .card-header:first-child {
@@ -6227,7 +6282,7 @@ a.close.disabled {
 .modal {
     position: fixed;
     top: 0;
-    left: 0;
+    left: -100px;
     z-index: 1050;
     display: none;
     width: 100%;
@@ -6482,7 +6537,7 @@ a.close.disabled {
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -6792,6 +6847,21 @@ a.close.disabled {
     position: relative;
     width: 100%;
     overflow: hidden;
+    margin-left: 29px;
+    height: 299px;
+    margin-top: 25px;
+}
+
+.carousel-inner2 {
+    margin-bottom: 1rem;
+    margin-top: 50px!important;
+    font-weight: 700!important;
+    font-size: 13px;
+}
+
+.carousel-inner-img {
+    width: 228px;
+    height: 226px;
 }
 
 .carousel-inner::after {
@@ -10304,7 +10374,8 @@ button.bg-dark:focus {
 }
 
 .text-monospace {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+    font-family: 'Montserrat', sans-serif;
+    ;
 }
 
 .text-justify {

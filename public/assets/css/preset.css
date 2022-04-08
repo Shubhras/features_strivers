@@ -40,7 +40,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Open Sans', sans-serif;
+    font-family:'Montserrat', sans-serif;
     color: #2c234d;
     font-weight: 700;
     letter-spacing: 0;
@@ -133,7 +133,7 @@ input[type=number] {
 
 .bisylms-btn-2 {
     border: none;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 600;
     color: #E92AA4;
     background: rgba(248, 84, 254, 0.1);
@@ -356,6 +356,15 @@ button:hover {
     position: relative;
 }
 
+.sec-title-cat21 {
+    font-size: 37px;
+    line-height: 49px;
+    color: #2c234d;
+    margin: -50px 0 27px;
+    position: relative;
+    font-weight: 700;
+}
+
 .sec-title span {
     display: block;
     font-weight: 400;
@@ -394,9 +403,10 @@ button:hover {
     padding-top: 0;
 }
 
-.mt-120 {
+
+/* .mt-120 {
     margin-top: 90px;
-}
+} */
 
 svg g path {
     -webkit-transition: all 0.4s ease;
@@ -454,4 +464,17 @@ svg g path {
 
 .get_coaches_add_button {
     width: 246px;
+}
+
+.project-management-text {
+    line-height: 33px!important;
+}
+
+.sec-title-cat2198 {
+    font-size: 37px;
+    line-height: 49px;
+    color: #2c234d;
+    margin: -50px 0 27px;
+    position: relative;
+    font-weight: 700;
 }

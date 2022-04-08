@@ -72,14 +72,14 @@ Designed and Development by: Incognito Themes
 /* Ashish */
 
 nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
-    border: 1px solid #cdcaca;
+    border: 1px solid #eae9ec;
     border-radius: 10px;
 }
 
 .dashboard-nav {
     background-color: #fff;
     border: 1px solid #eae9ec;
-    border-radius: 0.3rem;
+    border-radius: 10px;
     padding: 0;
 }
 
@@ -87,6 +87,12 @@ img.img-coches-main {
     align-self: center;
     width: 175px;
 }
+.img-coches-main1 {
+    height: 400px;
+    margin-bottom: 30px;
+    width: 400px;
+}
+
 
 .col-lg-3.boxes-of-course {
     border: 1px solid;
@@ -153,6 +159,68 @@ li.subject-title-name:hover {
     background: #f1f1f1;
     padding: 10px;
     border: 1px ridge;
+}
+
+.subject-title-name-cat {
+    font-size: 14px;
+    font-weight: 700;
+    color: black;
+    padding: 10px;
+    border: 1px ridge;
+}
+
+.subject-title-name-cat:hover {
+    color: rgb(15, 55, 233);
+    background: #f1f1f1;
+    padding: 10px;
+    border: 1px ridge;
+}
+
+.subject-title-name-cat-sub {
+    font-size: 14px;
+    font-weight: 700;
+    color: #9a9a9a;
+    padding: 10px;
+    border-bottom: 1px solid #d9d7d7;
+}
+
+.subject-title-name-cat-sub:hover {
+    color: #2c234d!important;
+    background: #ffffff;
+    padding: 10px;
+    /* border: 2px groove;
+    border-radius: 4px; */
+    border-bottom: 2px groove;
+}
+
+.coach-cat-name12 {
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+    /* padding: 10px; */
+    /* border: 2px groove;
+    border-radius: 4px; */
+}
+
+.coach-cat-name12:hover {
+    font-size: 16px;
+    font-weight: 700;
+    color: #3b07f7!important;
+    /* background: #ffffff; */
+    /* padding: 10px;
+    border: 2px groove;
+    border-radius: 4px; */
+}
+
+.subject-name-cat-sub {
+    color: black;
+}
+
+.subject-name-cat-sub:hover {
+    color: #4a2bbb!important;
+    background: #ffffff;
+    /* padding: 10px;
+    border: 1px ridge; */
 }
 
 p.coches-description.text-center.mt-5 {
@@ -436,12 +504,13 @@ h4,
 h5,
 h6 {
     /* color: #1D1D1F; */
-    margin: 20px 0 10px 0;
+    /* margin: 20px 0 10px 0;
     font-style: normal;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif; */
 }
 
-h1,
+
+/* h1,
 h2,
 h3,
 h4,
@@ -454,14 +523,15 @@ h6,
 .h5,
 .h6 {
     line-height: 1.5em;
-}
+} */
 
 
 /* h1 {
     font-size: 58px;
 } */
 
-h2 {
+
+/* h2 {
     font-size: 40px;
 }
 
@@ -479,9 +549,10 @@ h5 {
 
 h6 {
     font-size: 14px;
-}
+} */
 
-h1 a,
+
+/* h1 a,
 h2 a,
 h3 a,
 h4 a,
@@ -501,9 +572,10 @@ h6 a:hover {
 
 p a:hover {
     color: #bf0731;
-}
+} */
 
-p {
+
+/* p {
     letter-spacing: normal;
     line-height: 24px;
     color: #888;
@@ -514,15 +586,16 @@ p {
 a {
     text-decoration: none;
     color: #212121;
-}
+} */
 
-a:hover,
+
+/* a:hover,
 a:focus,
 a:active {
     outline: none;
     text-decoration: none;
     color: #bf0731;
-}
+} */
 
 ul {
     list-style: disc;
@@ -3283,6 +3356,18 @@ button:focus {
     outline: none !important;
 }
 
+/* .btn-new{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 1px;
+    padding: 8px 10px 7px 10px;
+    border-color: #053568;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+} */
 .btn {
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;
@@ -3295,7 +3380,6 @@ button:focus {
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
 }
-
 .btn:hover,
 .btn:focus,
 .btn.focus,
@@ -3382,7 +3466,7 @@ button:focus {
 }
 
 .btn.btn-lg {
-    padding: 13px 40px;
+    padding: 20px 35px;
     font-size: 12px;
 }
 
@@ -12105,3 +12189,17 @@ section.big-block .client-logo {
 .portfolio-layout-slider .item-img img {
     box-shadow: 0 10px 30px 0 rgba(31, 35, 37, .1);
 }
+
+.btn87 {
+    /* font-family: 'Montserrat', sans-serif; */
+    font-size: 16px!important;
+    /* font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 1px; */
+    padding: 8px 1px 7px 2px!important;
+    /* border-color: transparent;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out; */
+}
+
