@@ -442,38 +442,38 @@ class EditController extends AccountBaseController
 			->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
 			->get();
 
-		// $totalsum = array();
-		// $name = array();
-		// $consumed_hours = array();
-		// $remaining_hours = array();
-		// $user_id = array();
-		// foreach ($data['user_subscription'] as $key => $value) {
+		$totalsum = array();
+		$name = array();
+		$consumed_hours = array();
+		$remaining_hours = array();
+		$user_id = array();
+		foreach ($data['user_subscription'] as $key => $value) {
 
-		// 	$totalsum[$value->total_provided_hours] = $value->total_provided_hours;
-		// 	$name[$value->name] = $value->name;
-		// 	$consumed_hours[$value->consumed_hours] = $value->consumed_hours;
-		// 	$remaining_hours[$value->remaining_hours] = $value->remaining_hours;
-		// 	$user_id[$value->id] = $value->id;
-		// 	// $consumed_hours[$value->consumed_hours] =$value->consumed_hours;
-		// }
-
-
-		// //  $dataa = sum($totalsum);
-
-		// // $totalsum += $totalsum;
-		// $ss  = array();
-		// foreach ($name as $key => $sub) {
-		// 	$ss[$sub] = $sub;
-		// }
+			$totalsum[$value->total_provided_hours] = $value->total_provided_hours;
+			$name[$value->name] = $value->name;
+			$consumed_hours[$value->consumed_hours] = $value->consumed_hours;
+			$remaining_hours[$value->remaining_hours] = $value->remaining_hours;
+			$user_id[$value->id] = $value->id;
+			// $consumed_hours[$value->consumed_hours] =$value->consumed_hours;
+		}
 
 
-		// $data['total_purchase_package'] = count($user_id);
-		// $data['packagename'] = $ss;
-		// $data['totalpoints'] = array_sum($totalsum);
-		// $data['consumed_hours'] = array_sum($consumed_hours);
+		//  $dataa = sum($totalsum);
 
-		// $data['remaining_hours'] = $data['totalpoints'] - $data['consumed_hours'];
-		// //  print_r($data);die;
+		// $totalsum += $totalsum;
+		$ss  = array();
+		foreach ($name as $key => $sub) {
+			$ss[$sub] = $sub;
+		}
+
+
+		$data['total_purchase_package'] = count($user_id);
+		$data['packagename'] = $ss;
+		$data['totalpoints'] = array_sum($totalsum);
+		$data['consumed_hours'] = array_sum($consumed_hours);
+
+		$data['remaining_hours'] = $data['totalpoints'] - $data['consumed_hours'];
+		//  print_r($data);die;
 
 
 		//print_r($data['user_subscription']);die;

@@ -203,14 +203,55 @@
                         
                         <div class="teacher-item">
                             <div class="teacher-thumb coach-img-wrapper1 coach-img-fix-height">
-                                <!-- <a href="{{url('/coach_details/'.$coach->id) }}"> -->
+                            <a href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
                                 <?php if (!empty($coach->photo)) { ?>
+                                   
                                     <img src="{{ url('storage/'.$coach->photo) }}" alt="{{ $coach->name }}" class="lazyload img-fluid">
-
+                                    
                                 <?php } else { ?>
 
                                     <img src="../assets/images/course/1.jpg" alt="{{ $coach->name }}" class="lazyload img-fluid">
-                                <?php } ?>
+                                   
+                                    <?php } ?>
+                                    </a>
+
+
+
+
+
+                                <div class="modal fade bd-example-modal-lg_{{$coach->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach->id }}">
+                                    <div class="modal-dialog modal-xl">
+
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Top Coach Details</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <div class="modal-content p-5">
+
+
+                                            <img src="{{ url('storage/'.$coach->photo) }}" class="img-coches-main" alt="{{ $coach->name }}">
+                                            <p class="coach-details-name">{{$coach->name}}</p>
+                                            <h4 class=" text-center">
+                                            {{$ss['en']}}
+                                            </h4>
+                                            <p class="text-center"><b>
+                                            </b>
+                                            </p> <br>
+                                            <label>{{$coach->name}} . {{$coach->coach_summary}}</label>
+                                            <br>
+                                            <div class="row center-button-modal">
+
+                                                <div class="col-lg-2">
+                                                    <a href="{{url('/top_coach_detail/'.$coach->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <a href="{{url('/register') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="teacher-meta">
                                 <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
@@ -522,7 +563,7 @@
                         <p style="color: #ffffff;">Strivre is great for teams because its easy to get set up and the offerings touch on a vast array of soft skill focus areas, which not only build role-related talents but also enable team members to grow their whole selves beyond
                             work.
                         </p>
-                        <a class="bisylms-btn-pink" href="{{url('/register') }}">Sign Up </a>
+                        <a class="bisylms-btn-pink" href="{{url('./register') }}">Sign Up </a>
                     </div>
                 </div>
                 <div class=" col-lg-7 col-md-6">
