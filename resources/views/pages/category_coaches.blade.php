@@ -587,11 +587,10 @@ body {
                                                 National Geographic photographer teaches his techniques for planning, capturing,
                                                 and editing breathtaking photos.</b>
                                         </p> <br>
-                                        <?php if(!empty($coach_list->coach_summary)){
-                                            ?>
-                                        <label>{{$coach_list->coach_summary}}</label>
-                                        <?php }else {?>
-                                            <label>No Description</label>
+                                        <?php if(!empty($coach_list->coach_summary)){?>
+                                        <label>{{$coach_list->coach_summary}} </label>
+                                        <?php }else{?>
+                                            <label>No Summary </label>
                                             <?php }?>
                                         <br>
                                         <div class="row center-button-modal">
