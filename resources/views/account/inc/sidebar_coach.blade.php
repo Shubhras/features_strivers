@@ -22,7 +22,7 @@
                                     <!-- <span class="heading ">Account</span> -->
                                     <ul class="list-unstyled mb-4 mt-2">
                                         <li class="nav-item ">
-										<a {!! ($pagePath=='' ) ? 'class="active current"' : '' !!} href="{{ url('account/dashboard') }}" >
+										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/dashboard') }}" >
 												<h5 class="collapse-title no-border">
 													<i class="fas fa-th-list"></i> {{ t('dashboard') }}&nbsp;
 
@@ -31,7 +31,7 @@
 										</a>
                                         </li>
                                         <li class="nav-item ">
-										<a {!! ($pagePath=='' ) ? 'class="active current" ' : '' !!} href="{{ url('account') }}">
+										<a {!! ($pagePath=='' ) ? 'class="active" ' : '' !!} href="{{ url('account') }}">
 										<h5 class="collapse-title no-border">
 											<i class="fas fa-user-edit"></i>
 											{{ t('Edit_Profile') }}&nbsp;
@@ -40,7 +40,7 @@
 									</a>
 															</li>
                                         <li class="nav-item  ">
-										<a {!! ($pagePath=='' ) ? 'class=" "' : '' !!} href="{{ url('account/my_striver') }}">
+										<a {!! ($pagePath=='' ) ? 'class="active"' : '' !!} href="{{ url('account/my_striver') }}">
 											<h5 class="collapse-title no-border">
 												<i class="fas fa-users"></i>
 												{{ ('My Strivres') }}&nbsp;
@@ -49,7 +49,7 @@
 										</a>
                                         </li>
                                         <li class="nav-item ">
-										<a {!! ($pagePath=='' ) ? class=" current" : '' !!} href="{{ url('account/my_courses') }}">
+										<a {!! ($pagePath=='' ) ? 'class="active "' : '' !!} href="{{ url('account/my_courses') }}">
 											<h5 class="collapse-title no-border">
 												<!-- <i class="fas fa-user-edit"></i> -->
                                                 <i class="fas fa-book-open"></i>
@@ -60,7 +60,7 @@
                                             
                                         </li>
                                         <li class="nav-item ">
-										<a {!! ($pagePath=='' ) ? 'class="active current"' : '' !!} href="{{ url('account/my_payments') }}">
+										<a {!! ($pagePath=='' ) ? 'class="active "' : '' !!} href="{{ url('account/my_payments') }}">
 												<h5 class="collapse-title no-border">
 													<!-- <i class="fas fa-user-edit"></i> -->
                                                     <i class="fas fa-credit-card"></i>
