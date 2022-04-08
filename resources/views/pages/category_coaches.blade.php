@@ -134,7 +134,7 @@ body {
                 @if(!empty($search_key))
 
 
-                Top Coaches for You :- {{$search_key}}
+                Search Result for: {{$search_key}}
                 @else
                 Top Coaches for You
                 @endif
