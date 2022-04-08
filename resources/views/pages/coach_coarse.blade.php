@@ -79,9 +79,9 @@
                     <input type="hidden" name="coach_id" id="coach_id" value="{{$coach_course->coach_id}}" class="form-control">
                     <input type="hidden" name="course_id" id="course_id" value="{{$coach_course->id}}" class="form-control">
                     
-            <button type="submit" class="btn btn-primary">
+            <!-- <button type="submit" class="btn btn-primary">
                 Enroll Now
-            </button>
+            </button> -->
             </form>
             </div>
             </div>
