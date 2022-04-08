@@ -305,7 +305,7 @@
 										<div class="feature-course-item-4">
 											<div class="fcf-thumb">
 												<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" class="image-height" style="height: 244px; weight: 244px;">
-												<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Enroll Now</a>
+												<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" onclick="customSession()">View Package</a>
 											</div>
 
 											<div class="fci-details">
@@ -521,7 +521,7 @@
 						<div class="feature-course-item-4">
 							<div class="fcf-thumb">
 								<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
-								<!-- <a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Enroll Now</a> -->
+								<!-- <a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">View Package</a> -->
 							</div>
 							<div class="fci-details">
 								<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
@@ -538,10 +538,10 @@
 										@if($coaches_corsee->total_consultation_fee != null)
 
 										<a>
-											{{$coaches_corsee->total_consultation_fee}}$ Credits
+											{{$coaches_corsee->creadit_required}}$ Credits
 										</a>
 										@else
-										0 $ Credit
+										0 $ Credits
 										@endif
 									</div>
 
@@ -582,7 +582,7 @@
 						<div class="feature-course-item-4">
 							<div class="fcf-thumb">
 								<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
-								<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Enroll Now</a>
+								<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" onclick="customSession()">View Package</a>
 							</div>
 							<div class="fci-details">
 								<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
@@ -599,10 +599,12 @@
 										@if($coaches_corsee->total_consultation_fee != null)
 
 										<a>
-											{{$coaches_corsee->total_consultation_fee}}$ Credits
+											<!-- {{$coaches_corsee->total_consultation_fee}}$ Credits -->
+
+											{{$coaches_corsee->creadit_required}}$ Credits
 										</a>
 										@else
-										0 $ Credit
+										0 $ Credits
 										@endif
 									</div>
 
@@ -830,8 +832,8 @@
 		course_hourse = parseFloat($('#course_hourse').val());
 		var total_consultation_fee = consultation_fee_per_hour * course_hourse;
 		var creadit_required = total_consultation_fee / 5;
-		$('#total_consultation_fee').val(total_consultation_fee.toFixed(2));
-		$('#creadit_required').val(creadit_required.toFixed(2));
+		$('#total_consultation_fee').val(total_consultation_fee.toFixed(0));
+		$('#creadit_required').val(creadit_required.toFixed());
 	});
 </script>
 
@@ -843,8 +845,8 @@
 		course_hourse = parseFloat($('#course_hourse').val());
 		var total_consultation_fee = consultation_fee_per_hour * course_hourse;
 		var creadit_required = total_consultation_fee / 5;
-		$('#total_consultation_fee').val(total_consultation_fee.toFixed(2));
-		$('#creadit_required').val(creadit_required.toFixed(2));
+		$('#total_consultation_fee').val(total_consultation_fee.toFixed(0));
+		$('#creadit_required').val(creadit_required.toFixed(0));
 	});
 </script>
 
