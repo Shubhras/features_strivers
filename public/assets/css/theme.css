@@ -8096,10 +8096,14 @@ h4 {
 .main-section-new {
     /* padding-top: 1px;
     background: #012245; */
-    width: 119%;
+    /* width: 119%;
     padding-top: 1px;
     background: #012245;
-    margin-left: -116px;
+    margin-left: -116px; */
+    width: 138%;
+    padding-top: 1px;
+    background: #012245;
+    margin-left: -179px
 }
 
 .main-section-new_pricing {
@@ -8114,10 +8118,14 @@ h4 {
 .main-section-new-footer {
     /* padding-top: 1px;
     background: #012245; */
-    width: 119%;
+    /* width: 119%;
     padding-top: 1px;
     background: #fafafb;
-    margin-left: -116px;
+    margin-left: -116px; */
+    width: 138%;
+    padding-top: 1px;
+    background: #012245;
+    margin-left: -179px
 }
 
 .topp {

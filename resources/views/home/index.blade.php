@@ -197,7 +197,7 @@
 
                     <div class="col-lg-4 col-md-6">
 
-                    
+
                     <!-- <a type="button" href="{{url('/top_coach_detail/'.$coach->id) }}" id="coach_id_{{$coach->id }}"> -->
 
                     <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
@@ -600,6 +600,7 @@
     </div>
 </div>
 </section>
+
 
 
 
