@@ -37,7 +37,7 @@
 					<div class="col-md-12 user-profile-img-data default-inner-box">
 
 						<!-- <img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; -->
-						<img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+						<img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
 						<span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 
@@ -201,7 +201,7 @@
 
 														<div class="col-md-6">
 															<label for="recipient-name" class="control-label create-consultation-modal">Consultation Available - Date:</label>
-															<input type="date" class="consultation-modal-text" id="dated" name="dated" placeholder="yyyy/mm/dd">
+															<input type="date" class="consultation-modal-text" id="dated" name="dated" placeholder="d/m/yy">
 														</div>
 
 
@@ -414,10 +414,17 @@
 
 <div class="row" style="padding: 6px; margin-left: -4px;">
 
-
+			<div class="col-sm-12 form-group">
+                  @if(Session::has('messagess'))
+                  <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('messagess') }}</p>
+                  @endif
+                  <!-- @if(Session::has('loginerror'))
+                  <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('loginerror') }} <a href="{{url('/pricing') }}" style="color: red;"><b> Click the Subscriptions</b></a></p>
+                  @endif -->
+               </div>
 	<div class="col-md-12 user-profile-img-data default-inner-box">
 
-		<img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+		<img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
 		<span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 

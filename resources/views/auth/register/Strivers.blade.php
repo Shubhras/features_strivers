@@ -137,9 +137,9 @@
                          <input type="hidden" name="accept_terms" value="1">
                         </div>
 
-                        <div class="col-sm-12 register-btn-padding">
+                        <!-- <div class="col-sm-12 register-btn-padding">
                             <center><a class="b-btn bisylms-btn col-sm-12" href="payment-detail.html">Please Enter Your Card Details</a><br>
-                            </center> </div>
+                            </center> </div> -->
                              <div class="col-md-12">
                                 <!-- <center><a class="btn01  btn-primary1" type="submit" id="signupBtn">
                                     Register

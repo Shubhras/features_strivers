@@ -8099,7 +8099,16 @@ h4 {
     width: 119%;
     padding-top: 1px;
     background: #012245;
-    margin-left: -158px;
+    margin-left: -154px;
+}
+
+.main-section-new1 {
+    /* padding-top: 1px;
+    background: #012245; */
+    width: 119%;
+    padding-top: 1px;
+    background: #012245;
+    margin-left: 0px!important;
 }
 
 .main-section-new_pricing {
@@ -8117,7 +8126,7 @@ h4 {
     width: 119%;
     padding-top: 1px;
     background: #fafafb;
-    margin-left: -158px;
+    margin-left: -154px;
 }
 
 .topp {

@@ -152,9 +152,9 @@
 
                             <div class="strivre-img-wrapper">
 
-                            <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
-                                <img src="{{ url('storage/'.$news->picture) }}" alt="{{ $news->name }}">
-                            </a>
+                                <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
+                                    <img src="{{ url('storage/'.$news->picture) }}" alt="{{ $news->name }}">
+                                </a>
 
                                 <label class="f-17 sort_name find-letest-news1">
                                     <a class="index-34" href="{{url('/letest_news/'.$news->slug) }}" target="_blank">{{$ss['en']}}
@@ -166,9 +166,9 @@
                             @if(empty($news->picture))
 
                             <div class="strivre-img-wrapper">
-                            <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
-                                <img src="../assets/images/course/1.jpg" alt="">
-                            </a>
+                                <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
+                                    <img src="../assets/images/course/1.jpg" alt="">
+                                </a>
                                 <label class="f-17 sort_name find-letest-news1">
                                     <a class="index-34" href="{{url('/letest_news/'.$news->slug)}}" target="_blank">{{$ss['en']}}
                                     </a>
@@ -197,98 +197,98 @@
 
                     <div class="col-lg-4 col-md-6">
 
-                    <!-- <a type="button" href="{{url('/top_coach_detail/'.$coach->id) }}" id="coach_id_{{$coach->id }}"> -->
+                        <!-- <a type="button" href="{{url('/top_coach_detail/'.$coach->id) }}" id="coach_id_{{$coach->id }}"> -->
 
-                    <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
-                        
-                        <div class="teacher-item">
-                            <div class="teacher-thumb coach-img-wrapper1 coach-img-fix-height">
-                                <!-- <a href="{{url('/coach_details/'.$coach->id) }}"> -->
-                                <?php if (!empty($coach->photo)) { ?>
-                                    <img src="{{ url('storage/'.$coach->photo) }}" alt="{{ $coach->name }}" class="lazyload img-fluid">
+                        <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
 
-                                <?php } else { ?>
+                            <div class="teacher-item">
+                                <div class="teacher-thumb coach-img-wrapper1 coach-img-fix-height">
+                                    <!-- <a href="{{url('/coach_details/'.$coach->id) }}"> -->
+                                    <?php if (!empty($coach->photo)) { ?>
+                                        <img src="{{ url('storage/'.$coach->photo) }}" alt="{{ $coach->name }}" class="lazyload img-fluid">
 
-                                    <img src="../assets/images/course/1.jpg" alt="{{ $coach->name }}" class="lazyload img-fluid">
-                                <?php } ?>
-                            </div>
-                            <div class="teacher-meta">
-                                <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
-                                    <p class="top-coaches-name-list coach-cat-name12 ">{{$coach->name}} </p>
+                                    <?php } else { ?>
 
-                                </a>
-                                <?php
-
-                                if(!empty($coach->categories_slug)){
-
-                               
-                                $name = json_decode($coach->categories_slug);
-                                $ss = array();
-                                foreach ($name as $key => $sub) {
-                                    $ss[$key] = $sub;
-                                }
-
-                                ?>
-
-                                <p class="lh">{{$ss['en']}}
-                                </p>
-                                <?php  }else{
-                                    ?>
-                                    <p class=" text-center">Others
-                                </p>
-                                    <?php }?>
-                                <!-- <img src="../assets/images/course/1.jpg" alt=""> -->
-
-                                <span class="top-coaches-name-list1 "> <?php if ($coach->year_of_experience != '') { ?>
-                                        {{ $coach->year_of_experience }} years Experience
-                                    <?php
-                                                                        } else { ?>
-                                        No Experience
-
+                                        <img src="../assets/images/course/1.jpg" alt="{{ $coach->name }}" class="lazyload img-fluid">
                                     <?php } ?>
-                                </span>
+                                </div>
+                                <div class="teacher-meta">
+                                    <a type="button" href="{{url('/coachall_detail/'.$coach->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach->id }}" id="coach_id_{{$coach->id }}">
+                                        <p class="top-coaches-name-list coach-cat-name12 ">{{$coach->name}} </p>
+
+                                    </a>
+                                    <?php
+
+                                    if (!empty($coach->categories_slug)) {
 
 
-                                <div class="modal fade bd-example-modal-lg_{{$coach->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach->id }}">
-                                    <div class="modal-dialog modal-xl">
+                                        $name = json_decode($coach->categories_slug);
+                                        $ss = array();
+                                        foreach ($name as $key => $sub) {
+                                            $ss[$key] = $sub;
+                                        }
 
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Top Coach Details</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
+                                    ?>
 
-                                        <div class="modal-content p-5">
+                                        <p class="lh">{{$ss['en']}}
+                                        </p>
+                                    <?php  } else {
+                                    ?>
+                                        <p class=" text-center">Others
+                                        </p>
+                                    <?php } ?>
+                                    <!-- <img src="../assets/images/course/1.jpg" alt=""> -->
+
+                                    <span class="top-coaches-name-list1 "> <?php if ($coach->year_of_experience != '') { ?>
+                                            {{ $coach->year_of_experience }} years Experience
+                                        <?php
+                                                                            } else { ?>
+                                            No Experience
+
+                                        <?php } ?>
+                                    </span>
 
 
-                                            <img src="{{ url('storage/'.$coach->photo) }}" class="img-coches-main" alt="{{ $coach->name }}">
-                                            <p class="coach-details-name">{{$coach->name}}</p>
-                                            <h4 class=" text-center">
-                                            {{$ss['en']}}
-                                            </h4>
-                                            <p class="text-center"><b>
-                                            </b>
-                                            </p> <br>
-                                            <label>{{$coach->coach_summary}}</label>
-                                            <br>
-                                            <div class="row center-button-modal">
+                                    <div class="modal fade bd-example-modal-lg_{{$coach->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach->id }}">
+                                        <div class="modal-dialog modal-xl">
 
-                                                <div class="col-lg-2">
-                                                    <a href="{{url('/top_coach_detail/'.$coach->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <a href="{{url('/register') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Top Coach Details</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+
+                                            <div class="modal-content p-5">
+
+
+                                                <img src="{{ url('storage/'.$coach->photo) }}" class="img-coches-main" alt="{{ $coach->name }}">
+                                                <p class="coach-details-name">{{$coach->name}}</p>
+                                                <h4 class=" text-center">
+                                                    {{$ss['en']}}
+                                                </h4>
+                                                <p class="text-center"><b>
+                                                    </b>
+                                                </p> <br>
+                                                <label>{{$coach->coach_summary}}</label>
+                                                <br>
+                                                <div class="row center-button-modal">
+
+                                                    <div class="col-lg-2">
+                                                        <a href="{{url('/top_coach_detail/'.$coach->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <a href="{{url('/register') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+
+                                    <!-- </div> -->
                                 </div>
 
-
-                                <!-- </div> -->
                             </div>
-
-                        </div>
-                    </a>
+                        </a>
                     </div>
                     @endforeach
                     @endif
@@ -319,11 +319,11 @@
                                         <img src="../assets/images/course/1.jpg" alt="">
 
                                     </div>
-                              
-                                <label class="f-17 sort_name index-34 find-letest-news">{{$value->course_name}}</label>
-                                <div class="course-price">
-                                    {{$value->course_hourse}} Credits
-                                </div>
+
+                                    <label class="f-17 sort_name index-34 find-letest-news">{{$value->course_name}}</label>
+                                    <div class="course-price">
+                                        {{$value->course_hourse}} Credits
+                                    </div>
                                 </a>
                             </div>
                         <?php } ?>
@@ -387,111 +387,55 @@
 
             <div class="row p-5 text-center">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="course-wrapper">
+                    <!-- <div class="col-lg-12"> -->
+
+                    @foreach($categories as $key => $cat)
+                    <?php
+                    $name = json_decode($cat->name);
+                    $ss = array();
+                    foreach ($name as $key => $sub) {
+                        $ss[$key] = $sub;
+                    }
+                    ?>
+                    <div class="col-md-3 course-wrapper">
+
+
+                        <a href="{{url('/coach_list_category_all/'.$cat->id) }}">
+
                             <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 74 60">
-                                    <defs>
-                                        <style>
-                                            .cls-1 {
-                                                fill: url(#pattern);
-                                            }
-                                        </style>
-                                        <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 74 60">
-                                            <image width="74" height="60" xlink:href="../assets/images/home/desktop1-image.png" />
-                                        </pattern>
-                                    </defs>
-                                    <path id="desktop1" class="cls-1" d="M0,0H74V60H0Z" />
-                                </svg>
-                                <h4><a href="#">Computer Science</a></h4>
-                                <input type="checkbox" style="width: 22px;">
+                                <defs>
+                                    <style>
+                                        .cls-1 {
+                                            fill: url(#pattern);
+                                        }
+                                    </style>
+                                    <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 74 60">
+
+                                        <img src="{{ url('storage/'.$cat->picture) }}" width="74" height="60">
+
+                                    </pattern>
+
+
+                                </defs>
+                                <path id="desktop1" class="cls-1" d="M0,0H74V60H0Z" />
+                                <!-- </svg> -->
+
+                                <h4> {{ $ss['en'] }}
+
+                                </h4>
+
                             </div>
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 64 64">
-                                    <image id="data" width="64" height="64" xlink:href="../assets/images/home/data-image.png" />
-                                </svg>
-                                <h4><a href="#">Data Analysis & Statistics</a></h4>
-                                <input type="checkbox" style="width: 22px;">
-                            </div>
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 74 70">
-                                    <image id="proposal" width="74" height="70" xlink:href="../assets/images/home/proposal-image.png" />
-                                </svg>
-                                <h4><a href="#">Business & Management</a></h4>
-                                <input type="checkbox" style="width: 22px;">
-                            </div>
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 80 67">
-                                    <image id="chat" width="80" height="67" xlink:href="../assets/images/home/chat-image.png" />
-                                </svg>
-                                <h4><a href="#">Social Sciences</a></h4>
-                                <input type="checkbox" style="width: 22px;">
-                            </div>
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 58 73">
-                                    <image id="mind" width="50" height="50" xlink:href="../assets/images/home/mind-image.png" />
-                                </svg>
-                                <h4><a href="#">Biology & Life Sciences</a></h4>
-                                <input type="checkbox" style="width: 22px;">
-                            </div>
-                        </div>
+
+                        </a>
+
                     </div>
+                    @endforeach
+                    <!-- </div> -->
+
+
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="course-wrapper">
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 74 60">
-                                    <defs>
-                                        <style>
-                                            .cls-1 {
-                                                fill: url(#pattern);
-                                            }
-                                        </style>
-                                        <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 74 60">
-                                            <image width="74" height="60" xlink:href="../assets/images/home/desktop1-image.png" />
-                                        </pattern>
-                                    </defs>
-                                    <path id="desktop1" class="cls-1" d="M0,0H74V60H0Z" />
-                                </svg>
-                                <h4><a href="">Al & Machine Learning
-                                    </a></h4>
-                                <input type="checkbox" style="width: 22px;">
-                            </div>
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 64 64">
-                                    <image id="data" width="64" height="64" xlink:href="../assets/images/home/data-image.png" />
-                                </svg>
-                                <h4><a href="">Project Management
-                                    </a></h4>
-                                <input type="checkbox" style="width: 22px;">
-                            </div>
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 74 70">
-                                    <image id="proposal" width="74" height="70" xlink:href="../assets/images/home/proposal-image.png" />
-                                </svg>
-                                <h4><a href="">Cyber Courses
-                                    </a></h4>
-                                <input type="checkbox" style="width: 22px;">
-                            </div>
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 80 67">
-                                    <image id="chat" width="80" height="67" xlink:href="../assets/images/home/chat-image.png" />
-                                </svg>
-                                <h4><a href="">Cloud Computing
-                                    </a></h4>
-                                <input type="checkbox" style="width: 22px;">
-                            </div>
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 58 73">
-                                    <image id="mind" width="50" height="50" xlink:href="../assets/images/home/mind-image.png" />
-                                </svg>
-                                <h4><a href="">DevOps</a></h4>
-                                <input type="checkbox" style="width: 22px;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
 
 
                 <div class="col-lg-12">
@@ -505,70 +449,70 @@
 </div>
 
 <div style="background: #012245; width: 100%!important;">
-<section class="main-section-new">
-    <div class="container">
+    <section class="main-section-new">
+        <div class="container">
 
-        <div class="mt-120">
-            <center>
-                <h2 class="fwhite home-banner-page-text">GET YOUR DREAM COURSE WITH BEST INSTRUCTOR
-                </h2>
-            </center>
-            <div class="row">
-                <div class="col-lg-5 col-md-6">
+            <div class="mt-120">
+                <center>
+                    <h2 class="fwhite home-banner-page-text">GET YOUR DREAM COURSE WITH BEST INSTRUCTOR
+                    </h2>
+                </center>
+                <div class="row">
+                    <div class="col-lg-5 col-md-6">
 
 
-                    <div class="ab-content">
-                        <h3 class="fwhite">CONNECT WITH COACHES/ STRIVRES AROUND THE WORLD</h3>
-                        <p style="color: #ffffff;">Strivre is great for teams because its easy to get set up and the offerings touch on a vast array of soft skill focus areas, which not only build role-related talents but also enable team members to grow their whole selves beyond
-                            work.
-                        </p>
-                        <a class="bisylms-btn-pink" href="{{url('/register') }}">Sign Up </a>
+                        <div class="ab-content">
+                            <h3 class="fwhite">CONNECT WITH COACHES/ STRIVRES AROUND THE WORLD</h3>
+                            <p style="color: #ffffff;">Strivre is great for teams because its easy to get set up and the offerings touch on a vast array of soft skill focus areas, which not only build role-related talents but also enable team members to grow their whole selves beyond
+                                work.
+                            </p>
+                            <a class="bisylms-btn-pink" href="{{url('/register') }}">Sign Up </a>
+                        </div>
                     </div>
-                </div>
-                <div class=" col-lg-7 col-md-6">
+                    <div class=" col-lg-7 col-md-6">
 
-                    <div class="">
-                        <img src="assets/images/edu_2.png" alt="">
+                        <div class="">
+                            <img src="assets/images/edu_2.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </div>
 
 <section class="main-section topp" style="margin-top: 0px!important; ">
-<div class="container">
+    <div class="container">
 
-    <div class="row mt-120">
-        <div class="col-lg-7 col-md-6">
-            <div class="ab-thumb">
-                <img src="assets/images/edu_1.png" alt="">
+        <div class="row mt-120">
+            <div class="col-lg-7 col-md-6">
+                <div class="ab-thumb">
+                    <img src="assets/images/edu_1.png" alt="">
+                </div>
             </div>
-        </div>
-        <div class="col-lg-5 col-md-6">
-            <div class="ab-content">
-                <h3 class="fblack">JOIN OUR LARGEST COACHING COMMUNITY.</h3>
-                <p class="fblack">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
-                    Aliquam euismod, elit vel bibendum vestibulum, nisl nisl mollis tortor, a rhoncus mi augue eleifend justo. Sed sed ullamcorper massa, at pretium tortor. Integer nunc tellus, elementum eu malesuada eu, pellentesque a tellus.
-                </p>•••••••••
-                <a class="bisylms-btn" href="{{url('/register') }}">Get Started</a>
+            <div class="col-lg-5 col-md-6">
+                <div class="ab-content">
+                    <h3 class="fblack">JOIN OUR LARGEST COACHING COMMUNITY.</h3>
+                    <p class="fblack">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
+                        Aliquam euismod, elit vel bibendum vestibulum, nisl nisl mollis tortor, a rhoncus mi augue eleifend justo. Sed sed ullamcorper massa, at pretium tortor. Integer nunc tellus, elementum eu malesuada eu, pellentesque a tellus.
+                    </p>
+                    <a class="bisylms-btn" href="{{url('/register') }}">Get Started</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </section>
 
 
 
-   
+
 <div style="background: #fafafb!important; width: 100%!important; border: none!important;">
-<section class="main-section-new-footer">
+    <section class="main-section-new-footer">
 
 
-@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer2', 'layouts.inc.footer2'])
+        @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer2', 'layouts.inc.footer2'])
 
-</section>
+    </section>
 </div>
 <a href="#" id="back-to-top">
     <i class="fal fa-angle-double-up scroll-top-footer"></i>
@@ -676,7 +620,6 @@
             font-weight: 500;
         }
     }
-
 </style>
 
 

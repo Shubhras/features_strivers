@@ -153,6 +153,9 @@ class HomeController extends FrontController
 		// $data['categories_list_coach'] = DB::table('categories')->select('categories.slug','categories.id','categories.name','users.category')->join('users' ,'categories.id' ,'=' ,'users.category')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 
 
+		$data['categories'] = DB::table('categories')->select('categories.*')->where('categories.parent_id', null)->orderBy('categories.name', 'asc')->get();
+
+		// print_r($data['categories']);die;
 		$data['categories_list_coach'] = DB::table('users')->select('categories.slug','categories.id','categories.name','users.category','categories.picture','categories.icon_class')->join('categories' ,'categories.id' ,'=' ,'users.category')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->where('users.user_type_id', 2)->get();
 
 		
