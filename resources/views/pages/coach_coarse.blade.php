@@ -61,6 +61,9 @@
 
 ?>
 <center>
+
+
+               
     <h2 class="sec-title " style="text-align: center; margin-top: 61px; margin-bottom: 11px;">Consultation Detail</h2>
 </center>
 <section class="blog-section64">
@@ -76,6 +79,16 @@
         <br>
 
         <div class="row">
+
+        <div class="col-sm-12 form-group">
+                  <!-- @if(Session::has('message'))
+                  <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
+                  @endif -->
+                  @if(Session::has('loginerror'))
+                  <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('loginerror') }} <a href="{{url('/pricing') }}" style="color: red;"><b> Click the Subscriptions</b></a></p>
+                  @endif
+               </div>
+
 
             <div class="col-lg-6 pleft">
                 <div class="col-lg-12 imgb">
@@ -122,10 +135,15 @@
         <br>
         <br>
 
+        
+
         <div class="row">
+
+        
             
             <div class="col-md-3">
                 <form action="{{ url('/account/enroll_course') }}" method="post">
+                    <input type="hidden" name="creadit_required" id="creadit_required" value="{{$coach_course->creadit_required}}">
                     <input type="hidden" name="user_id" id="user_id" value="{{$auth_id}}" class="form-control">
                     <input type="hidden" name="coach_id" id="coach_id" value="{{$coach_course->coach_id}}" class="form-control">
                     <input type="hidden" name="course_id" id="course_id" value="{{$coach_course->id}}" class="form-control">
