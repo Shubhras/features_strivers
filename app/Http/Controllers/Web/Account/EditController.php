@@ -73,6 +73,9 @@ class EditController extends AccountBaseController
 
 		$data['subscription_plan'] = Package::query()->get();
 
+		// $data['edit_user'] =DB::table('users')->select('users.*')->where('users.id' ,$user->id);
+
+		//$data['categories']= Category::query()->get();
 		// $data['categoriese']= cities::query()->get();
 		$data['cities_data'] = DB::table('cities')->select('cities.name','cities.id','cities.country_code')
 		->where('cities.country_code',$user->country_code)

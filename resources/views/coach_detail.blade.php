@@ -125,16 +125,14 @@ if (!empty($top_coach_detail->slug)) {
 			<button type="button" class="btn btn-lg" style="background: #012245; color: #ffffff">Get Started</button>
 		</a>
 	</div>
-<br>
 
-<br>
 	</div>
 
 	</div>
 	</div>
 </section>
 <div class="main-section">
-	<div class="container">
+	<div class="container" style="margin-top: -141px;">
 
 		<div class="row">
 
