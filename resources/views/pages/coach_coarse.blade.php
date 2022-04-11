@@ -48,93 +48,105 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
 
 <!-- <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);"> -->
-    @extends('layouts.master_new')
-    @section('content')
+@extends('layouts.master_new')
+@section('content')
 
 
-    <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
-    </section>
+<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+</section>
 
 
-    <?php
+<?php
 
 
-	?>
-    <center>
-        <h2  class="sec-title " style="text-align: center; margin-top: 61px; margin-bottom: 11px;">Consultation Detail</h2>
-    </center>
-    <section class="blog-section64">
-  <div class="container ">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3 class="text-center">{{$coach_course->course_name}}</h3> <br>
+?>
+<center>
+    <h2 class="sec-title " style="text-align: center; margin-top: 61px; margin-bottom: 11px;">Consultation Detail</h2>
+</center>
+<section class="blog-section64">
+    <div class="container ">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="text-center">{{$coach_course->course_name}}</h3> <br>
+
+            </div>
+        </div>
+
+
+        <br>
+
+        <div class="row">
+
+            <div class="col-lg-6 pleft">
+                <div class="col-lg-12 imgb">
+                    <center> <img src="{{ url('storage/'.$coach_course->image) }}" class="lazyload img-fluid1 images_height" style="width: 100%;"></center>
 
                 </div>
             </div>
+
+
+            <div class="col-lg-6 box">
+                <div class="row">
+
+                    <div class="line_bottom">
+                        <p> Total Consultation Fees:<span class="boxfont"> $ {{$coach_course->total_consultation_fee}} </span>
+                        </p>
+                        <!-- <p> Consultation Fees Per Hour:<span class="boxfont"> $ {{$coach_course->consultation_fee_per_hour}}</span> -->
+                        </p>
+                        <p> Credits Required:<span class="boxfont"> {{$coach_course->creadit_required}}</span>
+                        </p>
+                        <p> Date:<span class="boxfont"> {{$coach_course->dated}}</span>
+                        </p>
+                        <p> Coach:<span class="boxfont"> {{$coach_course->name}}</span>
+                        </p>
+
+                    </div>
+
+                </div>
+                <div class="row" style="margin-left: -33px;">
+
+                    <h3 style="font-weight: 700; color: #fff;">Discription:</h3>
+                    <?php
+                    $descriptions = strip_tags($coach_course->description)
+
+                    ?>
+                    <p style="font-size: 16px; font-family: 'Montserrat', sans-serif; "> {{$descriptions}}
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <br>
+        <br>
+
+        <div class="row">
             
-            <div class="row">
-                <div class="col-md-3">
-                    <form action="{{ url('/account/enroll_course') }}" method="post">
+            <div class="col-md-3">
+                <form action="{{ url('/account/enroll_course') }}" method="post">
                     <input type="hidden" name="user_id" id="user_id" value="{{$auth_id}}" class="form-control">
                     <input type="hidden" name="coach_id" id="coach_id" value="{{$coach_course->coach_id}}" class="form-control">
                     <input type="hidden" name="course_id" id="course_id" value="{{$coach_course->id}}" class="form-control">
-                    
-           
-            </form>
+
+                    <button type="submit" class="bisylms-btn" style="float: right;" onclick="customSession()">
+                    View Package
+                    </button>
+                </form>
             </div>
-            </div>
-            <br>
 
-            <div class="row">
-            <div class="col-lg-6 pleft">
-           
-                <div class="col-lg-12 imgb">
-                    <center> <img src="{{ url('storage/'.$coach_course->image) }}"
-               
-                            class="lazyload img-fluid1 images_height" style="width: 100%;">
-                            </center>
-                            
-                           
-                </div>
-                <br>
-                <br>
-                <center> 
-                <button type="submit" class="bisylms-btn">
-                Enroll Now
-            </button>
-</center>
-</div>
-                <div class="col-lg-6 box">
-                    <div class="row">
+            <div class="col-md-2">
 
-                        <div class="line_bottom">
-                            <p> Total Consultation Fees:<span class="boxfont"> $ {{$coach_course->total_consultation_fee}} </span>
-                </p>
-                            <p> Consultation Fees Per Hour:<span class="boxfont"> $ {{$coach_course->consultation_fee_per_hour}}</span>
-                            </p>
-                            <p> Credits Required:<span class="boxfont"> {{$coach_course->creadit_required}}</span>
-                            </p>
-                            <p> Date:<span class="boxfont"> {{$coach_course->dated}}</span>
-                            </p>
-                            <p> Coach:<span class="boxfont"> {{$coach_course->name}}</span>
-                            </p>
-                           
-                        </div>
+                <a href="{{'/pricing'}}" class="bisylms-btn">
 
-                    </div>
-                    <div class="row" style="margin-left: -33px;">
-                
-                    <h3 style="font-weight: 700; color: #fff;">Discription:</h3>
-                    <?php
-					$descriptions = strip_tags($coach_course->description)
-
-					 ?>
-                    <p style="font-size: 16px; font-family: 'Montserrat', sans-serif; "> {{$descriptions}}
-                    </p>
-</div>
+                    Buy Credits
+                </a>
                 
             </div>
+            <div class="col-md-4">
 
+</div>
         </div>
 
         <br><br>
@@ -149,43 +161,43 @@
                 <div class="col-lg-12">
                     <h2 style="font-weight: 700;  margin: 0px 191px 15px;">Discription:</h2>
                     <?php
-					$descriptions = strip_tags($coach_course->description)
+                    $descriptions = strip_tags($coach_course->description)
 
-					 ?>
+                    ?>
                     <p style="font-size: 16px; text-align:center; font-family: 'Montserrat', sans-serif; margin: 0px 191px 15px;"> {{$descriptions}}
                     </p>
                 </div>
             </div> -->
 
         </div>
-    </section>
+</section>
 
 
-    @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer', 'layouts.inc.footer'])
+@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer', 'layouts.inc.footer'])
 
-    <a href="#" id="back-to-top">
-        <i class="fal fa-angle-double-up"></i>
-    </a>
-    <!-- Back To Top -->
+<a href="#" id="back-to-top">
+    <i class="fal fa-angle-double-up"></i>
+</a>
+<!-- Back To Top -->
 
-    <!-- Start Include All JS -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.appear.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/jquery.nice-select.min.js"></script>
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script src="assets/js/TweenMax.min.js"></script>
-    <script src="assets/js/lightcase.js"></script>
-    <script src="assets/js/jquery.plugin.min.js"></script>
-    <script src="assets/js/jquery.countdown.min.js"></script>
-    <script src="assets/js/jquery.easing.1.3.js"></script>
-    <script src="assets/js/jquery.shuffle.min.js"></script>
+<!-- Start Include All JS -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.appear.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/slick.js"></script>
+<script src="assets/js/jquery.nice-select.min.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="assets/js/TweenMax.min.js"></script>
+<script src="assets/js/lightcase.js"></script>
+<script src="assets/js/jquery.plugin.min.js"></script>
+<script src="assets/js/jquery.countdown.min.js"></script>
+<script src="assets/js/jquery.easing.1.3.js"></script>
+<script src="assets/js/jquery.shuffle.min.js"></script>
 
-    <script src="assets/js/theme.js"></script>
-    <!-- End Include All JS -->
-    <style>
+<script src="assets/js/theme.js"></script>
+<!-- End Include All JS -->
+<style>
     .line_bottom {
         font-size: 16px !important;
         outline: 20px;
@@ -201,11 +213,14 @@
 
         font-weight: 700px;
     }
-	.img-fluid1{
-			height: 400px;
 
-	}
-	/* @media screen and (min-width: 1024px) {
+    .img-fluid1 {
+        height: 454px;
+        width: 672px;
+
+    }
+
+    /* @media screen and (min-width: 1024px) {
 		.line_bottom {
 		font-size: 23px !important;
 		outline: 20px;
@@ -223,25 +238,23 @@
 		 }
             
     } */
-
-	   
-    </style>
-    <style>
+</style>
+<style>
     .scroll-top-footer {
         line-height: 2 !important;
     }
-    </style>
+</style>
 
-    @endsection
+@endsection
 
-    @section('after_styles')
+@section('after_styles')
 
-    @if (config('lang.direction') == 'rtl')
-    <!-- <link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput-rtl.min.css') }}" rel="stylesheet"> -->
-    @endif
+@if (config('lang.direction') == 'rtl')
+<!-- <link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput-rtl.min.css') }}" rel="stylesheet"> -->
+@endif
 
 
 
-    @endsection
+@endsection
 
-    @section('after_scripts')
+@section('after_scripts')
