@@ -66,10 +66,10 @@
 
                         <input type="hidden" name="accept_terms" value="1">
                     </div>
-                    <div class="col-sm-12">
+                    <!-- <div class="col-sm-12">
                         <center><a class="b-btn bisylms-btn col-sm-12" href="payment-detail.html">Please Enter Your Card Details</a><br>
                         </center>
-                    </div>
+                    </div> -->
                     <div class="col-md-12 register-btn-padding">
                         <center><button class="btn01  btn-primary1 register-btn-primary register-btn-primary" type="submit" id="signupBtn">
                                 Register </button></center>
