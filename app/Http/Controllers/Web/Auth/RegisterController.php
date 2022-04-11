@@ -180,7 +180,7 @@ class RegisterController extends FrontController
 	public function getRegisternewUsers()
 	{
 		$data = [];
-		
+		Session()->flash('message', 'Your email allready exist !');
 		// References
 		$data['genders'] = Gender::query()->get();
 		// print_r($data['genders']);die;
@@ -197,10 +197,10 @@ class RegisterController extends FrontController
 	public function getRegisternewStrivers()
 	{
 		$data = [];
-		
+		Session()->flash('message', 'Your email allready exist !');
 		// References
 		$data['genders'] = Gender::query()->get();
-		
+		// print_r($data['genders']);die;
 		// Meta Tags
 		[$title, $description, $keywords] = getMetaTag('register');
 		MetaTag::set('title', $title);

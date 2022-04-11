@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Auth;
+ use App\Http\Controllers\Web\Session;
 
 class HomeController extends FrontController
 {
@@ -708,7 +709,21 @@ class HomeController extends FrontController
 	{
 
 		
-		// print_r($request->all());die;
+		// print_r($request->email);die;
+		$user = DB::table('users')->select('users.email')->get();
+	
+		$datsa =[];
+		foreach($user as $key=> $vs){
+
+			$datsa[$key] = $vs->email;
+		}
+
+		// print_r($datsa);die;
+		if($request->email==$datsa){
+		
+			Session()->flash('message', 'Your email allready exist !');
+		
+		}
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
 		  CURLOPT_URL => 'https://206672f6b5d16174.api-us.cometchat.io/v3/users',
@@ -807,6 +822,7 @@ class HomeController extends FrontController
 				flash($mailMessage)->error();
 			}
 		}
+	
 		
 		
 		return redirect($nextUrl);

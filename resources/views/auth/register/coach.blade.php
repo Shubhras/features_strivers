@@ -14,11 +14,9 @@
     <section class="contact-section ">
 
         <div class="col-md-8 d-flex justify-content-center">
-            <!-- @if (isset($errors) && $errors->any())
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-            @endif -->
+        @if(Session::has('message'))
+        <p class="alert alert-info">{{ Session::get('message') }}</p>
+        @endif
             <div class="contact-form dform" id="Coaches">
 
                 <center>
@@ -38,7 +36,10 @@
                         <input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden" id="user_type_coach" value="2">
                     </div>
                     @if (isEnabledField('email'))
+                    
+                    <?php  ?>
                     <div class="col-md-6">
+                    
                         <?php $emailError = (isset($errors) and $errors->has('email')) ? ' is-invalid' : ''; ?>
                         <label class="form-label" for="email">Email
                         </label>
@@ -66,10 +67,10 @@
 
                         <input type="hidden" name="accept_terms" value="1">
                     </div>
-                    <div class="col-sm-12">
+                    <!-- <div class="col-sm-12">
                         <center><a class="b-btn bisylms-btn col-sm-12" href="payment-detail.html">Please Enter Your Card Details</a><br>
                         </center>
-                    </div>
+                    </div> -->
                     <div class="col-md-12 register-btn-padding">
                         <center><button class="btn01  btn-primary1 register-btn-primary register-btn-primary" type="submit" id="signupBtn">
                                 Register </button></center>
