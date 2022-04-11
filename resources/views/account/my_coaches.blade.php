@@ -72,7 +72,7 @@
 
                     <div class="col-md-12 user-profile-img-data default-inner-box">
 
-                        <img id="userImg" class="user-profile-images" src="{{ url('storage/'.$user->photo_url) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+                        <img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo_url) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
                         <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 
@@ -339,7 +339,7 @@
 
                     <div class="col-md-12 user-profile-img-data default-inner-box">
 
-                        <img id="userImg" class="user-profile-images" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+                        <img id="userImg" class="user-profile-images1" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
                         <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 
