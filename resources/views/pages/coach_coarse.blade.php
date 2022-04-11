@@ -61,7 +61,7 @@
 
 	?>
     <center>
-        <h2  class="sec-title " style="text-align: center; margin-top: 61px;">Consultation Detail</h2>
+        <h2  class="sec-title " style="text-align: center; margin-top: 61px; margin-bottom: 11px;">Consultation Detail</h2>
     </center>
     <section class="blog-section64">
   <div class="container ">
@@ -79,22 +79,30 @@
                     <input type="hidden" name="coach_id" id="coach_id" value="{{$coach_course->coach_id}}" class="form-control">
                     <input type="hidden" name="course_id" id="course_id" value="{{$coach_course->id}}" class="form-control">
                     
-            <!-- <button type="submit" class="btn btn-primary">
-                Enroll Now
-            </button> -->
+           
             </form>
             </div>
             </div>
             <br>
 
             <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 pleft">
+           
                 <div class="col-lg-12 imgb">
                     <center> <img src="{{ url('storage/'.$coach_course->image) }}"
                
-                            class="lazyload img-fluid1 images_height" style="width: 100%;"></center>
-
+                            class="lazyload img-fluid1 images_height" style="width: 100%;">
+                            </center>
+                            
+                           
                 </div>
+                <br>
+                <br>
+                <center> 
+                <button type="submit" class="bisylms-btn">
+                Enroll Now
+            </button>
+</center>
 </div>
                 <div class="col-lg-6 box">
                     <div class="row">
@@ -194,8 +202,7 @@
         font-weight: 700px;
     }
 	.img-fluid1{
-			height: 454px;
-			 width: 672px;
+			height: 400px;
 
 	}
 	/* @media screen and (min-width: 1024px) {

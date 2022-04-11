@@ -45,10 +45,10 @@
                             ?>
                             {{-- login --}}
                             <?php $loginError = (isset($errors) && $errors->has('login')) ? ' is-invalid' : ''; ?>
-                            <label for="login" class="col-form-label">{{ t('login') . ' (' . getLoginLabel() . ')' }}:</label>
+                            <label for="login" class="col-form-label">{{ t('login')  }}:</label>
                             <div class="input-group">
 
-                                <input id="login" name="login" type="text" placeholder="{{ getLoginLabel() }}" class="form-control{{ $loginError }}" value="{{ $loginValue }}">
+                                <input id="login" name="login" type="text" placeholder="email" class="form-control{{ $loginError }}" value="{{ $loginValue }}">
                             </div>
                         </div>
                         {{-- password --}}

@@ -497,6 +497,8 @@
         </div>
     </div>
 </div>
+
+<div style="background: #012245; width: 100%!important;">
 <section class="main-section-new">
     <div class="container">
 
@@ -527,7 +529,9 @@
         </div>
     </div>
 </section>
-<section class="main-section">
+</div>
+
+<section class="main-section topp" style="margin-top: 0px!important; ">
 <div class="container">
 
     <div class="row mt-120">
@@ -552,11 +556,14 @@
 
 
    
+<div style="background: #fafafb!important; width: 100%!important; border: none!important;">
+<section class="main-section-new-footer">
 
 
+@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer2', 'layouts.inc.footer2'])
 
-@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
-
+</section>
+</div>
 <a href="#" id="back-to-top">
     <i class="fal fa-angle-double-up scroll-top-footer"></i>
 </a>

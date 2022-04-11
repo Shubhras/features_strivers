@@ -129,17 +129,17 @@ body {
 
         <div class="container project-manage">
 
-            <h2 class="sec-title">
+            <h3 class="sec-title">
                 <!-- Project Management -->
                 @if(!empty($search_key))
 
 
-                Top Coaches for You :- {{$search_key}}
+                Search Result for: {{$search_key}}
                 @else
                 Top Coaches for You
                 @endif
 
-            </h2>
+            </h3>
 
             <!-- <div class="row"> -->
             <!-- <div class="col-md-3">
@@ -502,6 +502,7 @@ body {
                                     {{ $coach_list->name }}
         </p>
                             </a>
+                            
                             <p>Stylist &amp; Author
                             </p>
 
