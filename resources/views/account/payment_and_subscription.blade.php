@@ -622,11 +622,15 @@
 
 
                 <div class="row">
-                    <div style="margin-left: 125px; margin-top: 41px;">
+
+                   
 
 			<?php
 					if ($packagename) {
 
+                        ?>
+                         <div style="margin-left: 125px; margin-top: 41px;">
+                        <?php
 
 								//  $names = json_decode($packagename);
 								
@@ -696,6 +700,7 @@
                 </div>
                 <?php } else { ?>
 
+
                 <div class="col-md-12" style="text-align: center;">
                     <h2 style="color: #ffffff;">Please Get Subscription First!</h2>
                 </div>
@@ -707,6 +712,7 @@
                     </a>
 
                 </div>
+
 
                 <?php }
 			?>
