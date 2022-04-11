@@ -131,7 +131,7 @@
                     <input type="hidden" name="course_id" id="course_id" value="{{$coach_course->id}}" class="form-control">
 
                     <button type="submit" class="bisylms-btn" style="float: right;" onclick="customSession()">
-                    View Package
+                    Enroll Now
                     </button>
                 </form>
             </div>
