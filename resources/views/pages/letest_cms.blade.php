@@ -150,14 +150,14 @@
         font-family: 'Montserrat', sans-serif;
     } */
 
-    ::-webkit-scrollbar {
+    /* ::-webkit-scrollbar {
         width: 4px;
-    }
+    } */
 
-    ::-webkit-scrollbar-thumb {
+    /* ::-webkit-scrollbar-thumb {
         background: red;
         border-radius: 5px;
-    }
+    } */
 </style>
 
 @endsection

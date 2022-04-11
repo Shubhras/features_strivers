@@ -11,7 +11,7 @@
     <div class="container">
         <center>
 
-            <div class=" col-sm-10 main-section-new join">
+            <div class=" col-sm-10 main-section-new1 join">
                 <div class="row">
                     <div class=" col-sm-6  ">
                         <div class="ab-thumb">

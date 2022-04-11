@@ -26428,7 +26428,7 @@ div.login-box .panel-footer label {
 }
 
 .header-data {
-    margin-top: -37px;
+    margin-top: -52px;
     text-align: right
 }
 
@@ -31398,6 +31398,15 @@ ul li {
     display: inline-block;
     width: 71px;
     margin-left: -11px;
+}
+
+.user-profile-images1 {
+    border: solid 1px var(--border-color);
+    /* border-radius: 60px; */
+    display: inline-block;
+    width: 71px;
+    margin-left: -11px;
+    height: 70px!important;
 }
 
 .user-profile-img-data {

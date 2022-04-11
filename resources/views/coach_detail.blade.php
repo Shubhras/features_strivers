@@ -19,6 +19,7 @@
 			<center>
 			<img class="img-coches-main1" src="{{ url('storage/'.$top_coach_detail->photo) }}" alt="{{ $top_coach_detail->name }}">
             <p  class="coach-details-name text-center">{{ $top_coach_detail->name }}</p>
+			<br>
             <h4 class=" text-center">
             <?php
 
@@ -184,6 +185,7 @@ if (!empty($top_coach_detail->slug)) {
 					</div>
 				<?php } ?>
 		</div>
+				</div>
 <br>
 
 

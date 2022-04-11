@@ -690,7 +690,6 @@
                 <?php } ?>
                 <div class="col-md-12" style="text-align: left;">
                     <a class="bisylms-btn-pink" href="{{ url('pricing') }}">
-
 					Buy Credits
                     </a>
 
@@ -698,7 +697,7 @@
                 <?php } else { ?>
 
                 <div class="col-md-12" style="text-align: center;">
-                    <h2>Please Get Subscription First!</h2>
+                    <h2 style="color: #ffffff;">Please Get Subscription First!</h2>
                 </div>
                 <div class="col-md-12" style="text-align: center;">
                     <a class="bisylms-btn-pink" href="{{ url('pricing') }}">
