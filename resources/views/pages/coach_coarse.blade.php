@@ -85,7 +85,7 @@
                   <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
                   @endif -->
                   @if(Session::has('loginerror'))
-                  <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('loginerror') }} <a href="{{url('/pricing') }}" style="color: red;"><b> Click here to subscribe and get credits.</b></a></p>
+                  <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('loginerror') }} <a href="{{url('/pricing') }}" style="color: red;" target="_blank"><b> Click here to subscribe and get credits.</b></a></p>
                   @endif
                </div>
                 
@@ -157,7 +157,7 @@
 
             <div class="col-md-2">
 
-                <a href="{{'/pricing'}}" class="bisylms-btn">
+                <a href="{{'/pricing'}}" class="bisylms-btn" target="_blank">
 
                     Buy Credits
                 </a>

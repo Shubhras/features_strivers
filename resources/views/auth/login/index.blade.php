@@ -33,7 +33,7 @@
                         <h4>Login</h4>
                     </center>
                     <?php $mtAuth = !socialLoginIsEnabled() ? ' mt-2' : ' mt-1'; ?>
-                    <form id="loginForm" role="form" method="POST" action="{{ url()->current() }}" class="row">
+                    <form id="loginForm" role="form" method="POST" action="{{ url('/user_login') }}" class="row">
                         {!! csrf_field() !!}
                         <div class="col-md-12">
                             <?php
@@ -69,10 +69,16 @@
                                     Remember me</label>
 
                             </label> -->
+                            <?php if(!empty($course_id)){
+
+                           ?>
+
+                            <input type="hidden" name="course_id" id="course_id" value="{{$course_id}} "> 
+                                <?php } ?>
                         </div>
                         <div class="col-md-6 text-right">
                             <div class="check">
-                                <label><a href="{{ url('password/reset') }}">Forgot Password</a><a href="{{ \App\Helpers\UrlGen::register() }}">/Sign Up </a>
+                                <label><a href="{{ url('password/reset') }}">Forgot Password</a><a href="{{ \App\Helpers\UrlGen::register() }}" style="font-weight: 800;">/Sign Up </a>
 
                                 </label>
                             </div>
