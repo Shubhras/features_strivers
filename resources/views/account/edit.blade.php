@@ -41,46 +41,45 @@
 		<?php $photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
 
 
-			<?php if($user->user_type_id == 2){ ?>
+<?php if($user->user_type_id == 2){ ?>
 
 
 				<h2>
 
-<h2 class="sec-title">My Profile</h2>
-</h2>
+  <h2 class="sec-title">My Profile</h2>
+     </h2>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
-			
-			
+				
 				<div class="col-md-12 user-profile-img-data default-inner-box">
-
+					
 					<img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
 					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>  {{ $user->name }}</b> </span>
-				
-
-				<div class="row">
-				   
-					<div class="col-md-12 col-sm-8 col-12">
-					<span>
-
 					
-						<div class="header-data text-center-xs">
-							{{-- Threads Stats --}}
-							<div class="hdata">
-							<a href="{{ url('account/messages') }}">
-
-								<div class="mcol-left">
-									<i class="fas fa-phone-alt ln-shadow"></i>
-								</div>
-								<div class="mcol-right">
-									{{-- Number of messages --}}
-									<p>
-										
+					
+					<div class="row">
+						
+						<div class="col-md-12 col-sm-8 col-12">
+							<span>
+								
+								
+								<div class="header-data text-center-xs">
+									{{-- Threads Stats --}}
+									<div class="hdata">
+										<a href="{{ url('account/messages') }}">
+											
+											<div class="mcol-left">
+												<i class="fas fa-phone-alt ln-shadow"></i>
+											</div>
+											<div class="mcol-right">
+												{{-- Number of messages --}}
+												<p>
+													
 											{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-										   
+											
 											<em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
 									   
-									</p>
+										</p>
 								</div>
 								</a>
 								<div class="clearfix"></div>
@@ -88,17 +87,17 @@
 
 							{{-- Traffic Stats --}}
 							<div class="hdata">
-							<a href="{{ url('account/chat') }}">
-								<div class="mcol-left">
-									<i class="fas fa-comments ln-shadow"></i>
-								</div>
-								<div class="mcol-right">
-									{{-- Number of visitors --}}
+								<a href="{{ url('account/chat') }}">
+									<div class="mcol-left">
+										<i class="fas fa-comments ln-shadow"></i>
+									</div>
+									<div class="mcol-right">
+										{{-- Number of visitors --}}
 									<p>
 										
-											<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-											{{ \App\Helpers\Number::short($totalPostsVisits) }}
-								
+										<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+										{{ \App\Helpers\Number::short($totalPostsVisits) }}
+										
 											<em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
 									   
 									</p>
@@ -108,7 +107,7 @@
 								<div class="clearfix"></div>
 							</div>
 
-						   
+							
 
 							{{-- Favorites Stats --}}
 							<div class="hdata" style="width: 151px!important;margin-left: -38px;">
@@ -120,9 +119,9 @@
 									{{-- Number of favorites --}}
 									<p>
 										
-											{{ \App\Helpers\Number::short($countFavoritePosts) }}
-											<em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-									   
+										{{ \App\Helpers\Number::short($countFavoritePosts) }}
+										<em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
+										
 									</p>
 								</div>
 								</a>
@@ -132,17 +131,18 @@
 					</div>
 				
 			    </div>
-
+				
 		      </div>
-        </div>
+			</div>
 
-
-
-<div class="row">
-
-         <div class="col-md-3 page-sidebar ptop">
-
-		 
+			
+			
+			<div class="row">
+				
+				<div class="col-md-3 page-sidebar ptop">
+					
+					
+		
 					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
 		
 		 </div>
@@ -178,6 +178,40 @@
 						
 					    <div id="accordion" class="panel-group">
 							{{-- PHOTO --}}
+							<!-- <div class="card card-default">
+								<div class="card-header">
+									<h4 class="card-title">
+										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or User') }}</a>
+									</h4>
+								</div>
+								<?php
+								$photoPanelClass = '';
+								$photoPanelClass = request()->filled('panel')
+									? (request()->get('panel') == 'photo' ? 'show' : $photoPanelClass)
+									: ((old('panel')=='' || old('panel') =='photo') ? 'show' : $photoPanelClass);
+								?>
+								<div class="panel-collapse collapse {{ $photoPanelClass }}" id="photoPanel">
+									<div class="card-body">
+										<form name="details" class="form-horizontal" role="form" method="POST" action="{{ url('account/' . $user->id . '/photo') }}">
+											<div class="row">
+												<div class="col-xl-12 text-center">
+													
+													<?php $photoError = (isset($errors) and $errors->has('photo')) ? ' is-invalid' : ''; ?>
+													<div class="photo-field">
+														<div class="file-loading">
+															<input id="photoField" name="photo" type="file" class="file {{ $photoError }}">
+														</div>
+													</div>
+												
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div> -->
+
+
+
 							<div class="card card-default">
 								<div class="card-header">
 									<h4 class="card-title">
@@ -209,6 +243,8 @@
 									</div>
 								</div>
 							</div>
+
+
 							
 							{{-- USER --}}
 							<div class="card card-default">
@@ -293,7 +329,7 @@
 													{{ ('Country') }} <sup>*</sup>
 												</label>
 												<div class="col-md-12">
-													<select name="country_code" id="countryCode" class="form-control large-data-selecter{{ $countryCodeError }}" onchange="this.form.submit()">
+													<select name="country_code" id="countryCode" class="form-control large-data-selecter{{ $countryCodeError }}" onclick="getlocation(this.value)">
 														<!-- <option value="0" {{ (!old('country_code') or old('country_code')==0) ? 'selected="selected"' : '' }}>
 															{{ t('select_a_country') }}
 														</option>
@@ -359,29 +395,22 @@
 
 												<div class="col-md-12">
 												<input type="hidden" id="locationcode" value="">
-													<select name="location" id="location" class="form-control large-data-selecter">
+												<select name="location" id="locationiddata"
+                                                        class="form-control large-data-selecter">
+														<?php 
+														foreach ($cities_data as $key => $value) {
+															# code...
 														
-
-													<?php
-													foreach ($cities_data as $key =>$value) {
-
-														if(isset($_GET["country_code"])){
-															$country=$_GET["country_code"];
-															
-														}
-
-													
-													if($user->country_code== $value->country_code){
-													// print_r($value->id);die;
-													?>
-														<option id="location" value="{{ $value->id }}" {{(old('location', $user->location) == $value->id) ? 'selected="selected"' : '' }}>
-															{{  $value->name }}
-														</option>	
-													<?php
-													}
-												} ?>
 														
-													</select>
+														?>
+														<option value="{{ $value->id }}"
+                                                            {{ (old('country_code', $user->location)==$value->id) ? 'selected="selected"': '' }}>
+                                                            {{ $value->name }}
+                                                        </option>
+                                                       <?php } ?>
+
+
+                                                    </select>
 												</div>
 											</div>
                                             			
@@ -498,30 +527,36 @@
 													{{ ('Subcategories') }} <sup>*</sup>
 												</label>
 												<div class="col-md-6">
-													<select name="category" id="category" class="form-control large-data-selecter{{ $countryCodeError }}">
-														<option value="0" {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }}>
-															{{ t('select_a_category') }}
-														</option>
-														@foreach ($categories as $item)
-															<option value="{{ $item->id }}" {{ (old('category', $user->category)==$item->id) ? 'selected="selected"' : '' }}>
-																{{ $item->slug }}
-															</option>
-														@endforeach
-													</select>
-												</div>
-												<div class="col-md-6">
-													<select name="sub_category" id="sub_category" class="form-control large-data-selecter{{ $countryCodeError }}">
-														<?php
+                                                    <select name="category" id="category"
+                                                        class="form-control large-data-selecter{{ $countryCodeError }}" 
+														onclick="getcategory(this.value)">
+                                                        <option value="0"
+                                                            {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }}>
+                                                            {{ t('select_a_category') }}
+                                                        </option>
+                                                        @foreach ($categories as $item) -->
+                                                         <option value="{{ $item->id }}"
+                                                            {{ (old('category', $user->category)==$item->id) ? 'selected="selected"' : '' }}>
+                                                            {{ $item->slug }}
+                                                        </option>
+                                                        @endforeach 
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select name="sub_category" id="sub_category34"
+                                                        class="form-control large-data-selecter{{ $countryCodeError }}">
+                                                        <?php
 														foreach ($categoriess as $value) {
 															// print_r($value);die;
 														
 														?>
-													<option value="{{ $value->id }}" {{ (old('category', $user->sub_category)==$value->id) ? 'selected="selected"' : '' }}>{{$value->slug}}
-																
-															</option>
-													<?php } ?>
-												</select>
-												</div>
+                                                        <option value="{{ $value->id }}"
+                                                            {{ (old('category', $user->sub_category)==$value->id)? 'selected="selected"': '' }}>
+                                                            {{ $value->slug }}
+                                                        </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
 											</div>
 
 											{{-- gender_id --}}
@@ -1815,125 +1850,147 @@
 	</script>
 
 	<script>
-	     // when category dropdown changes
-		
-			function getsubcategory(id){
-			var sub_cat_id = {{ old('sub_category', $user->category) }}
-			$('#category').change(function() {
-				var categoryID = $('#category').val();
-				if (categoryID) {
-					$.ajax({
-						type: "GET",
-						url: "{{ url('account/getSubcategories') }}?id=" + categoryID,
+// when category dropdown changes
 
-						success: function(res) {
+function getcategory(id)
+ {
+	
+    var categoryID = $('#category').val();
+    
+    // alert(categoryID);
+        // var categoryID = $('#category').val();
+        if (categoryID) {
+            $.ajax({
+                type: "GET",
+				dataType: 'Json',
+                url: "{{ url('account/getSubcategories') }}?id=" + categoryID,
+				data: {
+            			'id': categoryID
+				},
 
-							if (res) {
-
-								$("#sub_category").empty();
-								$("#sub_category").append('<option value=0>Select a subcategory</option>');
-								$.each(res, function(key, value) {
-									$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value +
-									'</option>');
-
-								});
-
-							} else {
-
-								$("#sub_category").empty();
-							}
-							
-						}
-					});
-				} else {
-					$("#sub_category").empty();
-				}
-			});
-			var categoryID = $('#category').val();	
-			if (categoryID) {
-				
-				$.ajax({
+                success: function(Response) {
 					
-					type: "GET",
-					url: "{{ url('account/getSubcategories') }}?id=" + categoryID,
+// console.log( 'hii',Response);
+                    if (Response) {
 
-					success: function(res) {
+                        $("#sub_category34").empty();
+                        // $("#sub_category34").append('<option value=0>Select a subcategory</option>');
 
-						if (res) {
-							
-							$("#sub_category").empty();
-							$("#sub_category").append('<option value=0>Select a subcategory</option>');
-							$.each(res, function(key, value) {
-								$("#sub_category").append('<option value="' + key + '" '+((key == (sub_cat_id)) ? "selected" : "")+' >' + value.id +
-								'</option>');
+						// console.log('sss',Response);
+                        $.each(Response, function(key, value) {
+                            // $("#sub_category").append('<option value="' + key + '" ' + ((
+                            //         key == (sub_cat_id)) ? "selected" : "") + ' >' +
+                            //     value +
+                            //     '</option>');
 
-							});
+							$("#sub_category34").append('<option value="' + key +
+                            '" ' + ((key == (value.id)) ? "selected" : "") + ' >' +
+                            value +
+                            '</option>');
 
-						} else {
+                        });
 
-							$("#sub_category").empty();
-						}
-						
-					}
-				});
-			} else {
-				$("#sub_category").empty();
-			}
-		});
-     </script>
+                    } else {
+
+                        $("#sub_category34").empty();
+                    }
+
+                }
+            });
+        
+		}
+	} 
+//     var categoryID = $('#category').val();
+//     if (categoryID) {
+
+//         $.ajax({
+
+//             type: "GET",
+//             url: "{{ url('account/getSubcategories') }}?id=" + categoryID,
+
+//             success: function(res) {
+
+//                 if (res) {
+
+//                     $("#sub_category").empty();
+//                     $("#sub_category").append('<option value=0>Select a subcategory</option>');
+//                     $.each(res, function(key, value) {
+//                         $("#sub_category").append('<option value="' + key + '" ' + ((key == (
+//                                 sub_cat_id)) ? "selected" : "") + ' >' + value.id +
+//                             '</option>');
+
+//                     });
+
+//                 } else {
+
+//                     $("#sub_category").empty();
+//                 }
+
+//             }
+//         });
+//     } else {
+//         $("#sub_category").empty();
+//     }
+// });
+</script>
 
 
 <script>
-    function getLocation(id)
-    {
-		
-		var ids = $('#id').val();
-		// alert(id);
-		// console.log(url);
-        $.ajax({
-			type: 'get',
-            dataType: 'Json',
-			url: "{{ url('account/allcities') }}?id=" + id,
-			data: {'id': id},
-			
-            // dataType: 'json',
-            success: function(Response) {
-				
+function getlocation(id)
+ {
 
-				if (Response) {
-							
-							// $("#location").empty();
-							// $("#location").append('<option value=0>Select a subcategory</option>');
-							
-							$.each(Response, function(key, value) {
-								
-								$.each(value, function(keys, cityvalue) {
-									// delete object["en"];
-									// myObject = JSON.parse(cityvalue.name);
-									// delete(cityvalue.en)+cityvalue.name,
-									// myObject = JSON.stringify(cityvalue.name);
-									
-									$("#location").append('<option value="' + cityvalue.id + '" '+((keys == (cityvalue.id)) ? "selected" : "")+' >' +  cityvalue.name +
-								'</option>');
+    var ids = $('#location').val();
+    // alert(id)
+;
+    // console.log(url);
+    $.ajax({
+        type: 'get',
+        dataType: 'Json',
+        url: "{{ url('account/allcities') }}?id=" + id,
+        data: {
+            'id': id
+        },
 
-								
-								
-								});
+        // dataType: 'json',
+        success: function(Response) {
 
-							});
+            // console.log( 'hii',Response);
+            if (Response) {
+                // $("#locationiddata").append('<option value="IN" >  India </option>');
+                $("#locationiddata").empty();
+                // $("#locationiddata").append('<option value=0>Select a subcategory</option>');
 
-						} else {
+                $.each(Response, function(key, value) {
 
-							$("#location").empty();
-						}
+                    $.each(value, function(keys, cityvalue) {
+                        // delete object["en"];
+                        // myObject = JSON.parse(cityvalue.name);
+                        // delete(cityvalue.en)+cityvalue.name,
+                        // myObject = JSON.stringify(cityvalue.name);
 
+                        $("#locationiddata").append('<option value="' + cityvalue.id +
+                            '" ' + ((keys == (cityvalue.id)) ? "selected" : "") + ' >' +
+                            cityvalue.name +
+                            '</option>');
+
+
+
+                    });
+
+                });
+
+            } else {
+
+                $("#locationiddata").empty();
             }
-			
-            // error: function(res){
-            //     $('#message').text('Error!');
-            //     $('.dvLoading').hide();
-            // }
-        });
-    }
+
+        }
+
+        // error: function(res){
+        //     $('#message').text('Error!');
+        //     $('.dvLoading').hide();
+        // }
+    });
+}
 </script>
 @endsection

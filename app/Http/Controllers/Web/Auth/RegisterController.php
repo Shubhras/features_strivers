@@ -22,6 +22,7 @@ use App\Models\Gender;
 use App\Helpers\Auth\Traits\RegistersUsers;
 use Torann\LaravelMetaTags\Facades\MetaTag;
 
+
 class RegisterController extends FrontController
 {
 	use RegistersUsers, VerificationTrait;
@@ -180,12 +181,12 @@ class RegisterController extends FrontController
 	public function getRegisternewUsers()
 	{
 		$data = [];
-		
+		// Session()->flash('message', 'Your email allready exist !');
 		// References
 		$data['genders'] = Gender::query()->get();
-		// print_r($data['genders']);die;
-		// Meta Tags
+		
 		[$title, $description, $keywords] = getMetaTag('register');
+		
 		MetaTag::set('title', $title);
 		MetaTag::set('description', strip_tags($description));
 		MetaTag::set('keywords', $keywords);
@@ -200,13 +201,13 @@ class RegisterController extends FrontController
 		
 		// References
 		$data['genders'] = Gender::query()->get();
-		
+		// print_r($data['genders']);die;
 		// Meta Tags
+		// print_r($keywords);die;
 		[$title, $description, $keywords] = getMetaTag('register');
 		MetaTag::set('title', $title);
 		MetaTag::set('description', strip_tags($description));
 		MetaTag::set('keywords', $keywords);
-		
 		
 		return appView('auth.register.Strivers', $data);
 	}

@@ -143,7 +143,7 @@
                         <?php $emailError = (isset($errors) and $errors->has('email')) ? ' is-invalid' : ''; ?>
                             <label class="form-label" for="email">Email 
                             </label>
-                            <input id="email"  name="email"	type="email" class="form-control{{ $emailError }}"placeholder="{{ t('email') }}"value="{{ old('email') }}" required>
+                            <input id="email"  name="email"	type="email" class="form-control{{ $emailError }}"placeholder="{{ t('email') }}"required>
                         </div>
                         @endif
 
@@ -189,12 +189,13 @@
                                     Register
                                 </a></center> -->
 
-                    <center><button class="btn01  btn-primary1 register-btn-primary" type="submit" id="signupBtn">
-                            Register </button></center>
-
-                </div>
-
-                <!-- <div class="col-sm-12 register-btn-padding">
+                                <center><button class="btn01  btn-primary1 register-btn-primary" type="submit" id="signupBtn"  >
+		
+                                    Register </button></center>
+                                
+                         </div>
+                         
+                            <!-- <div class="col-sm-12 register-btn-padding">
                                 <center><button class="loginBtn loginBtn--google btn-primary1 google-fb-login">
                                 Login with Google
                               </button>  </center>
