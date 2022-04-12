@@ -39,11 +39,9 @@
     
 
         <div class="col-md-8 d-flex justify-content-center">
-            <!-- @if (isset($errors) && $errors->any())
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-            @endif -->
+        @if(Session::has('message'))
+        <p class="alert alert-info">{{ Session::get('message') }}</p>
+        @endif
             <div class="contact-form dform" id="Coaches">
 
                 <center>
@@ -64,7 +62,10 @@
                         <input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden" id="user_type_coach" value="2">
                     </div>
                     @if (isEnabledField('email'))
+                    
+                    <?php  ?>
                     <div class="col-md-6">
+                    
                         <?php $emailError = (isset($errors) and $errors->has('email')) ? ' is-invalid' : ''; ?>
                         <label class="form-label" for="email">Email
                         </label>
