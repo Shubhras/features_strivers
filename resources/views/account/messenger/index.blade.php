@@ -11,13 +11,13 @@
  * of the above copyright notice. If you Purchased from CodeCanyon,
  * Please read the full License from here - http://codecanyon.net/licenses/standard
 --}}
-<!-- @extends('layouts.master') -->
-@extends('layouts.master_new')
 <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
-
-</section>
+       
+ </section>
+ @extends('layouts.master_new')
 @section('content')
 	@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
+
     <div class="main-container">
         <div class="container">
             <div class="row">
