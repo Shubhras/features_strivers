@@ -46,105 +46,61 @@
 
             <h2>
 
-  <h2 class="sec-title">My Profile</h2>
-     </h2>
+                <h2 class="sec-title">My Profile</h2>
+            </h2>
 
-			<div class="row" style="padding: 6px; margin-left: -4px;">
-				
-				<div class="col-md-12 user-profile-img-data default-inner-box">
-					
-					<img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>  {{ $user->name }}</b> </span>
-					
-					
-					<div class="row">
-						
-						<div class="col-md-12 col-sm-8 col-12">
-							<span>
-								
-								
-								<div class="header-data text-center-xs">
-									{{-- Threads Stats --}}
-									<div class="hdata">
-										<a href="{{ url('account/messages') }}">
-											
-											<div class="mcol-left">
-												<i class="fas fa-phone-alt ln-shadow"></i>
-											</div>
-											<div class="mcol-right">
-												{{-- Number of messages --}}
-												<p>
-													
-											{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-											
-											<em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-									   
-										</p>
-								</div>
-								</a>
-								<div class="clearfix"></div>
-							</div>
+            <div class="row" style="padding: 6px; margin-left: -4px;">
 
-							{{-- Traffic Stats --}}
-							<div class="hdata">
-								<a href="{{ url('account/chat') }}">
-									<div class="mcol-left">
-										<i class="fas fa-comments ln-shadow"></i>
-									</div>
-									<div class="mcol-right">
-										{{-- Number of visitors --}}
-									<p>
-										
-										<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-										{{ \App\Helpers\Number::short($totalPostsVisits) }}
-										
-											<em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-									   
-									</p>
-								</div>
+
+                <div class="col-md-12 user-profile-img-data default-inner-box">
+
+                    <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;"
+                        height="50px;" border-radius=" 50%"> &nbsp;
+                    <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }}</b> </span>
+
+
+                    <div class="row">
 
                         <div class="col-md-12 col-sm-8 col-12">
                             <span>
 
-							
 
-							{{-- Favorites Stats --}}
-							<div class="hdata" style="width: 151px!important;margin-left: -38px;">
-							<a href="{{ url('account/favourite') }}">
-								<div class="mcol-left" >
-									<i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
-								</div>
-								<div class="mcol-right">
-									{{-- Number of favorites --}}
-									<p>
-										
-										{{ \App\Helpers\Number::short($countFavoritePosts) }}
-										<em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-										
-									</p>
-								</div>
-								</a>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				
-			    </div>
-				
-		      </div>
-			</div>
+                                <div class="header-data text-center-xs">
+                                    {{-- Threads Stats --}}
+                                    <div class="hdata">
+                                        <a href="{{ url('account/messages') }}">
 
-			
-			
-			<div class="row">
-				
-				<div class="col-md-3 page-sidebar ptop">
-					
-					
-		
-					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
-		
-		 </div>
+                                            <div class="mcol-left">
+                                                <i class="fas fa-phone-alt ln-shadow"></i>
+                                            </div>
+                                            <div class="mcol-right">
+                                                {{-- Number of messages --}}
+                                                <p>
+
+                                                    {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
+
+                                                    <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
+
+                                                </p>
+                                            </div>
+                                        </a>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    {{-- Traffic Stats --}}
+                                    <div class="hdata">
+                                        <a href="{{ url('account/chat') }}">
+                                            <div class="mcol-left">
+                                                <i class="fas fa-comments ln-shadow"></i>
+                                            </div>
+                                            <div class="mcol-right">
+                                                {{-- Number of visitors --}}
+                                                <p>
+
+                                                    <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+                                                    {{ \App\Helpers\Number::short($totalPostsVisits) }}
+
+                                                    <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
 
                                                 </p>
                                             </div>
