@@ -24,6 +24,14 @@ use App\Models\ThreadMessage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Torann\LaravelMetaTags\Facades\MetaTag;
 
+use App\Models\Post;
+use App\Models\SavedPost;
+use App\Models\Package;
+use App\Models\Gender;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
+
+
 class MessagesController extends AccountBaseController
 {
 	use MessagesTrait;
@@ -47,6 +55,29 @@ class MessagesController extends AccountBaseController
 	 */
 	public function index()
 	{
+
+		$data = [];
+
+		$data['genders'] = Gender::query()->get();
+
+		$user = auth()->user();
+
+		// Mini Stats
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+			
+
 		// All threads that user is participating in
 		$threads = $this->threads;
 		
@@ -100,6 +131,9 @@ class MessagesController extends AccountBaseController
 	 */
 	public function show($id)
 	{
+
+
+		
 		try {
 			$threadTable = (new Thread())->getTable();
 			$thread = Thread::forUser(auth()->id())->where($threadTable . '.id', $id)->firstOrFail();
