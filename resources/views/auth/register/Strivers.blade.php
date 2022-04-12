@@ -89,7 +89,7 @@
     <div class="col-8" style="margin-left: 243px;">
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
-            <h5><strong>{{ t('oops_an_error_has_occurred') }}</strong></h5>
+            <strong >{{ t('email_mobile_duplicat_check') }}</strong>
             <ul class="list list-check">
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -99,11 +99,11 @@
     </div>
     @endif
 
-    @if (session()->has('flash_notification'))
+    <!-- @if (session()->has('flash_notification'))
     <div class="col-12">
         @include('flash::message')
     </div>
-    @endif
+    @endif -->
     </div>
 
 
@@ -128,6 +128,7 @@
                     <?php $uiid = rand(10000, 99990);
                     ?>
                     <input type="hidden" name="username" value="strivre<?php echo $uiid; ?>">
+                    <input type="hidden" name="country_code" value="UK" >
                     <?php $nameError = (isset($errors) and $errors->has('name')) ? ' is-invalid' : ''; ?>
                     <label class="form-label" for="Name ">Name
                     </label>

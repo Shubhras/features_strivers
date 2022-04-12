@@ -347,36 +347,7 @@ class EditController extends AccountBaseController
 
 				DB::table('enroll_course')->insert($data);
 
-				
-
-
-					// $data['user_subscription'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*', 'packages.name', 'users.name as username')
-					// ->leftjoin('packages', 'packages.id', '=', 'user_subscription_payment.subscription_id')
-					// ->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')
-					// ->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
-					// ->get();
 		
-				// $totalsum = array();
-				// $name = array();
-				// $consumed_hours = array();
-				// $remaining_hours = array();
-				// $user_id = array();
-				// foreach ($data['user_subscription'] as $key => $value) {
-		
-				// 	$totalsum[$value->total_provided_hours] = $value->total_provided_hours;
-				// 	$name[$value->name] = $value->name;
-				// 	$consumed_hours[$value->consumed_hours] = $value->consumed_hours;
-				// 	$remaining_hours[$value->remaining_hours] = $value->remaining_hours;
-				// 	$user_id[$value->id] = $value->id;
-				// 	// $consumed_hours[$value->consumed_hours] =$value->consumed_hours;
-				// }
-		
-		
-				//  $dataa = sum($totalsum);
-		
-				// $totalsum += $totalsum;
-				
-
 
 					DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' =>$consumeddat,'user_subscription_payment.remaining_hours' =>$remaining_hours]);
 
@@ -392,7 +363,7 @@ class EditController extends AccountBaseController
 				
 			// } else {
 				Session()
-					->flash('loginerror', 'Not sufficient Credits !' );
+					->flash('loginerror', 'You do not have sufficient credits.' );
 				return redirect()
 					->back();
 			// }
@@ -708,7 +679,7 @@ class EditController extends AccountBaseController
 		$videominutsTotal = '0';
 		$videominutsTotal = $videominutsTotal + $videominuts;
 
-		DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' => $videominutsTotal]);
+		// DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' => $videominutsTotal]);
 
 		
 
