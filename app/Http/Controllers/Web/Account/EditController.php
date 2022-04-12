@@ -324,15 +324,16 @@ class EditController extends AccountBaseController
 				$consumeddat=  $data['consumed_hours'] + $request->creadit_required;
 		
 				$remaining_hours = $totalpoints - $consumeddat;
+				$remaining_hourss = $totalpoints - $data['consumed_hours'];
 			    // $total = implode('', $totalpoints);
 
 			// 
 			// print_r($totalpoints);
-			// print_r($consumeddat);
+			// print_r($request->creadit_required);
 			
-			// print_r($remaining_hours);die;
+			// print_r($remaining_hourss);die;
 
-			if ($remaining_hours >=  $request->creadit_required) {
+			if ($remaining_hourss >=  $request->creadit_required) {
 
 
 

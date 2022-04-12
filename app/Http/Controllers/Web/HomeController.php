@@ -710,8 +710,9 @@ class HomeController extends FrontController
 	public function register_new_user(Request $request )
 	{
 
-		
-		// print_r($request->all());die;
+	
+
+
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
 		  CURLOPT_URL => 'https://206672f6b5d16174.api-us.cometchat.io/v3/users',

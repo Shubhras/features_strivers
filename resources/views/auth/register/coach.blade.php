@@ -13,6 +13,31 @@
     <!-- Course Section Start -->
     <section class="contact-section ">
 
+
+    <div class="row">
+    @if (isset($errors) && $errors->any())
+    <div class="col-8" style="margin-left: 243px;">
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
+            <h5><strong>{{ t('oops_an_error_has_occurred') }}</strong></h5>
+            <ul class="list list-check">
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+    @endif
+
+    @if (session()->has('flash_notification'))
+    <div class="col-12">
+        @include('flash::message')
+    </div>
+    @endif
+    </div>
+
+    
+
         <div class="col-md-8 d-flex justify-content-center">
             <!-- @if (isset($errors) && $errors->any())
             @foreach ($errors->all() as $error)
