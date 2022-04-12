@@ -88,7 +88,7 @@ class EditController extends AccountBaseController
 
 		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
 		$data['categoriess'] = DB::table('categories')->select('categories.slug', 'categories.id')->where('categories.parent_id', $user->category)->get();
-
+		// print_r($data['categoriess']);die;
 		$data['all_countries'] = DB::table('countries')->get();
 
 
@@ -108,8 +108,8 @@ class EditController extends AccountBaseController
 
 		// print_r(($request->id));die;
 		$data['cities'] = DB::table('cities')->select('cities.id', 'cities.country_code', 'cities.name')->where('cities.country_code', $request->id)->get();
-
-		return $data;
+		// print_r($data);die;
+		return  $data;
 	}
 
 

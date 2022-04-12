@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Auth;
+ use App\Http\Controllers\Web\Session;
 
 class HomeController extends FrontController
 {
@@ -811,6 +812,7 @@ class HomeController extends FrontController
 				flash($mailMessage)->error();
 			}
 		}
+	
 		
 		
 		return redirect($nextUrl);
