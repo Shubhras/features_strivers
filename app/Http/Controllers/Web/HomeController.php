@@ -154,6 +154,9 @@ class HomeController extends FrontController
 		// $data['categories_list_coach'] = DB::table('categories')->select('categories.slug','categories.id','categories.name','users.category')->join('users' ,'categories.id' ,'=' ,'users.category')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 
 
+		$data['categories'] = DB::table('categories')->select('categories.*')->where('categories.parent_id', null)->orderBy('categories.name', 'asc')->get();
+
+		// print_r($data['categories']);die;
 		$data['categories_list_coach'] = DB::table('users')->select('categories.slug','categories.id','categories.name','users.category','categories.picture','categories.icon_class')->join('categories' ,'categories.id' ,'=' ,'users.category')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->where('users.user_type_id', 2)->get();
 
 		
@@ -708,24 +711,9 @@ class HomeController extends FrontController
 	public function register_new_user(Request $request )
 	{
 
-		
-		// print_r($request->email);die;
-		$user = DB::table('users')->select('users.email')->get();
 	
-		$datsa =[];
-		foreach($user as $key=> $vs){
+// print_r($request->all());die;
 
-			$datsa[$key] = $vs->email;
-		}
-		$email1 = $request->email;
-		// print_r($email1);
-		if (array_key_exists($email1,$datsa)){
-			// print_r("hello mc");die;
-			// return redirect()
-			// ->back();
-			return redirect('auth.register.Strivers')->flash('message', 'Your email allready exist !');
-		
-		}
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
 		  CURLOPT_URL => 'https://206672f6b5d16174.api-us.cometchat.io/v3/users',
@@ -748,7 +736,7 @@ class HomeController extends FrontController
 		// echo $response;
 
 
-		
+		// $request['country_code'] = 'UK';
 
 
 

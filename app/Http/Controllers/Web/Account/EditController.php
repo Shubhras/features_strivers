@@ -77,22 +77,22 @@ class EditController extends AccountBaseController
 
 		//$data['categories']= Category::query()->get();
 		// $data['categoriese']= cities::query()->get();
-		$data['cities_data'] = DB::table('cities')->select('cities.name','cities.id','cities.country_code')
-		->where('cities.country_code',$user->country_code)
-		->get();
-		$data['citiesdata']= DB::table('cities')->get();
+		$data['cities_data'] = DB::table('cities')->select('cities.name', 'cities.id', 'cities.country_code')
+			->where('cities.country_code', $user->country_code)
+			->get();
 
-		$data['all_citiesssss'] = DB::table('cities')->select('cities.name','cities.id','cities.country_code')
-		->where('cities.country_code')
-		->get();
-		// print_r($data['citiesdata']);die;
+
+		$data['all_citiesssss'] = DB::table('cities')->select('cities.name', 'cities.id', 'cities.country_code')
+			->where('cities.country_code')
+			->get();
+
 		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
 		$data['categoriess'] = DB::table('categories')->select('categories.slug', 'categories.id')->where('categories.parent_id', $user->category)->get();
 		// print_r($data['categoriess']);die;
 		$data['all_countries'] = DB::table('countries')->get();
 
-		
-		
+
+
 		// print_r($data['all_countries']);die;
 
 		MetaTag::set('title', t('my_account'));
@@ -218,8 +218,8 @@ class EditController extends AccountBaseController
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->leftjoin('enroll_course','enroll_course.coach_id','=','users.id')
-			->where('users.user_type_id', 2)->where('enroll_course.user_id',$user->id)->groupBy('enroll_course.coach_id')->get();
+			->leftjoin('enroll_course', 'enroll_course.coach_id', '=', 'users.id')
+			->where('users.user_type_id', 2)->where('enroll_course.user_id', $user->id)->groupBy('enroll_course.coach_id')->get();
 
 		// $data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 		// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
@@ -229,7 +229,7 @@ class EditController extends AccountBaseController
 
 		// print_r($data['my_coaches']);die;
 
-		
+
 		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
@@ -247,11 +247,11 @@ class EditController extends AccountBaseController
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->leftjoin('enroll_course','enroll_course.coach_id','=','users.id')
-			->where('users.user_type_id', 3)->where('enroll_course.coach_id',$user->id)->groupBy('enroll_course.user_id')->get();
+			->leftjoin('enroll_course', 'enroll_course.coach_id', '=', 'users.id')
+			->where('users.user_type_id', 3)->where('enroll_course.coach_id', $user->id)->groupBy('enroll_course.user_id')->get();
 
 
-			$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+		$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
 			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
 			->limit(8)->get();
 
@@ -266,27 +266,112 @@ class EditController extends AccountBaseController
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
 
-		
+
 		return appView('account.my_coaches', $data);
 	}
 
 
-	public function enroll_course_striver(Request $request){
+	public function enroll_course_striver(Request $request)
+	{
 
 
-		// print_r($request->all());die;
-		$date = date('d-m-yy');
-		$data =array(
-			'user_id' =>$request->user_id,
-			'coach_id' =>$request->coach_id,
-			'course_id'=>$request->course_id,
-			'created_at' =>$date
-		);
+		$user = auth()->user();
 
-		DB::table('enroll_course')->insert($data);
+		if (empty($user)) {
 
-		return redirect('account/my_courses');
+			return redirect('/login');
+		} else {
 
+
+
+			$user = auth()->user();
+
+			$data['user_subscription'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*', 'packages.name', 'users.name as username')
+				->leftjoin('packages', 'packages.id', '=', 'user_subscription_payment.subscription_id')
+				->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')
+				->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
+				->get();
+
+
+			$totalsum = array();
+			$name = array();
+			$consumed_hours = array();
+			$remaining_hours = array();
+			$user_id = array();
+
+			foreach ($data['user_subscription'] as $key => $value) {
+
+				$totalsum[$value->total_provided_hours] = $value->total_provided_hours;
+				$name[$value->name] = $value->name;
+				$consumed_hours[$value->consumed_hours] = $value->consumed_hours;
+				$remaining_hours[$value->remaining_hours] = $value->remaining_hours;
+				$user_id[$value->id] = $value->id;
+				// $consumed_hours[$value->consumed_hours] =$value->consumed_hours;
+			}
+
+
+			$ss  = array();
+				foreach ($name as $key => $sub) {
+					$ss[$sub] = $sub;
+				}
+		
+		
+				$data['total_purchase_package'] = count($user_id);
+				$data['packagename'] = $ss;
+				$totalpoints = array_sum($totalsum);
+				$data['consumed_hours'] = array_sum($consumed_hours);
+
+				$consumeddat=  $data['consumed_hours'] + $request->creadit_required;
+		
+				$remaining_hours = $totalpoints - $consumeddat;
+				$remaining_hourss = $totalpoints - $data['consumed_hours'];
+			    // $total = implode('', $totalpoints);
+
+			// 
+			// print_r($totalpoints);
+			// print_r($request->creadit_required);
+			
+			// print_r($remaining_hourss);die;
+
+			if ($remaining_hourss >=  $request->creadit_required) {
+
+
+
+				$date = date('d-m-yy');
+				$data = array(
+					'user_id' => $request->user_id,
+					'coach_id' => $request->coach_id,
+					'course_id' => $request->course_id,
+					'created_at' => $date
+				);
+
+				DB::table('enroll_course')->insert($data);
+
+		
+
+					DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' =>$consumeddat,'user_subscription_payment.remaining_hours' =>$remaining_hours]);
+
+
+					Session()->flash('messagess', ' Enroll Successfully !');
+				// return redirect()
+					// ->back();
+
+				return redirect('account/my_courses');
+			} else {
+
+
+				
+			// } else {
+				Session()
+					->flash('loginerror', 'You do not have sufficient credits.' );
+				return redirect()
+					->back();
+			// }
+
+
+				// return redirect('/pricing');
+			}
+		}
 	}
 
 	public function my_courses_by_striver()
@@ -362,8 +447,8 @@ class EditController extends AccountBaseController
 			->limit(6)->get();
 
 
-			$data['enroll_coach_coarse'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo','enroll_course.user_id')
-			->leftJoin('enroll_course','enroll_course.course_id' ,'=','coach_course.id')
+		$data['enroll_coach_coarse'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo', 'enroll_course.user_id')
+			->leftJoin('enroll_course', 'enroll_course.course_id', '=', 'coach_course.id')
 			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
 			->where('enroll_course.user_id', $user->id)
 			->inRandomOrder()
@@ -485,6 +570,9 @@ class EditController extends AccountBaseController
 		//$data['categories']= Category::query()->get();
 
 
+		
+
+
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
@@ -591,7 +679,9 @@ class EditController extends AccountBaseController
 		$videominutsTotal = '0';
 		$videominutsTotal = $videominutsTotal + $videominuts;
 
-		DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' => $videominutsTotal]);
+		// DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' => $videominutsTotal]);
+
+		
 
 
 		MetaTag::set('title', t('my_account'));
@@ -630,70 +720,78 @@ class EditController extends AccountBaseController
 			->count();
 
 
-		
 
 
 
-		
 
 
 
-		
+
+
+
 		$value = $request->image;
 
 
 		// print_r($value);die;
-		
-			$disk = StorageDisk::getDisk();
-			$attribute_name = 'picture';
-			$destination_path = 'app/course_image';
-			
-		
-			// Check the image file
-			if ($value == url('/')) {
-				$this->attributes[$attribute_name] = null;
+
+		$disk = StorageDisk::getDisk();
+		$attribute_name = 'picture';
+		$destination_path = 'app/course_image';
+
+
+		// Check the image file
+		if ($value == url('/')) {
+			$this->attributes[$attribute_name] = null;
+
+			return false;
+		}
+
+		// If laravel request->file('filename') resource OR base64 was sent, store it in the db
+
+		// if (fileIsUploaded($value)) {
+
+
+		// Get file extension
+		$extension = getUploadedFileExtension($value);
+
+
+		if (empty($extension)) {
+			$extension = 'jpg';
+		}
+
+		// Image quality
+		$imageQuality = 100;
+
+		// Image default dimensions
+		$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 2000);
+		$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 1000);
+
+
+
+
+		$image = $value;
+		// Generate a filename.
+		// $filename = md5($value . time()) . '.' . $extension;
+		$filename = md5($value . time()) . '.' . $extension;
+
+		// Store the image on disk.
+		// $disk->put($destination_path . '/' . $filename, $image);
+		$courseimg =	$disk->put($destination_path, $image);
+
+		// Save the path to the database
+		// $this->attributes[$attribute_name] = $destination_path . '/' . $filename;
+		$this->attributes[$attribute_name] = $destination_path . '/' . $image;
+
+		if(!empty($request->dated)){
+				// $dates =date('d-m-yy',$request->dated);
+				$dates = $request->dated;
 				
-				return false;
-			}
-			
-			// If laravel request->file('filename') resource OR base64 was sent, store it in the db
-			
-				// if (fileIsUploaded($value)) {
+				// print_r($dates);die;
+		}else{
+			$dates = date('d-m-y');
+		}
 
-					
-					// Get file extension
-					$extension = getUploadedFileExtension($value);
-
-					
-					if (empty($extension)) {
-						$extension = 'jpg';
-					}
-					
-					// Image quality
-					$imageQuality = 100;
-					
-					// Image default dimensions
-					$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 2000);
-					$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 1000);
-					
-					
-					
-					
-					$image = $value;
-					// Generate a filename.
-					// $filename = md5($value . time()) . '.' . $extension;
-					$filename = md5($value . time()) . '.' . $extension;
-					
-					// Store the image on disk.
-					// $disk->put($destination_path . '/' . $filename, $image);
-					$courseimg=	$disk->put($destination_path , $image);
-					
-					// Save the path to the database
-					// $this->attributes[$attribute_name] = $destination_path . '/' . $filename;
-				$this->attributes[$attribute_name] = $destination_path . '/'. $image;
-				
-
-		$datess = date('d-m-y h:i:s');
+		
 		//  print_r($request->all());die;
 		$data = array(
 			'coach_id' => $user->id,
@@ -705,7 +803,7 @@ class EditController extends AccountBaseController
 			'description' => $request->description,
 			'image' => $courseimg,
 			'starting_time' => $request->starting_time,
-			'dated' => $request->datess,
+			'dated' => $dates,
 
 
 		);
@@ -729,8 +827,7 @@ class EditController extends AccountBaseController
 		$subcategories = DB::table("categories")
 			->where("parent_id", $request->id)
 			->pluck("slug", "id");
-			
-			// print_r($subcategories);die;
+		// print_r($subcategories);die;
 		return response()->json($subcategories);
 	}
 
@@ -829,7 +926,7 @@ class EditController extends AccountBaseController
 		// Call API endpoint
 		$endpoint = '/users/' . auth()->user()->id;
 		$data = makeApiRequest('put', $endpoint, $request->all());
-// print_r($data);die;
+		// print_r($data);die;
 		// Parsing the API's response
 		$message = !empty(data_get($data, 'message')) ? data_get($data, 'message') : 'Unknown Error.';
 

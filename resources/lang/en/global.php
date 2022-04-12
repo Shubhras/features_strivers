@@ -251,6 +251,9 @@ return [
 	'count_messages' => '{0} message|{1} message|[2,*] messages',
     
     'oops_an_error_has_occurred' => 'Oops ! An error has occurred. Please correct the red fields in the form',
+
+    'email_mobile_duplicat_check' => 'Email or Mobile number already exists! Please use unique email and mobile number to sign up.',
+
     'Favorites' => 'Favorites',
     'Visits' => 'Visits',
     'Hello' => 'Hello',

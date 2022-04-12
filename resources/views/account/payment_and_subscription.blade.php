@@ -75,7 +75,7 @@
 
                 <div class="col-md-12 user-profile-img-data default-inner-box">
 
-                    <img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;"
+                    <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;"
                         height="50px;" border-radius=" 50%"> &nbsp;
                     <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
@@ -521,7 +521,7 @@
 
         <div class="col-md-12 user-profile-img-data default-inner-box">
 
-            <img id="userImg" class="user-profile-images" src="{{ url($photo_url1) }}" alt="user" width="50px;"
+            <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;"
                 height="50px;" border-radius=" 50%"> &nbsp;
             <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
@@ -622,11 +622,15 @@
 
 
                 <div class="row">
-                    <div style="margin-left: 125px; margin-top: 41px;">
+
+                   
 
 			<?php
 					if ($packagename) {
 
+                        ?>
+                         <div style="margin-left: 125px; margin-top: 41px;">
+                        <?php
 
 								//  $names = json_decode($packagename);
 								
@@ -696,6 +700,7 @@
                 </div>
                 <?php } else { ?>
 
+
                 <div class="col-md-12" style="text-align: center;">
                     <h2 style="color: #ffffff;">Please Get Subscription First!</h2>
                 </div>
@@ -707,6 +712,7 @@
                     </a>
 
                 </div>
+
 
                 <?php }
 			?>

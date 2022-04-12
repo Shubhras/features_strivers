@@ -13,6 +13,31 @@
     <!-- Course Section Start -->
     <section class="contact-section ">
 
+
+    <div class="row">
+    @if (isset($errors) && $errors->any())
+    <div class="col-8" style="margin-left: 243px;">
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
+            <strong >{{ t('email_mobile_duplicat_check') }}</strong>
+            <ul class="list list-check">
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+    @endif
+
+    @if (session()->has('flash_notification'))
+    <div class="col-12">
+        @include('flash::message')
+    </div>
+    @endif
+    </div>
+
+    
+
         <div class="col-md-8 d-flex justify-content-center">
         @if(Session::has('message'))
         <p class="alert alert-info">{{ Session::get('message') }}</p>
@@ -28,6 +53,7 @@
                         <?php $uiid = rand(10000,99990);
 		?>
                        <input type="hidden" name="username" value="coach<?php echo $uiid;?>">
+                       <input type="hidden" name="country_code" value="UK" >
 
                         <?php $nameError = (isset($errors) and $errors->has('name')) ? ' is-invalid' : ''; ?>
                         <label class="form-label" for="Name ">Name
