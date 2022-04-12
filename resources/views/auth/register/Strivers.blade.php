@@ -84,6 +84,7 @@
 
     <!-- Course Section Start -->
     <section class="contact-section ">
+    <?php $postInput = $postInput ?? []; ?>
                     @if(Session::has('message'))
                     <center>
                     <p class="alert alert-info">{{ Session::get('message') }}</p></center>
@@ -97,6 +98,16 @@
             @endif
                 <div class="contact-form dform" id="Strivers" >
                     <center><h4>Sign Up As Strivre</h4></center><br>
+                    <script>
+
+
+            function fun() {
+
+
+               alert ("register successfull");
+            }
+      </script> 
+                    </script>
                   
                     <form role="form" method="POST" action="{{ url('/strivers_signup') }}" class="row">
 			
@@ -111,15 +122,16 @@
                             <input  name="name" class="form-control input-md{{ $nameError }}" type="text" placeholder="First Name" value="{{ old('name') }}" required>
                             <input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden"  value="3" required>
                         </div>
-                        @if (isEnabledField('email'))
+                        @if (getTokenLabel('email'))
+                       
                         <div class="col-md-6">
                         <?php $emailError = (isset($errors) and $errors->has('email')) ? ' is-invalid' : ''; ?>
                             <label class="form-label" for="email">Email 
                             </label>
-                            <input id="email"  name="email"	type="email" class="form-control{{ $emailError }}"placeholder="{{ t('email') }}"value="{{ old('email') }}" required>
+                            <input id="email"  name="email"	type="email" class="form-control{{ $emailError }}"placeholder="{{ t('email') }}"required>
                         </div>
                         @endif
-                        @if (isEnabledField('phone'))
+                        @if (getTokenLabel('phone'))
                         <div class="col-md-6">
                         <?php $phoneError = (isset($errors) and $errors->has('phone')) ? ' is-invalid' : ''; ?>
                             <label class="form-label" for="phone">Phone Numbers
@@ -149,7 +161,8 @@
                                     Register
                                 </a></center> -->
 
-                                <center><button class="btn01  btn-primary1 register-btn-primary" type="submit" id="signupBtn">
+                                <center><button class="btn01  btn-primary1 register-btn-primary" type="submit" id="signupBtn"  >
+		
                                     Register </button></center>
                                 
                          </div>

@@ -717,11 +717,13 @@ class HomeController extends FrontController
 
 			$datsa[$key] = $vs->email;
 		}
-
-		// print_r($datsa);die;
-		if($request->email==$datsa){
-		
-			Session()->flash('message', 'Your email allready exist !');
+		$email1 = $request->email;
+		// print_r($email1);
+		if (array_key_exists($email1,$datsa)){
+			// print_r("hello mc");die;
+			// return redirect()
+			// ->back();
+			return redirect('auth.register.Strivers')->flash('message', 'Your email allready exist !');
 		
 		}
 		$curl = curl_init();
