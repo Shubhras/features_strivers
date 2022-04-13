@@ -890,9 +890,10 @@ class HomeController extends FrontController
 			->orderBy('coach_course.id', 'asc')
 			->first();
 
+			
 
 
-		// print_r($id);die;
+		// print_r($data['enroll_course_by_strivre']);die;
 
 		return appView('pages.coach_coarse', $data);
 	}
