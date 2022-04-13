@@ -92,6 +92,20 @@ class LoginController extends FrontController
 		if (auth()->viaRemember()) {
 			return redirect()->intended($this->redirectTo);
 		}
+
+
+
+		$data['course_id'] = $_POST['id']?? null;
+		// $data['course_id'] = 138;
+
+		// $data['coach_course'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+		// 	->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
+		// 	// ->where('coach_course.coach_id', $user->id)
+		// 	->where('coach_course.id', $id)
+		// 	->orderBy('coach_course.id', 'asc')
+		// 	->first();
+
+
 		
 		// Meta Tags
 		[$title, $description, $keywords] = getMetaTag('login');
@@ -99,7 +113,7 @@ class LoginController extends FrontController
 		MetaTag::set('description', strip_tags($description));
 		MetaTag::set('keywords', $keywords);
 		
-		return appView('auth.login.index');
+		return appView('auth.login.index', $data);
 	}
 	
 	/**

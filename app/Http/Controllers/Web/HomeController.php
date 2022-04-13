@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LaraClassifier - Classified Ads Web Application
  * Copyright (c) BeDigit. All Rights Reserved
@@ -43,7 +44,7 @@ class HomeController extends FrontController
 	{
 		parent::__construct();
 	}
-	
+
 	/**
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
@@ -51,12 +52,12 @@ class HomeController extends FrontController
 	{
 		$data = [];
 		$countryCode = config('country.code');
-		
+
 		// Get all homepage sections
 		$cacheId = $countryCode . '.homeSections';
 		$data['sections'] = Cache::remember($cacheId, $this->cacheExpiration, function () use ($countryCode) {
 			$sections = collect();
-			
+
 			// Check if the Domain Mapping plugin is available
 			if (config('plugins.domainmapping.installed')) {
 				try {
@@ -64,26 +65,26 @@ class HomeController extends FrontController
 				} catch (\Throwable $e) {
 				}
 			}
-			
+
 			// Get the entry from the core
 			if ($sections->count() <= 0) {
 				$sections = HomeSection::orderBy('lft')->get();
 			}
-			
+
 			return $sections;
 		});
-		
+
 		$searchFormOptions = [];
 		if ($data['sections']->count() > 0) {
 			foreach ($data['sections'] as $section) {
 				// Clear method name
 				$method = str_replace(strtolower($countryCode) . '_', '', $section->method);
-				
+
 				// Check if method exists
 				if (!method_exists($this, $method)) {
 					continue;
 				}
-				
+
 				// Call the method
 				try {
 					if (isset($section->value)) {
@@ -91,65 +92,61 @@ class HomeController extends FrontController
 					} else {
 						$this->{$method}();
 					}
-					
+
 					// Get the search area background image
 					if ($method == 'getSearchForm') {
 						$searchFormOptions = $section->value;
-						
 					}
 				} catch (\Throwable $e) {
 					flash($e->getMessage())->error();
 					continue;
 				}
-
 			}
-			
-
 		}
 
 
-		
 
-		$data['user'] = DB::table('users')->select('users.*','categories.name as categories_slug')
-		->leftjoin('categories', 'categories.id','=','users.category')
-		->where('users.user_type_id',2)
-		->whereNotIn('users.id', [1])
-		->inRandomOrder()
-		->limit(6)
-		->get();
+
+		$data['user'] = DB::table('users')->select('users.*', 'categories.name as categories_slug')
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			->where('users.user_type_id', 2)
+			->whereNotIn('users.id', [1])
+			->inRandomOrder()
+			->limit(6)
+			->get();
 
 		// print_r($data['user']);die;
 
-		$data['our_reviews'] = DB::table('users')->select('users.*')->where('users.user_type_id',2)->whereNotIn('users.id', [1])->orderBy('users.id','asc')->limit(3)->get();
+		$data['our_reviews'] = DB::table('users')->select('users.*')->where('users.user_type_id', 2)->whereNotIn('users.id', [1])->orderBy('users.id', 'asc')->limit(3)->get();
 
 
-		$data['our_review_coaches'] = DB::table('users')->select('users.*','categories.name as slug','packages.name as subscription_name','packages.price','packages.currency_code')
-		->leftjoin('categories' ,'categories.id' ,'=' ,'users.category')
-		->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
-		->where('users.id',2)->first();
+		$data['our_review_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			->where('users.id', 2)->first();
 
-		$data['user_course']= DB::table('coach_course')->select('coach_course.*','course_name','course_hourse')->orderBy('coach_course.id','desc')->limit(4)->get();
-		$data['user_striver'] = DB::table('users')->select('users.*')->where('users.user_type_id',3)->whereNotIn('users.id', [1])->orderBy('users.id','desc')->limit(3)->get();
+		$data['user_course'] = DB::table('coach_course')->select('coach_course.*', 'course_name', 'course_hourse')->orderBy('coach_course.id', 'desc')->limit(4)->get();
+		$data['user_striver'] = DB::table('users')->select('users.*')->where('users.user_type_id', 3)->whereNotIn('users.id', [1])->orderBy('users.id', 'desc')->limit(3)->get();
 
 		$packages = Package::query()->applyCurrency();
-		
+
 		$embed = explode(',', request()->get('embed'));
-		
+
 		if (in_array('currency', $embed)) {
 			$packages->with('currency');
 		}
-		
+
 		$packages->orderBy('lft');
-		
+
 		$packages = $packages->get();
-		
+
 		$data['packages'] = new EntityCollection(class_basename($this), $packages);
 		// print_r($data['packages']);die;
 		// Get SEO
 		$this->setSeo($searchFormOptions);
 
 
-		$data['letest_news']= DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id','desc')->limit(4)->get();
+		$data['letest_news'] = DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id', 'desc')->limit(4)->get();
 
 		// $data['categories_list_coach'] = DB::table('categories')->select('categories.slug','categories.id','categories.name','users.category')->join('users' ,'categories.id' ,'=' ,'users.category')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 
@@ -157,34 +154,31 @@ class HomeController extends FrontController
 		$data['categories'] = DB::table('categories')->select('categories.*')->where('categories.parent_id', null)->orderBy('categories.name', 'asc')->get();
 
 		// print_r($data['categories']);die;
-		$data['categories_list_coach'] = DB::table('users')->select('categories.slug','categories.id','categories.name','users.category','categories.picture','categories.icon_class')->join('categories' ,'categories.id' ,'=' ,'users.category')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->where('users.user_type_id', 2)->get();
+		$data['categories_list_coach'] = DB::table('users')->select('categories.slug', 'categories.id', 'categories.name', 'users.category', 'categories.picture', 'categories.icon_class')->join('categories', 'categories.id', '=', 'users.category')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->where('users.user_type_id', 2)->get();
 
-		
+
 
 		$unique = array();
-		$uniques =array();
-		$keyss =array();
+		$uniques = array();
+		$keyss = array();
 
-		foreach ($data['categories_list_coach'] as $value)
-		{
+		foreach ($data['categories_list_coach'] as $value) {
 			// print_r($value);die;
 			$unique[$value->category] = $value;
 			$uniques['key'] = $value->category;
-			
-			
 		}
-		
+
 		$data['uniqueCat'] = array_values($unique);
-		
+
 		$data['categories_list_coach1'] = array_slice($data['uniqueCat'], 0, 6);
 
 		// print_r($data['categories_list_coach1']);die;
-	
+
 		return appView('home.index', $data);
 	}
 
 
-	
+
 	/**
 	 * Get search form (Always in Top)
 	 *
@@ -194,14 +188,14 @@ class HomeController extends FrontController
 	{
 		view()->share('searchFormOptions', $value);
 	}
-	
+
 	/**
 	 * Get locations & SVG map
 	 *
 	 * @param array $value
 	 */
 
-	
+
 
 
 	protected function getLocations($value = [])
@@ -211,17 +205,17 @@ class HomeController extends FrontController
 		if (isset($value['max_items'])) {
 			$maxItems = (int)$value['max_items'];
 		}
-		
+
 		// Get the Default Cache delay expiration
 		$cacheExpiration = $this->getCacheExpirationTime($value);
-		
+
 		// Modal - States Collection
 		$cacheId = config('country.code') . '.home.getLocations.modalAdmins';
 		$modalAdmins = Cache::remember($cacheId, $cacheExpiration, function () {
 			return SubAdmin1::currentCountry()->orderBy('name')->get(['code', 'name'])->keyBy('code');
 		});
 		view()->share('modalAdmins', $modalAdmins);
-		
+
 		// Get cities
 		if (config('settings.listing.count_cities_posts')) {
 			$cacheId = config('country.code') . 'home.getLocations.cities.withCountPosts';
@@ -239,7 +233,7 @@ class HomeController extends FrontController
 			'name'           => t('More cities') . ' &raquo;',
 			'subadmin1_code' => 0,
 		]));
-		
+
 		// Get cities number of columns
 		$numberOfCols = 4;
 		if (file_exists(config('larapen.core.maps.path') . strtolower(config('country.code')) . '.svg')) {
@@ -247,16 +241,16 @@ class HomeController extends FrontController
 				$numberOfCols = (isset($value['items_cols']) && !empty($value['items_cols'])) ? (int)$value['items_cols'] : 3;
 			}
 		}
-		
+
 		// Chunk
 		$maxRowsPerCol = round($cities->count() / $numberOfCols, 0); // PHP_ROUND_HALF_EVEN
 		$maxRowsPerCol = ($maxRowsPerCol > 0) ? $maxRowsPerCol : 1;  // Fix array_chunk with 0
 		$cities = $cities->chunk($maxRowsPerCol);
-		
+
 		view()->share('cities', $cities);
 		view()->share('citiesOptions', $value);
 	}
-	
+
 	/**
 	 * Get sponsored posts
 	 *
@@ -265,28 +259,28 @@ class HomeController extends FrontController
 	protected function getSponsoredPosts($value = [])
 	{
 		$type = 'sponsored';
-		
+
 		// Get the default Max. Items
 		$maxItems = 20;
 		if (isset($value['max_items'])) {
 			$maxItems = (int)$value['max_items'];
 		}
-		
+
 		// Get the default orderBy value
 		$orderBy = 'random';
 		if (isset($value['order_by'])) {
 			$orderBy = $value['order_by'];
 		}
-		
+
 		// Get the default Cache delay expiration
 		$cacheExpiration = $this->getCacheExpirationTime($value);
-		
+
 		// Get featured posts
 		$cacheId = config('country.code') . '.home.getPosts.' . $type;
 		$posts = Cache::remember($cacheId, $cacheExpiration, function () use ($maxItems, $type, $orderBy) {
 			return Post::getLatestOrSponsored($maxItems, $type, $orderBy);
 		});
-		
+
 		$widgetSponsoredPosts = null;
 		if ($posts->count() > 0) {
 			$widgetSponsoredPosts = [
@@ -298,10 +292,10 @@ class HomeController extends FrontController
 			$widgetSponsoredPosts = ArrayHelper::toObject($widgetSponsoredPosts);
 			$widgetSponsoredPosts->options = $value;
 		}
-		
+
 		view()->share('widgetSponsoredPosts', $widgetSponsoredPosts);
 	}
-	
+
 	/**
 	 * Get latest posts
 	 *
@@ -310,28 +304,28 @@ class HomeController extends FrontController
 	protected function getLatestPosts($value = [])
 	{
 		$type = 'latest';
-		
+
 		// Get the default Max. Items
 		$maxItems = 12;
 		if (isset($value['max_items'])) {
 			$maxItems = (int)$value['max_items'];
 		}
-		
+
 		// Get the default orderBy value
 		$orderBy = 'date';
 		if (isset($value['order_by'])) {
 			$orderBy = $value['order_by'];
 		}
-		
+
 		// Get the Default Cache delay expiration
 		$cacheExpiration = $this->getCacheExpirationTime($value);
-		
+
 		// Get latest posts
 		$cacheId = config('country.code') . '.home.getPosts.' . $type;
 		$posts = Cache::remember($cacheId, $cacheExpiration, function () use ($maxItems, $type, $orderBy) {
 			return Post::getLatestOrSponsored($maxItems, $type, $orderBy);
 		});
-		
+
 		$widgetLatestPosts = null;
 		if (!empty($posts)) {
 			$widgetLatestPosts = [
@@ -343,10 +337,10 @@ class HomeController extends FrontController
 			$widgetLatestPosts = ArrayHelper::toObject($widgetLatestPosts);
 			$widgetLatestPosts->options = $value;
 		}
-		
+
 		view()->share('widgetLatestPosts', $widgetLatestPosts);
 	}
-	
+
 	/**
 	 * Get list of categories
 	 *
@@ -361,27 +355,27 @@ class HomeController extends FrontController
 		if (isset($value['max_items'])) {
 			$maxItems = (int)$value['max_items'];
 		}
-		
+
 		// Number of columns
 		$numberOfCols = 3;
-		
+
 		// Get the Default Cache delay expiration
 		$cacheExpiration = $this->getCacheExpirationTime($value);
 
 		//print_r($cacheExpiration);die;
-		
+
 		$cacheId = 'categories.parents.' . config('app.locale') . '.take.' . $maxItems;
-		
+
 		if (isset($value['type_of_display']) && in_array($value['type_of_display'], ['cc_normal_list', 'cc_normal_list_s'])) {
-			
+
 			$categories = Cache::remember($cacheId, $cacheExpiration, function () {
 				$categories = Category::orderBy('lft')->get();
-				
+
 				return $categories;
 			});
 			$categories = collect($categories)->keyBy('id');
 			$categories = $subCategories = $categories->groupBy('parent_id');
-			
+
 			if ($categories->has(null)) {
 				if (!empty($maxItems)) {
 					$categories = $categories->get(null)->take($maxItems);
@@ -389,7 +383,7 @@ class HomeController extends FrontController
 					$categories = $categories->get(null);
 				}
 				$subCategories = $subCategories->forget(null);
-				
+
 				$maxRowsPerCol = round($categories->count() / $numberOfCols, 0, PHP_ROUND_HALF_EVEN);
 				$maxRowsPerCol = ($maxRowsPerCol > 0) ? $maxRowsPerCol : 1;
 				$categories = $categories->chunk($maxRowsPerCol);
@@ -397,12 +391,11 @@ class HomeController extends FrontController
 				$categories = collect();
 				$subCategories = collect();
 			}
-			
+
 			view()->share('coach', $categories);
 			view()->share('subCategories', $subCategories);
-			
 		} else {
-			
+
 			$categories = Cache::remember($cacheId, $cacheExpiration, function () use ($maxItems) {
 				if (!empty($maxItems)) {
 					$categories = Category::where(function ($query) {
@@ -413,10 +406,10 @@ class HomeController extends FrontController
 						$query->where('parent_id', 0)->orWhereNull('parent_id');
 					})->orderBy('lft')->get();
 				}
-				
+
 				return $categories;
 			});
-			
+
 			if (isset($value['type_of_display']) && $value['type_of_display'] == 'c_picture_icon') {
 				$categories = collect($categories)->keyBy('id');
 			} else {
@@ -425,23 +418,22 @@ class HomeController extends FrontController
 				$maxRowsPerCol = ($maxRowsPerCol > 0) ? $maxRowsPerCol : 1; // Fix array_chunk with 0
 				$categories = $categories->chunk($maxRowsPerCol);
 			}
-			
+
 			view()->share('coach', $categories);
-			
 		}
-		
+
 		// Count Posts by category (if the option is enabled)
 		$countPostsByCat = collect();
 		if (config('settings.listing.count_categories_posts')) {
 			$cacheId = config('country.code') . '.count.posts.by.cat.' . config('app.locale');
 			$countPostsByCat = Cache::remember($cacheId, $cacheExpiration, function () {
 				$countPostsByCat = Category::countPostsByCategory();
-				
+
 				return $countPostsByCat;
 			});
 		}
 		view()->share('countPostsByCat', $countPostsByCat);
-		
+
 		// Export the Options
 		view()->share('categoriesOptions', $value);
 	}
@@ -453,25 +445,25 @@ class HomeController extends FrontController
 		if (isset($value['max_items'])) {
 			$maxItems = (int)$value['max_items'];
 		}
-		
+
 		// Number of columns
 		$numberOfCols = 3;
-		
+
 		// Get the Default Cache delay expiration
 		$cacheExpiration = $this->getCacheExpirationTime($value);
-		
+
 		$cacheId = 'categories.parents.' . config('app.locale') . '.take.' . $maxItems;
-		
+
 		if (isset($value['type_of_display']) && in_array($value['type_of_display'], ['cc_normal_list', 'cc_normal_list_s'])) {
-			
+
 			$categories = Cache::remember($cacheId, $cacheExpiration, function () {
 				$categories = Category::orderBy('lft')->get();
-				
+
 				return $categories;
 			});
 			$categories = collect($categories)->keyBy('id');
 			$categories = $subCategories = $categories->groupBy('parent_id');
-			
+
 			if ($categories->has(null)) {
 				if (!empty($maxItems)) {
 					$categories = $categories->get(null)->take($maxItems);
@@ -479,7 +471,7 @@ class HomeController extends FrontController
 					$categories = $categories->get(null);
 				}
 				$subCategories = $subCategories->forget(null);
-				
+
 				$maxRowsPerCol = round($categories->count() / $numberOfCols, 0, PHP_ROUND_HALF_EVEN);
 				$maxRowsPerCol = ($maxRowsPerCol > 0) ? $maxRowsPerCol : 1;
 				$categories = $categories->chunk($maxRowsPerCol);
@@ -487,12 +479,11 @@ class HomeController extends FrontController
 				$categories = collect();
 				$subCategories = collect();
 			}
-			
+
 			view()->share('categories', $categories);
 			view()->share('subCategories', $subCategories);
-			
 		} else {
-			
+
 			$categories = Cache::remember($cacheId, $cacheExpiration, function () use ($maxItems) {
 				if (!empty($maxItems)) {
 					$categories = Category::where(function ($query) {
@@ -503,10 +494,10 @@ class HomeController extends FrontController
 						$query->where('parent_id', 0)->orWhereNull('parent_id');
 					})->orderBy('lft')->get();
 				}
-				
+
 				return $categories;
 			});
-			
+
 			if (isset($value['type_of_display']) && $value['type_of_display'] == 'c_picture_icon') {
 				$categories = collect($categories)->keyBy('id');
 			} else {
@@ -515,27 +506,26 @@ class HomeController extends FrontController
 				$maxRowsPerCol = ($maxRowsPerCol > 0) ? $maxRowsPerCol : 1; // Fix array_chunk with 0
 				$categories = $categories->chunk($maxRowsPerCol);
 			}
-			
+
 			view()->share('categories', $categories);
-			
 		}
-		
+
 		// Count Posts by category (if the option is enabled)
 		$countPostsByCat = collect();
 		if (config('settings.listing.count_categories_posts')) {
 			$cacheId = config('country.code') . '.count.posts.by.cat.' . config('app.locale');
 			$countPostsByCat = Cache::remember($cacheId, $cacheExpiration, function () {
 				$countPostsByCat = Category::countPostsByCategory();
-				
+
 				return $countPostsByCat;
 			});
 		}
 		view()->share('countPostsByCat', $countPostsByCat);
-		
+
 		// Export the Options
 		view()->share('categoriesOptions', $value);
 	}
-	
+
 	/**
 	 * Get mini stats data
 	 *
@@ -545,22 +535,22 @@ class HomeController extends FrontController
 	{
 		// Count posts
 		$countPosts = Post::currentCountry()->unarchived()->count();
-		
+
 		// Count cities
 		$countCities = City::currentCountry()->count();
-		
+
 		// Count users
 		$countUsers = User::count();
-		
+
 		// Share vars
 		view()->share('countPosts', $countPosts);
 		view()->share('countCities', $countCities);
 		view()->share('countUsers', $countUsers);
-		
+
 		// Export the Options
 		view()->share('statsOptions', $value);
 	}
-	
+
 	/**
 	 * Get the text area data
 	 *
@@ -571,7 +561,7 @@ class HomeController extends FrontController
 		// Export the Options
 		view()->share('textOptions', $value);
 	}
-	
+
 	/**
 	 * Set SEO information
 	 *
@@ -584,7 +574,7 @@ class HomeController extends FrontController
 		MetaTag::set('title', $title);
 		MetaTag::set('description', strip_tags($description));
 		MetaTag::set('keywords', $keywords);
-		
+
 		// Open Graph
 		$this->og->title($title)->description($description);
 		$backgroundImage = '';
@@ -609,7 +599,7 @@ class HomeController extends FrontController
 		}
 		view()->share('og', $this->og);
 	}
-	
+
 	/**
 	 * @param array $value
 	 * @return int
@@ -621,17 +611,20 @@ class HomeController extends FrontController
 		if (isset($value['cache_expiration'])) {
 			$cacheExpiration = (int)$value['cache_expiration'];
 		}
-		
+
 		return $cacheExpiration;
 	}
 
 
-	public function user_login(Request $request) {
-		
+	public function user_login(Request $request)
+	{
+
 		$email = $request->input('login');
 		$password = $request->input('password');
-		 
-		
+		$course_id = $request->input('course_id');
+
+		// print_r($request->all());
+		// die;
 
 		$users_context_id = DB::table('users')->where('email', $email)->first();
 
@@ -651,7 +644,8 @@ class HomeController extends FrontController
 				$checkLogin = DB::table('users')->where(['email' => $email, 'password' => $password])->get();
 
 				if (auth()
-					->attempt(['email' => $email, 'password' => $password])) {
+					->attempt(['email' => $email, 'password' => $password])
+				) {
 					$id = Auth::user()->id;
 					$userId = DB::table('users')->where('users.id', $id)
 						->first(['users.*']);
@@ -660,16 +654,37 @@ class HomeController extends FrontController
 						Session()
 							->flash('strivre', 'welcome');
 						if ($userId->user_type_id == 2) {
-							
+
+							Session()
+								->flash('strivre', 'Welcome to Coach');
+
 
 							return redirect('/account');
 						} elseif ($userId->user_type_id == 3) {
 
-							return redirect('/account');
+
+
+							if (!empty($course_id)) {
+
+								$course_data = 'get_coach_course/'. $course_id;
+
+								// print_r($course_data);die;
+								
+
+								return redirect('get_coach_course/'. $course_id);
+
+							} else {
+
+
+
+								Session()
+									->flash('strivre', 'Welcome to Strivre');
+
+								return redirect('/account');
+							}
 							// return redirect('/received-notification');
 						}
-
-					} 
+					}
 					// else {
 					// 	$user_login_id = $userId->id;
 					// 	$data1['login_user_id'] = $user_login_id;
@@ -706,33 +721,33 @@ class HomeController extends FrontController
 		//     ->back()
 		//     ->withInput();
 		return redirect('/');
-
 	}
-	public function register_new_user(Request $request )
+	public function register_new_user(Request $request)
 	{
 
-	
-// print_r($request->all());die;
 
-		$curl = curl_init();
-		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://206672f6b5d16174.api-us.cometchat.io/v3/users',
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => '',
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 0,
-		  CURLOPT_FOLLOWLOCATION => true,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => 'POST',
-		  CURLOPT_POSTFIELDS => array('uid' => $request->username,'name' => $request->name),
-		  CURLOPT_HTTPHEADER => array(
-			'apiKey: 37e9caaa45ca1ea8240082bbef437450bce73aa5'
-		  ),
-		));
-		
-		$response = curl_exec($curl);
-		
-		curl_close($curl);
+		// print_r($request->all());die;
+
+		// $curl = curl_init();
+		// curl_setopt_array($curl, array(
+		//   CURLOPT_URL => 'https://206672f6b5d16174.api-us.cometchat.io/v3/users',
+		//   CURLOPT_RETURNTRANSFER => true,
+		//   CURLOPT_ENCODING => '',
+		//   CURLOPT_MAXREDIRS => 10,
+		//   CURLOPT_TIMEOUT => 0,
+		//   CURLOPT_FOLLOWLOCATION => true,
+		//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		//   CURLOPT_CUSTOMREQUEST => 'POST',
+		//   CURLOPT_POSTFIELDS => array('uid' => $request->username,'name' => $request->name),
+		//   CURLOPT_HTTPHEADER => array(
+		// 	'apiKey: 37e9caaa45ca1ea8240082bbef437450bce73aa5'
+		//   ),
+		// ));
+
+		// $response = curl_exec($curl);
+
+		// curl_close($curl);
+
 		// echo $response;
 
 
@@ -743,48 +758,78 @@ class HomeController extends FrontController
 		// Call API endpoint
 		$endpoint = '/users';
 		$data = makeApiRequest('post', $endpoint, $request->all());
-		
+
 		//print_r($data);die;
 		// Parsing the API's response
 		$message = !empty(data_get($data, 'message')) ? data_get($data, 'message') : 'Unknown Error.';
-		
+
 		// HTTP Error Found
 		if (!data_get($data, 'isSuccessful')) {
 			return back()->withErrors(['error' => $message])->withInput();
 		}
-		
+
 		// Notification Message
 		if (data_get($data, 'success')) {
 			session()->put('message', $message);
 		} else {
 			flash($message)->error();
 		}
-		
+
+
+
+		// commetchat curl
+
+
+
+
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => 'https://206672f6b5d16174.api-us.cometchat.io/v3/users',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'POST',
+			CURLOPT_POSTFIELDS => array('uid' => $request->username, 'name' => $request->name),
+			CURLOPT_HTTPHEADER => array(
+				'apiKey: 37e9caaa45ca1ea8240082bbef437450bce73aa5'
+			),
+		));
+
+		$response = curl_exec($curl);
+
+		curl_close($curl);
+
+
+
+
 		// Get User Resource
 		$user = data_get($data, 'result');
-		
+
 		// Get the next URL
 		$nextUrl = url('register/finish');
-		
+
 		if (
 			data_get($data, 'extra.sendEmailVerification.emailVerificationSent')
 			|| data_get($data, 'extra.sendPhoneVerification.phoneVerificationSent')
 		) {
 			session()->put('userNextUrl', $nextUrl);
-			
+
 			if (data_get($data, 'extra.sendEmailVerification.emailVerificationSent')) {
 				session()->put('emailVerificationSent', true);
-				
+
 				// Show the Re-send link
 				$this->showReSendVerificationEmailLink($user, 'users');
 			}
-			
+
 			if (data_get($data, 'extra.sendPhoneVerification.phoneVerificationSent')) {
 				session()->put('phoneVerificationSent', true);
-				
+
 				// Show the Re-send link
 				$this->showReSendVerificationSmsLink($user, 'users');
-				
+
 				// Go to Phone Number verification
 				$nextUrl = url('users/verify/phone/');
 			}
@@ -800,9 +845,8 @@ class HomeController extends FrontController
 					$nextUrl = url('account');
 				}
 			}
-
 		}
-		
+
 		// Mail Notification Message
 		if (data_get($data, 'extra.mail.message')) {
 			$mailMessage = data_get($data, 'extra.mail.message');
@@ -812,41 +856,45 @@ class HomeController extends FrontController
 				flash($mailMessage)->error();
 			}
 		}
-	
-		
-		
+
+
 		return redirect($nextUrl);
 	}
 
 
-	public function coach_coursess($id){
+	public function coach_coursess($id)
+	{
 		$data = [];
-		
+
 		// $data['genders'] = Gender::query()->get();
 		$user = auth()->user();
-		
-		if(empty($user)){
 
-			return redirect('/login');
+		if (empty($user)) {
+
+			$data['course_id'] = $id;
+
+			return appView('auth.login.index', $data);
+
+
+			// return redirect('/login');
 		}
-		
-		
+
+
 
 		$data['auth_id'] = auth()->user()->id;
 
-		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*','users.name','users.photo')
-		->leftjoin('users' ,'users.id' ,'=', 'coach_course.coach_id')		
-		// ->where('coach_course.coach_id', $user->id)
-		->where('coach_course.id', $id)
-		->orderBy('coach_course.id','asc')
-		->first();
+		$data['coach_course'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
+			// ->where('coach_course.coach_id', $user->id)
+			->where('coach_course.id', $id)
+			->orderBy('coach_course.id', 'asc')
+			->first();
 
-		
 
-	// print_r($data['auth_id']);die;
+
+		// print_r($id);die;
 
 		return appView('pages.coach_coarse', $data);
-
 	}
 
 	public function coach_list_category_interesting(Request $request)
@@ -876,7 +924,7 @@ class HomeController extends FrontController
 		// print_r($data['sub_categories']);die;
 		// $data['sub_categories'] = DB::table('categories')->select('categories.name', 'categories.id', 'categories.parent_id','categories.slug')->where('categories.parent_id','!=', null)->orderBy('categories.name', 'asc')->get();
 
-		$data['sub_categories'] = DB::table('categories')->select('categories.name', 'categories.id', 'categories.parent_id','categories.slug')->where('categories.parent_id','!=', null)->orderBy('categories.name', 'asc')->get();
+		$data['sub_categories'] = DB::table('categories')->select('categories.name', 'categories.id', 'categories.parent_id', 'categories.slug')->where('categories.parent_id', '!=', null)->orderBy('categories.name', 'asc')->get();
 
 
 		$data['my_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
@@ -887,62 +935,63 @@ class HomeController extends FrontController
 			->orderBy('users.id', 'asc')->limit(8)->get();
 
 
+		// $data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
+		// 			->leftjoin('categories', 'categories.id', '=', 'users.category')
+		// 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+		// 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+		// 			->where('users.user_type_id', 2)->where('users.name','LIKE','%'.$request->search .'%')->orderBy('users.id', 'asc')->limit(8)->get();
+
+		// 			print_r($data['user']);die;
+
+
+
+		// if (empty($id)) {
+		if (empty($request->search)) {
+
+			$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+
+			// print_r($data['user']);die;
+
+		} else {
+
+
+
 			// $data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
-			// 			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			// 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			// 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			// 			->where('users.user_type_id', 2)->where('users.name','LIKE','%'.$request->search .'%')->orderBy('users.id', 'asc')->limit(8)->get();
-	
-			// 			print_r($data['user']);die;
+			// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
+			// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			// 	->where('users.user_type_id', 2)->where('users.category',$id)->orderBy('users.id', 'asc')->limit(8)->get();
+			$key = $request->search;
+
+			$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name', 'countries.name as countries_name', 'cities.name as cities_name')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->leftjoin('countries', 'countries.code', '=', 'users.country_code')
+				->leftjoin('cities', 'cities.id', '=', 'users.location')
+				->where('users.user_type_id', 2)
+				->where(
+					function ($query) use ($key) {
+
+						return $query
+							->where('users.name', 'LIKE', '%' . $key . '%')->orWhere('countries.name', 'LIKE', '%' . $key . '%')->orWhere('categories.name', 'LIKE', '%' . $key . '%')->orWhere('cities.name', 'LIKE', '%' . $key . '%');
+					}
+				)
 
 
 
-			// if (empty($id)) {
-				if (empty($request->search)) {
-				
-				$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
-					->leftjoin('categories', 'categories.id', '=', 'users.category')
-					->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-					->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-					->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+				// ->where('users.name','LIKE','%'.$request->search .'%')->orWhere('countries.name','LIKE','%'.$request->search .'%')->orWhere('categories.name','LIKE','%'.$request->search .'%')->orWhere('cities.name','LIKE','%'.$request->search .'%')->orderBy('users.id', 'asc')
+				->orderBy('users.id', 'asc')
+				->get();
 
-					// print_r($data['user']);die;
-
-			} else {
-
-				
-				
-					// $data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
-					// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
-					// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-					// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-					// 	->where('users.user_type_id', 2)->where('users.category',$id)->orderBy('users.id', 'asc')->limit(8)->get();
-					$key = $request->search;
-
-					$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name','countries.name as countries_name','cities.name as cities_name')
-						->leftjoin('categories', 'categories.id', '=', 'users.category')
-						->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-						->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-						->leftjoin('countries', 'countries.code','=','users.country_code')
-						->leftjoin('cities','cities.id','=','users.location')
-						->where('users.user_type_id', 2)
-						->where(
-							function($query)use ($key) {
-								
-							  return $query
-									 ->where('users.name','LIKE','%'.$key .'%')->orWhere('countries.name','LIKE','%'.$key .'%')->orWhere('categories.name','LIKE','%'.$key .'%')->orWhere('cities.name','LIKE','%'.$key .'%');
-							 })
+			// print_r($data['user']);die;
 
 
-
-						// ->where('users.name','LIKE','%'.$request->search .'%')->orWhere('countries.name','LIKE','%'.$request->search .'%')->orWhere('categories.name','LIKE','%'.$request->search .'%')->orWhere('cities.name','LIKE','%'.$request->search .'%')->orderBy('users.id', 'asc')
-						->orderBy('users.id', 'asc')
-						->get();
-	
-						// print_r($data['user']);die;
-	
-				
-			}
+		}
 
 
 		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
@@ -958,14 +1007,12 @@ class HomeController extends FrontController
 		MetaTag::set('description', strip_tags($description));
 		MetaTag::set('keywords', $keywords);
 
-		$data['search_key']= $key;
+		$data['search_key'] = $key;
 
 		// print_r($data);die;
 
 
 
 		return appView('pages.category_coaches', $data);
-	
 	}
-
 }
