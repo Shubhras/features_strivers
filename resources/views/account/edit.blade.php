@@ -1759,11 +1759,12 @@
 			// [XBM Support] => 1
 			
 			
-
+			
 
 			initialPreview: [
 				@if (isset($user->photo) && !empty($user->photo))
-					"{{ url('storage/'.$user->photo) }}"
+					// "{{ url('storage/'.$user->photo) }}"
+					"{{ url($photo_url1) }}"
 				@endif
 			],
 			initialPreviewAsData: true,
@@ -1900,38 +1901,7 @@ function getcategory(id)
         
 		}
 	} 
-//     var categoryID = $('#category').val();
-//     if (categoryID) {
 
-//         $.ajax({
-
-//             type: "GET",
-//             url: "{{ url('account/getSubcategories') }}?id=" + categoryID,
-
-//             success: function(res) {
-
-//                 if (res) {
-
-//                     $("#sub_category").empty();
-//                     $("#sub_category").append('<option value=0>Select a subcategory</option>');
-//                     $.each(res, function(key, value) {
-//                         $("#sub_category").append('<option value="' + key + '" ' + ((key == (
-//                                 sub_cat_id)) ? "selected" : "") + ' >' + value.id +
-//                             '</option>');
-
-//                     });
-
-//                 } else {
-
-//                     $("#sub_category").empty();
-//                 }
-
-//             }
-//         });
-//     } else {
-//         $("#sub_category").empty();
-//     }
-// });
 </script>
 
 
@@ -1963,10 +1933,7 @@ function getlocation(id)
                 $.each(Response, function(key, value) {
 
                     $.each(value, function(keys, cityvalue) {
-                        // delete object["en"];
-                        // myObject = JSON.parse(cityvalue.name);
-                        // delete(cityvalue.en)+cityvalue.name,
-                        // myObject = JSON.stringify(cityvalue.name);
+                        
 
                         $("#locationiddata").append('<option value="' + cityvalue.id +
                             '" ' + ((keys == (cityvalue.id)) ? "selected" : "") + ' >' +
@@ -1986,10 +1953,7 @@ function getlocation(id)
 
         }
 
-        // error: function(res){
-        //     $('#message').text('Error!');
-        //     $('.dvLoading').hide();
-        // }
+       
     });
 }
 </script>
