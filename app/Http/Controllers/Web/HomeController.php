@@ -720,7 +720,7 @@ class HomeController extends FrontController
 		// return redirect()
 		//     ->back()
 		//     ->withInput();
-		return redirect('/');
+		return redirect('/login');
 	}
 	public function register_new_user(Request $request)
 	{
