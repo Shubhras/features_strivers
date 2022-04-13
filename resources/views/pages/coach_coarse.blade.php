@@ -87,6 +87,13 @@
                   @if(Session::has('loginerror'))
                   <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('loginerror') }} <a href="{{url('/pricing') }}" style="color: red;" target="_blank"><b> Click here to subscribe and get credits.</b></a></p>
                   @endif
+
+
+                  @if(Session::has('loginerrorenroll'))
+                  <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('loginerrorenroll') }} <a href="{{url('/') }}" style="color: red;" target="_blank"><b> Back to home.</b></a></p>
+                  @endif
+
+                  
                </div>
                 
 

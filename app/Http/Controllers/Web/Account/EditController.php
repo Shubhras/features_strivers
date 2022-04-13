@@ -88,7 +88,7 @@ class EditController extends AccountBaseController
 
 		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
 		$data['categoriess'] = DB::table('categories')->select('categories.slug', 'categories.id')->where('categories.parent_id', $user->category)->get();
-		// print_r($data['categoriess']);die;
+
 		$data['all_countries'] = DB::table('countries')->get();
 
 
@@ -108,8 +108,8 @@ class EditController extends AccountBaseController
 
 		// print_r(($request->id));die;
 		$data['cities'] = DB::table('cities')->select('cities.id', 'cities.country_code', 'cities.name')->where('cities.country_code', $request->id)->get();
-		// print_r($data);die;
-		return  $data;
+
+		return $data;
 	}
 
 
@@ -275,6 +275,7 @@ class EditController extends AccountBaseController
 	{
 
 
+
 		$user = auth()->user();
 
 		if (empty($user)) {
@@ -283,93 +284,105 @@ class EditController extends AccountBaseController
 		} else {
 
 
+			$enroll_course_by_strivre = DB::table('enroll_course')->select('enroll_course.course_id')->where('enroll_course.user_id', $user->id)->orWhere('enroll_course.course_id', $request->course_id)->first();
 
-			$user = auth()->user();
+			$enroldStrvreCourse = $enroll_course_by_strivre->course_id;
 
-			$data['user_subscription'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*', 'packages.name', 'users.name as username')
-				->leftjoin('packages', 'packages.id', '=', 'user_subscription_payment.subscription_id')
-				->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')
-				->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
-				->get();
+			if ($enroldStrvreCourse == $request->course_id) {
 
+				Session()
+					->flash('loginerrorenroll', 'You have already enroll course .');
+				return redirect()
+					->back();
+			} else {
 
-			$totalsum = array();
-			$name = array();
-			$consumed_hours = array();
-			$remaining_hours = array();
-			$user_id = array();
+				$user = auth()->user();
 
-			foreach ($data['user_subscription'] as $key => $value) {
-
-				$totalsum[$value->total_provided_hours] = $value->total_provided_hours;
-				$name[$value->name] = $value->name;
-				$consumed_hours[$value->consumed_hours] = $value->consumed_hours;
-				$remaining_hours[$value->remaining_hours] = $value->remaining_hours;
-				$user_id[$value->id] = $value->id;
-				// $consumed_hours[$value->consumed_hours] =$value->consumed_hours;
-			}
+				$data['user_subscription'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*', 'packages.name', 'users.name as username')
+					->leftjoin('packages', 'packages.id', '=', 'user_subscription_payment.subscription_id')
+					->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')
+					->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
+					->get();
 
 
-			$ss  = array();
+				$totalsum = array();
+				$name = array();
+				$consumed_hours = array();
+				$remaining_hours = array();
+				$user_id = array();
+
+				foreach ($data['user_subscription'] as $key => $value) {
+
+					$totalsum[$value->total_provided_hours] = $value->total_provided_hours;
+					$name[$value->name] = $value->name;
+					$consumed_hours[$value->consumed_hours] = $value->consumed_hours;
+					$remaining_hours[$value->remaining_hours] = $value->remaining_hours;
+					$user_id[$value->id] = $value->id;
+					// $consumed_hours[$value->consumed_hours] =$value->consumed_hours;
+				}
+
+
+				$ss  = array();
 				foreach ($name as $key => $sub) {
 					$ss[$sub] = $sub;
 				}
-		
-		
+
+
 				$data['total_purchase_package'] = count($user_id);
 				$data['packagename'] = $ss;
 				$totalpoints = array_sum($totalsum);
 				$data['consumed_hours'] = array_sum($consumed_hours);
 
-				$consumeddat=  $data['consumed_hours'] + $request->creadit_required;
-		
+				$consumeddat =  $data['consumed_hours'] + $request->creadit_required;
+
 				$remaining_hours = $totalpoints - $consumeddat;
 				$remaining_hourss = $totalpoints - $data['consumed_hours'];
-			    // $total = implode('', $totalpoints);
+				// $total = implode('', $totalpoints);
 
-			// 
-			// print_r($totalpoints);
-			// print_r($request->creadit_required);
-			
-			// print_r($remaining_hourss);die;
+				// 
+				// print_r($totalpoints);
+				// print_r($request->creadit_required);
 
-			if ($remaining_hourss >=  $request->creadit_required) {
+				// print_r($remaining_hourss);die;
+
+				if ($remaining_hourss >=  $request->creadit_required) {
 
 
 
-				$date = date('d-m-yy');
-				$data = array(
-					'user_id' => $request->user_id,
-					'coach_id' => $request->coach_id,
-					'course_id' => $request->course_id,
-					'created_at' => $date
-				);
+					$date = date('d-m-yy');
+					$data = array(
+						'user_id' => $request->user_id,
+						'coach_id' => $request->coach_id,
+						'course_id' => $request->course_id,
+						'created_at' => $date
+					);
 
-				DB::table('enroll_course')->insert($data);
+					DB::table('enroll_course')->insert($data);
 
-		
 
-					DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' =>$consumeddat,'user_subscription_payment.remaining_hours' =>$remaining_hours]);
+
+					DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' => $consumeddat, 'user_subscription_payment.remaining_hours' => $remaining_hours]);
 
 
 					Session()->flash('messagess', ' Enroll Successfully !');
-				// return redirect()
+					// return redirect()
 					// ->back();
 
-				return redirect('account/my_courses');
-			} else {
+					return redirect('account/my_courses');
+				} else {
 
 
-				
-			// } else {
-				Session()
-					->flash('loginerror', 'You do not have sufficient credits.' );
-				return redirect()
-					->back();
-			// }
+
+					// } else {
+					Session()
+						->flash('loginerror', 'You do not have sufficient credits.');
+					return redirect()
+						->back();
+					// }
 
 
-				// return redirect('/pricing');
+					// return redirect('/pricing');
+				}
 			}
 		}
 	}
@@ -570,7 +583,7 @@ class EditController extends AccountBaseController
 		//$data['categories']= Category::query()->get();
 
 
-		
+
 
 
 		$curl = curl_init();
@@ -681,13 +694,22 @@ class EditController extends AccountBaseController
 
 		// DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' => $videominutsTotal]);
 
-		
+		$data['totalStrivre'] = DB::table('enroll_course')->select('enroll_course.*')->where('enroll_course.coach_id', $user->id)->groupBy('enroll_course.user_id')->get();
+
+		$data['totalStrivrePayment'] = count($data['totalStrivre']);
+
+		$data['strivrePayment'] = DB::table('users')
+			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
+			->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
+			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
+			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
+			->where('enroll_course.coach_id', $user->id)->get();
 
 
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
-		// print_r($videominuts);die;
+		// print_r($data['strivrePayment']);die;
 
 		return appView('account.payment_and_subscription', $data);
 	}
@@ -782,16 +804,16 @@ class EditController extends AccountBaseController
 		// $this->attributes[$attribute_name] = $destination_path . '/' . $filename;
 		$this->attributes[$attribute_name] = $destination_path . '/' . $image;
 
-		if(!empty($request->dated)){
-				// $dates =date('d-m-yy',$request->dated);
-				$dates = $request->dated;
-				
-				// print_r($dates);die;
-		}else{
+		if (!empty($request->dated)) {
+			// $dates =date('d-m-yy',$request->dated);
+			$dates = $request->dated;
+
+			// print_r($dates);die;
+		} else {
 			$dates = date('d-m-y');
 		}
 
-		
+
 		//  print_r($request->all());die;
 		$data = array(
 			'coach_id' => $user->id,

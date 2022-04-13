@@ -38,7 +38,7 @@
 	 <div class="main-container" >
 		<div class="container">
 
-		<?php $photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
+		
 
 
 <?php if($user->user_type_id == 2){ ?>
@@ -53,7 +53,15 @@
 				
 				<div class="col-md-12 user-profile-img-data default-inner-box">
 					
-					<img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+				<?php if(!empty($user->photo)){
+					?>
+					
+					<img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+					<?php }else{ ?>
+
+						<img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+
+						<?php }?>
 					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>  {{ $user->name }}</b> </span>
 					
 					
@@ -178,40 +186,6 @@
 						
 					    <div id="accordion" class="panel-group">
 							{{-- PHOTO --}}
-							<!-- <div class="card card-default">
-								<div class="card-header">
-									<h4 class="card-title">
-										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or User') }}</a>
-									</h4>
-								</div>
-								<?php
-								$photoPanelClass = '';
-								$photoPanelClass = request()->filled('panel')
-									? (request()->get('panel') == 'photo' ? 'show' : $photoPanelClass)
-									: ((old('panel')=='' || old('panel') =='photo') ? 'show' : $photoPanelClass);
-								?>
-								<div class="panel-collapse collapse {{ $photoPanelClass }}" id="photoPanel">
-									<div class="card-body">
-										<form name="details" class="form-horizontal" role="form" method="POST" action="{{ url('account/' . $user->id . '/photo') }}">
-											<div class="row">
-												<div class="col-xl-12 text-center">
-													
-													<?php $photoError = (isset($errors) and $errors->has('photo')) ? ' is-invalid' : ''; ?>
-													<div class="photo-field">
-														<div class="file-loading">
-															<input id="photoField" name="photo" type="file" class="file {{ $photoError }}">
-														</div>
-													</div>
-												
-												</div>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div> -->
-
-
-
 							<div class="card card-default">
 								<div class="card-header">
 									<h4 class="card-title">
@@ -243,6 +217,40 @@
 									</div>
 								</div>
 							</div>
+
+
+
+							<!-- <div class="card card-default">
+								<div class="card-header">
+									<h4 class="card-title">
+										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or User') }}</a>
+									</h4>
+								</div>
+								<?php
+								$photoPanelClass = '';
+								$photoPanelClass = request()->filled('panel')
+									? (request()->get('panel') == 'photo' ? 'show' : $photoPanelClass)
+									: ((old('panel')=='' || old('panel') =='photo') ? 'show' : $photoPanelClass);
+								?>
+								<div class="panel-collapse collapse {{ $photoPanelClass }}" id="photoPanel">
+									<div class="card-body">
+										<form name="details" class="form-horizontal" role="form" method="POST" action="{{ url('account/' . $user->id . '/photo') }}">
+											<div class="row">
+												<div class="col-xl-12 text-center">
+													
+													<?php $photoError = (isset($errors) and $errors->has('photo')) ? ' is-invalid' : ''; ?>
+													<div class="photo-field">
+														<div class="file-loading">
+															<input id="photoField" name="photo" type="file" class="file {{ $photoError }}">
+														</div>
+													</div>
+												
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div> -->
 
 
 							
@@ -795,7 +803,15 @@
 
 		<div class="col-md-12 user-profile-img-data default-inner-box">
 
-		<img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+		<?php if(!empty($user->photo)){
+					?>
+					
+					<img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+					<?php }else{ ?>
+
+						<img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+
+						<?php }?>
                         <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> {{ $user->name }}</b> </span>
 						<!-- <b> Striver Update Profile </b></span> -->
 
@@ -1759,11 +1775,12 @@
 			// [XBM Support] => 1
 			
 			
-
+			
 
 			initialPreview: [
 				@if (isset($user->photo) && !empty($user->photo))
 					"{{ url('storage/'.$user->photo) }}"
+					
 				@endif
 			],
 			initialPreviewAsData: true,
@@ -1826,6 +1843,8 @@
 			$('#avatarUploadSuccess ul').append(out);
 			$('#avatarUploadSuccess').fadeIn('slow');
 			
+			// $('#userImg').attr({'src':$('.photo-field .kv-file-content .file-preview-image').attr('src')});
+
 			$('#userImg').attr({'src':$('.photo-field .kv-file-content .file-preview-image').attr('src')});
 		});
 		
@@ -1900,38 +1919,7 @@ function getcategory(id)
         
 		}
 	} 
-//     var categoryID = $('#category').val();
-//     if (categoryID) {
 
-//         $.ajax({
-
-//             type: "GET",
-//             url: "{{ url('account/getSubcategories') }}?id=" + categoryID,
-
-//             success: function(res) {
-
-//                 if (res) {
-
-//                     $("#sub_category").empty();
-//                     $("#sub_category").append('<option value=0>Select a subcategory</option>');
-//                     $.each(res, function(key, value) {
-//                         $("#sub_category").append('<option value="' + key + '" ' + ((key == (
-//                                 sub_cat_id)) ? "selected" : "") + ' >' + value.id +
-//                             '</option>');
-
-//                     });
-
-//                 } else {
-
-//                     $("#sub_category").empty();
-//                 }
-
-//             }
-//         });
-//     } else {
-//         $("#sub_category").empty();
-//     }
-// });
 </script>
 
 
@@ -1963,10 +1951,7 @@ function getlocation(id)
                 $.each(Response, function(key, value) {
 
                     $.each(value, function(keys, cityvalue) {
-                        // delete object["en"];
-                        // myObject = JSON.parse(cityvalue.name);
-                        // delete(cityvalue.en)+cityvalue.name,
-                        // myObject = JSON.stringify(cityvalue.name);
+                        
 
                         $("#locationiddata").append('<option value="' + cityvalue.id +
                             '" ' + ((keys == (cityvalue.id)) ? "selected" : "") + ' >' +
@@ -1986,10 +1971,7 @@ function getlocation(id)
 
         }
 
-        // error: function(res){
-        //     $('#message').text('Error!');
-        //     $('.dvLoading').hide();
-        // }
+       
     });
 }
 </script>
