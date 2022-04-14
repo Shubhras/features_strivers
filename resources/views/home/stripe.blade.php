@@ -71,6 +71,7 @@
                         };
                         </script> -->
                     <!-- @endif -->
+
                     <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
                         data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
                         @csrf
@@ -113,6 +114,10 @@
                         <input type="hidden" name="price" value={{$price}} id="price">
                         <input type="hidden" name="subscriptionPlan" value={{$subscriptionPlan}} id="subscriptionPlan">
                         <input type="hidden" name="totalHours" value={{$totalHours}} id="totalHours">
+                        <?php if(!empty($courseId)){ ?>
+                        <input type="hidden" name="courseId" value={{$courseId}} id="courseId">
+                            <?php }?>
+                            
                         <div class="row">
                             <div class="col-xs-12 col-md-12 col-xl-12r">
                                 <button class="btn btn-primary btn-lg btn-block" type="submit">Pay
@@ -120,6 +125,7 @@
                                     ${{$price}}</button>
                             </div>
                         </div>
+
 
 
                     </form>

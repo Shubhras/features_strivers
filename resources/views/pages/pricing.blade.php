@@ -107,6 +107,14 @@
 															<input type="hidden" value={{$price_total}} name="price">
 															<input type="hidden" value={{$subscriptionPlan}} name="subscriptionPlan">
 															<input type="hidden" value={{$totalHours}} name="totalHours">
+
+															<?php if(!empty($courseId)){?>
+															<input type="hidden" value={{$courseId}} name="courseId">
+
+															<?php }?>
+
+															
+
 															<!-- <input type="hidden" value="redirect to plan" name="loginRedirect"> -->
 															<button type='submit' onclick="customSession()" class="bisylms-btn-2">{{ t('get_started') }}</button>
 
@@ -181,6 +189,11 @@
 															<input type="hidden" value={{$price_total}} name="price">
 															<input type="hidden" value={{$subscriptionPlan}} name="subscriptionPlan">
 															<input type="hidden" value={{$totalHours}} name="totalHours">
+
+															<?php if(!empty($courseId)){?>
+															<input type="hidden" value={{$courseId}} name="courseId">
+
+															<?php }?>
 															<!-- <input type="hidden" value="redirect to plan" name="loginRedirect"> -->
 															<button type='submit' onclick="customSession()" class="bisylms-btn-2">{{ t('get_started') }}</button>
 
@@ -258,6 +271,10 @@
 															<input type="hidden" value={{$price_total}} name="price">
 															<input type="hidden" value={{$subscriptionPlan}} name="subscriptionPlan">
 															<input type="hidden" value={{$totalHours}} name="totalHours">
+															<?php if(!empty($courseId)){?>
+															<input type="hidden" value={{$courseId}} name="courseId">
+
+															<?php }?>
 															<!-- <input type="hidden" value="redirect to plan" name="loginRedirect"> -->
 															<button type='submit' onclick="customSession()" class="bisylms-btn-2">{{ t('get_started') }}</button>
 

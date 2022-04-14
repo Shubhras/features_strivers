@@ -28,7 +28,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Resources\EntityCollection;
 use App\Http\Resources\PackageResource;
 use App\Models\Category;
-use Illuminate\Support\Facades\Request;
+// use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class PageController extends FrontController
 {
@@ -43,6 +44,7 @@ class PageController extends FrontController
 
 	public function pricing()
 	{
+		// print_r($request->all());die;
 		$data = [];
 
 		// Get Packages
@@ -54,6 +56,10 @@ class PageController extends FrontController
 
 			return $packages;
 		});
+
+		// $data['courseId'] = 130;
+
+
 		$data['packages'] = $packages;
 		// print_r($data);die;
 		// Select a Package and go to previous URL ---------------------
@@ -82,8 +88,62 @@ class PageController extends FrontController
 		MetaTag::set('description', strip_tags($description));
 		MetaTag::set('keywords', $keywords);
 
+		// print_r($data);die;
 		return appView('pages.pricing', $data);
 	}
+
+
+
+	public function pricingCourse(Request $request)
+	{
+		// print_r($request->all());die;
+		$data = [];
+
+		// Get Packages
+		$cacheId = 'packages.with.currency.' . config('app.locale');
+		$packages = Cache::remember($cacheId, $this->cacheExpiration, function () {
+			$packages = Package::applyCurrency()->with('currency')->orderBy('lft')->get();
+
+			// print_r($packages);die;
+
+			return $packages;
+		});
+
+		$data['courseId'] = $request->course_id;
+
+
+		$data['packages'] = $packages;
+		// print_r($data);die;
+		// Select a Package and go to previous URL ---------------------
+		// Add Listing possible URLs
+		$addListingUriArray = [
+			'create',
+			'post\/create',
+			'post\/create\/[^\/]+\/photos',
+		];
+		// Default Add Listing URL
+		$addListingUrl = UrlGen::addPost();
+		if (request()->filled('from')) {
+			foreach ($addListingUriArray as $uriPattern) {
+				if (preg_match('#' . $uriPattern . '#', request()->get('from'))) {
+					$addListingUrl = url(request()->get('from'));
+					break;
+				}
+			}
+		}
+		view()->share('addListingUrl', $addListingUrl);
+		// --------------------------------------------------------------
+
+		// Meta Tags
+		[$title, $description, $keywords] = getMetaTag('pricing');
+		MetaTag::set('title', $title);
+		MetaTag::set('description', strip_tags($description));
+		MetaTag::set('keywords', $keywords);
+
+		// print_r($data);die;
+		return appView('pages.pricing', $data);
+	}
+
 
 	/**
 	 * @param $slug
@@ -542,6 +602,19 @@ class PageController extends FrontController
 			->where('coach_course.coach_id', $id)
 			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
 			->limit(6)->get();
+
+
+			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			->where('users.user_type_id', 2)->inRandomOrder()->limit(8)->get();
+
+
+			$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
+			->limit(8)->get();
+
 
 		// print_r($data['top_coach_detail']);die;
 
