@@ -7,12 +7,12 @@
                         <button class="navbar-toggler d-md-none icon-shape icon-sm rounded bg-primary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="fas fa-bars"></span>
                         </button>
-                        <div class="collapse navbar-collapse " id="navbarNavDropdown">
+                        <div class="collapse navbar-collapse TABM" id="navbarNavDropdown">
                             <div class="navbar-nav flex-column w-100  ">
                                 <div class="border-bottom py-4 p-md-4 d-flex justify-content-between text-reset">
                                     <div class="d-flex align-items-center">
                                         <img src="../assets/images/avatar-1.png" alt="" class="rounded-circle avatar-lg">
-                                        <div class="ms-3 lh-1">
+                                        <div class="ms-3 lh-1 ">
                                             <h5 class="mb-1 ">Coach Dashboard</h5>
                                             <!-- <small>Free Member</small> -->
                                         </div>
