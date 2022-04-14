@@ -109,14 +109,30 @@ if (!empty($top_coach_detail->slug)) {
 
 				</div>
 				<br>
-				
-
+				<?php 
+				if($top_coach_detail->youtube_link){
+						// $video_url= 'https://www.youtube.com/watch?v=bNHE9uFOaK4';
+						$video_url= $top_coach_detail->youtube_link;
+						// print_r($video_url);die;
+						$query_str = parse_url($video_url, PHP_URL_QUERY);
+						parse_str($query_str, $query_params);
+				// 		?>				
+				 <div class="col-md-8">
+				 <iframe width="100%" height="450" src="https://www.youtube.com/embed/{{ $query_params['v'] }}?autoplay=1&mute=1&loop=1"></iframe>
+					</div>
+					<?php }
+					
+					else {
+											
+					
+					?>
 
 				
 				<div class="col-md-8">
 				<iframe width="100%" height="450" src="https://www.youtube.com/embed/R5jIoLnL_nE?autoplay=1&mute=1&loop=1"></iframe>
 					<!-- <iframe width="100%" height="450" src="{{$top_coach_detail->youtube_link}}?autoplay=1&mute=1&loop=1"></iframe> -->
 				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</div>

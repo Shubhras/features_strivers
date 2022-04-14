@@ -949,7 +949,7 @@
 								?>
 								<div class="panel-collapse collapse {{ $photoPanelClass }}" id="photoPanel">
 									<div class="card-body">
-										<form name="details" class="form-horizontal" role="form" method="POST" action="{{ url('account/' . $user->id . '/photo') }}">
+										<form name="details" class="form-horizontal" role="form" method="POST" action="{{ url('..account/' . $user->id . '/photo') }}">
 											<div class="row">
 												<div class="col-xl-12 text-center">
 													
