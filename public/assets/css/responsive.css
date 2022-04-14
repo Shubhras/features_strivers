@@ -1910,6 +1910,11 @@ input#phoneHidden {
 }
 
 @media (min-width: 320px) and (max-width: 425px) {
+    .img-coches-main1 {
+        height: 300px!important;
+        margin-bottom: 30px;
+        width: 300px!important;
+    }
     .line-height-text-3 {
         line-height: 20px!important;
     }

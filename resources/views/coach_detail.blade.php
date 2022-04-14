@@ -58,7 +58,9 @@ if (!empty($top_coach_detail->slug)) {
 			<div class="row">
 
 
-				<div class="col-md-4 box">
+				<div class="col-md-4 ">
+					<div class="box"
+					style="height: 450px;" >
 					<!-- <h3 style="font-family: 'Roboto', sans-serif; font-size: 20px;"><b>Coach Detail</b></h3> -->
 
 					<p style="font-family: 'Montserrat', sans-serif; font-size: 16px;"> Coach Name: {{ $top_coach_detail->name }}</p>
@@ -105,7 +107,7 @@ if (!empty($top_coach_detail->slug)) {
 						<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Speciality: No Speciality</p>
 					<?php }
 					?>
-
+</div>
 
 				</div>
 				<br>
