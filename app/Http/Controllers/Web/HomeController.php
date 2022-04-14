@@ -720,7 +720,7 @@ class HomeController extends FrontController
 		// return redirect()
 		//     ->back()
 		//     ->withInput();
-		return redirect('/');
+		return redirect('/login');
 	}
 	public function register_new_user(Request $request)
 	{
@@ -890,9 +890,10 @@ class HomeController extends FrontController
 			->orderBy('coach_course.id', 'asc')
 			->first();
 
+			
 
 
-		// print_r($id);die;
+		// print_r($data['enroll_course_by_strivre']);die;
 
 		return appView('pages.coach_coarse', $data);
 	}
