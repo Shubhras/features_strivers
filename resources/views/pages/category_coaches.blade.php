@@ -96,7 +96,7 @@ body {
 
 
         <center>
-            <div class=" col-lg-8 col-md-8 ">
+            <div class=" col-lg-8 col-md-8 searchp ">
 
                 <form action="{{ url('/findtopcoach') }}" method="post">
 
@@ -294,8 +294,8 @@ body {
                     ?>
                     <div>
                         <!-- <div class="subject-title-name-cat" id="heading{{ $cat->id }}"> -->
-                        <h5 class="mb-0 subject-title-name-cat">
-                            <button class="btn btn-link " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
+                        <h5 class="mb-0 subject-title-name-cat tab1 ">
+                            <button class="btn btn-link tab " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
                                 {{ $ss['en'] }}
                             </button><i class="fa fa-angle-up" id="donar" style="float: right;"></i>
                         </h5>
@@ -313,7 +313,7 @@ body {
                             }
                             ?>
 
-                            <h5 class="mb-0 subject-title-name-cat">
+                            <h5 class=" mb-0 subject-title-name-cat">
 
                                 <button style="margin-left: 5px; border-bottom: 1px;" class="btn sub-categorry subject-title-name-cat-sub" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}
                                 </button>
@@ -341,7 +341,7 @@ body {
 
 
 
-                        <div class="column {{$coach_list->slug_name}} teacher-meta">
+                        <div class="col-lg-4 col-md-6 column" {{$coach_list->slug_name}} teacher-meta">
 
                             <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
 
