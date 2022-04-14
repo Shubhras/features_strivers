@@ -240,15 +240,23 @@ class EditController extends AccountBaseController
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 3)->orderBy('users.id', 'asc')->get();
+			->where('users.user_type_id', 3)->inRandomOrder()->limit(8)->get();
 
 
-		$data['my_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+		// $data['my_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+		// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
+		// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+		// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+		// 	->leftjoin('enroll_course', 'enroll_course.coach_id', '=', 'users.id')
+		// 	->where('users.user_type_id', 3)->where('enroll_course.coach_id', $user->id)->groupBy('enroll_course.user_id')->get();
+
+
+			$data['my_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->leftjoin('enroll_course', 'enroll_course.coach_id', '=', 'users.id')
-			->where('users.user_type_id', 3)->where('enroll_course.coach_id', $user->id)->groupBy('enroll_course.user_id')->get();
+			->leftjoin('enroll_course', 'enroll_course.user_id', '=', 'users.id')
+			->where('enroll_course.coach_id', $user->id)->groupBy('enroll_course.user_id')->get();
 
 
 		$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
@@ -265,6 +273,7 @@ class EditController extends AccountBaseController
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
+// print_r($data['suggested_striver'] );die;
 
 
 		return appView('account.my_coaches', $data);
