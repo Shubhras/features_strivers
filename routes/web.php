@@ -527,6 +527,7 @@ Route::group([
 		Route::get(dynamicRoute('routes.letestNewsBySlug'), 'PageController@letestCms');
 		Route::get(dynamicRoute('routes.contact'), 'PageController@contact');
 		Route::get(dynamicRoute('routes.aboutUs'), 'PageController@aboutUs');
+		Route::post('pricingCourse', 'PageController@pricingCourse');
 		
 
 		

@@ -164,10 +164,24 @@
 
             <div class="col-md-2">
 
-                <a href="{{'/pricing'}}" class="bisylms-btn" target="_blank">
+
+            <form action="{{ url('/pricingCourse') }}" method="post">
+                    <!-- <input type="hidden" name="creadit_required" id="creadit_required" value="{{$coach_course->creadit_required}}">
+                    <input type="hidden" name="user_id" id="user_id" value="{{$auth_id}}" class="form-control">
+                    <input type="hidden" name="coach_id" id="coach_id" value="{{$coach_course->coach_id}}" class="form-control"> -->
+                    <input type="hidden" name="course_id" id="course_id" value="{{$coach_course->id}}" class="form-control">
+
+                    <button type="submit" class="bisylms-btn" style="float: right;">
+                    Buy Credits
+                    </button>
+                </form>
+
+
+
+                <!-- <a href="{{url('/pricingCourse/'.$coach_course->id)}}" class="bisylms-btn">
 
                     Buy Credits
-                </a>
+                </a> -->
                 
             </div>
             <div class="col-md-4">
