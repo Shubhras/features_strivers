@@ -243,7 +243,9 @@ Route::group([
 			Route::post('strivers_signup', 'HomeController@register_new_user');
 			Route::get(dynamicRoute('routes.countries'), 'CountriesController@index');
 		} else {
-			Route::get('/', 'CountriesController@index');
+			// Route::get('/', 'CountriesController@index');
+
+			Route::get('/', 'HomeController@index');
 		}
 		
 
