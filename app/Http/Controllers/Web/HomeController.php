@@ -54,55 +54,55 @@ class HomeController extends FrontController
 		$countryCode = config('country.code');
 
 		// Get all homepage sections
-		$cacheId = $countryCode . '.homeSections';
-		$data['sections'] = Cache::remember($cacheId, $this->cacheExpiration, function () use ($countryCode) {
-			$sections = collect();
+		// $cacheId = $countryCode . '.homeSections';
+		// $data['sections'] = Cache::remember($cacheId, $this->cacheExpiration, function () use ($countryCode) {
+		// 	$sections = collect();
 
-			// Check if the Domain Mapping plugin is available
-			if (config('plugins.domainmapping.installed')) {
-				try {
-					$sections = \extras\plugins\domainmapping\app\Models\DomainHomeSection::where('country_code', $countryCode)->orderBy('lft')->get();
-				} catch (\Throwable $e) {
-				}
-			}
+		// 	// Check if the Domain Mapping plugin is available
+		// 	if (config('plugins.domainmapping.installed')) {
+		// 		try {
+		// 			$sections = \extras\plugins\domainmapping\app\Models\DomainHomeSection::where('country_code', $countryCode)->orderBy('lft')->get();
+		// 		} catch (\Throwable $e) {
+		// 		}
+		// 	}
 
-			// Get the entry from the core
-			if ($sections->count() <= 0) {
-				$sections = HomeSection::orderBy('lft')->get();
-			}
+		// 	// Get the entry from the core
+		// 	if ($sections->count() <= 0) {
+		// 		$sections = HomeSection::orderBy('lft')->get();
+		// 	}
 
-			return $sections;
-		});
+		// 	return $sections;
+		// });
 
-		$searchFormOptions = [];
-		if ($data['sections']->count() > 0) {
-			foreach ($data['sections'] as $section) {
-				// Clear method name
-				$method = str_replace(strtolower($countryCode) . '_', '', $section->method);
+		// $searchFormOptions = [];
+		// if ($data['sections']->count() > 0) {
+		// 	foreach ($data['sections'] as $section) {
+		// 		// Clear method name
+		// 		$method = str_replace(strtolower($countryCode) . '_', '', $section->method);
 
-				// Check if method exists
-				if (!method_exists($this, $method)) {
-					continue;
-				}
+		// 		// Check if method exists
+		// 		if (!method_exists($this, $method)) {
+		// 			continue;
+		// 		}
 
-				// Call the method
-				try {
-					if (isset($section->value)) {
-						$this->{$method}($section->value);
-					} else {
-						$this->{$method}();
-					}
+		// 		// Call the method
+		// 		try {
+		// 			if (isset($section->value)) {
+		// 				$this->{$method}($section->value);
+		// 			} else {
+		// 				$this->{$method}();
+		// 			}
 
-					// Get the search area background image
-					if ($method == 'getSearchForm') {
-						$searchFormOptions = $section->value;
-					}
-				} catch (\Throwable $e) {
-					flash($e->getMessage())->error();
-					continue;
-				}
-			}
-		}
+		// 			// Get the search area background image
+		// 			if ($method == 'getSearchForm') {
+		// 				$searchFormOptions = $section->value;
+		// 			}
+		// 		} catch (\Throwable $e) {
+		// 			flash($e->getMessage())->error();
+		// 			continue;
+		// 		}
+		// 	}
+		// }
 
 
 
@@ -143,7 +143,9 @@ class HomeController extends FrontController
 		$data['packages'] = new EntityCollection(class_basename($this), $packages);
 		// print_r($data['packages']);die;
 		// Get SEO
-		$this->setSeo($searchFormOptions);
+
+		
+		// $this->setSeo($searchFormOptions);
 
 
 		$data['letest_news'] = DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id', 'desc')->limit(4)->get();
