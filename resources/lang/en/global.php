@@ -252,7 +252,7 @@ return [
     
     'oops_an_error_has_occurred' => 'Oops ! An error has occurred. Please correct the red fields in the form',
 
-    'email_mobile_duplicat_check' => 'Email or Mobile number already exists! Please use unique email and mobile number to sign up.',
+    'email_mobile_duplicat_check' => 'Email or Mobile number already exists! Please use unique email and mobile number to sign up and check password.',
 
     'Favorites' => 'Favorites',
     'Visits' => 'Visits',

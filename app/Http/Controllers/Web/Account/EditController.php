@@ -286,7 +286,7 @@ class EditController extends AccountBaseController
 
 
 		$user = auth()->user();
-
+	if($user->user_type_id==3){
 		if (empty($user)) {
 
 			return redirect('/login');
@@ -394,6 +394,12 @@ class EditController extends AccountBaseController
 				}
 			}
 		}
+	}else{
+		Session()
+		->flash('loginerror', 'You do not access.');
+					return redirect()
+						->back();
+	}
 	}
 
 	public function my_courses_by_striver()

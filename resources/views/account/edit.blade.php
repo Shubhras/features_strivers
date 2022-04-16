@@ -367,7 +367,7 @@
 												?>
 												
 
-													<option value="{{ $top_coach_detail->code }}" {{ (old('country_code', $user->country_code)==$top_coach_detail->code) ? 'selected="selected"' : '' }}>
+													<option value="{{ $top_coach_detail->code }}" {{ (old('country_code', $user->country_code)==$top_coach_detail->code) ? 'selected="selected"' : '' }} required>
 													{{ $ss['en'] }}
 															</option>
 												<?php  } ?>
@@ -452,7 +452,7 @@
 
 
 											<div class="row mb-3 required">
-												<label class="col-md-12" for="email">{{ t('year_of_experience') }} <sup>*</sup>
+												<label class="col-md-12" for="email">{{ t('year_of_experience') }} 
 											     </label>
 												
 												<div class="col-md-12">
@@ -508,7 +508,7 @@
 											{{-- Youtube link--}}
 											
 											<div class="row mb-3 required">
-												<label class="col-md-12" for="link">{{ ('youtube link') }} <sup>*</sup>
+												<label class="col-md-12" for="link">{{ ('youtube link') }} 
 											     </label>
 												<div class="col-md-12">
 													<div class="input-group">
@@ -537,9 +537,9 @@
 												<div class="col-md-6">
                                                     <select name="category" id="category"
                                                         class="form-control large-data-selecter{{ $countryCodeError }}" 
-														onclick="getcategory(this.value)">
+														onclick="getcategory(this.value)" required>
                                                         <option value="0"
-                                                            {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }}>
+                                                            {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }} required>
                                                             {{ t('select_a_category') }}
                                                         </option>
                                                         @foreach ($categories as $item) -->
@@ -552,7 +552,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <select name="sub_category" id="sub_category34"
-                                                        class="form-control large-data-selecter{{ $countryCodeError }}">
+                                                        class="form-control large-data-selecter{{ $countryCodeError }}"required>
                                                         <?php
 														foreach ($categoriess as $value) {
 															// print_r($value);die;
@@ -594,7 +594,7 @@
 											{{-- coach summary --}}
 											<?php $coach_summaryError = (isset($errors) && $errors->has('coach_summary')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label class="col-md-12">{{ ('Coach Summary') }} <sup>*</sup></label>
+												<label class="col-md-12">{{ ('Coach Summary') }} </label>
 												<div class="col-md-12">
 													<textarea name="coach_summary" class="form-control{{ $coach_summaryError }} new-form-control" placeholder="Coach Summary" rows="5">{{ old('coach_summary', $user->coach_summary) }}</textarea>
 												</div>
