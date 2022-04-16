@@ -131,7 +131,7 @@
 
 
 
-				<div class="col-md-8">
+				<div class="col-md-8 packt">
 					<iframe width="100%" height="450" src="https://www.youtube.com/embed/R5jIoLnL_nE?autoplay=1&mute=1&loop=1"></iframe>
 					<!-- <iframe width="100%" height="450" src="{{$top_coach_detail->youtube_link}}?autoplay=1&mute=1&loop=1"></iframe> -->
 				</div>
@@ -158,7 +158,7 @@
 
 		<div class="row">
 
-			<h2 class="sec-title" style="font-weight: 700;">
+			<h2 class="sec-title packt" style="font-weight: 700;">
 				Choose Consultancy package
 
 			</h2>
