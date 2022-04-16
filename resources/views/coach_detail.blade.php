@@ -58,7 +58,9 @@
 			<div class="row">
 
 
-				<div class="col-md-4 box">
+				<div class="col-md-4 ">
+					<div class="box"
+					style="height: 450px;" >
 					<!-- <h3 style="font-family: 'Roboto', sans-serif; font-size: 20px;"><b>Coach Detail</b></h3> -->
 
 					<p style="font-family: 'Montserrat', sans-serif; font-size: 16px;"> Coach Name: {{ $top_coach_detail->name }}</p>
@@ -105,7 +107,7 @@
 						<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Speciality: No Speciality</p>
 					<?php }
 					?>
-
+</div>
 
 				</div>
 				<br>
@@ -154,14 +156,11 @@
 			</div>
 		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<div class="" style="text-align: center;">
+		<!-- <div class="" style="text-align: center;">
 		<a href="{{url('/pricing') }}">
 			<button type="button" class="btn btn-lg" style="background: #012245; color: #ffffff">Get Started</button>
 		</a>
-	</div>
+	</div> -->
 
 	</div>
 
@@ -173,7 +172,7 @@
 
 		<div class="row">
 
-			<h2 class="sec-title" style="font-weight: 700;">
+			<h2 class="sec-title packt1" style="font-weight: 700;">
 				Choose Consultancy package
 
 			</h2>

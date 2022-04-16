@@ -27,12 +27,11 @@ body {
     }
 
     .row {
-        margin: 10px -16px;
+        margin: -13px -16px;
     }
 
     /* Add padding BETWEEN each column */
-    .row,
-    .row>.column {
+    .column {
         padding: 8px;
     }
 
@@ -83,7 +82,9 @@ body {
     }
 </style>
 <section class="page-banner" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+<div class="hi">
 
+</div>
 
 </section>
 
@@ -96,7 +97,7 @@ body {
 
 
         <center>
-            <div class=" col-lg-8 col-md-8 ">
+            <div class=" col-lg-8 col-md-8 searchp ">
 
                 <form action="{{ url('/findtopcoach') }}" method="post">
 
@@ -294,8 +295,8 @@ body {
                     ?>
                     <div>
                         <!-- <div class="subject-title-name-cat" id="heading{{ $cat->id }}"> -->
-                        <h5 class="mb-0 subject-title-name-cat">
-                            <button class="btn btn-link " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
+                        <h5 class="mb-0 subject-title-name-cat tab1 ">
+                            <button class="btn btn-link tab " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
                                 {{ $ss['en'] }}
                             </button>
                             <i class="fa arrow-down btn-link" id="heading{{ $cat->id }}" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important; float: right;" onclick="this.classList.toggle('active')"></i>
@@ -314,7 +315,7 @@ body {
                             }
                             ?>
 
-                            <h5 class="mb-0 subject-title-name-cat">
+                            <h5 class=" mb-0 subject-title-name-cat">
 
                                 <button style="margin-left: 5px; border-bottom: 1px;" class="btn sub-categorry subject-title-name-cat-sub" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}
                                 </button>
@@ -330,7 +331,7 @@ body {
                 </div>
 
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 pick">
 
 
                 <div class="row">
@@ -342,7 +343,7 @@ body {
 
 
 
-                        <div class="column {{$coach_list->slug_name}} teacher-meta">
+                        <div class="col-lg-4 col-md-6 column" {{$coach_list->slug_name}} teacher-meta">
 
                             <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
 
