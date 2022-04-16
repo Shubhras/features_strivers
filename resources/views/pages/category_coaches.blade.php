@@ -27,12 +27,11 @@ body {
     }
 
     .row {
-        margin: 10px -16px;
+        margin: -13px -16px;
     }
 
     /* Add padding BETWEEN each column */
-    .row,
-    .row>.column {
+    .column {
         padding: 8px;
     }
 
@@ -83,7 +82,9 @@ body {
     }
 </style>
 <section class="page-banner" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+<div class="hi">
 
+</div>
 
 </section>
 
@@ -330,7 +331,7 @@ body {
                 </div>
 
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 pick">
 
 
                 <div class="row">

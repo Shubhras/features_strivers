@@ -113,40 +113,54 @@
 				<br>
 				<?php 
 				if($top_coach_detail->youtube_link){
-						// $video_url= 'https://www.youtube.com/watch?v=bNHE9uFOaK4';
-						$video_url= $top_coach_detail->youtube_link;
-						// print_r($video_url);die;
+					// $video_url= 'https://www.youtube.com/watch?v=bNHE9uFOaK4';
+					$video_url= $top_coach_detail->youtube_link;
+
+					// print_r($video_url);die;
+					if(parse_url($video_url, PHP_URL_QUERY)){
 						$query_str = parse_url($video_url, PHP_URL_QUERY);
 						parse_str($query_str, $query_params);
-				// 		?>				
-				 <div class="col-md-8">
-				 <iframe width="100%" height="450" src="https://www.youtube.com/embed/{{ $query_params['v'] }}?autoplay=1&mute=1&loop=1"></iframe>
+						$video_links = $query_params['v'];
+						$video_link =$video_links;
+						// print_r($video_link);die;
+						?>
+						<div class="col-md-8">
+				 <iframe width="100%" height="450" src="https://www.youtube.com/embed/{{ $video_link }}?autoplay=1&mute=1&loop=1"></iframe>
 					</div>
+
+					<?php
+					}					
+					elseif(explode("/",$video_url)){						
+						$bb = explode("/",$video_url);
+						$video_link = $bb[3];
+					
+								?>
+									
+					
+					
+					<div class="col-md-8">
+				 <iframe width="100%" height="450" src="https://www.youtube.com/embed/{{ $video_link }}?autoplay=1&mute=1&loop=1"></iframe>
+					</div>
+
 					<?php }
-					
-					else {
-											
-					
+				}
+					else{
 					?>
-
-
-
 				<div class="col-md-8">
 					<iframe width="100%" height="450" src="https://www.youtube.com/embed/R5jIoLnL_nE?autoplay=1&mute=1&loop=1"></iframe>
 					<!-- <iframe width="100%" height="450" src="{{$top_coach_detail->youtube_link}}?autoplay=1&mute=1&loop=1"></iframe> -->
 				</div>
-				<?php } ?>
+				<?php 
+					}
+				?>
 			</div>
 		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<div class="" style="text-align: center;">
+		<!-- <div class="" style="text-align: center;">
 		<a href="{{url('/pricing') }}">
 			<button type="button" class="btn btn-lg" style="background: #012245; color: #ffffff">Get Started</button>
 		</a>
-	</div>
+	</div> -->
 
 	</div>
 
@@ -158,7 +172,7 @@
 
 		<div class="row">
 
-			<h2 class="sec-title" style="font-weight: 700;">
+			<h2 class="sec-title packt1" style="font-weight: 700;">
 				Choose Consultancy package
 
 			</h2>

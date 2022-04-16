@@ -20,20 +20,20 @@
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
             <strong >{{ t('email_mobile_duplicat_check') }}</strong>
-            <ul class="list list-check">
+            <!-- <ul class="list list-check">
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
                 @endforeach
-            </ul>
+            </ul> -->
         </div>
     </div>
     @endif
 
-    @if (session()->has('flash_notification'))
+    <!-- @if (session()->has('flash_notification'))
     <div class="col-12">
         @include('flash::message')
     </div>
-    @endif
+    @endif -->
     </div>
 
     
@@ -87,9 +87,10 @@
                         <input id="password" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('password') }}" autocomplete="off" required>
                     </div>
                     <div class="col-md-12">
+                    <?php $passwordError = (isset($errors) and $errors->has('password')) ? ' is-invalid' : ''; ?>
                         <label class="form-label" for="password">Password Confirmation
                         </label>
-                        <input id="password_confirmation" name="password_confirmation" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('Password Confirmation') }}" autocomplete="off" required>
+                        <input id="password_confirmation" name="password_confirmation" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('Password Confirmation') }}" autocomplete="on">
 
                         <input type="hidden" name="accept_terms" value="1">
                     </div>
