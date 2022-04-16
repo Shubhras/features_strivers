@@ -139,14 +139,11 @@
 			</div>
 		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<div class="" style="text-align: center;">
+		<!-- <div class="" style="text-align: center;">
 		<a href="{{url('/pricing') }}">
 			<button type="button" class="btn btn-lg" style="background: #012245; color: #ffffff">Get Started</button>
 		</a>
-	</div>
+	</div> -->
 
 	</div>
 
@@ -158,7 +155,7 @@
 
 		<div class="row">
 
-			<h2 class="sec-title packt" style="font-weight: 700;">
+			<h2 class="sec-title packt1" style="font-weight: 700;">
 				Choose Consultancy package
 
 			</h2>

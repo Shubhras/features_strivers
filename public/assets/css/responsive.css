@@ -1891,6 +1891,9 @@ margin-top: -360px!important;
         .packt {
             padding-top: 22px!important;
         }
+        .packt1 {
+            padding-top: 160px!important;
+        }
         .imgb {
             margin-left: 6px!important;
         }
@@ -3656,9 +3659,9 @@ width: 28px;
             text-align: center;
             margin-bottom: -89px;
         }
-        .text-light {
+        /* .text-light {
             margin-left: 298px;
-        }
+        } */
         .btn_class {
             height: 35px;
             background-color: #012245!important;
@@ -3781,9 +3784,9 @@ width: 28px;
             /* margin: -31px 0 -63px!important; */
             position: relative;
         }
-        .navbar-toggler {
+        /* .navbar-toggler {
             margin-left: 250px;
-        }
+        } */
         .feature-course-item-4 .fcf-thumb img {
             width: 100%;
             height: auto;
@@ -4355,4 +4358,16 @@ position: relative;
     
     .hi {
         height: 54px;
+    }
+    
+    @media only screen and (min-device-width: 700px) {
+        .navbar-toggler {
+            margin-left: 250px;
+        }
+    }
+    
+    @media (min-width: 766px) and (max-width: 1023px) {
+        .newl {
+            margin-left: -33px!important;
+        }
     }

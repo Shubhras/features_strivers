@@ -2,9 +2,9 @@
 
 <aside>
 
-	<nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 dform">
-                        <a class="d-xl-none d-lg-none d-md-none text-inherit  font-weight-bold" href="#">Menu</a>
-                        <button class="navbar-toggler d-md-none icon-shape icon-sm rounded bg-primary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	<nav class="navbar navbar-expand-md navbar-light  dashboard-nav mb-3 mb-lg-0 dform" style="padding: 15px;">
+                        <a class="d-xl-none d-lg-none d-md-none text-inherit  font-weight-bold" href="#">>Menu</a>
+                        <button class="navbar-toggler d-md-none icon-shape icon-sm rounded bg-primary text-light" style="padding-right: 15px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="fas fa-bars"></span>
                         </button>
                         <div class="collapse navbar-collapse TABM" id="navbarNavDropdown">

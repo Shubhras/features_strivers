@@ -437,11 +437,11 @@
 														<input id="phone" name="phone" type="text" class="form-control{{ $phoneError }}"
 															   placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}"
 															   value="{{ phoneFormat(old('phone', $user->phone), old('country_code', $user->country_code)) }}">
-														<span class="input-group-text">
+														<!-- <span class="input-group-text">
 															<input name="phone_hidden" id="phoneHidden" type="checkbox"
 																   value="1" {{ (old('phone_hidden', $user->phone_hidden)=='1') ? 'checked="checked"' : '' }}>&nbsp;
 															<small>{{ t('Hide') }}</small>
-														</span>
+														</span> -->
 													</div>
 												</div>
 											</div>
@@ -620,7 +620,7 @@
 							{{-- SETTINGS --}}
 							<div class="card card-default">
 								<div class="card-header">
-									<h4 class="card-title"><a href="#settingsPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Settings') }}</a></h4>
+									<h4 class="card-title"><a href="#settingsPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ ('Change Password') }}</a></h4>
 								</div>
 								<?php
 								$settingsPanelClass = '';
@@ -1118,11 +1118,11 @@
 														<input id="phone" name="phone" type="text" class="form-control{{ $phoneError }}"
 															   placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}"
 															   value="{{ phoneFormat(old('phone', $user->phone), old('country_code', $user->country_code)) }}">
-														<span class="input-group-text">
+														<!-- <span class="input-group-text">
 															<input name="phone_hidden" id="phoneHidden" type="checkbox"
 																   value="1" {{ (old('phone_hidden', $user->phone_hidden)=='1') ? 'checked="checked"' : '' }}>&nbsp;
 															<small>{{ t('Hide') }}</small>
-														</span>
+														</span> -->
 													</div>
 												</div>
 											</div>
@@ -1440,7 +1440,7 @@
 							{{-- SETTINGS --}}
 							<div class="card card-default">
 								<div class="card-header">
-									<h4 class="card-title"><a href="#settingsPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Settings') }}</a></h4>
+									<h4 class="card-title"><a href="#settingsPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ ('Change Password') }}</a></h4>
 								</div>
 								<?php
 								$settingsPanelClass = '';
