@@ -151,7 +151,7 @@ margin-right: -159px;
     }
     @media (min-width: 320px) and (max-width: 768px) {
         .packt2 {
-            padding-bottom: 22px!important;
+            /* padding-bottom: 22px!important; */
         }
     
     @media (min-width: 1441px) and (max-width: 1600px) {
@@ -1688,9 +1688,9 @@ padding-right: 10px;
         .letest-offering-home {
             margin-top: 0px;
         }
-        .img-fluid1 {
+        /* .img-fluid1 {
             height: 270px!important;
-        }
+        } */
         .join-btn021 {
             margin-left: -9px;
             position: relative;
@@ -1904,9 +1904,9 @@ margin-top: -360px!important;
         .imgb {
             margin-left: 0px!important;
         }
-        .img-fluid1 {
+        /* .img-fluid1 {
             height: 200px!important;
-        }
+        } */
         .newm {
             margin: 21px 0px 6px!important;
         }

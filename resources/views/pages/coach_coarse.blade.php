@@ -98,7 +98,7 @@
                 
 
 
-            <div class="col-lg-6 pleft packt2">
+            <div class="col-lg-6 pleft ">
                 <div class="col-lg-12 imgb">
                     <center> <img src="{{ url('storage/'.$coach_course->image) }}" class="lazyload img-fluid1 images_height" style="width: 100%;"></center>
 
