@@ -52,7 +52,7 @@ class HomeController extends FrontController
 	{
 		$data = [];
 		$countryCode = config('country.code');
-
+		$user1 = auth()->user();
 		// Get all homepage sections
 		// $cacheId = $countryCode . '.homeSections';
 		// $data['sections'] = Cache::remember($cacheId, $this->cacheExpiration, function () use ($countryCode) {
@@ -104,8 +104,8 @@ class HomeController extends FrontController
 		// 	}
 		// }
 
-
-
+		// print_r($user1->category);die;
+		if(empty(auth()->user())){
 
 		$data['user'] = DB::table('users')->select('users.*', 'categories.name as categories_slug')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
@@ -114,7 +114,16 @@ class HomeController extends FrontController
 			->inRandomOrder()
 			->limit(6)
 			->get();
-
+		}else{
+			$data['user'] = DB::table('users')->select('users.*', 'categories.name as categories_slug')
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			->where('users.user_type_id', 2)
+			->where('users.category',$user1->category)
+			->whereNotIn('users.id', [1])
+			
+			->limit(6)
+			->get();
+		}
 		// print_r($data['user']);die;
 
 		$data['our_reviews'] = DB::table('users')->select('users.*')->where('users.user_type_id', 2)->whereNotIn('users.id', [1])->orderBy('users.id', 'asc')->limit(3)->get();
@@ -724,9 +733,12 @@ class HomeController extends FrontController
 		//     ->withInput();
 		return redirect('/login');
 	}
+
+	
 	public function register_new_user(Request $request)
 	{
 
+		
 
 		// print_r($request->all());die;
 
@@ -754,6 +766,9 @@ class HomeController extends FrontController
 
 
 		// $request['country_code'] = 'UK';
+
+
+
 
 
 
@@ -860,9 +875,29 @@ class HomeController extends FrontController
 		}
 
 
+		$data['user_auth_id']= 	auth()->user()->id;
+
+
+		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+		
+			return view('auth.register.user_category',$data);
+
+
 		return redirect($nextUrl);
 	}
 
+	public function updateUserCategory(Request $request){
+
+		
+
+		DB::table('users')->where('users.id',$request->user_id)->update(['users.category' =>$request->category]);
+
+	
+		return redirect('/account');
+	
+	
+	
+		}
 
 	public function coach_coursess($id)
 	{
@@ -892,7 +927,17 @@ class HomeController extends FrontController
 			->orderBy('coach_course.id', 'asc')
 			->first();
 
-			
+			if (empty(auth()->user())) {		
+				$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
+				->limit(8)->get();
+			}else{
+				$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
+				->where('users.category',$user->category)
+				->inRandomOrder()
+				->limit(8)->get();
+			}
 
 
 		// print_r($data['enroll_course_by_strivre']);die;
@@ -1001,7 +1046,7 @@ class HomeController extends FrontController
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->inRandomOrder()->limit(8)->get();
 
 
 
