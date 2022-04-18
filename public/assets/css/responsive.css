@@ -149,6 +149,10 @@ margin-right: -159px;
             width: 1066px;
         }
     }
+    @media (min-width: 320px) and (max-width: 768px) {
+        .packt2 {
+            padding-bottom: 22px!important;
+        }
     
     @media (min-width: 1441px) and (max-width: 1600px) {
         .navbar-brand img {
@@ -1684,6 +1688,9 @@ padding-right: 10px;
         .letest-offering-home {
             margin-top: 0px;
         }
+        .img-fluid1 {
+            height: 270px!important;
+        }
         .join-btn021 {
             margin-left: -9px;
             position: relative;
@@ -1895,10 +1902,13 @@ margin-top: -360px!important;
             padding-top: 160px!important;
         }
         .imgb {
-            margin-left: 6px!important;
+            margin-left: 0px!important;
+        }
+        .img-fluid1 {
+            height: 200px!important;
         }
         .newm {
-            margin: 21px 21px 6px!important;
+            margin: 21px 0px 6px!important;
         }
         .pick {
             padding-left: 29px;
