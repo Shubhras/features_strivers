@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Resources\EntityCollection;
 use App\Http\Resources\PackageResource;
 use App\Models\Category;
+use Auth;
 // use Illuminate\Support\Facades\Request;
 use Illuminate\Http\Request;
 
@@ -440,7 +441,7 @@ class PageController extends FrontController
 	public function coach_list_category_all($id)
 	{
 		
-
+		$user1 = auth()->user();
 		$data['request_cat_id'] = '';
 		// Get the Country's largest city for Google Maps
 		$cacheId = config('country.code') . '.city.population.desc.first';
@@ -499,14 +500,23 @@ class PageController extends FrontController
 			// 		->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 			// 		->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
 
-
+			
+		if(empty(auth()->user())){
 		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
 
-
+		}else{
+		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+		->leftjoin('categories', 'categories.id', '=', 'users.category')
+		->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+		->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+		->where('users.user_type_id', 2)
+		->where('users.category',$user1->category)
+		->orderBy('users.id', 'asc')->inRandomOrder()->limit(8)->get();
+		}
 
 		[$title, $description, $keywords] = getMetaTag('contact');
 		MetaTag::set('title', $title);
@@ -582,6 +592,7 @@ class PageController extends FrontController
 	}
 	public function top_coach_detail($id)
 	{
+		$user1 = auth()->user();
 		// $data['user'] = DB::table('users')->where('id',$id)->select('users.*','id','name')
 		// ->where('users.user_type_id',2)->get();
 		$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'sub.name as sub_cat', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
@@ -603,18 +614,35 @@ class PageController extends FrontController
 			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
 			->limit(6)->get();
 
-
+			if(empty(auth()->user())){
 			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 			->where('users.user_type_id', 2)->inRandomOrder()->limit(8)->get();
+			}else{
+			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			->where('users.user_type_id', 2)
+			->where('users.category',$user1->category)
+			->inRandomOrder()->limit(8)->get();
+			}
 
+			if(empty(auth()->user())){
 
 			$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
 			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
 			->limit(8)->get();
-
+			}else {
+					
+			$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
+			->where('users.category',$user1->category)
+			->inRandomOrder()
+			->limit(8)->get();
+			}
 
 		// print_r($data['top_coach_detail']);die;
 
