@@ -722,9 +722,12 @@ class HomeController extends FrontController
 		//     ->withInput();
 		return redirect('/login');
 	}
+
+	
 	public function register_new_user(Request $request)
 	{
 
+		
 
 		// print_r($request->all());die;
 
@@ -752,6 +755,9 @@ class HomeController extends FrontController
 
 
 		// $request['country_code'] = 'UK';
+
+
+
 
 
 
@@ -858,9 +864,29 @@ class HomeController extends FrontController
 		}
 
 
+		$data['user_auth_id']= 	auth()->user()->id;
+
+
+		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+		
+			return view('auth.register.user_category',$data);
+
+
 		return redirect($nextUrl);
 	}
 
+	public function updateUserCategory(Request $request){
+
+		
+
+		DB::table('users')->where('users.id',$request->user_id)->update(['users.category' =>$request->category]);
+
+	
+		return redirect('/account');
+	
+	
+	
+		}
 
 	public function coach_coursess($id)
 	{

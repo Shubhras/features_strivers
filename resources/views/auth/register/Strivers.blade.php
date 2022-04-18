@@ -189,7 +189,7 @@
                                     Register
                                 </a></center> -->
 
-                                <center><button class="btn01  btn-primary1 register-btn-primary" type="submit" id="signupBtn"  >
+                                <center><button class="btn01  btn-primary1 register-btn-primary" type="submit" id="signupBtn" data-toggle="modal" data-target=".bd-example-modal-lgss" >
 		
                                     Register </button></center>
                                 
