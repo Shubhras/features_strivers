@@ -92,21 +92,16 @@
         <li>{{ $error }}</li>
         @endforeach
         @endif
-        <div class="contact-form dform" id="Strivers">
+        <div class="" id="Strivers">
+
+
+            <!-- <form role="form" method="POST" action="{{ url('/updateUserCategory') }}" class="row">
+
+                {!! csrf_field() !!} -->
 
 
 
-            <center>
-                <h4></h4>
-            </center><br>
-
-            <form role="form" method="POST" action="{{ url('/updateUserCategory') }}" class="row">
-
-                {!! csrf_field() !!}
-
-
-
-                <div class="col-md-12">
+                <!-- <div class="col-md-12">
 
                     <input id="user_id" name="user_id" type="hidden" class="form-control" value="{{$user_auth_id}}">
                 </div>
@@ -130,41 +125,88 @@
 
                             Submit </button></center>
 
-                </div>
+                </div> -->
+
+                <!-- modal fade bd-example-modal-lg -->
 
 
-
-
-                <div class="modal fade bd-example-modal-lgss" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$user_auth_id }}">
-        <div class="modal-dialog modal-xl">
+ <div class="" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-contents">
 
             <div class="modal-header">
-                <h4 class="modal-title">Top Coach Details</h4>
-                <button type="button" class="close" data-dismiss="modal_category">&times;</button>
+                <h5 class="modal-title">What topics do you find interesting?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <!-- <span aria-hidden="true">&times;</span> -->
+                </button>
             </div>
+            <?php //print_r($categories);die; ?>
+                            <?php
+ 
+                        foreach ($categories as $key => $value) {
 
-            <div class="modal-content p-5">
+                            // print_r($value);die;
 
-
+                             }
                 
-                
-                <p class="text-center"><b>
-                    </b>
-                </p> <br>
-                
-                <br>
-                <div class="row center-button-modal">
+                ?>
 
-                    <div class="col-lg-2">
-                      
+            <div class="row p-5 text-center">
+                <div class="row">
+                    <!-- <div class="col-lg-12"> -->
+
+                    @foreach($categories as $key => $cat)
+                    <?php
+                   
+                    $name = json_decode($cat->name);
+                    $ss = array();
+                    foreach ($name as $key => $sub) {
+                        $ss[$key] = $sub;
+                    }
+                    ?>
+                    <div class="col-md-3 course-wrapper">
+
+
+                        <a href="{{url('/updateUserCategory/'.$cat->id) }}">
+
+                            <div class="course-item-01 text-center">
+                                <defs>
+                                    <style>
+                                        .cls-1 {
+                                            fill: url(#pattern);
+                                        }
+                                    </style>
+                                    <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 74 60">
+
+                                        <img src="{{ url('storage/'.$cat->picture) }}" width="74" height="60" class="category_imagrs">
+
+                                    </pattern>
+
+                                </defs>
+                                <path id="desktop1" class="cls-1" d="M0,0H74V60H0Z" />
+
+                                <h4> {{ $ss['en'] }}
+
+                                </h4>
+
+                            </div>
+
+                        </a>
+
                     </div>
-                    <div class="col-lg-2">
-                        <a href="{{url('/register') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
-                    </div>
+                    @endforeach
+                    <!-- </div> -->
+                </div>
+                                        
+                <div class="col-lg-12">
+                    <button type="button" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">
+                        Submit Your Interest
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+</div>
             </form>
 
 

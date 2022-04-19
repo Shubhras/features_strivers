@@ -240,9 +240,10 @@ Route::group([
 
 			Route::post('/findtopcoach', 'HomeController@coach_list_category_interesting');
 			Route::post('user_login', 'HomeController@user_login');
+			// Route::post('strivers_signup', 'HomeController@register_new_user');
 			Route::post('strivers_signup', 'HomeController@register_new_user');
 
-			Route::post('updateUserCategory','HomeController@updateUserCategory');
+			Route::get('updateUserCategory/{id}','HomeController@updateUserCategory');
 
 			Route::get(dynamicRoute('routes.countries'), 'CountriesController@index');
 		} else {

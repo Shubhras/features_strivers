@@ -13,7 +13,7 @@
                                     <div class="d-flex align-items-center">
                                         <img src="../assets/images/avatar-1.png" alt="" class="rounded-circle avatar-lg">
                                         <div class="ms-3 lh-1 ">
-                                            <h5 class="mb-1 ">Coach Dashboard</h5>
+                                            <h5 class="mb-1 newl">Coach Dashboard</h5>
                                             <!-- <small>Free Member</small> -->
                                         </div>
                                     </div>
