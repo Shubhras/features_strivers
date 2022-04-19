@@ -792,6 +792,12 @@
 <h2 class="sec-title">My Profile</h2>
 </h2>
 
+
+
+<!-- <button onclick="myFunction()">Prompt Box</button> -->
+
+<!-- <p id="demo"></p> -->
+
 			<div class="row" style="padding: 6px; margin-left: -4px;">
 			
 				<!-- <div class="col-md-3 user-profile-img-data default-inner-box" style="max-width: 266px;"> -->
@@ -802,6 +808,117 @@
             <!-- </div> -->
 
 		<div class="col-md-12 user-profile-img-data default-inner-box">
+
+
+
+
+
+		<?php if(empty($user->category)){ ?> 
+
+
+<!-- <script>
+
+function myFunction() {
+
+var x;
+
+var site = prompt("Please enter Something", "Write Here Something");
+
+if (site != null) {
+
+	x = "Welcome at " + site + "! Have a good day";
+
+	document.getElementById("demo").innerHTML = x;
+
+}
+
+}
+
+</script> -->
+
+<!-- <dialog id="favDialog">
+  <form method="post" action="{{url('/updateUserCategory')}}">
+    <p><label>Please Select Category: </label></p>
+	<input type="text" name="user_id" id="user_id" value="{{$user->id}}"> 
+
+	<select name="category" id="category" class="form-control large-data-selecter">
+                                        
+			@foreach ($categories as $item)
+				<option value="{{ $item->id }}">
+				{{ $item->slug }}
+			</option>
+			@endforeach 
+		</select>
+    <div>
+    
+      <button id="confirmBtn" value="default" type="submit">Submit</button>
+    </div>
+  </form>
+
+  
+</dialog> -->
+
+
+<script>
+
+
+	// var category  = $('#favDialog').text();
+
+	// alert(category);
+
+</script>
+
+<script>
+	const updateButton = document.getElementById('updateDetails');
+const favDialog = document.getElementById('favDialog');
+const outputBox = document.querySelector('output');
+const selectEl = favDialog.querySelector('select');
+const confirmBtn = favDialog.querySelector('#confirmBtn');
+
+// If a browser doesn't support the dialog, then hide the
+// dialog contents by default.
+if ( typeof favDialog.showModal !== 'function' ) {
+  favDialog.hidden = true;
+  /* a fallback script to allow this dialog/form to function
+     for legacy browsers that do not support <dialog>
+     could be provided here.
+  */
+}
+// "Update details" button opens the <dialog> modally
+updateButton.addEventListener('click', function onOpen() {
+  if (typeof favDialog.showModal === "function") {
+    favDialog.showModal();
+  } else {
+    outputBox.value = "Sorry, the <dialog> API is not supported by this browser.";
+  }
+});
+// "Favorite animal" input sets the value of the submit button
+selectEl.addEventListener('change', function onSelect(e) {
+  confirmBtn.value = selectEl.value;
+});
+// "Confirm" button of form triggers "close" on dialog because of [method="dialog"]
+favDialog.addEventListener('close', function onClose() {
+  outputBox.value = favDialog.returnValue + " button clicked - " + (new Date()).toString();
+});
+</script>
+
+<?php 
+
+
+// function  createConfirmationmbox() {  
+//     echo '<script type="text/javascript"> ';  
+//     echo 'var inputname = prompt("Please enter your name", "");'; 
+// 	echo 'var selectname = prompt("Select Category", "");';  
+//     echo 'alert(inputname);';  
+//     echo '</script>';  
+// }  
+
+// createConfirmationmbox();  
+
+
+} ?>
+
+
 
 		<?php if(!empty($user->photo)){
 					?>
@@ -1126,6 +1243,53 @@
 													</div>
 												</div>
 											</div>
+
+
+
+											{{--industry/area of expertise and subcategories --}}
+											<?php $countryCodeError = (isset($errors) and $errors->has('category')) ? ' is-invalid' : ''; ?>
+											<div class="row mb-3 required">
+												<label class="col-md-6{{ $countryCodeError }}" for="category">
+													{{ ('Industry/Area of expertise') }} <sup>*</sup>
+												</label>
+												<label class="col-md-6">
+													{{ ('Subcategories') }} <sup>*</sup>
+												</label>
+												<div class="col-md-6">
+													
+                                                    <select name="category" id="category"
+                                                        class="form-control large-data-selecter{{ $countryCodeError }}" 
+														onclick="getcategory(this.value)" required>
+                                                        <option value="0"
+                                                            {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }} required>
+                                                            {{ t('select_a_category') }}
+                                                        </option>
+                                                        @foreach ($categories as $item) -->
+                                                         <option value="{{ $item->id }}"
+                                                            {{ (old('category', $user->category)==$item->id) ? 'selected="selected"' : '' }}>
+                                                            {{ $item->slug }}
+                                                        </option>
+                                                        @endforeach 
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select name="sub_category" id="sub_category34"
+                                                        class="form-control large-data-selecter{{ $countryCodeError }}"required>
+                                                        <?php
+														foreach ($categoriess as $value) {
+															// print_r($value);die;
+														
+														?>
+                                                        <option value="{{ $value->id }}"
+                                                            {{ (old('category', $user->sub_category)==$value->id)? 'selected="selected"': '' }}>
+                                                            {{ $value->slug }}
+                                                        </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+											</div>
+
+
 
 											<div class="row mb-3">
 												<div class="col-md-12"></div>
@@ -1975,4 +2139,5 @@ function getlocation(id)
     });
 }
 </script>
+
 @endsection
