@@ -155,6 +155,15 @@
 										</a>
 									</li>
 								@endif
+								@if (auth()->user()->can('user-list') || userHasSuperAdminPermissions())
+									<li class="sidebar-item">
+										<a href="{{ admin_url('users') }}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu">{{ trans('Admin list') }}</span>
+										</a>
+									</li>
+								@endif
+								
 								@if (auth()->user()->can('role-list') || userHasSuperAdminPermissions())
 									<li class="sidebar-item">
 										<a href="{{ admin_url('roles') }}" class="sidebar-link">
@@ -456,14 +465,24 @@
 								<i data-feather="users" class="feather-icon"></i> <span class="hide-menu">{{ trans('admin.users') }}</span>
 							</a>
 							<ul aria-expanded="false" class="collapse first-level">
+							@if (auth()->user()->can('user-list') || userHasSuperAdminPermissions())
+									<li class="sidebar-item">
+										<a href="{{ admin_url('users') }}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu">{{ trans('coach list') }}</span>
+										</a>
+									</li>
+								@endif
 								@if (auth()->user()->can('user-list') || userHasSuperAdminPermissions())
 									<li class="sidebar-item">
 										<a href="{{ admin_url('users') }}" class="sidebar-link">
 											<i class="mdi mdi-adjust"></i>
-											<span class="hide-menu">{{ trans('admin.list') }}</span>
+											<span class="hide-menu">{{ trans('striver list') }}</span>
 										</a>
 									</li>
 								@endif
+
+								
 								<!-- @if (auth()->user()->can('role-list') || userHasSuperAdminPermissions())
 									<li class="sidebar-item">
 										<a href="{{ admin_url('roles') }}" class="sidebar-link">
