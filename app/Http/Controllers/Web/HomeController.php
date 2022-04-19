@@ -876,19 +876,29 @@ class HomeController extends FrontController
 		$data['user_auth_id']= 	auth()->user()->id;
 
 
-		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
-		
+		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+		$category = auth()->user()->category;
+
+		if(empty($category)){
+
 			return view('auth.register.user_category',$data);
 
-
-		return redirect($nextUrl);
-	}
-
-	public function updateUserCategory(Request $request){
+		}else{
+			return redirect($nextUrl);
+		}
+		
+			
 
 		
+	}
 
-		DB::table('users')->where('users.id',$request->user_id)->update(['users.category' =>$request->category]);
+	public function updateUserCategory($id){
+
+		$userCategory = $id;
+		$auth_id = auth()->user()->id;
+
+
+		DB::table('users')->where('users.id',$auth_id)->update(['users.category' =>$userCategory]);
 
 	
 		return redirect('/account');

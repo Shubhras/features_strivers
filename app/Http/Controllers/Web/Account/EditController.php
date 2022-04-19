@@ -103,7 +103,7 @@ class EditController extends AccountBaseController
 		$data['user_auth_id'] = 	auth()->user()->id;
 
 
-		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
 
 		if (empty($edit_user->category)) {
 
@@ -216,7 +216,7 @@ class EditController extends AccountBaseController
 		$data['user_auth_id'] = 	auth()->user()->id;
 
 
-		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
 
 		if (empty($edit_user->category)) {
 			return view('auth.register.user_category', $data);
@@ -335,7 +335,7 @@ class EditController extends AccountBaseController
 		$data['user_auth_id'] = 	auth()->user()->id;
 
 
-		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
 
 		if (empty($edit_user->category)) {
 			return view('auth.register.user_category', $data);
@@ -586,8 +586,7 @@ class EditController extends AccountBaseController
 		$data['user_auth_id'] = 	auth()->user()->id;
 
 
-		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
-
+		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
 		if (empty($edit_user->category)) {
 			return view('auth.register.user_category', $data);
 			
@@ -843,7 +842,7 @@ class EditController extends AccountBaseController
 		$data['user_auth_id'] = 	auth()->user()->id;
 
 
-		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
 
 		if (empty($edit_user->category)) {
 			return view('auth.register.user_category', $data);
