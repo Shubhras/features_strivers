@@ -143,7 +143,15 @@
 									<li class="sidebar-item">
 										<a href="{{ admin_url('users') }}" class="sidebar-link">
 											<i class="mdi mdi-adjust"></i>
-											<span class="hide-menu">{{ trans('admin.list') }}</span>
+											<span class="hide-menu">{{ trans('coach list') }}</span>
+										</a>
+									</li>
+								@endif
+								@if (auth()->user()->can('user-list') || userHasSuperAdminPermissions())
+									<li class="sidebar-item">
+										<a href="{{ admin_url('users') }}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu">{{ trans('striver list') }}</span>
 										</a>
 									</li>
 								@endif
