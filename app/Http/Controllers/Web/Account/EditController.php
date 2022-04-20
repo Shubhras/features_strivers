@@ -98,8 +98,26 @@ class EditController extends AccountBaseController
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
+		$edit_user = DB::table('users')->select('users.*')->where('users.id', $user->id)->first();
+
+		$data['user_auth_id'] = 	auth()->user()->id;
+
+
+		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+
+		if (empty($edit_user->category)) {
+
+			return view('auth.register.user_category', $data);
+		} else {
+
+			return appView('account.edit', $data);
+		}
+
+		// print_r($edit_user);die;
+
+
 		// print_r($data);die;
-		return appView('account.edit', $data);
+
 	}
 
 
@@ -194,7 +212,18 @@ class EditController extends AccountBaseController
 			->orderBy('users.id', 'asc')->get();
 
 
-		return appView('account.dashboard', $data);
+		$edit_user = DB::table('users')->select('users.*')->where('users.id', $user->id)->first();
+		$data['user_auth_id'] = 	auth()->user()->id;
+
+
+		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+
+		if (empty($edit_user->category)) {
+			return view('auth.register.user_category', $data);
+		} else {
+
+			return appView('account.dashboard', $data);
+		}
 	}
 
 
@@ -269,7 +298,7 @@ class EditController extends AccountBaseController
 		// 	->where('users.user_type_id', 3)->where('enroll_course.coach_id', $user->id)->groupBy('enroll_course.user_id')->get();
 
 
-			$data['my_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+		$data['my_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
@@ -299,10 +328,27 @@ class EditController extends AccountBaseController
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
-// print_r($data['suggested_striver'] );die;
+		// print_r($data['suggested_striver'] );die;
 
 
-		return appView('account.my_coaches', $data);
+		$edit_user = DB::table('users')->select('users.*')->where('users.id', $user->id)->first();
+		$data['user_auth_id'] = 	auth()->user()->id;
+
+
+		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+
+		if (empty($edit_user->category)) {
+			return view('auth.register.user_category', $data);
+
+		} else {
+
+			return appView('account.my_coaches', $data);
+		}
+
+
+
+
+		
 	}
 
 
@@ -312,121 +358,122 @@ class EditController extends AccountBaseController
 
 
 		$user = auth()->user();
-	if($user->user_type_id==3){
-		if (empty($user)) {
+		if ($user->user_type_id == 3) {
+			if (empty($user)) {
 
-			return redirect('/login');
-		} else {
-
-
-			$enroll_course_by_strivre = DB::table('enroll_course')->select('enroll_course.course_id')->where('enroll_course.user_id', $user->id)->orWhere('enroll_course.course_id', $request->course_id)->first();
-
-			$enroldStrvreCourse = $enroll_course_by_strivre->course_id;
-
-			if ($enroldStrvreCourse == $request->course_id) {
-
-				Session()
-					->flash('loginerrorenroll', 'You have already enroll course .');
-				return redirect()
-					->back();
+				return redirect('/login');
 			} else {
 
-				$user = auth()->user();
 
-				$data['user_subscription'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*', 'packages.name', 'users.name as username')
-					->leftjoin('packages', 'packages.id', '=', 'user_subscription_payment.subscription_id')
-					->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')
-					->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
-					->get();
+				$enroll_course_by_strivre = DB::table('enroll_course')->select('enroll_course.course_id')->where('enroll_course.user_id', $user->id)->orWhere('enroll_course.course_id', $request->course_id)->first();
 
+				$enroldStrvreCourse = $enroll_course_by_strivre->course_id;
 
-				$totalsum = array();
-				$name = array();
-				$consumed_hours = array();
-				$remaining_hours = array();
-				$user_id = array();
+				if ($enroldStrvreCourse == $request->course_id) {
 
-				foreach ($data['user_subscription'] as $key => $value) {
-
-					$totalsum[$value->total_provided_hours] = $value->total_provided_hours;
-					$name[$value->name] = $value->name;
-					$consumed_hours[$value->consumed_hours] = $value->consumed_hours;
-					$remaining_hours[$value->remaining_hours] = $value->remaining_hours;
-					$user_id[$value->id] = $value->id;
-					// $consumed_hours[$value->consumed_hours] =$value->consumed_hours;
-				}
-
-
-				$ss  = array();
-				foreach ($name as $key => $sub) {
-					$ss[$sub] = $sub;
-				}
-
-
-				$data['total_purchase_package'] = count($user_id);
-				$data['packagename'] = $ss;
-				$totalpoints = array_sum($totalsum);
-				$data['consumed_hours'] = array_sum($consumed_hours);
-
-				$consumeddat =  $data['consumed_hours'] + $request->creadit_required;
-
-				$remaining_hours = $totalpoints - $consumeddat;
-				$remaining_hourss = $totalpoints - $data['consumed_hours'];
-				// $total = implode('', $totalpoints);
-
-				// 
-				// print_r($totalpoints);
-				// print_r($request->creadit_required);
-
-				// print_r($remaining_hourss);die;
-
-				if ($remaining_hourss >=  $request->creadit_required) {
-
-
-
-					$date = date('d-m-yy');
-					$data = array(
-						'user_id' => $request->user_id,
-						'coach_id' => $request->coach_id,
-						'course_id' => $request->course_id,
-						'created_at' => $date
-					);
-
-					DB::table('enroll_course')->insert($data);
-
-
-
-					DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' => $consumeddat, 'user_subscription_payment.remaining_hours' => $remaining_hours]);
-
-
-					Session()->flash('messagess', ' Enroll Successfully !');
-					// return redirect()
-					// ->back();
-
-					return redirect('account/my_courses');
+					Session()
+						->flash('loginerrorenroll', 'You have already enroll course .');
+					return redirect()
+						->back();
 				} else {
 
+					$user = auth()->user();
+
+					$data['user_subscription'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*', 'packages.name', 'users.name as username')
+						->leftjoin('packages', 'packages.id', '=', 'user_subscription_payment.subscription_id')
+						->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')
+						->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
+						->get();
 
 
-					// } else {
-					Session()
-						->flash('loginerror', 'You do not have sufficient credits.');
-					return redirect()
-						->back();
-					// }
+					$totalsum = array();
+					$name = array();
+					$consumed_hours = array();
+					$remaining_hours = array();
+					$user_id = array();
+
+					foreach ($data['user_subscription'] as $key => $value) {
+
+						$totalsum[$value->total_provided_hours] = $value->total_provided_hours;
+						$name[$value->name] = $value->name;
+						$consumed_hours[$value->consumed_hours] = $value->consumed_hours;
+						$remaining_hours[$value->remaining_hours] = $value->remaining_hours;
+						$user_id[$value->id] = $value->id;
+						// $consumed_hours[$value->consumed_hours] =$value->consumed_hours;
+					}
 
 
-					// return redirect('/pricing');
+					$ss  = array();
+					foreach ($name as $key => $sub) {
+						$ss[$sub] = $sub;
+					}
+
+
+					$data['total_purchase_package'] = count($user_id);
+					$data['packagename'] = $ss;
+					$totalpoints = array_sum($totalsum);
+					$data['consumed_hours'] = array_sum($consumed_hours);
+
+					$consumeddat =  $data['consumed_hours'] + $request->creadit_required;
+
+					$remaining_hours = $totalpoints - $consumeddat;
+					$remaining_hourss = $totalpoints - $data['consumed_hours'];
+					// $total = implode('', $totalpoints);
+
+					// 
+					// print_r($totalpoints);
+					// print_r($request->creadit_required);
+
+					// print_r($remaining_hourss);die;
+
+					if ($remaining_hourss >=  $request->creadit_required) {
+
+
+
+						$date = date('d-m-yy');
+						$data = array(
+							'user_id' => $request->user_id,
+							'coach_id' => $request->coach_id,
+							'course_id' => $request->course_id,
+							'created_at' => $date
+						);
+
+						DB::table('enroll_course')->insert($data);
+
+
+
+						DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' => $consumeddat, 'user_subscription_payment.remaining_hours' => $remaining_hours]);
+
+
+						Session()->flash('messagess', ' Enroll Successfully !');
+						// return redirect()
+						// ->back();
+
+						return redirect('account/my_courses');
+					} else {
+
+
+
+						// } else {
+						Session()
+							->flash('loginerror', 'You do not have sufficient credits.');
+						return redirect()
+							->back();
+						// }
+
+
+						// return redirect('/pricing');
+					}
 				}
 			}
+		} else {
+			Session()
+				->flash('loginerror', 'You do not access.');
+			return redirect()
+				->back();
 		}
-	}else{
-		Session()
-		->flash('loginerror', 'You do not access.');
-					return redirect()
-						->back();
 	}
-	}
+
 
 	public function my_courses_by_striver()
 	{
@@ -533,7 +580,23 @@ class EditController extends AccountBaseController
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
-		return appView('account.my_courses', $data);
+
+
+		$edit_user = DB::table('users')->select('users.*')->where('users.id', $user->id)->first();
+		$data['user_auth_id'] = 	auth()->user()->id;
+
+
+		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+
+		if (empty($edit_user->category)) {
+			return view('auth.register.user_category', $data);
+			
+		} else {
+
+			return appView('account.my_courses', $data);
+		}
+
+		
 	}
 
 
@@ -776,7 +839,22 @@ class EditController extends AccountBaseController
 
 		// print_r($data['strivrePayment']);die;
 
-		return appView('account.payment_and_subscription', $data);
+		$edit_user = DB::table('users')->select('users.*')->where('users.id', $user->id)->first();
+		$data['user_auth_id'] = 	auth()->user()->id;
+
+
+		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+
+		if (empty($edit_user->category)) {
+			return view('auth.register.user_category', $data);
+			
+		} else {
+
+			return appView('account.payment_and_subscription', $data);
+		}
+
+
+		
 	}
 
 

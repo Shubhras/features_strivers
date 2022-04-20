@@ -149,7 +149,7 @@
 
         
             
-            <div class="col-md-3">
+            <div class="col-lg-3 col-md-6">
                 <form action="{{ url('/account/enroll_course') }}" method="post">
                     <input type="hidden" name="creadit_required" id="creadit_required" value="{{$coach_course->creadit_required}}">
                     <input type="hidden" name="user_id" id="user_id" value="{{$auth_id}}" class="form-control">
@@ -162,7 +162,7 @@
                 </form>
             </div>
 
-            <div class="col-md-2">
+            <div class=" col-md-6 col-lg-3">
 
 
             <form action="{{ url('/pricingCourse') }}" method="post">
@@ -171,7 +171,7 @@
                     <input type="hidden" name="coach_id" id="coach_id" value="{{$coach_course->coach_id}}" class="form-control"> -->
                     <input type="hidden" name="course_id" id="course_id" value="{{$coach_course->id}}" class="form-control">
 
-                    <button type="submit" class="bisylms-btn" style="float: right;">
+                    <button type="submit" class="bisylms-btn">
                     Buy Credits
                     </button>
                 </form>
