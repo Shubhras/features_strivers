@@ -3,8 +3,8 @@
 	
 	// print_r(auth()->user()->user_type_id);die;
 		
-	$data = auth()->user()->user_type_id;
-	if($data == 1){ ?>
+	// $data = auth()->user()->user_type_id;
+	// if($data == 1){ ?>
 
 @if (auth()->check())
 	<?php
@@ -348,9 +348,9 @@
 	</aside>
 	@endif
 
-	<?php }else if($data ==4){?>
+	<?php //}else if($data ==4){?>
 
-		@if (auth()->check())
+		<!-- @if (auth()->check())
 
 
 		<aside class="left-sidebar" id="adminSidebar">
@@ -384,24 +384,24 @@
 						<a href="{{ admin_url('dashboard') }}" class="sidebar-link waves-effect waves-dark">
 							<i data-feather="home" class="feather-icon"></i> <span class="hide-menu">{{ trans('admin.dashboard') }}</span>
 						</a>
-					</li>
+					</li> -->
 
 
 					
 
 
 					<!-- @if (auth()->user()->can('page-list') || userHasSuperAdminPermissions()) -->
-						<li class="sidebar-item">
+						<!-- <li class="sidebar-item">
 							<a href="{{ admin_url('latest_news') }}" class="sidebar-link">
 								<i data-feather="book-open" class="feather-icon"></i> <span class="hide-menu">{{ trans('admin.letest_news') }}</span>
 							</a>
-						</li>
+						</li> -->
 					<!-- @endif -->
 
 
 
 
-					@if (
+					<!-- @if (
 						auth()->user()->can('post-list')
 						|| auth()->user()->can('category-list')
 						|| auth()->user()->can('picture-list')
@@ -464,29 +464,29 @@
 						|| auth()->user()->can('permission-list')
 						|| auth()->user()->can('gender-list')
 						|| userHasSuperAdminPermissions()
-					)
-						<li  class="sidebar-item">
+					) -->
+						<!-- <li  class="sidebar-item">
 							<a href="#" class="sidebar-link has-arrow waves-effect waves-dark">
 								<i data-feather="users" class="feather-icon"></i> <span class="hide-menu">{{ trans('admin.users') }}</span>
 							</a>
-							<ul aria-expanded="false" class="collapse first-level">
+							<ul aria-expanded="false" class="collapse first-level"> -->
 							<!-- @if (auth()->user()->can('user-list') || userHasSuperAdminPermissions()) -->
-									<li class="sidebar-item">
+									<!-- <li class="sidebar-item">
 										<a href="{{ admin_url('users') }}" class="sidebar-link">
 											<i class="mdi mdi-adjust"></i>
 											<span class="hide-menu">{{ trans('coach list') }}</span>
 										</a>
-									</li>
+									</li> -->
 								<!-- @endif -->
 								<!-- @if (auth()->user()->can('user-list') || userHasSuperAdminPermissions()) -->
-									<li class="sidebar-item">
+									<!-- <li class="sidebar-item">
 										<a href="{{ admin_url('strivre') }}" class="sidebar-link">
 											<i class="mdi mdi-adjust"></i>
 											<span class="hide-menu">{{ trans('striver list') }}</span>
 										</a>
-									</li>
+									</li> -->
 								<!-- @endif -->
-								
+<!-- 								
 							</ul>
 						</li>
 					@endif
@@ -497,6 +497,6 @@
 		</div>
 		
 	</aside>
-	@endif
-		<?php }?>
+	@endif -->
+		<?php //}?>
 
