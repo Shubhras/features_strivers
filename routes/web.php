@@ -138,6 +138,10 @@ Route::group([
 		CRUD::resource('settings', 'SettingController');
 		CRUD::resource('time_zones', 'TimeZoneController');
 		CRUD::resource('users', 'UserController');
+
+		CRUD::resource('strivre', 'StrivreController');
+
+		CRUD::resource('coach', 'CoachController');
 		
 		// Others
 		Route::get('account', 'UserController@account');
