@@ -456,10 +456,15 @@
                         {{ (isset($posts)) ? $posts->links() : '' }}
                     </nav>
 
-
+                    <center><span data-href=" {{url('account/tasks')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span></center>
 
                 </div>
-
+        <script>
+        function exportTasks(_this) {
+            let _url = $(_this).data('href');
+            window.location.href = _url;
+        }
+        </script>                                          
             </div>
             <!--/.row-box End-->
 

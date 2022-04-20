@@ -731,29 +731,29 @@ class EditController extends AccountBaseController
 			),
 		));
 
-		$response = curl_exec($curl);
+		// $response = curl_exec($curl);
 
-		curl_close($curl);
+		// curl_close($curl);
 
-		$responsesst = json_decode($response);
-		$session_id = array();
-		$datavideo_minutes = array();
+		// $responsesst = json_decode($response);
+		// $session_id = array();
+		// $datavideo_minutes = array();
 
-		foreach ($responsesst as $key => $uidkey) {
+		// foreach ($responsesst as $key => $uidkey) {
 
-			//   $data[$uidkey->uid] =$uidkey;			
-			foreach ($uidkey as $key => $value) {
+		// 	//   $data[$uidkey->uid] =$uidkey;			
+		// 	foreach ($uidkey as $key => $value) {
 
-				// $datauid[$value->uid] =$value->uid;
-				$datavideo_minutes[] = $value->video_minutes;
-				$dataaudio_minutes[] = $value->audio_minutes;
+		// 		// $datauid[$value->uid] =$value->uid;
+		// 		$datavideo_minutes[] = $value->video_minutes;
+		// 		$dataaudio_minutes[] = $value->audio_minutes;
 
-				// if($value->uid == $user->username){					
-				$session_id[$user->username] = $value->session_id;
-				//}		
-				// print_r($value->video_minutes);die;
-				$session_s = $value->session_id;
-			}
+		// 		// if($value->uid == $user->username){					
+		// 		$session_id[$user->username] = $value->session_id;
+		// 		//}		
+		// 		// print_r($value->video_minutes);die;
+		// 		$session_s = $value->session_id;
+		// 	}
 
 			// print_r($session_s);die;
 
@@ -777,47 +777,47 @@ class EditController extends AccountBaseController
 			));
 			// print_r($session_s);die;
 
-			$response = curl_exec($curl);
+		// 	$response = curl_exec($curl);
 
-			curl_close($curl);
-			//   echo $response;
-			$responsess = json_decode($response);
-			//   $datauid = array();
-			$datavideo_minutes = array();
-			$dataaudio_minutes = array();
-			$session_id = array();
-			foreach ($responsess as $key => $uidkey) {
+		// 	curl_close($curl);
+		// 	//   echo $response;
+		// 	$responsess = json_decode($response);
+		// 	//   $datauid = array();
+		// 	$datavideo_minutes = array();
+		// 	$dataaudio_minutes = array();
+		// 	$session_id = array();
+		// 	foreach ($responsess as $key => $uidkey) {
 
-				//   $data[$uidkey->uid] =$uidkey;
-
-
-				foreach ($uidkey as $key => $value) {
-
-					// $datauid[$value->uid] =$value->uid;
-					$datavideo_minutes[$value->uid] = $value->video_minutes;
-					$dataaudio_minutes[$value->uid] = $value->audio_minutes;
-
-					if ($value->uid == $user->username) {
-
-						$datavideo_minutes[$value->uid] = $value->video_minutes;
-						$dataaudio_minutes[$value->uid] = $value->audio_minutes;
-						$session_id[$value->uid] = $value->session_id;
-					}
-				}
-			}
-		}
-		//   print_r($value->session_id);exit;
-
-		$data['datavideo_minutes'] = $datavideo_minutes + $dataaudio_minutes;
-
-		$videominuts = implode('', $data['datavideo_minutes']);
-		$videominuts = $value->video_minutes;
-		// print_r($videominuts);die;
-		$data['dataaudio_minutes'] = $dataaudio_minutes;
+		// 		//   $data[$uidkey->uid] =$uidkey;
 
 
-		$videominutsTotal = '0';
-		$videominutsTotal = $videominutsTotal + $videominuts;
+		// 		foreach ($uidkey as $key => $value) {
+
+		// 			// $datauid[$value->uid] =$value->uid;
+		// 			$datavideo_minutes[$value->uid] = $value->video_minutes;
+		// 			$dataaudio_minutes[$value->uid] = $value->audio_minutes;
+
+		// 			if ($value->uid == $user->username) {
+
+		// 				$datavideo_minutes[$value->uid] = $value->video_minutes;
+		// 				$dataaudio_minutes[$value->uid] = $value->audio_minutes;
+		// 				$session_id[$value->uid] = $value->session_id;
+		// 			}
+		// 		}
+		// 	}
+		// }
+		// //   print_r($value->session_id);exit;
+
+		// $data['datavideo_minutes'] = $datavideo_minutes + $dataaudio_minutes;
+
+		// $videominuts = implode('', $data['datavideo_minutes']);
+		// $videominuts = $value->video_minutes;
+		// // print_r($videominuts);die;
+		// $data['dataaudio_minutes'] = $dataaudio_minutes;
+
+
+		// $videominutsTotal = '0';
+		// $videominutsTotal = $videominutsTotal + $videominuts;
 
 		// DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' => $videominutsTotal]);
 
@@ -1078,6 +1078,71 @@ class EditController extends AccountBaseController
 
 		return redirect($nextUrl);
 	}
+
+	public function exportCsv(Request $request)
+{
+	$user = auth()->user();
+	$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+	// print_r($request->all());die;
+	
+   $fileName = 'tasks.csv';
+//    $tasks = Task::all();
+   $data['strivrePayment1'] = DB::table('users')
+			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
+			->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
+			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
+			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
+			->where('enroll_course.coach_id', $user->id)->get();
+			// print_r($data['strivrePayment']);die;
+
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$fileName",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $columns = array('student', 'Course', 'Total Amount', 'Start Date', 'Fee deducted','Net payment');
+
+        $callback = function() use($data, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            
+				foreach ( $data['strivrePayment1'] as $key => $task) {
+					// $ss[$key] = $task;
+				// print_r($task->strivre_name);die;
+				// print_r($task);die;
+                $row['student']  = $task->strivre_name;
+                $row['Course']    = $task->course_name;
+                $row['Total Amount']    = $task->total_consultation_fee;
+                $row['Start Date']  = $task->dated;
+                $row['Fee deducted ']  = null;
+				$row['Net payment ']  = null;
+				
+                fputcsv($file, array($row['student'], $row['Course'], $row['Total Amount'], $row['Start Date']));
+            }
+
+            fclose($file);
+        
+		};
+			
+				return response()->stream($callback, 200, $headers);
+		
+    }
 
 	/**
 	 * Update the User's photo.
