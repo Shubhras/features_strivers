@@ -4342,6 +4342,7 @@ table.fc-border-separate {
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+
     .height-img {
         height: 45%!important;
     }

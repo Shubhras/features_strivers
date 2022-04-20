@@ -38,6 +38,7 @@ return [
     'post types'         => 'post types',
     'advertising'        => 'advertising',
     'advertisings'       => 'advertisings',
+	'strivre' =>'strivre',
     'blacklist'          => 'blacklist',
     'blacklists'         => 'blacklists',
     'category'           => 'category',
@@ -110,7 +111,10 @@ return [
     'click_here_to_reset'  => 'Click here to reset your password',
     'unauthorized'         => 'Unauthorized access.',
     'dashboard'            => 'Dashboard',
-	'letest_news'          => 'Letest News',
+	'letest_news'          => 'Articles',
+	'user_strivre' => 'Strivre',
+	'user_coach' => 'Coach',
+	
     'handcrafted_by'       => 'Powered by',
     'powered_by'           => 'Powered by',
 
