@@ -89,7 +89,7 @@
                   @endif
 
 
-                  @if(Session::has('loginerrorenroll'))
+              @if(Session::has('loginerrorenroll'))
                   <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('loginerrorenroll') }} <a href="{{url('/') }}" style="color: red;" target="_blank"><b> Back to home.</b></a></p>
                   @endif
 
@@ -106,7 +106,7 @@
             </div>
 
 
-            <div class="col-lg-6 box">
+            <div class="col-lg-6  box ">
                 <div class="row">
 
                     <div class="line_bottom">
@@ -137,13 +137,12 @@
 
             </div>
 
+
         </div>
 
 
         <br>
-        <br>
 
-        
 
         <div class="row">
 
@@ -156,7 +155,7 @@
                     <input type="hidden" name="coach_id" id="coach_id" value="{{$coach_course->coach_id}}" class="form-control">
                     <input type="hidden" name="course_id" id="course_id" value="{{$coach_course->id}}" class="form-control">
 
-                    <button type="submit" class="bisylms-btn" style="float: right;" onclick="customSession()">
+                    <button type="submit" class="bisylms-btn " style="float:right;" onclick="customSession()">
                     Enroll Now
                     </button>
                 </form>
@@ -184,9 +183,9 @@
                 </a> -->
                 
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
 
-</div>
+</div> -->
         </div>
 
         <br><br>

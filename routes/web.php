@@ -240,9 +240,10 @@ Route::group([
 
 			Route::post('/findtopcoach', 'HomeController@coach_list_category_interesting');
 			Route::post('user_login', 'HomeController@user_login');
+			// Route::post('strivers_signup', 'HomeController@register_new_user');
 			Route::post('strivers_signup', 'HomeController@register_new_user');
 
-			Route::post('updateUserCategory','HomeController@updateUserCategory');
+			Route::get('updateUserCategory/{id}','HomeController@updateUserCategory');
 
 			Route::get(dynamicRoute('routes.countries'), 'CountriesController@index');
 		} else {
@@ -443,6 +444,7 @@ Route::group([
 				Route::get('my_striver','EditController@my_coaches_by_striver');
 				Route::get('my_courses','EditController@my_courses_by_striver');
 				Route::get('my_payments','EditController@payment_and_subscription');
+				Route::get('tasks','EditController@exportCsv');
 				Route::get('my_subscription','EditController@payment_and_subscription');
 				Route::post('create_course' , 'EditController@create_coursesss');
 				Route::get('getSubcategories', 'EditController@getSubcategories');

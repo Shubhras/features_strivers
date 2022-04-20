@@ -63,6 +63,7 @@
 								@endif
 	
 								{{-- Table columns --}}
+								
 								@foreach ($xPanel->columns as $column)
 									@if ($column['type'] == 'checkbox')
 									<th {{ isset($column['orderable']) ? 'data-orderable=' .var_export($column['orderable'], true) : '' }}
@@ -100,6 +101,8 @@
 								@endif
 	
 								{{-- Table columns --}}
+
+								
 								@foreach ($xPanel->columns as $column)
 									<th>{{ $column['label'] }}</th>
 								@endforeach
