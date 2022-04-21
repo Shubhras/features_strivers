@@ -15,10 +15,10 @@
 
 @section('title', t('Internal Server Error'))
 
-<!-- @section('search')
+@section('search')
 	@parent
 	@include('errors.layouts.inc.search')
-@endsection -->
+@endsection
 
 @section('content')
 	@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])

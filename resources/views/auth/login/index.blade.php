@@ -10,7 +10,7 @@
     <!-- Course Section Start -->
     <section class="contact-section">
         <div class="container">
-            <!-- @if (isset($errors) && $errors->any())
+            @if (isset($errors) && $errors->any())
             <div class="col-12">
                 <div class="alert alert-danger alert-dismissible">
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
@@ -21,46 +21,13 @@
                     </ul>
                 </div>
             </div>
-            @endif -->
-        <!-- @if (isset($errors) && $errors->any())
-    <div class="col-8" style="margin-left: 243px;">
-        <div class="alert alert-danger alert-dismissible">
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
-            <strong >{{ t('looks_like_something_went_wrong') }}</strong>
-            <ul class="list list-check">
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    @endif 
-
-    @if(Session::has('url.intended'))
-    <div class="alert alert-danger alert-dismissible">
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
-        <p class="alert alert-danger">{{ Session::get('url.intended') }}</p>
-    </div>
-    @endif -->
-
-    <div class="col-sm-12 form-group">
-                  <!-- @if(Session::has('message'))
-                  <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
-                  @endif -->
-                  <div class="col-8" style="margin-left: 243px;">
-                  @if(Session::has('loginerror'))
-                  
-                  <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('loginerror') }}</p>
-                  @endif
-               </div>
-        </div>
-
-    
-
-    
-       
+            @endif
+            @if (session()->has('flash_notification'))
+            <div class="col-12">
+                @include('flash::message')
+            </div>
+            @endif
             <div class="col-md-8 d-flex justify-content-center">
-         
                 <div class="contact-form dform">
                     <center>
                         <h4>Login</h4>

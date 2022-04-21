@@ -332,11 +332,11 @@ if ($post->category) {
 														   placeholder="{{ t('phone_number') }}" class="form-control input-md{{ $phoneError }}"
 														   type="text" value="{{ phoneFormat(old('phone', $post->phone), $post->country_code) }}"
 													>
-													<!-- <span class="input-group-text">
+													<span class="input-group-text">
 													<input name="phone_hidden" id="phoneHidden" type="checkbox"
 														   value="1" {{ (old('phone_hidden', $post->phone_hidden)=='1') ? 'checked="checked"' : '' }}>
 													&nbsp;<small>{{ t('Hide') }}</small>
-												</span> -->
+												</span>
 												</div>
 											</div>
 										</div>

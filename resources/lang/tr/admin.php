@@ -23,7 +23,6 @@ return [
     'post types' => 'post types',
     'advertising' => 'advertising',
     'advertisings' => 'advertisings',
-    'strivre' =>'strivre',
     'blacklist' => 'blacklist',
     'blacklists' => 'blacklists',
     'category' => 'Category',

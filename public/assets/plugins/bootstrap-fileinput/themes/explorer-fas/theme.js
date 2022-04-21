@@ -42,7 +42,7 @@
         fileActionSettings: {
             removeIcon: '<i class="fas fa-trash-alt"></i>',
             uploadIcon: '<i class="fas fa-upload"></i>',
-            // uploadRetryIcon: '<i class="fas fa-redo-alt"></i>',
+            uploadRetryIcon: '<i class="fas fa-redo-alt"></i>',
             downloadIcon: '<i class="fas fa-download"></i>',
             zoomIcon: '<i class="fas fa-search-plus"></i>',
             dragIcon: '<i class="fas fa-arrows-alt"></i>',

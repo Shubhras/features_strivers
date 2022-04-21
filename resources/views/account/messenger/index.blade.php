@@ -11,98 +11,12 @@
  * of the above copyright notice. If you Purchased from CodeCanyon,
  * Please read the full License from here - http://codecanyon.net/licenses/standard
 --}}
-<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
-       
- </section>
- @extends('layouts.master_new')
+@extends('layouts.master')
+
 @section('content')
 	@includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
-
     <div class="main-container">
         <div class="container">
-        <?php $photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
-
-        <div class="row" style="padding: 6px; margin-left: -4px;">
-				
-				<div class="col-md-12 user-profile-img-data default-inner-box">
-					
-					<img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>  {{ $user->name }}</b> </span>
-					
-					
-					<div class="row">
-						
-						<div class="col-md-12 col-sm-8 col-12">
-							<span>
-								
-								
-								<div class="header-data text-center-xs">
-									{{-- Threads Stats --}}
-									<div class="hdata">
-										<a href="{{ url('account/messages') }}">
-											
-											<div class="mcol-left">
-												<i class="fas fa-phone-alt ln-shadow"></i>
-											</div>
-											<div class="mcol-right">
-												{{-- Number of messages --}}
-												<p>
-													
-											{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-											
-											<em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-									   
-										</p>
-								</div>
-								</a>
-								<div class="clearfix"></div>
-							</div>
-
-							{{-- Traffic Stats --}}
-							<div class="hdata">
-								<a href="{{ url('account/chat') }}">
-									<div class="mcol-left">
-										<i class="fas fa-comments ln-shadow"></i>
-									</div>
-									<div class="mcol-right">
-										{{-- Number of visitors --}}
-									<p>
-										
-										
-									   
-									</p>
-                                    
-								</div>
-
-								</a>
-								<div class="clearfix"></div>
-							</div>
-
-							
-
-							{{-- Favorites Stats --}}
-							<div class="hdata" style="width: 151px!important;margin-left: -38px;">
-							<a href="{{ url('account/favourite') }}">
-								<div class="mcol-left" >
-									<i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
-								</div>
-								<div class="mcol-right">
-									{{-- Number of favorites --}}
-									<p>
-										
-										
-									</p>
-								</div>
-								</a>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				
-			    </div>
-				
-		      </div>
-			</div>
             <div class="row">
                 
                 <div class="col-md-3 page-sidebar">

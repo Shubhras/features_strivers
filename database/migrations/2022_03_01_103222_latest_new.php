@@ -21,7 +21,7 @@ class LatestNew extends Migration
 			$table->string('slug', 150)->nullable();
             $table->text('title')->nullable();
             $table->string('picture', 255)->nullable();
-            $table->text('content')->nullable();
+            $table->mediumtext('content')->nullable();
             $table->string('external_link', 255)->nullable();
             $table->string('name_color', 10)->nullable();
             $table->string('title_color', 10)->nullable();

@@ -72,7 +72,7 @@
 
                     <div class="col-md-12 user-profile-img-data default-inner-box">
 
-                        <img id="userImg" class="user-profile-images1" src="{{ $user->photo_url }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+                        <img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo_url) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
                         <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 
@@ -164,30 +164,20 @@
 
 
                     <div class="col-md-9 page-content ptop">
+
+
                         <div class="row">
 
                             <?php foreach ($my_striver as $coach_list) { ?>
 
 
                                 <div class="col-lg-4 col-md-6">
-
-                               
-
-
                                     <div class="teacher-item">
-                                    <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
-
                                         <div class="teacher-thumb coach-img-wrapper">
-
-                                        <?php if(!empty($coach_list->photo)){ ?>
 
                                             <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
 
-                                            <?php }else{?>
-
-                                                    <img src="../assets/images/course/1.jpg" alt="Hugh Saturation">
-                                                <?php }?>
-                                            
+                                            <!-- <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2020/11/teacher_5.png" alt="Hugh Saturation"> -->
 
                                             <div class="madels">
                                                 <img src="../assets/images/basic-1.svg" alt="Standard">
@@ -196,7 +186,20 @@
 
 
                                             </div>
-                                            
+                                            <!-- <div class="teacher-social">
+                                                <a href="#">
+                                                    <i aria-hidden="true" class="fab fa-facebook-f"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i aria-hidden="true" class="fab fa-twitter"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i aria-hidden="true" class="fab fa-pinterest-p"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i aria-hidden="true" class="fab fa-vimeo-v"></i>
+                                                </a>
+                                            </div> -->
                                         </div>
                                         <div class="teacher-meta">
                                             <p class="top-coaches-name-list coach-cat-name12">
@@ -204,52 +207,11 @@
                                                 {{ $coach_list->name }}
 
                                             </p>
-                                            <!-- <p class="lh">Photographer
-                                            </p> -->
+                                            <p class="lh">Photographer
+                                            </p>
                                         </div>
-                                    </a>
                                     </div>
-                                    
                                 </div>
-
-
-
-
-                                <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
-                                        <div class="modal-dialog modal-xl">
-
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Strivre Details</h4>
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
-
-                                            <div class="modal-content p-5">
-
-
-                                                <img src="{{ url('storage/'.$coach_list->photo) }}" class="img-coches-main" alt="{{ $coach_list->name }}">
-                                                <p class="coach-details-name">{{$coach_list->name}}</p>
-                                                <h4 class=" text-center">
-                                                   
-                                                </h4>
-                                                <p class="text-center"><b>
-                                                    </b>
-                                                </p> <br>
-                                                <!-- <label>{{$coach_list->coach_summary}}</label> -->
-                                                <br>
-                                                <div class="row center-button-modal">
-
-                                                    <!-- <div class="col-lg-2">
-                                                        <a href="{{url('/top_coach_detail/'.$coach_list->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
-                                                    </div> -->
-                                                    <!-- <div class="col-lg-2">
-                                                        <a href="{{url('/register') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
-                                                    </div> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    
 
                             <?php } ?>
 
@@ -261,39 +223,6 @@
 
                     </div>
                     <!--/.page-content-->
-                </div>
-
-
-
-                <div class="main-section">
-                    <div class="container">
-
-                        <h2 class="sec-title" style="font-weight: 700;">
-                            Suggested Strivre
-
-                        </h2>
-
-                        <div class="row">
-                            <?php foreach ($suggested_striver as $coach_list) { ?>
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="teacher-item">
-                                        <div class="teacher-thumb coach-img-wrapper">
-                                            <img src="{{ url('storage/'.$coach_list->photo) }}" alt="{{ $coach_list->name }}">
-
-                                        </div>
-                                        <div class="teacher-meta">
-                                            <p class="top-coaches-name-list coach-cat-name12 ">
-                                                {{ $coach_list->name }}
-                                            </p>
-
-                                           
-
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div>
                 </div>
 
 
@@ -506,56 +435,56 @@
                         <div class="row">
 
                             <?php foreach ($my_coaches as $coach_list) { ?>
-
+                                
 
                                 <div class="col-lg-4 col-md-6">
 
-                                    <a type="button" href="{{url('/top_coach_detail/'.$coach_list->id) }}" id="coach_id_{{$coach_list->id }}">
+                                <a type="button" href="{{url('/top_coach_detail/'.$coach_list->id) }}" id="coach_id_{{$coach_list->id }}">
 
-                                        <div class="teacher-item">
-                                            <div class="teacher-thumb coach-img-wrapper">
+                                    <div class="teacher-item">
+                                        <div class="teacher-thumb coach-img-wrapper">
 
-                                                <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
+                                            <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
 
-                                                <div class="madels">
-                                                    <img src="../assets/images/basic-1.svg" alt="Standard">
+                                            <div class="madels">
+                                                <img src="../assets/images/basic-1.svg" alt="Standard">
 
-
-                                                </div>
 
                                             </div>
-                                            <div class="teacher-meta">
-                                                <p class="top-coaches-name-list coach-cat-name12">
-                                                    <!-- Hugh Saturation -->
-                                                    {{ $coach_list->name }}
 
-                                                </p>
-
-
-                                                <?php
-
-                                                if (!empty($coach_list->slug)) {
-
-
-                                                    $name = json_decode($coach_list->slug);
-                                                    $ss = array();
-                                                    foreach ($name as $key => $sub) {
-                                                        $ss[$key] = $sub;
-                                                    }
-
-                                                ?>
-
-                                                    <p class="text-center">{{$ss['en']}}
-                                                    </p>
-                                                <?php  } else {
-                                                ?>
-                                                    <p class=" text-center">Others
-                                                    </p>
-                                                <?php } ?>
-
-                                            </div>
                                         </div>
-                                    </a>
+                                        <div class="teacher-meta">
+                                            <p class="top-coaches-name-list coach-cat-name12">
+                                                <!-- Hugh Saturation -->
+                                                {{ $coach_list->name }}
+
+                                            </p>
+
+
+                                            <?php
+
+                                            if (!empty($coach_list->slug)) {
+
+
+                                                $name = json_decode($coach_list->slug);
+                                                $ss = array();
+                                                foreach ($name as $key => $sub) {
+                                                    $ss[$key] = $sub;
+                                                }
+
+                                            ?>
+
+                                                <p class="text-center">{{$ss['en']}}
+                                                </p>
+                                            <?php  } else {
+                                            ?>
+                                                <p class=" text-center">Others
+                                                </p>
+                                            <?php } ?>
+
+                                        </div>
+                                    </div>
+                                </a>
                                 </div>
 
                             <?php } ?>
@@ -631,7 +560,6 @@
                             </h2>
                             <?php foreach ($suggested_coaches as $coach_list) { ?>
                                 <div class="col-lg-3 col-md-6">
-                                <a href="{{url('/top_coach_detail/'.$coach_list->id) }}">
                                     <div class="teacher-item">
                                         <div class="teacher-thumb coach-img-wrapper">
                                             <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
@@ -663,7 +591,6 @@
                                             <?php } ?>
                                         </div>
                                     </div>
-                                </a>
                                 </div>
                             <?php } ?>
                         </div>

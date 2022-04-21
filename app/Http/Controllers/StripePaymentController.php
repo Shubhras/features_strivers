@@ -51,9 +51,7 @@ class StripePaymentController extends Controller
             $data['price'] = $request->price;
             $data['subscriptionPlan'] = $request->subscriptionPlan;
             $data ['totalHours'] = $request->totalHours;
-
-            $data ['courseId'] = $request->courseId;
-            //  print_r($data ['courseId']);die;
+            //  print_r('kjskdjkdsj k jkd jskdjk dj dsjfjkdf');die;
             return appView('home.stripe', $data);
         }
     }
@@ -117,18 +115,7 @@ class StripePaymentController extends Controller
                     ));
                 
         }
-        
-
-        if (!empty($request->courseId)) {
-
-			return redirect('get_coach_course/' . $request->courseId);
-		} else {
-
-			return redirect("/account/my_subscription");
-		}
-
-
-        // return redirect("/account/my_subscription");
+        return redirect("/account/my_subscription");
     }
 
 

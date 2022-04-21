@@ -75,17 +75,8 @@
 
                 <div class="col-md-12 user-profile-img-data default-inner-box">
 
-                    <!-- <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;"
-                        height="50px;" border-radius=" 50%"> &nbsp; -->
-                        <?php if(!empty($user->photo)){
-					?>
-					
-					<img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-					<?php }else{ ?>
-
-						<img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-
-						<?php }?>
+                    <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;"
+                        height="50px;" border-radius=" 50%"> &nbsp;
                     <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 
@@ -210,7 +201,7 @@
                         <div class="row  coaches_payment_data">
                             <div class="col-lg-4 card bg-danger text-white card-body till_date_striver">
                                 <span class="span_text_show">Total Strivres</span>
-                                <span>{{$totalStrivrePayment}}</span>
+                                <span>12</span>
 
 
                             </div>
@@ -297,27 +288,19 @@
 
 
                                     <tbody>
-                                        <?php foreach($strivrePayment as $key=>$strivrePaymentDetail){
-
-                                            // print_r($strivrePaymentDetail);die;
-
-                                        
-                                            ?>
                                         <tr>
                                             <td class="course">
-                                                <a href="#">{{$strivrePaymentDetail->strivre_name}}</a>
+                                                <a href="#">Getting Started with LESS</a>
                                             </td>
-                                            <td class="date">{{$strivrePaymentDetail->course_name}}</td>
-                                            <td class="grade">{{$strivrePaymentDetail->total_consultation_fee}}</td>
-                                            <td class="progres">{{$strivrePaymentDetail->dated}}</td>
-                                            <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
-                                            <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
+                                            <td class="date">24/03/2020</td>
+                                            <td class="grade">50%</td>
+                                            <td class="progres">0% In Progress</td>
+                                            <td class="grade">400</td>
+                                            <td class="grade">600</td>
 
 
                                         </tr>
-                                            <?php } ?>
-
-                                        <!-- <tr>
+                                        <tr>
                                             <td class="course">
                                                 <a href="#">LMS Interactive Content</a>
                                             </td>
@@ -353,7 +336,7 @@
                                             <td class="grade">600</td>
 
 
-                                        </tr> -->
+                                        </tr>
 
                                     </tbody>
 
@@ -456,15 +439,10 @@
                         {{ (isset($posts)) ? $posts->links() : '' }}
                     </nav>
 
-                    <center><span data-href=" {{url('account/tasks')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span></center>
+
 
                 </div>
-        <script>
-        function exportTasks(_this) {
-            let _url = $(_this).data('href');
-            window.location.href = _url;
-        }
-        </script>                                          
+
             </div>
             <!--/.row-box End-->
 
@@ -543,17 +521,8 @@
 
         <div class="col-md-12 user-profile-img-data default-inner-box">
 
-            <!-- <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;"
-                height="50px;" border-radius=" 50%"> &nbsp; -->
-                <?php if(!empty($user->photo)){
-					?>
-					
-					<img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-					<?php }else{ ?>
-
-						<img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-
-						<?php }?>
+            <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;"
+                height="50px;" border-radius=" 50%"> &nbsp;
             <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 

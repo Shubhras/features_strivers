@@ -252,7 +252,7 @@ return [
     
     'oops_an_error_has_occurred' => 'Oops ! An error has occurred. Please correct the red fields in the form',
 
-    'email_mobile_duplicat_check' => 'Email or Mobile number already exists! Please use unique email and mobile number to sign up and check password.',
+    'email_mobile_duplicat_check' => 'Email or Mobile number already exists! Please use unique email and mobile number to sign up.',
 
     'Favorites' => 'Favorites',
     'Visits' => 'Visits',
@@ -923,8 +923,7 @@ return [
 	'captcha_reload_hint' => 'Reload the security code.',
 	'nothing_has_changed' => 'Nothing has changed. The update was not performed.',
     'dashboard' => 'Dashboard',
-    'letest_news' => 'Articles',
-    'user_coach' => 'Coach',
+    'letest_news' => 'Letest News',
     'Edit_Profile' =>'Edit Profile',
     'my_subscription' => 'My Subscription',
     'my_courses' => 'My Courses',

@@ -102,7 +102,8 @@
 <!-- @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
 <a href="#" id="back-to-top">
     <i class="fal fa-angle-double-up"></i>
-</a> 
+</a> -->
+<!-- Back To Top -->
 <!-- Start Include All JS -->
 <script src="../assets/js/jquery.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>

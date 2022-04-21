@@ -20,28 +20,30 @@
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
             <strong >{{ t('email_mobile_duplicat_check') }}</strong>
-            <!-- <ul class="list list-check">
+            <ul class="list list-check">
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
                 @endforeach
-            </ul> -->
+            </ul>
         </div>
     </div>
     @endif
 
-    <!-- @if (session()->has('flash_notification'))
+    @if (session()->has('flash_notification'))
     <div class="col-12">
         @include('flash::message')
     </div>
-    @endif -->
+    @endif
     </div>
 
     
 
         <div class="col-md-8 d-flex justify-content-center">
-        @if(Session::has('message'))
-        <p class="alert alert-info">{{ Session::get('message') }}</p>
-        @endif
+            <!-- @if (isset($errors) && $errors->any())
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+            @endif -->
             <div class="contact-form dform" id="Coaches">
 
                 <center>
@@ -62,10 +64,7 @@
                         <input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden" id="user_type_coach" value="2">
                     </div>
                     @if (isEnabledField('email'))
-                    
-                    <?php  ?>
                     <div class="col-md-6">
-                    
                         <?php $emailError = (isset($errors) and $errors->has('email')) ? ' is-invalid' : ''; ?>
                         <label class="form-label" for="email">Email
                         </label>
@@ -77,7 +76,7 @@
                         <?php $phoneError = (isset($errors) and $errors->has('phone')) ? ' is-invalid' : ''; ?>
                         <label class="form-label" for="phone">Phone Numbers
                         </label>
-                        <input name="phone" placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}" class="form-control input-md{{ $phoneError }}" type="text" value="{{ phoneFormat(old('phone'), old('country', config('country.code'))) }}" maxlength="10" required>
+                        <input name="phone" placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}" class="form-control input-md{{ $phoneError }}" type="text" value="{{ phoneFormat(old('phone'), old('country', config('country.code'))) }}" required>
                     </div>
                     @endif
                     <div class="col-md-12">
@@ -87,10 +86,9 @@
                         <input id="password" name="password" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('password') }}" autocomplete="off" required>
                     </div>
                     <div class="col-md-12">
-                    <?php $passwordError = (isset($errors) and $errors->has('password')) ? ' is-invalid' : ''; ?>
                         <label class="form-label" for="password">Password Confirmation
                         </label>
-                        <input id="password_confirmation" name="password_confirmation" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('Password Confirmation') }}" autocomplete="on">
+                        <input id="password_confirmation" name="password_confirmation" type="password" class="form-control{{ $passwordError }}" placeholder="{{ t('Password Confirmation') }}" autocomplete="off" required>
 
                         <input type="hidden" name="accept_terms" value="1">
                     </div>

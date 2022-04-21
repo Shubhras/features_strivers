@@ -87,18 +87,11 @@
                   @if(Session::has('loginerror'))
                   <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('loginerror') }} <a href="{{url('/pricing') }}" style="color: red;" target="_blank"><b> Click here to subscribe and get credits.</b></a></p>
                   @endif
-
-
-              @if(Session::has('loginerrorenroll'))
-                  <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('loginerrorenroll') }} <a href="{{url('/') }}" style="color: red;" target="_blank"><b> Back to home.</b></a></p>
-                  @endif
-
-                  
                </div>
                 
 
 
-            <div class="col-lg-6 pleft ">
+            <div class="col-lg-6 pleft">
                 <div class="col-lg-12 imgb">
                     <center> <img src="{{ url('storage/'.$coach_course->image) }}" class="lazyload img-fluid1 images_height" style="width: 100%;"></center>
 
@@ -106,7 +99,7 @@
             </div>
 
 
-            <div class="col-lg-6  box ">
+            <div class="col-lg-6 box">
                 <div class="row">
 
                     <div class="line_bottom">
@@ -137,55 +130,42 @@
 
             </div>
 
-
         </div>
 
 
         <br>
+        <br>
 
+        
 
         <div class="row">
 
         
             
-            <div class="col-lg-3 col-md-6">
+            <div class="col-md-3">
                 <form action="{{ url('/account/enroll_course') }}" method="post">
                     <input type="hidden" name="creadit_required" id="creadit_required" value="{{$coach_course->creadit_required}}">
                     <input type="hidden" name="user_id" id="user_id" value="{{$auth_id}}" class="form-control">
                     <input type="hidden" name="coach_id" id="coach_id" value="{{$coach_course->coach_id}}" class="form-control">
                     <input type="hidden" name="course_id" id="course_id" value="{{$coach_course->id}}" class="form-control">
 
-                    <button type="submit" class="bisylms-btn " style="float:right;" onclick="customSession()">
+                    <button type="submit" class="bisylms-btn" style="float: right;" onclick="customSession()">
                     Enroll Now
                     </button>
                 </form>
             </div>
 
-            <div class=" col-md-6 col-lg-3">
+            <div class="col-md-2">
 
-
-            <form action="{{ url('/pricingCourse') }}" method="post">
-                    <!-- <input type="hidden" name="creadit_required" id="creadit_required" value="{{$coach_course->creadit_required}}">
-                    <input type="hidden" name="user_id" id="user_id" value="{{$auth_id}}" class="form-control">
-                    <input type="hidden" name="coach_id" id="coach_id" value="{{$coach_course->coach_id}}" class="form-control"> -->
-                    <input type="hidden" name="course_id" id="course_id" value="{{$coach_course->id}}" class="form-control">
-
-                    <button type="submit" class="bisylms-btn">
-                    Buy Credits
-                    </button>
-                </form>
-
-
-
-                <!-- <a href="{{url('/pricingCourse/'.$coach_course->id)}}" class="bisylms-btn">
+                <a href="{{'/pricing'}}" class="bisylms-btn" target="_blank">
 
                     Buy Credits
-                </a> -->
+                </a>
                 
             </div>
-            <!-- <div class="col-md-4">
+            <div class="col-md-4">
 
-</div> -->
+</div>
         </div>
 
         <br><br>
@@ -210,65 +190,6 @@
 
         </div>
 </section>
-
-    <div class="main-section">
-                    <div class="container">
-
-                        <div class="row">
-
-                            <h2 class="sec-title" style="font-weight: 700;">
-                                Suggested Consultation
-
-                            </h2>
-
-                            <?php
-                            foreach ($coach_striver as  $coaches_corsee) {
-                            ?>
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="feature-course-item-4">
-                                        <div class="fcf-thumb">
-                                            <img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
-                                            <a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" onclick="customSession()">View Package</a>
-                                        </div>
-                                        <div class="fci-details">
-                                            <a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
-                                            <h4><a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
-                                            <div class="author">
-                                                <img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
-                                                <a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
-                                            </div>
-
-
-                                            <div class="price-rate">
-                                                <div class="course-price">
-
-                                                    @if($coaches_corsee->total_consultation_fee != null)
-
-                                                    <a>
-                                                        <!-- {{$coaches_corsee->total_consultation_fee}}$ Credits -->
-
-                                                        {{$coaches_corsee->creadit_required}}$ Credits
-                                                    </a>
-                                                    @else
-                                                    0 $ Credits
-                                                    @endif
-                                                </div>
-
-                                            </div>
-
-
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            <?php } ?>
-                        </div>
-                        <br>
-
-                       
-                    </div>
-                </div>
 
 
 @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer', 'layouts.inc.footer'])

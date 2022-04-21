@@ -27,11 +27,12 @@ body {
     }
 
     .row {
-        margin: -13px -16px;
+        margin: 10px -16px;
     }
 
     /* Add padding BETWEEN each column */
-    .column {
+    .row,
+    .row>.column {
         padding: 8px;
     }
 
@@ -82,9 +83,7 @@ body {
     }
 </style>
 <section class="page-banner" style="background-image: url(../assets/images/home/cta-bg.jpg);">
-<div class="hi">
 
-</div>
 
 </section>
 
@@ -97,7 +96,7 @@ body {
 
 
         <center>
-            <div class=" col-lg-8 col-md-8 searchp ">
+            <div class=" col-lg-8 col-md-8 ">
 
                 <form action="{{ url('/findtopcoach') }}" method="post">
 
@@ -295,11 +294,10 @@ body {
                     ?>
                     <div>
                         <!-- <div class="subject-title-name-cat" id="heading{{ $cat->id }}"> -->
-                        <h5 class="mb-0 subject-title-name-cat tab1 ">
-                            <button class="btn btn-link tab " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
+                        <h5 class="mb-0 subject-title-name-cat">
+                            <button class="btn btn-link " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
                                 {{ $ss['en'] }}
-                            </button>
-                            <i class="fa arrow-down btn-link" id="heading{{ $cat->id }}" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important; float: right;" onclick="this.classList.toggle('active')"></i>
+                            </button><i class="fa fa-angle-up" id="donar" style="float: right;"></i>
                         </h5>
                         <!-- </div> -->
                         <div id="collapse{{ $cat->id }}" class="collapse" aria-labelledby="heading{{ $cat->id }}" data-parent="#accordionExample">
@@ -315,7 +313,7 @@ body {
                             }
                             ?>
 
-                            <h5 class=" mb-0 subject-title-name-cat">
+                            <h5 class="mb-0 subject-title-name-cat">
 
                                 <button style="margin-left: 5px; border-bottom: 1px;" class="btn sub-categorry subject-title-name-cat-sub" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}
                                 </button>
@@ -331,7 +329,7 @@ body {
                 </div>
 
             </div>
-            <div class="col-md-8 pick">
+            <div class="col-md-8">
 
 
                 <div class="row">
@@ -343,7 +341,7 @@ body {
 
 
 
-                        <div class="col-lg-4 col-md-6 column" {{$coach_list->slug_name}} teacher-meta">
+                        <div class="column {{$coach_list->slug_name}} teacher-meta">
 
                             <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
 
@@ -691,56 +689,6 @@ body {
     .sub-cat-name {
         color: blue !important;
     }
-
-
-    
-</style>
-
-<style>
-
-.arrow-down {
-  width: 20px;
-  height: 20px;
-  /* background: red; */
-  color: #000000;
-  position: relative;
-}
-
-.arrow-down.active {
-  /* background: blue; */
-}
-
-.arrow-down:before, .arrow-down:after {
-    content: "";
-    display: block;
-    width: 9px;
-    height: 3px;
-    background: #100f0f;
-    position: absolute;
-    top: 7px;
-    transition: transform .5s;
-}
-
-.arrow-down:before {
-    right: 14px;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 5px;
-    transform: rotate(45deg);
-}
-
-.arrow-down:after {
-  right: 10px;
-  transform: rotate(-45deg);
-}
-
-.arrow-down.active:before {
-  transform: rotate(-45deg);
-}
-
-.arrow-down.active:after {
-  transform: rotate(45deg);
-}
-
 </style>
 @endsection
 

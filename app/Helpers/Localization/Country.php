@@ -227,7 +227,6 @@ class Country
 	 * @param $defaultCountryCode
 	 * @return \Illuminate\Support\Collection
 	 */
-	
 	public function getDefaultCountry($defaultCountryCode)
 	{
 		// Check default country
