@@ -38,7 +38,7 @@
 			
 			<div class="card rounded">
 				
-				<div class="card-header {{ $xPanel->hasAccess('create')?'with-border':'' }}">
+				<div class="card-header {{ $xPanel->hasAccess('letest_news')?'with-border':'' }}">
 					@include('admin::panel.inc.button_stack', ['stack' => 'top'])
 					<div id="datatable_button_stack" class="float-end text-end"></div>
 				</div>
@@ -63,7 +63,6 @@
 								@endif
 	
 								{{-- Table columns --}}
-								
 								@foreach ($xPanel->columns as $column)
 									@if ($column['type'] == 'checkbox')
 									<th {{ isset($column['orderable']) ? 'data-orderable=' .var_export($column['orderable'], true) : '' }}
@@ -92,6 +91,7 @@
 							</thead>
 	
 							<tbody>
+                                
 							</tbody>
 	
 							<tfoot>
@@ -101,8 +101,6 @@
 								@endif
 	
 								{{-- Table columns --}}
-
-								
 								@foreach ($xPanel->columns as $column)
 									<th>{{ $column['label'] }}</th>
 								@endforeach

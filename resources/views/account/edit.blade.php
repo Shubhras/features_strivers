@@ -38,49 +38,56 @@
 	 <div class="main-container" >
 		<div class="container">
 
-		<?php $photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
+		
 
 
-			<?php if($user->user_type_id == 2){ ?>
+<?php if($user->user_type_id == 2){ ?>
 
 
 				<h2>
 
-<h2 class="sec-title">My Profile</h2>
-</h2>
+  <h2 class="sec-title">My Profile</h2>
+     </h2>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
-			
-			
-				<div class="col-md-12 user-profile-img-data default-inner-box">
-
-					<img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>  {{ $user->name }}</b> </span>
 				
-
-				<div class="row">
-				   
-					<div class="col-md-12 col-sm-8 col-12">
-					<span>
-
+				<div class="col-md-12 user-profile-img-data default-inner-box">
 					
-						<div class="header-data text-center-xs">
-							{{-- Threads Stats --}}
-							<div class="hdata">
-							<a href="{{ url('account/messages') }}">
+				<?php if(!empty($user->photo)){
+					?>
+					
+					<img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+					<?php }else{ ?>
 
-								<div class="mcol-left">
-									<i class="fas fa-phone-alt ln-shadow"></i>
-								</div>
-								<div class="mcol-right">
-									{{-- Number of messages --}}
-									<p>
-										
+						<img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+
+						<?php }?>
+					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>  {{ $user->name }}</b> </span>
+					
+					
+					<div class="row">
+						
+						<div class="col-md-12 col-sm-8 col-12">
+							<span>
+								
+								
+								<div class="header-data text-center-xs">
+									{{-- Threads Stats --}}
+									<div class="hdata">
+										<a href="{{ url('account/messages') }}">
+											
+											<div class="mcol-left">
+												<i class="fas fa-phone-alt ln-shadow"></i>
+											</div>
+											<div class="mcol-right">
+												{{-- Number of messages --}}
+												<p>
+													
 											{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-										   
+											
 											<em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
 									   
-									</p>
+										</p>
 								</div>
 								</a>
 								<div class="clearfix"></div>
@@ -88,17 +95,17 @@
 
 							{{-- Traffic Stats --}}
 							<div class="hdata">
-							<a href="{{ url('account/chat') }}">
-								<div class="mcol-left">
-									<i class="fas fa-comments ln-shadow"></i>
-								</div>
-								<div class="mcol-right">
-									{{-- Number of visitors --}}
+								<a href="{{ url('account/chat') }}">
+									<div class="mcol-left">
+										<i class="fas fa-comments ln-shadow"></i>
+									</div>
+									<div class="mcol-right">
+										{{-- Number of visitors --}}
 									<p>
 										
-											<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-											{{ \App\Helpers\Number::short($totalPostsVisits) }}
-								
+										<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+										{{ \App\Helpers\Number::short($totalPostsVisits) }}
+										
 											<em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
 									   
 									</p>
@@ -108,7 +115,7 @@
 								<div class="clearfix"></div>
 							</div>
 
-						   
+							
 
 							{{-- Favorites Stats --}}
 							<div class="hdata" style="width: 151px!important;margin-left: -38px;">
@@ -120,9 +127,9 @@
 									{{-- Number of favorites --}}
 									<p>
 										
-											{{ \App\Helpers\Number::short($countFavoritePosts) }}
-											<em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-									   
+										{{ \App\Helpers\Number::short($countFavoritePosts) }}
+										<em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
+										
 									</p>
 								</div>
 								</a>
@@ -132,17 +139,18 @@
 					</div>
 				
 			    </div>
-
+				
 		      </div>
-        </div>
+			</div>
 
-
-
-<div class="row">
-
-         <div class="col-md-3 page-sidebar ptop">
-
-		 
+			
+			
+			<div class="row">
+				
+				<div class="col-md-3 page-sidebar ptop">
+					
+					
+		
 					@includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach', 'account.inc.sidebar_coach'])
 		
 		 </div>
@@ -209,6 +217,40 @@
 									</div>
 								</div>
 							</div>
+
+
+
+							<!-- <div class="card card-default">
+								<div class="card-header">
+									<h4 class="card-title">
+										<a href="#photoPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Photo or User') }}</a>
+									</h4>
+								</div>
+								<?php
+								$photoPanelClass = '';
+								$photoPanelClass = request()->filled('panel')
+									? (request()->get('panel') == 'photo' ? 'show' : $photoPanelClass)
+									: ((old('panel')=='' || old('panel') =='photo') ? 'show' : $photoPanelClass);
+								?>
+								<div class="panel-collapse collapse {{ $photoPanelClass }}" id="photoPanel">
+									<div class="card-body">
+										<form name="details" class="form-horizontal" role="form" method="POST" action="{{ url('account/' . $user->id . '/photo') }}">
+											<div class="row">
+												<div class="col-xl-12 text-center">
+													
+													<?php $photoError = (isset($errors) and $errors->has('photo')) ? ' is-invalid' : ''; ?>
+													<div class="photo-field">
+														<div class="file-loading">
+															<input id="photoField" name="photo" type="file" class="file {{ $photoError }}">
+														</div>
+													</div>
+												
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div> -->
 
 
 							
@@ -325,7 +367,7 @@
 												?>
 												
 
-													<option value="{{ $top_coach_detail->code }}" {{ (old('country_code', $user->country_code)==$top_coach_detail->code) ? 'selected="selected"' : '' }}>
+													<option value="{{ $top_coach_detail->code }}" {{ (old('country_code', $user->country_code)==$top_coach_detail->code) ? 'selected="selected"' : '' }} required>
 													{{ $ss['en'] }}
 															</option>
 												<?php  } ?>
@@ -395,11 +437,11 @@
 														<input id="phone" name="phone" type="text" class="form-control{{ $phoneError }}"
 															   placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}"
 															   value="{{ phoneFormat(old('phone', $user->phone), old('country_code', $user->country_code)) }}">
-														<span class="input-group-text">
+														<!-- <span class="input-group-text">
 															<input name="phone_hidden" id="phoneHidden" type="checkbox"
 																   value="1" {{ (old('phone_hidden', $user->phone_hidden)=='1') ? 'checked="checked"' : '' }}>&nbsp;
 															<small>{{ t('Hide') }}</small>
-														</span>
+														</span> -->
 													</div>
 												</div>
 											</div>
@@ -410,7 +452,7 @@
 
 
 											<div class="row mb-3 required">
-												<label class="col-md-12" for="email">{{ t('year_of_experience') }} <sup>*</sup>
+												<label class="col-md-12" for="email">{{ t('year_of_experience') }} 
 											     </label>
 												
 												<div class="col-md-12">
@@ -466,7 +508,7 @@
 											{{-- Youtube link--}}
 											
 											<div class="row mb-3 required">
-												<label class="col-md-12" for="link">{{ ('youtube link') }} <sup>*</sup>
+												<label class="col-md-12" for="link">{{ ('youtube link') }} 
 											     </label>
 												<div class="col-md-12">
 													<div class="input-group">
@@ -495,9 +537,9 @@
 												<div class="col-md-6">
                                                     <select name="category" id="category"
                                                         class="form-control large-data-selecter{{ $countryCodeError }}" 
-														onclick="getcategory(this.value)">
+														onclick="getcategory(this.value)" required>
                                                         <option value="0"
-                                                            {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }}>
+                                                            {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }} required>
                                                             {{ t('select_a_category') }}
                                                         </option>
                                                         @foreach ($categories as $item) -->
@@ -510,7 +552,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <select name="sub_category" id="sub_category34"
-                                                        class="form-control large-data-selecter{{ $countryCodeError }}">
+                                                        class="form-control large-data-selecter{{ $countryCodeError }}"required>
                                                         <?php
 														foreach ($categoriess as $value) {
 															// print_r($value);die;
@@ -552,7 +594,7 @@
 											{{-- coach summary --}}
 											<?php $coach_summaryError = (isset($errors) && $errors->has('coach_summary')) ? ' is-invalid' : ''; ?>
 											<div class="row mb-3 required">
-												<label class="col-md-12">{{ ('Coach Summary') }} <sup>*</sup></label>
+												<label class="col-md-12">{{ ('Coach Summary') }} </label>
 												<div class="col-md-12">
 													<textarea name="coach_summary" class="form-control{{ $coach_summaryError }} new-form-control" placeholder="Coach Summary" rows="5">{{ old('coach_summary', $user->coach_summary) }}</textarea>
 												</div>
@@ -578,7 +620,7 @@
 							{{-- SETTINGS --}}
 							<div class="card card-default">
 								<div class="card-header">
-									<h4 class="card-title"><a href="#settingsPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Settings') }}</a></h4>
+									<h4 class="card-title"><a href="#settingsPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ ('Change Password') }}</a></h4>
 								</div>
 								<?php
 								$settingsPanelClass = '';
@@ -750,6 +792,12 @@
 <h2 class="sec-title">My Profile</h2>
 </h2>
 
+
+
+<!-- <button onclick="myFunction()">Prompt Box</button> -->
+
+<!-- <p id="demo"></p> -->
+
 			<div class="row" style="padding: 6px; margin-left: -4px;">
 			
 				<!-- <div class="col-md-3 user-profile-img-data default-inner-box" style="max-width: 266px;"> -->
@@ -761,7 +809,126 @@
 
 		<div class="col-md-12 user-profile-img-data default-inner-box">
 
-		<img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+
+
+
+
+		<?php if(empty($user->category)){ ?> 
+
+
+<!-- <script>
+
+function myFunction() {
+
+var x;
+
+var site = prompt("Please enter Something", "Write Here Something");
+
+if (site != null) {
+
+	x = "Welcome at " + site + "! Have a good day";
+
+	document.getElementById("demo").innerHTML = x;
+
+}
+
+}
+
+</script> -->
+
+<!-- <dialog id="favDialog">
+  <form method="post" action="{{url('/updateUserCategory')}}">
+    <p><label>Please Select Category: </label></p>
+	<input type="text" name="user_id" id="user_id" value="{{$user->id}}"> 
+
+	<select name="category" id="category" class="form-control large-data-selecter">
+                                        
+			@foreach ($categories as $item)
+				<option value="{{ $item->id }}">
+				{{ $item->slug }}
+			</option>
+			@endforeach 
+		</select>
+    <div>
+    
+      <button id="confirmBtn" value="default" type="submit">Submit</button>
+    </div>
+  </form>
+
+  
+</dialog> -->
+
+
+<script>
+
+
+	// var category  = $('#favDialog').text();
+
+	// alert(category);
+
+</script>
+
+<script>
+	const updateButton = document.getElementById('updateDetails');
+const favDialog = document.getElementById('favDialog');
+const outputBox = document.querySelector('output');
+const selectEl = favDialog.querySelector('select');
+const confirmBtn = favDialog.querySelector('#confirmBtn');
+
+// If a browser doesn't support the dialog, then hide the
+// dialog contents by default.
+if ( typeof favDialog.showModal !== 'function' ) {
+  favDialog.hidden = true;
+  /* a fallback script to allow this dialog/form to function
+     for legacy browsers that do not support <dialog>
+     could be provided here.
+  */
+}
+// "Update details" button opens the <dialog> modally
+updateButton.addEventListener('click', function onOpen() {
+  if (typeof favDialog.showModal === "function") {
+    favDialog.showModal();
+  } else {
+    outputBox.value = "Sorry, the <dialog> API is not supported by this browser.";
+  }
+});
+// "Favorite animal" input sets the value of the submit button
+selectEl.addEventListener('change', function onSelect(e) {
+  confirmBtn.value = selectEl.value;
+});
+// "Confirm" button of form triggers "close" on dialog because of [method="dialog"]
+favDialog.addEventListener('close', function onClose() {
+  outputBox.value = favDialog.returnValue + " button clicked - " + (new Date()).toString();
+});
+</script>
+
+<?php 
+
+
+// function  createConfirmationmbox() {  
+//     echo '<script type="text/javascript"> ';  
+//     echo 'var inputname = prompt("Please enter your name", "");'; 
+// 	echo 'var selectname = prompt("Select Category", "");';  
+//     echo 'alert(inputname);';  
+//     echo '</script>';  
+// }  
+
+// createConfirmationmbox();  
+
+
+} ?>
+
+
+
+		<?php if(!empty($user->photo)){
+					?>
+					
+					<img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+					<?php }else{ ?>
+
+						<img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+
+						<?php }?>
                         <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> {{ $user->name }}</b> </span>
 						<!-- <b> Striver Update Profile </b></span> -->
 
@@ -899,7 +1066,7 @@
 								?>
 								<div class="panel-collapse collapse {{ $photoPanelClass }}" id="photoPanel">
 									<div class="card-body">
-										<form name="details" class="form-horizontal" role="form" method="POST" action="{{ url('account/' . $user->id . '/photo') }}">
+										<form name="details" class="form-horizontal" role="form" method="POST" action="{{ url('..account/' . $user->id . '/photo') }}">
 											<div class="row">
 												<div class="col-xl-12 text-center">
 													
@@ -1068,14 +1235,61 @@
 														<input id="phone" name="phone" type="text" class="form-control{{ $phoneError }}"
 															   placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}"
 															   value="{{ phoneFormat(old('phone', $user->phone), old('country_code', $user->country_code)) }}">
-														<span class="input-group-text">
+														<!-- <span class="input-group-text">
 															<input name="phone_hidden" id="phoneHidden" type="checkbox"
 																   value="1" {{ (old('phone_hidden', $user->phone_hidden)=='1') ? 'checked="checked"' : '' }}>&nbsp;
 															<small>{{ t('Hide') }}</small>
-														</span>
+														</span> -->
 													</div>
 												</div>
 											</div>
+
+
+
+											{{--industry/area of expertise and subcategories --}}
+											<?php $countryCodeError = (isset($errors) and $errors->has('category')) ? ' is-invalid' : ''; ?>
+											<div class="row mb-3 required">
+												<label class="col-md-6{{ $countryCodeError }}" for="category">
+													{{ ('Industry/Area of expertise') }} <sup>*</sup>
+												</label>
+												<label class="col-md-6">
+													{{ ('Subcategories') }} <sup>*</sup>
+												</label>
+												<div class="col-md-6">
+													
+                                                    <select name="category" id="category"
+                                                        class="form-control large-data-selecter{{ $countryCodeError }}" 
+														onclick="getcategory(this.value)" required>
+                                                        <option value="0"
+                                                            {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }} required>
+                                                            {{ t('select_a_category') }}
+                                                        </option>
+                                                        @foreach ($categories as $item) -->
+                                                         <option value="{{ $item->id }}"
+                                                            {{ (old('category', $user->category)==$item->id) ? 'selected="selected"' : '' }}>
+                                                            {{ $item->slug }}
+                                                        </option>
+                                                        @endforeach 
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select name="sub_category" id="sub_category34"
+                                                        class="form-control large-data-selecter{{ $countryCodeError }}"required>
+                                                        <?php
+														foreach ($categoriess as $value) {
+															// print_r($value);die;
+														
+														?>
+                                                        <option value="{{ $value->id }}"
+                                                            {{ (old('category', $user->sub_category)==$value->id)? 'selected="selected"': '' }}>
+                                                            {{ $value->slug }}
+                                                        </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+											</div>
+
+
 
 											<div class="row mb-3">
 												<div class="col-md-12"></div>
@@ -1390,7 +1604,7 @@
 							{{-- SETTINGS --}}
 							<div class="card card-default">
 								<div class="card-header">
-									<h4 class="card-title"><a href="#settingsPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ t('Settings') }}</a></h4>
+									<h4 class="card-title"><a href="#settingsPanel" data-bs-toggle="collapse" data-parent="#accordion">{{ ('Change Password') }}</a></h4>
 								</div>
 								<?php
 								$settingsPanelClass = '';
@@ -1725,11 +1939,12 @@
 			// [XBM Support] => 1
 			
 			
-
+			
 
 			initialPreview: [
 				@if (isset($user->photo) && !empty($user->photo))
 					"{{ url('storage/'.$user->photo) }}"
+					
 				@endif
 			],
 			initialPreviewAsData: true,
@@ -1792,6 +2007,8 @@
 			$('#avatarUploadSuccess ul').append(out);
 			$('#avatarUploadSuccess').fadeIn('slow');
 			
+			// $('#userImg').attr({'src':$('.photo-field .kv-file-content .file-preview-image').attr('src')});
+
 			$('#userImg').attr({'src':$('.photo-field .kv-file-content .file-preview-image').attr('src')});
 		});
 		
@@ -1866,38 +2083,7 @@ function getcategory(id)
         
 		}
 	} 
-//     var categoryID = $('#category').val();
-//     if (categoryID) {
 
-//         $.ajax({
-
-//             type: "GET",
-//             url: "{{ url('account/getSubcategories') }}?id=" + categoryID,
-
-//             success: function(res) {
-
-//                 if (res) {
-
-//                     $("#sub_category").empty();
-//                     $("#sub_category").append('<option value=0>Select a subcategory</option>');
-//                     $.each(res, function(key, value) {
-//                         $("#sub_category").append('<option value="' + key + '" ' + ((key == (
-//                                 sub_cat_id)) ? "selected" : "") + ' >' + value.id +
-//                             '</option>');
-
-//                     });
-
-//                 } else {
-
-//                     $("#sub_category").empty();
-//                 }
-
-//             }
-//         });
-//     } else {
-//         $("#sub_category").empty();
-//     }
-// });
 </script>
 
 
@@ -1929,10 +2115,7 @@ function getlocation(id)
                 $.each(Response, function(key, value) {
 
                     $.each(value, function(keys, cityvalue) {
-                        // delete object["en"];
-                        // myObject = JSON.parse(cityvalue.name);
-                        // delete(cityvalue.en)+cityvalue.name,
-                        // myObject = JSON.stringify(cityvalue.name);
+                        
 
                         $("#locationiddata").append('<option value="' + cityvalue.id +
                             '" ' + ((keys == (cityvalue.id)) ? "selected" : "") + ' >' +
@@ -1952,11 +2135,9 @@ function getlocation(id)
 
         }
 
-        // error: function(res){
-        //     $('#message').text('Error!');
-        //     $('.dvLoading').hide();
-        // }
+       
     });
 }
 </script>
+
 @endsection

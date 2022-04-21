@@ -33,6 +33,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Auth;
+ use App\Http\Controllers\Web\Session;
 
 class HomeController extends FrontController
 {
@@ -51,60 +52,60 @@ class HomeController extends FrontController
 	{
 		$data = [];
 		$countryCode = config('country.code');
-
+		$user1 = auth()->user();
 		// Get all homepage sections
-		$cacheId = $countryCode . '.homeSections';
-		$data['sections'] = Cache::remember($cacheId, $this->cacheExpiration, function () use ($countryCode) {
-			$sections = collect();
+		// $cacheId = $countryCode . '.homeSections';
+		// $data['sections'] = Cache::remember($cacheId, $this->cacheExpiration, function () use ($countryCode) {
+		// 	$sections = collect();
 
-			// Check if the Domain Mapping plugin is available
-			if (config('plugins.domainmapping.installed')) {
-				try {
-					$sections = \extras\plugins\domainmapping\app\Models\DomainHomeSection::where('country_code', $countryCode)->orderBy('lft')->get();
-				} catch (\Throwable $e) {
-				}
-			}
+		// 	// Check if the Domain Mapping plugin is available
+		// 	if (config('plugins.domainmapping.installed')) {
+		// 		try {
+		// 			$sections = \extras\plugins\domainmapping\app\Models\DomainHomeSection::where('country_code', $countryCode)->orderBy('lft')->get();
+		// 		} catch (\Throwable $e) {
+		// 		}
+		// 	}
 
-			// Get the entry from the core
-			if ($sections->count() <= 0) {
-				$sections = HomeSection::orderBy('lft')->get();
-			}
+		// 	// Get the entry from the core
+		// 	if ($sections->count() <= 0) {
+		// 		$sections = HomeSection::orderBy('lft')->get();
+		// 	}
 
-			return $sections;
-		});
+		// 	return $sections;
+		// });
 
-		$searchFormOptions = [];
-		if ($data['sections']->count() > 0) {
-			foreach ($data['sections'] as $section) {
-				// Clear method name
-				$method = str_replace(strtolower($countryCode) . '_', '', $section->method);
+		// $searchFormOptions = [];
+		// if ($data['sections']->count() > 0) {
+		// 	foreach ($data['sections'] as $section) {
+		// 		// Clear method name
+		// 		$method = str_replace(strtolower($countryCode) . '_', '', $section->method);
 
-				// Check if method exists
-				if (!method_exists($this, $method)) {
-					continue;
-				}
+		// 		// Check if method exists
+		// 		if (!method_exists($this, $method)) {
+		// 			continue;
+		// 		}
 
-				// Call the method
-				try {
-					if (isset($section->value)) {
-						$this->{$method}($section->value);
-					} else {
-						$this->{$method}();
-					}
+		// 		// Call the method
+		// 		try {
+		// 			if (isset($section->value)) {
+		// 				$this->{$method}($section->value);
+		// 			} else {
+		// 				$this->{$method}();
+		// 			}
 
-					// Get the search area background image
-					if ($method == 'getSearchForm') {
-						$searchFormOptions = $section->value;
-					}
-				} catch (\Throwable $e) {
-					flash($e->getMessage())->error();
-					continue;
-				}
-			}
-		}
+		// 			// Get the search area background image
+		// 			if ($method == 'getSearchForm') {
+		// 				$searchFormOptions = $section->value;
+		// 			}
+		// 		} catch (\Throwable $e) {
+		// 			flash($e->getMessage())->error();
+		// 			continue;
+		// 		}
+		// 	}
+		// }
 
-
-
+		// print_r($user1->category);die;
+		if(empty(auth()->user())){
 
 		$data['user'] = DB::table('users')->select('users.*', 'categories.name as categories_slug')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
@@ -113,7 +114,16 @@ class HomeController extends FrontController
 			->inRandomOrder()
 			->limit(6)
 			->get();
-
+		}else{
+			$data['user'] = DB::table('users')->select('users.*', 'categories.name as categories_slug')
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			->where('users.user_type_id', 2)
+			->where('users.category',$user1->category)
+			->whereNotIn('users.id', [1])
+			
+			->limit(6)
+			->get();
+		}
 		// print_r($data['user']);die;
 
 		$data['our_reviews'] = DB::table('users')->select('users.*')->where('users.user_type_id', 2)->whereNotIn('users.id', [1])->orderBy('users.id', 'asc')->limit(3)->get();
@@ -142,7 +152,9 @@ class HomeController extends FrontController
 		$data['packages'] = new EntityCollection(class_basename($this), $packages);
 		// print_r($data['packages']);die;
 		// Get SEO
-		$this->setSeo($searchFormOptions);
+
+		
+		// $this->setSeo($searchFormOptions);
 
 
 		$data['letest_news'] = DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id', 'desc')->limit(4)->get();
@@ -719,11 +731,14 @@ class HomeController extends FrontController
 		// return redirect()
 		//     ->back()
 		//     ->withInput();
-		return redirect('/');
+		return redirect('/login');
 	}
+
+	
 	public function register_new_user(Request $request)
 	{
 
+		
 
 		// print_r($request->all());die;
 
@@ -751,6 +766,9 @@ class HomeController extends FrontController
 
 
 		// $request['country_code'] = 'UK';
+
+
+
 
 
 
@@ -857,9 +875,39 @@ class HomeController extends FrontController
 		}
 
 
-		return redirect($nextUrl);
+		$data['user_auth_id']= 	auth()->user()->id;
+
+
+		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+		$category = auth()->user()->category;
+
+		if(empty($category)){
+
+			return view('auth.register.user_category',$data);
+
+		}else{
+			return redirect($nextUrl);
+		}
+		
+			
+
+		
 	}
 
+	public function updateUserCategory($id){
+
+		$userCategory = $id;
+		$auth_id = auth()->user()->id;
+
+
+		DB::table('users')->where('users.id',$auth_id)->update(['users.category' =>$userCategory]);
+
+	
+		return redirect('/account');
+	
+	
+	
+		}
 
 	public function coach_coursess($id)
 	{
@@ -889,9 +937,20 @@ class HomeController extends FrontController
 			->orderBy('coach_course.id', 'asc')
 			->first();
 
+			if (empty(auth()->user())) {		
+				$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
+				->limit(8)->get();
+			}else{
+				$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
+				->where('users.category',$user->category)
+				->inRandomOrder()
+				->limit(8)->get();
+			}
 
 
-		// print_r($id);die;
+		// print_r($data['enroll_course_by_strivre']);die;
 
 		return appView('pages.coach_coarse', $data);
 	}
@@ -997,7 +1056,7 @@ class HomeController extends FrontController
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->inRandomOrder()->limit(8)->get();
 
 
 

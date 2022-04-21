@@ -56,7 +56,7 @@
 											<?php $classBorder = (count($countries) == ($loop->index + 1)) ? ' cat-list-border' : ''; ?>
 											<div class="col mb-1 cat-list{{ $classBorder }}">
 												<img src="{{ url('images/blank.gif') . getPictureVersion() }}"
-													 class="flag flag-{{ ($country->get('icode')=='uk') ? 'gb' : $country->get('icode') }}"
+													 class="flag flag-{{ ($country->get('icode')=='UK') ? 'gb' : $country->get('icode') }}"
 													 style="margin-bottom: 4px; margin-right: 5px;"
 												>
 												<?php
