@@ -222,6 +222,8 @@ Route::post('payment', 'App\Http\Controllers\StripePaymentController@stripe');
 Route::get('payment', 'App\Http\Controllers\StripePaymentController@forward_back_block');
 Route::post('stripe', 'App\Http\Controllers\StripePaymentController@stripePost')->name('stripe.post');
 
+Route::get('createSubscription', 'App\Http\Controllers\StripePaymentController@createSubscription');
+
 
 Route::group([
 	'namespace' => 'App\Http\Controllers\Web',
