@@ -65,7 +65,7 @@ services:
       dockerfile: Dockerfile
     image: features_strivers
     ports:
-      - "9000:8000"
+      - "80:8000"
     depends_on:
       - strive_db
     volumes:
