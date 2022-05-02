@@ -1,6 +1,6 @@
 #env file
 .env
-
 storage/framework/*
 storage
 data
+node_modules

@@ -59,19 +59,21 @@ networks:
   laravel:
 
 services:
+
   strive_web_app:
     build:
       context: .
       dockerfile: Dockerfile
     image: features_strivers
     ports:
-      - "9000:8000"
+      - "8000:8000"
     depends_on:
       - strive_db
     volumes:
-      - .:/var/www/html
+     - .:/var/www/html
     networks:
       - laravel
+
 
   strive_adminer:
     image: adminer

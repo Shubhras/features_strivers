@@ -442,71 +442,13 @@
 
 
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="course-wrapper">
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="{{url('/coach_list_category_all/'.'1') }}" width="50" height="50" viewBox="0 0 74 60">
-                                    <defs>
-                                        <style>
-                                            .cls-1 {
-                                                fill: url(#pattern);
-                                            }
-                                        </style>
-                                        <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 74 60">
-                                            <image width="74" height="60" xlink:href="../assets/images/home/desktop1-image.png" />
-                                        </pattern>
-                                    </defs>
-                                    <path id="desktop1" class="cls-1" d="M0,0H74V60H0Z" />
-                                </svg>
-                                <h4><a href="">Al  Learning
-                                    </a></h4>
-                                <!-- <input type="checkbox" style="width: 22px;"> -->
-                            </div>
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="{{url('/coach_list_category_all/'.'1') }}" width="50" height="50" viewBox="0 0 64 64">
-                                    <image id="data" width="64" height="64" xlink:href="../assets/images/home/data-image.png" />
-                                </svg>
-                                <h4><a href="">P Management
-                                    </a></h4>
-                                <!-- <input type="checkbox" style="width: 22px;"> -->
-                            </div>
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="{{url('/coach_list_category_all/'.'1') }}" width="50" height="50" viewBox="0 0 74 70">
-                                    <image id="proposal" width="74" height="70" xlink:href="../assets/images/home/proposal-image.png" />
-                                </svg>
-                                <h4><a href="">Cybeurses
-                                    </a></h4>
-                                <!-- <input type="checkbox" style="width: 22px;"> -->
-                            </div>
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="{{url('/coach_list_category_all/'.'1') }}" width="50" height="50" viewBox="0 0 80 67">
-                                    <image id="chat" width="80" height="67" xlink:href="../assets/images/home/chat-image.png" />
-                                </svg>
-                                <h4><a href="">Cloud Cing
-                                    </a></h4>
-                                <!-- <input type="checkbox" style="width: 22px;"> -->
-                            </div>
-                            <div class="course-item-01 text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="{{url('/coach_list_category_all/'.'1') }}" width="50" height="50" viewBox="0 0 58 73">
-                                    <image id="mind" width="50" height="50" xlink:href="../assets/images/home/mind-image.png" />
-                                </svg>
-                                <h4><a href="">Dev</a></h4>
-                                <!-- <input type="checkbox" style="width: 22px;"> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                                            
-
 
 
                 <div class="col-lg-12">
                     <button type="button" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">
                         Submit Your Interest
                     </button>
-                </div>
-            </div>
+                </div>            </div>
         </div>
     </div>
 </div>
