@@ -150,7 +150,7 @@
 
                             @if(!empty($news->picture))
 
-                            <div class="strivre-img-wrapper">
+                            <div class="strivre-img-wrapper" >
 
                                 <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
                                     <img src="{{ url('storage/'.$news->picture) }}" alt="{{ $news->name }}">
@@ -539,6 +539,22 @@
 <script src="../assets/js/jquery.shuffle.min.js"></script>
 
 <script src="../assets/js/theme.js"></script>
+
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var txt;
+  if (confirm("Press a button!")) {
+    txt = "You pressed OK!";
+  } else {
+    txt = "You pressed Cancel!";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
 <!-- End Include All JS -->
 
 <style>

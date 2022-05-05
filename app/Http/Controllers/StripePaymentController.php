@@ -46,7 +46,7 @@ class StripePaymentController extends Controller
                 $query->currentCountry();
             })->where('user_id', $user->id)
                 ->count();
-
+            $data['userEmail'] = $user->email;
             $data['price'] = $request->price;
             $data['subscriptionPlan'] = $request->subscriptionPlan;
             $data['totalHours'] = $request->totalHours;
@@ -64,17 +64,48 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request)
     {
+        // print_r($request->totalHours);die;
         $user = auth()->user();
         $userId = $user->id;
-        // print_r($request->all());die;
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $token =     \Stripe\Token::create(array(
+            "card" => array(
+                "number" => $request->cardNumber,
+                "exp_month" => $request->expiryMonth,
+                "exp_year" => $request->expiryyear,
+                "cvc" => $request->cvcNumber,
+            )
+        ));
+
+
+        $customer2 = \Stripe\Customer::create(['email' => $request->email, 'name' => $user->name]);
         $data = Stripe\Charge::create([
+            'customer' => $customer2->id,
             "amount" => $request->price * 100,
             "currency" => "INR",
             "source" => $request->stripeToken,
             "description" => "This payment is tested purpose phpcodingstuff.com",
-            // "customer" => $user->name
+            "customer" => $request->name,
+            // "token" =>$token->id
         ]);
+        // print_r($data->source);die;
+
+        // $subscription = \Stripe\PaymentIntent::create([
+        //     'customer' => $customer->id,
+        //     'currency' => 'INR',
+        //     'amount' => $request->price * 100,
+        //     'metadata' => [
+        //         'title' => 'abc',
+        //         'price'    =>  $request->price * 100,
+
+        //     ],
+        // ]);
+
+
+
+
+        $stripe = 'stripe';
 
         // print_r($request->hours);die;
 
@@ -88,7 +119,7 @@ class StripePaymentController extends Controller
 
             $date =  date('Y-m-d');
 
-
+            $privious_date =   date('Y-m-d', strtotime('+30 days'));
             $data['payment_details'] = DB::table('payments')
                 ->insert(
                     array(
@@ -100,8 +131,10 @@ class StripePaymentController extends Controller
                         'amount' => $data->amount / 100,
                         'receipt_url' => $data->receipt_url,
                         'active' => 1,
+                        'source' =>   $request->stripeToken,
                         'created_at' => Carbon::now(),
-                        'SubExpires' => $date,
+                        'SubExpires' => $privious_date,
+                        'card_token' => $token->id,
                         'updated_at' => null
 
                     )
@@ -122,6 +155,266 @@ class StripePaymentController extends Controller
         }
 
 
+
+         // print_r($request->all());die;
+        //  $user = auth()->user();
+         // print_r( $data['subscription_list']);die;
+         $data['subscription_list'] = DB::table('payments')->select('payments.*', 'users.name as username', 'users.email')->leftjoin('users', 'users.id', '=', 'payments.user_id')->whereNotNull('SubExpires')->get();
+         // print_r($data['subscription_list']);die;
+ 
+ 
+         foreach ($data['subscription_list'] as $key => $value) {
+ 
+             $CUSTOMER_ID = $value->user_id;
+ 
+             $RECURRING_PRICE_ID = $value->transaction_id;
+             $PRICE_ID = $value->amount;
+             $DATED_ID = $value->created_at;
+             $Subexpire = $value->SubExpires;
+             $user2 = $value->username;
+             $source = $value->source;
+             $email = $value->email;
+             $packageid = $value->package_id;
+ 
+             $date_arr = explode(" ", $DATED_ID);
+             $date = $date_arr[0];
+             $time = $date_arr[1];
+             // print_r( $value);die;
+ 
+             $privious_date =   date('Y-m-d', strtotime($date . ' + 30 days'));
+             // 'Y-m-d', strtotime($Date. ' + 10 days')
+             // print_r($privious_date);die;
+             $current_date = Carbon::now();
+             $date_arr = explode(" ", $current_date);
+             $date1 = $date_arr[0];
+             $time = $date_arr[1];
+             // print_r($privious_date);die;
+             if ($privious_date == $date1 || $Subexpire ==  $date1) {
+ 
+                 //  print_r($value);die;
+ 
+ 
+                 // Session::flash('success', 'Payment successful!');
+ 
+ 
+ 
+ 
+                 // $dateTrial = Carbon::now();
+ 
+                 // $dateAdd = $dateTrial->addMonths(1)->timestamp;
+                 $amountStripe = $value->amount;
+                 $intervalMonth = $privious_date;
+                 $paymentIntentId = '';
+ 
+ 
+                 //print_r($getOrderDetail);die;
+ 
+                 $add =  DB::table('users')->where('email', $email)->update([
+                     'Subscription_plans' =>  $packageid
+                 ]);
+                 // print_r($add);die;
+                 // if($dataInput['method'] == "stripe"){
+ 
+                 // if($getOrderDetail->payment_mode == "Test"){
+ 
+                 //     $key = $getOrderDetail->payment_test_key;
+ 
+                 // }else{
+ 
+                 //     $key = $getOrderDetail->payment_live_key;
+                 // } 
+ 
+ 
+ 
+                 Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+ 
+                 //update price in strip portal
+                 $customer = \Stripe\Customer::all(['email' => $email]);
+                 // $customer = \Stripe\Token::create(['email'=> $email]);
+ 
+                 // print_r($customer);die;
+ 
+                 if (count($customer->data) > 0) {
+ 
+                     // if($packageid){
+ 
+                     //     if($PRICE_ID == "One Time"){
+                     $stripe = Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+                     $customer1 = \Stripe\Customer::create(['email' => $customer->email, 'name' => $customer->name]);
+ 
+                    
+ 
+                         if (!empty($token->id)) {
+                             //Insert new product and prices
+                             $product = \Stripe\Product::create([
+                                 'name' => 'Enroll Course',
+                             ]);
+ 
+                             $price = \Stripe\Price::create([
+                                 'product' => $product->id,
+                                 'unit_amount' => $request->price * 100,
+                                 'currency' => 'INR'
+                             ]);
+                             // print_r( $price);die;
+ 
+                             // $subscription = \Stripe\PaymentIntent::create([
+                             //     'customer' =>  $customer->id,
+                             //     'currency' => 'INR',
+                             //     'amount' => '300',
+                             //     // 'metadata' => [
+                             //         // 'title' =>'test',
+                             //     //     'orderId' => $getOrderDetail->id,
+                             //     //     'offer_id' => $PRICE_ID,
+                             //         // 'price'    => '300',
+                             //     //     'key' => $key, 
+                             //     // ],
+                             // ]);
+ 
+                             //    $token= \Stripe\Token::create(array(
+                             //             "card" => array(
+                             //               "number" => "4242424242424242",
+                             //               "exp_month" => 1,
+                             //               "exp_year" => 2023,
+                             //               "cvc" => "414"
+                             //             )
+                             //           ));
+                             //   print_r($token);die;
+ 
+                             $subscription = Stripe\Charge::create([
+                                 'customer' => $customer->id,
+                                 "amount" => $request->price * 100,
+                                 "currency" => "INR",
+                                 "source" =>   $token->id,
+                                 "description" => "This payment is tested purpose phpcodingstuff.com",
+                                 // "customer" => $request->name
+                             ]);
+                             $date = date("d-m-Y", $subscription->created);
+ 
+ 
+                             $client_secret = $subscription->client_secret;
+                             $paymentIntentId = $subscription->id;
+                             // print_r( $client_secret);die;
+                             //update price id in order form table
+                             DB::table('payments')->where('id', $value->id)->update([
+                                 'amount' =>  $request->price * 100
+                             ]);
+                             // }
+                             $interval = 'month';
+                             //multiple time recrring payment create price
+                             $rec_price = \Stripe\Price::create([
+                                 'product' => $product->id,
+                                 'unit_amount' => $request->price * 100,
+                                 'currency' => 'INR',
+                                 'recurring' => [
+                                     'interval' => $interval,
+                                 ]
+                             ]);
+                             // print_r($rec_price);die;
+                             // $current_date = Carbon::now();
+                             //     $date_arr= explode(" ", $current_date);
+                             //     $date1= $date_arr[0];
+                             //     $time= $date_arr[1];  
+
+                             $subscription = \Stripe\Subscription::create([
+                                'customer' => $customer1->id,
+                                'items' => [[
+                                    'price' =>$rec_price->id,
+                                ]],
+                                'metadata' => [
+                                    'title' => 'Enroll Course',
+                                    // 'orderId' => $getOrderDetail->id,
+                                    // 'offer_id' => $getOrderDetail->offer_id,
+                                    // 'price'    => '300',
+                                    // 'key' => $key, 
+                                ],
+                                'payment_behavior' => 'default_incomplete',
+                                'expand' => ['latest_invoice.payment_intent'],
+                            ]);
+                            
+                             $schedule = \Stripe\SubscriptionSchedule::create([
+                                 'customer' =>  $customer1->id,
+                                 'start_date' => $subscription->created,
+                                 'end_behavior' => 'release',
+                                 'phases' => [
+                                     [
+                                         'items' => [
+                                             [
+                                                 'price' =>  $rec_price->id,
+                                                 'quantity' => 1,
+                                             ],
+                                         ],
+                                         'iterations' => 1,
+                                     ],
+                                 ],
+                                 'metadata' => [
+                                     'title' => 'Enroll Course',
+                                     // 'orderId' => $getOrderDetail->id,
+                                     // 'offer_id' => $getOrderDetail->offer_id,
+                                     'price'    => $request->price * 100,
+                                     'customer' =>  $customer1->id,
+                                     // 'key' => $key, 
+                                 ],
+                             ]);
+                         } else {
+                         }
+                    
+ 
+                     // print_r($schedule);die;
+ 
+                 } else {
+ 
+                     $stripe = Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+ 
+                     if ($privious_date == "Monthly") {
+                         $interval = 'month';
+                     } elseif ($privious_date == "Yearly") {
+                         $interval = 'year';
+                     } else {
+                         $interval = 'month';
+                     }
+ 
+                     //Insert new product and prices
+                     $product = \Stripe\Product::create([
+                         'name' => 'Enroll Course',
+                     ]);
+ 
+                     $price = \Stripe\Price::create([
+                         'product' => $product->id,
+                         'unit_amount' => $request->price * 100,
+                         'currency' => 'INR',
+                         'recurring' => [
+                             'interval' => 'month',
+                         ],
+                     ]);
+                     // print_r($price);die;
+                     $subscription = \Stripe\Subscription::create([
+                         'customer' => $customer->id,
+                         'items' => [[
+                             // 'price' => '300',
+                         ]],
+                         'metadata' => [
+                             'title' => 'Enroll Course',
+                             // 'orderId' => $getOrderDetail->id,
+                             // 'offer_id' => $getOrderDetail->offer_id,
+                             // 'price'    => '300',
+                             // 'key' => $key, 
+                         ],
+                         'payment_behavior' => 'default_incomplete',
+                         'expand' => ['latest_invoice.payment_intent'],
+                     ]);
+                     //update price id in order form table
+                     // print_r($subscription);die;
+                     DB::table('payments')->where('id', $value->id)->update([
+                         'amount' => $request->price * 100
+                     ]);
+                     $client_secret = $subscription->latest_invoice->payment_intent->client_secret;
+                     $paymentIntentId = $subscription->latest_invoice->payment_intent->id;
+                     // print_r('xyz',$paymentIntentId);die;
+                 }
+             }
+         }
+
+
         if (!empty($request->courseId)) {
 
             return redirect('get_coach_course/' . $request->courseId);
@@ -135,35 +428,22 @@ class StripePaymentController extends Controller
     }
 
 
+
+
+
     public function forward_back_block()
     {
         return redirect("/");
     }
 
 
-    public function createSubscription(Request $request)
+    public function createSubscription()
     {
-
-        // $data =  date('Y-m-d');
-
-        // $date =  date('Y-m-d h:i:s');
-
-        // ->where('payments.created_at' ,'LIKE','%'.$date.'%')
-
-        //    $data['subscription_list'] = DB::table('payments')->select('payments.*')->where('payments.created_at' between now() and date_add(now(), interval 30 day))->get();
-
-        $data['subscription_list'] = DB::select(DB::raw("SELECT payments.* FROM payments 
-    WHERE  now() between SubExpires and date_add( now(), interval 30 day)"));
-
-
-        // $data['subscription_list'] = DB::select(DB::raw("SELECT payments.* FROM payments 
-        //   WHERE SubExpires between now() and date_add( now(), interval 30 day)"));
-
-
-
-
-
-
+        // print_r($request->all());die;
+        $user = auth()->user();
+        // print_r( $data['subscription_list']);die;
+        $data['subscription_list'] = DB::table('payments')->select('payments.*', 'users.name as username', 'users.email')->leftjoin('users', 'users.id', '=', 'payments.user_id')->whereNotNull('SubExpires')->get();
+        // print_r($data['subscription_list']);die;
 
 
         foreach ($data['subscription_list'] as $key => $value) {
@@ -171,115 +451,241 @@ class StripePaymentController extends Controller
             $CUSTOMER_ID = $value->user_id;
 
             $RECURRING_PRICE_ID = $value->transaction_id;
-            $PRICE_ID = $value->id;
+            $PRICE_ID = $value->amount;
+            $DATED_ID = $value->created_at;
+            $Subexpire = $value->SubExpires;
+            $user2 = $value->username;
+            $source = $value->source;
+            $email = $value->email;
+            $packageid = $value->package_id;
+
+            $date_arr = explode(" ", $DATED_ID);
+            $date = $date_arr[0];
+            $time = $date_arr[1];
+            // print_r( $value);die;
+
+            $privious_date =   date('Y-m-d', strtotime($date . ' + 30 days'));
+            // 'Y-m-d', strtotime($Date. ' + 10 days')
+            // print_r($privious_date);die;
+            $current_date = Carbon::now();
+            $date_arr = explode(" ", $current_date);
+            $date1 = $date_arr[0];
+            $time = $date_arr[1];
+            // print_r($privious_date);die;
+            if ($privious_date == $date1 || $Subexpire ==  $date1) {
+
+                //  print_r($value);die;
+
+
+                // Session::flash('success', 'Payment successful!');
 
 
 
 
-            // Set your secret key. Remember to switch to your live secret key in production.
-            // See your keys here: https://dashboard.stripe.com/apikeys
+                // $dateTrial = Carbon::now();
+
+                // $dateAdd = $dateTrial->addMonths(1)->timestamp;
+                $amountStripe = $value->amount;
+                $intervalMonth = $privious_date;
+                $paymentIntentId = '';
 
 
-            // \Stripe\Stripe::setApiKey('sk_test_51K6WWFSHIfUu7ouY4bssfdSciQmERgNvhgYIYzx6dAryQ32Myuyqvbl6x05WG6Qtsv4mEKeR2K8GxhlGTEY4DYXY00fPf3E1W0');
+                //print_r($getOrderDetail);die;
 
-            // $subscription = \Stripe\Subscription::create([
-            //   'customer' => $CUSTOMER_ID,
-            //   'items' => [[
-            //     'price' => $RECURRING_PRICE_ID,
-            //   ]],
-            //   'add_invoice_items' => [[
-            //     'price' => $PRICE_ID,
-            //   ]],
-            // ]);
-
-
-
-            // sk_test_51K6WWFSHIfUu7ouY4bssfdSciQmERgNvhgYIYzx6dAryQ32Myuyqvbl6x05WG6Qtsv4mEKeR2K8GxhlGTEY4DYXY00fPf3E1W0
-
-            // Set your secret key. Remember to switch to your live secret key in production.
-            // See your keys here: https://dashboard.stripe.com/apikeys
-
-
-            // \Stripe\Stripe::setApiKey('sk_test_51K6WWFSHIfUu7ouY4bssfdSciQmERgNvhgYIYzx6dAryQ32Myuyqvbl6x05WG6Qtsv4mEKeR2K8GxhlGTEY4DYXY00fPf3E1W0');
-
-            // $schedule = \Stripe\SubscriptionSchedule::create([
-
-            // print_r($CUSTOMER_ID),
-            // die,
-
-            //     'customer' => 20,
-            //     'start_date' => 1651343400,
-            //     'phases' => [
-            //         [
-            //             'items' => [
-            //                 [
-            //                     'price' => $RECURRING_PRICE_ID,
-            //                 ],
-            //             ],
-            //             'add_invoice_items' => [
-            //                 [
-            //                     'price' => $PRICE_ID,
-            //                 ],
-            //             ],
-            //         ],
-            //     ],
-            // ]);
-
-
-        //     $user = auth()->user();
-        //     $userId = $user->id;
-        // print_r($user);die;
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        $data = Stripe\Charge::create([
-            // "amount" => $request->price * 100,
-            "currency" => "INR",
-            // "source" => $request->stripeToken,
-            "description" => "This payment is tested purpose phpcodingstuff.com",
-            // "customer" => $user->name
-        ]);
-
-        // print_r($request->hours);die;
-
-        Session::flash('success', 'Payment successful!');
-
-
-            // Set your secret key. Remember to switch to your live secret key in production.
-            // See your keys here: https://dashboard.stripe.com/apikeys
-            \Stripe\Stripe::setApiKey('sk_test_51K6WWFSHIfUu7ouY4bssfdSciQmERgNvhgYIYzx6dAryQ32Myuyqvbl6x05WG6Qtsv4mEKeR2K8GxhlGTEY4DYXY00fPf3E1W0');
-
-            $app->post('/create-subscription', function (
-                Request $request,
-                Response $response,
-                array $args
-            ) {
-                $body = json_decode($request->getBody());
-                $stripe = $this->stripe;
-                $customer_id = $_COOKIE['customer'];
-                $price_id = $body->priceId;
-
-                // Create the subscription. Note we're expanding the Subscription's
-                // latest invoice and that invoice's payment_intent
-                // so we can pass it to the front end to confirm the payment
-                $subscription = $stripe->subscriptions->create([
-                    'customer' => $customer_id,
-                    'items' => [[
-                        'price' => $price_id,
-                    ]],
-                    'payment_behavior' => 'default_incomplete',
-                    'expand' => ['latest_invoice.payment_intent'],
+                $add =  DB::table('users')->where('email', $email)->update([
+                    'Subscription_plans' =>  $packageid
                 ]);
+                // print_r($add);die;
+                // if($dataInput['method'] == "stripe"){
 
-                return $response->withJson([
-                    'subscriptionId' => $subscription->id,
-                    'clientSecret' => $subscription->latest_invoice->payment_intent->client_secret
-                ]);
-            });
+                // if($getOrderDetail->payment_mode == "Test"){
+
+                //     $key = $getOrderDetail->payment_test_key;
+
+                // }else{
+
+                //     $key = $getOrderDetail->payment_live_key;
+                // } 
 
 
-            // print_r($schedule);
-            // die;
+
+                Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+                //update price in strip portal
+                $customer = \Stripe\Customer::all(['email' => $email]);
+                // $customer = \Stripe\Token::create(['email'=> $email]);
+
+                // print_r($customer);die;
+
+                if (count($customer->data) > 0) {
+
+                    // if($packageid){
+
+                    //     if($PRICE_ID == "One Time"){
+                    $stripe = Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+                    $customer1 = \Stripe\Customer::create(['email' => $customer->email, 'name' => $customer->name]);
+
+                    foreach ($customer->data as $stripe_email) {
+                        $stripe_email->email;
+
+
+                        $subscription_list = DB::table('payments')->select('payments.*', 'users.name as username', 'users.email')->leftjoin('users', 'users.id', '=', 'payments.user_id')->where('users.email', $stripe_email->email)->orderBy('payments.id', 'desc')->first();
+                        // print_r($subscription_list);die;
+
+                        if (!empty($subscription_list->card_token)) {
+                            //Insert new product and prices
+                            $product = \Stripe\Product::create([
+                                'name' => 'abcd',
+                            ]);
+
+                            $price = \Stripe\Price::create([
+                                'product' => $product->id,
+                                'unit_amount' => '300',
+                                'currency' => 'INR'
+                            ]);
+                            // print_r( $price);die;
+
+                            // $subscription = \Stripe\PaymentIntent::create([
+                            //     'customer' =>  $customer->id,
+                            //     'currency' => 'INR',
+                            //     'amount' => '300',
+                            //     // 'metadata' => [
+                            //         // 'title' =>'test',
+                            //     //     'orderId' => $getOrderDetail->id,
+                            //     //     'offer_id' => $PRICE_ID,
+                            //         // 'price'    => '300',
+                            //     //     'key' => $key, 
+                            //     // ],
+                            // ]);
+
+                            //    $token= \Stripe\Token::create(array(
+                            //             "card" => array(
+                            //               "number" => "4242424242424242",
+                            //               "exp_month" => 1,
+                            //               "exp_year" => 2023,
+                            //               "cvc" => "414"
+                            //             )
+                            //           ));
+                            //   print_r($token);die;
+
+                            $subscription = Stripe\Charge::create([
+                                'customer' => $customer->id,
+                                "amount" => '300',
+                                "currency" => "INR",
+                                "source" =>  $subscription_list->card_token,
+                                "description" => "This payment is tested purpose phpcodingstuff.com",
+                                // "customer" => $request->name
+                            ]);
+                            $date = date("d-m-Y", $subscription->created);
+
+
+                            $client_secret = $subscription->client_secret;
+                            $paymentIntentId = $subscription->id;
+                            // print_r( $client_secret);die;
+                            //update price id in order form table
+                            DB::table('payments')->where('id', $value->id)->update([
+                                'amount' =>  '300'
+                            ]);
+                            // }
+                            $interval = 'month';
+                            //multiple time recrring payment create price
+                            $rec_price = \Stripe\Price::create([
+                                'product' => $product->id,
+                                'unit_amount' => '300',
+                                'currency' => 'INR',
+                                'recurring' => [
+                                    'interval' => $interval,
+                                ]
+                            ]);
+                            // print_r($rec_price);die;
+                            // $current_date = Carbon::now();
+                            //     $date_arr= explode(" ", $current_date);
+                            //     $date1= $date_arr[0];
+                            //     $time= $date_arr[1];  
+                            $schedule = \Stripe\SubscriptionSchedule::create([
+                                'customer' =>  $customer1->id,
+                                'start_date' => $subscription->created,
+                                'end_behavior' => 'release',
+                                'phases' => [
+                                    [
+                                        'items' => [
+                                            [
+                                                'price' =>  $rec_price->id,
+                                                'quantity' => 1,
+                                            ],
+                                        ],
+                                        'iterations' => 1,
+                                    ],
+                                ],
+                                'metadata' => [
+                                    'title' => 'abc',
+                                    // 'orderId' => $getOrderDetail->id,
+                                    // 'offer_id' => $getOrderDetail->offer_id,
+                                    'price'    => '300',
+                                    // 'key' => $key, 
+                                ],
+                            ]);
+                        } else {
+                        }
+                    }
+
+                    // print_r($schedule);die;
+
+                } else {
+
+                    $stripe = Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+                    if ($privious_date == "Monthly") {
+                        $interval = 'month';
+                    } elseif ($privious_date == "Yearly") {
+                        $interval = 'year';
+                    } else {
+                        $interval = 'month';
+                    }
+
+                    //Insert new product and prices
+                    $product = \Stripe\Product::create([
+                        'name' => 'abc',
+                    ]);
+
+                    $price = \Stripe\Price::create([
+                        'product' => $product->id,
+                        'unit_amount' => '300',
+                        'currency' => 'INR',
+                        'recurring' => [
+                            'interval' => 'month',
+                        ],
+                    ]);
+                    // print_r($price);die;
+                    $subscription = \Stripe\Subscription::create([
+                        'customer' => $customer->id,
+                        'items' => [[
+                            // 'price' => '300',
+                        ]],
+                        'metadata' => [
+                            'title' => 'abc',
+                            // 'orderId' => $getOrderDetail->id,
+                            // 'offer_id' => $getOrderDetail->offer_id,
+                            // 'price'    => '300',
+                            // 'key' => $key, 
+                        ],
+                        'payment_behavior' => 'default_incomplete',
+                        'expand' => ['latest_invoice.payment_intent'],
+                    ]);
+                    //update price id in order form table
+                    // print_r($subscription);die;
+                    DB::table('payments')->where('id', $value->id)->update([
+                        'amount' => '300'
+                    ]);
+                    $client_secret = $subscription->latest_invoice->payment_intent->client_secret;
+                    $paymentIntentId = $subscription->latest_invoice->payment_intent->id;
+                    // print_r('xyz',$paymentIntentId);die;
+                }
+            }
         }
-
-        return redirect()->back();
     }
+    //}
+    //}
+
+
 }

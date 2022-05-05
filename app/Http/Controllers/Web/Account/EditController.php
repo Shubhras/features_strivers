@@ -16,6 +16,9 @@
 
 namespace App\Http\Controllers\Web\Account;
 
+use App\Helpers\UrlGen;
+use App\Http\Controllers\Web\Traits\Sluggable\PageBySlug;
+
 use App\Http\Controllers\Web\Auth\Traits\VerificationTrait;
 use App\Http\Requests\Admin\Request;
 use App\Http\Requests\AvatarRequest;
@@ -37,10 +40,16 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use Prologue\Alerts\Facades\Alert;
 
+use Illuminate\Support\Facades\Cache;
+
+use App\Http\Resources\EntityCollection;
+use App\Http\Resources\PackageResource;
+
+
 class EditController extends AccountBaseController
 {
 	use VerificationTrait;
-
+	use PageBySlug;
 	/**
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
@@ -385,6 +394,7 @@ class EditController extends AccountBaseController
 						->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
 						->get();
 
+						// print_r($data['user_subscription']);die;
 
 					$totalsum = array();
 					$name = array();
@@ -412,9 +422,19 @@ class EditController extends AccountBaseController
 					$data['total_purchase_package'] = count($user_id);
 					$data['packagename'] = $ss;
 					$totalpoints = array_sum($totalsum);
+
 					$data['consumed_hours'] = array_sum($consumed_hours);
 
-					$consumeddat =  $data['consumed_hours'] + $request->creadit_required;
+					// print_r($request->creadit_required);die;
+					if(empty($request->creadit_required)){
+						$creditDtat = '0';
+
+						$consumeddat =  $data['consumed_hours'] + $creditDtat;
+
+					}else{
+						$consumeddat =  $data['consumed_hours'] + $request->creadit_required;
+					}
+					
 
 					$remaining_hours = $totalpoints - $consumeddat;
 					$remaining_hourss = $totalpoints - $data['consumed_hours'];
@@ -450,6 +470,7 @@ class EditController extends AccountBaseController
 						// ->back();
 
 						return redirect('account/my_courses');
+
 					} else {
 
 
@@ -484,7 +505,7 @@ class EditController extends AccountBaseController
 		$data['genders'] = Gender::query()->get();
 
 		$user = auth()->user();
-
+	
 		// Mini Stats
 		$data['countPostsVisits'] = DB::table((new Post())->getTable())
 			->select('user_id', DB::raw('SUM(visits) as total_visits'))
@@ -556,7 +577,7 @@ class EditController extends AccountBaseController
 			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
 			->limit(6)->get();
 
-
+		
 		$data['enroll_coach_coarse'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo', 'enroll_course.user_id')
 			->leftJoin('enroll_course', 'enroll_course.course_id', '=', 'coach_course.id')
 			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
@@ -598,6 +619,426 @@ class EditController extends AccountBaseController
 		
 	}
 
+
+	public function getMyArticle()
+	{
+
+
+		$data = [];
+
+		$data['genders'] = Gender::query()->get();
+
+		$user = auth()->user();
+
+		// Mini Stats
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+
+		
+		$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			->where('users.user_type_id', 3)->inRandomOrder()->limit(8)->get();
+
+		// print_r();die;
+		$data['users'] = DB::table('user_subscription')->select('coach_course.*')
+			->leftjoin('packages', 'packages.id', '=', 'user_subscription.subscription_id')
+			->leftjoin('users', 'users.id', '=', 'user_subscription.student_id')
+			->leftjoin('coach_course', 'coach_course.id', '=', 'user_subscription.course_id')
+			->where('user_subscription.student_id', $user->id)
+			->where('users.user_type_id', 3)
+			->orderBy('users.id', 'asc')->limit(6)->get();
+
+		// print_r($data['users']);die;
+
+
+
+
+
+		$data['subscription_plan'] = Package::query()->get();
+
+		//$data['categories']= Category::query()->get();
+
+		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+
+
+		// $data['coach_course'] = DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id', 'asc')->where('latest_new.coach_id', $user->id)->get();
+
+		$data['coach_course'] = DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id', 'asc')->get();
+
+		$data['my_article'] = DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id', 'desc')->get();
+
+		
+		MetaTag::set('title', t('my_account'));
+		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
+
+
+
+		$edit_user = DB::table('users')->select('users.*')->where('users.id', $user->id)->first();
+		$data['user_auth_id'] = 	auth()->user()->id;
+
+
+		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+		// print_r($data['coach_course']);die;
+
+
+		if (empty($edit_user->category)) {
+			return view('auth.register.user_category', $data);
+			
+		} else {
+			// print_r($data);die;
+			return appView('account.myarticle', $data);
+		}
+
+		
+	}
+
+
+
+
+	public function create_article(Request $request)
+	{
+
+		// print_r($request->all());die;
+		$data = [];
+
+		$data['genders'] = Gender::query()->get();
+
+		$user = auth()->user();
+
+		// Mini Stats
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+
+		$value = $request->image;
+
+
+		// print_r($value);die;
+
+		$disk = StorageDisk::getDisk();
+		$attribute_name = 'picture';
+		$destination_path = 'app/course_image';
+
+
+		// Check the image file
+		if ($value == url('/')) {
+			$this->attributes[$attribute_name] = null;
+
+			return false;
+		}
+
+		// If laravel request->file('filename') resource OR base64 was sent, store it in the db
+
+		// if (fileIsUploaded($value)) {
+
+
+		// Get file extension
+		$extension = getUploadedFileExtension($value);
+
+
+		if (empty($extension)) {
+			$extension = 'jpg';
+		}
+
+		// Image quality
+		$imageQuality = 100;
+
+		// Image default dimensions
+		$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 2000);
+		$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 1000);
+
+
+
+
+		$image = $value;
+		// Generate a filename.
+		// $filename = md5($value . time()) . '.' . $extension;
+		$filename = md5($value . time()) . '.' . $extension;
+
+		// Store the image on disk.
+		// $disk->put($destination_path . '/' . $filename, $image);
+		$courseimg =	$disk->put($destination_path, $image);
+
+		// Save the path to the database
+		// $this->attributes[$attribute_name] = $destination_path . '/' . $filename;
+		$this->attributes[$attribute_name] = $destination_path . '/' . $image;
+
+		if (!empty($request->dated)) {
+			// $dates =date('d-m-yy',$request->dated);
+			$dates = $request->dated;
+
+			// print_r($dates);die;
+		} else {
+			$dates = date('d-m-y h:i:s');
+		}
+		$username= '{"en":"'.$request->name.'"}';
+
+		
+
+		$article_title	= str_slug($request->title , "-");
+
+		$title= '{"en":"'.$article_title.'"}';
+
+		$content= '{"en":"'.$request->content.'"}';
+
+
+
+
+		$active = 0;
+		//  print_r($request->all());die;
+		$data = array(
+			'user_id' =>  $user->id,
+			'name' => $username,
+			'slug' => str_slug($request->slug , "-"),
+			'title' => $title,
+			'seo_title' => '{"en":null}',
+			'seo_description' => '{"en":null}',
+			'seo_keywords' => '{"en":null}',
+			'price' => $request->price,
+
+			'content' => $content,
+			'picture' => $courseimg,
+			'active' => $active,
+			'created_at' => $dates,
+			'updated_at' => $dates,
+
+
+		);
+		// print_r($data);die;
+
+
+
+
+
+		$tru = DB::table('latest_new')->insert($data);
+
+		// return redirect('my_courses')->back();
+		return redirect('/account/article');
+	}
+
+
+	public function payArticle(Request $request)
+	{
+
+// print_r($request->all());die;
+
+		$user = auth()->user();
+		if ($user->user_type_id == 3) {
+			if (empty($user)) {
+
+				return redirect('/login');
+			} else {
+
+
+				$enroll_course_by_strivre = DB::table('article_price')->select('article_price.article_id')->where('article_price.strivre_id', $user->id)->orWhere('article_price.article_id', $request->article_id)->first();
+				
+
+				if(empty($enroll_course_by_strivre->article_id)){
+					$enroldStrvreCourse = 0;
+				}else{
+
+				
+				$enroldStrvreCourse = $enroll_course_by_strivre->article_id;
+			}
+				
+
+				if ($enroldStrvreCourse == $request->article_id) {
+
+					Session()
+						->flash('loginerrorenroll', 'You have already enroll article .');
+					return redirect()
+						->back();
+				} else {
+
+					$user = auth()->user();
+
+					$data['user_subscription'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*', 'packages.name', 'users.name as username')
+						->leftjoin('packages', 'packages.id', '=', 'user_subscription_payment.subscription_id')
+						->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')
+						->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
+						->get();
+
+						// print_r($data['user_subscription']);die;
+
+					$totalsum = array();
+					$name = array();
+					$consumed_hours = array();
+					$remaining_hours = array();
+					$user_id = array();
+
+					foreach ($data['user_subscription'] as $key => $value) {
+
+						$totalsum[$value->total_provided_hours] = $value->total_provided_hours;
+						$name[$value->name] = $value->name;
+						$consumed_hours[$value->consumed_hours] = $value->consumed_hours;
+						$remaining_hours[$value->remaining_hours] = $value->remaining_hours;
+						$user_id[$value->id] = $value->id;
+						// $consumed_hours[$value->consumed_hours] =$value->consumed_hours;
+					}
+
+
+					$ss  = array();
+					foreach ($name as $key => $sub) {
+						$ss[$sub] = $sub;
+					}
+
+
+					$data['total_purchase_package'] = count($user_id);
+					$data['packagename'] = $ss;
+					$totalpoints = array_sum($totalsum);
+
+					$data['consumed_hours'] = array_sum($consumed_hours);
+
+					// print_r($request->creadit_required);die;
+					if(empty($request->price)){
+						$creditDtat = '0';
+
+						$consumeddat =  $data['consumed_hours'] + $creditDtat;
+
+					}else{
+						$consumeddat =  $data['consumed_hours'] + $request->price;
+					}
+					
+
+					$remaining_hours = $totalpoints - $consumeddat;
+					$remaining_hourss = $totalpoints - $data['consumed_hours'];
+					
+					if ($remaining_hourss >=  $request->price) {
+
+
+
+						$date = date('d-m-yy h:i:s');
+						$data = array(
+							'strivre_id' => $user->id,
+							'coach_id' => $request->coach_id,
+							'article_id' => $request->article_id,
+							'article_price' => $request->price,
+							'created_at' => $date
+						);
+
+						DB::table('article_price')->insert($data);
+
+
+
+						DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' => $consumeddat, 'user_subscription_payment.remaining_hours' => $remaining_hours]);
+
+
+						
+						// return redirect()
+						// ->back();
+
+						// return redirect('routes.letestNewsBySlug'.$news->slug);
+
+						$slug = $request->title;
+
+
+				$page = $this->getLetestBySlug($slug);
+
+				if (empty($page)) {
+					abort(404);
+				}
+
+				view()->share('page', $page);
+				view()->share('uriPathPageSlug', $slug);
+
+				// Check if an external link is available
+				if (!empty($page->external_link)) {
+					return redirect()->away($page->external_link, 301)->withHeaders(config('larapen.core.noCacheHeaders'));
+				}
+
+				// Meta Tags
+				[$title, $description, $keywords] = getMetaTag('staticPage');
+				$title = str_replace('{page.title}', $page->seo_title, $title);
+				$title = str_replace('{app.name}', config('app.name'), $title);
+				$title = str_replace('{country.name}', config('country.name'), $title);
+
+				$description = str_replace('{page.description}', $page->seo_description, $description);
+				$description = str_replace('{app.name}', config('app.name'), $description);
+				$description = str_replace('{country.name}', config('country.name'), $description);
+
+				$keywords = str_replace('{page.keywords}', $page->seo_keywords, $keywords);
+				$keywords = str_replace('{app.name}', config('app.name'), $keywords);
+				$keywords = str_replace('{country.name}', config('country.name'), $keywords);
+
+				if (empty($title)) {
+					$title = $page->title . ' - ' . config('app.name');
+				}
+				if (empty($description)) {
+					$description = Str::limit(str_strip(strip_tags($page->content)), 200);
+				}
+
+				$title = removeUnmatchedPatterns($title);
+				$description = removeUnmatchedPatterns($description);
+				$keywords = removeUnmatchedPatterns($keywords);
+
+				MetaTag::set('title', $title);
+				MetaTag::set('description', $description);
+				MetaTag::set('keywords', $keywords);
+
+				// Open Graph
+				$this->og->title($title)->description($description);
+				if (!empty($page->picture)) {
+					if ($this->og->has('image')) {
+						$this->og->forget('image')->forget('image:width')->forget('image:height');
+					}
+					$this->og->image(imgUrl($page->picture, 'bgHeader'), [
+						'width'  => 600,
+						'height' => 600,
+					]);
+				}
+				view()->share('og', $this->og);
+
+
+				Session()->flash('messagess2', ' Article Payment Successfully !');
+						
+						return appView('pages.letest_cms');
+						// return redirect('letest_news/'.$slug);
+					} else {
+
+
+
+						// } else {
+						Session()
+							->flash('loginerror', 'You do not have sufficient credits.');
+						return redirect()
+							->back();
+						// }
+
+
+						// return redirect('/pricing');
+					}
+				}
+			}
+		} else {
+			Session()
+				->flash('loginerror', 'You do not access.');
+			return redirect()
+				->back();
+		}
+	}
 
 
 
@@ -708,6 +1149,18 @@ class EditController extends AccountBaseController
 		$data['subscription_plan'] = Package::query()->get();
 
 		//$data['categories']= Category::query()->get();
+		if($data['remaining_hours']==0){
+			redirectUrl('/createSubscription');
+		
+			// $usersData = User::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as total'))
+            // ->groupBy('date')
+            // ->orderBy('date', 'desc')
+            // ->take(30)
+            // ->get();
+
+
+		}
+
 
 
 

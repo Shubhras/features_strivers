@@ -131,6 +131,7 @@ trait Columns
 	{
 		if (count($columns)) {
 			foreach ($columns as $key => $column) {
+				
 				$this->addColumn($column);
 			}
 		}

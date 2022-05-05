@@ -269,7 +269,7 @@ class Coach extends BaseModel
 			}
 		}
 		
-		$url = admin_url('users/' . $this->id);
+		$url = admin_url('coach/' . $this->id);
 		
 		$out = '';
 		$out .= '<a href="' . $url . '" class="btn btn-xs btn-danger" data-button-type="delete">';
@@ -436,7 +436,7 @@ class Coach extends BaseModel
 		if (isset($this->photo) && !empty($this->photo)) {
 			$disk = StorageDisk::getDisk();
 			if ($disk->exists($this->photo)) {
-				$userPhotoUrl = imgUrl($this->photo, 'user');
+				$userPhotoUrl = imgUrl($this->photo, 'coach');
 			}
 		}
 		

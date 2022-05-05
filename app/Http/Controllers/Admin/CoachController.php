@@ -15,6 +15,7 @@ use App\Models\Scopes\VerifiedScope;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use Larapen\Admin\app\Http\Controllers\PanelController;
 
 
@@ -29,7 +30,7 @@ class CoachController extends PanelController
 		| BASIC CRUD INFORMATION
 		|--------------------------------------------------------------------------
 		*/
-		$this->xPanel->setModel('App\Models\Coach');
+		$this->xPanel->setModel('App\Models\User');
 		
 		// If the logged admin user has permissions to manage users and is has not 'super-admin' role,
 		// don't allow him to manage 'super-admin' role's users.
@@ -49,7 +50,8 @@ class CoachController extends PanelController
 			}
 		}
 		
-		$this->xPanel->setRoute(admin_uri('users'));
+		
+		$this->xPanel->setRoute(admin_uri('coach'));
 		$this->xPanel->setEntityNameStrings(trans('admin.user_coach'), trans('admin.user_coach'));
 		if (!request()->input('order')) {
 			$this->xPanel->orderBy('created_at', 'DESC');
@@ -149,19 +151,34 @@ class CoachController extends PanelController
 		| COLUMNS AND FIELDS
 		|--------------------------------------------------------------------------
 		*/
-		if (request()->segment(2) != 'account') {
+
+
+		if (request()->segment(2) != 'account' && $this->xPanel->addClause('where', 'user_type_id', '=', 2)) {
 			// COLUMNS
+
+			
 			$this->xPanel->addColumn([
 				'name'  => 'id',
 				'label' => '',
 				'type'  => 'checkbox',
 				'orderable' => false,
 			]);
+			
 			$this->xPanel->addColumn([
 				'name'  => 'created_at',
 				'label' => trans('admin.Date'),
 				'type'  => 'datetime',
 			]);
+			// $this->xPanel->addColumn([
+			// 	'name'  => 'user_type_id',
+			// 	'label' => trans('admin.user_type_id'),
+		
+				
+				
+			// ]);
+
+			
+
 			$this->xPanel->addColumn([
 				'name'  => 'name',
 				'label' => trans('admin.Name'),

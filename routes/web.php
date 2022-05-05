@@ -126,6 +126,7 @@ Route::group([
 		CRUD::resource('pages', 'PageController');
 
 		CRUD::resource('latest_news', 'LetestNewsController');
+		CRUD::resource('enroll_payment_list', 'EnrollcourseController');
 		
 		CRUD::resource('payments', 'PaymentController');
 		CRUD::resource('payment_methods', 'PaymentMethodController');
@@ -457,8 +458,11 @@ Route::group([
 				Route::put('photo/delete', 'EditController@updatePhoto');
 				Route::put('photo', 'EditController@updatePhoto');
 				Route::post('enroll_course', 'EditController@enroll_course_striver');
-
+				Route::post('article_payment', 'EditController@payArticle');
+				
 				// Route::get('allcities/{id}','EditController@getCountryLocation');
+				Route::get('article', 'EditController@getMyArticle');
+				Route::post('create_article' , 'EditController@create_article');
 
 				// Route::get('/findtopcoach', 'EditController@coach_list_category_interesting');
 				Route::get('allcities','EditController@getCountryLocation');
@@ -540,6 +544,7 @@ Route::group([
 		Route::get(dynamicRoute('routes.contact'), 'PageController@contact');
 		Route::get(dynamicRoute('routes.aboutUs'), 'PageController@aboutUs');
 		Route::post('pricingCourse', 'PageController@pricingCourse');
+
 		
 
 		

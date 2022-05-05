@@ -70,9 +70,17 @@
 										</a>
                                       
                                         </li>
-                                        <!-- <li class="nav-item ">
-                                            <a class="nav-link" href="dashboard-user.html">Users</a>
-                                        </li> -->
+                                        <li class="nav-item ">
+										<a {!! ($pagePath=='' ) ? 'class="active "' : '' !!} href="{{ url('account/article') }}">
+												<h5 class="collapse-title no-border">
+													<!-- <i class="fas fa-user-edit"></i> -->
+                                                    <i class="fas fa-pencil"></i>
+													{{ ('My Articles') }} &nbsp;
+
+												</h5>
+										</a>
+                                      
+                                        </li>
                                     </ul>
                                     <!-- <span class="heading border-top pt-4 d-block">Billing</span>
 
