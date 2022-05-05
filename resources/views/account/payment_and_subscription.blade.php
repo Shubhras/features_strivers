@@ -506,8 +506,8 @@
                                 <h5>
                                     {{ $coach_list->name }}
                                 </h5>
-                                <p>Stylist &amp; Author
-                                </p>
+                                <!-- <p>Stylist &amp; Author -->
+                                <!-- </p> -->
                             </div>
                         </div>
                     </div>

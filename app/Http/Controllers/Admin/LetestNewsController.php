@@ -112,6 +112,15 @@ class LetestNewsController extends PanelController
 			],
 		]);
 		$this->xPanel->addField([
+			'name'       => 'price',
+			'label'      => trans('admin.Price'),
+			'type'       => 'number',
+			'attributes' => [
+				'placeholder' => trans('admin.Price'),
+			],
+		]);
+
+		$this->xPanel->addField([
 			'name'              => 'slug',
 			'label'             => trans('admin.Slug'),
 			'type'              => 'text',

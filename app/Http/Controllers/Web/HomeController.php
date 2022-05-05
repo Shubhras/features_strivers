@@ -155,7 +155,7 @@ class HomeController extends FrontController
 		$this->setSeo($searchFormOptions);
 
 
-		$data['letest_news'] = DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id', 'desc')->limit(4)->get();
+		$data['letest_news'] = DB::table('latest_new')->select('latest_new.*')->where('active', 1)->orderBy('latest_new.id', 'desc')->limit(4)->get();
 
 		// $data['categories_list_coach'] = DB::table('categories')->select('categories.slug','categories.id','categories.name','users.category')->join('users' ,'categories.id' ,'=' ,'users.category')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
 

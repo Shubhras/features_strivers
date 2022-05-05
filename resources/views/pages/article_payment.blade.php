@@ -49,64 +49,45 @@
 <section class="blog-section64">
     <div class="container ">
         <div class="row">
+        <div class="col-sm-6 form-group">
+        @if(Session::has('loginerror'))
+                  <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('loginerror') }} <a href="{{url('/pricing') }}" style="color: red;" target="_blank"><b> Click here to subscribe and get credits.</b></a></p>
+                  @endif
 
+
+              @if(Session::has('loginerrorenroll'))
+                  <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('loginerrorenroll') }} <a href="{{url('/') }}" style="color: red;" target="_blank"><b> Back to home.</b></a></p>
+                  @endif
+
+					</div>
+                  
         
-						@if(Session::has('messagess2'))
-						<p class="alert {{ Session::get('alert-class', 'alert-success') }}" style="background-color: green;">{{ Session::get('messagess2') }}</p>
-						@endif
-						
-
-            <h2 class="sec-title text-center" style="margin-top: 61px;font-size: 40px;">{{ $page->title }}</h2>
-            <div class="col-lg-6">
-
-                @if (!empty($page->picture))
-                <div class="col-lg-12 imgb">
-                    <center> <img src="{{ url('storage/'.$page->picture) }}" class="lazyload img-fluid1 images_height" style="width: 100%;"></center>
-
-                </div>
-                @else
-
-                <div class="col-lg-12 imgb">
-                    <center> <img src="url(../assets/images/avtar_imag_default.jpg)" class="lazyload img-fluid1 images_height" style="width: 100%;"></center>
-
-                </div>
+        <h2 class="sec-title text-center" style="margin-top: 61px;font-size: 30px;">{{ $page->title }}</h2>
+        <h2 class="sec-title text-center" style="font-size: 30px;"> Article Price: {{$page->price }} </h2>
+            <div class="col-lg-5">
 
 
-
-                @endif
 
             </div>
-            <div class="col-lg-6">
-                <div class="row">
+            <div class="col-lg-2">
 
-                    <div class="line_bottom newm">
-                        <!-- <p> Total Consultation Fees:<span class="boxfont"> $  </span>
-                </p>
-                            <p> Consultation Fees Per Hour:<span class="boxfont"> $ </span>
-                            </p>
-                            <p> Credits Required:<span class="boxfont"> </span>
-                            </p>
-                            <p> Date:<span class="boxfont"> 0000-00-00</span>
-                            </p>
-                            <p> Coach:<span class="boxfont"> Coaches343</span>
-                            </p>
-                            -->
-                        <b>
-                            @if(!empty($page->price))
-                            <p> Article Price: {{$page->price }}
-                            </p>
-                            @else
-                            <p> Article Price: Free
-                            </p>
-                            @endif
+        
+            
+                <form action="{{url('/account/article_payment')}}" method="post">
 
-                        </b>
 
-                        {!! $page->content !!}
-                    </div>
+                    <input type="hidden" name="price" value="{{$page->price }}" style="color:black">
+                    <input type="hidden" name="coach_id" value="{{$page->user_id}}" style="color:black">
+                    <input type="hidden" name="title" value="{{ $page->title }}"  style="color:black">
+                    <input type="hidden" name="article_id" value="{{ $page->id }}" style="color:black">
 
-                </div>
+                    <button type="submit" class="btn btn-primary">submit</button>
+                </form>
 
+
+            </div>
+
+            <div class="col-lg-5">
 
             </div>
 

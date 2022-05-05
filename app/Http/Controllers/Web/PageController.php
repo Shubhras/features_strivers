@@ -214,63 +214,89 @@ class PageController extends FrontController
 
 	public function letestCms($slug)
 	{
-		// Get the Page
-		$page = $this->getLetestBySlug($slug);
-		if (empty($page)) {
-			abort(404);
-		}
 
-		view()->share('page', $page);
-		view()->share('uriPathPageSlug', $slug);
+		$user = auth()->user();
+		if (empty($user)) {
 
-		// Check if an external link is available
-		if (!empty($page->external_link)) {
-			return redirect()->away($page->external_link, 301)->withHeaders(config('larapen.core.noCacheHeaders'));
-		}
+			return redirect('/login');
 
-		// Meta Tags
-		[$title, $description, $keywords] = getMetaTag('staticPage');
-		$title = str_replace('{page.title}', $page->seo_title, $title);
-		$title = str_replace('{app.name}', config('app.name'), $title);
-		$title = str_replace('{country.name}', config('country.name'), $title);
+			
+			} else {
 
-		$description = str_replace('{page.description}', $page->seo_description, $description);
-		$description = str_replace('{app.name}', config('app.name'), $description);
-		$description = str_replace('{country.name}', config('country.name'), $description);
 
-		$keywords = str_replace('{page.keywords}', $page->seo_keywords, $keywords);
-		$keywords = str_replace('{app.name}', config('app.name'), $keywords);
-		$keywords = str_replace('{country.name}', config('country.name'), $keywords);
 
-		if (empty($title)) {
-			$title = $page->title . ' - ' . config('app.name');
-		}
-		if (empty($description)) {
-			$description = Str::limit(str_strip(strip_tags($page->content)), 200);
-		}
+				// Get the Page
+				$page = $this->getLetestBySlug($slug);
+				if (empty($page)) {
+					abort(404);
+				}
 
-		$title = removeUnmatchedPatterns($title);
-		$description = removeUnmatchedPatterns($description);
-		$keywords = removeUnmatchedPatterns($keywords);
+				view()->share('page', $page);
+				view()->share('uriPathPageSlug', $slug);
 
-		MetaTag::set('title', $title);
-		MetaTag::set('description', $description);
-		MetaTag::set('keywords', $keywords);
+				// Check if an external link is available
+				if (!empty($page->external_link)) {
+					return redirect()->away($page->external_link, 301)->withHeaders(config('larapen.core.noCacheHeaders'));
+				}
 
-		// Open Graph
-		$this->og->title($title)->description($description);
-		if (!empty($page->picture)) {
-			if ($this->og->has('image')) {
-				$this->og->forget('image')->forget('image:width')->forget('image:height');
+				// Meta Tags
+				[$title, $description, $keywords] = getMetaTag('staticPage');
+				$title = str_replace('{page.title}', $page->seo_title, $title);
+				$title = str_replace('{app.name}', config('app.name'), $title);
+				$title = str_replace('{country.name}', config('country.name'), $title);
+
+				$description = str_replace('{page.description}', $page->seo_description, $description);
+				$description = str_replace('{app.name}', config('app.name'), $description);
+				$description = str_replace('{country.name}', config('country.name'), $description);
+
+				$keywords = str_replace('{page.keywords}', $page->seo_keywords, $keywords);
+				$keywords = str_replace('{app.name}', config('app.name'), $keywords);
+				$keywords = str_replace('{country.name}', config('country.name'), $keywords);
+
+				if (empty($title)) {
+					$title = $page->title . ' - ' . config('app.name');
+				}
+				if (empty($description)) {
+					$description = Str::limit(str_strip(strip_tags($page->content)), 200);
+				}
+
+				$title = removeUnmatchedPatterns($title);
+				$description = removeUnmatchedPatterns($description);
+				$keywords = removeUnmatchedPatterns($keywords);
+
+				MetaTag::set('title', $title);
+				MetaTag::set('description', $description);
+				MetaTag::set('keywords', $keywords);
+
+				// Open Graph
+				$this->og->title($title)->description($description);
+				if (!empty($page->picture)) {
+					if ($this->og->has('image')) {
+						$this->og->forget('image')->forget('image:width')->forget('image:height');
+					}
+					$this->og->image(imgUrl($page->picture, 'bgHeader'), [
+						'width'  => 600,
+						'height' => 600,
+					]);
+				}
+				view()->share('og', $this->og);
+
+				
+
+			$articleData= DB::table('latest_new')->select('latest_new.*')->where('latest_new.slug',$slug)->first();
+
+				
+				
+				if(empty($articleData->price)){
+					return appView('pages.letest_cms');
+				}else{
+
+					return appView('pages.article_payment');
+				}
+
+				
 			}
-			$this->og->image(imgUrl($page->picture, 'bgHeader'), [
-				'width'  => 600,
-				'height' => 600,
-			]);
-		}
-		view()->share('og', $this->og);
-
-		return appView('pages.letest_cms');
+		
 	}
 
 
@@ -334,7 +360,7 @@ class PageController extends FrontController
 		//print_r($data['related_coaches']);die;
 
 		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id', 'categories.name')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
-		
+
 
 		$data['sub_categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->whereNotIn('categories.parent_id', ['null'])->get();
 		//print_r($data['user']);die;
@@ -385,9 +411,9 @@ class PageController extends FrontController
 
 
 			$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 				->where('users.category', $id)->where('users.user_type_id', 2)->get();
 		} else {
 
@@ -413,11 +439,11 @@ class PageController extends FrontController
 			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
 
 		$data['sub_cat_id'] = DB::table('categories')->select('categories.*')->orderBy('categories.name', 'asc')->where('categories.parent_id', $id)->get();
-		
+
 
 		$data['categories'] = DB::table('categories')->select('categories.name', 'categories.id')->where('categories.parent_id', null)->orderBy('categories.name', 'asc')->get();
 
-		
+
 
 		// Meta Tags
 		$data['request_cat_id'] = $id;
@@ -428,19 +454,19 @@ class PageController extends FrontController
 		MetaTag::set('description', strip_tags($description));
 		MetaTag::set('keywords', $keywords);
 
-		$data['search_key']= ' ';
+		$data['search_key'] = ' ';
 
-		 return appView('pages.category_coaches',$data);
+		return appView('pages.category_coaches', $data);
 		$data42['category'] = $data;
 		return $data42;
 	}
-	
 
 
-	
+
+
 	public function coach_list_category_all($id)
 	{
-		
+
 		$user1 = auth()->user();
 		$data['request_cat_id'] = '';
 		// Get the Country's largest city for Google Maps
@@ -464,7 +490,7 @@ class PageController extends FrontController
 		// $data['sub_categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.name', 'asc')->where('categories.parent_id',$sub_cat)->get();
 		// print_r($data['sub_categories']);die;
 
-		$data['sub_categories'] = DB::table('categories')->select('categories.name', 'categories.id', 'categories.parent_id','categories.slug')->where('categories.parent_id','!=', null)->orderBy('categories.name', 'asc')->get();
+		$data['sub_categories'] = DB::table('categories')->select('categories.name', 'categories.id', 'categories.parent_id', 'categories.slug')->where('categories.parent_id', '!=', null)->orderBy('categories.name', 'asc')->get();
 
 
 		$data['my_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
@@ -475,47 +501,46 @@ class PageController extends FrontController
 
 
 
-			// if (empty($id)) {
-				if ($id == '0') {
-				
-				$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
-					->leftjoin('categories', 'categories.id', '=', 'users.category')
-					->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-					->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-					->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+		// if (empty($id)) {
+		if ($id == '0') {
 
-					// print_r($data['user']);die;
+			$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
 
-			} else{
-				$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
-						->leftjoin('categories', 'categories.id', '=', 'users.category')
-						->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-						->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-						->where('users.user_type_id', 2)->where('users.category',$id)->orderBy('users.id', 'asc')->limit(8)->get();
-			}
+			// print_r($data['user']);die;
 
-			// $data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
-			// 		->leftjoin('categories', 'categories.id', '=', 'users.category')
-			// 		->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			// 		->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			// 		->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+		} else {
+			$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)->where('users.category', $id)->orderBy('users.id', 'asc')->limit(8)->get();
+		}
 
-			
-		if(empty(auth()->user())){
-		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+		// $data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
+		// 		->leftjoin('categories', 'categories.id', '=', 'users.category')
+		// 		->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+		// 		->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+		// 		->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
 
-		}else{
-		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-		->leftjoin('categories', 'categories.id', '=', 'users.category')
-		->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-		->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-		->where('users.user_type_id', 2)
-		->where('users.category',$user1->category)
-		->orderBy('users.id', 'asc')->inRandomOrder()->limit(8)->get();
+
+		if (empty(auth()->user())) {
+			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+		} else {
+			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)
+				->where('users.category', $user1->category)
+				->orderBy('users.id', 'asc')->inRandomOrder()->limit(8)->get();
 		}
 
 		[$title, $description, $keywords] = getMetaTag('contact');
@@ -523,16 +548,16 @@ class PageController extends FrontController
 		MetaTag::set('description', strip_tags($description));
 		MetaTag::set('keywords', $keywords);
 
-		$data['search_key']= '';
+		$data['search_key'] = '';
 
 		return appView('pages.category_coaches', $data);
 	}
 
 
-	
 
 
-	
+
+
 
 
 
@@ -609,40 +634,40 @@ class PageController extends FrontController
 			->where('users.id', $id)->where('users.user_type_id', 2)->first();
 
 
-			$data['create_my_course'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+		$data['create_my_course'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
 			->where('coach_course.coach_id', $id)
 			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
 			->limit(6)->get();
 
-			if(empty(auth()->user())){
+		if (empty(auth()->user())) {
 			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)->inRandomOrder()->limit(8)->get();
-			}else{
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)->inRandomOrder()->limit(8)->get();
+		} else {
 			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)
-			->where('users.category',$user1->category)
-			->inRandomOrder()->limit(8)->get();
-			}
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)
+				->where('users.category', $user1->category)
+				->inRandomOrder()->limit(8)->get();
+		}
 
-			if(empty(auth()->user())){
+		if (empty(auth()->user())) {
 
 			$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
-			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
-			->limit(8)->get();
-			}else {
-					
+				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
+				->limit(8)->get();
+		} else {
+
 			$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
-			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
-			->where('users.category',$user1->category)
-			->inRandomOrder()
-			->limit(8)->get();
-			}
+				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
+				->where('users.category', $user1->category)
+				->inRandomOrder()
+				->limit(8)->get();
+		}
 
 		// print_r($data['top_coach_detail']);die;
 
