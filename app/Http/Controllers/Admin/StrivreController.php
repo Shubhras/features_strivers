@@ -50,7 +50,7 @@ class StrivreController extends PanelController
 		// 		$this->xPanel->addClause('whereNotIn', 'id', $usersIds);
 		// 	}
 		// }
-		$this->xPanel->setModel('App\Models\Strivre');
+		$this->xPanel->setModel('App\Models\User');
 
 		$this->xPanel->setRoute(admin_uri('strivre'));
 		$this->xPanel->setEntityNameStrings(trans('admin.user_strivre'), trans('admin.strivre'));
@@ -152,7 +152,7 @@ class StrivreController extends PanelController
 		| COLUMNS AND FIELDS
 		|--------------------------------------------------------------------------
 		*/
-		if (request()->segment(2) != 'account') {
+		if (request()->segment(2) != 'account' && $this->xPanel->addClause('where', 'user_type_id', '=', 3)) {
 			// COLUMNS
 			$this->xPanel->addColumn([
 				'name'  => 'id',
@@ -173,6 +173,12 @@ class StrivreController extends PanelController
 				'name'  => 'email',
 				'label' => trans('admin.Email'),
 			]);
+			// $this->xPanel->addColumn([
+			// 	'name'  => 'user_type_id',
+			// 	'label' => trans('admin.user_type_id'),
+		
+				
+			// ]);
 			
 			$this->xPanel->addColumn([
 				'label'         => mb_ucfirst(trans('admin.country')),

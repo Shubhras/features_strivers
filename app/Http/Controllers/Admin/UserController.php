@@ -160,7 +160,7 @@ class UserController extends PanelController
 		| COLUMNS AND FIELDS
 		|--------------------------------------------------------------------------
 		*/
-		if (request()->segment(2) != 'account') {
+		if (request()->segment(2) != 'account' && $this->xPanel->addClause('where', 'user_type_id', '=', 4)) {
 			// COLUMNS
 			$this->xPanel->addColumn([
 				'name'  => 'id',

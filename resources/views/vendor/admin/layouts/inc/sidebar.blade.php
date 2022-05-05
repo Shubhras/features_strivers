@@ -70,6 +70,23 @@
 						</li>
 					<!-- @endif -->
 
+					<li class="sidebar-item">
+							<a href="#" class="sidebar-link has-arrow waves-effect waves-dark">
+								<i data-feather="list"></i> <span class="hide-menu">{{ trans('Financial management') }}</span>
+							</a>
+							<ul aria-expanded="false" class="collapse first-level">
+								@if (auth()->user()->can('post-list') || userHasSuperAdminPermissions())
+									<!-- <li class="sidebar-item">
+										<a href="{{ admin_url('enroll_payment_list') }}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu">{{ trans('Enrollment payment') }}</span>
+										</a>
+									</li> -->
+								@endif
+							</ul>
+						</li>
+
+
 
 
 
@@ -155,7 +172,7 @@
 									<li class="sidebar-item">
 										<a href="{{ admin_url('strivre') }}" class="sidebar-link">
 											<i class="mdi mdi-adjust"></i>
-											<span class="hide-menu">{{ trans('Admin striver list') }}</span>
+											<span class="hide-menu">{{ trans('Striver list') }}</span>
 										</a>
 									</li>
 								
@@ -472,7 +489,7 @@
 							<ul aria-expanded="false" class="collapse first-level">
 							<!-- @if (auth()->user()->can('user-list') || userHasSuperAdminPermissions()) -->
 									<li class="sidebar-item">
-										<a href="{{ admin_url('users') }}" class="sidebar-link">
+										<a href="{{ admin_url('coach') }}" class="sidebar-link">
 											<i class="mdi mdi-adjust"></i>
 											<span class="hide-menu">{{ trans('coach list') }}</span>
 										</a>

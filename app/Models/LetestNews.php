@@ -62,6 +62,7 @@ class LetestNews extends BaseModel
 		'type',
 		'name',
 		'slug',
+		'price',
 		'picture',
 		'title',
 		'content',
