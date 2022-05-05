@@ -114,6 +114,7 @@
                         <input type="hidden" name="price" value={{$price}} id="price">
                         <input type="hidden" name="subscriptionPlan" value={{$subscriptionPlan}} id="subscriptionPlan">
                         <input type="hidden" name="totalHours" value={{$totalHours}} id="totalHours">
+                        <input type="hidden" name="email" value="{{$userEmail}}">
                         <?php if(!empty($courseId)){ ?>
                         <input type="hidden" name="courseId" value={{$courseId}} id="courseId">
                             <?php }?>
@@ -204,3 +205,17 @@ $(function() {
 //     document.getElementById('price').value=0; 
 // }
 </script>
+<!-- <script>
+fetch('/create-subscription', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    priceId: priceId,
+    customerId: customerId,
+  }),
+})
+
+
+</script> -->

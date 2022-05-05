@@ -484,7 +484,7 @@ class EditController extends AccountBaseController
 		$data['genders'] = Gender::query()->get();
 
 		$user = auth()->user();
-
+	
 		// Mini Stats
 		$data['countPostsVisits'] = DB::table((new Post())->getTable())
 			->select('user_id', DB::raw('SUM(visits) as total_visits'))
@@ -556,7 +556,7 @@ class EditController extends AccountBaseController
 			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
 			->limit(6)->get();
 
-
+		
 		$data['enroll_coach_coarse'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo', 'enroll_course.user_id')
 			->leftJoin('enroll_course', 'enroll_course.course_id', '=', 'coach_course.id')
 			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
@@ -708,6 +708,18 @@ class EditController extends AccountBaseController
 		$data['subscription_plan'] = Package::query()->get();
 
 		//$data['categories']= Category::query()->get();
+		if($data['remaining_hours']==0){
+			redirectUrl('/createSubscription');
+		
+			// $usersData = User::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as total'))
+            // ->groupBy('date')
+            // ->orderBy('date', 'desc')
+            // ->take(30)
+            // ->get();
+
+
+		}
+
 
 
 
