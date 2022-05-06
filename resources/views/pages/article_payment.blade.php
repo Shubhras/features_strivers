@@ -62,8 +62,8 @@
 					</div>
                   
         
-        <h2 class="sec-title text-center" style="margin-top: 61px;font-size: 30px;">{{ $page->title }}</h2>
-        <h2 class="sec-title text-center" style="font-size: 30px;"> Article Price: {{$page->price }} </h2>
+        <h2 class="sec-title text-center" style="margin-top: 61px;font-size: 30px;">{{ $page->name }}</h2>
+        <h2 class="sec-title text-center" style="font-size: 30px;"> Credits Required to read: {{$page->price }} </h2>
             <div class="col-lg-5">
 
 

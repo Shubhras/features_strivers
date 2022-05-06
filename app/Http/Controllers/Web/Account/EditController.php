@@ -869,8 +869,10 @@ class EditController extends AccountBaseController
 
 					Session()
 						->flash('loginerrorenroll', 'You have already enroll article .');
-					return redirect()
-						->back();
+					// return redirect()
+					// 	->back();
+					return appView('pages.letest_cms');
+					
 				} else {
 
 					$user = auth()->user();
