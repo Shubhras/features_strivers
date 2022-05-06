@@ -389,7 +389,7 @@
 
 														<div class="col-md-6">
 															<label for="recipient-name" class="control-label create-consultation-modal">Article Price:</label>
-															<input type="text" class="consultation-modal-text" name="price" placeholder="{{$my_article_data->price}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+															<input type="text" class="consultation-modal-text" value="{{$my_article_data->price}}" name="price" placeholder="{{$my_article_data->price}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
 														</div>
 
 
@@ -437,19 +437,20 @@
 
 															<!-- <div id="editor" name="description" placeholder="This is some sample consultation content."> -->
 
-															<textarea name="content" id="description1" rows="10" cols="80" value="{{$my_article_data->seo_description}}"></textarea>
+															<textarea name="content" id="description" rows="10" cols="80" value="{{$my_article_data->seo_description}}" style="color:black!important"></textarea>
 
 															<!-- </div> -->
 															<script>
 																ClassicEditor
-																	.create(document.querySelector('#description1'), {
+																	.create(document.querySelector('#description'), {
 
-																		placeholder: 'Note  - Please work out a plan for this consultation and add detailed description of consultation package.  e.g.  Session 1 @ 1 hour (discovery)  Session 2 @ 1 hour (education review) Session 3 @ 1 hour (planning steps for success).... and so on '
+																		
+																		value: description
 
 
 																	})
-																	.then(description1 => {
-																		console.log(description1);
+																	.then(description => {
+																		console.log(description);
 																	})
 																	.catch(error => {
 																		console.error(error);
