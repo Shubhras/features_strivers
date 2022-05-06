@@ -3607,3 +3607,484 @@
 2022-05-05T13:00:12: [Thu May  5 13:00:12 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
 2022-05-05T13:16:22: Starting Laravel development server: http://46.101.23.24:10000
 2022-05-05T13:16:23: [Thu May  5 13:16:22 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:19:11: [Thu May  5 13:19:11 2022] 31.43.185.9:63499 Accepted
+2022-05-05T13:19:11: [Thu May  5 13:19:11 2022] 31.43.185.9:63499 Invalid request (Malformed HTTP request)
+2022-05-05T13:19:11: [Thu May  5 13:19:11 2022] 31.43.185.9:63499 Closing
+2022-05-05T13:19:12: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:19:12: [Thu May  5 13:19:12 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:19:26: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:19:27: [Thu May  5 13:19:26 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:20:15: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:20:15: [Thu May  5 13:20:15 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:22:18: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:22:18: [Thu May  5 13:22:18 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:22:57: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:22:58: [Thu May  5 13:22:57 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:23:03: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:23:03: [Thu May  5 13:23:03 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:24:59: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:24:59: [Thu May  5 13:24:59 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:25:56: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:25:56: [Thu May  5 13:25:56 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:26:05: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:26:05: [Thu May  5 13:26:05 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:26:43: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:26:44: [Thu May  5 13:26:43 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:26:55: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:26:55: [Thu May  5 13:26:55 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:27:04: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:27:04: [Thu May  5 13:27:04 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:27:14: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:27:15: [Thu May  5 13:27:14 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:27:20: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:27:20: [Thu May  5 13:27:20 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:27:30: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:27:31: [Thu May  5 13:27:30 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:27:42: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:27:42: [Thu May  5 13:27:42 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:27:51: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:27:51: [Thu May  5 13:27:51 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:28:02: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:28:02: [Thu May  5 13:28:02 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:28:16: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:28:17: [Thu May  5 13:28:16 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:28:38: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:28:38: [Thu May  5 13:28:38 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:28:42: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:28:43: [Thu May  5 13:28:42 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:28:47: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:28:47: [Thu May  5 13:28:47 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:29:08: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:29:08: [Thu May  5 13:29:08 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:29:22: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:29:23: [Thu May  5 13:29:22 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:29:35: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:29:36: [Thu May  5 13:29:35 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:29:41: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:29:41: [Thu May  5 13:29:41 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:29:46: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:29:47: [Thu May  5 13:29:46 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:29:58: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:29:59: [Thu May  5 13:29:58 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:30:03: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:30:03: [Thu May  5 13:30:03 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:30:06: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:30:06: [Thu May  5 13:30:06 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:30:53: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:30:53: [Thu May  5 13:30:53 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:31:06: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:31:06: [Thu May  5 13:31:06 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:31:22: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:31:23: [Thu May  5 13:31:22 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:31:27: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:31:28: [Thu May  5 13:31:27 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:31:32: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:31:32: [Thu May  5 13:31:32 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:31:39: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:31:40: [Thu May  5 13:31:40 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:34:06: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:34:06: [Thu May  5 13:34:06 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:34:16: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:34:16: [Thu May  5 13:34:16 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:34:22: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:34:22: [Thu May  5 13:34:22 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:34:43: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:34:43: [Thu May  5 13:34:43 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:34:56: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:34:57: [Thu May  5 13:34:56 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:35:01: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:35:02: [Thu May  5 13:35:01 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:35:20: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:35:20: [Thu May  5 13:35:20 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:36:07: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:36:08: [Thu May  5 13:36:07 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:36:54: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:36:54: [Thu May  5 13:36:54 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:37:06: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:37:07: [Thu May  5 13:37:06 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:37:47: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:37:47: [Thu May  5 13:37:47 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:38:31: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:38:32: [Thu May  5 13:38:31 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:38:35: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:38:35: [Thu May  5 13:38:35 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:38:40: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:38:41: [Thu May  5 13:38:40 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:39:02: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:39:03: [Thu May  5 13:39:02 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:39:06: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:39:06: [Thu May  5 13:39:06 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:39:21: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:39:21: [Thu May  5 13:39:21 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:39:23: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:39:24: [Thu May  5 13:39:23 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:39:33: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:39:33: [Thu May  5 13:39:33 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:39:43: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:39:44: [Thu May  5 13:39:43 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:39:47: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:39:48: [Thu May  5 13:39:48 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:40:23: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:40:23: [Thu May  5 13:40:23 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:40:26: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:40:26: [Thu May  5 13:40:26 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:40:32: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:40:33: [Thu May  5 13:40:32 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:40:42: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:40:43: [Thu May  5 13:40:42 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:40:53: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:40:53: [Thu May  5 13:40:53 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:41:15: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:41:16: [Thu May  5 13:41:15 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:41:41: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:41:42: [Thu May  5 13:41:41 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:41:54: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:41:55: [Thu May  5 13:41:55 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:42:00: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:42:01: [Thu May  5 13:42:00 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:42:33: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:42:33: [Thu May  5 13:42:33 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:42:36: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:42:37: [Thu May  5 13:42:36 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:42:44: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:42:45: [Thu May  5 13:42:44 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:42:53: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:42:54: [Thu May  5 13:42:54 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:43:13: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:43:13: [Thu May  5 13:43:13 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:44:35: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:44:36: [Thu May  5 13:44:35 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:44:45: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:44:46: [Thu May  5 13:44:45 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:45:10: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:45:11: [Thu May  5 13:45:10 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:45:19: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:45:20: [Thu May  5 13:45:19 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:45:25: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:45:25: [Thu May  5 13:45:25 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:48:27: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:48:27: [Thu May  5 13:48:27 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:48:38: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:48:39: [Thu May  5 13:48:38 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:48:55: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:48:56: [Thu May  5 13:48:55 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:48:58: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:48:59: [Thu May  5 13:48:58 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:49:12: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:49:12: [Thu May  5 13:49:12 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:49:21: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:49:22: [Thu May  5 13:49:21 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:50:58: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:50:59: [Thu May  5 13:50:58 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:52:15: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:52:15: [Thu May  5 13:52:15 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:52:27: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:52:27: [Thu May  5 13:52:27 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:52:32: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:52:33: [Thu May  5 13:52:32 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:53:04: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:53:04: [Thu May  5 13:53:04 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:53:13: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:53:14: [Thu May  5 13:53:13 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:53:19: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:53:20: [Thu May  5 13:53:19 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:56:50: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:56:51: [Thu May  5 13:56:51 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:57:02: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:57:02: [Thu May  5 13:57:02 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:57:07: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:57:07: [Thu May  5 13:57:07 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:57:21: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:57:22: [Thu May  5 13:57:21 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:57:26: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:57:26: [Thu May  5 13:57:26 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:57:39: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:57:40: [Thu May  5 13:57:39 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:57:50: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:57:50: [Thu May  5 13:57:50 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:57:57: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:57:57: [Thu May  5 13:57:57 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:58:19: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:58:20: [Thu May  5 13:58:19 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:58:24: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:58:25: [Thu May  5 13:58:24 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:58:36: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:58:37: [Thu May  5 13:58:36 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:58:44: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:58:45: [Thu May  5 13:58:44 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:58:55: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:58:55: [Thu May  5 13:58:55 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:59:13: [Thu May  5 13:59:13 2022] 31.43.185.9:61805 Accepted
+2022-05-05T13:59:13: [Thu May  5 13:59:13 2022] 31.43.185.9:61805 Invalid request (Malformed HTTP request)
+2022-05-05T13:59:13: [Thu May  5 13:59:13 2022] 31.43.185.9:61805 Closing
+2022-05-05T13:59:13: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:59:14: [Thu May  5 13:59:13 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:59:21: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:59:21: [Thu May  5 13:59:21 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:59:29: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:59:29: [Thu May  5 13:59:29 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:59:37: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:59:38: [Thu May  5 13:59:37 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T13:59:48: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T13:59:49: [Thu May  5 13:59:49 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:00:15: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:00:16: [Thu May  5 14:00:16 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:00:22: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:00:23: [Thu May  5 14:00:22 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:00:25: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:00:26: [Thu May  5 14:00:25 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:00:32: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:00:33: [Thu May  5 14:00:32 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:00:39: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:00:40: [Thu May  5 14:00:39 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:00:52: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:00:53: [Thu May  5 14:00:52 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:00:56: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:00:56: [Thu May  5 14:00:56 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:01:05: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:01:06: [Thu May  5 14:01:05 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:01:18: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:01:19: [Thu May  5 14:01:19 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:01:33: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:01:33: [Thu May  5 14:01:33 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:01:52: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:01:53: [Thu May  5 14:01:52 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:02:07: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:02:08: [Thu May  5 14:02:07 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:02:20: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:02:21: [Thu May  5 14:02:20 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:04:31: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:04:31: [Thu May  5 14:04:31 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:04:34: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:04:35: [Thu May  5 14:04:34 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:04:40: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:04:41: [Thu May  5 14:04:40 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:04:52: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:04:53: [Thu May  5 14:04:52 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:04:56: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:04:56: [Thu May  5 14:04:56 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:05:08: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:05:09: [Thu May  5 14:05:08 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:06:33: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:06:34: [Thu May  5 14:06:33 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:28:47: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:28:48: [Thu May  5 14:28:47 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:34:13: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:34:13: [Thu May  5 14:34:13 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T14:55:27: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T14:55:28: [Thu May  5 14:55:27 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T15:59:43: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T15:59:44: [Thu May  5 15:59:43 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T18:38:48: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T18:38:49: [Thu May  5 18:38:48 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T19:04:55: [Thu May  5 19:04:55 2022] 91.6.158.166:47807 Accepted
+2022-05-05T19:04:56: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T19:04:56: [Thu May  5 19:04:56 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T19:12:34: [Thu May  5 19:12:33 2022] 91.191.209.202:2499 Accepted
+2022-05-05T19:12:34: [Thu May  5 19:12:33 2022] 91.191.209.202:2499 Invalid request (Malformed HTTP request)
+2022-05-05T19:12:34: [Thu May  5 19:12:33 2022] 91.191.209.202:2499 Closing
+2022-05-05T19:12:34: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T19:12:35: [Thu May  5 19:12:34 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T20:09:44: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T20:09:45: [Thu May  5 20:09:44 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T23:14:44: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T23:14:45: [Thu May  5 23:14:44 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-05T23:44:07: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-05T23:44:07: [Thu May  5 23:44:07 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T00:01:41: [Fri May  6 00:01:41 2022] 167.94.138.120:45704 Accepted
+2022-05-06T00:01:42: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T00:01:42: [Fri May  6 00:01:42 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T00:15:33: [Fri May  6 00:15:33 2022] 180.214.236.66:49209 Accepted
+2022-05-06T00:15:33: [Fri May  6 00:15:33 2022] 180.214.236.66:49209 Invalid request (Malformed HTTP request)
+2022-05-06T00:15:33: [Fri May  6 00:15:33 2022] 180.214.236.66:49209 Closing
+2022-05-06T00:15:33: [Fri May  6 00:15:33 2022] 180.214.236.66:49248 Accepted
+2022-05-06T00:15:33: [Fri May  6 00:15:33 2022] 180.214.236.66:49248 Invalid request (Malformed HTTP request)
+2022-05-06T00:15:33: [Fri May  6 00:15:33 2022] 180.214.236.66:49248 Closing
+2022-05-06T00:15:33: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T00:15:34: [Fri May  6 00:15:33 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T00:15:34: [Fri May  6 00:15:34 2022] 180.214.236.66:49339 Accepted
+2022-05-06T00:15:34: [Fri May  6 00:15:34 2022] 180.214.236.66:49339 Invalid request (Malformed HTTP request)
+2022-05-06T00:15:34: [Fri May  6 00:15:34 2022] 180.214.236.66:49339 Closing
+2022-05-06T01:36:00: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T01:36:01: [Fri May  6 01:36:00 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T03:13:06: [Fri May  6 03:13:06 2022] 2.57.122.19:43230 Accepted
+2022-05-06T03:13:06: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T03:13:07: [Fri May  6 03:13:06 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T03:32:54: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T03:32:54: [Fri May  6 03:32:54 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T04:19:27: [Fri May  6 04:19:27 2022] 205.210.31.136:34375 Accepted
+2022-05-06T04:19:27: [Fri May  6 04:19:27 2022] 205.210.31.136:34375 Invalid request (Unsupported SSL request)
+2022-05-06T04:19:27: [Fri May  6 04:19:27 2022] 205.210.31.136:34375 Closing
+2022-05-06T04:19:27: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T04:19:28: [Fri May  6 04:19:27 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T04:47:05: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T04:47:05: [Fri May  6 04:47:05 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T04:57:10: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T04:57:11: [Fri May  6 04:57:10 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T04:59:27: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T04:59:28: [Fri May  6 04:59:27 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T04:59:59: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T04:59:59: [Fri May  6 04:59:59 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T05:00:42: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T05:00:42: [Fri May  6 05:00:42 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T05:28:55: [Fri May  6 05:28:54 2022] 162.142.125.221:41094 Accepted
+2022-05-06T05:28:55: [Fri May  6 05:28:55 2022] 162.142.125.221:41094 Closing
+2022-05-06T05:28:55: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T05:28:56: [Fri May  6 05:28:55 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T05:28:56: [Fri May  6 05:28:55 2022] 167.248.133.118:56546 Accepted
+2022-05-06T05:28:56: [Fri May  6 05:28:56 2022] 167.248.133.118:56546 Closing
+2022-05-06T05:28:56: [Fri May  6 05:28:56 2022] 167.248.133.118:42020 Accepted
+2022-05-06T05:28:56: [Fri May  6 05:28:56 2022] 167.248.133.118:42020 Invalid request (Malformed HTTP request)
+2022-05-06T05:28:56: [Fri May  6 05:28:56 2022] 167.248.133.118:42020 Closing
+2022-05-06T05:28:57: [Fri May  6 05:28:56 2022] 167.248.133.118:45308 Accepted
+2022-05-06T05:28:57: [Fri May  6 05:28:56 2022] 167.248.133.118:45308 Invalid request (Unsupported SSL request)
+2022-05-06T05:28:57: [Fri May  6 05:28:56 2022] 167.248.133.118:45308 Closing
+2022-05-06T05:31:32: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T05:31:32: [Fri May  6 05:31:32 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T05:57:43: [Fri May  6 05:57:43 2022] 180.214.238.6:51112 Accepted
+2022-05-06T05:57:43: [Fri May  6 05:57:43 2022] 180.214.238.6:51112 Invalid request (Malformed HTTP request)
+2022-05-06T05:57:43: [Fri May  6 05:57:43 2022] 180.214.238.6:51112 Closing
+2022-05-06T05:57:43: [Fri May  6 05:57:43 2022] 180.214.238.6:51124 Accepted
+2022-05-06T05:57:43: [Fri May  6 05:57:43 2022] 180.214.238.6:51124 Invalid request (Malformed HTTP request)
+2022-05-06T05:57:43: [Fri May  6 05:57:43 2022] 180.214.238.6:51124 Closing
+2022-05-06T05:57:43: [Fri May  6 05:57:43 2022] 180.214.238.6:51151 Accepted
+2022-05-06T05:57:43: [Fri May  6 05:57:43 2022] 180.214.238.6:51151 Invalid request (Malformed HTTP request)
+2022-05-06T05:57:43: [Fri May  6 05:57:43 2022] 180.214.238.6:51151 Closing
+2022-05-06T05:57:43: [Fri May  6 05:57:43 2022] 180.214.238.6:51153 Accepted
+2022-05-06T05:57:43: [Fri May  6 05:57:43 2022] 180.214.238.6:51153 Invalid request (Malformed HTTP request)
+2022-05-06T05:57:43: [Fri May  6 05:57:43 2022] 180.214.238.6:51153 Closing
+2022-05-06T05:57:44: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T05:57:44: [Fri May  6 05:57:44 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:10:16: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:10:17: [Fri May  6 06:10:16 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:17:15: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:17:15: [Fri May  6 06:17:15 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:17:37: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:17:38: [Fri May  6 06:17:37 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:17:58: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:17:58: [Fri May  6 06:17:58 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:18:04: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:18:05: [Fri May  6 06:18:04 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:18:25: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:18:26: [Fri May  6 06:18:25 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:18:47: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:18:47: [Fri May  6 06:18:47 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:18:54: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:18:55: [Fri May  6 06:18:54 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:20:25: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:20:25: [Fri May  6 06:20:25 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:20:34: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:20:34: [Fri May  6 06:20:34 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:20:41: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:20:42: [Fri May  6 06:20:41 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:20:48: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:20:49: [Fri May  6 06:20:48 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:21:21: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:21:22: [Fri May  6 06:21:21 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:21:30: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:21:30: [Fri May  6 06:21:30 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:21:47: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:21:48: [Fri May  6 06:21:47 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:28:30: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:28:30: [Fri May  6 06:28:30 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:28:44: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:28:45: [Fri May  6 06:28:44 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:28:53: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:28:53: [Fri May  6 06:28:53 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:29:17: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:29:18: [Fri May  6 06:29:17 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:30:44: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:30:44: [Fri May  6 06:30:44 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:30:49: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:30:49: [Fri May  6 06:30:49 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:30:58: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:30:59: [Fri May  6 06:30:58 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:31:03: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:31:04: [Fri May  6 06:31:03 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:31:11: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:31:12: [Fri May  6 06:31:11 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:31:17: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:31:17: [Fri May  6 06:31:17 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:36:48: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:36:48: [Fri May  6 06:36:48 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:37:05: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:37:06: [Fri May  6 06:37:05 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:37:49: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:37:49: [Fri May  6 06:37:49 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:38:18: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:38:18: [Fri May  6 06:38:18 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:38:30: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:38:30: [Fri May  6 06:38:30 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:38:33: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:38:34: [Fri May  6 06:38:33 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:38:43: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:38:43: [Fri May  6 06:38:43 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:38:47: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:38:48: [Fri May  6 06:38:47 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:39:04: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:39:05: [Fri May  6 06:39:04 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:39:21: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:39:22: [Fri May  6 06:39:22 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:39:32: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:39:33: [Fri May  6 06:39:32 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:39:41: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:39:42: [Fri May  6 06:39:41 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:39:47: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:39:48: [Fri May  6 06:39:47 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:40:02: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:40:03: [Fri May  6 06:40:02 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:40:08: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:40:09: [Fri May  6 06:40:08 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T06:41:26: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T06:41:27: [Fri May  6 06:41:26 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T07:42:17: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T07:42:18: [Fri May  6 07:42:17 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T07:49:15: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T07:49:16: [Fri May  6 07:49:15 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T08:45:46: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T08:45:47: [Fri May  6 08:45:46 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T08:45:53: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T08:45:54: [Fri May  6 08:45:53 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T08:50:41: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T08:50:41: [Fri May  6 08:50:41 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T09:40:00: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T09:40:01: [Fri May  6 09:40:00 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T09:41:00: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T09:41:00: [Fri May  6 09:41:00 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T10:11:40: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T10:11:41: [Fri May  6 10:11:40 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T10:31:29: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T10:31:30: [Fri May  6 10:31:29 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T10:32:19: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T10:32:19: [Fri May  6 10:32:19 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T11:11:56: [Fri May  6 11:11:56 2022] 62.233.50.179:62855 Accepted
+2022-05-06T11:11:56: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T11:11:57: [Fri May  6 11:11:56 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T11:14:18: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T11:14:19: [Fri May  6 11:14:18 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T11:25:53: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T11:25:54: [Fri May  6 11:25:53 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T11:50:53: [Fri May  6 11:50:53 2022] 142.93.232.0:37946 Accepted
+2022-05-06T11:50:54: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T11:50:55: [Fri May  6 11:50:54 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T11:51:18: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T11:51:18: [Fri May  6 11:51:18 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T11:52:12: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T11:52:13: [Fri May  6 11:52:12 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T12:14:27: [Fri May  6 12:14:26 2022] 162.142.125.221:40174 Accepted
+2022-05-06T12:14:27: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T12:14:28: [Fri May  6 12:14:27 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T13:09:17: [Fri May  6 13:09:17 2022] 31.43.185.9:64122 Accepted
+2022-05-06T13:09:18: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T13:09:18: [Fri May  6 13:09:18 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T13:18:05: [Fri May  6 13:18:05 2022] 31.43.185.9:64145 Accepted
+2022-05-06T13:18:06: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T13:18:06: [Fri May  6 13:18:06 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T13:27:27: [Fri May  6 13:27:26 2022] 31.43.185.9:63578 Accepted
+2022-05-06T13:27:27: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T13:27:28: [Fri May  6 13:27:27 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
+2022-05-06T13:47:15: [Fri May  6 13:47:15 2022] 31.43.185.9:61630 Accepted
+2022-05-06T13:47:15: [Fri May  6 13:47:15 2022] 31.43.185.9:61630 Invalid request (Malformed HTTP request)
+2022-05-06T13:47:15: [Fri May  6 13:47:15 2022] 31.43.185.9:61630 Closing
+2022-05-06T13:47:15: Starting Laravel development server: http://46.101.23.24:10000
+2022-05-06T13:47:16: [Fri May  6 13:47:15 2022] PHP 7.4.3 Development Server (http://46.101.23.24:10000) started
