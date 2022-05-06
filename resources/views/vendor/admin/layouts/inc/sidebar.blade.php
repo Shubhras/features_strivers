@@ -76,12 +76,12 @@
 							</a>
 							<ul aria-expanded="false" class="collapse first-level">
 								@if (auth()->user()->can('post-list') || userHasSuperAdminPermissions())
-									<!-- <li class="sidebar-item">
+									<li class="sidebar-item">
 										<a href="{{ admin_url('enroll_payment_list') }}" class="sidebar-link">
 											<i class="mdi mdi-adjust"></i>
 											<span class="hide-menu">{{ trans('Enrollment payment') }}</span>
 										</a>
-									</li> -->
+									</li>
 								@endif
 							</ul>
 						</li>
