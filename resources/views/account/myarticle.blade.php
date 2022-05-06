@@ -437,20 +437,20 @@
 
 															<!-- <div id="editor" name="description" placeholder="This is some sample consultation content."> -->
 
-															<textarea name="content" id="description" rows="10" cols="80" value="{{$my_article_data->seo_description}}" style="color:black!important"></textarea>
+															<textarea name="content" id="description1" rows="10" cols="80" value="{{$my_article_data->seo_description}}" style="color:black!important"></textarea>
 
 															<!-- </div> -->
 															<script>
 																ClassicEditor
-																	.create(document.querySelector('#description'), {
+																	.create(document.querySelector('#description1'), {
 
 																		
-																		value: description
+																		value: description1
 
 
 																	})
-																	.then(description => {
-																		console.log(description);
+																	.then(description1 => {
+																		console.log(description1);
 																	})
 																	.catch(error => {
 																		console.error(error);
