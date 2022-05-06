@@ -17,7 +17,7 @@
 		<div class="main-container">
 			<div class="container">
 
-				<?php $photo_url1 = ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
+				<?php $photo_url1 = ltrim($user->photo_url, 'http://127.0.0.1:8000/account'); ?>
 
 
 
@@ -144,7 +144,7 @@
 
 							<div class="inner-box">
 
-								<h2 class="title-2"> {{ ('Credit by him') }}
+								<h2 class="title-2"> {{ ('My Article') }}
 
 									<button id="myBtn" class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#myModal">+ Create Article</button>
 								</h2>
@@ -308,55 +308,222 @@
                                 
 								foreach ($my_article as  $my_article_data) {
 
-                                    // print_r($my_article_data->content);die;
+                                    // print_r($my_article_data);die;
+									$slug = json_decode($my_article_data->name);
+
+
+
+
+													$ss = array();
+													foreach ($slug as $key => $sub) {
+														$ss[$key] = $sub;
+													}
+
+													$slug1 = json_decode($my_article_data->title);
+													$ss1 = array();
+													foreach ($slug as $key => $sub1) {
+														$ss1[$key] = $sub1;
+													}
+													
 								?>
+								
 									<div class="col-lg-4 col-md-6">
 										<div class="feature-course-item-4">
 											<div class="fcf-thumb">
 												<img src="{{ url('storage/'.$my_article_data->picture) }}" alt="" class="image-height" style="height: 244px; weight: 244px;">
-												<a class="enroll" href="{{url('/letest_news/'.$my_article_data->slug) }}" onclick="customSession()">View Article</a>
+												<a class="enroll" data-toggle="modal" data-target="#myModal1_{{$my_article_data->id}}" >View Article</a>
+
+										<div class="modal fade" id="myModal1_{{$my_article_data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal-dialog" role="document">
+
+										<form name="details" class="" role="form" method="POST" action="{{ url('/account/Update_article') }}"  enctype="multipart/form-data">
+											<div class="modal-content">
+												<div class="modal-header">
+
+													<h4 class="modal-title" id="exampleModalLabel">Update Article</h4>
+												</div>
+												<div class="modal-body">
+
+
+													<div class="row">
+														<div class="col-md-6">
+															<label for="recipient-name" class="control-label create-consultation-modal">Article Name:</label>
+
+															<input type="text" class="consultation-modal-text" id="course_name" name="name" value="{{ $ss['en'] }}" >
+
+															<!-- <input type="hidden" class="consultation-modal-text" id="user_id" name="user_id" value=""> -->
+
+
+
+														</div>
+
+														<div class="col-md-6">
+
+															<label for="recipient-name" class="control-label create-consultation-modal">Slug :</label>
+
+															<input type="text" class="consultation-modal-text" id="consultation_fee_per_hour" name="slug" value="{{$my_article_data->slug}}">
+															<input type="hidden" class="consultation-modal-text" id="id" name="id" value="{{$my_article_data->id}}">
+															<!-- $my_article_data->title -->
+
+														
+															<!-- $my_article_data->title -->
+
+														</div>
+														
+
+
+													</div>
+
+
+													<div class="row">
+
+														<div class="col-md-6">
+
+															<label for="recipient-name" class="control-label create-consultation-modal">Title:</label>
+
+															<input type="text" class="consultation-modal-text" id="course_hourse" name="title"  value="{{$ss1['en'] }}">
+
+
+														</div>
+
+
+														<div class="col-md-6">
+															<label for="recipient-name" class="control-label create-consultation-modal">Article Price:</label>
+															<input type="text" class="consultation-modal-text" value="{{$my_article_data->price}}" name="price" placeholder="{{$my_article_data->price}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+														</div>
+
+
+
+													</div>
+
+													<!-- <div class="row">
+
+
+														<div class="col-md-6">
+															<label for="recipient-name" class="control-label create-consultation-modal"> Total Consultation Fee ($) :</label>
+															<input type="text" class="consultation-modal-text" id="total_consultation_fee" name="total_consultation_fee" placeholder="Total Consultation Fee">
+														</div>
+														<div class="col-md-6">
+
+															<label for="add-image" class="control-label create-consultation-modal">Credit Required:</label>
+
+															<input type="text" class="consultation-modal-text" id="creadit_required" name="creadit_required" placeholder="Credit Required">
+														</div>
+
+
+													</div> -->
+
+
+													<div class="row">
+
+
+														<div class="col-md-12">
+															<label for="add-image" class="control-label create-consultation-modal">Featured Image:</label>
+
+
+
+															<input type="file" class="consultation-modal-text" id="image" name="image" action="image.*" placeholder="add images">
+														</div>
+
+
+													</div>
+
+													<div class="row">
+														<div class="col-md-12">
+															<label for="message-text" class="control-label create-consultation-modal">Description:</label>
+
+
+															<a href="#" style="margin-left: 177px;font-size: 14px;font-weight: 500;">Help</a>
+
+															<!-- <div id="editor" name="description" placeholder="This is some sample consultation content."> -->
+
+															<textarea name="content" id="description" rows="10" cols="80" value="{{$my_article_data->seo_description}}" style="color:black!important"></textarea>
+
+															<!-- </div> -->
+															<script>
+																ClassicEditor
+																	.create(document.querySelector('#description'), {
+
+																		
+																		value: description
+
+
+																	})
+																	.then(description => {
+																		console.log(description);
+																	})
+																	.catch(error => {
+																		console.error(error);
+																	});
+															</script>
+
+
+
+														</div>
+
+													</div>
+
+												</div>
+
+												<div class="modal-footer">
+
+													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+													<button type="submit" class="btn btn-primary">Submit</button>
+
+												</div>
+										</form>
+
+																	
+									</div>
+									
+								</div>	
+												
 											</div>
+								
+								
+										</div>
+											
 
 											<div class="fci-details">
 												<a href="{{url('/letest_news/'.$my_article_data->slug) }}" class="c-cate sort_name">
 													<i class="fas fa-tags"></i>
 													{{$my_article_data->slug}}</a>
 												<h4><a href="{{url('/letest_news/'.$my_article_data->slug) }}">Using Creative Problem Solving</a></h4>
-												<div class="author">
+												<div class="author ">
 
 												
-												<span>
-													<img src="{{ url('storage/'.$my_article_data->picture) }}" alt=""></span>
-													<span class="fci-details"> <b>
-													<a href="{{url('/letest_news/'.$my_article_data->slug) }}">
+												<!-- <span>
+													<img src="{{ url('storage/'.$my_article_data->picture) }}" alt=""></span> -->
+													<b>
+													<a href="#">
 													<?php if(!empty($my_article_data->price)){
 														?>
-													 Price: {{$my_article_data->price}}
+													 Credits Required to read: {{$my_article_data->price}}
 													<?php }else{?>
-														Price: free
+														Credits Required to read: free
 														<?php }?>
 														</a>
 													
 														</b>
-														</span>
+														
 												</div>
+												
 												<div class="price-rate">
 													
 
 												</div>
+												
 											</div>
+											
 										</div>
 
 									</div>
-								<?php } ?>
+									
+									<?php } ?>	
+								
 							</div>
-
-
-
-
-
-
-							<!-- </div> -->
+							
 
 
 

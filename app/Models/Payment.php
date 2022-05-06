@@ -63,7 +63,7 @@ class Payment extends BaseModel
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['post_id', 'package_id', 'payment_method_id', 'transaction_id', 'amount', 'active'];
+	protected $fillable = ['post_id', 'package_id','user_id', 'payment_method_id', 'transaction_id', 'amount', 'active'];
 	
 	/**
 	 * The attributes that should be hidden for arrays
@@ -172,6 +172,23 @@ class Payment extends BaseModel
 		
 		return $out;
 	}
+
+	public function getUserNameHtml()
+	{
+		$out = $this->user_id;
+		
+		if (!empty($this->user_id)) {
+			$userUrl = admin_url('users/' . $this->id . '/edit');
+			
+			$out = '';
+			$out .= '<a href="' . $userUrl . '">';
+			$out .= $this->users->name;
+			$out .= '</a>';
+			// $out .= ' (' . $this->package->price . ' ' . $this->package->currency_code . ')';
+		}
+		// print_r($out);die;
+		return $out;
+	}
 	
 	public function getPaymentMethodNameHtml()
 	{
@@ -211,6 +228,12 @@ class Payment extends BaseModel
 	public function paymentMethod()
 	{
 		return $this->belongsTo(PaymentMethod::class, 'payment_method_id');
+	}
+
+
+	public function users()
+	{
+		return $this->belongsTo(User::class, 'user_id');
 	}
 	
 	/*

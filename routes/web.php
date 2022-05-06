@@ -463,6 +463,7 @@ Route::group([
 				// Route::get('allcities/{id}','EditController@getCountryLocation');
 				Route::get('article', 'EditController@getMyArticle');
 				Route::post('create_article' , 'EditController@create_article');
+				Route::post('Update_article' , 'EditController@Update_article');
 
 				// Route::get('/findtopcoach', 'EditController@coach_list_category_interesting');
 				Route::get('allcities','EditController@getCountryLocation');
