@@ -56,7 +56,7 @@
 						@endif
 						
 
-            <h2 class="sec-title text-center" style="margin-top: 61px;font-size: 40px;">{{ $page->title }}</h2>
+            <h2 class="sec-title text-center" style="margin-top: 61px;font-size: 40px;">{{ $page->name }}</h2>
             <div class="col-lg-6">
 
                 @if (!empty($page->picture))
@@ -93,10 +93,10 @@
                             -->
                         <b>
                             @if(!empty($page->price))
-                            <p> Article Price: {{$page->price }}
+                            <p> Credits Required to read: {{$page->price }}
                             </p>
                             @else
-                            <p> Article Price: Free
+                            <p> Credits Required to read: Free
                             </p>
                             @endif
 

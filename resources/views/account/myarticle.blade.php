@@ -144,7 +144,7 @@
 
 							<div class="inner-box">
 
-								<h2 class="title-2"> {{ ('Credit by him') }}
+								<h2 class="title-2"> {{ ('My Article') }}
 
 									<button id="myBtn" class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#myModal">+ Create Article</button>
 								</h2>
@@ -322,23 +322,23 @@
 													<i class="fas fa-tags"></i>
 													{{$my_article_data->slug}}</a>
 												<h4><a href="{{url('/letest_news/'.$my_article_data->slug) }}">Using Creative Problem Solving</a></h4>
-												<div class="author">
+												<div class="author ">
 
 												
-												<span>
-													<img src="{{ url('storage/'.$my_article_data->picture) }}" alt=""></span>
-													<span class="fci-details"> <b>
-													<a href="{{url('/letest_news/'.$my_article_data->slug) }}">
+												<!-- <span>
+													<img src="{{ url('storage/'.$my_article_data->picture) }}" alt=""></span> -->
+													<b>
+													<a href="#">
 													<?php if(!empty($my_article_data->price)){
 														?>
-													 Price: {{$my_article_data->price}}
+													 Credits Required to read: {{$my_article_data->price}}
 													<?php }else{?>
-														Price: free
+														Credits Required to read: free
 														<?php }?>
 														</a>
 													
 														</b>
-														</span>
+														
 												</div>
 												<div class="price-rate">
 													
