@@ -678,8 +678,8 @@ class EditController extends AccountBaseController
 
 		$data['coach_course'] = DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id', 'asc')->get();
 
-		$data['my_article'] = DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id', 'desc')->get();
-
+		$data['my_article'] = DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id', 'desc')->limit(8)->get();
+		// $data['my_article1'] = DB::table('latest_new')->select('latest_new.*')->where('user_id',$user->id)->orderBy('latest_new.id', 'desc')->limit(8)->get();
 		
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
@@ -834,6 +834,137 @@ class EditController extends AccountBaseController
 
 
 		$tru = DB::table('latest_new')->insert($data);
+
+		// return redirect('my_courses')->back();
+		return redirect('/account/article');
+	}
+
+	public function Update_article(Request $request)
+	{
+
+		// print_r($request->all());die;
+		$data = [];
+
+		$data['genders'] = Gender::query()->get();
+
+		$user = auth()->user();
+
+		// Mini Stats
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+
+		$value = $request->image;
+
+
+		// print_r($value);die;
+
+		$disk = StorageDisk::getDisk();
+		$attribute_name = 'picture';
+		$destination_path = 'app/course_image';
+
+
+		// Check the image file
+		if ($value == url('/')) {
+			$this->attributes[$attribute_name] = null;
+
+			return false;
+		}
+
+		// If laravel request->file('filename') resource OR base64 was sent, store it in the db
+
+		// if (fileIsUploaded($value)) {
+
+
+		// Get file extension
+		$extension = getUploadedFileExtension($value);
+
+
+		if (empty($extension)) {
+			$extension = 'jpg';
+		}
+
+		// Image quality
+		$imageQuality = 100;
+
+		// Image default dimensions
+		$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 2000);
+		$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 1000);
+
+
+
+
+		$image = $value;
+		// Generate a filename.
+		// $filename = md5($value . time()) . '.' . $extension;
+		$filename = md5($value . time()) . '.' . $extension;
+
+		// Store the image on disk.
+		// $disk->put($destination_path . '/' . $filename, $image);
+		$courseimg =	$disk->put($destination_path, $image);
+
+		// Save the path to the database
+		// $this->attributes[$attribute_name] = $destination_path . '/' . $filename;
+		$this->attributes[$attribute_name] = $destination_path . '/' . $image;
+
+		if (!empty($request->dated)) {
+			// $dates =date('d-m-yy',$request->dated);
+			$dates = $request->dated;
+
+			// print_r($dates);die;
+		} else {
+			$dates = date('d-m-y h:i:s');
+		}
+		$username= '{"en":"'.$request->name.'"}';
+
+		
+
+		$article_title	= str_slug($request->title , "-");
+
+		$title= '{"en":"'.$article_title.'"}';
+
+		$content= '{"en":"'.$request->content.'"}';
+
+
+
+
+		$active = 0;
+		//  print_r($request->all());die;
+		$data = array(
+			'user_id' =>  $user->id,
+			'name' => $username,
+			'slug' => str_slug($request->slug , "-"),
+			'title' => $title,
+			'seo_title' => '{"en":null}',
+			'seo_description' => '{"en":null}',
+			'seo_keywords' => '{"en":null}',
+			'price' => $request->price,
+
+			'content' => $content,
+			'picture' => $courseimg,
+			'active' => $active,
+			'created_at' => $dates,
+			'updated_at' => $dates,
+
+
+		);
+		// print_r($data);die;
+
+
+
+
+
+		$tru = DB::table('latest_new')->where('id',$request->id)->update($data);
 
 		// return redirect('my_courses')->back();
 		return redirect('/account/article');
