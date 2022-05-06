@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Package;
+use App\Models\User;
 use App\Models\PaymentMethod;
 use App\Models\Payment;
 use Larapen\Admin\app\Http\Controllers\PanelController;
@@ -25,6 +26,7 @@ class EnrollcourseController extends PanelController
 		*/
 		$this->xPanel->setModel('App\Models\Payment');
 		$this->xPanel->with(['post', 'package', 'paymentMethod','payments']);
+		$this->xPanel->with(['post', 'users', 'User_id','users']);
 		$this->xPanel->setRoute(admin_uri('payments'));
 		$this->xPanel->setEntityNameStrings(trans('admin.payment'), trans('admin.payments'));
 		$this->xPanel->denyAccess(['create', 'update', 'delete']);
@@ -97,17 +99,34 @@ class EnrollcourseController extends PanelController
 		$this->getPackages(),
 		function ($value) {
 			$this->xPanel->addClause('where', 'package_id', '=', $value);
+
+			
 		});
-        //-----------------------
-        $this->xPanel->addFilter([
+		
+		
+		$this->xPanel->addFilter([
 			'name'  => 'name',
 			'type'  => 'dropdown',
-			'label' => trans('admin.payment'),
+			'label' => trans('admin.name'),
 		],
-		$this->getPayment(),
+		$this->getUserMethods(),
 		function ($value) {
-			$this->xPanel->addClause('where', 'package_id', '=', $value);
+			$this->xPanel->addClause('where', 'user_id', '=', $value);
+			
 		});
+
+
+		
+        //-----------------------
+        // $this->xPanel->addFilter([
+		// 	'name'  => 'name',
+		// 	'type'  => 'dropdown',
+		// 	'label' => trans('admin.payment'),
+		// ],
+		// $this->getPayment(),
+		// function ($value) {
+		// 	$this->xPanel->addClause('where', 'package_id', '=', $value);
+		// });
 		// -----------------------
 		$this->xPanel->addFilter([
 			'name'  => 'payment_method',
@@ -154,12 +173,25 @@ class EnrollcourseController extends PanelController
 			'name'  => 'created_at',
 			'label' => trans('admin.Date'),
 		]);
-        $this->xPanel->addColumn([
-			'name'          => 'admin.name',
-			'label'         => trans('admin.Ad'),
+
+		// $this->xPanel->addColumn([
+		// 	'name'  => 'user_id',
+		// 	'label' => trans('user_id'),
+		// ]);
+
+		$this->xPanel->addColumn([
+			'name'          => 'admin.user_id',
+			'label'         => trans('admin.name'),
 			'type'          => 'model_function',
-			'function_name' => 'getPostTitleHtml',
+			'function_name' => 'getUserNameHtml',
 		]);
+
+        // $this->xPanel->addColumn([
+		// 	'name'          => 'admin.name',
+		// 	'label'         => trans('admin.Ad'),
+		// 	'type'          => 'model_function',
+		// 	'function_name' => 'getPostTitleHtml',
+		// ]);
 		$this->xPanel->addColumn([
 			'name'          => 'post_id',
 			'label'         => trans('plan'),
@@ -167,14 +199,11 @@ class EnrollcourseController extends PanelController
 			'function_name' => 'getPostTitleHtml',
 		]);
         
+		
+		
+
 		$this->xPanel->addColumn([
-			'name'          => 'admin.name',
-			'label'         => trans('admin.name'),
-			'type'          => 'model_function',
-			'function_name' => 'getPaymentMethods',
-		]);
-		$this->xPanel->addColumn([
-			'name'          => 'admin.payment_method_name',
+			'name'          => 'admin.name as payment_method',
 			'label'         => trans('admin.Payment Method'),
 			'type'          => 'model_function',
 			'function_name' => 'getPaymentMethodNameHtml',
@@ -213,10 +242,26 @@ class EnrollcourseController extends PanelController
 		
 		return $arr;
 	}
+
+	// public function getUserName()
+	// {
+	// 	$entries = Package::where('price', '>', 0)->orderBy('currency_code', 'asc')->orderBy('lft', 'asc')->get();
+		
+	// 	$arr = [];
+	// 	if ($entries->count() > 0) {
+	// 		foreach ($entries as $entry) {
+	// 			$arr[$entry->id] = $entry->name . ' (' . $entry->price . ' ' . $entry->currency_code . ')';
+	// 		}
+	// 	}
+    //     // print_r($entry);die;
+		
+	// 	return $arr;
+	// }
+
 	
 	public function getPaymentMethods()
 	{
-		$entries = PaymentMethod::select('name as payment_method_name')->orderBy('lft', 'asc')->get();
+		$entries = PaymentMethod::orderBy('lft', 'asc')->get();
 		
 		$arr = [];
 		if ($entries->count() > 0) {
@@ -224,10 +269,40 @@ class EnrollcourseController extends PanelController
 				$arr[$entry->id] = $entry->display_name;
 			}
 		}
-        // print_r($entry->display_name);die;
+        // print_r($arr);die;
 		
 		return $arr;
 	}
+
+	public function getUserMethods()
+	{
+		$entriess = Payment::get();
+
+		$arr = [];
+        
+		foreach($entriess as $key=> $userId){
+		$userPayment= $userId->user_id;
+		
+		
+
+		$entries = User::select('name','email')->where('id',$userPayment)->orderBy('id', 'asc')->get();
+		// print_r($userPayment);die;
+		
+		if ($entries->count() > 0) {
+			foreach ($entries as $entry) {
+				$arr[$entry->id] = $entry->name;
+				
+			}
+		}
+       
+		
+		
+	}
+	// print_r($arr);die;
+
+	return $arr;
+	
+	} 
     public function getPayment()
 	{
 		$entries = Payment::orderBy('id', 'asc')->get();
