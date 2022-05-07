@@ -172,7 +172,7 @@
 														<div class="col-md-6">
 															<label for="recipient-name" class="control-label create-consultation-modal">Article Name:</label>
 
-															<input type="text" class="consultation-modal-text" id="course_name" name="name" placeholder="Enter Article Name">
+															<input type="text" class="consultation-modal-text" id="course_name" name="name" placeholder="Enter Article Name" Required>
 
 															<!-- <input type="hidden" class="consultation-modal-text" id="user_id" name="user_id" value=""> -->
 
@@ -184,7 +184,7 @@
 
 															<label for="recipient-name" class="control-label create-consultation-modal">Slug :</label>
 
-															<input type="text" class="consultation-modal-text" id="consultation_fee_per_hour" name="slug" placeholder="Slug">
+															<input type="text" class="consultation-modal-text" id="consultation_fee_per_hour" name="slug" placeholder="Slug" Required>
 
 
 														</div>
@@ -199,7 +199,7 @@
 
 															<label for="recipient-name" class="control-label create-consultation-modal">Title:</label>
 
-															<input type="text" class="consultation-modal-text" id="course_hourse" name="title" placeholder="Title ">
+															<input type="text" class="consultation-modal-text" id="course_hourse" name="title" placeholder="Title "Required>
 
 
 														</div>
@@ -207,7 +207,7 @@
 
 														<div class="col-md-6">
 															<label for="recipient-name" class="control-label create-consultation-modal">Article Price:</label>
-															<input type="text" class="consultation-modal-text" name="price" placeholder="Article price" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+															<input type="text" class="consultation-modal-text" name="price" placeholder="Article price" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required/>
 														</div>
 
 
@@ -240,7 +240,7 @@
 
 
 
-															<input type="file" class="consultation-modal-text" id="image" name="image" action="image.*" placeholder="add images">
+															<input type="file" class="consultation-modal-text" id="image" name="image" action="image.*" placeholder="add images"Required>
 														</div>
 
 
@@ -308,7 +308,7 @@
                                 
 								foreach ($my_article as  $my_article_data) {
 
-                                    // print_r($my_article_data);die;
+                                    // print_r($my_article_data->content);die;
 									$slug = json_decode($my_article_data->name);
 
 
@@ -321,9 +321,10 @@
 
 													$slug1 = json_decode($my_article_data->title);
 													$ss1 = array();
-													foreach ($slug as $key => $sub1) {
+													foreach ($slug1 as $key => $sub1) {
 														$ss1[$key] = $sub1;
 													}
+													
 													
 								?>
 								
@@ -366,7 +367,7 @@
 															<!-- $my_article_data->title -->
 
 														
-															<!-- $my_article_data->title -->
+															
 
 														</div>
 														
@@ -389,7 +390,7 @@
 
 														<div class="col-md-6">
 															<label for="recipient-name" class="control-label create-consultation-modal">Article Price:</label>
-															<input type="text" class="consultation-modal-text" value="{{$my_article_data->price}}" name="price" placeholder="{{$my_article_data->price}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+															<input type="text" class="consultation-modal-text" value="{{$my_article_data->price}}" name="price" placeholder="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
 														</div>
 
 
@@ -422,7 +423,7 @@
 
 
 
-															<input type="file" class="consultation-modal-text" id="image" name="image" action="image.*" placeholder="add images">
+															<input type="file" class="consultation-modal-text" id="image" name="image" action="image.*" placeholder="add images"value="{{$my_article_data->picture}}"Required>
 														</div>
 
 
@@ -437,24 +438,26 @@
 
 															<!-- <div id="editor" name="description" placeholder="This is some sample consultation content."> -->
 
-															<textarea name="content" id="description1" rows="10" cols="80" value="{{$my_article_data->seo_description}}" style="color:black!important"></textarea>
+															<textarea name="content" id="description" rows="10" cols="80" value="{{$my_article_data->content}}" style="color:black!important;text-decoration-color:black;">{{$my_article_data->content}}</textarea>
 
 															<!-- </div> -->
 															<script>
-																ClassicEditor
-																	.create(document.querySelector('#description1'), {
+															// var myEditor;
 
-																		
-																		value: description1
-
-
-																	})
-																	.then(description1 => {
-																		console.log(description1);
-																	})
-																	.catch(error => {
-																		console.error(error);
-																	});
+															// ClassicEditor
+															// 	.create( document.querySelector( '#description1' ) )
+															// 	.then( editor => {
+															// 		console.log( '{{$my_article_data->content}}', editor );
+															// 		myEditor = editor;
+															// 	} )
+															// 	.catch( err => {
+															// 		console.error( err.stack );
+															// 	} );
+															// 	myEditor.getData();																
+														$('#description').text("{{$my_article_data->content}}");
+														$('meta[name=description]').remove();
+														$('#description').append( '<meta name="description" content="{{$my_article_data->content}}" value="{{$my_article_data->content}}" >' );
+ 
 															</script>
 
 
