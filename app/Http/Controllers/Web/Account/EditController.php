@@ -1282,17 +1282,7 @@ class EditController extends AccountBaseController
 		$data['subscription_plan'] = Package::query()->get();
 
 		//$data['categories']= Category::query()->get();
-		if($data['remaining_hours']==0){
-			redirectUrl('/createSubscription');
-		
-			// $usersData = User::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as total'))
-            // ->groupBy('date')
-            // ->orderBy('date', 'desc')
-            // ->take(30)
-            // ->get();
-
-
-		}
+		// 
 
 
 

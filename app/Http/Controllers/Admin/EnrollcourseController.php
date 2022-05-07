@@ -159,6 +159,7 @@ class EnrollcourseController extends PanelController
 		});
 		
 		
+		
 		/*
 		|--------------------------------------------------------------------------
 		| COLUMNS AND FIELDS
@@ -318,6 +319,72 @@ class EnrollcourseController extends PanelController
 		return $arr;
 	}
 
+
+
+	public function exportCsv(Request $request)
+	{
+		$user = auth()->user();
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+				->select('user_id', DB::raw('SUM(visits) as total_visits'))
+				->where('country_code', config('country.code'))
+				->where('user_id', $user->id)
+				->groupBy('user_id')
+				->first();
+			$data['countPosts'] = Post::currentCountry()
+				->where('user_id', $user->id)
+				->count();
+			$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+				$query->currentCountry();
+			})->where('user_id', $user->id)
+				->count();
+		// print_r($request->all());die;
+		
+	   $fileName = 'tasks.csv';
+	//    $tasks = Task::all();
+	   $data['strivrePayment1'] = DB::table('users')
+				->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
+				->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
+				->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
+				// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
+				->where('enroll_course.coach_id', $user->id)->get();
+				// print_r($data['strivrePayment']);die;
+	
+			$headers = array(
+				"Content-type"        => "text/csv",
+				"Content-Disposition" => "attachment; filename=$fileName",
+				"Pragma"              => "no-cache",
+				"Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+				"Expires"             => "0"
+			);
+	
+			$columns = array('student', 'Course', 'Total Amount', 'Start Date', 'Fee deducted','Net payment');
+	
+			$callback = function() use($data, $columns) {
+				$file = fopen('php://output', 'w');
+				fputcsv($file, $columns);
+	
+				
+					foreach ( $data['strivrePayment1'] as $key => $task) {
+						// $ss[$key] = $task;
+					// print_r($task->strivre_name);die;
+					// print_r($task);die;
+					$row['student']  = $task->strivre_name;
+					$row['Course']    = $task->course_name;
+					$row['Total Amount']    = $task->total_consultation_fee;
+					$row['Start Date']  = $task->dated;
+					$row['Fee deducted ']  = null;
+					$row['Net payment ']  = null;
+					
+					fputcsv($file, array($row['student'], $row['Course'], $row['Total Amount'], $row['Start Date']));
+				}
+	
+				fclose($file);
+			
+			};
+				
+					return response()->stream($callback, 200, $headers);
+			
+		}
 
     
 }

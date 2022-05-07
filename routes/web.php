@@ -146,6 +146,7 @@ Route::group([
 		
 		// Others
 		Route::get('account', 'UserController@account');
+		Route::get('tasks','EnrollcourseController@exportCsv');
 		
 		//Route::post('ajax/{table}/{field}', 'InlineRequestController@make')->where('table', '[^/]+')->where('field', '[^/]+');
 		
@@ -223,7 +224,6 @@ Route::post('payment', 'App\Http\Controllers\StripePaymentController@stripe');
 Route::get('payment', 'App\Http\Controllers\StripePaymentController@forward_back_block');
 Route::post('stripe', 'App\Http\Controllers\StripePaymentController@stripePost')->name('stripe.post');
 
-Route::get('createSubscription', 'App\Http\Controllers\StripePaymentController@createSubscription');
 
 
 Route::group([
