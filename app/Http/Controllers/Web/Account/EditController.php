@@ -327,7 +327,6 @@ class EditController extends AccountBaseController
 			->inRandomOrder()
 			->limit(8)->get();
 		}
-
 		$data['subscription_plan'] = Package::query()->get();
 
 		//$data['categories']= Category::query()->get();
@@ -678,7 +677,7 @@ class EditController extends AccountBaseController
 
 		$data['coach_course'] = DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id', 'asc')->get();
 
-		$data['my_article'] = DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id', 'desc')->limit(8)->get();
+		$data['my_article'] = DB::table('latest_new')->select('latest_new.*')->where('user_id',$user->id)->orderBy('latest_new.id', 'desc')->limit(8)->get();
 		// $data['my_article1'] = DB::table('latest_new')->select('latest_new.*')->where('user_id',$user->id)->orderBy('latest_new.id', 'desc')->limit(8)->get();
 		
 		MetaTag::set('title', t('my_account'));
@@ -1281,19 +1280,7 @@ class EditController extends AccountBaseController
 		//print_r($data['user_subscription']);die;
 		$data['subscription_plan'] = Package::query()->get();
 
-		//$data['categories']= Category::query()->get();
-		if($data['remaining_hours']==0){
-			redirectUrl('/createSubscription');
 		
-			// $usersData = User::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as total'))
-            // ->groupBy('date')
-            // ->orderBy('date', 'desc')
-            // ->take(30)
-            // ->get();
-
-
-		}
-
 
 
 
