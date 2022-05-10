@@ -39,38 +39,38 @@ class LetestNewsController extends PanelController
 		// -----------------------
 		$this->xPanel->disableSearchBar();
 		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'name',
-			'type'  => 'text',
-			'label' => mb_ucfirst(trans('admin.Name')),
-		],
-			false,
-			function ($value) {
-				$this->xPanel->addClause('where', function ($query) use ($value) {
-					$query->where('name', 'LIKE', "%$value%")
-						->orWhere('title', 'LIKE', "%$value%");
-				});
-			});
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'status',
-			'type'  => 'dropdown',
-			'label' => trans('admin.Status'),
-		], [
-			1 => trans('admin.Activated'),
-			2 => trans('admin.Unactivated'),
-		], function ($value) {
-			if ($value == 1) {
-				$this->xPanel->addClause('where', 'active', '=', 1);
-			}
-			if ($value == 2) {
-				$this->xPanel->addClause('where', function ($query) {
-					$query->where(function ($query) {
-						$query->where('active', '!=', 1)->orWhereNull('active');
-					});
-				});
-			}
-		});
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'name',
+		// 	'type'  => 'text',
+		// 	'label' => mb_ucfirst(trans('admin.Name')),
+		// ],
+		// 	false,
+		// 	function ($value) {
+		// 		$this->xPanel->addClause('where', function ($query) use ($value) {
+		// 			$query->where('name', 'LIKE', "%$value%")
+		// 				->orWhere('title', 'LIKE', "%$value%");
+		// 		});
+		// 	});
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'status',
+		// 	'type'  => 'dropdown',
+		// 	'label' => trans('admin.Status'),
+		// ], [
+		// 	1 => trans('admin.Activated'),
+		// 	2 => trans('admin.Unactivated'),
+		// ], function ($value) {
+		// 	if ($value == 1) {
+		// 		$this->xPanel->addClause('where', 'active', '=', 1);
+		// 	}
+		// 	if ($value == 2) {
+		// 		$this->xPanel->addClause('where', function ($query) {
+		// 			$query->where(function ($query) {
+		// 				$query->where('active', '!=', 1)->orWhereNull('active');
+		// 			});
+		// 		});
+		// 	}
+		// });
 		
 		/*
 		|--------------------------------------------------------------------------
@@ -113,7 +113,7 @@ class LetestNewsController extends PanelController
 		]);
 		$this->xPanel->addField([
 			'name'       => 'price',
-			'label'      => trans('admin.Price'),
+			'label'      => trans('Credits Required to Read'),
 			'type'       => 'number',
 			'attributes' => [
 				'placeholder' => trans('admin.Price'),
@@ -132,18 +132,18 @@ class LetestNewsController extends PanelController
 				'class' => 'col-md-6',
 			],
 		]);
-		$this->xPanel->addField([
-			'name'              => 'external_link',
-			'label'             => trans('admin.External Link'),
-			'type'              => 'text',
-			'attributes'        => [
-				'placeholder' => "http://",
-			],
-			'hint'              => trans('admin.Redirect this page to the URL above') . ' ' . trans('admin.Leave this field empty if you do not want redirect this page'),
-			'wrapperAttributes' => [
-				'class' => 'col-md-6',
-			],
-		]);
+		// $this->xPanel->addField([
+		// 	'name'              => 'external_link',
+		// 	'label'             => trans('admin.External Link'),
+		// 	'type'              => 'text',
+		// 	'attributes'        => [
+		// 		'placeholder' => "http://",
+		// 	],
+		// 	'hint'              => trans('admin.Redirect this page to the URL above') . ' ' . trans('admin.Leave this field empty if you do not want redirect this page'),
+		// 	'wrapperAttributes' => [
+		// 		'class' => 'col-md-6',
+		// 	],
+		// ]);
 		
 		$this->xPanel->addField([
 			'name'       => 'title',
@@ -167,11 +167,11 @@ class LetestNewsController extends PanelController
 				'rows'        => 20,
 			],
 		]);
-		$this->xPanel->addField([
-			'name'  => 'type',
-			'label' => mb_ucfirst(trans('admin.type')),
-			'type'  => 'enum',
-		]);
+		// $this->xPanel->addField([
+		// 	'name'  => 'type',
+		// 	'label' => mb_ucfirst(trans('admin.type')),
+		// 	'type'  => 'enum',
+		// ]);
 		$this->xPanel->addField([
 			'name'   => 'picture',
 			'label'  => trans('admin.Picture'),
@@ -179,28 +179,28 @@ class LetestNewsController extends PanelController
 			'upload' => true,
 			'disk'   => 'public',
 		]);
-		$this->xPanel->addField([
-			'name'                => 'name_color',
-			'label'               => trans('admin.Page Name Color'),
-			'type'                => 'color_picker',
-			'colorpicker_options' => [
-				'customClass' => 'custom-class',
-			],
-			'wrapperAttributes'   => [
-				'class' => 'col-md-6',
-			],
-		]);
-		$this->xPanel->addField([
-			'name'                => 'title_color',
-			'label'               => trans('admin.Page Title Color'),
-			'type'                => 'color_picker',
-			'colorpicker_options' => [
-				'customClass' => 'custom-class',
-			],
-			'wrapperAttributes'   => [
-				'class' => 'col-md-6',
-			],
-		]);
+		// $this->xPanel->addField([
+		// 	'name'                => 'name_color',
+		// 	'label'               => trans('admin.Page Name Color'),
+		// 	'type'                => 'color_picker',
+		// 	'colorpicker_options' => [
+		// 		'customClass' => 'custom-class',
+		// 	],
+		// 	'wrapperAttributes'   => [
+		// 		'class' => 'col-md-6',
+		// 	],
+		// ]);
+		// $this->xPanel->addField([
+		// 	'name'                => 'title_color',
+		// 	'label'               => trans('admin.Page Title Color'),
+		// 	'type'                => 'color_picker',
+		// 	'colorpicker_options' => [
+		// 		'customClass' => 'custom-class',
+		// 	],
+		// 	'wrapperAttributes'   => [
+		// 		'class' => 'col-md-6',
+		// 	],
+		// ]);
 		$this->xPanel->addField([
 			'name'  => 'target_blank',
 			'label' => trans('admin.Open the link in new window'),
@@ -256,11 +256,11 @@ class LetestNewsController extends PanelController
 			'value' => '<hr style="border: 1px dashed #EFEFEF;">',
 		]);
 		
-		$this->xPanel->addField([
-			'name'  => 'excluded_from_footer',
-			'label' => trans('admin.Exclude from footer'),
-			'type'  => 'checkbox_switch',
-		]);
+		// $this->xPanel->addField([
+		// 	'name'  => 'excluded_from_footer',
+		// 	'label' => trans('admin.Exclude from footer'),
+		// 	'type'  => 'checkbox_switch',
+		// ]);
 		$this->xPanel->addField([
 			'name'  => 'active',
 			'label' => trans('admin.Active'),

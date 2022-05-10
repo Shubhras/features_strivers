@@ -698,7 +698,7 @@ return [
 	'Available on the App Store' => 'Available on the App Store',
 	'Available on Google Play' => 'Available on Google Play',
 	'Follow us on' => 'Follow us on',
-	'Powered by' => 'Powered by',
+	'Powered by' => '',
 	'Select a Country' => 'Select a Country',
 	'See you soon' => 'See you soon.',
 	'on' => 'on',

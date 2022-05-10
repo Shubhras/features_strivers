@@ -266,7 +266,7 @@ return [
     'Format' => 'Format',
     'Table' => 'Table',
     'Tools' => 'Tools',
-    'Powered by {0}' => 'Powered by {0}',
+    'Powered by {0}' => '',
     'Rich Text Area. Press ALT-F9 for menu. Press ALT-F10 for toolbar. Press ALT-0 for help' => 'Rich Text Area. Press ALT-F9 for menu. Press ALT-F10 for toolbar. Press ALT-0 for help',
     'Image title' => 'Image title',
     'Border width' => 'Border width',

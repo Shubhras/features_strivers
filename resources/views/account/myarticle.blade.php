@@ -338,6 +338,7 @@
 									<div class="col-lg-4 col-md-6">
 										<div class="feature-course-item-4">
 											<div class="fcf-thumb">
+												
 												<img src="{{ url('storage/'.$my_article_data->picture) }}" alt="" class="image-height" style="height: 244px; weight: 244px;">
 												<a class="enroll" data-toggle="modal" data-target="#myModal1_{{$my_article_data->id}}" >View Article</a>
 
@@ -518,6 +519,7 @@
 														</b>
 														
 												</div>
+												
 												
 												<div class="price-rate">
 													

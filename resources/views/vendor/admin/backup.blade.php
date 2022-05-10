@@ -28,7 +28,7 @@
 			<div class="card rounded">
 				<div class="card-body">
 					<h3 class="card-title">
-						<i class="fa fa-question-circle"></i> {{ trans('admin.Help') }}
+						<!-- <i class="fa fa-question-circle"></i> {{ trans('admin.Help') }} -->
 					</h3>
 					<p class="card-text">{!! trans('admin.help_backup', ['backupLocalStorage' => relativeAppPath(storage_path('backups'))]) !!}</p>
 				</div>

@@ -25,7 +25,7 @@
 			@if (isTranlatableModel($xPanel->model))
 			<div class="card mb-0 rounded">
 				<div class="card-body">
-					<h3 class="card-title"><i class="fa fa-question-circle"></i> {{ trans('admin.Help') }}</h3>
+					<!-- <h3 class="card-title"><i class="fa fa-question-circle"></i> {{ trans('admin.Help') }}</h3> -->
 					<p class="card-text">
 						{!! trans('admin.help_translatable_table') !!}
 						@if (config('larapen.admin.show_translatable_field_icon'))

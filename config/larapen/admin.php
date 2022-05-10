@@ -49,13 +49,13 @@ return [
 	'login_bg_image' => 'app/default/backend/login_bg_image.jpg',
 	
     // Developer or company name. Shown in footer.
-    'developer_name' => 'BeDigit',
+    'developer_name' => '',
 	
     // Developer website. Link in footer.
-    'developer_link' => 'https://bedigit.com',
+    'developer_link' => '',
 	
     // Show powered by Laravel in the footer?
-    'show_powered_by' => true,
+    // 'show_powered_by' => true,
 	
     // The AdminLTE skin. Affects menu color and primary/secondary colors used throughout the application.
     'skin' => 'skin-blue',

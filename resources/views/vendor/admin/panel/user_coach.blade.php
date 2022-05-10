@@ -10,7 +10,7 @@
 		</div>
 		<div class="col-md-6 col-12 align-self-center d-none d-md-flex justify-content-end">
 			<ol class="breadcrumb mb-0 p-0 bg-transparent">
-				<li class="breadcrumb-item"><a href="{{ admin_url() }}">{{ trans('admin.dashboard') }}</a></li>
+				<li class="breadcrumb-item"><a href="{{ admin_url() }}">{{ trans('admin.latest_news') }}</a></li>
 				<li class="breadcrumb-item"><a href="{{ url($xPanel->route) }}" class="text-capitalize">{!! $xPanel->entityNamePlural !!}</a></li>
 				<li class="breadcrumb-item active d-flex align-items-center">{{ trans('admin.list') }}</li>
 			</ol>
@@ -25,7 +25,7 @@
 			@if (isTranlatableModel($xPanel->model))
 			<div class="card mb-0 rounded">
 				<div class="card-body">
-					<h3 class="card-title"><i class="fa fa-question-circle"></i> {{ trans('admin.Help') }}</h3>
+					<!-- <h3 class="card-title"><i class="fa fa-question-circle"></i> {{ trans('admin.Help') }}</h3> -->
 					<p class="card-text">
 						{!! trans('admin.help_translatable_table') !!}
 						@if (config('larapen.admin.show_translatable_field_icon'))
