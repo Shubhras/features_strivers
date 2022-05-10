@@ -325,12 +325,20 @@
 														$ss1[$key] = $sub1;
 													}
 													
+
+													$slug2 = json_decode($my_article_data->content);
+													$ss2 = array();
+													foreach ($slug2 as $key => $value) {
+														$ss2[$key]= $value;
+													}
 													
+													// print_r($ss2['en']);die;
 								?>
 								
 									<div class="col-lg-4 col-md-6">
 										<div class="feature-course-item-4">
 											<div class="fcf-thumb">
+												
 												<img src="{{ url('storage/'.$my_article_data->picture) }}" alt="" class="image-height" style="height: 244px; weight: 244px;">
 												<a class="enroll" data-toggle="modal" data-target="#myModal1_{{$my_article_data->id}}" >View Article</a>
 
@@ -435,7 +443,7 @@
 
 
 															<a href="#" style="margin-left: 177px;font-size: 14px;font-weight: 500;">Help</a>
-
+												
 															<!-- <div id="editor" name="description" placeholder="This is some sample consultation content."> -->
 
 															<textarea name="content" id="description" rows="10" cols="80" value="{{$my_article_data->content}}" style="color:black!important;text-decoration-color:black;">{{$my_article_data->content}}</textarea>
@@ -511,6 +519,7 @@
 														</b>
 														
 												</div>
+												
 												
 												<div class="price-rate">
 													

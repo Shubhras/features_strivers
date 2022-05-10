@@ -107,7 +107,7 @@
         </div>
         
         {{-- Footer --}}
-        <footer class="footer">
+        <!-- <footer class="footer">
             <div class="row">
                 <div class="col-md-6 text-start">
                     {{ trans('admin.Version') }} {{ env('APP_VERSION', config('app.appVersion')) }}
@@ -122,7 +122,7 @@
                     </div>
                 @endif
             </div>
-        </footer>
+        </footer> -->
     </div>
 </div>
 

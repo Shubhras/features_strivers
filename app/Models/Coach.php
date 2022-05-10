@@ -225,38 +225,37 @@ class Coach extends BaseModel
 		return true;
 	}
 	
-	public function impersonateBtn($xPanel = false)
-	{
-		// Get all the User's attributes
-		$user = self::findOrFail($this->getKey());
+	// public function impersonateBtn($xPanel = false)
+	// {
+	// 	// Get all the User's attributes
+	// 	$user = self::findOrFail($this->getKey());
 		
-		// Get impersonate URL
-		$impersonateUrl = dmUrl($this->country_code, 'impersonate/take/' . $this->getKey(), false, false);
+	// 	// Get impersonate URL
+	// 	$impersonateUrl = dmUrl($this->country_code, 'impersonate/take/' . $this->getKey(), false, false);
 		
-		// If the Domain Mapping plugin is installed,
-		// Then, the impersonate feature need to be disabled
-		if (config('plugins.domainmapping.installed')) {
-			return null;
-		}
+	// 	// If the Domain Mapping plugin is installed,
+	// 	// Then, the impersonate feature need to be disabled
+	// 	if (config('plugins.domainmapping.installed')) {
+	// 		return null;
+	// 	}
 		
-		// Generate the impersonate link
-		$out = '';
-		if ($user->getKey() == auth()->user()->getAuthIdentifier()) {
-			$tooltip = '" data-bs-toggle="tooltip" title="' . t('Cannot impersonate yourself') . '"';
-			$out .= '<a class="btn btn-xs btn-warning" ' . $tooltip . '><i class="fa fa-lock"></i></a>';
-		} else if ($user->can(Permission::getStaffPermissions())) {
-			$tooltip = '" data-bs-toggle="tooltip" title="' . t('Cannot impersonate admin users') . '"';
-			$out .= '<a class="btn btn-xs btn-warning" ' . $tooltip . '><i class="fa fa-lock"></i></a>';
-		} else if (!isVerifiedUser($user)) {
-			$tooltip = '" data-bs-toggle="tooltip" title="' . t('Cannot impersonate unactivated users') . '"';
-			$out .= '<a class="btn btn-xs btn-warning" ' . $tooltip . '><i class="fa fa-lock"></i></a>';
-		} else {
-			$tooltip = '" data-bs-toggle="tooltip" title="' . t('Impersonate this user') . '"';
-			$out .= '<a class="btn btn-xs btn-light" href="' . $impersonateUrl . '" ' . $tooltip . '><i class="fas fa-sign-in-alt"></i></a>';
-		}
+	// 	// Generate the impersonate link
+	// 	$out = '';
+	// 	if ($user->getKey() == auth()->user()->getAuthIdentifier()) {
+	// 		$tooltip = '" data-bs-toggle="tooltip" title="' . t('Cannot impersonate yourself') . '"';
+	// 		$out .= '<a class="btn btn-xs btn-warning" ' . $tooltip . '><i class="fa fa-lock"></i></a>';
+	// 	} else if ($user->can(Permission::getStaffPermissions())) {
+	// 		$tooltip = '" data-bs-toggle="tooltip" title="' . t('Cannot impersonate admin users') . '"';
+	// 		$out .= '<a class="btn btn-xs btn-warning" ' . $tooltip . '><i class="fa fa-lock"></i></a>';
+	// 	} else if (!isVerifiedUser($user)) {
+	// 		$tooltip = '" data-bs-toggle="tooltip" title="' . t('Cannot impersonate unactivated users') . '"';
+	// 		$out .= '<a class="btn btn-xs btn-warning" ' . $tooltip . '><i class="fa fa-lock"></i></a>';
+	// 	} else {
+	// 		// 
+	// 	}
 		
-		return $out;
-	}
+	// 	return $out;
+	// }
 	
 	public function deleteBtn($xPanel = false)
 	{

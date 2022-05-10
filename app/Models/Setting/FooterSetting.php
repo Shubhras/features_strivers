@@ -53,9 +53,9 @@ class FooterSetting
 				'type'  => 'checkbox_switch',
 			],
 			[
-				'name'  => 'hide_powered_by',
-				'label' => trans('admin.Hide Powered by Info'),
-				'type'  => 'checkbox_switch',
+				// 'name'  => 'hide_powered_by',
+				// 'label' => trans('admin.Hide Powered by Info'),
+				// 'type'  => 'checkbox_switch',
 			],
 			[
 				'name'  => 'powered_by_info',

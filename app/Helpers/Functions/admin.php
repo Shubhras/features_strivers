@@ -142,9 +142,9 @@ function installAjaxCheckboxDisplay($id, $table, $field, $fieldValue = null)
 		$html .= '<i class="fas fa-download"></i> ' . trans('admin.Installed');
 		$html .= '</a>';
     } else {
-        $html .= '<a href="" id="install' . $id . '" class="ajax-request btn btn-xs btn-light" ' . $data . '>';
-		$html .= '<i class="fas fa-download"></i> ' . trans('admin.Install');
-		$html .= '</a>';
+        // $html .= '<a href="" id="install' . $id . '" class="ajax-request btn btn-xs btn-light" ' . $data . '>';
+		// $html .= '<i class="fas fa-download"></i> ' . trans('admin.Install');
+		// $html .= '</a>';
     }
 
     return $html;

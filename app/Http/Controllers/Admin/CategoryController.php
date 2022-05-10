@@ -108,55 +108,55 @@ class CategoryController extends PanelController
 			$this->xPanel->orderBy('lft', 'ASC');
 		}
 		
-		$this->xPanel->addButtonFromModelFunction('top', 'rebuild_nested_set_nodes_btn', 'rebuildNestedSetNodesBtn', 'end');
+		// $this->xPanel->addButtonFromModelFunction('top', 'rebuild_nested_set_nodes_btn', 'rebuildNestedSetNodesBtn', 'end');
 		$this->xPanel->addButtonFromModelFunction('top', 'bulk_delete_btn', 'bulkDeleteBtn', 'end');
 		
 		// Filters
 		// -----------------------
-		$this->xPanel->disableSearchBar();
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'name',
-			'type'  => 'text',
-			'label' => mb_ucfirst(trans('admin.Name')),
-		],
-			false,
-			function ($value) {
-				$this->xPanel->addClause('where', 'name', 'LIKE', "%$value%");
-			});
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'catType',
-			'type'  => 'dropdown',
-			'label' => mb_ucfirst(trans('admin.type')),
-		], [
-			'classified'  => 'Classified',
-			'job-offer'   => 'Job Offer',
-			'job-search'  => 'Job Search',
-			'not-salable' => 'Not-Salable',
-		], function ($value) {
-			$this->xPanel->addClause('where', 'type', '=', $value);
-		});
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'status',
-			'type'  => 'dropdown',
-			'label' => trans('admin.Status'),
-		], [
-			1 => trans('admin.Activated'),
-			2 => trans('admin.Unactivated'),
-		], function ($value) {
-			if ($value == 1) {
-				$this->xPanel->addClause('where', 'active', '=', 1);
-			}
-			if ($value == 2) {
-				$this->xPanel->addClause('where', function ($query) {
-					$query->where(function ($query) {
-						$query->where('active', '!=', 1)->orWhereNull('active');
-					});
-				});
-			}
-		});
+		// $this->xPanel->disableSearchBar();
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'name',
+		// 	'type'  => 'text',
+		// 	'label' => mb_ucfirst(trans('admin.Name')),
+		// ],
+		// 	false,
+		// 	function ($value) {
+		// 		$this->xPanel->addClause('where', 'name', 'LIKE', "%$value%");
+		// 	});
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'catType',
+		// 	'type'  => 'dropdown',
+		// 	'label' => mb_ucfirst(trans('admin.type')),
+		// ], [
+		// 	'classified'  => 'Classified',
+		// 	'job-offer'   => 'Job Offer',
+		// 	'job-search'  => 'Job Search',
+		// 	'not-salable' => 'Not-Salable',
+		// ], function ($value) {
+		// 	$this->xPanel->addClause('where', 'type', '=', $value);
+		// });
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'status',
+		// 	'type'  => 'dropdown',
+		// 	'label' => trans('admin.Status'),
+		// ], [
+		// 	1 => trans('admin.Activated'),
+		// 	2 => trans('admin.Unactivated'),
+		// ], function ($value) {
+		// 	if ($value == 1) {
+		// 		$this->xPanel->addClause('where', 'active', '=', 1);
+		// 	}
+		// 	if ($value == 2) {
+		// 		$this->xPanel->addClause('where', function ($query) {
+		// 			$query->where(function ($query) {
+		// 				$query->where('active', '!=', 1)->orWhereNull('active');
+		// 			});
+		// 		});
+		// 	}
+		// });
 		
 		/*
 		|--------------------------------------------------------------------------

@@ -79,134 +79,134 @@ class PostController extends PanelController
 		
 		// Filters
 		// -----------------------
-		$this->xPanel->disableSearchBar();
+		// $this->xPanel->disableSearchBar();
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'id',
+		// 	'type'  => 'text',
+		// 	'label' => 'ID',
+		// ],
+		// 	false,
+		// 	function ($value) {
+		// 		$this->xPanel->addClause('where', 'id', '=', $value);
+		// 	});
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'from_to',
+		// 	'type'  => 'date_range',
+		// 	'label' => trans('admin.Date range'),
+		// ],
+		// 	false,
+		// 	function ($value) {
+		// 		$dates = json_decode($value);
+		// 		$this->xPanel->addClause('where', 'created_at', '>=', $dates->from);
+		// 		$this->xPanel->addClause('where', 'created_at', '<=', $dates->to);
+		// 	});
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'title',
+		// 	'type'  => 'text',
+		// 	'label' => mb_ucfirst(trans('admin.title')),
+		// ],
+		// 	false,
+		// 	function ($value) {
+		// 		$this->xPanel->addClause('where', 'title', 'LIKE', "%$value%");
+		// 	});
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'country',
+		// 	'type'  => 'select2',
+		// 	'label' => mb_ucfirst(trans('admin.country')),
+		// ],
+		// 	getCountries(),
+		// 	function ($value) {
+		// 		$this->xPanel->addClause('where', 'country_code', '=', $value);
+		// 	});
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'city',
+		// 	'type'  => 'text',
+		// 	'label' => mb_ucfirst(trans('admin.city')),
+		// ],
+		// 	false,
+		// 	function ($value) {
+		// 		$this->xPanel->query = $this->xPanel->query->whereHas('city', function ($query) use ($value) {
+		// 			if (is_numeric($value)) {
+		// 				$query->where('id', $value);
+		// 			} else {
+		// 				$query->where('name', 'LIKE', "%$value%");
+		// 			}
+		// 		});
+		// 	});
+		// // -----------------------
+		// $filterValues = [
+		// 	1 => trans('admin.non_premium'),
+		// 	2 => trans('admin.premium') . ' (' . trans('admin.active') . ')',
+		// 	3 => trans('admin.premium') . ' (' . trans('admin.Expired') . ')',
+		// ];
+		// if (config('plugins.offlinepayment.installed')) {
+		// 	$filterValues[4] = trans('admin.featured') . ' (' . trans('admin.pushed') . ')';
+		// }
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'featured',
+		// 	'type'  => 'dropdown',
+		// 	'label' => trans('admin.premium'),
+		// ],
+		// 	$filterValues,
+		// 	function ($value) {
+		// 		if ($value == 1) {
+		// 			$this->xPanel->addClause('where', 'featured', '=', 0);
+		// 		}
+		// 		if ($value == 2) {
+		// 			$this->xPanel->addClause('where', 'featured', '=', 1);
+		// 			$this->xPanel->addClause('whereHas', 'payments', function ($query) use ($value) {
+		// 				$query->where(function ($query) {
+		// 					$query->where('transaction_id', '!=', 'featured')->orWhereNull('transaction_id');
+		// 				});
+		// 				$query->where('active', 1);
+		// 			});
+		// 		}
+		// 		if ($value == 3) {
+		// 			$this->xPanel->addClause('where', 'featured', '=', 0);
+		// 			$this->xPanel->addClause('whereHas', 'payments', function ($query) use ($value) {
+		// 				$query->where(function ($query) {
+		// 					$query->where('transaction_id', '!=', 'featured')->orWhereNull('transaction_id');
+		// 				});
+		// 				$query->where('active', 1);
+		// 			});
+		// 		}
+		// 		if ($value == 4) {
+		// 			$this->xPanel->addClause('where', 'featured', '=', 1);
+		// 			$this->xPanel->addClause('whereHas', 'payments', function ($query) use ($value) {
+		// 				$query->where('transaction_id', 'featured');
+		// 				$query->where('active', 1);
+		// 			});
+		// 		}
+		// 	});
 		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'id',
-			'type'  => 'text',
-			'label' => 'ID',
-		],
-			false,
-			function ($value) {
-				$this->xPanel->addClause('where', 'id', '=', $value);
-			});
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'from_to',
-			'type'  => 'date_range',
-			'label' => trans('admin.Date range'),
-		],
-			false,
-			function ($value) {
-				$dates = json_decode($value);
-				$this->xPanel->addClause('where', 'created_at', '>=', $dates->from);
-				$this->xPanel->addClause('where', 'created_at', '<=', $dates->to);
-			});
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'title',
-			'type'  => 'text',
-			'label' => mb_ucfirst(trans('admin.title')),
-		],
-			false,
-			function ($value) {
-				$this->xPanel->addClause('where', 'title', 'LIKE', "%$value%");
-			});
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'country',
-			'type'  => 'select2',
-			'label' => mb_ucfirst(trans('admin.country')),
-		],
-			getCountries(),
-			function ($value) {
-				$this->xPanel->addClause('where', 'country_code', '=', $value);
-			});
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'city',
-			'type'  => 'text',
-			'label' => mb_ucfirst(trans('admin.city')),
-		],
-			false,
-			function ($value) {
-				$this->xPanel->query = $this->xPanel->query->whereHas('city', function ($query) use ($value) {
-					if (is_numeric($value)) {
-						$query->where('id', $value);
-					} else {
-						$query->where('name', 'LIKE', "%$value%");
-					}
-				});
-			});
-		// -----------------------
-		$filterValues = [
-			1 => trans('admin.non_premium'),
-			2 => trans('admin.premium') . ' (' . trans('admin.active') . ')',
-			3 => trans('admin.premium') . ' (' . trans('admin.Expired') . ')',
-		];
-		if (config('plugins.offlinepayment.installed')) {
-			$filterValues[4] = trans('admin.featured') . ' (' . trans('admin.pushed') . ')';
-		}
-		$this->xPanel->addFilter([
-			'name'  => 'featured',
-			'type'  => 'dropdown',
-			'label' => trans('admin.premium'),
-		],
-			$filterValues,
-			function ($value) {
-				if ($value == 1) {
-					$this->xPanel->addClause('where', 'featured', '=', 0);
-				}
-				if ($value == 2) {
-					$this->xPanel->addClause('where', 'featured', '=', 1);
-					$this->xPanel->addClause('whereHas', 'payments', function ($query) use ($value) {
-						$query->where(function ($query) {
-							$query->where('transaction_id', '!=', 'featured')->orWhereNull('transaction_id');
-						});
-						$query->where('active', 1);
-					});
-				}
-				if ($value == 3) {
-					$this->xPanel->addClause('where', 'featured', '=', 0);
-					$this->xPanel->addClause('whereHas', 'payments', function ($query) use ($value) {
-						$query->where(function ($query) {
-							$query->where('transaction_id', '!=', 'featured')->orWhereNull('transaction_id');
-						});
-						$query->where('active', 1);
-					});
-				}
-				if ($value == 4) {
-					$this->xPanel->addClause('where', 'featured', '=', 1);
-					$this->xPanel->addClause('whereHas', 'payments', function ($query) use ($value) {
-						$query->where('transaction_id', 'featured');
-						$query->where('active', 1);
-					});
-				}
-			});
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'status',
-			'type'  => 'dropdown',
-			'label' => trans('admin.Status'),
-		], [
-			1 => trans('admin.Activated'),
-			2 => trans('admin.Unactivated'),
-		], function ($value) {
-			if ($value == 1) {
-				$this->xPanel->addClause('where', 'verified_email', '=', 1);
-				$this->xPanel->addClause('where', 'verified_phone', '=', 1);
-				if (config('settings.single.posts_review_activation')) {
-					$this->xPanel->addClause('where', 'reviewed', '=', 1);
-				}
-			}
-			if ($value == 2) {
-				$this->xPanel->addClause('where', 'verified_email', '=', 0);
-				$this->xPanel->addClause('orWhere', 'verified_phone', '=', 0);
-				if (config('settings.single.posts_review_activation')) {
-					$this->xPanel->addClause('orWhere', 'reviewed', '=', 0);
-				}
-			}
-		});
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'status',
+		// 	'type'  => 'dropdown',
+		// 	'label' => trans('admin.Status'),
+		// ], [
+		// 	1 => trans('admin.Activated'),
+		// 	2 => trans('admin.Unactivated'),
+		// ], function ($value) {
+		// 	if ($value == 1) {
+		// 		$this->xPanel->addClause('where', 'verified_email', '=', 1);
+		// 		$this->xPanel->addClause('where', 'verified_phone', '=', 1);
+		// 		if (config('settings.single.posts_review_activation')) {
+		// 			$this->xPanel->addClause('where', 'reviewed', '=', 1);
+		// 		}
+		// 	}
+		// 	if ($value == 2) {
+		// 		$this->xPanel->addClause('where', 'verified_email', '=', 0);
+		// 		$this->xPanel->addClause('orWhere', 'verified_phone', '=', 0);
+		// 		if (config('settings.single.posts_review_activation')) {
+		// 			$this->xPanel->addClause('orWhere', 'reviewed', '=', 0);
+		// 		}
+		// 	}
+		// });
 		
 		
 		/*

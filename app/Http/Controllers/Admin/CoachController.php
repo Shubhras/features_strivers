@@ -66,85 +66,85 @@ class CoachController extends PanelController
 		
 		// Filters
 		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'id',
-			'type'  => 'text',
-			'label' => 'ID',
-		],
-			false,
-			function ($value) {
-				$this->xPanel->addClause('where', 'id', '=', $value);
-			});
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'from_to',
-			'type'  => 'date_range',
-			'label' => trans('admin.Date range'),
-		],
-			false,
-			function ($value) {
-				$dates = json_decode($value);
-				$this->xPanel->addClause('where', 'created_at', '>=', $dates->from);
-				$this->xPanel->addClause('where', 'created_at', '<=', $dates->to);
-			});
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'name',
-			'type'  => 'text',
-			'label' => trans('admin.Name'),
-		],
-			false,
-			function ($value) {
-				$this->xPanel->addClause('where', 'name', 'LIKE', "%$value%");
-			});
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'country',
-			'type'  => 'select2',
-			'label' => mb_ucfirst(trans('admin.country')),
-		],
-			getCountries(),
-			function ($value) {
-				$this->xPanel->addClause('where', 'country_code', '=', $value);
-			});
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'status',
-			'type'  => 'dropdown',
-			'label' => trans('admin.Status'),
-		], [
-			1 => trans('admin.Unactivated'),
-			2 => trans('admin.Activated'),
-		], function ($value) {
-			if ($value == 1) {
-				$this->xPanel->addClause('where', 'verified_email', '=', 0);
-				$this->xPanel->addClause('orWhere', 'verified_phone', '=', 0);
-			}
-			if ($value == 2) {
-				$this->xPanel->addClause('where', 'verified_email', '=', 1);
-				$this->xPanel->addClause('where', 'verified_phone', '=', 1);
-			}
-		});
-		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'type',
-			'type'  => 'dropdown',
-			'label' => trans('admin.permissions_roles'),
-		], [
-			1 => trans('admin.Has Admins Permissions'),
-			2 => trans('admin.Has Super-Admins Permissions'),
-			3 => trans('admin.Has Super-Admins Role'),
-		], function ($value) {
-			if ($value == 1) {
-				$this->xPanel->addClause('permission', Permission::getStaffPermissions());
-			}
-			if ($value == 2) {
-				$this->xPanel->addClause('permission', Permission::getSuperAdminPermissions());
-			}
-			if ($value == 3) {
-				$this->xPanel->addClause('role', Role::getSuperAdminRole());
-			}
-		});
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'id',
+		// 	'type'  => 'text',
+		// 	'label' => 'ID',
+		// ],
+		// 	false,
+		// 	function ($value) {
+		// 		$this->xPanel->addClause('where', 'id', '=', $value);
+		// 	});
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'from_to',
+		// 	'type'  => 'date_range',
+		// 	'label' => trans('admin.Date range'),
+		// ],
+		// 	false,
+		// 	function ($value) {
+		// 		$dates = json_decode($value);
+		// 		$this->xPanel->addClause('where', 'created_at', '>=', $dates->from);
+		// 		$this->xPanel->addClause('where', 'created_at', '<=', $dates->to);
+		// 	});
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'name',
+		// 	'type'  => 'text',
+		// 	'label' => trans('admin.Name'),
+		// ],
+		// 	false,
+		// 	function ($value) {
+		// 		$this->xPanel->addClause('where', 'name', 'LIKE', "%$value%");
+		// 	});
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'country',
+		// 	'type'  => 'select2',
+		// 	'label' => mb_ucfirst(trans('admin.country')),
+		// ],
+		// 	getCountries(),
+		// 	function ($value) {
+		// 		$this->xPanel->addClause('where', 'country_code', '=', $value);
+		// 	});
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'status',
+		// 	'type'  => 'dropdown',
+		// 	'label' => trans('admin.Status'),
+		// ], [
+		// 	1 => trans('admin.Unactivated'),
+		// 	2 => trans('admin.Activated'),
+		// ], function ($value) {
+		// 	if ($value == 1) {
+		// 		$this->xPanel->addClause('where', 'verified_email', '=', 0);
+		// 		$this->xPanel->addClause('orWhere', 'verified_phone', '=', 0);
+		// 	}
+		// 	if ($value == 2) {
+		// 		$this->xPanel->addClause('where', 'verified_email', '=', 1);
+		// 		$this->xPanel->addClause('where', 'verified_phone', '=', 1);
+		// 	}
+		// });
+		// // -----------------------
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'type',
+		// 	'type'  => 'dropdown',
+		// 	'label' => trans('admin.permissions_roles'),
+		// ], [
+		// 	1 => trans('admin.Has Admins Permissions'),
+		// 	2 => trans('admin.Has Super-Admins Permissions'),
+		// 	3 => trans('admin.Has Super-Admins Role'),
+		// ], function ($value) {
+		// 	if ($value == 1) {
+		// 		$this->xPanel->addClause('permission', Permission::getStaffPermissions());
+		// 	}
+		// 	if ($value == 2) {
+		// 		$this->xPanel->addClause('permission', Permission::getSuperAdminPermissions());
+		// 	}
+		// 	if ($value == 3) {
+		// 		$this->xPanel->addClause('role', Role::getSuperAdminRole());
+		// 	}
+		// });
 		
 		/*
 		|--------------------------------------------------------------------------
@@ -315,14 +315,14 @@ class CoachController extends PanelController
 					'class' => 'col-md-6',
 				],
 			]);
-			$this->xPanel->addField([
-				'name'              => 'blocked',
-				'label'             => trans('admin.Blocked'),
-				'type'              => 'checkbox_switch',
-				'wrapperAttributes' => [
-					'class' => 'col-md-6',
-				],
-			]);
+			// $this->xPanel->addField([
+			// 	'name'              => 'blocked',
+			// 	'label'             => trans('admin.Blocked'),
+			// 	'type'              => 'checkbox_switch',
+			// 	'wrapperAttributes' => [
+			// 		'class' => 'col-md-6',
+			// 	],
+			// ]);
 			$entity = $this->xPanel->getModel()->find(request()->segment(3));
 			if (!empty($entity)) {
 				$ipLink = config('larapen.core.ipLinkBase') . $entity->ip_addr;

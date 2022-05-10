@@ -742,7 +742,7 @@ return [
     'Pinterest URL' => 'Pinterest URL',
     'Instagram URL' => 'Instagram URL',
     'Hide Powered by Info' => 'Hide Powered by Info',
-    'Powered by' => 'Powered by',
+    'Powered by' => '',
     'other_html_google_maps' => '<h3>Google Maps</h3>',
     'Google Maps Key' => 'Google Maps Key',
     'other_html_number_format' => '<h3>Number Format</h3>',

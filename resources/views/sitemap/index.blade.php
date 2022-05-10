@@ -1,8 +1,5 @@
 {{--
- * LaraClassifier - Classified Ads Web Application
- * Copyright (c) BeDigit. All Rights Reserved
- *
- * Website: https://laraclassifier.com
+ * 
  *
  * LICENSE
  * -------
@@ -141,7 +138,7 @@
 
 				</div>
 				
-				@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.social.horizontal', 'layouts.inc.social.horizontal'])
+				<!-- @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.social.horizontal', 'layouts.inc.social.horizontal']) -->
 				
 			</div>
 		</div>

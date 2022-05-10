@@ -250,8 +250,8 @@ class Strivre extends BaseModel
 			$tooltip = '" data-bs-toggle="tooltip" title="' . t('Cannot impersonate unactivated users') . '"';
 			$out .= '<a class="btn btn-xs btn-warning" ' . $tooltip . '><i class="fa fa-lock"></i></a>';
 		} else {
-			$tooltip = '" data-bs-toggle="tooltip" title="' . t('Impersonate this user') . '"';
-			$out .= '<a class="btn btn-xs btn-light" href="' . $impersonateUrl . '" ' . $tooltip . '><i class="fas fa-sign-in-alt"></i></a>';
+			// $tooltip = '" data-bs-toggle="tooltip" title="' . t('Impersonate this user') . '"';
+			// $out .= '<a class="btn btn-xs btn-light" href="' . $impersonateUrl . '" ' . $tooltip . '><i class="fas fa-sign-in-alt"></i></a>';
 		}
 		
 		return $out;

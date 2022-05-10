@@ -225,7 +225,6 @@ Route::get('payment', 'App\Http\Controllers\StripePaymentController@forward_back
 Route::post('stripe', 'App\Http\Controllers\StripePaymentController@stripePost')->name('stripe.post');
 
 
-
 Route::group([
 	'namespace' => 'App\Http\Controllers\Web',
 ], function ($router) {

@@ -403,7 +403,7 @@ class StripePaymentController extends Controller
                          'expand' => ['latest_invoice.payment_intent'],
                      ]);
                      //update price id in order form table
-                     // print_r($subscription);die;
+                    //  print_r($subscription);die;
                      DB::table('payments')->where('id', $value->id)->update([
                          'amount' => $request->price * 100
                      ]);

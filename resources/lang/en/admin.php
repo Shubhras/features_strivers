@@ -116,7 +116,7 @@ return [
 	'user_coach' => 'Coach',
 	
     'handcrafted_by'       => 'Powered by',
-    'powered_by'           => 'Powered by',
+    'powered_by'           => '',
 
 
     /*
@@ -896,8 +896,8 @@ e.g. With MAMP (on Mac OS) we can done it like that: <code>DB_DUMP_BINARY_PATH=/
 	'LinkedIn URL' => 'LinkedIn URL',
 	'Pinterest URL' => 'Pinterest URL',
 	'Instagram URL' => 'Instagram URL',
-	'Hide Powered by Info' => 'Hide Powered by Info',
-	'Powered by' => 'Powered by',
+	'Hide Powered by Info' => '',
+	'Powered by' => '',
 	'other_html_google_maps' => '<h3>Google Maps</h3>',
 	'Google Maps Key' => 'Google Maps Key',
 	'other_html_number_format' => '<h3>Number Format</h3>',
@@ -1047,8 +1047,12 @@ e.g. With MAMP (on Mac OS) we can done it like that: <code>DB_DUMP_BINARY_PATH=/
 	'Delete' => 'Delete',
 	'No pictures found' => 'No pictures found.',
 	'Information' => 'Information',
-	'help_translatable_table' => 'To translate this list you have to select a language by clicking on the dropdown button <a class="btn btn-xs btn-primary dropdown-toggle dropdown-toggle-split text-white" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle</span></a> icon located at the right of each <a class="btn btn-xs btn-primary text-white"><i class="far fa-edit"></i> Edit</a> button.',
-	'help_translatable_column' => 'Translatable fields can be identified by the <i class="fas fa-flag-checkered"></i> icon before or after their label in the form.',
+
+	'help_translatable_table' => '',
+	'help_translatable_column' =>'',
+	// 'help_translatable_table' => 'To translate this list you have to select a language by clicking on the dropdown button <a class="btn btn-xs btn-primary dropdown-toggle dropdown-toggle-split text-white" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle</span></a> icon located at the right of each <a class="btn btn-xs btn-primary text-white"><i class="far fa-edit"></i> Edit</a> button.',
+	
+	// 'help_translatable_column' => 'Translatable fields can be identified by the <i class="fas fa-flag-checkered"></i> icon before or after their label in the form.',
 	'To' => 'To',
 	'From' => 'From',
 	'Reset the homepage sections reorder' => 'Reset the homepage sections reorder.',

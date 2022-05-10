@@ -125,6 +125,6 @@ class DashboardController extends PanelController
 	public function redirect()
 	{
 		// The '/admin' route is not to be used as a page, because it breaks the menu's active state.
-		return redirect(admin_uri('dashboard'));
+		return redirect(admin_uri('latest_news'));
 	}
 }
