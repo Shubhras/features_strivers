@@ -276,9 +276,9 @@
                         
                         window.addEventListener('DOMContentLoaded', (event) => {
                             CometChatWidget.init({
-                                "appID": "206672f6b5d16174",
+                                "appID": "2092607fb09acc5d",
                                 "appRegion": "us",
-                                "authKey": "21efe93fe3c90c05a5de58d2ada3447a84cfdd5c"
+                                "authKey": "5de6e5cebecc59e0a723c4e125ecd585a0a0cb84"
                             }).then(response => {
                                 console.log("Initialization completed successfully");
                                 //You can now call login function.
@@ -286,7 +286,7 @@
                                     "uid": valueArray
                                 }).then(response => {
                                     CometChatWidget.launch({
-                                        "widgetID": "e1f88e4f-f162-431b-a95f-fd2d551a7db5",
+                                        "widgetID": "286764bf-4a55-46f7-aa54-2a4c86ab1fde",
                                         "target": "#cometchat",
                                         "roundedCorners": "true",
                                         "height": "600px",
@@ -643,9 +643,9 @@
                         
                         window.addEventListener('DOMContentLoaded', (event) => {
                             CometChatWidget.init({
-                                "appID": "206672f6b5d16174",
+                                "appID": "2092607fb09acc5d",
                                 "appRegion": "us",
-                                "authKey": "21efe93fe3c90c05a5de58d2ada3447a84cfdd5c"
+                                "authKey": "5de6e5cebecc59e0a723c4e125ecd585a0a0cb84"
                             }).then(response => {
                                 console.log("Initialization completed successfully");
                                 //You can now call login function.
@@ -653,7 +653,7 @@
                                     "uid": valueArray
                                 }).then(response => {
                                     CometChatWidget.launch({
-                                        "widgetID": "e1f88e4f-f162-431b-a95f-fd2d551a7db5",
+                                        "widgetID": "286764bf-4a55-46f7-aa54-2a4c86ab1fde",
                                         "target": "#cometchat",
                                         "roundedCorners": "true",
                                         "height": "600px",
