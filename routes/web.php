@@ -459,6 +459,8 @@ Route::group([
 				Route::put('photo', 'EditController@updatePhoto');
 				Route::post('enroll_course', 'EditController@enroll_course_striver');
 				Route::post('article_payment', 'EditController@payArticle');
+
+				Route::post('get_payment_coach_request', 'EditController@getPaymentCoachRequest');
 				
 				// Route::get('allcities/{id}','EditController@getCountryLocation');
 				Route::get('article', 'EditController@getMyArticle');
