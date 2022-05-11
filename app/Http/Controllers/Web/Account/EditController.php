@@ -510,7 +510,7 @@ $enroldStrvreUser_id = 0;
 						// return redirect('/pricing');
 					}
 				}
-			}
+			
 		} else {
 			Session()
 				->flash('loginerror', 'You do not access.');
