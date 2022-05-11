@@ -373,11 +373,32 @@ class EditController extends AccountBaseController
 			} else {
 
 
-				$enroll_course_by_strivre = DB::table('enroll_course')->select('enroll_course.course_id')->where('enroll_course.user_id', $user->id)->orWhere('enroll_course.course_id', $request->course_id)->first();
+		$enroll_course_by_strivre = DB::table('enroll_course')->select('enroll_course.*')->where('enroll_course.user_id', $user->id)->where('enroll_course.course_id', $request->course_id)->get();
 
+				if(!empty($enroll_course_by_strivre->course_id)){
+		
 				$enroldStrvreCourse = $enroll_course_by_strivre->course_id;
+					
+				}else{
+			$enroldStrvreCourse = 0;
+}
 
-				if ($enroldStrvreCourse == $request->course_id) {
+
+
+
+
+if(!empty($enroll_course_by_strivre->user_id)){
+
+                                $enroldStrvreUser_id = $enroll_course_by_strivre->user_id;
+
+                                } else{
+
+
+$enroldStrvreUser_id = 0;
+}
+
+                                
+				if ($enroldStrvreCourse == $request->course_id || $enroldStrvreUser_id == $user->id) {
 
 					Session()
 						->flash('loginerrorenroll', 'You have already enroll course .');

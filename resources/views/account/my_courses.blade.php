@@ -313,7 +313,7 @@
 										<div class="feature-course-item-4">
 											<div class="fcf-thumb">
 												<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" class="image-height" style="height: 244px; weight: 244px;">
-												<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" onclick="customSession()">View Package</a>
+												//<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" onclick="customSession()">View Package</a>
 											</div>
 
 											<div class="fci-details">
@@ -545,7 +545,7 @@
 										<div class="feature-course-item-4">
 											<div class="fcf-thumb">
 												<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
-												<!-- <a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">View Package</a> -->
+												 <a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">View Package</a> 
 											</div>
 											<div class="fci-details">
 												<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
