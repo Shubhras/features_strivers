@@ -322,7 +322,7 @@
 
                                     <label class="f-17 sort_name index-34 find-letest-news">{{$value->course_name}}</label>
                                     <div class="course-price">
-                                        {{$value->course_hourse}} Credits
+                                        {{$value->creadit_required}} Credits
                                     </div>
                                 </a>
                             </div>
