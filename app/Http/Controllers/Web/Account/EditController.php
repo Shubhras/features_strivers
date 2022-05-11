@@ -357,7 +357,7 @@ class EditController extends AccountBaseController
 	public function enroll_course_striver(Request $request)
 	{
 
-
+		// print_r($request->all());die;
 
 		$user = auth()->user();
 		if ($user->user_type_id == 3) {
@@ -367,7 +367,15 @@ class EditController extends AccountBaseController
 			} else {
 
 
-				$enroll_course_by_strivre = DB::table('enroll_course')->select('enroll_course.*')->where('enroll_course.user_id', $user->id)->where('enroll_course.course_id', $request->course_id)->get();
+		
+				$enroll_course_by_strivre = DB::table('enroll_course')->select('enroll_course.*')->where('enroll_course.user_id', $user->id)->where('enroll_course.course_id', $request->course_id)->first();
+				
+		// print_r($enroll_course_by_strivre);die;
+		// isset($enroll_course_by_strivre->course_id) ? $enroll_course_by_strivre->course_id : 'NA';
+
+				// if(empty($enroll_course_by_strivre->course_id)){
+					
+				// }
 
 				if (!empty($enroll_course_by_strivre->course_id)) {
 
@@ -380,7 +388,7 @@ class EditController extends AccountBaseController
 
 
 
-				if (!empty($enroll_course_by_strivre->user_id)) {
+      if(!empty($enroll_course_by_strivre->user_id)){
 
 					$enroldStrvreUser_id = $enroll_course_by_strivre->user_id;
 				} else {
@@ -389,8 +397,14 @@ class EditController extends AccountBaseController
 					$enroldStrvreUser_id = 0;
 				}
 
+$enroldStrvreUser_id = 0;
 
-				if ($enroldStrvreCourse == $request->course_id || $enroldStrvreUser_id == $user->id) {
+}
+				
+			
+				// print_r($value->course_id);die;
+                                
+				if ($enroldStrvreCourse == $request->course_id ) {
 
 					Session()
 						->flash('loginerrorenroll', 'You have already enroll course .');
@@ -1674,7 +1688,7 @@ class EditController extends AccountBaseController
 		// print_r($data);die;
 
 		DB::table('coach_payment_request')->insert($data);
-		
+
 
 		return redirect('/account/my_payments');
 
