@@ -178,21 +178,21 @@ class EditController extends AccountBaseController
 		// print_r($data);die;
 
 
-		if(empty(auth()->user())){
-		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)->limit(8)->inRandomOrder()->get();
-		}else{
+		if (empty(auth()->user())) {
+			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)->limit(8)->inRandomOrder()->get();
+		} else {
 
 			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)
-			->where('users.category',$user->category)
-			->limit(8)->inRandomOrder()->get();
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)
+				->where('users.category', $user->category)
+				->limit(8)->inRandomOrder()->get();
 		}
 
 		$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
@@ -278,19 +278,19 @@ class EditController extends AccountBaseController
 		// print_r($data['my_coaches']);die;
 
 		if (empty(auth()->user())) {
-		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)->inRandomOrder()->limit(8)->get();
-		}else{
 			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)
-			->where('users.category',$user->category)
-			->inRandomOrder()->limit(8)->get();
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)->inRandomOrder()->limit(8)->get();
+		} else {
+			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)
+				->where('users.category', $user->category)
+				->inRandomOrder()->limit(8)->get();
 		}
 		$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
@@ -315,17 +315,17 @@ class EditController extends AccountBaseController
 			->where('enroll_course.coach_id', $user->id)->groupBy('enroll_course.user_id')->get();
 
 		if (empty(auth()->user())) {
-			
-		
+
+
 			$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
-			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
-			->limit(8)->get();
-		}else{
+				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
+				->limit(8)->get();
+		} else {
 			$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
-			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
-			->where('users.category',$user->category)
-			->inRandomOrder()
-			->limit(8)->get();
+				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
+				->where('users.category', $user->category)
+				->inRandomOrder()
+				->limit(8)->get();
 		}
 		$data['subscription_plan'] = Package::query()->get();
 
@@ -347,16 +347,10 @@ class EditController extends AccountBaseController
 
 		if (empty($edit_user->category)) {
 			return view('auth.register.user_category', $data);
-
 		} else {
 
 			return appView('account.my_coaches', $data);
 		}
-
-
-
-
-		
 	}
 
 
@@ -373,31 +367,29 @@ class EditController extends AccountBaseController
 			} else {
 
 
-		$enroll_course_by_strivre = DB::table('enroll_course')->select('enroll_course.*')->where('enroll_course.user_id', $user->id)->where('enroll_course.course_id', $request->course_id)->get();
+				$enroll_course_by_strivre = DB::table('enroll_course')->select('enroll_course.*')->where('enroll_course.user_id', $user->id)->where('enroll_course.course_id', $request->course_id)->get();
 
-				if(!empty($enroll_course_by_strivre->course_id)){
-		
-				$enroldStrvreCourse = $enroll_course_by_strivre->course_id;
-					
-				}else{
-			$enroldStrvreCourse = 0;
-}
+				if (!empty($enroll_course_by_strivre->course_id)) {
 
+					$enroldStrvreCourse = $enroll_course_by_strivre->course_id;
+				} else {
+					$enroldStrvreCourse = 0;
+				}
 
 
 
 
-if(!empty($enroll_course_by_strivre->user_id)){
 
-                                $enroldStrvreUser_id = $enroll_course_by_strivre->user_id;
+				if (!empty($enroll_course_by_strivre->user_id)) {
 
-                                } else{
+					$enroldStrvreUser_id = $enroll_course_by_strivre->user_id;
+				} else {
 
 
-$enroldStrvreUser_id = 0;
-}
+					$enroldStrvreUser_id = 0;
+				}
 
-                                
+
 				if ($enroldStrvreCourse == $request->course_id || $enroldStrvreUser_id == $user->id) {
 
 					Session()
@@ -414,7 +406,7 @@ $enroldStrvreUser_id = 0;
 						->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
 						->get();
 
-						// print_r($data['user_subscription']);die;
+					// print_r($data['user_subscription']);die;
 
 					$totalsum = array();
 					$name = array();
@@ -446,15 +438,14 @@ $enroldStrvreUser_id = 0;
 					$data['consumed_hours'] = array_sum($consumed_hours);
 
 					// print_r($request->creadit_required);die;
-					if(empty($request->creadit_required)){
+					if (empty($request->creadit_required)) {
 						$creditDtat = '0';
 
 						$consumeddat =  $data['consumed_hours'] + $creditDtat;
-
-					}else{
+					} else {
 						$consumeddat =  $data['consumed_hours'] + $request->creadit_required;
 					}
-					
+
 
 					$remaining_hours = $totalpoints - $consumeddat;
 					$remaining_hourss = $totalpoints - $data['consumed_hours'];
@@ -490,7 +481,6 @@ $enroldStrvreUser_id = 0;
 						// ->back();
 
 						return redirect('account/my_courses');
-
 					} else {
 
 
@@ -525,7 +515,7 @@ $enroldStrvreUser_id = 0;
 		$data['genders'] = Gender::query()->get();
 
 		$user = auth()->user();
-	
+
 		// Mini Stats
 		$data['countPostsVisits'] = DB::table((new Post())->getTable())
 			->select('user_id', DB::raw('SUM(visits) as total_visits'))
@@ -547,20 +537,20 @@ $enroldStrvreUser_id = 0;
 		// ->leftjoin('packages' ,'packages.id' ,'=' ,'users.subscription_plans')
 		// ->where('users.user_type_id',2)->orderBy('users.id','asc')->limit(3)->get();
 
-		if(empty(auth()->user())){
-		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)->inRandomOrder()->limit(8)->get();
-		}else{
-		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-		->leftjoin('categories', 'categories.id', '=', 'users.category')
-		->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-		->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-		->where('users.user_type_id', 2)
-		->where('users.category',$user->category)
-		->inRandomOrder()->limit(8)->get();
+		if (empty(auth()->user())) {
+			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)->inRandomOrder()->limit(8)->get();
+		} else {
+			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)
+				->where('users.category', $user->category)
+				->inRandomOrder()->limit(8)->get();
 		}
 		$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
@@ -597,7 +587,7 @@ $enroldStrvreUser_id = 0;
 			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
 			->limit(6)->get();
 
-		
+
 		$data['enroll_coach_coarse'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo', 'enroll_course.user_id')
 			->leftJoin('enroll_course', 'enroll_course.course_id', '=', 'coach_course.id')
 			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
@@ -606,16 +596,16 @@ $enroldStrvreUser_id = 0;
 			->limit(6)->get();
 
 
-		if(empty(auth()->user())){
-		$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
-			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
-			->limit(8)->get();
-		}else{
-		$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
-		->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
-		->where('users.category',$user->category)
-		->inRandomOrder()
-		->limit(8)->get();
+		if (empty(auth()->user())) {
+			$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
+				->limit(8)->get();
+		} else {
+			$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
+				->where('users.category', $user->category)
+				->inRandomOrder()
+				->limit(8)->get();
 		}
 		// print_r($data['coach_striver']);die;
 		MetaTag::set('title', t('my_account'));
@@ -630,13 +620,10 @@ $enroldStrvreUser_id = 0;
 		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
 		if (empty($edit_user->category)) {
 			return view('auth.register.user_category', $data);
-			
 		} else {
 
 			return appView('account.my_courses', $data);
 		}
-
-		
 	}
 
 
@@ -665,7 +652,7 @@ $enroldStrvreUser_id = 0;
 		})->where('user_id', $user->id)
 			->count();
 
-		
+
 		$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
@@ -698,9 +685,9 @@ $enroldStrvreUser_id = 0;
 
 		$data['coach_course'] = DB::table('latest_new')->select('latest_new.*')->orderBy('latest_new.id', 'asc')->get();
 
-		$data['my_article'] = DB::table('latest_new')->select('latest_new.*')->where('user_id',$user->id)->orderBy('latest_new.id', 'desc')->limit(8)->get();
+		$data['my_article'] = DB::table('latest_new')->select('latest_new.*')->where('user_id', $user->id)->orderBy('latest_new.id', 'desc')->limit(8)->get();
 		// $data['my_article1'] = DB::table('latest_new')->select('latest_new.*')->where('user_id',$user->id)->orderBy('latest_new.id', 'desc')->limit(8)->get();
-		
+
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
@@ -716,13 +703,10 @@ $enroldStrvreUser_id = 0;
 
 		if (empty($edit_user->category)) {
 			return view('auth.register.user_category', $data);
-			
 		} else {
 			// print_r($data);die;
 			return appView('account.myarticle', $data);
 		}
-
-		
 	}
 
 
@@ -814,15 +798,15 @@ $enroldStrvreUser_id = 0;
 		} else {
 			$dates = date('d-m-y h:i:s');
 		}
-		$username= '{"en":"'.$request->name.'"}';
+		$username = '{"en":"' . $request->name . '"}';
 
-		
 
-		$article_title	= str_slug($request->title , "-");
 
-		$title= '{"en":"'.$article_title.'"}';
+		$article_title	= str_slug($request->title, "-");
 
-		$content= '{"en":"'.$request->content.'"}';
+		$title = '{"en":"' . $article_title . '"}';
+
+		$content = '{"en":"' . $request->content . '"}';
 
 
 
@@ -832,7 +816,7 @@ $enroldStrvreUser_id = 0;
 		$data = array(
 			'user_id' =>  $user->id,
 			'name' => $username,
-			'slug' => str_slug($request->slug , "-"),
+			'slug' => str_slug($request->slug, "-"),
 			'title' => $title,
 			'seo_title' => '{"en":null}',
 			'seo_description' => '{"en":null}',
@@ -945,15 +929,15 @@ $enroldStrvreUser_id = 0;
 		} else {
 			$dates = date('d-m-y h:i:s');
 		}
-		$username= '{"en":"'.$request->name.'"}';
+		$username = '{"en":"' . $request->name . '"}';
 
-		
 
-		$article_title	= str_slug($request->title , "-");
 
-		$title= '{"en":"'.$article_title.'"}';
+		$article_title	= str_slug($request->title, "-");
 
-		$content= '{"en":"'.$request->content.'"}';
+		$title = '{"en":"' . $article_title . '"}';
+
+		$content = '{"en":"' . $request->content . '"}';
 
 
 
@@ -963,7 +947,7 @@ $enroldStrvreUser_id = 0;
 		$data = array(
 			'user_id' =>  $user->id,
 			'name' => $username,
-			'slug' => str_slug($request->slug , "-"),
+			'slug' => str_slug($request->slug, "-"),
 			'title' => $title,
 			'seo_title' => '{"en":null}',
 			'seo_description' => '{"en":null}',
@@ -984,7 +968,7 @@ $enroldStrvreUser_id = 0;
 
 
 
-		$tru = DB::table('latest_new')->where('id',$request->id)->update($data);
+		$tru = DB::table('latest_new')->where('id', $request->id)->update($data);
 
 		// return redirect('my_courses')->back();
 		return redirect('/account/article');
@@ -994,7 +978,7 @@ $enroldStrvreUser_id = 0;
 	public function payArticle(Request $request)
 	{
 
-// print_r($request->all());die;
+		// print_r($request->all());die;
 
 		$user = auth()->user();
 		if ($user->user_type_id == 3) {
@@ -1005,16 +989,16 @@ $enroldStrvreUser_id = 0;
 
 
 				$enroll_course_by_strivre = DB::table('article_price')->select('article_price.article_id')->where('article_price.strivre_id', $user->id)->orWhere('article_price.article_id', $request->article_id)->first();
-				
 
-				if(empty($enroll_course_by_strivre->article_id)){
+
+				if (empty($enroll_course_by_strivre->article_id)) {
 					$enroldStrvreCourse = 0;
-				}else{
+				} else {
 
-				
-				$enroldStrvreCourse = $enroll_course_by_strivre->article_id;
-			}
-				
+
+					$enroldStrvreCourse = $enroll_course_by_strivre->article_id;
+				}
+
 
 				if ($enroldStrvreCourse == $request->article_id) {
 
@@ -1023,7 +1007,6 @@ $enroldStrvreUser_id = 0;
 					// return redirect()
 					// 	->back();
 					return appView('pages.letest_cms');
-					
 				} else {
 
 					$user = auth()->user();
@@ -1034,7 +1017,7 @@ $enroldStrvreUser_id = 0;
 						->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
 						->get();
 
-						// print_r($data['user_subscription']);die;
+					// print_r($data['user_subscription']);die;
 
 					$totalsum = array();
 					$name = array();
@@ -1066,19 +1049,18 @@ $enroldStrvreUser_id = 0;
 					$data['consumed_hours'] = array_sum($consumed_hours);
 
 					// print_r($request->creadit_required);die;
-					if(empty($request->price)){
+					if (empty($request->price)) {
 						$creditDtat = '0';
 
 						$consumeddat =  $data['consumed_hours'] + $creditDtat;
-
-					}else{
+					} else {
 						$consumeddat =  $data['consumed_hours'] + $request->price;
 					}
-					
+
 
 					$remaining_hours = $totalpoints - $consumeddat;
 					$remaining_hourss = $totalpoints - $data['consumed_hours'];
-					
+
 					if ($remaining_hourss >=  $request->price) {
 
 
@@ -1099,7 +1081,7 @@ $enroldStrvreUser_id = 0;
 						DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' => $consumeddat, 'user_subscription_payment.remaining_hours' => $remaining_hours]);
 
 
-						
+
 						// return redirect()
 						// ->back();
 
@@ -1108,65 +1090,65 @@ $enroldStrvreUser_id = 0;
 						$slug = $request->title;
 
 
-				$page = $this->getLetestBySlug($slug);
+						$page = $this->getLetestBySlug($slug);
 
-				if (empty($page)) {
-					abort(404);
-				}
+						if (empty($page)) {
+							abort(404);
+						}
 
-				view()->share('page', $page);
-				view()->share('uriPathPageSlug', $slug);
+						view()->share('page', $page);
+						view()->share('uriPathPageSlug', $slug);
 
-				// Check if an external link is available
-				if (!empty($page->external_link)) {
-					return redirect()->away($page->external_link, 301)->withHeaders(config('larapen.core.noCacheHeaders'));
-				}
+						// Check if an external link is available
+						if (!empty($page->external_link)) {
+							return redirect()->away($page->external_link, 301)->withHeaders(config('larapen.core.noCacheHeaders'));
+						}
 
-				// Meta Tags
-				[$title, $description, $keywords] = getMetaTag('staticPage');
-				$title = str_replace('{page.title}', $page->seo_title, $title);
-				$title = str_replace('{app.name}', config('app.name'), $title);
-				$title = str_replace('{country.name}', config('country.name'), $title);
+						// Meta Tags
+						[$title, $description, $keywords] = getMetaTag('staticPage');
+						$title = str_replace('{page.title}', $page->seo_title, $title);
+						$title = str_replace('{app.name}', config('app.name'), $title);
+						$title = str_replace('{country.name}', config('country.name'), $title);
 
-				$description = str_replace('{page.description}', $page->seo_description, $description);
-				$description = str_replace('{app.name}', config('app.name'), $description);
-				$description = str_replace('{country.name}', config('country.name'), $description);
+						$description = str_replace('{page.description}', $page->seo_description, $description);
+						$description = str_replace('{app.name}', config('app.name'), $description);
+						$description = str_replace('{country.name}', config('country.name'), $description);
 
-				$keywords = str_replace('{page.keywords}', $page->seo_keywords, $keywords);
-				$keywords = str_replace('{app.name}', config('app.name'), $keywords);
-				$keywords = str_replace('{country.name}', config('country.name'), $keywords);
+						$keywords = str_replace('{page.keywords}', $page->seo_keywords, $keywords);
+						$keywords = str_replace('{app.name}', config('app.name'), $keywords);
+						$keywords = str_replace('{country.name}', config('country.name'), $keywords);
 
-				if (empty($title)) {
-					$title = $page->title . ' - ' . config('app.name');
-				}
-				if (empty($description)) {
-					$description = Str::limit(str_strip(strip_tags($page->content)), 200);
-				}
+						if (empty($title)) {
+							$title = $page->title . ' - ' . config('app.name');
+						}
+						if (empty($description)) {
+							$description = Str::limit(str_strip(strip_tags($page->content)), 200);
+						}
 
-				$title = removeUnmatchedPatterns($title);
-				$description = removeUnmatchedPatterns($description);
-				$keywords = removeUnmatchedPatterns($keywords);
+						$title = removeUnmatchedPatterns($title);
+						$description = removeUnmatchedPatterns($description);
+						$keywords = removeUnmatchedPatterns($keywords);
 
-				MetaTag::set('title', $title);
-				MetaTag::set('description', $description);
-				MetaTag::set('keywords', $keywords);
+						MetaTag::set('title', $title);
+						MetaTag::set('description', $description);
+						MetaTag::set('keywords', $keywords);
 
-				// Open Graph
-				$this->og->title($title)->description($description);
-				if (!empty($page->picture)) {
-					if ($this->og->has('image')) {
-						$this->og->forget('image')->forget('image:width')->forget('image:height');
-					}
-					$this->og->image(imgUrl($page->picture, 'bgHeader'), [
-						'width'  => 600,
-						'height' => 600,
-					]);
-				}
-				view()->share('og', $this->og);
+						// Open Graph
+						$this->og->title($title)->description($description);
+						if (!empty($page->picture)) {
+							if ($this->og->has('image')) {
+								$this->og->forget('image')->forget('image:width')->forget('image:height');
+							}
+							$this->og->image(imgUrl($page->picture, 'bgHeader'), [
+								'width'  => 600,
+								'height' => 600,
+							]);
+						}
+						view()->share('og', $this->og);
 
 
-				Session()->flash('messagess2', ' Article Payment Successfully !');
-						
+						Session()->flash('messagess2', ' Article Payment Successfully !');
+
 						return appView('pages.letest_cms');
 						// return redirect('letest_news/'.$slug);
 					} else {
@@ -1223,20 +1205,20 @@ $enroldStrvreUser_id = 0;
 			->count();
 
 
-		if(empty(auth()->user())){
-		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
-		}else{
-		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-		->leftjoin('categories', 'categories.id', '=', 'users.category')
-		->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-		->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-		->where('users.user_type_id', 2)
-		->where('users.category',$user->category)
-		->orderBy('users.id', 'asc')->limit(8)->get();
+		if (empty(auth()->user())) {
+			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+		} else {
+			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)
+				->where('users.category', $user->category)
+				->orderBy('users.id', 'asc')->limit(8)->get();
 		}
 		$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
@@ -1351,27 +1333,27 @@ $enroldStrvreUser_id = 0;
 		// 		$session_s = $value->session_id;
 		// 	}
 
-			// print_r($session_s);die;
+		// print_r($session_s);die;
 
 
-			$curl = curl_init();
+		$curl = curl_init();
 
-			curl_setopt_array($curl, array(
-				CURLOPT_URL => 'https://metrics-us.cometchat.io/v1/calls/sessions/$session_s/participants',
-				CURLOPT_RETURNTRANSFER => true,
-				CURLOPT_ENCODING => '',
-				CURLOPT_MAXREDIRS => 10,
-				CURLOPT_TIMEOUT => 0,
-				CURLOPT_FOLLOWLOCATION => true,
-				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-				CURLOPT_CUSTOMREQUEST => 'GET',
-				CURLOPT_HTTPHEADER => array(
-					'appId: 2040141e5d5dcef3',
-					'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0Nzg1MTgxNSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0Nzg0ODIxNSwiZXhwIjoxNjUwNDQzODE1LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.TJNg26DTjo_YexASHQVAnVgZriGqPY7aLW_N8VAmLzo',
-					'uid: $user->username'
-				),
-			));
-			// print_r($session_s);die;
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => 'https://metrics-us.cometchat.io/v1/calls/sessions/$session_s/participants',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'GET',
+			CURLOPT_HTTPHEADER => array(
+				'appId: 2040141e5d5dcef3',
+				'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0Nzg1MTgxNSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0Nzg0ODIxNSwiZXhwIjoxNjUwNDQzODE1LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.TJNg26DTjo_YexASHQVAnVgZriGqPY7aLW_N8VAmLzo',
+				'uid: $user->username'
+			),
+		));
+		// print_r($session_s);die;
 
 		// 	$response = curl_exec($curl);
 
@@ -1422,26 +1404,26 @@ $enroldStrvreUser_id = 0;
 		$data['totalStrivrePayment'] = count($data['totalStrivre']);
 
 		$data['strivrePayment'] = DB::table('users')
-			->select('enroll_course.id as enroll_id','enroll_course.user_id as enroll_user_id','enroll_course.coach_id as enroll_coach_id','enroll_course.payment_status','enroll_course.course_id', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
+			->select('enroll_course.id as enroll_id', 'enroll_course.user_id as enroll_user_id', 'enroll_course.coach_id as enroll_coach_id', 'enroll_course.payment_status', 'enroll_course.course_id', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
 			->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
 			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
 			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
 			->where('enroll_course.coach_id', $user->id)->get();
 
 
-			$data['strivrePaymentCount'] = DB::table('users')
+		$data['strivrePaymentCount'] = DB::table('users')
 			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
 			->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
 			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
 			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
-			->where('enroll_course.coach_id', $user->id)->where('enroll_course.payment_status','done')->get();
+			->where('enroll_course.coach_id', $user->id)->where('enroll_course.payment_status', 'done')->get();
 
-			$data['strivrePaymentAvailable'] = DB::table('users')
+		$data['strivrePaymentAvailable'] = DB::table('users')
 			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
 			->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
 			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
 			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
-			->where('enroll_course.coach_id', $user->id)->where('enroll_course.payment_status',null)->get();
+			->where('enroll_course.coach_id', $user->id)->where('enroll_course.payment_status', null)->get();
 
 
 
@@ -1458,14 +1440,10 @@ $enroldStrvreUser_id = 0;
 
 		if (empty($edit_user->category)) {
 			return view('auth.register.user_category', $data);
-			
 		} else {
 
 			return appView('account.payment_and_subscription', $data);
 		}
-
-
-		
 	}
 
 
@@ -1612,19 +1590,96 @@ $enroldStrvreUser_id = 0;
 	{
 		// print_r($request->all());die;
 
-		$paymentId = $request->id;
-
+		// $paymentId = $request->id;
+		$paymentId =implode(",",$request->id);
+		$pay = explode(',', $paymentId);
+		// print_r($pay);die;
 
 		// $subcategories = DB::table("categories")
 		// 	->where("parent_id", $request->id)
 		// 	->pluck("slug", "id");
-		foreach($paymentId as $key =>$paymentUserId){
+		$data = [];
+		$data1 = [];
+		foreach ($pay as $key => $paymentUserId) {
+			
+			
+
+			// DB::table("enroll_course")->where("enroll_course.id", $paymentUserId)->update(["enroll_course.payment_status", "done"]);
+
+			$subcategories = DB::table("enroll_course")->select('enroll_course.*','coach_course.total_consultation_fee')
+			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
+			->where("enroll_course.id", $paymentUserId)->first();
+			
+			// print_r($subcategories);die;
+			$data[$key] = $subcategories;
+			$data1[$key] = $subcategories->total_consultation_fee;
+
+			// DB::table('enroll_course')->where('enroll_course.id', $paymentUserId)->update(['enroll_course.payment_status' => 'done']);
 
 		}
-		$subcategories = DB::table("enroll_course")->select('enroll_course.*')
-			->where("enroll_course.id", $request->id)->get();
-		print_r($subcategories);die;
-		return response()->json($subcategories);
+
+		$alldata['coach_payment']=array_sum($data1);
+	
+		
+		// print_r($alldata);
+		//  die;
+		return response()->json($alldata);
+	}
+
+
+	public function getCoachPaymentRequest(Request $request){
+
+		// print_r($request->all());die;
+		$user= auth()->user();
+
+		// $user->id;
+
+		// $paymentId =implode(",",$request->select_payment_id);
+		$pay = explode(',', $request->select_payment_id);
+		// print_r($pay);die;
+
+		// $subcategories = DB::table("categories")
+		// 	->where("parent_id", $request->id)
+		// 	->pluck("slug", "id");
+		$data = [];
+		$data1 = [];
+		foreach ($pay as $key => $paymentUserId) {
+			
+			
+
+			// DB::table("enroll_course")->where("enroll_course.id", $paymentUserId)->update(["enroll_course.payment_status", "done"]);
+
+			$subcategories = DB::table("enroll_course")->select('enroll_course.*','coach_course.total_consultation_fee')
+			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
+			->where("enroll_course.id", $paymentUserId)->first();
+			
+			// print_r($subcategories);die;
+			$data[$key] = $subcategories;
+			$data1[$key] = $subcategories->total_consultation_fee;
+
+			DB::table('enroll_course')->where('enroll_course.id', $paymentUserId)->update(['enroll_course.payment_status' => 'done']);
+
+		}
+
+		$datess = date('Y-m-d h:i:s');
+		$data = array(
+			'coach_id' => $user->id,
+			'email' => $user->email,
+			'payment' => $request->total_payment_select,
+			'created_at' => $datess,
+			'updated_at' => $datess
+
+
+		);
+		// print_r($data);die;
+
+		DB::table('coach_payment_request')->insert($data);
+		
+
+		return redirect('/account/my_payments');
+
+		// DB::table('enroll_course')->where('enroll_course.id', $paymentUserId)->update(['enroll_course.payment_status' => 'done']);
+
 	}
 
 
@@ -1714,9 +1769,9 @@ $enroldStrvreUser_id = 0;
 	}
 
 	public function exportCsv(Request $request)
-{
-	$user = auth()->user();
-	$data['countPostsVisits'] = DB::table((new Post())->getTable())
+	{
+		$user = auth()->user();
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
 			->select('user_id', DB::raw('SUM(visits) as total_visits'))
 			->where('country_code', config('country.code'))
 			->where('user_id', $user->id)
@@ -1729,54 +1784,52 @@ $enroldStrvreUser_id = 0;
 			$query->currentCountry();
 		})->where('user_id', $user->id)
 			->count();
-	// print_r($request->all());die;
-	
-   $fileName = 'tasks.csv';
-//    $tasks = Task::all();
-   $data['strivrePayment1'] = DB::table('users')
+		// print_r($request->all());die;
+
+		$fileName = 'tasks.csv';
+		//    $tasks = Task::all();
+		$data['strivrePayment1'] = DB::table('users')
 			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
 			->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
 			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
 			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
 			->where('enroll_course.coach_id', $user->id)->get();
-			// print_r($data['strivrePayment']);die;
+		// print_r($data['strivrePayment']);die;
 
-        $headers = array(
-            "Content-type"        => "text/csv",
-            "Content-Disposition" => "attachment; filename=$fileName",
-            "Pragma"              => "no-cache",
-            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
-            "Expires"             => "0"
-        );
+		$headers = array(
+			"Content-type"        => "text/csv",
+			"Content-Disposition" => "attachment; filename=$fileName",
+			"Pragma"              => "no-cache",
+			"Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+			"Expires"             => "0"
+		);
 
-        $columns = array('student', 'Course', 'Total Amount', 'Start Date', 'Fee deducted','Net payment');
+		$columns = array('student', 'Course', 'Total Amount', 'Start Date', 'Fee deducted', 'Net payment');
 
-        $callback = function() use($data, $columns) {
-            $file = fopen('php://output', 'w');
-            fputcsv($file, $columns);
+		$callback = function () use ($data, $columns) {
+			$file = fopen('php://output', 'w');
+			fputcsv($file, $columns);
 
-            
-				foreach ( $data['strivrePayment1'] as $key => $task) {
-					// $ss[$key] = $task;
+
+			foreach ($data['strivrePayment1'] as $key => $task) {
+				// $ss[$key] = $task;
 				// print_r($task->strivre_name);die;
 				// print_r($task);die;
-                $row['student']  = $task->strivre_name;
-                $row['Course']    = $task->course_name;
-                $row['Total Amount']    = $task->total_consultation_fee;
-                $row['Start Date']  = $task->dated;
-                $row['Fee deducted ']  = null;
+				$row['student']  = $task->strivre_name;
+				$row['Course']    = $task->course_name;
+				$row['Total Amount']    = $task->total_consultation_fee;
+				$row['Start Date']  = $task->dated;
+				$row['Fee deducted ']  = null;
 				$row['Net payment ']  = null;
-				
-                fputcsv($file, array($row['student'], $row['Course'], $row['Total Amount'], $row['Start Date']));
-            }
 
-            fclose($file);
-        
+				fputcsv($file, array($row['student'], $row['Course'], $row['Total Amount'], $row['Start Date']));
+			}
+
+			fclose($file);
 		};
-			
-				return response()->stream($callback, 200, $headers);
-		
-    }
+
+		return response()->stream($callback, 200, $headers);
+	}
 
 	/**
 	 * Update the User's photo.

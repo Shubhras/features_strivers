@@ -460,6 +460,7 @@ Route::group([
 				Route::post('article_payment', 'EditController@payArticle');
 
 				Route::post('get_payment_coach_request', 'EditController@getPaymentCoachRequest');
+				Route::post('get-coach-payment-request', 'EditController@getCoachPaymentRequest');
 				
 				// Route::get('allcities/{id}','EditController@getCountryLocation');
 				Route::get('article', 'EditController@getMyArticle');

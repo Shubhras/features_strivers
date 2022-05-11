@@ -235,14 +235,24 @@
                                     ?>
                                     <span>{{$totalvalus}}</span>
                                 </div>
+                                
                                 &nbsp; &nbsp;
-                                <a href="#" class="get-payments-btn card text-white card-body till_date_striver">
+                                <!-- <a href="#" class="get-payments-btn card text-white card-body till_date_striver"> -->
+                                <form action="{{url('/account/get-coach-payment-request')}}" method="post" class="get-payments-btn card text-white card-body till_date_striver">
                                     <div class="coaches_get_payment">
-                                        <span>Get Paid</span>
+                                        <input type="text" name="total_payment_select" id="total_payment_select" style="float: left; font-size: 14px; width:80px; border:none;" value="">
+
+
+                                        <input type="hidden" name="select_payment_id" id="select_payment_id" style="float: left; font-size: 14px; width:80px; border:none;" value="">
+
+
+                                        <!-- <span id="total_payment_select" value=""></span> -->
+                                        <button type="submit" style="background: #012245; color:#ffffff; border:none;     display: flow-root;">Get Paid</button>
 
                                     </div>
-                                </a>
-
+                                    </form>
+                                <!-- </a> -->
+                                
 
                             </div>
 
@@ -513,9 +523,9 @@
                             {{ (isset($posts)) ? $posts->links() : '' }}
                         </nav>
 
-                        <button type="button" class="btn btn-primary" id="btnMultiple">Get Multiple Value</button>
+                        
 
-                        <center><span data-href=" {{url('account/tasks')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span></center>
+                        <center><span data-href=" {{url('account/tasks')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span><button type="button" class="btn btn-primary btn-sm" id="btnMultiple" style="font-size: 9px;">Add Price</button></center>
 
                     </div>
                     <script>
@@ -969,29 +979,6 @@
 </div>
 <br>
 
-<!-- <script>
-
-$("input:checkbox").change(function() {
-                    var ischecked= $(this).val(':checked');
-                    alert(ischecked);
-                    if(ischecked)
-                    alert('checked' + $(this).val());
-                    if(!ischecked)
-                      alert('uncheckd ' + $(this).val());
-                }); 
-
-</script> -->
-
-
-<!-- <script>
-$(document).ready(function(){
-$('input[name="payment_status"]').on('change', function() {
-$('input[name="payment_status"]').not(this).prop('checked', false);
-alert("The best Strivre values is: " + $('input[name="payment_status"]:checked').val());
-     
-});
-});
-</script> -->
 
 <script>
     $(document).ready(function() {
@@ -1000,7 +987,7 @@ alert("The best Strivre values is: " + $('input[name="payment_status"]:checked')
             $("input:checkbox[name='payment_status_id']:checked").each(function() {
                 payment_status_id.push($(this).val());
             });
-            alert("The best strivre are: " + payment_status_id.join(", "));
+            // alert("The best strivre are: " + payment_status_id.join(", "));
 
 
 
@@ -1018,18 +1005,15 @@ alert("The best Strivre values is: " + $('input[name="payment_status"]:checked')
 
                     if (Response) {
 
-                        $("#sub_category34").empty();
+                        console.log('payment status',Response.coach_payment)
 
-                        $.each(Response, function(key, value) {
+                        // $("#sub_category34").empty();
+                        // alert(Response.coach_payment);
+                        $("#total_payment_select").val(Response.coach_payment);
 
+                        $("#select_payment_id").val(payment_status_id);
 
-                            $("#sub_category34").append('<option value="' + key +
-                                '" ' + ((key == (value.id)) ? "selected" : "") + ' >' +
-                                value +
-                                '</option>');
-
-
-                        });
+                        
                     }
                 }
 
