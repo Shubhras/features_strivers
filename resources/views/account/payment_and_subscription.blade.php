@@ -59,131 +59,131 @@
     <div class="main-container">
         <div class="container">
 
-            <?php $photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
+            <?php $photo_url1 = ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
             <?php if ($user->user_type_id == 2) {
 
-			?>
-            <h2>
+            ?>
+                <h2>
 
-                <h2 class="sec-title">My Payment</h2>
-            </h2>
-
-
-
-            <div class="row" style="padding: 6px; margin-left: -4px;">
+                    <h2 class="sec-title">My Payment</h2>
+                </h2>
 
 
-                <div class="col-md-12 user-profile-img-data default-inner-box">
 
-                    <!-- <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;"
+                <div class="row" style="padding: 6px; margin-left: -4px;">
+
+
+                    <div class="col-md-12 user-profile-img-data default-inner-box">
+
+                        <!-- <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;"
                         height="50px;" border-radius=" 50%"> &nbsp; -->
-                        <?php if(!empty($user->photo)){
-					?>
-					
-					<img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-					<?php }else{ ?>
+                        <?php if (!empty($user->photo)) {
+                        ?>
 
-						<img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+                            <img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+                        <?php } else { ?>
 
-						<?php }?>
-                    <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
+                            <img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
 
-
-                    <div class="row">
-
-                        <div class="col-md-12 col-sm-8 col-12">
-                            <span>
+                        <?php } ?>
+                        <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 
-                                <div class="header-data text-center-xs">
-                                    {{-- Threads Stats --}}
-                                    <div class="hdata">
-                                        <a href="{{ url('account/messages') }}">
+                        <div class="row">
 
-                                            <div class="mcol-left">
-                                                <i class="fas fa-phone-alt ln-shadow"></i>
-                                            </div>
-                                            <div class="mcol-right">
-                                                {{-- Number of messages --}}
-                                                <p>
+                            <div class="col-md-12 col-sm-8 col-12">
+                                <span>
 
-                                                    {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
 
-                                                    <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
+                                    <div class="header-data text-center-xs">
+                                        {{-- Threads Stats --}}
+                                        <div class="hdata">
+                                            <a href="{{ url('account/messages') }}">
 
-                                                </p>
-                                            </div>
-                                        </a>
-                                        <div class="clearfix"></div>
+                                                <div class="mcol-left">
+                                                    <i class="fas fa-phone-alt ln-shadow"></i>
+                                                </div>
+                                                <div class="mcol-right">
+                                                    {{-- Number of messages --}}
+                                                    <p>
+
+                                                        {{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
+
+                                                        <em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
+
+                                                    </p>
+                                                </div>
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+                                        {{-- Traffic Stats --}}
+                                        <div class="hdata">
+                                            <a href="{{ url('account/chat') }}">
+                                                <div class="mcol-left">
+                                                    <i class="fas fa-comments ln-shadow"></i>
+                                                </div>
+                                                <div class="mcol-right">
+                                                    {{-- Number of visitors --}}
+                                                    <p>
+
+                                                        <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
+                                                        {{ \App\Helpers\Number::short($totalPostsVisits) }}
+
+                                                        <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+
+                                                    </p>
+                                                </div>
+
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+
+
+                                        {{-- Favorites Stats --}}
+                                        <div class="hdata" style="width: 151px!important;margin-left: -38px;">
+                                            <a href="{{ url('account/favourite') }}">
+                                                <div class="mcol-left">
+                                                    <i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
+                                                </div>
+                                                <div class="mcol-right">
+                                                    {{-- Number of favorites --}}
+                                                    <p>
+
+                                                        {{ \App\Helpers\Number::short($countFavoritePosts) }}
+                                                        <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }}
+                                                        </em>
+
+                                                    </p>
+                                                </div>
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>
                                     </div>
+                            </div>
 
-                                    {{-- Traffic Stats --}}
-                                    <div class="hdata">
-                                        <a href="{{ url('account/chat') }}">
-                                            <div class="mcol-left">
-                                                <i class="fas fa-comments ln-shadow"></i>
-                                            </div>
-                                            <div class="mcol-right">
-                                                {{-- Number of visitors --}}
-                                                <p>
-
-                                                    <?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-                                                    {{ \App\Helpers\Number::short($totalPostsVisits) }}
-
-                                                    <em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-
-                                                </p>
-                                            </div>
-
-                                        </a>
-                                        <div class="clearfix"></div>
-                                    </div>
-
-
-
-                                    {{-- Favorites Stats --}}
-                                    <div class="hdata" style="width: 151px!important;margin-left: -38px;">
-                                        <a href="{{ url('account/favourite') }}">
-                                            <div class="mcol-left">
-                                                <i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
-                                            </div>
-                                            <div class="mcol-right">
-                                                {{-- Number of favorites --}}
-                                                <p>
-
-                                                    {{ \App\Helpers\Number::short($countFavoritePosts) }}
-                                                    <em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }}
-                                                    </em>
-
-                                                </p>
-                                            </div>
-                                        </a>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
                         </div>
 
                     </div>
-
                 </div>
-            </div>
 
 
 
-            <div class="row">
+                <div class="row">
 
-                <div class="col-md-3 page-sidebar ptop">
-                    @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach',
-                    'account.inc.sidebar_coach'])
-                </div>
-                <div class="col-md-9 page-content ptop">
-
-
+                    <div class="col-md-3 page-sidebar ptop">
+                        @includeFirst([config('larapen.core.customizedViewPath') . 'account.inc.sidebar_coach',
+                        'account.inc.sidebar_coach'])
+                    </div>
+                    <div class="col-md-9 page-content ptop">
 
 
-                    <div class="mb-5">
 
-                        <div class="row coaches_payment_data">
+
+                        <div class="mb-5">
+
+                            <!-- <div class="row coaches_payment_data">
                             <div class="col-lg-4 card bg-success text-white card-body till_date_striver">
                                 <span class="span_text_show">Revenue Till date </span>
                                 <span>05-01-2021</span>
@@ -204,67 +204,112 @@
                                 <span>05-01-2021</span>
 
                             </div>
-                        </div>
+                        </div> -->
 
 
-                        <div class="row  coaches_payment_data">
-                            <div class="col-lg-4 card bg-danger text-white card-body till_date_striver">
-                                <span class="span_text_show">Total Strivres</span>
-                                <span>{{$totalStrivrePayment}}</span>
+                            <div class="row  coaches_payment_data">
+                                <div class="col-lg-4 card bg-danger text-white card-body till_date_striver">
+                                    <span class="span_text_show">Total Strivres</span>
+                                    <span>{{$totalStrivrePayment}}</span>
 
-
-                            </div>
-                            &nbsp; &nbsp;
-
-                            <div class="col-lg-4 card bg-dark text-white card-body till_date_striver">
-                                <span class="span_text_show">Available Balance</span>
-                                <span>125</span>
-
-                            </div>
-                            &nbsp; &nbsp;
-                            <a href="#" class="get-payments-btn card text-white card-body till_date_striver">
-                                <div class="coaches_get_payment">
-                                    <span>Get Paid</span>
 
                                 </div>
-                            </a>
+                                &nbsp; &nbsp;
 
+                                <div class="col-lg-4 card bg-dark text-white card-body till_date_striver">
+                                    <!-- <span class="span_text_show">Available Balance</span> -->
+                                    <span class="span_text_show">Total Balance</span>
+
+                                    <?php
+                                    $total_balance = [];
+                                    foreach ($strivrePayment as $totalBalance) {
+
+                                        $total_balance[$totalBalance->total_consultation_fee] =  $totalBalance->total_consultation_fee;
+                                    }
+
+                                    $totalvalus = array_sum($total_balance);
+                                    // $totalvalus = implode('',$total_balance);
+
+                                    // print_r($totalvalus);die;
+
+                                    ?>
+                                    <span>{{$totalvalus}}</span>
+                                </div>
+                                &nbsp; &nbsp;
+                                <a href="#" class="get-payments-btn card text-white card-body till_date_striver">
+                                    <div class="coaches_get_payment">
+                                        <span>Get Paid</span>
+
+                                    </div>
+                                </a>
+
+
+                            </div>
 
                         </div>
 
-                    </div>
+                        <div>
 
-                    <div>
+                        </div>
 
-                    </div>
+                        <?php
+                        $requested_balance = [];
+                        foreach ($strivrePaymentCount as $totalBalance) {
+
+                            $requested_balance[$totalBalance->total_consultation_fee] =  $totalBalance->total_consultation_fee;
+                        }
+
+                        $requestedtotalvalus = array_sum($requested_balance);
+                        // $totalvalus = implode('',$total_balance);
+
+                        // print_r($totalvalus);die;
+
+                        ?>
+
+                        <?php
+                        $available_balance = [];
+                        foreach ($strivrePaymentAvailable as $totalBalance) {
+
+                            $available_balance[$totalBalance->total_consultation_fee] =  $totalBalance->total_consultation_fee;
+                        }
+
+                        $availabletotalvalus = array_sum($available_balance);
+                        // $totalvalus = implode('',$total_balance);
+
+                        // print_r($totalvalus);die;
+
+                        ?>
 
 
 
-                    <!-- <div class="inner-box default-inner-box"> -->
+                        <b><span>Requested Balance: {{$requestedtotalvalus}}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span>Available Balance: {{$availabletotalvalus}}</span> </b>
+
+                        <!-- <div class="inner-box default-inner-box"> -->
 
 
-                    <div class="row">
+                        <div class="row">
 
 
-                        <div class="table-responsive">
-                            <br>
-                            <form name="listForm" method="POST" action="{{ url('account/' . $pagePath . '/delete') }}">
-                                {!! csrf_field() !!}
-                                <!-- <div class="table-action"> -->
-                                <!-- <div class="btn-group hidden-sm" role="group">
+                            <div class="table-responsive">
+                                <br>
+                                <form name="listForm" method="POST" action="{{ url('account/' . $pagePath . '/delete') }}">
+                                    {!! csrf_field() !!}
+                                    <!-- <div class="table-action"> -->
+                                    <!-- <div class="btn-group hidden-sm" role="group">
 												 <button type="button" class="btn btn-sm btn-secondary">
 													<input type="checkbox" id="checkAll" class="from-check-all">
 												</button>
 												<button type="button" class="btn btn-sm btn-secondary from-check-all">
 													{{ t('Select') }}: {{ t('All') }}
 												</button> -->
-                                <!-- </div>  -->
+                                    <!-- </div>  -->
 
-                                <!-- <button type="submit" class="btn btn-sm btn-default delete-action">
+                                    <!-- <button type="submit" class="btn btn-sm btn-default delete-action">
 												<i class="fa fa-trash"></i> {{ t('Delete') }}
 											</button> -->
 
-                                <!-- <div class="table-search float-end col-sm-7">
+                                    <!-- <div class="table-search float-end col-sm-7">
 												<div class="form-group">
 													<div class="row">
 														<label class="col-sm-5 control-label text-end">{{ t('search') }} <br>
@@ -276,48 +321,59 @@
 													</div>
 												</div>
 											</div> -->
-                                <!-- </div> -->
+                                    <!-- </div> -->
 
-                                <table id="addManageTable" class="result-table" data-filter="#filter"
-                                    data-filter-text-only="true">
-                                    <thead>
-                                        <tr>
-                                            <th class="course">Student</th>
-                                            <th class="date">Course</th>
-                                            <th class="grade">Total Amount</th>
-                                            <th class="progres">Date </th>
-                                            <th class="progres"> Fee deducted </th>
-                                            <th class="progres">Net payment </th>
-
-
-
-                                        </tr>
-
-                                    </thead>
+                                    <table id="addManageTable" class="result-table" data-filter="#filter" data-filter-text-only="true">
+                                        <thead>
+                                            <tr>
+                                                <th class="course">Student</th>
+                                                <th class="date">Course</th>
+                                                <th class="grade">Total Amount</th>
+                                                <th class="progres">Date </th>
+                                                <th class="progres"> Fee deducted </th>
+                                                <th class="progres">Net payment </th>
+                                                <th class="progres">Action</th>
 
 
-                                    <tbody>
-                                        <?php foreach($strivrePayment as $key=>$strivrePaymentDetail){
 
-                                            // print_r($strivrePaymentDetail);die;
+                                            </tr>
 
-                                        
+                                        </thead>
+
+
+                                        <tbody>
+                                            <?php foreach ($strivrePayment as $key => $strivrePaymentDetail) {
+
+                                                // print_r($strivrePaymentDetail);die;
+
+
                                             ?>
-                                        <tr>
-                                            <td class="course">
-                                                <a href="#">{{$strivrePaymentDetail->strivre_name}}</a>
-                                            </td>
-                                            <td class="date">{{$strivrePaymentDetail->course_name}}</td>
-                                            <td class="grade">{{$strivrePaymentDetail->total_consultation_fee}}</td>
-                                            <td class="progres">{{$strivrePaymentDetail->dated}}</td>
-                                            <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
-                                            <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
+                                                <tr>
+                                                    <td class="course">
+                                                        <a href="#">{{$strivrePaymentDetail->strivre_name}}</a>
+                                                    </td>
+                                                    <td class="date">{{$strivrePaymentDetail->course_name}}</td>
+                                                    <td class="grade">{{$strivrePaymentDetail->total_consultation_fee}}</td>
+                                                    <td class="progres">{{$strivrePaymentDetail->dated}}</td>
+                                                    <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
+                                                    <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
+
+                                                    <?php if ($strivrePaymentDetail->payment_status != null) { ?>
+                                                        <td class="grade"><input type="checkbox" name="payment_status" checked disabled></td>
+
+                                                    <?php } else { ?>
+                                                        <td class="grade"><input type="checkbox" name="payment_status_id" id="payment_status_id_{{$strivrePaymentDetail->enroll_id}}" onclick="javascript: SelectallColorsForStyle(this, value);" value="{{$strivrePaymentDetail->enroll_id}}"></td>
 
 
-                                        </tr>
+                                                    <?php } ?>
+
+                                                </tr>
+
                                             <?php } ?>
 
-                                        <!-- <tr>
+                                            <!-- <div id="tablespace"></div> -->
+
+                                            <!-- <tr>
                                             <td class="course">
                                                 <a href="#">LMS Interactive Content</a>
                                             </td>
@@ -355,118 +411,121 @@
 
                                         </tr> -->
 
-                                    </tbody>
+                                        </tbody>
 
 
-                                    <tbody>
-                                        <?php
-												$i = 0;
+                                        <tbody>
+                                            <?php
+                                            $i = 0;
 
-												if (isset($user_subscription1) && $user_subscription1->count() > 0) :
-													foreach ($user_subscription1 as $key => $post) :
+                                            if (isset($user_subscription1) && $user_subscription1->count() > 0) :
+                                                foreach ($user_subscription1 as $key => $post) :
 
-														$i =	$i + 1; ?>
+                                                    $i =    $i + 1; ?>
 
-                                        <tr>
-
-
-                                            <td class="price-td" style="width:20%">
-                                                <div>
-                                                    <strong>
-                                                        {{ $post->username }}
+                                                    <tr>
 
 
-                                                    </strong>
-                                                </div>
-                                            </td>
-
-                                            <td class="price-td" style="width:40%">
-                                                <div>
-                                                    <strong>
-                                                        {{ $post->name }}
+                                                        <td class="price-td" style="width:20%">
+                                                            <div>
+                                                                <strong>
+                                                                    {{ $post->username }}
 
 
-                                                    </strong>
-                                                </div>
-                                            </td>
+                                                                </strong>
+                                                            </div>
+                                                        </td>
 
-                                            <td class="price-td" style="width:10%">
-                                                <div>
-                                                    <strong>
-
-                                                        <?php
-
+                                                        <td class="price-td" style="width:40%">
+                                                            <div>
+                                                                <strong>
+                                                                    {{ $post->name }}
 
 
-																		$total_payment = $post->fee_deducte + $post->net_payment;
-																		print_r($total_payment);die;
-																		?>
+                                                                </strong>
+                                                            </div>
+                                                        </td>
 
-                                                        {{$total_provided_hours}}
+                                                        <td class="price-td" style="width:10%">
+                                                            <div>
+                                                                <strong>
 
-                                                    </strong>
-
-                                                </div>
-                                            </td>
-
-                                            <td class="price-td" style="width:10%">
-                                                <div>
-                                                    <strong>
-                                                        {{$post->created_at}}
-
-
-                                                    </strong>
-                                                </div>
-                                            </td>
-
-
-                                            <td class="price-td" style="width:10%">
-                                                <div>
-                                                    <strong>
+                                                                    <?php
 
 
 
-                                                    </strong>
-                                                </div>
-                                            </td>
+                                                                    $total_payment = $post->fee_deducte + $post->net_payment;
+                                                                    print_r($total_payment);
+                                                                    die;
+                                                                    ?>
+
+                                                                    {{$total_provided_hours}}
+
+                                                                </strong>
+
+                                                            </div>
+                                                        </td>
+
+                                                        <td class="price-td" style="width:10%">
+                                                            <div>
+                                                                <strong>
+                                                                    {{$post->created_at}}
 
 
-                                            <td class="price-td" style="width:10%">
-                                                <div>
-                                                    <strong>
+                                                                </strong>
+                                                            </div>
+                                                        </td>
+
+
+                                                        <td class="price-td" style="width:10%">
+                                                            <div>
+                                                                <strong>
 
 
 
-                                                    </strong>
-                                                </div>
-                                            </td>
+                                                                </strong>
+                                                            </div>
+                                                        </td>
 
-                                        </tr>
-                                        <?php endforeach; ?>
 
-                                        <?php endif; ?>
+                                                        <td class="price-td" style="width:10%">
+                                                            <div>
+                                                                <strong>
 
-                                    </tbody>
-                                </table>
 
-                            </form>
+
+                                                                </strong>
+                                                            </div>
+                                                        </td>
+
+                                                    </tr>
+                                                <?php endforeach; ?>
+
+                                            <?php endif; ?>
+
+                                        </tbody>
+                                    </table>
+
+                                </form>
+                            </div>
                         </div>
+                        <nav>
+                            {{ (isset($posts)) ? $posts->links() : '' }}
+                        </nav>
+
+                        <button type="button" class="btn btn-primary" id="btnMultiple">Get Multiple Value</button>
+
+                        <center><span data-href=" {{url('account/tasks')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span></center>
+
                     </div>
-                    <nav>
-                        {{ (isset($posts)) ? $posts->links() : '' }}
-                    </nav>
-
-                    <center><span data-href=" {{url('account/tasks')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span></center>
-
+                    <script>
+                        function exportTasks(_this) {
+                            let _url = $(_this).data('href');
+                            window.location.href = _url;
+                        }
+                    </script>
                 </div>
-        <script>
-        function exportTasks(_this) {
-            let _url = $(_this).data('href');
-            window.location.href = _url;
-        }
-        </script>                                          
-            </div>
-            <!--/.row-box End-->
+                <!--/.row-box End-->
 
         </div>
         <br>
@@ -483,11 +542,11 @@
 
                 <div class="row">
                     <?php foreach ($suggested_striver as $coach_list) { ?>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="teacher-item">
-                            <div class="teacher-thumb coach-img-wrapper">
-                                <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
-                                <!-- <div class="teacher-social">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="teacher-item">
+                                <div class="teacher-thumb coach-img-wrapper">
+                                    <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+                                    <!-- <div class="teacher-social">
 												<a href="#">
 													<i aria-hidden="true" class="fab fa-facebook-f"></i>
 												</a>
@@ -501,16 +560,16 @@
 													<i aria-hidden="true" class="fab fa-vimeo-v"></i>
 												</a>
 											</div> -->
-                            </div>
-                            <div class="teacher-meta">
-                                <h5>
-                                    {{ $coach_list->name }}
-                                </h5>
-                                <!-- <p>Stylist &amp; Author -->
-                                <!-- </p> -->
+                                </div>
+                                <div class="teacher-meta">
+                                    <h5>
+                                        {{ $coach_list->name }}
+                                    </h5>
+                                    <!-- <p>Stylist &amp; Author -->
+                                    <!-- </p> -->
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <?php } ?>
                 </div>
             </div>
@@ -529,7 +588,7 @@
     </div>
 
 
-    <?php } else { ?>
+<?php } else { ?>
 
     <h2>
 
@@ -545,15 +604,15 @@
 
             <!-- <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;"
                 height="50px;" border-radius=" 50%"> &nbsp; -->
-                <?php if(!empty($user->photo)){
-					?>
-					
-					<img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-					<?php }else{ ?>
+            <?php if (!empty($user->photo)) {
+            ?>
 
-						<img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+                <img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+            <?php } else { ?>
 
-						<?php }?>
+                <img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+
+            <?php } ?>
             <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
 
@@ -654,82 +713,81 @@
 
                 <div class="row">
 
-                   
-
-			<?php
-					if ($packagename) {
-
-                        ?>
-                         <div style="margin-left: 125px; margin-top: 41px;">
-                        <?php
-
-								//  $names = json_decode($packagename);
-								
-								$sub_name = array();
-
-								// $sub_namess =[];
-								foreach ($packagename as $key => $sub) {
-
-									
-									$names = json_decode($sub);
-									
-									$ss = array();
-									foreach($names as $key=> $en){
-
-										$ss[$key] = $en;
-										
-									}
-									
-
-									$sub_name['en'] = $ss;
-	 
-
-								// $name = ($user_subscription->total_provided_hours-$user_subscription->remaining_hours);
-								// print_r($ss);die;
-								// print_r($sub_name);die;
-								$sub_namess =$ss['en'];
-								// print_r($sub_namess);die;
-								?>
-								<?php } ?>
-								<span class="subscription-nanme-by-user boxfont "> {{$sub_namess }}</span>
 
 
-							
+                    <?php
+                    if ($packagename) {
 
-							</div>
-							</div>
+                    ?>
+                        <div style="margin-left: 125px; margin-top: 41px;">
+                            <?php
 
-							<div class="row"  style="margin-top: -27px;    margin-left: 25px;">
-							<div class="line_bottom">
-							<p>  Subscription: </p>
-							<p> Total hours: <span class="boxfont">{{$totalpoints}} Credits</span></p>
-							<p> Consumed Hours: <span class="boxfont">{{$consumed_hours}} Credits</span></p>
-							<p> Remaining Hours: <span class="boxfont">{{$remaining_hours}} Credits</span></p>
+                            //  $names = json_decode($packagename);
 
-								
+                            $sub_name = array();
 
-							</div>
-							</div>
-							<br>
-							<?php
-							if (empty($remaining_hours)) {
-							?>
-                <div class="col-md-12" style="text-align: center;">
-                    <a class="bisylms-btn-pink" href="{{ url('subscription') }}">
+                            // $sub_namess =[];
+                            foreach ($packagename as $key => $sub) {
 
-                        Renew Subscriptions
-                    </a>
+
+                                $names = json_decode($sub);
+
+                                $ss = array();
+                                foreach ($names as $key => $en) {
+
+                                    $ss[$key] = $en;
+                                }
+
+
+                                $sub_name['en'] = $ss;
+
+
+                                // $name = ($user_subscription->total_provided_hours-$user_subscription->remaining_hours);
+                                // print_r($ss);die;
+                                // print_r($sub_name);die;
+                                $sub_namess = $ss['en'];
+                                // print_r($sub_namess);die;
+                            ?>
+                            <?php } ?>
+                            <span class="subscription-nanme-by-user boxfont "> {{$sub_namess }}</span>
+
+
+
+
+                        </div>
                 </div>
+
+                <div class="row" style="margin-top: -27px;    margin-left: 25px;">
+                    <div class="line_bottom">
+                        <p> Subscription: </p>
+                        <p> Total hours: <span class="boxfont">{{$totalpoints}} Credits</span></p>
+                        <p> Consumed Hours: <span class="boxfont">{{$consumed_hours}} Credits</span></p>
+                        <p> Remaining Hours: <span class="boxfont">{{$remaining_hours}} Credits</span></p>
+
+
+
+                    </div>
+                </div>
+                <br>
+                <?php
+                        if (empty($remaining_hours)) {
+                ?>
+                    <div class="col-md-12" style="text-align: center;">
+                        <a class="bisylms-btn-pink" href="{{ url('subscription') }}">
+
+                            Renew Subscriptions
+                        </a>
+                    </div>
 
 
                 <?php } ?>
                 <div class="col-md-12" style="text-align: left;">
                     <a class="bisylms-btn-pink" href="{{ url('pricing') }}">
-					Buy Credits
+                        Buy Credits
                     </a>
 
                 </div>
-                <?php } else { ?>
+            <?php } else { ?>
 
 
                 <div class="col-md-12" style="text-align: center;">
@@ -745,119 +803,119 @@
                 </div>
 
 
-                <?php }
-			?>
+            <?php }
+            ?>
 
 
-                <br>
+            <br>
 
 
-                <!-- <h2 style="text-align:center;"><b>
+            <!-- <h2 style="text-align:center;"><b>
 					old Subscriptions </b></h2> -->
-                <?php
+            <?php
 
-				// 	}
+                // 	}
 
-				// 
-			?>
+                // 
+            ?>
 
             </div>
             <div class="states">
 
                 <?php
-				if ($user_subscriptions1) {
-				?>
+                if ($user_subscriptions1) {
+                ?>
 
 
 
 
-                <?php
-					foreach ($user_subscriptions1 as $key => $value) {
-						$name = json_decode($value->name);
-						$ss = array();
-						foreach ($name as $key => $sub) {
-							$ss[$key] = $sub;
-						}
+                    <?php
+                    foreach ($user_subscriptions1 as $key => $value) {
+                        $name = json_decode($value->name);
+                        $ss = array();
+                        foreach ($name as $key => $sub) {
+                            $ss[$key] = $sub;
+                        }
 
-					?>
+                    ?>
 
-                <br>
-                <?php
-						if (empty($user_subscriptions1->remaining_hours)) {
-						?>
-                <div class="col-md-12">
-                    <!-- <h2> Old plan :{{$ss['en']}}</h2>
+                        <br>
+                        <?php
+                        if (empty($user_subscriptions1->remaining_hours)) {
+                        ?>
+                            <div class="col-md-12">
+                                <!-- <h2> Old plan :{{$ss['en']}}</h2>
 								<h2> Old plan Hours :{{$value->net_payment}} Hours.</h2> -->
-                </div>
-                <?php } ?>
+                            </div>
+                        <?php } ?>
 
                 <?php
-					}
-				}	?>
+                    }
+                }    ?>
                 <br>
             </div>
         </div>
     </div>
-    <?php 
+    <?php
 
 
 
-// $curl = curl_init();
+                // $curl = curl_init();
 
-// curl_setopt_array($curl, array(
-// 	CURLOPT_URL => 'https://metrics-us.cometchat.io/v1/calls/sessions/v1.us.2040141e5d5dcef3.group_1647672948681/participants?beginningTimestamp=1647673278116&endingTimestamp=1647675469379',
-// 	CURLOPT_RETURNTRANSFER => true,
-// 	CURLOPT_ENCODING => '',
-// 	CURLOPT_MAXREDIRS => 10,
-// 	CURLOPT_TIMEOUT => 0,
-// 	CURLOPT_FOLLOWLOCATION => true,
-// 	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-// 	CURLOPT_CUSTOMREQUEST => 'GET',
-// 	CURLOPT_HTTPHEADER => array(
-// 	  'appId: 2040141e5d5dcef3',
-// 	  'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0NzY3OTEzOSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0NzY3NTUzOSwiZXhwIjoxNjUwMjcxMTM5LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.D90PKiDUNY2pZswn2UB-c5ZX7aGwvghvz-ftajIG4es',
-// 	  'uid: strivre82789'
-// 	),
-//   ));
-  
-//   $response = curl_exec($curl);
-  
-//   curl_close($curl);
-// //   echo $response;
-//   	$responsess= json_decode($response);
-// 	  $data = array();
-// 	  $data1 = array();
-// 	  $data2 = array();
-//   foreach($responsess as $key =>$uidkey){
-	  
-// 	//   $data[$uidkey->uid] =$uidkey;
+                // curl_setopt_array($curl, array(
+                // 	CURLOPT_URL => 'https://metrics-us.cometchat.io/v1/calls/sessions/v1.us.2040141e5d5dcef3.group_1647672948681/participants?beginningTimestamp=1647673278116&endingTimestamp=1647675469379',
+                // 	CURLOPT_RETURNTRANSFER => true,
+                // 	CURLOPT_ENCODING => '',
+                // 	CURLOPT_MAXREDIRS => 10,
+                // 	CURLOPT_TIMEOUT => 0,
+                // 	CURLOPT_FOLLOWLOCATION => true,
+                // 	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                // 	CURLOPT_CUSTOMREQUEST => 'GET',
+                // 	CURLOPT_HTTPHEADER => array(
+                // 	  'appId: 2040141e5d5dcef3',
+                // 	  'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0NzY3OTEzOSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0NzY3NTUzOSwiZXhwIjoxNjUwMjcxMTM5LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.D90PKiDUNY2pZswn2UB-c5ZX7aGwvghvz-ftajIG4es',
+                // 	  'uid: strivre82789'
+                // 	),
+                //   ));
+
+                //   $response = curl_exec($curl);
+
+                //   curl_close($curl);
+                // //   echo $response;
+                //   	$responsess= json_decode($response);
+                // 	  $data = array();
+                // 	  $data1 = array();
+                // 	  $data2 = array();
+                //   foreach($responsess as $key =>$uidkey){
+
+                // 	//   $data[$uidkey->uid] =$uidkey;
 
 
-// 	  foreach($uidkey as $key =>$value){
-	  
-// 		$data[$value->uid] =$value->uid;
-// 		$data1[$value->uid] =$value->video_minutes;
-// 		$data2[$value->uid] =$value->audio_minutes;
-  
-		
-// 	}
-	
+                // 	  foreach($uidkey as $key =>$value){
 
-	  
-//   }
+                // 		$data[$value->uid] =$value->uid;
+                // 		$data1[$value->uid] =$value->video_minutes;
+                // 		$data2[$value->uid] =$value->audio_minutes;
 
-//   print_r($user->username);
 
-//   print_r($data);
+                // 	}
 
-//   print_r($data1);
-//   print_r($data2);
-  
 
-	
-// echo date('m/d/Y H:i:s', 1647496224);
-	
-	?>
+
+                //   }
+
+                //   print_r($user->username);
+
+                //   print_r($data);
+
+                //   print_r($data1);
+                //   print_r($data2);
+
+
+
+                // echo date('m/d/Y H:i:s', 1647496224);
+
+    ?>
 
     <div class="main-section">
         <div class="container">
@@ -869,11 +927,11 @@
 
             <div class="row">
                 <?php foreach ($suggested_coaches as $coach_list) { ?>
-                <div class="col-lg-3 col-md-6">
-                    <div class="teacher-item">
-                        <div class="teacher-thumb coach-img-wrapper">
-                            <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
-                            <!-- <div class="teacher-social">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="teacher-item">
+                            <div class="teacher-thumb coach-img-wrapper">
+                                <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+                                <!-- <div class="teacher-social">
 												<a href="#">
 													<i aria-hidden="true" class="fab fa-facebook-f"></i>
 												</a>
@@ -887,62 +945,132 @@
 													<i aria-hidden="true" class="fab fa-vimeo-v"></i>
 												</a>
 											</div> -->
-                        </div>
-                        <div class="teacher-meta">
-                            <h5>
-                                {{ $coach_list->name }}
-                            </h5>
-                            <p>Stylist &amp; Author
-                            </p>
+                            </div>
+                            <div class="teacher-meta">
+                                <h5>
+                                    {{ $coach_list->name }}
+                                </h5>
+                                <p>Stylist &amp; Author
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <?php } ?>
             </div>
         </div>
     </div>
 
-    <?php } ?>
+<?php } ?>
 
-    </div>
-    <!--/.row-->
-    </div>
-    <!--/.container-->
-    </div>
-    <br>
+</div>
+<!--/.row-->
+</div>
+<!--/.container-->
+</div>
+<br>
 
-    @includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
-    <!-- /.main-container -->
+<!-- <script>
 
-    <a href="#" id="back-to-top">
-        <i class="fal fa-angle-double-up"></i>
-    </a>
-    <!-- Back To Top -->
+$("input:checkbox").change(function() {
+                    var ischecked= $(this).val(':checked');
+                    alert(ischecked);
+                    if(ischecked)
+                    alert('checked' + $(this).val());
+                    if(!ischecked)
+                      alert('uncheckd ' + $(this).val());
+                }); 
 
-    <!-- Start Include All JS -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/jquery.appear.js"></script>
-    <script src="../assets/js/owl.carousel.min.js"></script>
-    <script src="../assets/js/slick.js"></script>
-    <script src="../assets/js/jquery.nice-select.min.js"></script>
-    <script src="../assets/js/swiper-bundle.min.js"></script>
-    <script src="../assets/js/TweenMax.min.js"></script>
-    <script src="../assets/js/lightcase.js"></script>
-    <script src="../assets/js/jquery.plugin.min.js"></script>
-    <script src="../assets/js/jquery.countdown.min.js"></script>
-    <script src="../assets/js/jquery.easing.1.3.js"></script>
-    <script src="../assets/js/jquery.shuffle.min.js"></script>
+</script> -->
 
-    <script src="../assets/js/theme.js"></script>
-    @endsection
 
-    @section('after_styles')
-    <link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput.min.css') }}" rel="stylesheet">
-    @if (config('lang.direction') == 'rtl')
-    <link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput-rtl.min.css') }}" rel="stylesheet">
-    @endif
-    <style>
+<!-- <script>
+$(document).ready(function(){
+$('input[name="payment_status"]').on('change', function() {
+$('input[name="payment_status"]').not(this).prop('checked', false);
+alert("The best Strivre values is: " + $('input[name="payment_status"]:checked').val());
+     
+});
+});
+</script> -->
+
+<script>
+    $(document).ready(function() {
+        $('#btnMultiple').click(function() {
+            var payment_status_id = [];
+            $("input:checkbox[name='payment_status_id']:checked").each(function() {
+                payment_status_id.push($(this).val());
+            });
+            alert("The best strivre are: " + payment_status_id.join(", "));
+
+
+
+
+            $.ajax({
+                type: "POST",
+                dataType: 'Json',
+                url: "{{ url('account/get_payment_coach_request') }}",
+                data: {
+                    'id': payment_status_id
+                },
+
+                success: function(Response) {
+
+
+                    if (Response) {
+
+                        $("#sub_category34").empty();
+
+                        $.each(Response, function(key, value) {
+
+
+                            $("#sub_category34").append('<option value="' + key +
+                                '" ' + ((key == (value.id)) ? "selected" : "") + ' >' +
+                                value +
+                                '</option>');
+
+
+                        });
+                    }
+                }
+
+            });
+        });
+    });
+</script>
+
+
+@includeFirst([config('larapen.core.customizedViewPath') . 'layouts.inc.footer1', 'layouts.inc.footer1'])
+<!-- /.main-container -->
+
+<a href="#" id="back-to-top">
+    <i class="fal fa-angle-double-up"></i>
+</a>
+<!-- Back To Top -->
+
+<!-- Start Include All JS -->
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/jquery.appear.js"></script>
+<script src="../assets/js/owl.carousel.min.js"></script>
+<script src="../assets/js/slick.js"></script>
+<script src="../assets/js/jquery.nice-select.min.js"></script>
+<script src="../assets/js/swiper-bundle.min.js"></script>
+<script src="../assets/js/TweenMax.min.js"></script>
+<script src="../assets/js/lightcase.js"></script>
+<script src="../assets/js/jquery.plugin.min.js"></script>
+<script src="../assets/js/jquery.countdown.min.js"></script>
+<script src="../assets/js/jquery.easing.1.3.js"></script>
+<script src="../assets/js/jquery.shuffle.min.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+@endsection
+
+@section('after_styles')
+<link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput.min.css') }}" rel="stylesheet">
+@if (config('lang.direction') == 'rtl')
+<link href="{{ url('assets/plugins/bootstrap-fileinput/css/fileinput-rtl.min.css') }}" rel="stylesheet">
+@endif
+<style>
     .krajee-default.file-preview-frame:hover:not(.file-preview-error) {
         box-shadow: 0 0 5px 0 #666666;
     }
@@ -950,8 +1078,8 @@
     .file-loading:before {
         content: " {{ t('Loading') }}...";
     }
-    </style>
-    <style>
+</style>
+<style>
     /* Avatar Upload */
     .photo-field {
         display: inline-block;
@@ -1013,87 +1141,21 @@
         margin-top: 50px;
         padding-left: 35px;
     }
-    </style>
-    @endsection
+</style>
+@endsection
 
-    @section('after_scripts')
-    <script src="{{ url('assets/plugins/bootstrap-fileinput/js/plugins/sortable.min.js') }}" type="text/javascript">
-    </script>
-    <script src="{{ url('assets/plugins/bootstrap-fileinput/js/fileinput.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url('assets/plugins/bootstrap-fileinput/themes/fas/theme.js') }}" type="text/javascript"></script>
-    <script src="{{ url('js/fileinput/locales/' . config('app.locale') . '.js') }}" type="text/javascript"></script>
+@section('after_scripts')
+<script src="{{ url('assets/plugins/bootstrap-fileinput/js/plugins/sortable.min.js') }}" type="text/javascript">
+</script>
+<script src="{{ url('assets/plugins/bootstrap-fileinput/js/fileinput.min.js') }}" type="text/javascript"></script>
+<script src="{{ url('assets/plugins/bootstrap-fileinput/themes/fas/theme.js') }}" type="text/javascript"></script>
+<script src="{{ url('js/fileinput/locales/' . config('app.locale') . '.js') }}" type="text/javascript"></script>
 
 
 
-    <!-- <script>
-	// when category dropdown changes
-	$(document).ready(function() {
-
-		var sub_cat_id = {
-			{
-				old('sub_category', $user->sub_category)
-			}
-		},
-		$('#category').change(function() {
-			var categoryID = $('#category').val();
-			if (categoryID) {
-				$.ajax({
-					type: "GET",
-					url: "{{ url('account/getSubcategories') }}?id=" + categoryID,
-
-					success: function(res) {
-
-						if (res) {
-
-							$("#sub_category").empty();
-							$("#sub_category").append('<option value=0>Select a subcategory</option>');
-							$.each(res, function(key, value) {
-								$("#sub_category").append('<option value="' + key + '" ' + ((key == (sub_cat_id)) ? "selected" : "") + ' >' + value +
-									'</option>');
-
-							});
-
-						} else {
-
-							$("#sub_category").empty();
-						}
-
-					}
-				});
-			} else {
-				$("#sub_category").empty();
-			}
-		});
-		var categoryID = $('#category').val();
-		if (categoryID) {
-
-			$.ajax({
-
-				type: "GET",
-				url: "{{ url('account/getSubcategories') }}?id=" + categoryID,
-
-				success: function(res) {
-
-					if (res) {
-
-						$("#sub_category").empty();
-						$("#sub_category").append('<option value=0>Select a subcategory</option>');
-						$.each(res, function(key, value) {
-							$("#sub_category").append('<option value="' + key + '" ' + ((key == (sub_cat_id)) ? "selected" : "") + ' >' + value +
-								'</option>');
-
-						});
-
-					} else {
-
-						$("#sub_category").empty();
-					}
-
-				}
-			});
-		} else {
-			$("#sub_category").empty();
-		}
-	});
-</script> -->
-    @endsection
+<script>
+    function handleClick(cb) {
+        display("Clicked, new value = " + cb.checked);
+    }
+</script>
+@endsection

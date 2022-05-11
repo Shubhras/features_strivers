@@ -363,7 +363,7 @@ class EditController extends AccountBaseController
 	public function enroll_course_striver(Request $request)
 	{
 
-
+		// print_r($request->all());die;
 
 		$user = auth()->user();
 		if ($user->user_type_id == 3) {
@@ -373,14 +373,43 @@ class EditController extends AccountBaseController
 			} else {
 
 
-				$enroll_course_by_strivre = DB::table('enroll_course')->select('enroll_course.course_id','enroll_course.user_id')->where('enroll_course.user_id', $user->id)->orWhere('enroll_course.course_id', $request->course_id)->first();
-				// print_r($user->id);
-				// print_r($enroll_course_by_strivre);die;
-
+		
+				$enroll_course_by_strivre = DB::table('enroll_course')->select('enroll_course.*')->where('enroll_course.user_id', $user->id)->where('enroll_course.course_id', $request->course_id)->first();
 				
-				$enroldStrvreCourse = $enroll_course_by_strivre->course_id;
+		// print_r($enroll_course_by_strivre);die;
+		// isset($enroll_course_by_strivre->course_id) ? $enroll_course_by_strivre->course_id : 'NA';
 
-				if ($enroldStrvreCourse == $request->course_id || $enroll_course_by_strivre->user_id == $request->user_id)   {
+				// if(empty($enroll_course_by_strivre->course_id)){
+					
+				// }
+
+				if(!empty($enroll_course_by_strivre->course_id)){
+		
+				$enroldStrvreCourse = $enroll_course_by_strivre->course_id;
+					
+				}else{
+			$enroldStrvreCourse = 0;
+}
+
+
+
+
+
+      if(!empty($enroll_course_by_strivre->user_id)){
+
+                                $enroldStrvreUser_id = $enroll_course_by_strivre->user_id;
+
+                                } else{
+
+
+$enroldStrvreUser_id = 0;
+
+}
+				
+			
+				// print_r($value->course_id);die;
+                                
+				if ($enroldStrvreCourse == $request->course_id ) {
 
 					Session()
 						->flash('loginerrorenroll', 'You have already enroll course .');
@@ -1283,7 +1312,9 @@ class EditController extends AccountBaseController
 		//print_r($data['user_subscription']);die;
 		$data['subscription_plan'] = Package::query()->get();
 
-		
+		//$data['categories']= Category::query()->get();
+		// 
+
 
 
 
@@ -1402,11 +1433,27 @@ class EditController extends AccountBaseController
 		$data['totalStrivrePayment'] = count($data['totalStrivre']);
 
 		$data['strivrePayment'] = DB::table('users')
-			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
+			->select('enroll_course.id as enroll_id','enroll_course.user_id as enroll_user_id','enroll_course.coach_id as enroll_coach_id','enroll_course.payment_status','enroll_course.course_id', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
 			->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
 			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
 			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
 			->where('enroll_course.coach_id', $user->id)->get();
+
+
+			$data['strivrePaymentCount'] = DB::table('users')
+			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
+			->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
+			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
+			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
+			->where('enroll_course.coach_id', $user->id)->where('enroll_course.payment_status','done')->get();
+
+			$data['strivrePaymentAvailable'] = DB::table('users')
+			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
+			->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
+			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
+			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
+			->where('enroll_course.coach_id', $user->id)->where('enroll_course.payment_status',null)->get();
+
 
 
 		MetaTag::set('title', t('my_account'));
@@ -1570,6 +1617,28 @@ class EditController extends AccountBaseController
 		// print_r($subcategories);die;
 		return response()->json($subcategories);
 	}
+
+
+	public function getPaymentCoachRequest(Request $request)
+	{
+		// print_r($request->all());die;
+
+		$paymentId = $request->id;
+
+
+		// $subcategories = DB::table("categories")
+		// 	->where("parent_id", $request->id)
+		// 	->pluck("slug", "id");
+		foreach($paymentId as $key =>$paymentUserId){
+
+		}
+		$subcategories = DB::table("enroll_course")->select('enroll_course.*')
+			->where("enroll_course.id", $request->id)->get();
+		print_r($subcategories);die;
+		return response()->json($subcategories);
+	}
+
+
 
 	/**
 	 * @param \App\Http\Requests\UserRequest $request

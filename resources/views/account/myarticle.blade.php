@@ -326,14 +326,14 @@
 													}
 													
 
-													$slug2 = json_decode($my_article_data->content);
-													$ss2 = array();
-													foreach ($slug2 as $key => $value) {
-														$ss2[$key]= $value;
-													}
+													// $slug2 = json_decode($my_article_data->content);
+													// $ss2 = array();
+													// foreach ($slug2 as $key => $value) {
+													// 	$ss2[$key]= $value;
+													// }
 													
 													// print_r($ss2['en']);die;
-								?>
+								// ?>
 								
 									<div class="col-lg-4 col-md-6">
 										<div class="feature-course-item-4">
