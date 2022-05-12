@@ -279,123 +279,106 @@ body {
 
                 </div> -->
 
-        <div class="row">
-            <div class="col-md-4">
-
-                <!-- <div  id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('0')">
-                    </div> -->
-                <div class="accordion" id="accordionExample" onclick="subCatListCoach('{{ $cat->id }}')">
-                    @foreach($categories as $key => $cat)
-                    <?php
-                    $name = json_decode($cat->name);
-                    $ss = array();
-                    foreach ($name as $key => $sub) {
-                        $ss[$key] = $sub;
-                    }
-                    ?>
-                    <div>
-                        <!-- <div class="subject-title-name-cat" id="heading{{ $cat->id }}"> -->
-                        <h5 class="mb-0 subject-title-name-cat tab1 ">
-                            <button class="btn btn-link tab " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
-                                {{ $ss['en'] }}
-                            </button>
-                            <i class="fa arrow-down btn-link" id="heading{{ $cat->id }}" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important; float: right;" onclick="this.classList.toggle('active')"></i>
-                        </h5>
-                        <!-- </div> -->
-                        <div id="collapse{{ $cat->id }}" class="collapse" aria-labelledby="heading{{ $cat->id }}" data-parent="#accordionExample">
-                            <!-- <div class="card-body"> -->
-                            <!-- <ul> -->
-                            @foreach($sub_categories as $key => $sub_cat)
-                            @if($sub_cat->parent_id == $cat->id)
-                            <?php
-                            $name = json_decode($sub_cat->name);
-                            $ss = array();
-                            foreach ($name as $key => $sub) {
-                                $ss[$key] = $sub;
-                            }
-                            ?>
-
-                            <h5 class=" mb-0 subject-title-name-cat">
-
-                                <button style="margin-left: 5px; border-bottom: 1px;" class="btn sub-categorry subject-title-name-cat-sub" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}
-                                </button>
-                            </h5>
-
-                            @endif
-                            @endforeach
-                            <!-- </ul> -->
-                            <!-- </div> -->
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-
-            </div>
-            <div class="col-md-8 pick">
-
-
                 <div class="row">
-                    <?php
-                    foreach ($user as $coach_list) {
-                    ?>
+                <div class="col-md-4">
+
+<!-- <div  id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('0')">
+    </div> -->
+<div class="accordion" id="accordionExample" onclick="subCatListCoach('{{ $cat->id }}')">
+    @foreach($categories as $key => $cat)
+    <?php
+    $name = json_decode($cat->name);
+    $ss = array();
+    foreach ($name as $key => $sub) {
+        $ss[$key] = $sub;
+    }
+    ?>
+    <div>
+        <!-- <div class="subject-title-name-cat" id="heading{{ $cat->id }}"> -->
+        <h5 class="mb-0 subject-title-name-cat tab1 ">
+            <button class="btn btn-link tab " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
+                {{ $ss['en'] }}
+            </button>
+            <i class="fa arrow-down btn-link" id="heading{{ $cat->id }}" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important; float: right;" onclick="this.classList.toggle('active')"></i>
+        </h5>
+        <!-- </div> -->
+        <div id="collapse{{ $cat->id }}" class="collapse" aria-labelledby="heading{{ $cat->id }}" data-parent="#accordionExample">
+            <!-- <div class="card-body"> -->
+            <!-- <ul> -->
+            @foreach($sub_categories as $key => $sub_cat)
+            @if($sub_cat->parent_id == $cat->id)
+            <?php
+            $name = json_decode($sub_cat->name);
+            $ss = array();
+            foreach ($name as $key => $sub) {
+                $ss[$key] = $sub;
+            }
+            ?>
+
+            <h5 class=" mb-0 subject-title-name-cat">
+
+                <button style="margin-left: 5px; border-bottom: 1px;" class="btn sub-categorry subject-title-name-cat-sub" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}
+                </button>
+            </h5>
+
+            @endif
+            @endforeach
+            <!-- </ul> -->
+            <!-- </div> -->
+        </div>
+    </div>
+    @endforeach
+</div>
+
+</div>
+                <div class="col-md-8">
 
 
+                    <div class="row">
+                        <?php
+                            foreach($user as $coach_list) {
+                        ?>
+                        <div class="column {{$coach_list->slug_name}}">
+                        <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal"
+                                data-target=".bd-example-modal-lg_{{$coach_list->id }}"
+                                id="coach_id_{{$coach_list->id }}">
 
-
-
-                        <div class="col-lg-4 col-md-6 column" {{$coach_list->slug_name}} teacher-meta">
-
-                            <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
-
-                                <div class="teacher-thumb coach-img-wrapper">
-                                    @if(!empty($coach_list->photo))
-                                    <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Mountains" style="width:100%" alt="{{ $coach_list->name }}">
-                                    @else
-                                    <img src="../assets/images/course/1.jpg" alt="{{ $coach_list->name }}" class="lazyload img-fluid">
-                                    @endif
-
+                            <div class="teacher-thumb coach-img-wrapper">
+                                
+                                <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Mountains" style="width:100%"
+                                    alt="{{ $coach_list->name }}">
+                                <div class="teacher-social">
+                                    <!-- <a href="#">
+                                        <i aria-hidden="true" class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i aria-hidden="true" class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i aria-hidden="true" class="fab fa-pinterest-p"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i aria-hidden="true" class="fab fa-vimeo-v"></i>
+                                    </a> -->
                                 </div>
+                            </div>
+                            <!-- <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal"
+                                data-target=".bd-example-modal-lg_{{$coach_list->id }}"
+                                id="coach_id_{{$coach_list->id }}"> -->
 
-                                <div class="teacher-meta text-center">
-                                    <!-- <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}"> -->
-
-                                    <p class=" top-coaches-name-list coach-cat-name12 text-center ">
-                                        {{ $coach_list->name }}
-                                    </p>
-                                    <!-- </a> -->
-
-                                </div>
-                                <?php
-
-                                if (!empty($coach_list->slug)) {
-
-
-                                    $name = json_decode($coach_list->slug);
-                                    $ss = array();
-                                    foreach ($name as $key => $sub) {
-                                        $ss[$key] = $sub;
-                                    }
-
-                                ?>
-
-                                    <p class="text-center">{{$ss['en']}}
-                                    </p>
-                                <?php  } else {
-                                ?>
-                                    <p class=" text-center">Others
-                                    </p>
-                                <?php } ?>
-                                <!-- <p>Stylist &amp; Author
-                                </p> -->
+                                <h5 class="coach-cat-name12">
+                                    {{ $coach_list->name }}
+                                </h5>
                             </a>
+                            <p>Stylist &amp; Author
+                            </p>
+
 
                         </div>
+                        <?php } ?>
+                    </div>
 
-
-                    <?php } ?>
-                </div>
-
-                <script>
+                    <script>
                     filterSelection("0")
                     subCatListCoach('{{ $cat->id }}')
 
@@ -444,12 +427,13 @@ body {
                             this.className += " active";
                         });
                     }
-                </script>
-            </div>
-            <!-- <center>
+                    </script>
+                </div>
+                <center>
                     <a class="bisylms-btn" href="#">Explore Top Course </a>
-                </center> -->
-        </div>
+                </center>
+            </div>
+
 
 
 
