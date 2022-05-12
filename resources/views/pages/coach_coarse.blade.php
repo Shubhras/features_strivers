@@ -161,7 +161,7 @@
                 </form>
             </div>
 
-            <div class=" col-md-6 col-lg-3">
+            <div class=" col-md-6 col-lg-3 enroll-course-strivre">
 
 
             <form action="{{ url('/pricingCourse') }}" method="post">

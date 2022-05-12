@@ -4342,7 +4342,6 @@ table.fc-border-separate {
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
-
     .height-img {
         height: 45%!important;
     }
@@ -4373,5 +4372,12 @@ table.fc-border-separate {
 @media (min-width: 766px) and (max-width: 1023px) {
     .newl {
         margin-left: -33px!important;
+    }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 425px) {
+    .enroll-course-strivre {
+        width: 200px;
+        margin-top: -99px;
     }
 }
