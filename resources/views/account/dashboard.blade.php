@@ -210,7 +210,8 @@
 						<div class="header-data text-center-xs">
 							{{-- Threads Stats --}}
 							<div class="hdata">
-							<a href="{{ url('account/messages') }}">
+							<!-- <a href="{{ url('account/messages') }}"> -->
+                            <a href="{{ url('account/chat') }}">
 
 								<div class="mcol-left">
 									<i class="fas fa-phone-alt ln-shadow"></i>
@@ -687,7 +688,8 @@
                     <div class="header-data text-center-xs">
                         {{-- Threads Stats --}}
                         <div class="hdata">
-                        <a href="{{ url('account/messages') }}">
+                        <!-- <a href="{{ url('account/messages') }}"> -->
+                        <a href="{{ url('account/chat') }}">
 
                             <div class="mcol-left">
                                 <i class="fas fa-phone-alt ln-shadow"></i>

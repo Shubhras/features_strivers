@@ -58,7 +58,8 @@
                                     <div class="user-bar-top">
                                         <div class="user-top">
                                             <p>
-                                                <a href="{{ url('account/messages') }}">
+                                                <!-- <a href="{{ url('account/messages') }}"> -->
+                                                <a href="{{ url('account/chat') }}">
                                                     <i class="fas fa-inbox"></i>
                                                 </a>&nbsp;
                                                 @if (auth()->id() != $thread->creator()->id)
