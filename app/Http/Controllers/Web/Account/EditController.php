@@ -1257,8 +1257,9 @@ $enroldStrvreUser_id = 0;
 		$data['user_subscription'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*', 'packages.name', 'users.name as username')
 			->leftjoin('packages', 'packages.id', '=', 'user_subscription_payment.subscription_id')
 			->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')
-			->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
+			->where('user_subscription_payment.user_id', $user->id)->orderBy('user_subscription_payment.id', 'desc')
 			->get();
+			// print_r($data['user_subscription']);die;
 
 		$totalsum = array();
 		$name = array();
@@ -1267,7 +1268,7 @@ $enroldStrvreUser_id = 0;
 		$user_id = array();
 		foreach ($data['user_subscription'] as $key => $value) {
 
-			$totalsum[$value->total_provided_hours] = $value->total_provided_hours;
+			$totalsum[$key] = $value->total_provided_hours;
 			$name[$value->name] = $value->name;
 			$consumed_hours[$value->consumed_hours] = $value->consumed_hours;
 			$remaining_hours[$value->remaining_hours] = $value->remaining_hours;
@@ -1284,7 +1285,7 @@ $enroldStrvreUser_id = 0;
 			$ss[$sub] = $sub;
 		}
 
-
+// print_r($totalsum);die;
 		$data['total_purchase_package'] = count($user_id);
 		$data['packagename'] = $ss;
 		$data['totalpoints'] = array_sum($totalsum);
@@ -1301,8 +1302,13 @@ $enroldStrvreUser_id = 0;
 		// 
 
 
+		$data['package_name_strivre'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*', 'packages.name', 'users.name as username')
+			->leftjoin('packages', 'packages.id', '=', 'user_subscription_payment.subscription_id')
+			->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')
+			->where('user_subscription_payment.user_id', $user->id)->orderBy('user_subscription_payment.id', 'desc')
+			->first();
 
-
+// print_r($data['package_name_strivre']);die;
 
 
 		$curl = curl_init();

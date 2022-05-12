@@ -726,7 +726,7 @@
 
 
                     <?php
-                    if ($packagename) {
+                    if ($package_name_strivre) {
 
                     ?>
                         <div style="margin-left: 125px; margin-top: 41px;">
@@ -736,11 +736,11 @@
 
                             $sub_name = array();
 
-                            // $sub_namess =[];
-                            foreach ($packagename as $key => $sub) {
+                            $sub_namess =[];
+                            // foreach ($package_name_strivre as $key => $sub) {
 
 
-                                $names = json_decode($sub);
+                                $names = json_decode($package_name_strivre->name);
 
                                 $ss = array();
                                 foreach ($names as $key => $en) {
@@ -758,7 +758,7 @@
                                 $sub_namess = $ss['en'];
                                 // print_r($sub_namess);die;
                             ?>
-                            <?php } ?>
+                            <?php // } ?>
                             <span class="subscription-nanme-by-user boxfont "> {{$sub_namess }}</span>
 
 
