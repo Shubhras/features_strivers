@@ -78,9 +78,9 @@ class StripePaymentController extends Controller
             )
         ));
 
-
+// print_r($token->id);die;
         $customer2 = \Stripe\Customer::create(['email' => $request->email, 'name' => $user->name]);
-        $data = Stripe\Charge::create([
+        $subscription = Stripe\Charge::create([
             'customer' => $customer2->id,
             "amount" => $request->price * 100,
             "currency" => "INR",
@@ -111,7 +111,7 @@ class StripePaymentController extends Controller
 
         Session::flash('success', 'Payment successful!');
 
-        if ($data->paid) {
+        if ($subscription->paid) {
             $data['subscription_plan'] = DB::table('users')->where('id', $userId)
                 ->update(array(
                     'subscription_plans' => $request->subscriptionPlan,
@@ -127,14 +127,14 @@ class StripePaymentController extends Controller
                         'post_id' => null,
                         'package_id' => $request->subscriptionPlan,
                         'payment_method_id' => null,
-                        'transaction_id' => $data->id,
-                        'amount' => $data->amount / 100,
-                        'receipt_url' => $data->receipt_url,
+                        'transaction_id' => $subscription->id,
+                        'amount' => $subscription->amount / 100,
+                        'receipt_url' => $subscription->receipt_url,
                         'active' => 1,
                         'source' =>   $request->stripeToken,
                         'created_at' => Carbon::now(),
                         'SubExpires' => $privious_date,
-                        'card_token' => $token->id,
+                        'card_token' =>  $token->id,
                         'updated_at' => null
 
                     )
@@ -159,10 +159,11 @@ class StripePaymentController extends Controller
          // print_r($request->all());die;
         //  $user = auth()->user();
          // print_r( $data['subscription_list']);die;
-         $data['subscription_list'] = DB::table('payments')->select('payments.*', 'users.name as username', 'users.email')->leftjoin('users', 'users.id', '=', 'payments.user_id')->whereNotNull('SubExpires')->get();
+         $data['subscription_list'] = DB::table('payments')->select('payments.*', 'users.name as username', 'users.email')->join('users', 'users.id', '=', 'payments.user_id')->where('payments.card_token', $token->id)->whereNotNull('SubExpires')->get();
          // print_r($data['subscription_list']);die;
  
- 
+         
+
          foreach ($data['subscription_list'] as $key => $value) {
  
              $CUSTOMER_ID = $value->user_id;
@@ -189,7 +190,7 @@ class StripePaymentController extends Controller
              $date1 = $date_arr[0];
              $time = $date_arr[1];
              // print_r($privious_date);die;
-             if ($privious_date == $date1 || $Subexpire ==  $date1) {
+            //  if ($privious_date == $date1 || $Subexpire ==  $date1) {
  
                  //  print_r($value);die;
  
@@ -243,6 +244,7 @@ class StripePaymentController extends Controller
                      $customer1 = \Stripe\Customer::create(['email' => $customer->email, 'name' => $customer->name]);
  
                     
+            // print_r($token->id);die;
  
                          if (!empty($token->id)) {
                              //Insert new product and prices
@@ -280,14 +282,14 @@ class StripePaymentController extends Controller
                              //           ));
                              //   print_r($token);die;
  
-                             $subscription = Stripe\Charge::create([
-                                 'customer' => $customer->id,
-                                 "amount" => $request->price * 100,
-                                 "currency" => "INR",
-                                 "source" =>   $token->id,
-                                 "description" => "This payment is tested purpose phpcodingstuff.com",
-                                 // "customer" => $request->name
-                             ]);
+                            //  $subscription = Stripe\Charge::create([
+                            //      'customer' => $customer->id,
+                            //      "amount" => $request->price * 100,
+                            //      "currency" => "INR",
+                            //      "source" =>   $token->id,
+                            //      "description" => "This payment is tested purpose phpcodingstuff.com",
+                            //      // "customer" => $request->name
+                            //  ]);
                              $date = date("d-m-Y", $subscription->created);
  
  
@@ -393,7 +395,7 @@ class StripePaymentController extends Controller
                              // 'price' => '300',
                          ]],
                          'metadata' => [
-                             'title' => 'Enroll Course',
+                             'title' => 'strivre Enroll Course',
                              // 'orderId' => $getOrderDetail->id,
                              // 'offer_id' => $getOrderDetail->offer_id,
                              // 'price'    => '300',
@@ -411,7 +413,7 @@ class StripePaymentController extends Controller
                      $paymentIntentId = $subscription->latest_invoice->payment_intent->id;
                      // print_r('xyz',$paymentIntentId);die;
                  }
-             }
+            //  }
          }
 
 
