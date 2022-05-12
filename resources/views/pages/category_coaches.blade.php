@@ -365,14 +365,34 @@ body {
                             <!-- <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal"
                                 data-target=".bd-example-modal-lg_{{$coach_list->id }}"
                                 id="coach_id_{{$coach_list->id }}"> -->
-
+<br>
                                 <h5 class="coach-cat-name12">
                                     {{ $coach_list->name }}
                                 </h5>
-                            </a>
-                            <p>Stylist &amp; Author
-                            </p>
+                           
+                            <!-- <p>Stylist &amp; Author
+                            </p> -->
 
+                            <?php
+
+                                    if (!empty($coach_list->slug)) {
+
+
+                                        $name = json_decode($coach_list->slug);
+                                        $ss = array();
+                                        foreach ($name as $key => $sub) {
+                                            $ss[$key] = $sub;
+                                        }
+
+                                    ?>
+                                        <p class="lh">{{$ss['en']}}
+                                        </p>
+                                    <?php  } else {
+                                    ?>
+                                        <p class=" text-center" style="float: left;">Others
+                                        </p>
+                                    <?php } ?>
+                                    </a>
 
                         </div>
                         <?php } ?>
@@ -473,12 +493,12 @@ body {
                         </div>
                         <div class="teacher-meta">
 
-                            <a type="button" href="{{url('/top_coach_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
+                            <!-- <a type="button" href="{{url('/top_coach_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}"> -->
 
                                 <p class=" top-coaches-name-list coach-cat-name12">
                                     {{ $coach_list->name }}
                                 </p>
-                            </a>
+                            
 
 
                             <?php
@@ -502,7 +522,7 @@ body {
                                 </p>
                             <?php } ?>
 
-
+                            </a>
 
                             <!-- <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
                                                 <div class="modal-dialog modal-xl">
