@@ -524,7 +524,7 @@
 		<div class="row">
 
 				<h2 class="sec-title" style="font-weight: 700;">
-				Consultation Pending for Enrolment
+				Pending Consultation 
 
 				</h2>
 
