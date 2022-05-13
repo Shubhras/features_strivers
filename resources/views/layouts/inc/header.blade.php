@@ -220,8 +220,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                         <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                             <i class="fas fa-user-circle hidden-sm"></i>
                             <span>{{ auth()->user()->name }}</span>
-                            <span
-                                class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">0</span>
+                           
                             <i class="fas fa-chevron-down"></i>
                         </a>
                         <ul id="userMenuDropdown" class="dropdown-menu user-menu dropdown-menu-right shadow-sm">
@@ -243,8 +242,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                             <li class="dropdown-item">
                                 <a href="{{ url('account/messages') }}">
                                     <i class="far fa-envelope"></i> {{ t('messenger') }}
-                                    <span
-                                        class="badge badge-pill badge-important count-threads-with-new-messages">0</span>
+                                    
                                 </a>
                             </li>
                             <li class="dropdown-item"><a href="{{ url('account/transactions') }}"><i

@@ -108,7 +108,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                                     <!-- <i class="fas fa-user-circle hidden-sm"></i> -->
                                     <span>{{ auth()->user()->name }}</span>
-                                    <span class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">0</span>
+                                    
                                     <i class="fas fa-chevron-down"></i>
                                 </a>
                                 @else
@@ -117,7 +117,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                                     <!-- <i class="fas fa-user-circle hidden-sm"></i> -->
                                     <span>{{ auth()->user()->name }}</span>
-                                    <span class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">0</span>
+                            
                                     <i class="fas fa-chevron-down"></i>
                                 </a>
                                 @endif
