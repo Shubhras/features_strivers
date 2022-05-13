@@ -1273,13 +1273,16 @@ $enroldStrvreUser_id = 0;
 
 						DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' => $consumeddat, 'user_subscription_payment.remaining_hours' => $remaining_hours]);
 
+					$data_slug=	DB::table('latest_new')->select('latest_new.*')->where('latest_new.id',$request->article_id)->first();
 
-
+					// print_r($data_slug->slug);die;
 						
-						$slug = $request->title;
+						$slug = $data_slug->slug;
 
 
 						$page = $this->getLetestBySlug($slug);
+
+						
 
 						if (empty($page)) {
 							abort(404);

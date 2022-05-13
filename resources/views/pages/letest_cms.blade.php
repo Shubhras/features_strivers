@@ -56,7 +56,7 @@
 						@endif
 						
 
-            <h2 class="sec-title text-center" style="margin-top: 61px;font-size: 40px;">{{ $page->name }}</h2>
+            <h2 class="sec-title text-center" style="margin-top: 61px;font-size: 40px;">{{$page->name }}</h2>
             <div class="col-lg-6">
 
                 @if (!empty($page->picture))
