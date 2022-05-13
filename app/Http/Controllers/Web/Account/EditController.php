@@ -1136,6 +1136,69 @@ $enroldStrvreUser_id = 0;
 						->flash('loginerrorenroll', 'You have already enroll article .');
 					// return redirect()
 					// 	->back();
+
+					$slug = $request->title;
+
+
+						$page = $this->getLetestBySlug($slug);
+
+						if (empty($page)) {
+							abort(404);
+						}
+
+						view()->share('page', $page);
+						view()->share('uriPathPageSlug', $slug);
+
+						
+						if (!empty($page->external_link)) {
+							return redirect()->away($page->external_link, 301)->withHeaders(config('larapen.core.noCacheHeaders'));
+						}
+
+					
+						[$title, $description, $keywords] = getMetaTag('staticPage');
+						$title = str_replace('{page.title}', $page->seo_title, $title);
+						$title = str_replace('{app.name}', config('app.name'), $title);
+						$title = str_replace('{country.name}', config('country.name'), $title);
+
+						$description = str_replace('{page.description}', $page->seo_description, $description);
+						$description = str_replace('{app.name}', config('app.name'), $description);
+						$description = str_replace('{country.name}', config('country.name'), $description);
+
+						$keywords = str_replace('{page.keywords}', $page->seo_keywords, $keywords);
+						$keywords = str_replace('{app.name}', config('app.name'), $keywords);
+						$keywords = str_replace('{country.name}', config('country.name'), $keywords);
+
+						if (empty($title)) {
+							$title = $page->title . ' - ' . config('app.name');
+						}
+						if (empty($description)) {
+							$description = Str::limit(str_strip(strip_tags($page->content)), 200);
+						}
+
+						$title = removeUnmatchedPatterns($title);
+						$description = removeUnmatchedPatterns($description);
+						$keywords = removeUnmatchedPatterns($keywords);
+
+						MetaTag::set('title', $title);
+						MetaTag::set('description', $description);
+						MetaTag::set('keywords', $keywords);
+
+						// Open Graph
+						$this->og->title($title)->description($description);
+						if (!empty($page->picture)) {
+							if ($this->og->has('image')) {
+								$this->og->forget('image')->forget('image:width')->forget('image:height');
+							}
+							$this->og->image(imgUrl($page->picture, 'bgHeader'), [
+								'width'  => 600,
+								'height' => 600,
+							]);
+						}
+						view()->share('og', $this->og);
+
+
+
+
 					return appView('pages.letest_cms');
 				} else {
 
@@ -1212,11 +1275,7 @@ $enroldStrvreUser_id = 0;
 
 
 
-						// return redirect()
-						// ->back();
-
-						// return redirect('routes.letestNewsBySlug'.$news->slug);
-
+						
 						$slug = $request->title;
 
 
@@ -1229,12 +1288,12 @@ $enroldStrvreUser_id = 0;
 						view()->share('page', $page);
 						view()->share('uriPathPageSlug', $slug);
 
-						// Check if an external link is available
+						
 						if (!empty($page->external_link)) {
 							return redirect()->away($page->external_link, 301)->withHeaders(config('larapen.core.noCacheHeaders'));
 						}
 
-						// Meta Tags
+					
 						[$title, $description, $keywords] = getMetaTag('staticPage');
 						$title = str_replace('{page.title}', $page->seo_title, $title);
 						$title = str_replace('{app.name}', config('app.name'), $title);
