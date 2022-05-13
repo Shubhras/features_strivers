@@ -50,83 +50,44 @@
 
 
 						<div class="row">
+               
+			   <div class="col-md-12 col-sm-8 col-12">
+			   <span>
 
-							<div class="col-md-12 col-sm-8 col-12">
-								<span>
+			   
+				   <div class="header-data text-center-xs">
+					   
+					   <div class="hdata">
+					   <a href="{{ url('account/chat') }}">
+						   <div class="mcol-left">
+							   <!-- <i class="fas fa-comments ln-shadow"></i> -->
+							   <img src="../assets/images/chat_call.png" alt="">
+						   </div>
+						   <div class="mcol-right">
+							   {{-- Number of visitors --}}
+							   <p>
+								   
+									  
+									   <em>Call / Message</em>
+								  
+							   </p>
+						   </div>
 
+						   </a>
+						   <div class="clearfix"></div>
+					   </div>
 
-									<div class="header-data text-center-xs">
-										{{-- Threads Stats --}}
-										<div class="hdata">
-											<!-- <a href="{{ url('account/messages') }}"> -->
-											<a href="{{ url('account/chat') }}">
+					  
 
-												<div class="mcol-left">
-													<i class="fas fa-phone-alt ln-shadow"></i>
-												</div>
-												<div class="mcol-right">
-													{{-- Number of messages --}}
-													<p>
+					 
+				   </div>
+			   </div>
+			
+			    </div>
+				
+		      </div>
+			</div>
 
-														{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-
-														<em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-
-													</p>
-												</div>
-											</a>
-											<div class="clearfix"></div>
-										</div>
-
-										{{-- Traffic Stats --}}
-										<div class="hdata">
-											<a href="{{ url('account/chat') }}">
-												<div class="mcol-left">
-													<i class="fas fa-comments ln-shadow"></i>
-												</div>
-												<div class="mcol-right">
-													{{-- Number of visitors --}}
-													<p>
-
-														<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-														{{ \App\Helpers\Number::short($totalPostsVisits) }}
-
-														<em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-
-													</p>
-												</div>
-
-											</a>
-											<div class="clearfix"></div>
-										</div>
-
-
-
-										{{-- Favorites Stats --}}
-										<div class="hdata" style="width: 151px!important;margin-left: -38px;">
-											<a href="{{ url('account/favourite') }}">
-												<div class="mcol-left">
-													<i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
-												</div>
-												<div class="mcol-right">
-													{{-- Number of favorites --}}
-													<p>
-
-														{{ \App\Helpers\Number::short($countFavoritePosts) }}
-														<em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-
-													</p>
-												</div>
-											</a>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
 
 
 
@@ -447,83 +408,44 @@
 
 
 						<div class="row">
+               
+			   <div class="col-md-12 col-sm-8 col-12">
+			   <span>
 
-							<div class="col-md-12 col-sm-8 col-12">
-								<span>
+			   
+				   <div class="header-data text-center-xs">
+					   
+					   <div class="hdata">
+					   <a href="{{ url('account/chat') }}">
+						   <div class="mcol-left">
+							   <!-- <i class="fas fa-comments ln-shadow"></i> -->
+							   <img src="../assets/images/chat_call.png" alt="">
+						   </div>
+						   <div class="mcol-right">
+							   {{-- Number of visitors --}}
+							   <p>
+								   
+									  
+									   <em>Call / Message</em>
+								  
+							   </p>
+						   </div>
 
+						   </a>
+						   <div class="clearfix"></div>
+					   </div>
 
-									<div class="header-data text-center-xs">
-										{{-- Threads Stats --}}
-										<div class="hdata">
-											<!-- <a href="{{ url('account/messages') }}"> -->
-											<a href="{{ url('account/chat') }}">
+					  
 
-												<div class="mcol-left">
-													<i class="fas fa-phone-alt ln-shadow"></i>
-												</div>
-												<div class="mcol-right">
-													{{-- Number of messages --}}
-													<p>
+					 
+				   </div>
+			   </div>
+			
+			    </div>
+				
+		      </div>
+			</div>
 
-														{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-
-														<em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-
-													</p>
-												</div>
-											</a>
-											<div class="clearfix"></div>
-										</div>
-
-										{{-- Traffic Stats --}}
-										<div class="hdata">
-											<a href="{{ url('account/chat') }}">
-												<div class="mcol-left">
-													<i class="fas fa-comments ln-shadow"></i>
-												</div>
-												<div class="mcol-right">
-													{{-- Number of visitors --}}
-													<p>
-
-														<?php $totalPostsVisits = (isset($countPostsVisits) and $countPostsVisits->total_visits) ? $countPostsVisits->total_visits : 0 ?>
-														{{ \App\Helpers\Number::short($totalPostsVisits) }}
-
-														<em>{{ trans_choice('Chat', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-
-													</p>
-												</div>
-
-											</a>
-											<div class="clearfix"></div>
-										</div>
-
-
-
-										{{-- Favorites Stats --}}
-										<div class="hdata" style="width: 151px!important;margin-left: -38px;">
-											<a href="{{ url('account/favourite') }}">
-												<div class="mcol-left">
-													<i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
-												</div>
-												<div class="mcol-right">
-													{{-- Number of favorites --}}
-													<p>
-
-														{{ \App\Helpers\Number::short($countFavoritePosts) }}
-														<em>{{ trans_choice('Notification', getPlural($countFavoritePosts), [], config('app.locale')) }} </em>
-
-													</p>
-												</div>
-											</a>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
 
 
 				<div class="row">
@@ -547,7 +469,7 @@
 										<div class="feature-course-item-4">
 											<div class="fcf-thumb">
 												<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
-												 <a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">View Package</a> 
+												<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">View Package</a> 
 											</div>
 											<div class="fci-details">
 												<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
@@ -593,6 +515,65 @@
 
 	<div class="main-section">
 		<div class="container">
+
+
+
+
+
+
+		<div class="row">
+
+				<h2 class="sec-title" style="font-weight: 700;">
+				Consultation Pending for Enrolment
+
+				</h2>
+
+				<?php
+				foreach ($enroll_coach_coarse_pending as  $coaches_corsee) {
+				?>
+					<div class="col-lg-3 col-md-6">
+						<div class="feature-course-item-4">
+							<div class="fcf-thumb">
+								<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
+								<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" onclick="customSession()">View Package</a>
+							</div>
+							<div class="fci-details">
+								<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
+								<h4><a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
+								<div class="author">
+									<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
+									<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
+								</div>
+
+
+								<div class="price-rate">
+									<div class="course-price">
+
+										@if($coaches_corsee->total_consultation_fee != null)
+
+										<a>
+											<!-- {{$coaches_corsee->total_consultation_fee}}$ Credits -->
+
+											{{$coaches_corsee->creadit_required}}$ Credits
+										</a>
+										@else
+										0 $ Credits
+										@endif
+									</div>
+
+								</div>
+
+
+
+							</div>
+						</div>
+
+					</div>
+				<?php } ?>
+			</div>
+			<br>
+
+
 
 			<div class="row">
 

@@ -267,7 +267,7 @@ class EditController extends AccountBaseController
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 			->leftjoin('enroll_course', 'enroll_course.coach_id', '=', 'users.id')
-			->where('users.user_type_id', 2)->where('enroll_course.user_id', $user->id)->groupBy('enroll_course.coach_id')->get();
+			->where('users.user_type_id', 2)->where('enroll_course.user_id', $user->id)->where('enroll_course.enroll_status', 'active')->groupBy('enroll_course.coach_id')->get();
 
 		// $data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 		// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
@@ -312,7 +312,7 @@ class EditController extends AccountBaseController
 			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 			->leftjoin('enroll_course', 'enroll_course.user_id', '=', 'users.id')
-			->where('enroll_course.coach_id', $user->id)->groupBy('enroll_course.user_id')->get();
+			->where('enroll_course.coach_id', $user->id)->where('enroll_course.enroll_status', 'active')->groupBy('enroll_course.user_id')->get();
 
 		if (empty(auth()->user())) {
 
@@ -406,10 +406,104 @@ $enroldStrvreUser_id = 0;
                                 
 				if ($enroldStrvreCourse == $request->course_id ) {
 
-					Session()
+					if($enroll_course_by_strivre->enroll_status=='active'){
+						Session()
 						->flash('loginerrorenroll', 'You have already enroll course .');
 					return redirect()
 						->back();
+					}else if($enroll_course_by_strivre->enroll_status=='pending'){
+
+
+
+
+						$user = auth()->user();
+
+						$data['user_subscription'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*', 'packages.name', 'users.name as username')
+							->leftjoin('packages', 'packages.id', '=', 'user_subscription_payment.subscription_id')
+							->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')
+							->where('user_subscription_payment.user_id', $user->id)->orderBy('users.id', 'desc')
+							->get();
+	
+						// print_r($data['user_subscription']);die;
+	
+						$totalsum = array();
+						$name = array();
+						$consumed_hours = array();
+						$remaining_hours = array();
+						$user_id = array();
+	
+						foreach ($data['user_subscription'] as $key => $value) {
+	
+							$totalsum[$value->total_provided_hours] = $value->total_provided_hours;
+							$name[$value->name] = $value->name;
+							$consumed_hours[$value->consumed_hours] = $value->consumed_hours;
+							$remaining_hours[$value->remaining_hours] = $value->remaining_hours;
+							$user_id[$value->id] = $value->id;
+							// $consumed_hours[$value->consumed_hours] =$value->consumed_hours;
+						}
+	
+	
+						$ss  = array();
+						foreach ($name as $key => $sub) {
+							$ss[$sub] = $sub;
+						}
+	
+	
+						$data['total_purchase_package'] = count($user_id);
+						$data['packagename'] = $ss;
+						$totalpoints = array_sum($totalsum);
+	
+						$data['consumed_hours'] = array_sum($consumed_hours);
+	
+						// print_r($request->creadit_required);die;
+						if (empty($request->creadit_required)) {
+							$creditDtat = '0';
+	
+							$consumeddat =  $data['consumed_hours'] + $creditDtat;
+						} else {
+							$consumeddat =  $data['consumed_hours'] + $request->creadit_required;
+						}
+	
+	
+						$remaining_hours = $totalpoints - $consumeddat;
+						$remaining_hourss = $totalpoints - $data['consumed_hours'];
+
+
+						if ($remaining_hourss >=  $request->creadit_required) {
+
+
+						DB::table('enroll_course')->where('enroll_course.user_id', $user->id)->where('enroll_course.course_id',  $request->course_id)->update(['enroll_course.enroll_status' => 'active']);
+
+
+
+
+
+
+						DB::table('user_subscription_payment')->where('user_subscription_payment.user_id', $user->id)->update(['user_subscription_payment.consumed_hours' => $consumeddat, 'user_subscription_payment.remaining_hours' => $remaining_hours]);
+
+
+						Session()->flash('messagess', ' Enroll Successfully !');
+						// return redirect()
+						// ->back();
+
+						return redirect('account/my_courses');
+						
+						}else{
+
+							Session()
+							->flash('loginerror', 'You do not have sufficient credits.');
+						return redirect()
+							->back();
+
+
+						}
+
+					}
+
+					// Session()
+					// 	->flash('loginerrorenroll', 'You have already enroll course .');
+					// return redirect()
+					// 	->back();
 				} else {
 
 					$user = auth()->user();
@@ -480,6 +574,7 @@ $enroldStrvreUser_id = 0;
 							'user_id' => $request->user_id,
 							'coach_id' => $request->coach_id,
 							'course_id' => $request->course_id,
+							'enroll_status' => 'active',
 							'created_at' => $date
 						);
 
@@ -496,6 +591,18 @@ $enroldStrvreUser_id = 0;
 
 						return redirect('account/my_courses');
 					} else {
+
+
+						$date = date('d-m-yy');
+						$data = array(
+							'user_id' => $request->user_id,
+							'coach_id' => $request->coach_id,
+							'course_id' => $request->course_id,
+							'enroll_status' => 'pending',
+							'created_at' => $date
+						);
+
+						DB::table('enroll_course')->insert($data);
 
 
 
@@ -605,9 +712,18 @@ $enroldStrvreUser_id = 0;
 		$data['enroll_coach_coarse'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo', 'enroll_course.user_id')
 			->leftJoin('enroll_course', 'enroll_course.course_id', '=', 'coach_course.id')
 			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
-			->where('enroll_course.user_id', $user->id)
+			->where('enroll_course.user_id', $user->id)->where('enroll_course.enroll_status','active')
 			->inRandomOrder()
-			->limit(6)->get();
+			->get();
+
+
+			$data['enroll_coach_coarse_pending'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo', 'enroll_course.user_id')
+			->leftJoin('enroll_course', 'enroll_course.course_id', '=', 'coach_course.id')
+			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
+			->where('enroll_course.user_id', $user->id)->where('enroll_course.enroll_status','pending')
+			->inRandomOrder()
+			->get();
+
 
 
 		if (empty(auth()->user())) {
@@ -1254,6 +1370,14 @@ $enroldStrvreUser_id = 0;
 		// 		->first();
 
 
+		$data['enroll_coach_coarse_pending'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo', 'enroll_course.user_id')
+			->leftJoin('enroll_course', 'enroll_course.course_id', '=', 'coach_course.id')
+			->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
+			->where('enroll_course.user_id', $user->id)->where('enroll_course.enroll_status','pending')
+			->inRandomOrder()
+			->get();
+
+			
 		$data['user_subscription'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*', 'packages.name', 'users.name as username')
 			->leftjoin('packages', 'packages.id', '=', 'user_subscription_payment.subscription_id')
 			->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')

@@ -134,8 +134,12 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 
                                     <li class="dropdown-item dropdown-menu-sidebar list-side-menu876">
                                         <a href="{{ url('account/chat') }}" class="dropdown-menu-sidebar-a side-menu-li-user">
-                                            <i class="far fa-envelope"></i> {{ ('Chat') }}
-                                            <span class="badge badge-pill badge-important count-threads-with-new-messages">0</span>
+
+                                        <!-- <img src="../assets/images/chat_call.png" alt="">{{('Call / Message')}} -->
+                                        <i class="far fa-envelope"></i> {{('Call / Message')}}
+
+                                            <!-- <i class="far fa-envelope"></i> {{('Call / Message')}}
+                                            <span class="badge badge-pill badge-important count-threads-with-new-messages">0</span> -->
                                         </a>
                                     </li>
                                     <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/transactions') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i

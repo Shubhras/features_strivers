@@ -30,80 +30,45 @@
 					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>  {{ $user->name }}</b> </span>
 					
 					
-					<div class="row">
-						
-						<div class="col-md-12 col-sm-8 col-12">
-							<span>
-								
-								
-								<div class="header-data text-center-xs">
-									{{-- Threads Stats --}}
-									<div class="hdata">
-										<!-- <a href="{{ url('account/messages') }}"> -->
-                                        <a href="{{ url('account/chat') }}">
-											
-											<div class="mcol-left">
-												<i class="fas fa-phone-alt ln-shadow"></i>
-											</div>
-											<div class="mcol-right">
-												{{-- Number of messages --}}
-												<p>
-													
-											{{ isset($countThreads) ? \App\Helpers\Number::short($countThreads) : 0 }}
-											
-											<em>{{ trans_choice('Call', getPlural($countThreads), [], config('app.locale')) }}</em>
-									   
-										</p>
-								</div>
-								</a>
-								<div class="clearfix"></div>
-							</div>
+                    <div class="row">
+               
+			   <div class="col-md-12 col-sm-8 col-12">
+			   <span>
 
-							{{-- Traffic Stats --}}
-							<div class="hdata">
-								<a href="{{ url('account/chat') }}">
-									<div class="mcol-left">
-										<i class="fas fa-comments ln-shadow"></i>
-									</div>
-									<div class="mcol-right">
-										{{-- Number of visitors --}}
-									<p>
-										
-										
-									   
-									</p>
-                                    
-								</div>
+			   
+				   <div class="header-data text-center-xs">
+					   
+					   <div class="hdata">
+					   <a href="{{ url('account/chat') }}">
+						   <div class="mcol-left">
+							   <!-- <i class="fas fa-comments ln-shadow"></i> -->
+							   <img src="../assets/images/chat_call.png" alt="">
+						   </div>
+						   <div class="mcol-right">
+							   {{-- Number of visitors --}}
+							   <p>
+								   
+									  
+									   <em>Call / Message</em>
+								  
+							   </p>
+						   </div>
 
-								</a>
-								<div class="clearfix"></div>
-							</div>
+						   </a>
+						   <div class="clearfix"></div>
+					   </div>
 
-							
+					  
 
-							{{-- Favorites Stats --}}
-							<div class="hdata" style="width: 151px!important;margin-left: -38px;">
-							<a href="{{ url('account/favourite') }}">
-								<div class="mcol-left" >
-									<i class="fas fa-bell ln-shadow" style="margin-left: 29px"></i>
-								</div>
-								<div class="mcol-right">
-									{{-- Number of favorites --}}
-									<p>
-										
-										
-									</p>
-								</div>
-								</a>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				
+					 
+				   </div>
+			   </div>
+			
 			    </div>
 				
 		      </div>
 			</div>
+
             <div class="row">
                 
                 <div class="col-md-3 page-sidebar">
