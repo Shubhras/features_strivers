@@ -148,8 +148,8 @@
                 <aside class="widget">
                     <h3 class="widget-title">Categories</h3>
                     <ul>
-
-
+                    <?php $id = '0';?>
+                    <li><a href="{{ url('coach_list_category_all/'.$id) }}">All Categories</a></li>
                         <?php
                         $data['categories_list_coach'] = DB::table('users')->select('categories.slug', 'categories.id', 'categories.name', 'users.category', 'categories.picture', 'categories.icon_class')->join('categories', 'categories.id', '=', 'users.category')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->where('users.user_type_id', 2)->get();
 
