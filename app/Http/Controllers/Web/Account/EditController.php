@@ -1118,7 +1118,7 @@ $enroldStrvreUser_id = 0;
 			} else {
 
 
-				$enroll_course_by_strivre = DB::table('article_price')->select('article_price.article_id')->where('article_price.strivre_id', $user->id)->orWhere('article_price.article_id', $request->article_id)->first();
+				$enroll_course_by_strivre = DB::table('article_price')->select('article_price.*')->where('article_price.strivre_id', $user->id)->orWhere('article_price.article_id', $request->article_id)->first();
 
 
 				if (empty($enroll_course_by_strivre->article_id)) {
@@ -1129,8 +1129,20 @@ $enroldStrvreUser_id = 0;
 					$enroldStrvreCourse = $enroll_course_by_strivre->article_id;
 				}
 
+				if (empty($enroll_course_by_strivre->strivre_id)) {
+					$enroldStrvreUser = 0;
+				} else {
 
-				if ($enroldStrvreCourse == $request->article_id) {
+
+					$enroldStrvreUser = $enroll_course_by_strivre->strivre_id;
+				}
+
+
+
+				if ($enroldStrvreCourse == $request->article_id && $enroldStrvreUser == $user->id) {
+
+					// print_r($enroldStrvreUser);
+// print_r($user->id);die;
 
 					Session()
 						->flash('loginerrorenroll', 'You have already enroll article .');
