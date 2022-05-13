@@ -131,11 +131,16 @@
                     <h3 class="widget-title">Explore</h3>
                     <ul>
                         <li><a href="{{ url(\App\Helpers\UrlGen::aboutUs()) }}">About Us</a></li>
-                        <li><a href="#">Success Story</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Resource Center</a></li>
-                        <li><a href="#">Courses</a></li>
-                        <li><a href="{{ \App\Helpers\UrlGen::contact() }}">Contact Us</a></li>
+                        <?php $id = '0'; ?>
+                        <li><a href="{{ url('coach_list_category_all/'.$id) }}">Categories</a></li>
+                        <!-- <li><a href="#">Success Story</a></li> -->
+                        <!-- <li><a href="#">Careers</a></li> -->
+                        <li><a href="{{url('pricing')}}">Pricing</a></li>
+                        <li><a href="{{url('contact')}}">Contact us</a> </li>
+
+                        <li><a href="{{url('all_article')}}">Article</a></li>
+                        <!-- <li><a href="#">Courses</a></li> -->
+                        <!-- <li><a href="{{ \App\Helpers\UrlGen::contact() }}">Contact Us</a></li> -->
                     </ul>
                 </aside>
             </div>
@@ -143,12 +148,67 @@
                 <aside class="widget">
                     <h3 class="widget-title">Categories</h3>
                     <ul>
-                        <li><a href="#">All Courses</a></li>
+
+
+                        <?php
+                        $data['categories_list_coach'] = DB::table('users')->select('categories.slug', 'categories.id', 'categories.name', 'users.category', 'categories.picture', 'categories.icon_class')->join('categories', 'categories.id', '=', 'users.category')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->where('users.user_type_id', 2)->get();
+
+
+
+                        $unique = array();
+                        $uniques = array();
+                        $keyss = array();
+
+                        foreach ($data['categories_list_coach'] as $value) {
+                            // print_r($value);die;
+                            $unique[$value->category] = $value;
+                            $uniques['key'] = $value->category;
+                        }
+
+                        $data['uniqueCat'] = array_values($unique);
+
+                        $data['categories_list_coach1'] = array_slice($data['uniqueCat'], 0, 6);
+
+
+                        // print_r($data['categories_list_coach1']);die;
+
+                        ?>
+
+
+                        <?php
+
+                        foreach ($data['categories_list_coach1'] as $key => $value) {
+
+                            // print_r($value);die;
+                        ?>
+                            <!-- <div class="latest-course1 ppt"> -->
+
+
+                                <?php
+
+                                $name = json_decode($value->name);
+                                $ss = array();
+                                foreach ($name as $key => $sub) {
+                                    $ss[$key] = $sub;
+                                }
+
+                                ?>
+                                <li>
+                                    <a href="{{url('/coach_list_category_all/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>">
+                                        {{$ss['en']}}
+                                    </a>
+                                </li>
+
+
+
+                            <!-- </div> -->
+                        <?php } ?>
+                        <!-- <li><a href="#">All Courses</a></li>
                         <li><a href="#">Storytelling & Voice Over</a></li>
                         <li><a href="#">Digital Marketing</a></li>
                         <li><a href="#">Design & Branding</a></li>
                         <li><a href="#">Nanodegree Plus</a></li>
-                        <li><a href="#">Veterans</a></li>
+                        <li><a href="#">Veterans</a></li> -->
                     </ul>
                 </aside>
             </div>

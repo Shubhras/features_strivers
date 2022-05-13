@@ -1071,4 +1071,17 @@ class HomeController extends FrontController
 
 		return appView('pages.category_coaches', $data);
 	}
+
+	public function all_article(){
+
+		$data['article_list'] =DB::table('latest_new')
+		->select('latest_new.*','users.name as user_name','users.photo')
+		->leftJoin('users','users.id','=','latest_new.user_id')
+		->where('latest_new.active',1)->get();
+		// print_r($data);die;
+
+
+		return appView('pages.article_list', $data);
+
+	}
 }
