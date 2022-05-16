@@ -42,30 +42,30 @@
 </head>
 
 <body>
-<div class="main-wrapper">
+<div class="main-wrapper" style="background-image: url(https://ycsdigitalstage.co.uk/storage/app/default/backend/thumb-2500x2500-login_bg_image.jpg); no-repeat center center; background-size: cover;">
     
     <?php
-    $wrapperStyle = '';
-    $logoUrl = '';
-    try {
-        if (is_link(public_path('storage'))) {
-            $bgImgUrl = imgUrl(config('settings.style.login_bg_image'), 'bgBody');
-            $wrapperStyle = 'background:url(' . $bgImgUrl . ') no-repeat center center; background-size: cover;';
-            $logoUrl = imgUrl(config('settings.app.logo_dark'), 'adminLogo');
-        }
+    // $wrapperStyle = '';
+    // $logoUrl = '';
+    // try {
+    //     if (is_link(public_path('storage'))) {
+    //         $bgImgUrl = imgUrl(config('settings.style.login_bg_image'), 'bgBody');
+    //         $wrapperStyle = 'background:url(' . $bgImgUrl . ') no-repeat center center; background-size: cover;';
+    //         $logoUrl = imgUrl(config('settings.app.logo_dark'), 'adminLogo');
+    //     }
         // print_r($bgImgUrl);die;
-    } catch (\Throwable $e) {}
+    // } catch (\Throwable $e) {}
     ?>
     
     {{-- Login box.scss --}}
-    <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="{!! $wrapperStyle !!}">
+    <div class="auth-wrapper d-flex no-block justify-content-center align-items-center">
         <div class="auth-box p-4 bg-white rounded">
     
             <div class="logo text-center mb-5">
                 <a href="{{ url('/') }}">
 
                <h1 style="color: blue;"><b>Coach Strivre Admin</b>  </h1>
-                    <!-- <img src="{{ $logoUrl }}" alt="logo" class="img-fluid" style="width:250px; height:auto;"> -->
+                   
                 </a>
                 <hr class="border-0 bg-secondary">
             </div>
