@@ -189,6 +189,25 @@ class Payment extends BaseModel
 		// print_r($out);die;
 		return $out;
 	}
+
+	public function getEmailNameHtml()
+	{
+		$out = $this->user_id;
+		
+		if (!empty($this->user_id)) {
+			$userUrl = admin_url('users/' . $this->id . '/edit');
+			
+			$out = '';
+			$out .= '<a href="' . $userUrl . '">';
+			$out .= $this->users->email;
+			$out .= '</a>';
+			// $out .= ' (' . $this->package->price . ' ' . $this->package->currency_code . ')';
+		}
+		// print_r($out);die;
+		return $out;
+	}
+
+
 	
 	public function getPaymentMethodNameHtml()
 	{

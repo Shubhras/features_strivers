@@ -220,6 +220,13 @@
 							</a>
 						</li>
 					@endif
+
+					<li class="sidebar-item">
+							<a href="{{ admin_url('coach_payments') }}" class="sidebar-link">
+								<i data-feather="dollar-sign" class="feather-icon"></i> <span class="hide-menu">{{ trans('Coache payments') }}</span>
+							</a>
+						</li>
+						
 					@if (auth()->user()->can('page-list') || userHasSuperAdminPermissions())
 						<li class="sidebar-item">
 							<a href="{{ admin_url('pages') }}" class="sidebar-link">
@@ -356,6 +363,8 @@
 							</a>
 						</li>
 					@endif
+
+					
 					
 				</ul>
 			</nav>
@@ -510,8 +519,29 @@
 								
 							</ul>
 						</li>
+
+
+
 					@endif
 					
+
+
+
+					<!-- @if (auth()->user()->can('payment-list') || userHasSuperAdminPermissions()) -->
+						<li class="sidebar-item">
+							<a href="{{ admin_url('payments') }}" class="sidebar-link">
+								<i data-feather="dollar-sign" class="feather-icon"></i> <span class="hide-menu">{{ trans('Strivre payments') }}</span>
+							</a>
+						</li>
+					<!-- @endif -->
+
+
+					<li class="sidebar-item">
+							<a href="{{ admin_url('coach_payments') }}" class="sidebar-link">
+								<i data-feather="dollar-sign" class="feather-icon"></i> <span class="hide-menu">{{ trans('Coache payments') }}</span>
+							</a>
+						</li>
+
 				</ul>
 			</nav>
 			

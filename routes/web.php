@@ -143,6 +143,7 @@ Route::group([
 		CRUD::resource('strivre', 'StrivreController');
 
 		CRUD::resource('coach', 'CoachController');
+		CRUD::resource('coach_payments', 'CoachPaymentRequestController');
 		
 		// Others
 		Route::get('account', 'UserController@account');

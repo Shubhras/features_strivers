@@ -19,7 +19,7 @@ class CoachPaymentRequest extends Migration
 			$table->string('coach_id', 100)->nullable();
             $table->string('email', 100)->nullable();
 			$table->string('payment', 100)->nullable();
-            $table->string('payment_verified_at')->nullable()->default('Pending');
+            $table->string('active')->nullable()->default('0');
 			
 		});
 	}
