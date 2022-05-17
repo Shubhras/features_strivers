@@ -155,6 +155,7 @@ if (isset($categoriesOptions, $categoriesOptions['hide_on_mobile']) and $categor
                           
                             <div class="col-sm-4" data-toggle="modal" data-target="#myModal_{{$coach_list->id }}">
                               <a href="#" id="{{$coach_list->id }}">
+                                  
                                 <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" style="height: 200px;" alt="{{ $coach_list->name }}">
                                 <br>
                                 <?php

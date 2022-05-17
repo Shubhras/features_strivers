@@ -527,7 +527,18 @@
 					<div class="col-lg-3 col-md-6">
 						<div class="teacher-item">
 							<div class="teacher-thumb coach-img-wrapper">
-								<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+								
+
+								<?php if ($coach_list->photo != null) { ?>
+                                               
+											   <img src="{{ url('storage/'.$coach_list->photo) }}" alt="{{ $coach_list->name }}">
+   
+									   <?php } else { ?>
+   
+										   <img src="../images/user_default.jpg" alt="Basic">
+   
+									   <?php } ?>
+
 								
 							</div>
 							<div class="teacher-meta">

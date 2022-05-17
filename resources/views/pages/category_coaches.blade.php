@@ -82,9 +82,9 @@ body {
     }
 </style>
 <section class="page-banner" style="background-image: url(../assets/images/home/cta-bg.jpg);">
-<div class="hi">
+    <div class="hi">
 
-</div>
+    </div>
 
 </section>
 
@@ -135,10 +135,10 @@ body {
             @if(!empty($search_key))
 
 
-                Search Result for: {{$search_key}}
-                @else
-                Top Coaches for You
-                @endif
+            Search Result for: {{$search_key}}
+            @else
+            Top Coaches for You
+            @endif
 
         </h2>
 
@@ -279,76 +279,81 @@ body {
 
                 </div> -->
 
-                <div class="row">
-                <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-4">
 
-<!-- <div  id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('0')">
+                <!-- <div  id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('0')">
     </div> -->
-<div class="accordion" id="accordionExample" onclick="subCatListCoach('{{ $cat->id }}')">
-    @foreach($categories as $key => $cat)
-    <?php
-    $name = json_decode($cat->name);
-    $ss = array();
-    foreach ($name as $key => $sub) {
-        $ss[$key] = $sub;
-    }
-    ?>
-    <div>
-        <!-- <div class="subject-title-name-cat" id="heading{{ $cat->id }}"> -->
-        <h5 class="mb-0 subject-title-name-cat tab1 ">
-            <button class="btn btn-link tab " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
-                {{ $ss['en'] }}
-            </button>
-            <i class="fa arrow-down btn-link" id="heading{{ $cat->id }}" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important; float: right;" onclick="this.classList.toggle('active')"></i>
-        </h5>
-        <!-- </div> -->
-        <div id="collapse{{ $cat->id }}" class="collapse" aria-labelledby="heading{{ $cat->id }}" data-parent="#accordionExample">
-            <!-- <div class="card-body"> -->
-            <!-- <ul> -->
-            @foreach($sub_categories as $key => $sub_cat)
-            @if($sub_cat->parent_id == $cat->id)
-            <?php
-            $name = json_decode($sub_cat->name);
-            $ss = array();
-            foreach ($name as $key => $sub) {
-                $ss[$key] = $sub;
-            }
-            ?>
+                <div class="accordion" id="accordionExample" onclick="subCatListCoach('{{ $cat->id }}')">
+                    @foreach($categories as $key => $cat)
+                    <?php
+                    $name = json_decode($cat->name);
+                    $ss = array();
+                    foreach ($name as $key => $sub) {
+                        $ss[$key] = $sub;
+                    }
+                    ?>
+                    <div>
+                        <!-- <div class="subject-title-name-cat" id="heading{{ $cat->id }}"> -->
+                        <h5 class="mb-0 subject-title-name-cat tab1 ">
+                            <button class="btn btn-link tab " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
+                                {{ $ss['en'] }}
+                            </button>
+                            <i class="fa arrow-down btn-link" id="heading{{ $cat->id }}" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important; float: right;" onclick="this.classList.toggle('active')"></i>
+                        </h5>
+                        <!-- </div> -->
+                        <div id="collapse{{ $cat->id }}" class="collapse" aria-labelledby="heading{{ $cat->id }}" data-parent="#accordionExample">
+                            <!-- <div class="card-body"> -->
+                            <!-- <ul> -->
+                            @foreach($sub_categories as $key => $sub_cat)
+                            @if($sub_cat->parent_id == $cat->id)
+                            <?php
+                            $name = json_decode($sub_cat->name);
+                            $ss = array();
+                            foreach ($name as $key => $sub) {
+                                $ss[$key] = $sub;
+                            }
+                            ?>
 
-            <h5 class=" mb-0 subject-title-name-cat">
+                            <h5 class=" mb-0 subject-title-name-cat">
 
-                <button style="margin-left: 5px; border-bottom: 1px;" class="btn sub-categorry subject-title-name-cat-sub" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}
-                </button>
-            </h5>
+                                <button style="margin-left: 5px; border-bottom: 1px;" class="btn sub-categorry subject-title-name-cat-sub" onclick="filterSelection('{{$sub_cat->slug}}')">{{ $ss['en'] }}
+                                </button>
+                            </h5>
 
-            @endif
-            @endforeach
-            <!-- </ul> -->
-            <!-- </div> -->
-        </div>
-    </div>
-    @endforeach
-</div>
+                            @endif
+                            @endforeach
+                            <!-- </ul> -->
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
 
-</div>
-                <div class="col-md-8">
+            </div>
+            <div class="col-md-8">
 
 
-                    <div class="row">
-                        <?php
-                            foreach($user as $coach_list) {
-                        ?>
+                <div class="row">
+                    <?php
+                    foreach ($user as $coach_list) {
+                    ?>
                         <div class="column {{$coach_list->slug_name}}">
-                        <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal"
-                                data-target=".bd-example-modal-lg_{{$coach_list->id }}"
-                                id="coach_id_{{$coach_list->id }}">
+                            <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
 
-                            <div class="teacher-thumb coach-img-wrapper">
-                                
-                                <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Mountains" style="width:100%"
-                                    alt="{{ $coach_list->name }}">
-                                <div class="teacher-social">
-                                    <!-- <a href="#">
+                                <div class="teacher-thumb coach-img-wrapper">
+
+                                    <?php if ($coach_list->photo != null) { ?>
+                                        <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Mountains" style="width:100%" alt="{{ $coach_list->name }}">
+
+                                    <?php } else { ?>
+
+                                        <img src="../images/user_default.jpg" alt="Basic" style="width:100%">
+
+                                    <?php } ?>
+
+                                    <div class="teacher-social">
+                                        <!-- <a href="#">
                                         <i aria-hidden="true" class="fab fa-facebook-f"></i>
                                     </a>
                                     <a href="#">
@@ -360,45 +365,45 @@ body {
                                     <a href="#">
                                         <i aria-hidden="true" class="fab fa-vimeo-v"></i>
                                     </a> -->
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal"
+                                <!-- <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal"
                                 data-target=".bd-example-modal-lg_{{$coach_list->id }}"
                                 id="coach_id_{{$coach_list->id }}"> -->
-<br>
+                                <br>
                                 <h5 class="coach-cat-name12">
                                     {{ $coach_list->name }}
                                 </h5>
-                           
-                            <!-- <p>Stylist &amp; Author
+
+                                <!-- <p>Stylist &amp; Author
                             </p> -->
 
-                            <?php
+                                <?php
 
-                                    if (!empty($coach_list->slug)) {
+                                if (!empty($coach_list->slug)) {
 
 
-                                        $name = json_decode($coach_list->slug);
-                                        $ss = array();
-                                        foreach ($name as $key => $sub) {
-                                            $ss[$key] = $sub;
-                                        }
+                                    $name = json_decode($coach_list->slug);
+                                    $ss = array();
+                                    foreach ($name as $key => $sub) {
+                                        $ss[$key] = $sub;
+                                    }
 
-                                    ?>
-                                        <p class="lh">{{$ss['en']}}
-                                        </p>
-                                    <?php  } else {
-                                    ?>
-                                        <p class=" text-center" style="float: left;">Others
-                                        </p>
-                                    <?php } ?>
-                                    </a>
+                                ?>
+                                    <p class="lh">{{$ss['en']}}
+                                    </p>
+                                <?php  } else {
+                                ?>
+                                    <p class=" text-center" style="float: left;">Others
+                                    </p>
+                                <?php } ?>
+                            </a>
 
                         </div>
-                        <?php } ?>
-                    </div>
+                    <?php } ?>
+                </div>
 
-                    <script>
+                <script>
                     filterSelection("0")
                     subCatListCoach('{{ $cat->id }}')
 
@@ -447,12 +452,12 @@ body {
                             this.className += " active";
                         });
                     }
-                    </script>
-                </div>
-                <center>
-                    <a class="bisylms-btn" href="#">Explore Top Course </a>
-                </center>
+                </script>
             </div>
+            <center>
+                <a class="bisylms-btn" href="#">Explore Top Course </a>
+            </center>
+        </div>
 
 
 
@@ -487,7 +492,17 @@ body {
 
                             <!-- <img src="assets/images/home/f1.jpg" alt="Jim Séchen"> -->
 
-                            <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+                            <?php if ($coach_list->photo != null) { ?>
+
+
+
+                                <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Mountains" style="width:100%" alt="{{ $coach_list->name }}">
+
+                            <?php } else { ?>
+
+                                <img src="../images/user_default.jpg" alt="Basic" style="width:100%">
+
+                            <?php } ?>
 
 
                         </div>
@@ -495,10 +510,10 @@ body {
 
                             <!-- <a type="button" href="{{url('/top_coach_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}"> -->
 
-                                <p class=" top-coaches-name-list coach-cat-name12">
-                                    {{ $coach_list->name }}
-                                </p>
-                            
+                            <p class=" top-coaches-name-list coach-cat-name12">
+                                {{ $coach_list->name }}
+                            </p>
+
 
 
                             <?php
@@ -522,9 +537,9 @@ body {
                                 </p>
                             <?php } ?>
 
-                            </a>
+                </a>
 
-                            <!-- <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
+                <!-- <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
                                                 <div class="modal-dialog modal-xl">
                                                     <div class="modal-content p-5">
 
@@ -552,72 +567,83 @@ body {
                                              </div>
                                      </div> -->
 
-                            <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
-                                <div class="modal-dialog modal-xl">
+                <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
+                    <div class="modal-dialog modal-xl">
 
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Top Coach Details</h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Top Coach Details</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
 
-                                    <div class="modal-content p-5">
+                        <div class="modal-content p-5">
 
-
-                                        <img src="{{ url('storage/'.$coach_list->photo) }}" class="img-coches-main" alt="{{ $coach_list->name }}">
-                                        <p class="coach-details-name">{{$coach_list->name}}</p>
-                                        <h4 class=" text-center">
-
-                                            <?php
-
-                                            if (!empty($coach_list->slug)) {
+                            <?php if ($coach_list->photo != null) { ?>
 
 
-                                                $name = json_decode($coach_list->slug);
-                                                $ss = array();
-                                                foreach ($name as $key => $sub) {
-                                                    $ss[$key] = $sub;
-                                                }
 
-                                            ?>
+                                <img src="{{ url('storage/'.$coach_list->photo) }}" class="img-coches-main" alt="{{ $coach_list->name }}">
 
-                                                <p class="text-center">{{$ss['en']}}
-                                                </p>
-                                            <?php  } else {
-                                            ?>
-                                                <p class=" text-center">Others
-                                                </p>
-                                            <?php } ?>
-                                            <!-- Teaches Adventure Photography -->
-                                        </h4>
-                                        <p class="text-center"><b>
-                                                National Geographic photographer teaches his techniques for planning, capturing,
-                                                and editing breathtaking photos.</b>
-                                        </p> <br>
-                                        <?php if(!empty($coach_list->coach_summary)){?>
-                                        <label>{{$coach_list->coach_summary}} </label>
-                                        <?php }else{?>
-                                            <label>No Summary </label>
-                                            <?php }?>
-                                        <br>
-                                        <div class="row center-button-modal">
+                            <?php } else { ?>
 
-                                            <div class="col-lg-2">
-                                                <a href="{{url('/top_coach_detail/'.$coach_list->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
-                                            </div>
-                                            <div class="col-lg-2">
-                                                <a href="{{url('/pricing') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <img src="../images/user_default.jpg" alt="Basic" class="img-coches-main">
+
+                            <?php } ?>
+
+
+                            <p class="coach-details-name">{{$coach_list->name}}</p>
+                            <h4 class=" text-center">
+
+                                <?php
+
+                                if (!empty($coach_list->slug)) {
+
+
+                                    $name = json_decode($coach_list->slug);
+                                    $ss = array();
+                                    foreach ($name as $key => $sub) {
+                                        $ss[$key] = $sub;
+                                    }
+
+                                ?>
+
+                                    <p class="text-center">{{$ss['en']}}
+                                    </p>
+                                <?php  } else {
+                                ?>
+                                    <p class=" text-center">Others
+                                    </p>
+                                <?php } ?>
+                                <!-- Teaches Adventure Photography -->
+                            </h4>
+                            <p class="text-center"><b>
+                                    National Geographic photographer teaches his techniques for planning, capturing,
+                                    and editing breathtaking photos.</b>
+                            </p> <br>
+                            <?php if (!empty($coach_list->coach_summary)) { ?>
+                                <label>{{$coach_list->coach_summary}} </label>
+                            <?php } else { ?>
+                                <label>No Summary </label>
+                            <?php } ?>
+                            <br>
+                            <div class="row center-button-modal">
+
+                                <div class="col-lg-2">
+                                    <a href="{{url('/top_coach_detail/'.$coach_list->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
+                                </div>
+                                <div class="col-lg-2">
+                                    <a href="{{url('/pricing') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                </a>
+                </div>
             </div>
-        <?php } ?>
     </div>
+
+    </a>
+</div>
+<?php } ?>
+</div>
 </div>
 <br><br><br>
 <!-- </div> -->
@@ -695,56 +721,52 @@ body {
     .sub-cat-name {
         color: blue !important;
     }
-
-
-    
 </style>
 
 <style>
+    .arrow-down {
+        width: 20px;
+        height: 20px;
+        /* background: red; */
+        color: #000000;
+        position: relative;
+    }
 
-.arrow-down {
-  width: 20px;
-  height: 20px;
-  /* background: red; */
-  color: #000000;
-  position: relative;
-}
+    .arrow-down.active {
+        /* background: blue; */
+    }
 
-.arrow-down.active {
-  /* background: blue; */
-}
+    .arrow-down:before,
+    .arrow-down:after {
+        content: "";
+        display: block;
+        width: 9px;
+        height: 3px;
+        background: #100f0f;
+        position: absolute;
+        top: 7px;
+        transition: transform .5s;
+    }
 
-.arrow-down:before, .arrow-down:after {
-    content: "";
-    display: block;
-    width: 9px;
-    height: 3px;
-    background: #100f0f;
-    position: absolute;
-    top: 7px;
-    transition: transform .5s;
-}
+    .arrow-down:before {
+        right: 14px;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 5px;
+        transform: rotate(45deg);
+    }
 
-.arrow-down:before {
-    right: 14px;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 5px;
-    transform: rotate(45deg);
-}
+    .arrow-down:after {
+        right: 10px;
+        transform: rotate(-45deg);
+    }
 
-.arrow-down:after {
-  right: 10px;
-  transform: rotate(-45deg);
-}
+    .arrow-down.active:before {
+        transform: rotate(-45deg);
+    }
 
-.arrow-down.active:before {
-  transform: rotate(-45deg);
-}
-
-.arrow-down.active:after {
-  transform: rotate(45deg);
-}
-
+    .arrow-down.active:after {
+        transform: rotate(45deg);
+    }
 </style>
 @endsection
 

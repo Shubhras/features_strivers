@@ -336,7 +336,17 @@
 					<div class="col-lg-3 col-md-6">
 						<div class="teacher-item">
 							<div class="teacher-thumb coach-img-wrapper">
-								<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+								
+
+								<?php if ($coach_list->photo != null) { ?>
+									<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+
+                                    <?php } else { ?>
+
+                                        <img src="../images/user_default.jpg" alt="Basic">
+
+                                    <?php } ?>
+
 								<!-- <div class="teacher-social">
 								<a href="#">
 									<i aria-hidden="true" class="fab fa-facebook-f"></i>
@@ -356,8 +366,30 @@
 								<p class="top-coaches-name-list coach-cat-name12 ">
 									{{ $coach_list->name }}
 								</p>
-								<p class="lh">Stylist &amp; Author
-								</p>
+								<!-- <p class="lh">Stylist &amp; Author
+								</p> -->
+
+								<?php
+
+								if (!empty($coach_list->slug)) {
+
+
+									$name = json_decode($coach_list->slug);
+									$ss = array();
+									foreach ($name as $key => $sub) {
+										$ss[$key] = $sub;
+									}
+
+								?>
+
+									<p class="text-center">{{$ss['en']}}
+									</p>
+								<?php  } else {
+								?>
+									<p class=" text-center">Others
+									</p>
+								<?php } ?>
+								
 							</div>
 						</div>
 					</div>
@@ -639,7 +671,17 @@
 					<a href="{{url('/top_coach_detail/'.$coach_list->id) }}">
 						<div class="teacher-item">
 							<div class="teacher-thumb coach-img-wrapper">
-								<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+								
+
+								<?php if ($coach_list->photo != null) { ?>
+									<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+
+                                    <?php } else { ?>
+
+                                        <img src="../images/user_default.jpg" alt="Basic">
+
+                                    <?php } ?>
+
 
 							</div>
 							<div class="teacher-meta">

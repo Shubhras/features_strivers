@@ -17,9 +17,23 @@
 
 			<div class="row">
 				<center>
-					<img class="img-coches-main1" src="{{ url('storage/'.$top_coach_detail->photo) }}" alt="{{ $top_coach_detail->name }}">
+
+
+					<?php if ($top_coach_detail->photo != null) { ?>
+
+
+
+						<img class="img-coches-main1" src="{{ url('storage/'.$top_coach_detail->photo) }}" alt="{{ $top_coach_detail->name }}">
+
+
+					<?php } else { ?>
+
+						<img src="../images/user_default.jpg" alt="Basic" class="img-coches-main1">
+
+					<?php } ?>
 					<p class="coach-details-name text-center">{{ $top_coach_detail->name }}</p>
 					<br>
+
 					<h4 class=" text-center">
 						<?php
 
@@ -59,104 +73,101 @@
 
 
 				<div class="col-md-4 ">
-					<div class="box"
-					style="height: 450px;" >
-					<!-- <h3 style="font-family: 'Roboto', sans-serif; font-size: 20px;"><b>Coach Detail</b></h3> -->
+					<div class="box" style="height: 450px;">
+						<!-- <h3 style="font-family: 'Roboto', sans-serif; font-size: 20px;"><b>Coach Detail</b></h3> -->
 
-					<p style="font-family: 'Montserrat', sans-serif; font-size: 16px;"> Coach Name: {{ $top_coach_detail->name }}</p>
+						<p style="font-family: 'Montserrat', sans-serif; font-size: 16px;"> Coach Name: {{ $top_coach_detail->name }}</p>
 
-					<?php if ($top_coach_detail->year_of_experience != '') { ?>
-						<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Year of Experience : {{ $top_coach_detail->year_of_experience }}</p>
-					<?php
-					} else { ?>
-						<p style="font-family: 'Montserrat', sans-serif;font-size: 18px;">Year of Experience : No Experience</p>
+						<?php if ($top_coach_detail->year_of_experience != '') { ?>
+							<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Year of Experience : {{ $top_coach_detail->year_of_experience }}</p>
+						<?php
+						} else { ?>
+							<p style="font-family: 'Montserrat', sans-serif;font-size: 18px;">Year of Experience : No Experience</p>
 
-					<?php } ?>
-					<?php
+						<?php } ?>
+						<?php
 
-					if (!empty($top_coach_detail->slug)) {
-						$slug = json_decode($top_coach_detail->slug);
-
+						if (!empty($top_coach_detail->slug)) {
+							$slug = json_decode($top_coach_detail->slug);
 
 
 
-						$ss = array();
-						foreach ($slug as $key => $sub) {
-							$ss[$key] = $sub;
-						}
-					?>
-						<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Industry: {{ $ss['en'] }}</p>
-					<?php
-					} else { ?>
 
-						<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Industry: No Industry</p>
+							$ss = array();
+							foreach ($slug as $key => $sub) {
+								$ss[$key] = $sub;
+							}
+						?>
+							<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Industry: {{ $ss['en'] }}</p>
+						<?php
+						} else { ?>
 
-					<?php }
-					if (!empty($top_coach_detail->sub_cat)) {
+							<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Industry: No Industry</p>
+
+						<?php }
+						if (!empty($top_coach_detail->sub_cat)) {
 
 
-						$sub_cat = json_decode($top_coach_detail->sub_cat);
-						$aaa = array();
-						foreach ($sub_cat as $key => $subc) {
-							$aaa[$key] = $subc;
-						}
-					?>
-						<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Speciality: {{ $aaa['en'] }}</p>
-					<?php
-					} else { ?>
-						<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Speciality: No Speciality</p>
-					<?php }
-					?>
-</div>
+							$sub_cat = json_decode($top_coach_detail->sub_cat);
+							$aaa = array();
+							foreach ($sub_cat as $key => $subc) {
+								$aaa[$key] = $subc;
+							}
+						?>
+							<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Speciality: {{ $aaa['en'] }}</p>
+						<?php
+						} else { ?>
+							<p style="font-family: 'Montserrat', sans-serif; font-size: 18px;">Speciality: No Speciality</p>
+						<?php }
+						?>
+					</div>
 
 				</div>
 				<br>
-				<?php 
-				if($top_coach_detail->youtube_link){
+				<?php
+				if ($top_coach_detail->youtube_link) {
 					// $video_url= 'https://www.youtube.com/watch?v=bNHE9uFOaK4';
-					$video_url= $top_coach_detail->youtube_link;
+					$video_url = $top_coach_detail->youtube_link;
 
 					// print_r($video_url);die;
-					if(parse_url($video_url, PHP_URL_QUERY)){
+					if (parse_url($video_url, PHP_URL_QUERY)) {
 						$query_str = parse_url($video_url, PHP_URL_QUERY);
 						parse_str($query_str, $query_params);
 						$video_links = $query_params['v'];
-						$video_link =$video_links;
+						$video_link = $video_links;
 						// print_r($video_link);die;
-						?>
+				?>
 						<div class="col-md-8">
-				 <iframe width="100%" height="450" src="https://www.youtube.com/embed/{{ $video_link }}?autoplay=1&mute=1&loop=1"></iframe>
-					</div>
+							<iframe width="100%" height="450" src="https://www.youtube.com/embed/{{ $video_link }}?autoplay=1&mute=1&loop=1"></iframe>
+						</div>
 
 					<?php
-					}					
-					elseif(explode("/",$video_url)){						
-						$bb = explode("/",$video_url);
+					} elseif (explode("/", $video_url)) {
+						$bb = explode("/", $video_url);
 						$video_link = $bb[3];
-					
-								?>
-									
-					
-					
-					<div class="col-md-8">
-				 <iframe width="100%" height="450" src="https://www.youtube.com/embed/{{ $video_link }}?autoplay=1&mute=1&loop=1"></iframe>
-					</div>
+
+					?>
+
+
+
+						<div class="col-md-8">
+							<iframe width="100%" height="450" src="https://www.youtube.com/embed/{{ $video_link }}?autoplay=1&mute=1&loop=1"></iframe>
+						</div>
 
 					<?php }
-				}
-					else{
+				} else {
 					?>
-				<div class="col-md-8">
-					<iframe width="100%" height="450" src="https://www.youtube.com/embed/R5jIoLnL_nE?autoplay=1&mute=1&loop=1"></iframe>
-					<!-- <iframe width="100%" height="450" src="{{$top_coach_detail->youtube_link}}?autoplay=1&mute=1&loop=1"></iframe> -->
-				</div>
-				<?php 
-					}
+					<div class="col-md-8">
+						<iframe width="100%" height="450" src="https://www.youtube.com/embed/R5jIoLnL_nE?autoplay=1&mute=1&loop=1"></iframe>
+						<!-- <iframe width="100%" height="450" src="{{$top_coach_detail->youtube_link}}?autoplay=1&mute=1&loop=1"></iframe> -->
+					</div>
+				<?php
+				}
 				?>
 			</div>
 		</div>
 	</div>
-		<!-- <div class="" style="text-align: center;">
+	<!-- <div class="" style="text-align: center;">
 		<a href="{{url('/pricing') }}">
 			<button type="button" class="btn btn-lg" style="background: #012245; color: #ffffff">Get Started</button>
 		</a>
@@ -183,7 +194,24 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="feature-course-item-4">
 						<div class="fcf-thumb">
-							<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
+
+
+							<?php if ($coaches_corsee->image != null) { ?>
+
+
+
+								<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
+
+
+							<?php } else { ?>
+
+								<img src="../images/user_default.jpg" alt="Basic" style="height: 244px;">
+
+							<?php } ?>
+
+
+
+
 							<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" onclick="customSession()">View Package</a>
 						</div>
 						<div class="fci-details">
@@ -221,8 +249,8 @@
 			<?php } ?>
 		</div>
 	</div>
- <br>
- <br>
+	<br>
+	<br>
 	<div class="">
 		<div class="container">
 
@@ -239,7 +267,21 @@
 					<div class="col-lg-3 col-md-6">
 						<div class="feature-course-item-4">
 							<div class="fcf-thumb">
-								<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
+
+								<?php if ($coaches_corsee->image != null) { ?>
+
+
+
+									<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
+
+
+								<?php } else { ?>
+
+									<img src="../images/user_default.jpg" alt="Basic" style="height: 244px;">
+
+								<?php } ?>
+
+
 								<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" onclick="customSession()">View Package</a>
 							</div>
 							<div class="fci-details">
@@ -286,44 +328,58 @@
 				</h2>
 				<?php foreach ($suggested_coaches as $coach_list) { ?>
 
-					
+
 
 					<div class="col-lg-3 col-md-6">
-					<a href="{{url('/top_coach_detail/'.$coach_list->id) }}">
-						<div class="teacher-item">
-							<div class="teacher-thumb coach-img-wrapper">
-								<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
+						<a href="{{url('/top_coach_detail/'.$coach_list->id) }}">
+							<div class="teacher-item">
+								<div class="teacher-thumb coach-img-wrapper">
 
-							</div>
-							<div class="teacher-meta">
-								<p class="top-coaches-name-list coach-cat-name12 ">
-									{{ $coach_list->name }}
-								</p>
-								<?php
-
-								if (!empty($coach_list->slug)) {
+									<?php if ($coach_list->photo != null) { ?>
 
 
-									$name = json_decode($coach_list->slug);
-									$ss = array();
-									foreach ($name as $key => $sub) {
-										$ss[$key] = $sub;
-									}
 
-								?>
+										<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
 
-									<p class="text-center">{{$ss['en']}}
+
+									<?php } else { ?>
+
+										<img src="../images/user_default.jpg" alt="Basic" style="height: 244px;">
+
+									<?php } ?>
+
+									
+
+								</div>
+								<div class="teacher-meta">
+									<p class="top-coaches-name-list coach-cat-name12 ">
+										{{ $coach_list->name }}
 									</p>
-								<?php  } else {
-								?>
-									<p class=" text-center">Others
-									</p>
-								<?php } ?>
+									<?php
+
+									if (!empty($coach_list->slug)) {
+
+
+										$name = json_decode($coach_list->slug);
+										$ss = array();
+										foreach ($name as $key => $sub) {
+											$ss[$key] = $sub;
+										}
+
+									?>
+
+										<p class="text-center">{{$ss['en']}}
+										</p>
+									<?php  } else {
+									?>
+										<p class=" text-center">Others
+										</p>
+									<?php } ?>
+								</div>
 							</div>
-						</div>
 						</a>
 					</div>
-					
+
 				<?php } ?>
 			</div>
 		</div>
