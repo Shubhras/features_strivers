@@ -799,7 +799,7 @@ class HomeController extends FrontController
 
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
-			CURLOPT_URL => 'https://2092607fb09acc5d.api-us.cometchat.io/v3/users',
+			CURLOPT_URL => 'https://20775274f4e7a98f.api-eu.cometchat.io/v3/users',
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => '',
 			CURLOPT_MAXREDIRS => 10,
@@ -809,7 +809,7 @@ class HomeController extends FrontController
 			CURLOPT_CUSTOMREQUEST => 'POST',
 			CURLOPT_POSTFIELDS => array('uid' => $request->username, 'name' => $request->name),
 			CURLOPT_HTTPHEADER => array(
-				'apiKey: 514ef9b382c3baed4e6af6a17a966afe135b4cfc'
+				'apiKey: 865cabbaabab4fa310a14877b7c44f64b6564e3c'
 			),
 		));
 

@@ -237,9 +237,9 @@
                         
                         window.addEventListener('DOMContentLoaded', (event) => {
                             CometChatWidget.init({
-                                "appID": "2092607fb09acc5d",
-                                "appRegion": "us",
-                                "authKey": "5de6e5cebecc59e0a723c4e125ecd585a0a0cb84"
+                                "appID": "20775274f4e7a98f",
+                                "appRegion": "eu",
+                                "authKey": "4a00cf1895d10a852d109a7c1aabe00f84062841"
                             }).then(response => {
                                 console.log("Initialization completed successfully");
                                 //You can now call login function.
@@ -247,7 +247,7 @@
                                     "uid": valueArray
                                 }).then(response => {
                                     CometChatWidget.launch({
-                                        "widgetID": "286764bf-4a55-46f7-aa54-2a4c86ab1fde",
+                                        "widgetID": "48500c3e-f469-49cc-bcc9-fa503c63c181",
                                         "target": "#cometchat",
                                         "roundedCorners": "true",
                                         "height": "600px",
@@ -566,9 +566,9 @@
                         
                         window.addEventListener('DOMContentLoaded', (event) => {
                             CometChatWidget.init({
-                                "appID": "2092607fb09acc5d",
-                                "appRegion": "us",
-                                "authKey": "5de6e5cebecc59e0a723c4e125ecd585a0a0cb84"
+                                "appID": "20775274f4e7a98f",
+                                "appRegion": "eu",
+                                "authKey": "4a00cf1895d10a852d109a7c1aabe00f84062841"
                             }).then(response => {
                                 console.log("Initialization completed successfully");
                                 //You can now call login function.
@@ -576,7 +576,7 @@
                                     "uid": valueArray
                                 }).then(response => {
                                     CometChatWidget.launch({
-                                        "widgetID": "286764bf-4a55-46f7-aa54-2a4c86ab1fde",
+                                        "widgetID": "48500c3e-f469-49cc-bcc9-fa503c63c181",
                                         "target": "#cometchat",
                                         "roundedCorners": "true",
                                         "height": "600px",

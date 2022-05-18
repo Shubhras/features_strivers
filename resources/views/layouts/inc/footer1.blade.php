@@ -118,11 +118,11 @@
                             Lost the plot Richard you mug cup of tea knackered boot bender.
                         </p>
                         <div class="ab-social">
-                            <a class="fac" href="#"><i class="fab fa-facebook-f" style="line-height: 3;"></i></a>
-                            <a class="twi" href="#"><i class="fab fa-twitter" style="line-height: 3;"></i></a>
-                            <a class="you" href="#"><i class="fab fa-pinterest-p" style="line-height: 3;"></i></a>
-                            <a class="lin" href="#"><i class="fab fa-linkedin-in" style="line-height: 3;"></i></a>
-                        </div>
+                                <a class="fac" href="https://web.facebook.com/Strivre-103594345623153/"><i class="fab fa-facebook-f" style="line-height: 3;"></i></a>
+                                <a class="you" href="https://www.instagram.com/strivre_coach/"><i class="fab fa-instagram" style="line-height: 3;"></i></a>
+                                <!-- <a class="you" href="#"><i class="fab fa-pinterest-p" style="line-height: 3;"></i></a> -->
+                                <a class="lin" href="https://www.linkedin.com/company/strivrecoach/"><i class="fab fa-linkedin-in" style="line-height: 3;"></i></a>
+                            </div>
                     </div>
                 </aside>
             </div>
