@@ -42,7 +42,7 @@
 </head>
 
 <body>
-<div class="main-wrapper" style="background-image: url(https://ycsdigitalstage.co.uk/storage/app/default/backend/thumb-2500x2500-login_bg_image.jpg); no-repeat center center; background-size: cover;">
+<div class="main-wrapper" style="background-image: url(../backend/thumb-2500x2500-login_bg_image.jpg); no-repeat center center; background-size: cover;">
     
     <?php
     // $wrapperStyle = '';
