@@ -263,6 +263,7 @@
 															   class="form-control{{$usernameError}}"
 															   placeholder="Full Name"
 															   value="{{ old('username', $user->username) }}"
+															   disabled
 														>
 													</div>
 												</div>
