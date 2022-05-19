@@ -4,9 +4,6 @@
 	
     @section('content')
 
-    <!-- Start of HubSpot Embed Code -->
-<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/21635038.js"></script>
-<!-- End of HubSpot Embed Code -->
    
     <section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
      
