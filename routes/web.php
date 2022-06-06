@@ -250,7 +250,7 @@ Route::group([
 			// Route::post('strivers_signup', 'HomeController@register_new_user');
 			Route::post('strivers_signup', 'HomeController@register_new_user');
 
-			Route::get('updateUserCategory/{id}','HomeController@updateUserCategory');
+			Route::post('updateUserCategory','HomeController@updateUserCategory');
 
 			Route::get(dynamicRoute('routes.countries'), 'CountriesController@index');
 		} else {

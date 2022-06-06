@@ -410,7 +410,7 @@
 
                         <a href="{{url('/coach_list_category_all/'.$cat->id) }}">
 
-                            <div class="course-item-01 text-center">
+                            <div class="course-item-0123 text-center">
                                 <defs>
                                     <style>
                                         .cls-1 {
@@ -419,7 +419,7 @@
                                     </style>
                                     <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 74 60">
 
-                                        <img src="{{ url('storage/'.$cat->picture) }}" width="74" height="60">
+                                        <img src="{{ url('storage/'.$cat->picture) }}" width="34" height="34" style="margin-top: 10px;">
 
                                     </pattern>
 

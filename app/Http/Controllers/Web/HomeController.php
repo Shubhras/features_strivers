@@ -118,7 +118,7 @@ class HomeController extends FrontController
 			$data['user'] = DB::table('users')->select('users.*', 'categories.name as categories_slug')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
 			->where('users.user_type_id', 2)
-			->where('users.category',$user1->category)
+			->whereIn('users.category',json_decode($user1->category))
 			->whereNotIn('users.id', [1])
 			
 			->limit(6)
@@ -892,13 +892,13 @@ class HomeController extends FrontController
 		
 	}
 
-	public function updateUserCategory($id){
+	public function updateUserCategory(Request $request){
 
-		$userCategory = $id;
+	
 		$auth_id = auth()->user()->id;
 
 
-		DB::table('users')->where('users.id',$auth_id)->update(['users.category' =>$userCategory]);
+		DB::table('users')->where('users.id',$auth_id)->update(['users.category' =>json_encode($request->category_id)]);
 
 	
 		return redirect('/account');

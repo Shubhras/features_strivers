@@ -95,9 +95,9 @@
         <div class="" id="Strivers">
 
 
-            <!-- <form role="form" method="POST" action="{{ url('/updateUserCategory') }}" class="row">
+             <form role="form" method="POST" action="{{ url('/updateUserCategory') }}" class="row">
 
-                {!! csrf_field() !!} -->
+                {!! csrf_field() !!}
 
 
 
@@ -167,8 +167,7 @@
                     <div class="col-md-3 course-wrapper">
 
 
-                        <a href="{{url('/updateUserCategory/'.$cat->id) }}">
-
+                       
                             <div class="course-item-01 text-center">
                                 <defs>
                                     <style>
@@ -187,11 +186,13 @@
 
                                 <h4> {{ $ss['en'] }}
 
-                                </h4>
+                      
+          </h4>
+ <input type="checkbox" name="category_id[]" id="category_id" value="{{$cat->id}}" style="width: 15px;">  
 
                             </div>
 
-                        </a>
+                      
 
                     </div>
                     @endforeach
@@ -199,7 +200,7 @@
                 </div>
                                         
                 <div class="col-lg-12">
-                    <button type="button" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">
+                    <button type="submit" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">
                         Submit Your Interest
                     </button>
                 </div>
