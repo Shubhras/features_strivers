@@ -95,7 +95,7 @@
         <div class="" id="Strivers">
 
 
-            <form role="form" method="POST" action="{{ url('/updateUserCategory') }}" class="row" name=form1>
+             <form role="form" method="POST" action="{{ url('/updateUserCategory') }}" class="row">
 
                 {!! csrf_field() !!}
 
@@ -171,8 +171,7 @@
                     <div class="col-md-3 course-wrapper">
 
 
-                        <!-- <a href="{{url('/updateUserCategory/'.$cat->id) }}"> -->
-
+                       
                             <div class="course-item-01 text-center">
                                 <defs>
                                     <style>
@@ -191,11 +190,13 @@
 
                                 <h4> {{ $ss['en'] }} 
 
-                                </h4>
-                                <input type="checkbox" name="category_id[]" id="category_id_' .$cat->id. '" value="{{$cat->id}}" style="width: 15px;" class="someclass">  
+                      
+          </h4>
+ <input type="checkbox" name="category_id[]" id="category_id" value="{{$cat->id}}" style="width: 15px;">  
+
                             </div>
 
-                        <!-- </a> -->
+                      
 
                     </div>
                     @endforeach
@@ -321,14 +322,3 @@ $(document).ready(function () {
 @endsection
 
 @section('after_scripts')
-
-<script>
-    $(".someclass").change(function() {
-        var count = $(".someclass:checked").length; //get count of checked checkboxes
-
-        if (count > 3) {
-            alert("Only 3 options allowed..!");
-            $(this).prop('checked', false); // turn this one off
-        }
-    });
-</script>

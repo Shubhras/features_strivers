@@ -7886,7 +7886,15 @@ input#modal-description {
     color: #012245;
 }
 
+.course-item-0123 h4 a:hover {
+    color: #012245;
+}
+
 .course-item-01 svg {
+    height: 70px;
+}
+
+.course-item-0123 svg {
     height: 70px;
 }
 
@@ -7909,7 +7917,7 @@ input#modal-description {
 }
 
 .category_imagrs {
-    width: 35%!important;
+    width: 26%!important;
 }
 
 .course-item-01 {
@@ -7918,7 +7926,7 @@ input#modal-description {
     height: 138px;
     background: #f7f6fa;
     border-radius: 20px;
-    padding: 10px 30px 4px!important;
+    padding: 10px 10px 4px!important;
     margin-right: 0px;
     margin-bottom: 20px;
     -webkit-transition: all 0.3s ease;
