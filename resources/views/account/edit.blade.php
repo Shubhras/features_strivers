@@ -488,7 +488,18 @@
 												</div>
 											</div>
 											{{--industry/area of expertise and subcategories --}}
-											<?php $countryCodeError = (isset($errors) and $errors->has('category')) ? ' is-invalid' : ''; ?>
+											<?php $countryCodeError = (isset($errors) and $errors->has('category')) ? ' is-invalid' : ''; 
+											
+											// print_r($categoriess);die;
+
+											$user_category= json_decode($user->category);
+											
+
+											foreach($user_category as $key =>$values){
+												// print_r($values);die;
+
+											
+											?>
 											<div class="row mb-3 required">
 												<label class="col-md-6{{ $countryCodeError }}" for="category">
 													{{ ('Industry/Area of expertise') }} <sup>*</sup>
@@ -497,37 +508,66 @@
 													{{ ('Subcategories') }} <sup>*</sup>
 												</label>
 												<div class="col-md-6">
-                                                    <select name="category" id="category"
+													
+                                                    <select name="category[]" id="category_<?= $values ?>"
                                                         class="form-control large-data-selecter{{ $countryCodeError }}" 
-														onclick="getcategory(this.value)" required>
-                                                        <option value="0"
-                                                            {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }} required>
+														onclick="getcategory(<?= $values ?>)" required  onchange="document.getElementById('text_content[]').value=['<?= $values ?>']">
+                                                        <!-- <option value="0"
+                                                            {{ (!old('values') or old('values')==0) ? 'selected="selected"' : '' }} required>
                                                             {{ t('select_a_category') }}
-                                                        </option>
+                                                        </option> -->
                                                         @foreach ($categories as $item) -->
                                                          <option value="{{ $item->id }}"
-                                                            {{ (old('category', $user->category)==$item->id) ? 'selected="selected"' : '' }}>
+                                                            {{ (old('category', $values)==$item->id) ? 'selected="selected"' : '' }}>
                                                             {{ $item->slug }}
                                                         </option>
                                                         @endforeach 
                                                     </select>
                                                 </div>
+
+												
                                                 <div class="col-md-6">
-                                                    <select name="sub_category" id="sub_category34"
-                                                        class="form-control large-data-selecter{{ $countryCodeError }}"required>
+                                                    <select name="sub_category[]" id="sub_category34_<?= $values ?>"
+                                                        class="form-control large-data-selecter{{ $countryCodeError }}"required multiple="multiple">
                                                         <?php
+
+														if(!empty($user->sub_category)){
+
+													$subcat= json_decode($user->sub_category);
+																
+												    foreach($subcat as $subdatacat){
 														foreach ($categoriess as $value) {
-															// print_r($value);die;
-														
+															if($subdatacat == $value->id ){
+															
+																if($value->parent_id == $values ){	
+
 														?>
                                                         <option value="{{ $value->id }}"
-                                                            {{ (old('category', $user->sub_category)==$value->id)? 'selected="selected"': '' }}>
+                                                            {{ (old('category', $subdatacat)==$value->id)? 'selected="selected"': '' }}>
                                                             {{ $value->slug }}
                                                         </option>
-                                                        <?php } ?>
+														<?php } }else if($subdatacat != $value->id){
+															
+															if($value->parent_id == $values ){	
+															?>
+																
+
+															<option value="{{ $value->id }}"
+                                                            {{ (old('category', $subdatacat)==$value->id)? 'selected="selected"': '' }}>
+                                                            {{ $value->slug }}
+                                                        </option>
+
+
+                                                        <?php } } } } }
+														?>
                                                     </select>
                                                 </div>
+												
 											</div>
+									<?php	} ?>
+									<!-- <input type="text" name="test_text" id="text_content[]" value="" style="color:black"> -->
+
+									<!-- <input type="text" name="user_type" id="" value="2" style="color:black"> -->
 
 											{{-- gender_id --}}
 
@@ -1171,7 +1211,18 @@ favDialog.addEventListener('close', function onClose() {
 
 
 											{{--industry/area of expertise and subcategories --}}
-											<?php $countryCodeError = (isset($errors) and $errors->has('category')) ? ' is-invalid' : ''; ?>
+											<?php $countryCodeError = (isset($errors) and $errors->has('category')) ? ' is-invalid' : ''; 
+											
+											
+
+											$user_category= json_decode($user->category);
+											
+
+											foreach($user_category as $key =>$values){
+												// print_r($values);die;
+
+											
+											?>
 											<div class="row mb-3 required">
 												<label class="col-md-6{{ $countryCodeError }}" for="category">
 													{{ ('Industry/Area of expertise') }} <sup>*</sup>
@@ -1181,38 +1232,58 @@ favDialog.addEventListener('close', function onClose() {
 												</label>
 												<div class="col-md-6">
 													
-                                                    <select name="category" id="category"
+                                                    <select name="category[]" id="category_<?= $values ?>"
                                                         class="form-control large-data-selecter{{ $countryCodeError }}" 
-														onclick="getcategory(this.value)" required>
-                                                        <option value="0"
-                                                            {{ (!old('category') or old('category')==0) ? 'selected="selected"' : '' }} required>
+														onclick="getcategory(<?= $values ?>)" required>
+                                                        <!-- <option value="0"
+                                                            {{ (!old('values') or old('values')==0) ? 'selected="selected"' : '' }} required>
                                                             {{ t('select_a_category') }}
-                                                        </option>
+                                                        </option> -->
                                                         @foreach ($categories as $item) -->
                                                          <option value="{{ $item->id }}"
-                                                            {{ (old('category', $user->category)==$item->id) ? 'selected="selected"' : '' }}>
+                                                            {{ (old('category', $values)==$item->id) ? 'selected="selected"' : '' }}>
                                                             {{ $item->slug }}
                                                         </option>
                                                         @endforeach 
                                                     </select>
                                                 </div>
+
+												
                                                 <div class="col-md-6">
-                                                    <select name="sub_category" id="sub_category34"
-                                                        class="form-control large-data-selecter{{ $countryCodeError }}"required>
-                                                        <?php
+                                                    <select name="sub_category[]" id="sub_category34_<?= $values ?>"
+                                                        class="form-control large-data-selecter{{ $countryCodeError }}"required multiple tabindex="4">
+                                                        <?php 
+														
+														if(!empty($user->sub_category)){
+														
+																
+																$subcat= json_decode($user->sub_category);
+																// print_r($value);die;
+												foreach($subcat as $subdatacat){
 														foreach ($categoriess as $value) {
-															// print_r($value);die;
+
+															
+													if($value->parent_id == $values ){	
+														
+															
 														
 														?>
                                                         <option value="{{ $value->id }}"
-                                                            {{ (old('category', $user->sub_category)==$value->id)? 'selected="selected"': '' }}>
+                                                            {{ (old('category', $subdatacat)==$value->id)? 'selected="selected"': '' }}>
                                                             {{ $value->slug }}
                                                         </option>
-                                                        <?php } ?>
+                                                        <?php } } } ?>
+
+														<?php }?>
                                                     </select>
                                                 </div>
+												
 											</div>
+									<?php	}
+											
 
+									
+									?>
 
 
 											<div class="row mb-3">
@@ -1962,7 +2033,8 @@ favDialog.addEventListener('close', function onClose() {
 function getcategory(id)
  {
 	
-    var categoryID = $('#category').val();
+	
+    var categoryID = $('#category_'+ id).val();
     
     // alert(categoryID);
         // var categoryID = $('#category').val();
@@ -1980,7 +2052,7 @@ function getcategory(id)
 // console.log( 'hii',Response);
                     if (Response) {
 
-                        $("#sub_category34").empty();
+                        $("#sub_category34_"+ id).empty();
                         // $("#sub_category34").append('<option value=0>Select a subcategory</option>');
 
 						// console.log('sss',Response);
@@ -1990,7 +2062,7 @@ function getcategory(id)
                             //     value +
                             //     '</option>');
 
-							$("#sub_category34").append('<option value="' + key +
+							$("#sub_category34_"+ id).append('<option value="' + key +
                             '" ' + ((key == (value.id)) ? "selected" : "") + ' >' +
                             value +
                             '</option>');
@@ -1999,7 +2071,7 @@ function getcategory(id)
 
                     } else {
 
-                        $("#sub_category34").empty();
+                        $("#sub_category34_"+ id).empty();
                     }
 
                 }
@@ -2007,6 +2079,8 @@ function getcategory(id)
         
 		}
 	} 
+
+	
 
 </script>
 

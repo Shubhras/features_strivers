@@ -104,7 +104,8 @@ class HomeController extends FrontController
 			}
 		}
 
-		// print_r($user1->category);die;
+		// print_r(json_decode($user1->category));die;
+		
 		if(empty(auth()->user())){
 
 		$data['user'] = DB::table('users')->select('users.*', 'categories.name as categories_slug')
@@ -115,16 +116,76 @@ class HomeController extends FrontController
 			->limit(6)
 			->get();
 		}else{
-			$data['user'] = DB::table('users')->select('users.*', 'categories.name as categories_slug')
+
+			if (!empty($user1->category)){
+
+			$conditions =json_decode($user1->category);
+			// print_r($conditions);die;
+			$data =[];
+			foreach($conditions as $val){
+				
+			$q1 = DB::table('categories')->where('categories.id',$val)->first();
+			
+			$user = DB::table('users')->select('categories.name as categories_slug','users.*')
+			// ->leftJoin('categories', DB::raw('FIND_IN_SET(categories.id, users.category)'), '>', DB::raw(0))
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			// ->leftjoin('categories', 'categories.id', '=', $val)
+			// ->leftJoin('categories', function ($val) {
+				
+			// 	$val->where('categories.id',$val);
+			// })
 			->where('users.user_type_id', 2)
-			->where('users.category',$user1->category)
+			->where(json_decode('users.category',$val))
+			->whereNotNull('users.category')
+			
 			->whereNotIn('users.id', [1])
 			
+			->inRandomOrder()
 			->limit(6)
 			->get();
-		}
+
+			$data['user'] =$user;
+		
+			
+			}
+		}else  {
+			$edit_user = DB::table('users')->select('users.*')->where('users.id', $user1->id)->first();
+		$data['user_auth_id'] = 	auth()->user()->id;
+
+
+		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+			return view('auth.register.user_category', $data);
+		} 
+
 		// print_r($data['user']);die;
+
+
+			// $condition= $data['user']
+			// print_r($data['user'];die;
+			// foreach($datauser as $value){
+				
+			//  }
+
+			
+			// $users = User::where(function($q) use ($condition){
+			// 	foreach($condition as $key => $value){
+			// 		$user1 = auth()->user();
+			// 		$conditions =json_decode($user1->category);
+					
+			// 		$q->where('users.category', 'LIKE', $conditions);
+			// 		$q->where('users.user_type_id', 2);
+			
+			// 		$q->whereNotIn('users.id', [1]);
+			// 		$q->limit(6);
+			// 	}
+			// })->get();
+
+
+			// $data['user'] = $users;
+
+			 
+		}
+		
 
 		$data['our_reviews'] = DB::table('users')->select('users.*')->where('users.user_type_id', 2)->whereNotIn('users.id', [1])->orderBy('users.id', 'asc')->limit(3)->get();
 
@@ -163,7 +224,34 @@ class HomeController extends FrontController
 		$data['categories'] = DB::table('categories')->select('categories.*')->where('categories.parent_id', null)->orderBy('categories.name', 'asc')->get();
 
 		// print_r($data['categories']);die;
-		$data['categories_list_coach'] = DB::table('users')->select('categories.slug', 'categories.id', 'categories.name', 'users.category', 'categories.picture', 'categories.icon_class')->join('categories', 'categories.id', '=', 'users.category')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->where('users.user_type_id', 2)->get();
+
+		$data['categories_list_coach343'] = DB::table('users')
+		->select('users.category')
+		->where('users.user_type_id', 2)->get();
+
+
+		$data['categories_list_coach'] = DB::table('users')
+		->select('categories.slug', 'categories.id', 'categories.name', 'users.category', 'categories.picture', 'categories.icon_class')
+		->join('categories', 'categories.id', '=', 'users.category')
+		->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->where('users.user_type_id', 2)->get();
+
+		//  print_r($data['categories_list_coach343']);die;
+
+		$unique = array();
+		$uniques = array();
+		$keyss = array();
+
+		foreach ($data['categories_list_coach343'] as $value) {
+			// print_r($value);die;
+			$unique[$value->category] = $value;
+			$uniques['key'] = $value->category;
+		}
+
+		$data['uniqueCat'] = array_values($unique);
+
+		$data['categories_list_coach187'] = array_slice($data['uniqueCat'], 0, 10);
+
+
 
 
 
@@ -180,6 +268,7 @@ class HomeController extends FrontController
 		$data['uniqueCat'] = array_values($unique);
 
 		$data['categories_list_coach1'] = array_slice($data['uniqueCat'], 0, 6);
+
 
 		// print_r($data['categories_list_coach1']);die;
 
@@ -892,13 +981,16 @@ class HomeController extends FrontController
 		
 	}
 
-	public function updateUserCategory($id){
+	public function updateUserCategory(Request $request){
 
-		$userCategory = $id;
+		// print_r(json_encode($request->category_id));die;
+		
+
+		// $userCategory = 12;
 		$auth_id = auth()->user()->id;
 
 
-		DB::table('users')->where('users.id',$auth_id)->update(['users.category' =>$userCategory]);
+		DB::table('users')->where('users.id',$auth_id)->update(['users.category' =>json_encode($request->category_id)]);
 
 	
 		return redirect('/account');

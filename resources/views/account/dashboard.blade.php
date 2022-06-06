@@ -480,7 +480,10 @@
         </h2>
 
         <div class="row">
-            <?php foreach ($suggested_striver as $coach_list) { ?>
+            <?php
+            // print_r($suggested_striver);die;
+            
+            foreach ($suggested_striver as $coach_list) { ?>
                 <div class="col-lg-3 col-md-6">
                     <div class="teacher-item">
                         <div class="teacher-thumb coach-img-wrapper">
@@ -504,8 +507,41 @@
                             <p class="top-coaches-name-list coach-cat-name12">
                                 {{ $coach_list->name }}
             </p>
-                            <p class="lh">Stylist &amp; Author
-                            </p>
+            <?php
+
+
+
+
+
+$conditions = json_decode($coach_list->category);
+
+
+
+if (!empty($conditions)) {
+    foreach ($conditions as $val) {
+        $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+
+
+
+
+        $name = json_decode($q1->categories_slug);
+        $ss = array();
+        foreach ($name as $key => $sub) {
+            $ss[$key] = $sub;
+        }
+
+
+?>
+
+        <p class="lh">{{$ss['en']}}
+        </p>
+    <?php
+    }
+} else {
+    ?>
+    <p class=" text-center">Others
+    </p>
+<?php } ?>
                         </div>
                     </div>
                 </div>
@@ -989,8 +1025,41 @@
                                 <p class="top-coaches-name-list coach-cat-name12 ">
                                     {{ $coach_list->name }}
                 </p>
-                                <p class="lh">Stylist &amp; Author
-                                </p>
+                <?php
+
+
+
+
+
+$conditions = json_decode($coach_list->category);
+
+
+
+if (!empty($conditions)) {
+    foreach ($conditions as $val) {
+        $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+
+
+
+
+        $name = json_decode($q1->categories_slug);
+        $ss = array();
+        foreach ($name as $key => $sub) {
+            $ss[$key] = $sub;
+        }
+
+
+?>
+
+        <p class="lh">{{$ss['en']}}
+        </p>
+    <?php
+    }
+} else {
+    ?>
+    <p class=" text-center">Others
+    </p>
+<?php } ?>
                             </div>
                         </div>
                     </div>

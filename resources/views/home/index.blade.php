@@ -88,10 +88,25 @@
 
                         <h5 class="mb-1 tm">FIND INTERESTING</h5>
                         <?php
+$userd = array();
 
-                        foreach ($categories_list_coach1 as $key => $value) {
+foreach($categories_list_coach187 as $userCatMulti){
 
-                            // print_r($value);die;
+    
+    $category_name = json_decode($userCatMulti->category);
+
+                        // foreach($category_name as $key => $val) {
+
+                           
+                            $keyss  = DB::table('categories')->select('categories.slug', 'categories.id', 'categories.name', 'categories.picture', 'categories.icon_class')->where('categories.parent_id', null)
+                            ->where('categories.id', $category_name)->orderBy('categories.slug', 'asc')->groupBy('categories.id')->get();
+                            // print_r($keyss);die;
+        // $data['categories_list_coach4'] = $categories_list_coach23;
+        
+        foreach($keyss as $value){
+            //
+       
+      
                         ?>
                             <div class="latest-course1 ppt">
 
@@ -101,12 +116,17 @@
                                     <a class="index-34" href="{{url('/coach_list_category_all/'.$value->id) }}" id="sub_id_<?= $value->id ?>" value="<?= $value->id ?>"><img src="../assets/images/home/desktop1-image.png" alt=""></a>
                                 <?php
                                 }
+
+                                
                                 $name = json_decode($value->name);
+
+                               
                                 $ss = array();
                                 foreach ($name as $key => $sub) {
+                                    
                                     $ss[$key] = $sub;
                                 }
-
+                               
                                 ?>
 
 
@@ -119,7 +139,11 @@
 
 
                             </div>
-                        <?php } ?>
+                        <?php 
+                         
+
+                        }
+                    } ?>
                         <!-- </aside> -->
                         <!-- </aside>
                     </nav> -->
@@ -150,7 +174,7 @@
 
                             @if(!empty($news->picture))
 
-                            <div class="strivre-img-wrapper" >
+                            <div class="strivre-img-wrapper">
 
                                 <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
                                     <img src="{{ url('storage/'.$news->picture) }}" alt="{{ $news->name }}">
@@ -218,22 +242,32 @@
 
                                     </a>
                                     <?php
+                                    $conditions = json_decode($coach->category);
 
-                                    if (!empty($coach->categories_slug)) {
 
 
-                                        $name = json_decode($coach->categories_slug);
-                                        $ss = array();
-                                        foreach ($name as $key => $sub) {
-                                            $ss[$key] = $sub;
+                                    if (!empty($conditions)) {
+                                        foreach ($conditions as $val) {
+                                            $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+
+
+                                            // print_r($q1);die;
+
+                                            $name = json_decode($q1->categories_slug);
+                                            $ss = array();
+                                            foreach ($name as $key => $sub) {
+                                                $ss[$key] = $sub;
+                                            }
+
+
+                                    ?>
+
+                                            <p class="lh">{{$ss['en']}}
+                                            </p>,
+                                        <?php
                                         }
-
-                                    ?>
-
-                                        <p class="lh">{{$ss['en']}}
-                                        </p>
-                                    <?php  } else {
-                                    ?>
+                                    } else {
+                                        ?>
                                         <p class=" text-center">Others
                                         </p>
                                     <?php } ?>
@@ -383,15 +417,15 @@
                 </button>
             </div>
 
-                            <?php
+            <?php
 
-                        foreach ($categories_list_coach1 as $key => $value) {
+            foreach ($categories_list_coach1 as $key => $value) {
 
-                            // print_r($value);die;
+                // print_r($value);die;
 
-                             }
-                
-                ?>
+            }
+
+            ?>
 
             <div class="row p-5 text-center">
                 <div class="row">
@@ -410,7 +444,7 @@
 
                         <a href="{{url('/coach_list_category_all/'.$cat->id) }}">
 
-                            <div class="course-item-01 text-center">
+                            <div class="course-item-0123 text-center">
                                 <defs>
                                     <style>
                                         .cls-1 {
@@ -419,16 +453,21 @@
                                     </style>
                                     <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 74 60">
 
-                                        <img src="{{ url('storage/'.$cat->picture) }}" width="74" height="60">
+                                        <img src="{{ url('storage/'.$cat->picture) }}" width="34" height="34" style="margin-top: 10px;">
 
                                     </pattern>
 
 
                                 </defs>
-                                <path id="desktop1" class="cls-1" d="M0,0H74V60H0Z" />
-                                <!-- </svg> -->
+                                <!-- <path id="desktop1" class="cls-1" d="M0,0H74V60H0Z" />
+                                
 
                                 <h4> {{ $ss['en'] }}
+
+                                </h4> -->
+                                <path id="desktop1" class="cls-1" d="M0,0H74V60H0Z" />
+
+                                <h4> {{ $ss['en'] }} 
 
                                 </h4>
 
@@ -448,7 +487,8 @@
                     <button type="button" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">
                         Submit Your Interest
                     </button>
-                </div>            </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -545,15 +585,15 @@
 <p id="demo"></p>
 
 <script>
-function myFunction() {
-  var txt;
-  if (confirm("Press a button!")) {
-    txt = "You pressed OK!";
-  } else {
-    txt = "You pressed Cancel!";
-  }
-  document.getElementById("demo").innerHTML = txt;
-}
+    function myFunction() {
+        var txt;
+        if (confirm("Press a button!")) {
+            txt = "You pressed OK!";
+        } else {
+            txt = "You pressed Cancel!";
+        }
+        document.getElementById("demo").innerHTML = txt;
+    }
 </script>
 
 <!-- End Include All JS -->

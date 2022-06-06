@@ -544,6 +544,18 @@ position: relative;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease;
     }
+    .course-item-0123 {
+        position: relative;
+        width: 100%;
+        background: #f7f6fa;
+        border-radius: 20px;
+        padding: 10px 10px 4px!important;
+        margin-right: 10px;
+        margin-bottom: 20px;
+        -webkit-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
     .navbar-expand-lg .navbar-nav li:nth-last-child(1)>.sub-menu li .sub-menu,
     .navbar-expand-lg .navbar-nav li:nth-last-child(2)>.sub-menu li .sub-menu,
     .navbar-expand-lg .navbar-nav li:nth-last-child(3)>.sub-menu li .sub-menu {
@@ -1725,6 +1737,15 @@ background: transparent;
 border: 2px solid rgb(255 255 255 / 92%); */
     }
     .course-item-01 {
+        position: relative;
+        width: 100%;
+        background: #f7f6fa;
+        border-radius: 20px;
+        padding: 10px 10px 4px!important;
+        margin-right: 10px;
+        margin-bottom: 20px;
+    }
+    .course-item-0123 {
         position: relative;
         width: 100%;
         background: #f7f6fa;

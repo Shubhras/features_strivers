@@ -611,7 +611,7 @@ class PageController extends FrontController
 		// 		->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 		// 		->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
 
-
+		// $category= json_decode($user1->category);
 		if (empty(auth()->user())) {
 			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 				->leftjoin('categories', 'categories.id', '=', 'users.category')
@@ -619,14 +619,40 @@ class PageController extends FrontController
 				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 				->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
 		} else {
-			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-				->leftjoin('categories', 'categories.id', '=', 'users.category')
-				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-				->where('users.user_type_id', 2)
-				->where('users.category', $user1->category)
-				->orderBy('users.id', 'asc')->inRandomOrder()->limit(8)->get();
+			// $data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
+			// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			// 	->where('users.user_type_id', 2)
+			// 	->where('users.category', $user1->category)
+			// 	->orderBy('users.id', 'asc')->inRandomOrder()->limit(8)->get();
+
+
+				$conditions =json_decode($user1->category);
+			
+			$userss =[];
+			foreach($conditions as $val){
+				
+			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
+			
+			$userss = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			->where('users.user_type_id', 2)
+			->where(json_decode('users.category',$val))
+			->whereNotNull('users.category')
+			
+			->whereNotIn('users.id', [1])
+			
+			->inRandomOrder()
+			->limit(8)
+			->get();
+
 		}
+		$data['suggested_coaches']= $userss;
+	}
 
 		[$title, $description, $keywords] = getMetaTag('contact');
 		MetaTag::set('title', $title);
@@ -634,6 +660,8 @@ class PageController extends FrontController
 		MetaTag::set('keywords', $keywords);
 
 		$data['search_key'] = '';
+
+		// print_r($data['suggested_coaches']);die;
 
 		return appView('pages.category_coaches', $data);
 	}

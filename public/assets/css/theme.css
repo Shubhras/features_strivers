@@ -7846,7 +7846,32 @@ input#modal-description {
     transition: all 0.4s ease;
 }
 
+.course-item-0123:after {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 30px 30px 0 0;
+    border-color: #012245 #fff #fff #fff;
+    content: '';
+    visibility: hidden;
+    opacity: 0;
+    border-radius: 20px 0 0 0;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
 .course-item-01:hover {
+    background: #fff;
+    -webkit-box-shadow: 0px 30px 50px 0px rgba(11, 02, 55, 0.10);
+    -moz-box-shadow: 0px 30px 50px 0px rgba(11, 02, 55, 0.10);
+    box-shadow: 0px 30px 50px 0px rgba(11, 02, 55, 0.10);
+}
+
+.course-item-0123:hover {
     background: #fff;
     -webkit-box-shadow: 0px 30px 50px 0px rgba(11, 02, 55, 0.10);
     -moz-box-shadow: 0px 30px 50px 0px rgba(11, 02, 55, 0.10);
@@ -7857,11 +7882,26 @@ input#modal-description {
     color: #012245;
 }
 
+.course-item-0123 h4 a:hover {
+    color: #012245;
+}
+
 .course-item-01 svg {
     height: 70px;
 }
 
+.course-item-0123 svg {
+    height: 70px;
+}
+
 .course-item-01 h4 {
+    font-size: 12px;
+    line-height: 26px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.course-item-0123 h4 {
     font-size: 12px;
     line-height: 26px;
     font-weight: 600;
@@ -7875,11 +7915,25 @@ input#modal-description {
 .course-item-01 {
     position: relative;
     width: 100%;
-    height: 110px;
+    height: 138px;
     background: #f7f6fa;
     border-radius: 20px;
     padding: 10px 30px 4px!important;
-    margin-right: 40px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.course-item-0123 {
+    position: relative;
+    width: 100%;
+    height: 118px;
+    background: #f7f6fa;
+    border-radius: 20px;
+    padding: 10px 30px 4px!important;
+    margin-right: 151px;
     margin-bottom: 20px;
     -webkit-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;

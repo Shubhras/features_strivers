@@ -95,9 +95,9 @@
         <div class="" id="Strivers">
 
 
-            <!-- <form role="form" method="POST" action="{{ url('/updateUserCategory') }}" class="row">
+            <form role="form" method="POST" action="{{ url('/updateUserCategory') }}" class="row" name=form1>
 
-                {!! csrf_field() !!} -->
+                {!! csrf_field() !!}
 
 
 
@@ -154,12 +154,16 @@
             <div class="row p-5 text-center">
                 <div class="row">
                     <!-- <div class="col-lg-12"> -->
-
+                  <?php  $counter=0; ?>
                     @foreach($categories as $key => $cat)
                     <?php
                    
                     $name = json_decode($cat->name);
                     $ss = array();
+
+                   
+
+                    $counter=$counter+1;
                     foreach ($name as $key => $sub) {
                         $ss[$key] = $sub;
                     }
@@ -167,7 +171,7 @@
                     <div class="col-md-3 course-wrapper">
 
 
-                        <a href="{{url('/updateUserCategory/'.$cat->id) }}">
+                        <!-- <a href="{{url('/updateUserCategory/'.$cat->id) }}"> -->
 
                             <div class="course-item-01 text-center">
                                 <defs>
@@ -185,13 +189,13 @@
                                 </defs>
                                 <path id="desktop1" class="cls-1" d="M0,0H74V60H0Z" />
 
-                                <h4> {{ $ss['en'] }}
+                                <h4> {{ $ss['en'] }} 
 
                                 </h4>
-
+                                <input type="checkbox" name="category_id[]" id="category_id_' .$cat->id. '" value="{{$cat->id}}" style="width: 15px;" class="someclass">  
                             </div>
 
-                        </a>
+                        <!-- </a> -->
 
                     </div>
                     @endforeach
@@ -199,7 +203,7 @@
                 </div>
                                         
                 <div class="col-lg-12">
-                    <button type="button" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">
+                    <button type="submit" class="bisylms-btn" data-toggle="modal" data-target=".bd-example-modal-lg">
                         Submit Your Interest
                     </button>
                 </div>
@@ -263,6 +267,34 @@
 <script src="../assets/js/theme.js"></script>
 <!-- End Include All JS -->
 
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $('#category_id').click(function() {
+
+      checked = $("input[type=checkbox]:checked").length;
+
+      alert(checked);
+      
+
+      if(checked< 3) {
+        // alert("You must check at least one checkbox.");
+        // return false;
+      }else if(checked > 3){
+
+        alert("You must check at least one checkbox.");
+        return false;
+      }
+
+    });
+});
+
+</script> -->
+
+
+
+
 @endsection
 
 @section('after_styles')
@@ -289,3 +321,14 @@
 @endsection
 
 @section('after_scripts')
+
+<script>
+    $(".someclass").change(function() {
+        var count = $(".someclass:checked").length; //get count of checked checkboxes
+
+        if (count > 3) {
+            alert("Only 3 options allowed..!");
+            $(this).prop('checked', false); // turn this one off
+        }
+    });
+</script>

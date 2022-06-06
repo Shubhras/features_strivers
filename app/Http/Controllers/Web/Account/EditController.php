@@ -96,13 +96,13 @@ class EditController extends AccountBaseController
 			->get();
 
 		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
-		$data['categoriess'] = DB::table('categories')->select('categories.slug', 'categories.id')->where('categories.parent_id', $user->category)->get();
+		$data['categoriess'] = DB::table('categories')->select('categories.slug', 'categories.id','categories.parent_id')->whereIn('categories.parent_id', json_decode($user->category))->get();
 
 		$data['all_countries'] = DB::table('countries')->get();
 
 
 
-		// print_r($data['all_countries']);die;
+		// print_r($data['categoriess']);die;
 
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
@@ -113,6 +113,7 @@ class EditController extends AccountBaseController
 
 
 		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+		// print_r($edit_user);die;
 
 		if (empty($edit_user->category)) {
 
@@ -122,7 +123,7 @@ class EditController extends AccountBaseController
 			return appView('account.edit', $data);
 		}
 
-		// print_r($edit_user);die;
+		
 
 
 		// print_r($data);die;
@@ -186,20 +187,82 @@ class EditController extends AccountBaseController
 				->where('users.user_type_id', 2)->limit(8)->inRandomOrder()->get();
 		} else {
 
-			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			// $data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
+			// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			// 	->where('users.user_type_id', 2)
+			// 	->where('users.category', $user->category)
+			// 	->limit(8)->inRandomOrder()->get();
+
+
+			$conditions =json_decode($user->category);
+			
+			$userss =[];
+			foreach($conditions as $val){
+				
+			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
+			
+			$userss = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			->where('users.user_type_id', 2)
+			->where(json_decode('users.category',$val))
+			->whereNotNull('users.category')
+			
+			->whereNotIn('users.id', [1])
+			
+			->inRandomOrder()
+			->limit(8)
+			->get();
+			}
+			$data['suggested_coaches']= $userss;
+
+
+		}
+
+		// $data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+		// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
+		// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+		// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+		// 	->where('users.user_type_id', 3)->limit(8)->inRandomOrder()->get();
+
+		if (empty(auth()->user())) {
+			$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 				->leftjoin('categories', 'categories.id', '=', 'users.category')
 				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-				->where('users.user_type_id', 2)
-				->where('users.category', $user->category)
-				->limit(8)->inRandomOrder()->get();
+				->where('users.user_type_id', 3)->limit(8)->inRandomOrder()->get();
+		} else {
+
+
+			$conditions =json_decode($user->category);
+			
+			$userss =[];
+			foreach($conditions as $val){
+				
+			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
+			
+			$userss = DB::table('users')->select('users.*', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			
+			// ->leftjoin('categories', 'categories.id', '=', 'users.category')
+			
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			
+			->where(json_decode('users.category',$val))
+			->whereNotNull('users.category')
+			
+			->whereNotIn('users.id', [1])
+			
+			->where('users.user_type_id', 3)->limit(8)->inRandomOrder()->get();
+			}
+
+			$data['suggested_striver']= $userss;
 		}
 
-		$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 3)->limit(8)->inRandomOrder()->get();
+		// print_r($data['suggested_striver']);die;
 
 		$data['suggested_striver_data'] = DB::table('users')->select(
 			'users.*',
@@ -284,13 +347,42 @@ class EditController extends AccountBaseController
 				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 				->where('users.user_type_id', 2)->inRandomOrder()->limit(8)->get();
 		} else {
-			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-				->leftjoin('categories', 'categories.id', '=', 'users.category')
-				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-				->where('users.user_type_id', 2)
-				->where('users.category', $user->category)
-				->inRandomOrder()->limit(8)->get();
+
+			// $data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
+			// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			// 	->where('users.user_type_id', 2)
+			// 	->where('users.category', $user->category)
+			// 	->inRandomOrder()->limit(8)->get();
+
+
+
+				$conditions =json_decode($user->category);
+			
+			$userss =[];
+			foreach($conditions as $val){
+				
+			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
+			
+			$userss = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			->where('users.user_type_id', 2)
+			->where(json_decode('users.category',$val))
+			->whereNotNull('users.category')
+			
+			->whereNotIn('users.id', [1])
+			
+			->inRandomOrder()
+			->limit(8)
+			->get();
+			}
+			$data['suggested_coaches']= $userss;
+
+
 		}
 		$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			->leftjoin('categories', 'categories.id', '=', 'users.category')
@@ -665,19 +757,83 @@ $enroldStrvreUser_id = 0;
 				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 				->where('users.user_type_id', 2)->inRandomOrder()->limit(8)->get();
 		} else {
-			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			// $data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
+			// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			// 	->where('users.user_type_id', 2)
+			// 	->where('users.category', $user->category)
+			// 	->inRandomOrder()->limit(8)->get();
+
+
+
+				$conditions =json_decode($user->category);
+			
+				$userss =[];
+				foreach($conditions as $val){
+					
+				// $q1 = DB::table('categories')->where('categories.id',$val)->first();
+				
+				$userss = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+				
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)
+				->where(json_decode('users.category',$val))
+				->whereNotNull('users.category')
+				
+				->whereNotIn('users.id', [1])
+				
+				->inRandomOrder()
+				->limit(8)
+				->get();
+				}
+				$data['suggested_coaches']= $userss;
+
+
+		}
+		// $data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+		// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
+		// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+		// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+		// 	->where('users.user_type_id', 3)->inRandomOrder()->limit(8)->get();
+
+
+		if (empty(auth()->user())) {
+			$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 				->leftjoin('categories', 'categories.id', '=', 'users.category')
 				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-				->where('users.user_type_id', 2)
-				->where('users.category', $user->category)
-				->inRandomOrder()->limit(8)->get();
-		}
-		$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->where('users.user_type_id', 3)->limit(8)->inRandomOrder()->get();
+		} else {
+
+
+			$conditions =json_decode($user->category);
+			
+			$userss =[];
+			foreach($conditions as $val){
+				
+			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
+			
+			$userss = DB::table('users')->select('users.*', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			
+			// ->leftjoin('categories', 'categories.id', '=', 'users.category')
+			
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 3)->inRandomOrder()->limit(8)->get();
+			
+			->where(json_decode('users.category',$val))
+			->whereNotNull('users.category')
+			
+			->whereNotIn('users.id', [1])
+			
+			->where('users.user_type_id', 3)->limit(8)->inRandomOrder()->get();
+			}
+
+			$data['suggested_striver']= $userss;
+		}
+		
+
 
 		// print_r();die;
 		$data['users'] = DB::table('user_subscription')->select('coach_course.*')
@@ -731,11 +887,24 @@ $enroldStrvreUser_id = 0;
 				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
 				->limit(8)->get();
 		} else {
-			$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+
+			$conditions =json_decode($user->category);
+			
+				$userss =[];
+				foreach($conditions as $val){
+
+					$userss	 = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
 				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
-				->where('users.category', $user->category)
+				->where(json_decode('users.category',$val))
 				->inRandomOrder()
 				->limit(8)->get();
+
+				
+				
+				}
+				$data['coach_striver']= $userss;
+
+
 		}
 		// print_r($data['coach_striver']);die;
 		MetaTag::set('title', t('my_account'));
@@ -783,11 +952,46 @@ $enroldStrvreUser_id = 0;
 			->count();
 
 
-		$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+		// $data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+		// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
+		// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+		// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+		// 	->where('users.user_type_id', 3)->inRandomOrder()->limit(8)->get();
+
+		if (empty(auth()->user())) {
+			$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 3)->limit(8)->inRandomOrder()->get();
+		} else {
+
+
+			$conditions =json_decode($user->category);
+			
+			$userss =[];
+			foreach($conditions as $val){
+				
+			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
+			
+			$userss = DB::table('users')->select('users.*', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			
+			// ->leftjoin('categories', 'categories.id', '=', 'users.category')
+			
 			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			->where('users.user_type_id', 3)->inRandomOrder()->limit(8)->get();
+			
+			->where(json_decode('users.category',$val))
+			->whereNotNull('users.category')
+			
+			->whereNotIn('users.id', [1])
+			
+			->where('users.user_type_id', 3)->limit(8)->inRandomOrder()->get();
+			}
+
+			$data['suggested_striver']= $userss;
+		}
+		
+		
 
 		// print_r();die;
 		$data['users'] = DB::table('user_subscription')->select('coach_course.*')
@@ -1416,20 +1620,83 @@ $enroldStrvreUser_id = 0;
 				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 				->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
 		} else {
-			$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			// $data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
+			// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			// 	->where('users.user_type_id', 2)
+			// 	->where('users.category', $user->category)
+			// 	->orderBy('users.id', 'asc')->limit(8)->get();
+
+
+			$conditions =json_decode($user->category);
+			
+			$userss =[];
+			foreach($conditions as $val){
+				
+			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
+			
+			$userss = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			->where('users.user_type_id', 2)
+			->where(json_decode('users.category',$val))
+			->whereNotNull('users.category')
+			
+			->whereNotIn('users.id', [1])
+			
+			->inRandomOrder()
+			->limit(8)
+			->get();
+			}
+			$data['suggested_coaches']= $userss;
+
+
+
+		}
+		// print_r($data['suggested_coaches']);die;
+		// $data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+		// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
+		// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+		// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+
+		// 	->where('users.user_type_id', 3)->orderBy('users.id', 'asc')->limit(8)->get();
+
+		if (empty(auth()->user())) {
+			$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 				->leftjoin('categories', 'categories.id', '=', 'users.category')
 				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-				->where('users.user_type_id', 2)
-				->where('users.category', $user->category)
-				->orderBy('users.id', 'asc')->limit(8)->get();
-		}
-		$data['suggested_striver'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 3)->limit(8)->inRandomOrder()->get();
+		} else {
 
-			->where('users.user_type_id', 3)->orderBy('users.id', 'asc')->limit(8)->get();
+
+			$conditions =json_decode($user->category);
+			
+			$userss =[];
+			foreach($conditions as $val){
+				
+			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
+			
+			$userss = DB::table('users')->select('users.*', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			
+			// ->leftjoin('categories', 'categories.id', '=', 'users.category')
+			
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			
+			->where(json_decode('users.category',$val))
+			->whereNotNull('users.category')
+			
+			->whereNotIn('users.id', [1])
+			
+			->where('users.user_type_id', 3)->limit(8)->inRandomOrder()->get();
+			}
+
+			$data['suggested_striver']= $userss;
+		}
+
 
 
 		$data['user_subscriptions1'] = DB::table('user_subscription')->select('user_subscription.*', 'packages.name', 'users.name as username')
@@ -1909,9 +2176,25 @@ $enroldStrvreUser_id = 0;
 	public function updateDetails(UserRequest $request)
 	{
 		// print_r($request->all());die;
-		$endpoint = '/users/' . auth()->user()->id;
-		$data = makeApiRequest('put', $endpoint, $request->all());
 
+
+		$sub_category=	json_encode($request->sub_category);
+		$category= json_encode($request->category);
+// print_r($category);die;
+		// if($request->user_type == 2){
+			// $user_idd = auth()->user()->id;
+		$user_data_request = array(['name' =>$request->name,'email'=>$request->email,'country_code'=>$request->country_code,'location'=>$request->location,'phone'=>$request->phone,'year_of_experience'=>$request->year_of_experience,'youtube_link'=>$request->youtube_link,'category'=>$category,'sub_category'=>$sub_category,'gender_id'=>$request->gender_id,'coach_summary'=>$request->coach_summary]);
+
+
+
+		$endpoint = '/users/' . auth()->user()->id;
+		 $data = makeApiRequest('put', $endpoint, $user_data_request);
+
+	
+
+
+		// $data = DB::table('users')->where('users.id', $user_idd)->update(['name' =>$request->name,'email'=>$request->email,'country_code'=>$request->country_code,'location'=>$request->location,'phone'=>$request->phone,'year_of_experience'=>$request->year_of_experience,'youtube_link'=>$request->youtube_link,'category'=>$category,'sub_category'=>$sub_category,'gender_id'=>$request->gender_id,'coach_summary'=>$request->coach_summary]);
+	// }
 
 		// Parsing the API's response
 		$message = !empty(data_get($data, 'message')) ? data_get($data, 'message') : 'Unknown Error.';

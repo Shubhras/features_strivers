@@ -545,8 +545,37 @@
 								<p class="top-coaches-name-list coach-cat-name12 ">
 									{{ $coach_list->name }}
 								</p>
-								<p class="lh">Stylist &amp; Author
-								</p>
+								<?php
+
+									$conditions = json_decode($coach_list->category);
+
+
+
+									if (!empty($conditions)) {
+										foreach ($conditions as $val) {
+											$q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+
+
+
+
+											$name = json_decode($q1->categories_slug);
+											$ss = array();
+											foreach ($name as $key => $sub) {
+												$ss[$key] = $sub;
+											}
+
+
+									?>
+
+											<p class="text-center">{{$ss['en']}}
+											</p>
+										<?php
+										}
+									} else {
+										?>
+										<p class=" text-center">Others
+										</p>
+									<?php } ?>
 							</div>
 						</div>
 					</div>

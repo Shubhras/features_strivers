@@ -77,43 +77,43 @@
 
 
                         <div class="row">
-               
-			   <div class="col-md-12 col-sm-8 col-12">
-			   <span>
 
-			   
-				   <div class="header-data text-center-xs">
-					   
-					   <div class="hdata">
-					   <a href="{{ url('account/chat') }}">
-						   <div class="mcol-left">
-							   <!-- <i class="fas fa-comments ln-shadow"></i> -->
-							   <img src="../assets/images/chat_call.png" alt="">
-						   </div>
-						   <div class="mcol-right">
-							   {{-- Number of visitors --}}
-							   <p>
-								   
-									  
-									   <em>Call / Message</em>
-								  
-							   </p>
-						   </div>
+                            <div class="col-md-12 col-sm-8 col-12">
+                                <span>
 
-						   </a>
-						   <div class="clearfix"></div>
-					   </div>
 
-					  
+                                    <div class="header-data text-center-xs">
 
-					 
-				   </div>
-			   </div>
-			
-			    </div>
-				
-		      </div>
-			</div>
+                                        <div class="hdata">
+                                            <a href="{{ url('account/chat') }}">
+                                                <div class="mcol-left">
+                                                    <!-- <i class="fas fa-comments ln-shadow"></i> -->
+                                                    <img src="../assets/images/chat_call.png" alt="">
+                                                </div>
+                                                <div class="mcol-right">
+                                                    {{-- Number of visitors --}}
+                                                    <p>
+
+
+                                                        <em>Call / Message</em>
+
+                                                    </p>
+                                                </div>
+
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+
+
+
+                                    </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
 
 
 
@@ -133,85 +133,85 @@
 
                                 <div class="col-lg-4 col-md-6">
 
-                               
+
 
 
                                     <div class="teacher-item">
-                                    <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
+                                        <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
 
-                                        <div class="teacher-thumb coach-img-wrapper">
+                                            <div class="teacher-thumb coach-img-wrapper">
 
-                                        <?php if(!empty($coach_list->photo)){ ?>
+                                                <?php if (!empty($coach_list->photo)) { ?>
 
-                                            <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
+                                                    <img src="{{ url('storage/'.$coach_list->photo) }}" class="lazyload img-fluid" alt="{{ $coach_list->name }}">
 
-                                            <?php }else{?>
+                                                <?php } else { ?>
 
                                                     <img src="../assets/images/course/1.jpg" alt="Hugh Saturation">
-                                                <?php }?>
-                                            
+                                                <?php } ?>
 
-                                            <div class="madels">
-                                                <img src="../assets/images/basic-1.svg" alt="Standard">
 
-                                                <!-- <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid"  alt="{{ $coach_list->name }}">  -->
+                                                <div class="madels">
+                                                    <img src="../assets/images/basic-1.svg" alt="Standard">
 
+                                                    <!-- <img src="{{ imgUrl($coach_list->photo, '') }}" class="lazyload img-fluid"  alt="{{ $coach_list->name }}">  -->
+
+
+                                                </div>
 
                                             </div>
-                                            
-                                        </div>
-                                        <div class="teacher-meta">
-                                            <p class="top-coaches-name-list coach-cat-name12">
-                                                <!-- Hugh Saturation -->
-                                                {{ $coach_list->name }}
+                                            <div class="teacher-meta">
+                                                <p class="top-coaches-name-list coach-cat-name12">
+                                                    <!-- Hugh Saturation -->
+                                                    {{ $coach_list->name }}
 
-                                            </p>
-                                            <!-- <p class="lh">Photographer
+                                                </p>
+                                                <!-- <p class="lh">Photographer
                                             </p> -->
-                                        </div>
-                                    </a>
+                                            </div>
+                                        </a>
                                     </div>
-                                    
+
                                 </div>
 
 
 
 
                                 <div class="modal fade bd-example-modal-lg_{{$coach_list->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="coach_id_{{$coach_list->id }}">
-                                        <div class="modal-dialog modal-xl">
+                                    <div class="modal-dialog modal-xl">
 
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Strivre Details</h4>
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Strivre Details</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
 
-                                            <div class="modal-content p-5">
+                                        <div class="modal-content p-5">
 
 
-                                                <img src="{{ url('storage/'.$coach_list->photo) }}" class="img-coches-main" alt="{{ $coach_list->name }}">
-                                                <p class="coach-details-name">{{$coach_list->name}}</p>
-                                                <h4 class=" text-center">
-                                                   
-                                                </h4>
-                                                <p class="text-center"><b>
-                                                    </b>
-                                                </p> <br>
-                                                <!-- <label>{{$coach_list->coach_summary}}</label> -->
-                                                <br>
-                                                <div class="row center-button-modal">
+                                            <img src="{{ url('storage/'.$coach_list->photo) }}" class="img-coches-main" alt="{{ $coach_list->name }}">
+                                            <p class="coach-details-name">{{$coach_list->name}}</p>
+                                            <h4 class=" text-center">
 
-                                                    <!-- <div class="col-lg-2">
+                                            </h4>
+                                            <p class="text-center"><b>
+                                                </b>
+                                            </p> <br>
+                                            <!-- <label>{{$coach_list->coach_summary}}</label> -->
+                                            <br>
+                                            <div class="row center-button-modal">
+
+                                                <!-- <div class="col-lg-2">
                                                         <a href="{{url('/top_coach_detail/'.$coach_list->id) }}" class="bisylms-btn" style="color: aliceblue!important;">Know more</a>
                                                     </div> -->
-                                                    <!-- <div class="col-lg-2">
+                                                <!-- <div class="col-lg-2">
                                                         <a href="{{url('/register') }}" class="bisylms-btn" style="color: aliceblue!important;">Get Started</a>
                                                     </div> -->
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    
+
 
                             <?php } ?>
 
@@ -242,16 +242,16 @@
                                         <div class="teacher-thumb coach-img-wrapper">
 
 
-                                        <?php if ($coach_list->photo != null) { ?>
-                                            <img src="{{ url('storage/'.$coach_list->photo) }}" alt="{{ $coach_list->name }}">
+                                            <?php if ($coach_list->photo != null) { ?>
+                                                <img src="{{ url('storage/'.$coach_list->photo) }}" alt="{{ $coach_list->name }}">
 
-                                    <?php } else { ?>
+                                            <?php } else { ?>
 
-                                        <img src="../images/user_default.jpg" alt="Basic">
+                                                <img src="../images/user_default.jpg" alt="Basic">
 
-                                    <?php } ?>
+                                            <?php } ?>
 
-                                            
+
 
                                         </div>
                                         <div class="teacher-meta">
@@ -259,7 +259,37 @@
                                                 {{ $coach_list->name }}
                                             </p>
 
-                                           
+                                            <?php
+
+$conditions = json_decode($coach_list->category);
+
+
+
+if (!empty($conditions)) {
+    foreach ($conditions as $val) {
+        $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+
+
+
+
+        $name = json_decode($q1->categories_slug);
+        $ss = array();
+        foreach ($name as $key => $sub) {
+            $ss[$key] = $sub;
+        }
+
+
+?>
+
+        <p class="text-center">{{$ss['en']}}
+        </p>
+    <?php
+    }
+} else {
+    ?>
+    <p class=" text-center">Others
+    </p>
+<?php } ?>
 
                                         </div>
                                     </div>
@@ -388,43 +418,43 @@
 
 
                         <div class="row">
-               
-			   <div class="col-md-12 col-sm-8 col-12">
-			   <span>
 
-			   
-				   <div class="header-data text-center-xs">
-					   
-					   <div class="hdata">
-					   <a href="{{ url('account/chat') }}">
-						   <div class="mcol-left">
-							   <!-- <i class="fas fa-comments ln-shadow"></i> -->
-							   <img src="../assets/images/chat_call.png" alt="">
-						   </div>
-						   <div class="mcol-right">
-							   {{-- Number of visitors --}}
-							   <p>
-								   
-									  
-									   <em>Call / Message</em>
-								  
-							   </p>
-						   </div>
+                            <div class="col-md-12 col-sm-8 col-12">
+                                <span>
 
-						   </a>
-						   <div class="clearfix"></div>
-					   </div>
 
-					  
+                                    <div class="header-data text-center-xs">
 
-					 
-				   </div>
-			   </div>
-			
-			    </div>
-				
-		      </div>
-			</div>
+                                        <div class="hdata">
+                                            <a href="{{ url('account/chat') }}">
+                                                <div class="mcol-left">
+                                                    <!-- <i class="fas fa-comments ln-shadow"></i> -->
+                                                    <img src="../assets/images/chat_call.png" alt="">
+                                                </div>
+                                                <div class="mcol-right">
+                                                    {{-- Number of visitors --}}
+                                                    <p>
+
+
+                                                        <em>Call / Message</em>
+
+                                                    </p>
+                                                </div>
+
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+
+
+
+                                    </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
 
 
 
@@ -566,52 +596,66 @@
                             </h2>
                             <?php foreach ($suggested_coaches as $coach_list) { ?>
                                 <div class="col-lg-3 col-md-6">
-                                <a href="{{url('/top_coach_detail/'.$coach_list->id) }}">
-                                    <div class="teacher-item">
-                                        <div class="teacher-thumb coach-img-wrapper">
-                                            
+                                    <a href="{{url('/top_coach_detail/'.$coach_list->id) }}">
+                                        <div class="teacher-item">
+                                            <div class="teacher-thumb coach-img-wrapper">
 
 
-                                            <?php if ($coach_list->photo != null) { ?>
+
+                                                <?php if ($coach_list->photo != null) { ?>
+
+                                                    <img src="{{ url('storage/'.$coach_list->photo) }}" alt="{{ $coach_list->name }}">
+
+                                                <?php } else { ?>
+
+                                                    <img src="../images/user_default.jpg" alt="Basic">
+
+                                                <?php } ?>
+
+
+
+                                            </div>
+                                            <div class="teacher-meta">
+                                                <p class="top-coaches-name-list coach-cat-name12 ">
+                                                    {{ $coach_list->name }}
+                                                </p>
                                                
-                                            <img src="{{ url('storage/'.$coach_list->photo) }}" alt="{{ $coach_list->name }}">
 
-                                    <?php } else { ?>
+                                                <?php
 
-                                        <img src="../images/user_default.jpg" alt="Basic">
-
-                                    <?php } ?>
+                                                $conditions = json_decode($coach_list->category);
 
 
 
+                                                if (!empty($conditions)) {
+                                                    foreach ($conditions as $val) {
+                                                        $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+
+
+
+
+                                                        $name = json_decode($q1->categories_slug);
+                                                        $ss = array();
+                                                        foreach ($name as $key => $sub) {
+                                                            $ss[$key] = $sub;
+                                                        }
+
+
+                                                ?>
+
+                                                        <p class="text-center">{{$ss['en']}}
+                                                        </p>
+                                                    <?php
+                                                    }
+                                                } else {
+                                                    ?>
+                                                    <p class=" text-center">Others
+                                                    </p>
+                                                <?php } ?>
+
+                                            </div>
                                         </div>
-                                        <div class="teacher-meta">
-                                            <p class="top-coaches-name-list coach-cat-name12 ">
-                                                {{ $coach_list->name }}
-                                            </p>
-                                            <?php
-
-                                            if (!empty($coach_list->slug)) {
-
-
-                                                $name = json_decode($coach_list->slug);
-                                                $ss = array();
-                                                foreach ($name as $key => $sub) {
-                                                    $ss[$key] = $sub;
-                                                }
-
-                                            ?>
-
-                                                <p class="text-center">{{$ss['en']}}
-                                                </p>
-                                            <?php  } else {
-                                            ?>
-                                                <p class=" text-center">Others
-                                                </p>
-                                            <?php } ?>
-                                        </div>
-                                    </div>
-                                </a>
+                                    </a>
                                 </div>
                             <?php } ?>
                         </div>

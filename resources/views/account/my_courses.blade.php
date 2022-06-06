@@ -50,43 +50,43 @@
 
 
 						<div class="row">
-               
-			   <div class="col-md-12 col-sm-8 col-12">
-			   <span>
 
-			   
-				   <div class="header-data text-center-xs">
-					   
-					   <div class="hdata">
-					   <a href="{{ url('account/chat') }}">
-						   <div class="mcol-left">
-							   <!-- <i class="fas fa-comments ln-shadow"></i> -->
-							   <img src="../assets/images/chat_call.png" alt="">
-						   </div>
-						   <div class="mcol-right">
-							   {{-- Number of visitors --}}
-							   <p>
-								   
-									  
-									   <em>Call / Message</em>
-								  
-							   </p>
-						   </div>
+							<div class="col-md-12 col-sm-8 col-12">
+								<span>
 
-						   </a>
-						   <div class="clearfix"></div>
-					   </div>
 
-					  
+									<div class="header-data text-center-xs">
 
-					 
-				   </div>
-			   </div>
-			
-			    </div>
-				
-		      </div>
-			</div>
+										<div class="hdata">
+											<a href="{{ url('account/chat') }}">
+												<div class="mcol-left">
+													<!-- <i class="fas fa-comments ln-shadow"></i> -->
+													<img src="../assets/images/chat_call.png" alt="">
+												</div>
+												<div class="mcol-right">
+													{{-- Number of visitors --}}
+													<p>
+
+
+														<em>Call / Message</em>
+
+													</p>
+												</div>
+
+											</a>
+											<div class="clearfix"></div>
+										</div>
+
+
+
+
+									</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
 
 
 
@@ -336,31 +336,18 @@
 					<div class="col-lg-3 col-md-6">
 						<div class="teacher-item">
 							<div class="teacher-thumb coach-img-wrapper">
-								
+
 
 								<?php if ($coach_list->photo != null) { ?>
 									<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
 
-                                    <?php } else { ?>
+								<?php } else { ?>
 
-                                        <img src="../images/user_default.jpg" alt="Basic">
+									<img src="../images/user_default.jpg" alt="Basic">
 
-                                    <?php } ?>
+								<?php } ?>
 
-								<!-- <div class="teacher-social">
-								<a href="#">
-									<i aria-hidden="true" class="fab fa-facebook-f"></i>
-								</a>
-								<a href="#">
-									<i aria-hidden="true" class="fab fa-twitter"></i>
-								</a>
-								<a href="#">
-									<i aria-hidden="true" class="fab fa-pinterest-p"></i>
-								</a>
-								<a href="#">
-									<i aria-hidden="true" class="fab fa-vimeo-v"></i>
-								</a>
-							</div> -->
+								
 							</div>
 							<div class="teacher-meta">
 								<p class="top-coaches-name-list coach-cat-name12 ">
@@ -371,25 +358,36 @@
 
 								<?php
 
-								if (!empty($coach_list->slug)) {
+									$conditions = json_decode($coach_list->category);
 
 
-									$name = json_decode($coach_list->slug);
-									$ss = array();
-									foreach ($name as $key => $sub) {
-										$ss[$key] = $sub;
-									}
 
-								?>
+									if (!empty($conditions)) {
+										foreach ($conditions as $val) {
+											$q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
 
-									<p class="text-center">{{$ss['en']}}
-									</p>
-								<?php  } else {
-								?>
-									<p class=" text-center">Others
-									</p>
-								<?php } ?>
-								
+
+
+
+											$name = json_decode($q1->categories_slug);
+											$ss = array();
+											foreach ($name as $key => $sub) {
+												$ss[$key] = $sub;
+											}
+
+
+									?>
+
+											<p class="text-center">{{$ss['en']}}
+											</p>
+										<?php
+										}
+									} else {
+										?>
+										<p class=" text-center">Others
+										</p>
+									<?php } ?>
+
 							</div>
 						</div>
 					</div>
@@ -440,43 +438,43 @@
 
 
 						<div class="row">
-               
-			   <div class="col-md-12 col-sm-8 col-12">
-			   <span>
 
-			   
-				   <div class="header-data text-center-xs">
-					   
-					   <div class="hdata">
-					   <a href="{{ url('account/chat') }}">
-						   <div class="mcol-left">
-							   <!-- <i class="fas fa-comments ln-shadow"></i> -->
-							   <img src="../assets/images/chat_call.png" alt="">
-						   </div>
-						   <div class="mcol-right">
-							   {{-- Number of visitors --}}
-							   <p>
-								   
-									  
-									   <em>Call / Message</em>
-								  
-							   </p>
-						   </div>
+							<div class="col-md-12 col-sm-8 col-12">
+								<span>
 
-						   </a>
-						   <div class="clearfix"></div>
-					   </div>
 
-					  
+									<div class="header-data text-center-xs">
 
-					 
-				   </div>
-			   </div>
-			
-			    </div>
-				
-		      </div>
-			</div>
+										<div class="hdata">
+											<a href="{{ url('account/chat') }}">
+												<div class="mcol-left">
+													<!-- <i class="fas fa-comments ln-shadow"></i> -->
+													<img src="../assets/images/chat_call.png" alt="">
+												</div>
+												<div class="mcol-right">
+													{{-- Number of visitors --}}
+													<p>
+
+
+														<em>Call / Message</em>
+
+													</p>
+												</div>
+
+											</a>
+											<div class="clearfix"></div>
+										</div>
+
+
+
+
+									</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
 
 
 
@@ -501,7 +499,7 @@
 										<div class="feature-course-item-4">
 											<div class="fcf-thumb">
 												<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" style="height: 244px;">
-												<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">View Package</a> 
+												<a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">View Package</a>
 											</div>
 											<div class="fci-details">
 												<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name"><i class="fas fa-tags"></i>{{$coaches_corsee->course_name}}</a>
@@ -553,10 +551,10 @@
 
 
 
-		<div class="row">
+			<div class="row">
 
 				<h2 class="sec-title" style="font-weight: 700;">
-				Pending Consultation 
+					Pending Consultation
 
 				</h2>
 
@@ -668,49 +666,64 @@
 				<?php foreach ($suggested_coaches as $coach_list) { ?>
 					<div class="col-lg-3 col-md-6">
 
-					<a href="{{url('/top_coach_detail/'.$coach_list->id) }}">
-						<div class="teacher-item">
-							<div class="teacher-thumb coach-img-wrapper">
-								
-
-								<?php if ($coach_list->photo != null) { ?>
-									<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
-
-                                    <?php } else { ?>
-
-                                        <img src="../images/user_default.jpg" alt="Basic">
-
-                                    <?php } ?>
+						<a href="{{url('/top_coach_detail/'.$coach_list->id) }}">
+							<div class="teacher-item">
+								<div class="teacher-thumb coach-img-wrapper">
 
 
-							</div>
-							<div class="teacher-meta">
-								<p class="top-coaches-name-list coach-cat-name12 ">
-									{{ $coach_list->name }}
-								</p>
-								<?php
+									<?php if ($coach_list->photo != null) { ?>
+										<img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
 
-								if (!empty($coach_list->slug)) {
+									<?php } else { ?>
+
+										<img src="../images/user_default.jpg" alt="Basic">
+
+									<?php } ?>
 
 
-									$name = json_decode($coach_list->slug);
-									$ss = array();
-									foreach ($name as $key => $sub) {
-										$ss[$key] = $sub;
-									}
-
-								?>
-
-									<p class="text-center">{{$ss['en']}}
+								</div>
+								<div class="teacher-meta">
+									<p class="top-coaches-name-list coach-cat-name12 ">
+										{{ $coach_list->name }}
 									</p>
-								<?php  } else {
-								?>
-									<p class=" text-center">Others
-									</p>
-								<?php } ?>
+									
+
+
+
+									<?php
+
+									$conditions = json_decode($coach_list->category);
+
+
+
+									if (!empty($conditions)) {
+										foreach ($conditions as $val) {
+											$q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+
+
+
+
+											$name = json_decode($q1->categories_slug);
+											$ss = array();
+											foreach ($name as $key => $sub) {
+												$ss[$key] = $sub;
+											}
+
+
+									?>
+
+											<p class="text-center">{{$ss['en']}}
+											</p>
+										<?php
+										}
+									} else {
+										?>
+										<p class=" text-center">Others
+										</p>
+									<?php } ?>
+								</div>
 							</div>
-						</div>
-					</a>
+						</a>
 					</div>
 				<?php } ?>
 			</div>

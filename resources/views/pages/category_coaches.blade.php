@@ -150,6 +150,7 @@ body {
                         <ul style="list-style: none;">
 
                             @foreach($categories as $key => $cat)
+                            
                             <li class="subject-title-name-cat" data-id="{{ $cat->id }}" uid="{{ $cat->id }}" id="cat_id_<?php echo $cat->id ?>" onclick="filterSelection('all')"" value="<?php echo $cat->id ?>"><i class="fa fa-angle-up" id="donar" style="float: right;"></i>
                             
                             
@@ -336,7 +337,58 @@ body {
 
                 <div class="row">
                     <?php
+
+
+                    
                     foreach ($user as $coach_list) {
+
+                        // $sub_category = json_decode($coach_list->sub_category);
+                        // $q1_subss = array();
+
+
+
+                        // $q1_sub = DB::table('categories')->select('categories.name as categories_slug')->whereIn('categories.id', $sub_category)->get();
+
+
+
+
+
+                        // $hhh = [];
+                        // foreach ($q1_sub as $key => $subkeydatas) {
+                        //     $hhh[$key] = $subkeydatas;
+                        // }
+
+                        // $ss = array();
+                        // foreach ($hhh  as $key => $valuesss) {
+                        //     $ss[$key] = $valuesss->categories_slug;
+                        // }
+                        // $dataval = [];
+                        // $counter = 0;
+                        // $result = [];
+                        // foreach ($ss as $enkeysub) {
+
+                        //     $counter = $counter + 1;
+
+                        //     // $dataval['keysdata_'. $counter]= $enkeysub;
+
+                        //     $dataval['keysdata'] = $enkeysub;
+
+
+                        //     $result['values'] = $dataval['keysdata'];
+                        // }
+
+
+
+
+                        //     $coach_list->slug_name=$result;
+
+                        //    $coach_listslug_name = implode(" ",$coach_list->slug_name);
+                        //    $slug_name = json_encode($coach_listslug_name);
+                        //   $keyss = json_decode($slug_name);
+
+
+                        // print_r($ss);die;
+
                     ?>
                         <div class="column {{$coach_list->slug_name}}">
                             <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
@@ -353,53 +405,55 @@ body {
                                     <?php } ?>
 
                                     <div class="teacher-social">
-                                        <!-- <a href="#">
-                                        <i aria-hidden="true" class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i aria-hidden="true" class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i aria-hidden="true" class="fab fa-pinterest-p"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i aria-hidden="true" class="fab fa-vimeo-v"></i>
-                                    </a> -->
+
                                     </div>
                                 </div>
-                                <!-- <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal"
-                                data-target=".bd-example-modal-lg_{{$coach_list->id }}"
-                                id="coach_id_{{$coach_list->id }}"> -->
+
                                 <br>
                                 <h5 class="coach-cat-name12">
                                     {{ $coach_list->name }}
                                 </h5>
 
-                                <!-- <p>Stylist &amp; Author
-                            </p> -->
-
                                 <?php
 
-                                if (!empty($coach_list->slug)) {
 
 
-                                    $name = json_decode($coach_list->slug);
-                                    $ss = array();
-                                    foreach ($name as $key => $sub) {
-                                        $ss[$key] = $sub;
+
+
+                                $conditions = json_decode($coach_list->category);
+
+
+
+                                if (!empty($conditions)) {
+                                    foreach ($conditions as $val) {
+                                        $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+
+
+
+
+                                        $name = json_decode($q1->categories_slug);
+                                        $ss = array();
+                                        foreach ($name as $key => $sub) {
+                                            $ss[$key] = $sub;
+                                        }
+
+
+                                ?>
+
+                                        <p class="lh">{{$ss['en']}}
+                                        </p>
+                                    <?php
                                     }
-
-                                ?>
-                                    <p class="lh">{{$ss['en']}}
-                                    </p>
-                                <?php  } else {
-                                ?>
-                                    <p class=" text-center" style="float: left;">Others
+                                } else {
+                                    ?>
+                                    <p class=" text-center">Others
                                     </p>
                                 <?php } ?>
                             </a>
 
                         </div>
+
+
                     <?php } ?>
                 </div>
 
@@ -481,7 +535,10 @@ body {
         <?php
 
 
-        foreach ($suggested_coaches as $coach_list) { ?>
+        foreach ($suggested_coaches as $coach_list) { 
+            // print_r($coach_list);die;
+            
+            ?>
 
             <div class="col-lg-3 col-md-6">
 
@@ -518,24 +575,61 @@ body {
 
                             <?php
 
-                            if (!empty($coach_list->slug)) {
+                            // if (!empty($coach_list->slug)) {
 
 
-                                $name = json_decode($coach_list->slug);
-                                $ss = array();
-                                foreach ($name as $key => $sub) {
-                                    $ss[$key] = $sub;
-                                }
+                            //     $name = json_decode($coach_list->slug);
+                            //     $ss = array();
+                            //     foreach ($name as $key => $sub) {
+                            //         $ss[$key] = $sub;
+                            //     }
 
                             ?>
 
-                                <p class="text-center">{{$ss['en']}}
-                                </p>
-                            <?php  } else {
+                                <!-- <p class="text-center">{{$ss['en']}}
+                                </p> -->
+                            <?php  //} else {
                             ?>
-                                <p class=" text-center">Others
-                                </p>
-                            <?php } ?>
+                                <!-- <p class=" text-center">Others
+                                </p> -->
+                            <?php //} ?>
+
+
+                            <?php
+
+
+
+
+
+                                $conditions = json_decode($coach_list->category);
+
+
+
+                                if (!empty($conditions)) {
+                                    foreach ($conditions as $val) {
+                                        $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+
+
+
+
+                                        $name = json_decode($q1->categories_slug);
+                                        $ss = array();
+                                        foreach ($name as $key => $sub) {
+                                            $ss[$key] = $sub;
+                                        }
+
+
+                                ?>
+
+                                        <p class="lh">{{$ss['en']}}
+                                        </p>
+                                    <?php
+                                    }
+                                } else {
+                                    ?>
+                                    <p class=" text-center">Others
+                                    </p>
+                                <?php } ?>
 
                 </a>
 
