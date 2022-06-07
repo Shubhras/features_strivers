@@ -60,7 +60,8 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     top: 0;
     width: 100%;
     z-index: 5;
-    background: transparent;
+    /* background: transparent; */
+    background: #000000;
     padding: 0;
 }
 
@@ -7318,7 +7319,8 @@ Profile Page
 }
 
 .fix-header {
-    background: #012245;
+    /* background: #012245; */
+    background: #000000;
     left: 0;
     position: fixed;
     right: 0;

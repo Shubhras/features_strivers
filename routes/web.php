@@ -268,6 +268,9 @@ Route::group([
 
 		Route::get('get_coach_course/{id}', 'HomeController@coach_coursess');
 		Route::get('/coach_list_category_all/{id}', 'PageController@coach_list_category_all');
+		Route::get('/coach_list_category_all_filter', 'PageController@coach_list_category_all_filter');
+
+		
 
 		Route::get('all_article', 'HomeController@all_article');
 		

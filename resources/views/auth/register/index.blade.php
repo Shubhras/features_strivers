@@ -3,7 +3,10 @@
 @section('content')
 
 
-<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+<!-- <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+
+</section> -->
+<section class="page-banner01">
 
 </section>
 

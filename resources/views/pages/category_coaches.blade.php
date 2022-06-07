@@ -296,8 +296,8 @@ body {
                     ?>
                     <div>
                         <!-- <div class="subject-title-name-cat" id="heading{{ $cat->id }}"> -->
-                        <h5 class="mb-0 subject-title-name-cat tab1 ">
-                            <button class="btn btn-link tab " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
+                        <h5 class="mb-0 subject-title-name-cat tab1 " onclick="getcategoryCoach(<?= $cat->id ?>)" value="<?= $cat->id ?>" id="get_coach_list_id_{{ $cat->id }}">
+                            <button class="btn btn-link tab " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important" >
                                 {{ $ss['en'] }}
                             </button>
                             <i class="fa arrow-down btn-link" id="heading{{ $cat->id }}" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important; float: right;" onclick="this.classList.toggle('active')"></i>
@@ -332,6 +332,7 @@ body {
                 </div>
 
             </div>
+            <?php //print_r($datauser_categories_id1->id);die;?>
             <div class="col-md-8">
 
 
@@ -339,7 +340,7 @@ body {
                     <?php
 
 
-                    
+
                     foreach ($user as $coach_list) {
 
                         // $sub_category = json_decode($coach_list->sub_category);
@@ -461,13 +462,17 @@ body {
                     filterSelection("0")
                     subCatListCoach('{{ $cat->id }}')
 
+                   
                     function filterSelection(c) {
                         var x, i;
                         x = document.getElementsByClassName("column");
+                        // alert(x);
+
                         if (c == "0") c = "";
                         for (i = 0; i < x.length; i++) {
                             w3RemoveClass(x[i], "show");
                             if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+
                         }
                     }
 
@@ -862,6 +867,66 @@ body {
         transform: rotate(45deg);
     }
 </style>
+
+
+<script>
+// when category dropdown changes
+
+function getcategoryCoach(id)
+ {
+	
+	
+    
+    
+    alert(id);
+        // var categoryID = $('#category').val();
+        if (id) {
+            $.ajax({
+                type: "GET",
+				dataType: 'Json',
+                url: "{{ url('coach_list_category_all_filter') }}?id=" + id,
+				data: {
+            			'id': id
+				},
+
+                success: function(Response) {
+					
+// console.log( 'hii',Response);
+                    if (Response) {
+// alert(Response);
+                        $("#sub_category34_"+ id).empty();
+                        // $("#sub_category34").append('<option value=0>Select a subcategory</option>');
+
+						// console.log('sss',Response);
+                        $.each(Response, function(key, value) {
+                            // $("#sub_category").append('<option value="' + key + '" ' + ((
+                            //         key == (sub_cat_id)) ? "selected" : "") + ' >' +
+                            //     value +
+                            //     '</option>');
+
+							$("#sub_category34_"+ id).append('<option value="' + key +
+                            '" ' + ((key == (value.id)) ? "selected" : "") + ' >' +
+                            value +
+                            '</option>');
+
+                        });
+
+                    } else {
+
+                        $("#sub_category34_"+ id).empty();
+                    }
+
+                }
+            });
+        
+		}
+	} 
+
+	
+
+</script>
+
+
 @endsection
 
 @section('after_styles')

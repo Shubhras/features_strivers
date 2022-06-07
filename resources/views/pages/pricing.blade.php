@@ -9,8 +9,10 @@
 @extends('layouts.master_new')
 @section('content')
 
-
-<section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
+<!-- <br> -->
+<!-- <section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
+ </section> -->
+ <section class="page-banner01">
  </section>
 
 <section class="blog-section64">

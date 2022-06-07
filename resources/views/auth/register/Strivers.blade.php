@@ -67,17 +67,11 @@
 <!-- Header End -->
 
 <!-- Banner Start -->
-<section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
-    <!-- <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="banner-title">Edit Profile</h2>
-                    <div class="bread-crumbs">
-                        <a href="index.html">Home</a> <span></span> Edit Profile
-                    </div>
-                </div>
-            </div>
-        </div> -->
+<!-- <section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
+   
+</section> -->
+<section class="page-banner01">
+
 </section>
 <!-- Banner End -->
 

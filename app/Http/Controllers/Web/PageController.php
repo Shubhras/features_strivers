@@ -551,7 +551,7 @@ class PageController extends FrontController
 
 	public function coach_list_category_all($id)
 	{
-
+// print_r($id);die;
 		$user1 = auth()->user();
 		$data['request_cat_id'] = '';
 		// Get the Country's largest city for Google Maps
@@ -602,7 +602,11 @@ class PageController extends FrontController
 				->leftjoin('categories', 'categories.id', '=', 'users.category')
 				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-				->where('users.user_type_id', 2)->where('users.category', $id)->orderBy('users.id', 'asc')->limit(8)->get();
+				->where('users.user_type_id', 2)->where('users.category', 'like', '%'.$id.'%')->whereNotNull('users.category')->orderBy('users.id', 'asc')->limit(8)->get();
+
+		// print_r($data['user']);die;
+
+				
 		}
 
 		// $data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
@@ -668,6 +672,41 @@ class PageController extends FrontController
 
 
 
+
+	public function coach_list_category_all_filter(Request $request)
+	{
+// print_r($request->all());die;
+		
+		
+
+		$data['sub_categories'] = DB::table('categories')->select('categories.name', 'categories.id', 'categories.parent_id', 'categories.slug')->where('categories.parent_id', '!=', null)->orderBy('categories.name', 'asc')->get();
+
+
+		$data['my_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
+			->leftjoin('categories', 'categories.id', '=', 'users.category')
+			->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+
+
+
+	
+
+			$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->where('users.user_type_id', 2)->where('users.category', 'like', '%'.$request->id.'%' )->whereNotNull('users.category')->orderBy('users.id', 'asc')->limit(8)->get();
+
+		// print_r($data['user']);die;
+
+				
+		// }
+
+		return $data['user'];
+
+		// return appView('pages.category_coaches', $data);
+	}
 
 
 
