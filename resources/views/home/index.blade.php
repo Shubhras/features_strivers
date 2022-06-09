@@ -93,13 +93,17 @@ $userd = array();
 foreach($categories_list_coach187 as $userCatMulti){
 
     
-    $category_name = json_decode($userCatMulti->category);
+    // $category_name = json_decode($userCatMulti->category);
+    $conditions = $userCatMulti->category;
+				$x = explode(",", $conditions);
+				$catss =  json_encode($x);
+				$category_name = json_decode($catss);
 
                         // foreach($category_name as $key => $val) {
 
                            
                             $keyss  = DB::table('categories')->select('categories.slug', 'categories.id', 'categories.name', 'categories.picture', 'categories.icon_class')->where('categories.parent_id', null)
-                            ->where('categories.id', $category_name)->orderBy('categories.slug', 'asc')->groupBy('categories.id')->get();
+                            ->where('categories.id', $category_name)->groupBy('categories.id')->orderBy('categories.slug', 'asc')->get();
                             // print_r($keyss);die;
         // $data['categories_list_coach4'] = $categories_list_coach23;
         
@@ -242,12 +246,16 @@ foreach($categories_list_coach187 as $userCatMulti){
 
                                     </a>
                                     <?php
-                                    $conditions = json_decode($coach->category);
+                                     $conditions = $coach->category;
+                                     $x = explode(",", $conditions);
+                                     $catss =  json_encode($x);
+                                     $catUser = json_decode($catss);
+                                    // $conditions = json_decode($coach->category);
 
 
 
-                                    if (!empty($conditions)) {
-                                        foreach ($conditions as $val) {
+                                    if (!empty($catUser)) {
+                                        foreach ($catUser as $val) {
                                             $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
 
 

@@ -182,12 +182,12 @@ class CategoryController extends PanelController
 			'type'          => 'model_function',
 			'function_name' => 'subCategoriesBtn',
 		]);
-		$this->xPanel->addColumn([
-			'name'          => 'fields',
-			'label'         => mb_ucfirst(trans('admin.custom fields')),
-			'type'          => 'model_function',
-			'function_name' => 'customFieldsBtn',
-		]);
+		// $this->xPanel->addColumn([
+		// 	'name'          => 'fields',
+		// 	'label'         => mb_ucfirst(trans('admin.custom fields')),
+		// 	'type'          => 'model_function',
+		// 	'function_name' => 'customFieldsBtn',
+		// ]);
 		$this->xPanel->addColumn([
 			'name'          => 'active',
 			'label'         => trans('admin.Active'),

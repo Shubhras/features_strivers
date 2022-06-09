@@ -200,12 +200,12 @@ class CoachController extends PanelController
 				'type'          => 'model_function',
 				'function_name' => 'getVerifiedEmailHtml',
 			]);
-			$this->xPanel->addColumn([
-				'name'          => 'verified_phone',
-				'label'         => trans('admin.Verified Phone'),
-				'type'          => 'model_function',
-				'function_name' => 'getVerifiedPhoneHtml',
-			]);
+			// $this->xPanel->addColumn([
+			// 	'name'          => 'verified_phone',
+			// 	'label'         => trans('admin.Verified Phone'),
+			// 	'type'          => 'model_function',
+			// 	'function_name' => 'getVerifiedPhoneHtml',
+			// ]);
 			
 			// FIELDS
 			$this->xPanel->addField([
@@ -270,35 +270,35 @@ class CoachController extends PanelController
 					'class' => 'col-md-6',
 				],
 			]);
-			$this->xPanel->addField([
-				'name'              => 'phone_hidden',
-				'label'             => trans('admin.Phone hidden'),
-				'type'              => 'checkbox_switch',
-				'wrapperAttributes' => [
-					'class' => 'col-md-6',
-				],
-			]);
-			$this->xPanel->addField([
-				'label'             => mb_ucfirst(trans('admin.country')),
-				'name'              => 'country_code',
-				'model'             => 'App\Models\Country',
-				'entity'            => 'country',
-				'attribute'         => 'name',
-				'type'              => 'select2',
-				'wrapperAttributes' => [
-					'class' => 'col-md-6',
-				],
-			]);
-			$this->xPanel->addField([
-				'name'              => 'time_zone',
-				'label'             => t('preferred_time_zone_label'),
-				'type'              => 'select2_from_array',
-				'options'           => Date::getTimeZones(),
-				'allows_null'       => false,
-				'wrapperAttributes' => [
-					'class' => 'col-md-6',
-				],
-			]);
+			// $this->xPanel->addField([
+			// 	'name'              => 'phone_hidden',
+			// 	'label'             => trans('admin.Phone hidden'),
+			// 	'type'              => 'checkbox_switch',
+			// 	'wrapperAttributes' => [
+			// 		'class' => 'col-md-6',
+			// 	],
+			// ]);
+			// $this->xPanel->addField([
+			// 	'label'             => mb_ucfirst(trans('admin.country')),
+			// 	'name'              => 'country_code',
+			// 	'model'             => 'App\Models\Country',
+			// 	'entity'            => 'country',
+			// 	'attribute'         => 'name',
+			// 	'type'              => 'select2',
+			// 	'wrapperAttributes' => [
+			// 		'class' => 'col-md-6',
+			// 	],
+			// ]);
+			// $this->xPanel->addField([
+			// 	'name'              => 'time_zone',
+			// 	'label'             => t('preferred_time_zone_label'),
+			// 	'type'              => 'select2_from_array',
+			// 	'options'           => Date::getTimeZones(),
+			// 	'allows_null'       => false,
+			// 	'wrapperAttributes' => [
+			// 		'class' => 'col-md-6',
+			// 	],
+			// ]);
 			$this->xPanel->addField([
 				'name'              => 'verified_email',
 				'label'             => trans('admin.Verified Email'),
@@ -307,14 +307,14 @@ class CoachController extends PanelController
 					'class' => 'col-md-6',
 				],
 			]);
-			$this->xPanel->addField([
-				'name'              => 'verified_phone',
-				'label'             => trans('admin.Verified Phone'),
-				'type'              => 'checkbox_switch',
-				'wrapperAttributes' => [
-					'class' => 'col-md-6',
-				],
-			]);
+			// $this->xPanel->addField([
+			// 	'name'              => 'verified_phone',
+			// 	'label'             => trans('admin.Verified Phone'),
+			// 	'type'              => 'checkbox_switch',
+			// 	'wrapperAttributes' => [
+			// 		'class' => 'col-md-6',
+			// 	],
+			// ]);
 			// $this->xPanel->addField([
 			// 	'name'              => 'blocked',
 			// 	'label'             => trans('admin.Blocked'),

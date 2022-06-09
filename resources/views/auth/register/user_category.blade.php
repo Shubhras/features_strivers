@@ -67,7 +67,7 @@
 <!-- Header End -->
 
 <!-- Banner Start -->
-<section class="page-banner01" style="background-image: url(assets/images/home/cta-bg.jpg);">
+<section class="page-banner01">
     <!-- <div class="container">
             <div class="row">
                 <div class="col-lg-12">

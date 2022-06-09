@@ -3482,8 +3482,9 @@ line-height: 55px!important;
         background-repeat: no-repeat;
         background-position: center center;
         padding: 240px 0 0;
-        min-height: 400px;
+        min-height: 350px;
         width: 100%;
+        background: #000000;
     }
     .line_bottom {
         font-size: 16px!important;
@@ -3504,8 +3505,9 @@ line-height: 55px!important;
         background-repeat: no-repeat;
         background-position: center center;
         padding: 240px 0 0;
-        min-height: 400px;
+        min-height: 350px;
         width: 100%;
+        background: #000000;
     }
     /* .index-image-768 {
 margin-top: -477px!important;

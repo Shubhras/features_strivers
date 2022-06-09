@@ -81,7 +81,9 @@ body {
         color: white;
     }
 </style>
-<section class="page-banner" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+<!-- <section class="page-banner" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+    <div class="hi"> -->
+    <section class="page-banner">
     <div class="hi">
 
     </div>
@@ -282,7 +284,7 @@ body {
 
         <div class="row">
             <div class="col-md-4">
-
+                            
                 <!-- <div  id="myBtnContainer" class="subject-title-name-cat" onclick="filterSelection('0')">
     </div> -->
                 <div class="accordion" id="accordionExample" onclick="subCatListCoach('{{ $cat->id }}')">
@@ -297,7 +299,7 @@ body {
                     <div>
                         <!-- <div class="subject-title-name-cat" id="heading{{ $cat->id }}"> -->
                         <h5 class="mb-0 subject-title-name-cat tab1 " onclick="getcategoryCoach(<?= $cat->id ?>)" value="<?= $cat->id ?>" id="get_coach_list_id_{{ $cat->id }}">
-                            <button class="btn btn-link tab " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important" >
+                            <button class="btn btn-link tab " id="heading{{ $cat->id }}" type="button" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important">
                                 {{ $ss['en'] }}
                             </button>
                             <i class="fa arrow-down btn-link" id="heading{{ $cat->id }}" data-toggle="collapse" data-target="#collapse{{ $cat->id }}" aria-expanded="true" aria-controls="collapse{{ $cat->id }}" style="color: #000000!important; float: right;" onclick="this.classList.toggle('active')"></i>
@@ -332,7 +334,8 @@ body {
                 </div>
 
             </div>
-            <?php //print_r($datauser_categories_id1->id);die;?>
+            <?php //print_r($datauser_categories_id1->id);die;
+            ?>
             <div class="col-md-8">
 
 
@@ -390,8 +393,39 @@ body {
 
                         // print_r($ss);die;
 
+                        $conditions = $coach_list->category;
+                                $x = explode(",", $conditions);
+                                $catss =  json_encode($x);
+                                $catUser = json_decode($catss);
+                                // if (!empty($catUser)) {
+                                    $slug_name = [];
+                                    foreach ($catUser as $val) {
+
+                                        $q1 = DB::table('categories')->select('categories.slug as slug_name')->where('categories.id', $val)->first();
+                                        $slug_name =$q1->slug_name;
+                                       
+
+                                        // $cat =  json_encode($q1->name);
+                                        // $name = json_decode($q1->slug_name);
+                                        // $name = $q1->name;
+
+
+                                        // $ss = array();
+                                        // foreach ($name as $key => $sub) {
+                                        //     $ss[$key] = $sub;
+                                        // }
+                                ?>
+
+                                        <!-- <p class="lh">{{$ss['en']}}
+                                        </p> -->
+                                    <?php
+                                    } 
+                                    // print_r($slug_name);
+                                    // die;
+                                // }
+
                     ?>
-                        <div class="column {{$coach_list->slug_name}}">
+                        <div class="column {{$slug_name}}">
                             <a type="button" href="{{url('/coachall_detail/'.$coach_list->id) }}" data-toggle="modal" data-target=".bd-example-modal-lg_{{$coach_list->id }}" id="coach_id_{{$coach_list->id }}">
 
                                 <div class="teacher-thumb coach-img-wrapper">
@@ -421,24 +455,29 @@ body {
 
 
 
-                                $conditions = json_decode($coach_list->category);
+
+
+                                $conditions = $coach_list->category;
+                                $x = explode(",", $conditions);
+                                $catss =  json_encode($x);
+                                $catUser = json_decode($catss);
+                                if (!empty($catUser)) {
+
+                                    foreach ($catUser as $val) {
+
+                                        $q1 = DB::table('categories')->select('categories.*')->where('categories.id', $val)->first();
 
 
 
-                                if (!empty($conditions)) {
-                                    foreach ($conditions as $val) {
-                                        $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+                                        // $cat =  json_encode($q1->name);
+                                        $name = json_decode($q1->name);
+                                        // $name = $q1->name;
 
 
-
-
-                                        $name = json_decode($q1->categories_slug);
                                         $ss = array();
                                         foreach ($name as $key => $sub) {
                                             $ss[$key] = $sub;
                                         }
-
-
                                 ?>
 
                                         <p class="lh">{{$ss['en']}}
@@ -449,7 +488,9 @@ body {
                                     ?>
                                     <p class=" text-center">Others
                                     </p>
+
                                 <?php } ?>
+
                             </a>
 
                         </div>
@@ -462,7 +503,7 @@ body {
                     filterSelection("0")
                     subCatListCoach('{{ $cat->id }}')
 
-                   
+
                     function filterSelection(c) {
                         var x, i;
                         x = document.getElementsByClassName("column");
@@ -540,10 +581,10 @@ body {
         <?php
 
 
-        foreach ($suggested_coaches as $coach_list) { 
+        foreach ($suggested_coaches as $coach_list) {
             // print_r($coach_list);die;
-            
-            ?>
+
+        ?>
 
             <div class="col-lg-3 col-md-6">
 
@@ -591,13 +632,14 @@ body {
 
                             ?>
 
-                                <!-- <p class="text-center">{{$ss['en']}}
+                            <!-- <p class="text-center">{{$ss['en']}}
                                 </p> -->
                             <?php  //} else {
                             ?>
-                                <!-- <p class=" text-center">Others
+                            <!-- <p class=" text-center">Others
                                 </p> -->
-                            <?php //} ?>
+                            <?php //} 
+                            ?>
 
 
                             <?php
@@ -606,35 +648,38 @@ body {
 
 
 
-                                $conditions = json_decode($coach_list->category);
+                            // $conditions = json_decode($coach_list->category);
+
+                            $conditions = $coach_list->category;
+                            $x = explode(",", $conditions);
+                            $catss =  json_encode($x);
+                            $catUser = json_decode($catss);
+
+                            if (!empty($catUser)) {
+                                foreach ($catUser as $val) {
+                                    $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
 
 
 
-                                if (!empty($conditions)) {
-                                    foreach ($conditions as $val) {
-                                        $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
 
-
-
-
-                                        $name = json_decode($q1->categories_slug);
-                                        $ss = array();
-                                        foreach ($name as $key => $sub) {
-                                            $ss[$key] = $sub;
-                                        }
-
-
-                                ?>
-
-                                        <p class="lh">{{$ss['en']}}
-                                        </p>
-                                    <?php
+                                    $name = json_decode($q1->categories_slug);
+                                    $ss = array();
+                                    foreach ($name as $key => $sub) {
+                                        $ss[$key] = $sub;
                                     }
-                                } else {
-                                    ?>
-                                    <p class=" text-center">Others
+
+
+                            ?>
+
+                                    <p class="lh">{{$ss['en']}}
                                     </p>
-                                <?php } ?>
+                                <?php
+                                }
+                            } else {
+                                ?>
+                                <p class=" text-center">Others
+                                </p>
+                            <?php } ?>
 
                 </a>
 
@@ -870,60 +915,56 @@ body {
 
 
 <script>
-// when category dropdown changes
+    // when category dropdown changes
 
-function getcategoryCoach(id)
- {
-	
-	
-    
-    
-    alert(id);
+    function getcategoryCoach(id) {
+
+
+
+
+        // alert(id);
         // var categoryID = $('#category').val();
         if (id) {
             $.ajax({
                 type: "GET",
-				dataType: 'Json',
+                dataType: 'Json',
                 url: "{{ url('coach_list_category_all_filter') }}?id=" + id,
-				data: {
-            			'id': id
-				},
+                data: {
+                    'id': id
+                },
 
                 success: function(Response) {
-					
-// console.log( 'hii',Response);
+
+                    // console.log( 'hii',Response);
                     if (Response) {
-// alert(Response);
-                        $("#sub_category34_"+ id).empty();
+                        // alert(Response);
+                        $("#sub_category34_" + id).empty();
                         // $("#sub_category34").append('<option value=0>Select a subcategory</option>');
 
-						// console.log('sss',Response);
+                        // console.log('sss',Response);
                         $.each(Response, function(key, value) {
                             // $("#sub_category").append('<option value="' + key + '" ' + ((
                             //         key == (sub_cat_id)) ? "selected" : "") + ' >' +
                             //     value +
                             //     '</option>');
 
-							$("#sub_category34_"+ id).append('<option value="' + key +
-                            '" ' + ((key == (value.id)) ? "selected" : "") + ' >' +
-                            value +
-                            '</option>');
+                            $("#sub_category34_" + id).append('<option value="' + key +
+                                '" ' + ((key == (value.id)) ? "selected" : "") + ' >' +
+                                value +
+                                '</option>');
 
                         });
 
                     } else {
 
-                        $("#sub_category34_"+ id).empty();
+                        $("#sub_category34_" + id).empty();
                     }
 
                 }
             });
-        
-		}
-	} 
 
-	
-
+        }
+    }
 </script>
 
 

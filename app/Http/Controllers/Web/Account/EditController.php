@@ -46,6 +46,7 @@ use App\Http\Resources\EntityCollection;
 use App\Http\Resources\PackageResource;
 
 
+
 class EditController extends AccountBaseController
 {
 	use VerificationTrait;
@@ -95,8 +96,15 @@ class EditController extends AccountBaseController
 			->where('cities.country_code')
 			->get();
 
+
+			$conditions = $user->category;
+                                $x = explode(",", $conditions);
+                                $catss =  json_encode($x);
+                                $catUser = json_decode($catss);
+
+
 		$data['categories'] = DB::table('categories')->select('categories.slug', 'categories.id')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
-		$data['categoriess'] = DB::table('categories')->select('categories.slug', 'categories.id','categories.parent_id')->whereIn('categories.parent_id', json_decode($user->category))->get();
+		$data['categoriess'] = DB::table('categories')->select('categories.slug', 'categories.id','categories.parent_id')->whereIn('categories.parent_id', $catUser)->get();
 
 		$data['all_countries'] = DB::table('countries')->get();
 
@@ -196,12 +204,19 @@ class EditController extends AccountBaseController
 			// 	->limit(8)->inRandomOrder()->get();
 
 
-			$conditions =json_decode($user->category);
+			// $conditions =json_decode($user->category);
+
+
+			$conditions = $user->category;
+                                $x = explode(",", $conditions);
+                                $catss =  json_encode($x);
+                                $catUser = json_decode($catss);
 			
 			$userss =[];
-			foreach($conditions as $val){
+
+			foreach($catUser as $val){
 				
-			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
+			
 			
 			$userss = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')
 			
@@ -238,10 +253,13 @@ class EditController extends AccountBaseController
 		} else {
 
 
-			$conditions =json_decode($user->category);
+			$conditions = $user->category;
+                                $x = explode(",", $conditions);
+                                $catss =  json_encode($x);
+                                $catUser = json_decode($catss);
 			
 			$userss =[];
-			foreach($conditions as $val){
+			foreach($catUser as $val){
 				
 			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
 			
@@ -358,10 +376,14 @@ class EditController extends AccountBaseController
 
 
 
-				$conditions =json_decode($user->category);
+			$conditions = $user->category;
+			$x = explode(",", $conditions);
+			$catss =  json_encode($x);
+			$catUser = json_decode($catss);
+
 			
 			$userss =[];
-			foreach($conditions as $val){
+			foreach($catUser as $val){
 				
 			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
 			
@@ -767,10 +789,14 @@ $enroldStrvreUser_id = 0;
 
 
 
-				$conditions =json_decode($user->category);
+				
+			$conditions = $user->category;
+			$x = explode(",", $conditions);
+			$catss =  json_encode($x);
+			$catUser = json_decode($catss);
 			
 				$userss =[];
-				foreach($conditions as $val){
+				foreach($catUser as $val){
 					
 				// $q1 = DB::table('categories')->where('categories.id',$val)->first();
 				
@@ -809,10 +835,13 @@ $enroldStrvreUser_id = 0;
 		} else {
 
 
-			$conditions =json_decode($user->category);
+			$conditions = $user->category;
+			$x = explode(",", $conditions);
+			$catss =  json_encode($x);
+			$catUser = json_decode($catss);
 			
 			$userss =[];
-			foreach($conditions as $val){
+			foreach($catUser as $val){
 				
 			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
 			
@@ -888,10 +917,13 @@ $enroldStrvreUser_id = 0;
 				->limit(8)->get();
 		} else {
 
-			$conditions =json_decode($user->category);
+			$conditions = $user->category;
+			$x = explode(",", $conditions);
+			$catss =  json_encode($x);
+			$catUser = json_decode($catss);
 			
 				$userss =[];
-				foreach($conditions as $val){
+				foreach($catUser as $val){
 
 					$userss	 = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
 				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
@@ -967,10 +999,13 @@ $enroldStrvreUser_id = 0;
 		} else {
 
 
-			$conditions =json_decode($user->category);
+			$conditions = $user->category;
+			$x = explode(",", $conditions);
+			$catss =  json_encode($x);
+			$catUser = json_decode($catss);
 			
 			$userss =[];
-			foreach($conditions as $val){
+			foreach($catUser as $val){
 				
 			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
 			
@@ -1629,10 +1664,13 @@ $enroldStrvreUser_id = 0;
 			// 	->orderBy('users.id', 'asc')->limit(8)->get();
 
 
-			$conditions =json_decode($user->category);
+			$conditions = $user->category;
+			$x = explode(",", $conditions);
+			$catss =  json_encode($x);
+			$catUser = json_decode($catss);
 			
 			$userss =[];
-			foreach($conditions as $val){
+			foreach($catUser as $val){
 				
 			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
 			
@@ -1673,10 +1711,13 @@ $enroldStrvreUser_id = 0;
 		} else {
 
 
-			$conditions =json_decode($user->category);
+			$conditions = $user->category;
+			$x = explode(",", $conditions);
+			$catss =  json_encode($x);
+			$catUser = json_decode($catss);
 			
 			$userss =[];
-			foreach($conditions as $val){
+			foreach($catUser as $val){
 				
 			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
 			
@@ -2178,23 +2219,22 @@ $enroldStrvreUser_id = 0;
 		// print_r($request->all());die;
 
 
-		$sub_category=	json_encode($request->sub_category);
-		$category= json_encode($request->category);
-// print_r($category);die;
-		// if($request->user_type == 2){
-			// $user_idd = auth()->user()->id;
-		$user_data_request = array(['name' =>$request->name,'email'=>$request->email,'country_code'=>$request->country_code,'location'=>$request->location,'phone'=>$request->phone,'year_of_experience'=>$request->year_of_experience,'youtube_link'=>$request->youtube_link,'category'=>$category,'sub_category'=>$sub_category,'gender_id'=>$request->gender_id,'coach_summary'=>$request->coach_summary]);
+		$sub_category= json_encode($request->sub_category);
+		$category= implode(',',$request->category);
 
+			$user_idd = auth()->user()->id;
+		$user_data_request = array(['name' =>$request->name,'email'=>$request->email,'country_code'=>$request->country_code,'location'=>$request->location,'phone'=>$request->phone,'year_of_experience'=>$request->year_of_experience,'youtube_link'=>$request->youtube_link,'category'=>implode(',',$request->category),'sub_category'=>$sub_category,'gender_id'=>$request->gender_id,'coach_summary'=>$request->coach_summary]);
 
+// print_r($user_data_request);die;
 
 		$endpoint = '/users/' . auth()->user()->id;
 		 $data = makeApiRequest('put', $endpoint, $user_data_request);
 
 	
-
-
-		// $data = DB::table('users')->where('users.id', $user_idd)->update(['name' =>$request->name,'email'=>$request->email,'country_code'=>$request->country_code,'location'=>$request->location,'phone'=>$request->phone,'year_of_experience'=>$request->year_of_experience,'youtube_link'=>$request->youtube_link,'category'=>$category,'sub_category'=>$sub_category,'gender_id'=>$request->gender_id,'coach_summary'=>$request->coach_summary]);
-	// }
+// print_r($data);die;
+		if(!empty($data)){
+			$datas = DB::table('users')->where('users.id', $user_idd)->update(['category'=>$category,'sub_category'=>$sub_category]);
+		}
 
 		// Parsing the API's response
 		$message = !empty(data_get($data, 'message')) ? data_get($data, 'message') : 'Unknown Error.';

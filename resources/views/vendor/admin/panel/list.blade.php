@@ -37,11 +37,26 @@
 			@endif
 			
 			<div class="card rounded">
+
+			<?php 
+			 $user_id = auth()->user()->user_type_id;
+			//  print_r($user_id);die;
+			 if($user_id == 4 ){
+			?>
 				
+				<!-- <div class="card-header {{ $xPanel->hasAccess('create')?'with-border':'' }}">
+					@include('admin::panel.inc.button_stack', ['stack' => 'top'])
+					<div id="datatable_button_stack" class="float-end text-end"></div>
+				</div> -->
+				<?php
+			 }else if($user_id == 1){
+				
+				?>
 				<div class="card-header {{ $xPanel->hasAccess('create')?'with-border':'' }}">
 					@include('admin::panel.inc.button_stack', ['stack' => 'top'])
 					<div id="datatable_button_stack" class="float-end text-end"></div>
 				</div>
+				<?php }?>
 				
 				{{-- List Filters --}}
 				@if ($xPanel->filtersEnabled())

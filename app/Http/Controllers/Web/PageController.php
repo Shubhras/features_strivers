@@ -593,7 +593,17 @@ class PageController extends FrontController
 				->leftjoin('categories', 'categories.id', '=', 'users.category')
 				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-				->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+				->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(6)->get();
+
+			// $data['user'] = DB::table('users')->select('users.*', DB::raw('GROUP_CONCAT(DISTINCT categories.name ORDER BY categories.id) as slug_name'), 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'countries.name as countries_name', 'cities.name as cities_name')
+			// 	// ->leftjoin('categories', 'categories.id', '=', 'users.category')
+			// 	->leftJoin('categories', DB::raw('FIND_IN_SET(categories.id, users.category)'), '>', DB::raw(0))
+			// 	// ->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			// 	->leftjoin('countries', 'countries.code', '=', 'users.country_code')
+			// 	->leftjoin('cities', 'cities.id', '=', 'users.location')
+			// 	->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+
 
 			// print_r($data['user']);die;
 
@@ -632,10 +642,14 @@ class PageController extends FrontController
 			// 	->orderBy('users.id', 'asc')->inRandomOrder()->limit(8)->get();
 
 
-				$conditions =json_decode($user1->category);
+				// $conditions =json_decode($user1->category);
+				$conditions = $user1->category;
+			$x = explode(",", $conditions);
+			$catss =  json_encode($x);
+			$catUser = json_decode($catss);
 			
 			$userss =[];
-			foreach($conditions as $val){
+			foreach($catUser as $val){
 				
 			// $q1 = DB::table('categories')->where('categories.id',$val)->first();
 			

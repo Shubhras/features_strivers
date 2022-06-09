@@ -119,10 +119,13 @@ class HomeController extends FrontController
 
 			if (!empty($user1->category)){
 
-			$conditions =json_decode($user1->category);
+				$conditions = $user1->category;
+				$x = explode(",", $conditions);
+				$catss =  json_encode($x);
+				$catUser = json_decode($catss);
 			// print_r($conditions);die;
 			$data =[];
-			foreach($conditions as $val){
+			foreach($catUser as $val){
 				
 			$q1 = DB::table('categories')->where('categories.id',$val)->first();
 			
@@ -984,13 +987,13 @@ class HomeController extends FrontController
 	public function updateUserCategory(Request $request){
 
 		// print_r(json_encode($request->category_id));die;
-		
-
+		// implode($request->category_id);
+// print_r(implode(',',$request->category_id));die;
 		// $userCategory = 12;
 		$auth_id = auth()->user()->id;
 
 
-		DB::table('users')->where('users.id',$auth_id)->update(['users.category' =>json_encode($request->category_id)]);
+		DB::table('users')->where('users.id',$auth_id)->update(['users.category' =>implode(',',$request->category_id)]);
 
 	
 		return redirect('/account');
@@ -1102,22 +1105,33 @@ class HomeController extends FrontController
 				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 				->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
 
+			// $data['user'] = DB::table('users')->select('users.*', DB::raw('GROUP_CONCAT(DISTINCT categories.name ORDER BY categories.id) as slug_name'), 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'countries.name as countries_name', 'cities.name as cities_name')
+			// 	// ->leftjoin('categories', 'categories.id', '=', 'users.category')
+			// 	->leftJoin('categories', DB::raw('FIND_IN_SET(categories.id, users.category)'), '>', DB::raw(0))
+			// 	// ->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+			// 	->leftjoin('countries', 'countries.code', '=', 'users.country_code')
+			// 	->leftjoin('cities', 'cities.id', '=', 'users.location')
+			// 	->where('users.user_type_id', 2)->orderBy('users.id', 'asc')->limit(8)->get();
+
 			// print_r($data['user']);die;
 
 		} else {
 
-
-
-			// $data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name')
-			// 	->leftjoin('categories', 'categories.id', '=', 'users.category')
-			// 	->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-			// 	->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-			// 	->where('users.user_type_id', 2)->where('users.category',$id)->orderBy('users.id', 'asc')->limit(8)->get();
 			$key = $request->search;
 
-			$data['user'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'sub.slug as slug_name', 'countries.name as countries_name', 'cities.name as cities_name')
-				->leftjoin('categories', 'categories.id', '=', 'users.category')
-				->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+			$user1 = auth()->user();
+
+			if(!empty($user1)){
+
+			
+			
+
+			$data['user'] = DB::table('users')->select('users.*', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'countries.name as countries_name', 'cities.name as cities_name')
+				// ->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftJoin('categories', DB::raw('FIND_IN_SET(categories.id, users.category)'), '>', DB::raw(0))
+				->leftJoin('categories as sub', DB::raw('FIND_IN_SET(sub.id, users.sub_category)'), '>', DB::raw(0))
+				// ->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
 				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
 				->leftjoin('countries', 'countries.code', '=', 'users.country_code')
 				->leftjoin('cities', 'cities.id', '=', 'users.location')
@@ -1129,17 +1143,35 @@ class HomeController extends FrontController
 							->where('users.name', 'LIKE', '%' . $key . '%')->orWhere('countries.name', 'LIKE', '%' . $key . '%')->orWhere('categories.name', 'LIKE', '%' . $key . '%')->orWhere('cities.name', 'LIKE', '%' . $key . '%');
 					}
 				)
+				->groupBy('users.id')
+				->orderBy('users.id', 'asc')->get();
 
 
+		}else{
 
-				// ->where('users.name','LIKE','%'.$request->search .'%')->orWhere('countries.name','LIKE','%'.$request->search .'%')->orWhere('categories.name','LIKE','%'.$request->search .'%')->orWhere('cities.name','LIKE','%'.$request->search .'%')->orderBy('users.id', 'asc')
-				->orderBy('users.id', 'asc')
-				->get();
+			$data['user'] = DB::table('users')->select('users.*', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'countries.name as countries_name', 'cities.name as cities_name')
+				// ->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->leftJoin('categories', DB::raw('FIND_IN_SET(categories.id, users.category)'), '>', DB::raw(0))
+				->leftJoin('categories as sub', DB::raw('FIND_IN_SET(sub.id, users.sub_category)'), '>', DB::raw(0))
+				// ->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+				->leftjoin('countries', 'countries.code', '=', 'users.country_code')
+				->leftjoin('cities', 'cities.id', '=', 'users.location')
+				->where('users.user_type_id', 2)
+				->where(
+					function ($query) use ($key) {
 
-			// print_r($data['user']);die;
-
+						return $query
+							->where('users.name', 'LIKE', '%' . $key . '%')->orWhere('countries.name', 'LIKE', '%' . $key . '%')->orWhere('categories.name', 'LIKE', '%' . $key . '%')->orWhere('cities.name', 'LIKE', '%' . $key . '%');
+					}
+				)
+				->groupBy('users.id')
+				->orderBy('users.id', 'asc')->get();
 
 		}
+	}
+
+		// print_r($data['user']);die;
 
 
 		$data['suggested_coaches'] = DB::table('users')->select('users.*', 'categories.name as slug', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code')

@@ -47,7 +47,10 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
 
-<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+<!-- <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+
+</section> -->
+<section class="page-banner01">
 
 </section>
 
@@ -517,7 +520,7 @@
                             <div class="teacher-item">
                                 <div class="teacher-thumb coach-img-wrapper">
                                     <img src="{{ url('storage/'.$coach_list->photo) }}" alt="Jim Séchen">
-                                   
+
                                 </div>
                                 <div class="teacher-meta">
                                     <h5>
@@ -525,12 +528,15 @@
                                     </h5>
                                     <?php
 
-                                    $conditions = json_decode($coach_list->category);
+                                    $conditions = $coach_list->category;
+                                    $x = explode(",", $conditions);
+                                    $catss =  json_encode($x);
+                                    $catUser = json_decode($catss);
 
 
 
-                                    if (!empty($conditions)) {
-                                        foreach ($conditions as $val) {
+                                    if (!empty($catUser)) {
+                                        foreach ($catUser as $val) {
                                             $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
 
 
@@ -952,12 +958,12 @@
                                     </p>
                                     <?php
 
-                                    $conditions = json_decode($coach_list->category);
-
-
-
-                                    if (!empty($conditions)) {
-                                        foreach ($conditions as $val) {
+                                    $conditions = $coach_list->category;
+                                    $x = explode(",", $conditions);
+                                    $catss =  json_encode($x);
+                                    $catUser = json_decode($catss);
+                                    if (!empty($catUser)) {
+                                        foreach ($catUser as $val) {
                                             $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
 
 

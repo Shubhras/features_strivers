@@ -6,7 +6,11 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
-<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+
+<!-- <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+</section> -->
+
+<section class="page-banner01">
 </section>
 
 @section('content')
@@ -547,12 +551,15 @@
 								</p>
 								<?php
 
-									$conditions = json_decode($coach_list->category);
+									// $conditions = json_decode($coach_list->category);
 
+									$conditions = $coach_list->category;
+									$x = explode(",", $conditions);
+									$catss =  json_encode($x);
+									$catUser = json_decode($catss);
 
-
-									if (!empty($conditions)) {
-										foreach ($conditions as $val) {
+									if (!empty($catUser)) {
+										foreach ($catUser as $val) {
 											$q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
 
 

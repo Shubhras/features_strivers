@@ -7631,6 +7631,7 @@ a.btn01.btn-primary1 {
     background-position: center center;
     padding: 150px 0 0;
     min-height: 150px;
+    background: #000000;
 }
 
 .add_new_course {

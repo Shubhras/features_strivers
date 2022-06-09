@@ -34,7 +34,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
 
 @extends('layouts.master_new')
-<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+<!-- <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+
+</section> -->
+<section class="page-banner01">
 
 </section>
 
@@ -73,7 +76,7 @@
 
 
 
-<?php $photo_url1 =ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
+            <?php $photo_url1 = ltrim($user->photo_url, 'http://127.0.0.1:8000'); ?>
 
             <?php if ($user->user_type_id == 2) { ?>
 
@@ -176,69 +179,69 @@
                 </div> -->
 
 
-<h2>
+                <h2>
 
-<h2 class="sec-title">My Coach Dashboard</h2>
-</h2>
+                    <h2 class="sec-title">My Coach Dashboard</h2>
+                </h2>
 
                 <div class="row" style="padding: 6px; margin-left: -4px;">
-			
-			
-				<div class="col-md-12 user-profile-img-data default-inner-box">
 
-					<!-- <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;" border-radius=" 50%"> &nbsp;  -->
 
-                    <?php if(!empty($user->photo)){
-					?>
-					
-					<img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-					<?php }else{ ?>
+                    <div class="col-md-12 user-profile-img-data default-inner-box">
 
-						<img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+                        <!-- <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;" border-radius=" 50%"> &nbsp;  -->
 
-						<?php }?>
-                        
-					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>   {{ $user->name }} </b> </span>
-				
+                        <?php if (!empty($user->photo)) {
+                        ?>
 
-				<div class="row">
-				   
-					<div class="col-md-12 col-sm-8 col-12">
-					<span>
+                            <img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+                        <?php } else { ?>
 
-					
-                    <div class="header-data text-center-xs">
-                        
-                        <div class="hdata">
-                        <a href="{{ url('account/chat') }}">
-                            <div class="mcol-left">
-                                <!-- <i class="fas fa-comments ln-shadow"></i> -->
-                                <img src="../assets/images/chat_call.png" alt="">
+                            <img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+
+                        <?php } ?>
+
+                        <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
+
+
+                        <div class="row">
+
+                            <div class="col-md-12 col-sm-8 col-12">
+                                <span>
+
+
+                                    <div class="header-data text-center-xs">
+
+                                        <div class="hdata">
+                                            <a href="{{ url('account/chat') }}">
+                                                <div class="mcol-left">
+                                                    <!-- <i class="fas fa-comments ln-shadow"></i> -->
+                                                    <img src="../assets/images/chat_call.png" alt="">
+                                                </div>
+                                                <div class="mcol-right">
+                                                    {{-- Number of visitors --}}
+                                                    <p>
+
+
+                                                        <em>{{ trans_choice('Call / Message', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+
+                                                    </p>
+                                                </div>
+
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+
+
+
+                                    </div>
                             </div>
-                            <div class="mcol-right">
-                                {{-- Number of visitors --}}
-                                <p>
-                                    
-                                       
-                                        <em>{{ trans_choice('Call / Message', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-                                   
-                                </p>
-                            </div>
 
-                            </a>
-                            <div class="clearfix"></div>
                         </div>
 
-                       
-
-                      
                     </div>
-					</div>
-				
-			    </div>
-
-		      </div>
-        </div>
+                </div>
 
 
                 <div class="row">
@@ -481,9 +484,9 @@
 
         <div class="row">
             <?php
-            // print_r($suggested_striver);die;
-            
-            foreach ($suggested_striver as $coach_list) { ?>
+                // print_r($suggested_striver);die;
+
+                foreach ($suggested_striver as $coach_list) { ?>
                 <div class="col-lg-3 col-md-6">
                     <div class="teacher-item">
                         <div class="teacher-thumb coach-img-wrapper">
@@ -506,42 +509,45 @@
                         <div class="teacher-meta">
                             <p class="top-coaches-name-list coach-cat-name12">
                                 {{ $coach_list->name }}
-            </p>
-            <?php
+                            </p>
+                            <?php
 
 
 
 
 
-$conditions = json_decode($coach_list->category);
+                            $conditions = $coach_list->category;
+                            $x = explode(",", $conditions);
+                            $catss =  json_encode($x);
+                            $catUser = json_decode($catss);
 
 
 
-if (!empty($conditions)) {
-    foreach ($conditions as $val) {
-        $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+                            if (!empty($catUser)) {
+                                foreach ($catUser as $val) {
+                                    $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
 
 
 
 
-        $name = json_decode($q1->categories_slug);
-        $ss = array();
-        foreach ($name as $key => $sub) {
-            $ss[$key] = $sub;
-        }
+                                    $name = json_decode($q1->categories_slug);
+                                    $ss = array();
+                                    foreach ($name as $key => $sub) {
+                                        $ss[$key] = $sub;
+                                    }
 
 
-?>
+                            ?>
 
-        <p class="lh">{{$ss['en']}}
-        </p>
-    <?php
-    }
-} else {
-    ?>
-    <p class=" text-center">Others
-    </p>
-<?php } ?>
+                                    <p class="lh">{{$ss['en']}}
+                                    </p>
+                                <?php
+                                }
+                            } else {
+                                ?>
+                                <p class=" text-center">Others
+                                </p>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -555,7 +561,7 @@ if (!empty($conditions)) {
 
 <?php } else { ?>
 
-<!-- 
+    <!-- 
     <div class="row ">
         <div class="col-md-3 page-sidebar">
             <div class="inner-box default-inner-box">
@@ -655,63 +661,63 @@ if (!empty($conditions)) {
 
     <h2>
 
-<h2 class="sec-title">My Strivres Dashboard</h2>
-</h2>
+        <h2 class="sec-title">My Strivres Dashboard</h2>
+    </h2>
     <div class="row" style="padding: 6px; margin-left: -4px;">
-			
-			
-            <div class="col-md-12 user-profile-img-data default-inner-box">
 
-                <!-- <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;  -->
-                <?php if(!empty($user->photo)){
-					?>
-					
-					<img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
-					<?php }else{ ?>
 
-						<img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp; 
+        <div class="col-md-12 user-profile-img-data default-inner-box">
 
-						<?php }?>
-                <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>   {{ $user->name }}  </b> </span>
-            
+            <!-- <img id="userImg" class="user-profile-images1" src="{{ url($photo_url1) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;  -->
+            <?php if (!empty($user->photo)) {
+            ?>
+
+                <img id="userImg" class="user-profile-images1" src="{{ url('storage/'.$user->photo) }}" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+            <?php } else { ?>
+
+                <img id="userImg" class="user-profile-images1" src="/images/user.jpg" alt="user" width="50px;" height="50px;" border-radius=" 50%"> &nbsp;
+
+            <?php } ?>
+            <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
+
 
             <div class="row">
-               
+
                 <div class="col-md-12 col-sm-8 col-12">
-                <span>
+                    <span>
 
-                
-                    <div class="header-data text-center-xs">
-                        
-                        <div class="hdata">
-                        <a href="{{ url('account/chat') }}">
-                            <div class="mcol-left">
-                                <!-- <i class="fas fa-comments ln-shadow"></i> -->
-                                <img src="../assets/images/chat_call.png" alt="">
-                            </div>
-                            <div class="mcol-right">
-                                {{-- Number of visitors --}}
-                                <p>
-                                    
-                                       
-                                        <em>{{ trans_choice('Call / Message', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
-                                   
-                                </p>
+
+                        <div class="header-data text-center-xs">
+
+                            <div class="hdata">
+                                <a href="{{ url('account/chat') }}">
+                                    <div class="mcol-left">
+                                        <!-- <i class="fas fa-comments ln-shadow"></i> -->
+                                        <img src="../assets/images/chat_call.png" alt="">
+                                    </div>
+                                    <div class="mcol-right">
+                                        {{-- Number of visitors --}}
+                                        <p>
+
+
+                                            <em>{{ trans_choice('Call / Message', getPlural($totalPostsVisits), [], config('app.locale')) }}</em>
+
+                                        </p>
+                                    </div>
+
+                                </a>
+                                <div class="clearfix"></div>
                             </div>
 
-                            </a>
-                            <div class="clearfix"></div>
+
+
+
                         </div>
-
-                       
-
-                      
-                    </div>
                 </div>
-            
+
             </div>
 
-          </div>
+        </div>
     </div>
 
     <div class="row">
@@ -1024,42 +1030,45 @@ if (!empty($conditions)) {
                             <div class="teacher-meta">
                                 <p class="top-coaches-name-list coach-cat-name12 ">
                                     {{ $coach_list->name }}
-                </p>
-                <?php
+                                </p>
+                                <?php
 
 
 
 
 
-$conditions = json_decode($coach_list->category);
+                                $conditions = $coach_list->category;
+                                $x = explode(",", $conditions);
+                                $catss =  json_encode($x);
+                                $catUser = json_decode($catss);
 
 
 
-if (!empty($conditions)) {
-    foreach ($conditions as $val) {
-        $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+                                if (!empty($catUser)) {
+                                    foreach ($catUser as $val) {
+                                        $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
 
 
 
 
-        $name = json_decode($q1->categories_slug);
-        $ss = array();
-        foreach ($name as $key => $sub) {
-            $ss[$key] = $sub;
-        }
+                                        $name = json_decode($q1->categories_slug);
+                                        $ss = array();
+                                        foreach ($name as $key => $sub) {
+                                            $ss[$key] = $sub;
+                                        }
 
 
-?>
+                                ?>
 
-        <p class="lh">{{$ss['en']}}
-        </p>
-    <?php
-    }
-} else {
-    ?>
-    <p class=" text-center">Others
-    </p>
-<?php } ?>
+                                        <p class="lh">{{$ss['en']}}
+                                        </p>
+                                    <?php
+                                    }
+                                } else {
+                                    ?>
+                                    <p class=" text-center">Others
+                                    </p>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -1164,7 +1173,7 @@ if (!empty($conditions)) {
         opacity: var(--opacity);
         position: relative;
         width: 100%;
-        height: 300px!important;
+        height: 300px !important;
     }
 
 
@@ -1281,7 +1290,7 @@ if (!empty($conditions)) {
 
     .fc-first th {
         font-family: 'Montserrat', sans-serif;
-        background: #426998!important;
+        background: #426998 !important;
         color: #FFF;
         font-size: 14px !important;
         font-weight: 500 !important;

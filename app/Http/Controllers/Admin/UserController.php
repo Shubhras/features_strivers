@@ -194,12 +194,13 @@ class UserController extends PanelController
 				'type'          => 'model_function',
 				'function_name' => 'getVerifiedEmailHtml',
 			]);
-			$this->xPanel->addColumn([
-				'name'          => 'verified_phone',
-				'label'         => trans('admin.Verified Phone'),
-				'type'          => 'model_function',
-				'function_name' => 'getVerifiedPhoneHtml',
-			]);
+			
+			// $this->xPanel->addColumn([
+			// 	'name'          => 'verified_phone',
+			// 	'label'         => trans('admin.Verified Phone'),
+			// 	'type'          => 'model_function',
+			// 	'function_name' => 'getVerifiedPhoneHtml',
+			// ]);
 			
 			// FIELDS
 			$this->xPanel->addField([
@@ -252,26 +253,26 @@ class UserController extends PanelController
 					'class' => 'col-md-6',
 				],
 			]);
-			$this->xPanel->addField([
-				'name'              => 'phone',
-				'label'             => trans('admin.Phone'),
-				'type'              => 'text',
-				'attributes'        => [
-					'placeholder' => trans('admin.Phone'),
-				],
-				'prefix' => '<i class="fas fa-mobile-alt"></i>',
-				'wrapperAttributes' => [
-					'class' => 'col-md-6',
-				],
-			]);
-			$this->xPanel->addField([
-				'name'              => 'phone_hidden',
-				'label'             => trans('admin.Phone hidden'),
-				'type'              => 'checkbox_switch',
-				'wrapperAttributes' => [
-					'class' => 'col-md-6',
-				],
-			]);
+			// $this->xPanel->addField([
+			// 	'name'              => 'phone',
+			// 	'label'             => trans('admin.Phone'),
+			// 	'type'              => 'text',
+			// 	'attributes'        => [
+			// 		'placeholder' => trans('admin.Phone'),
+			// 	],
+			// 	'prefix' => '<i class="fas fa-mobile-alt"></i>',
+			// 	'wrapperAttributes' => [
+			// 		'class' => 'col-md-6',
+			// 	],
+			// ]);
+			// $this->xPanel->addField([
+			// 	'name'              => 'phone_hidden',
+			// 	'label'             => trans('admin.Phone hidden'),
+			// 	'type'              => 'checkbox_switch',
+			// 	'wrapperAttributes' => [
+			// 		'class' => 'col-md-6',
+			// 	],
+			// ]);
 			$this->xPanel->addField([
 				'label'             => mb_ucfirst(trans('admin.country')),
 				'name'              => 'country_code',
@@ -301,14 +302,14 @@ class UserController extends PanelController
 					'class' => 'col-md-6',
 				],
 			]);
-			$this->xPanel->addField([
-				'name'              => 'verified_phone',
-				'label'             => trans('admin.Verified Phone'),
-				'type'              => 'checkbox_switch',
-				'wrapperAttributes' => [
-					'class' => 'col-md-6',
-				],
-			]);
+			// $this->xPanel->addField([
+			// 	'name'              => 'verified_phone',
+			// 	'label'             => trans('admin.Verified Phone'),
+			// 	'type'              => 'checkbox_switch',
+			// 	'wrapperAttributes' => [
+			// 		'class' => 'col-md-6',
+			// 	],
+			// ]);
 			$this->xPanel->addField([
 				'name'              => 'blocked',
 				'label'             => trans('admin.Blocked'),

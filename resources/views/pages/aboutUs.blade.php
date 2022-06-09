@@ -5,15 +5,16 @@
 
 
 
-<section class="cta-section" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+<!-- <section class="cta-section" style="background-image: url(../assets/images/home/cta-bg.jpg);"> -->
+<section class="cta-section">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h2 class="sec-title title-padding font-text-size-36px"> Get unlimited consultation across industries. </h2>
+                <h2 class="sec-title title-padding font-text-size-36px" style="color:#000000"> Get unlimited consultation across industries. </h2>
                 <!-- <p>
                         So I said codswallop car boot cheers mufty I don't want no agro are you taking the<br> piss cheeky my lady gutted mate excuse my french.
                     </p> -->
-                <a href="{{url('/register') }}" class="bisylms-btn">
+                <a href="{{url('/register') }}" class="bisylms-btn" style="background-color: #012245; color:white">
                     Get Started </a>
             </div>
         </div>

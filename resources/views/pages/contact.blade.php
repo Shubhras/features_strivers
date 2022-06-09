@@ -85,11 +85,12 @@
 					</div>
 				@endif
     
-    <section class="page-banner" style="background-image: url(assets/images/home/cta-bg.jpg);">
+    <!-- <section class="page-banner" style="background-image: url(assets/images/home/cta-bg.jpg);"> -->
+    <section class="page-banner" style="background:white;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="banner-title">Contact Us</h2>
+                    <h2 class="banner-title" style="color:#000000">Contact Us</h2>
                     <!-- <div class="bread-crumbs">
                         <a href="index.html">Home</a> <span></span> Contact Us
                     </div> -->

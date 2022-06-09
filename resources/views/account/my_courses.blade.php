@@ -6,7 +6,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
-<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+
+<section class="page-banner01">
 </section>
 
 @section('content')
@@ -347,7 +348,7 @@
 
 								<?php } ?>
 
-								
+
 							</div>
 							<div class="teacher-meta">
 								<p class="top-coaches-name-list coach-cat-name12 ">
@@ -358,35 +359,37 @@
 
 								<?php
 
-									$conditions = json_decode($coach_list->category);
+								$conditions = $coach_list->category;
+								$x = explode(",", $conditions);
+								$catss =  json_encode($x);
+								$catUser = json_decode($catss);
+
+
+								if (!empty($catUser)) {
+									foreach ($catUser as $val) {
+										$q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
 
 
 
-									if (!empty($conditions)) {
-										foreach ($conditions as $val) {
-											$q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
 
-
-
-
-											$name = json_decode($q1->categories_slug);
-											$ss = array();
-											foreach ($name as $key => $sub) {
-												$ss[$key] = $sub;
-											}
-
-
-									?>
-
-											<p class="text-center">{{$ss['en']}}
-											</p>
-										<?php
+										$name = json_decode($q1->categories_slug);
+										$ss = array();
+										foreach ($name as $key => $sub) {
+											$ss[$key] = $sub;
 										}
-									} else {
-										?>
-										<p class=" text-center">Others
+
+
+								?>
+
+										<p class="text-center">{{$ss['en']}}
 										</p>
-									<?php } ?>
+									<?php
+									}
+								} else {
+									?>
+									<p class=" text-center">Others
+									</p>
+								<?php } ?>
 
 							</div>
 						</div>
@@ -686,18 +689,21 @@
 									<p class="top-coaches-name-list coach-cat-name12 ">
 										{{ $coach_list->name }}
 									</p>
-									
+
 
 
 
 									<?php
 
-									$conditions = json_decode($coach_list->category);
+									$conditions = $coach_list->category;
+									$x = explode(",", $conditions);
+									$catss =  json_encode($x);
+									$catUser = json_decode($catss);
 
 
 
-									if (!empty($conditions)) {
-										foreach ($conditions as $val) {
+									if (!empty($catUser)) {
+										foreach ($catUser as $val) {
 											$q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
 
 

@@ -25,7 +25,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
 
-<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+<section class="page-banner01">
        
  </section>
 
@@ -492,7 +492,11 @@
 											
 											// print_r($categoriess);die;
 
-											$user_category= json_decode($user->category);
+											// $user_category= json_decode($user->category);
+											$conditions = $user->category;
+											$x = explode(",", $conditions);
+											$catss =  json_encode($x);
+											$user_category = json_decode($catss);
 											
 
 											foreach($user_category as $key =>$values){
@@ -1215,7 +1219,12 @@ favDialog.addEventListener('close', function onClose() {
 											
 											
 
-											$user_category= json_decode($user->category);
+											// $user_category= json_decode($user->category);
+
+											$conditions = $user->category;
+                            $x = explode(",", $conditions);
+                            $catss =  json_encode($x);
+                            $user_category = json_decode($catss);
 											
 
 											foreach($user_category as $key =>$values){
