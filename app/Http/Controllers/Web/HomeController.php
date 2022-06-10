@@ -252,7 +252,7 @@ class HomeController extends FrontController
 
 		$data['uniqueCat'] = array_values($unique);
 
-		$data['categories_list_coach187'] = array_slice($data['uniqueCat'], 0, 10);
+		$data['categories_list_coach187'] = array_slice($data['uniqueCat'], 0, 6);
 
 
 
