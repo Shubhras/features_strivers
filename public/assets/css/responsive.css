@@ -1659,6 +1659,14 @@ padding-right: 10px;
         visibility: visible;
         opacity: 1;
     }
+    .header-016 .navbar-brand img {
+        visibility: hidden;
+        opacity: 0;
+    }
+    .header-016 .navbar-brand img.sticky-logo {
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
 @media (min-width: 1024px) and (max-width: 1200px) {

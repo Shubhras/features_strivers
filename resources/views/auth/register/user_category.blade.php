@@ -135,7 +135,7 @@
         <div class="modal-contents">
 
             <div class="modal-header">
-                <h5 class="modal-title">What topics do you find interesting?</h5>
+                <h5 class="modal-title">What topics do you find interesting <span style="color: red;"> Max Selected 3</span> ?</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <!-- <span aria-hidden="true">&times;</span> -->
                 </button>
@@ -151,8 +151,8 @@
                 
                 ?>
 
-            <div class="row p-5 text-center">
-                <div class="row">
+            <div class="row p-5 text-center question"  data-max-answers="3">
+                <div class="row" >
                     <!-- <div class="col-lg-12"> -->
                   <?php  $counter=0; ?>
                     @foreach($categories as $key => $cat)
@@ -168,11 +168,11 @@
                         $ss[$key] = $sub;
                     }
                     ?>
-                    <div class="col-md-3 course-wrapper">
+                    <div class="col-md-3 course-wrapper " >
 
 
                        
-                            <div class="course-item-01 text-center">
+                            <div class="course-item-01 text-center ">
                                 <defs>
                                     <style>
                                         .cls-1 {
@@ -294,6 +294,30 @@ $(document).ready(function () {
 </script> -->
 
 
+<script>
+
+$(document).ready(function () {
+    $("input[type=checkbox]").click(function (e) {
+        if ($(e.currentTarget).closest("div.question").length > 0) {
+            disableInputs($(e.currentTarget).closest("div.question")[0]);        
+        }
+    });
+});
+
+function disableInputs(questionElement) {
+    console.log(questionElement);
+    if ($(questionElement).data('max-answers') == undefined) {
+        return true;
+    } else {
+        maxAnswers = parseInt($(questionElement).data('max-answers'), 10); 
+        if ($(questionElement).find(":checked").length >= maxAnswers) {
+            $(questionElement).find(":not(:checked)").attr("disabled", true);
+        } else {
+            $(questionElement).find("input[type=checkbox]").attr("disabled", false);
+        }
+    }
+}
+</script>
 
 
 @endsection

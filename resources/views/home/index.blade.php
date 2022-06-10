@@ -271,7 +271,7 @@ foreach($categories_list_coach187 as $userCatMulti){
                                     ?>
 
                                             <p class="lh">{{$ss['en']}}
-                                            </p>,
+                                            </p>
                                         <?php
                                         }
                                     } else {

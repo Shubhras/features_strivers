@@ -40,7 +40,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family:'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #2c234d;
     font-weight: 700;
     letter-spacing: 0;
@@ -344,7 +344,7 @@ button:hover {
     font-size: 31px;
     line-height: 44px;
     color: #2c234d;
-    margin: 0 0 61px;
+    margin: 0 0 26px;
     position: relative;
 }
 

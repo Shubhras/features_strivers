@@ -65,6 +65,17 @@ nav.navbar.navbar-expand-md.navbar-light.dashboard-nav.mb-3.mb-lg-0 {
     padding: 0;
 }
 
+.header-016 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    background: transparent;
+    /* background: #000000; */
+    padding: 0;
+}
+
 .navbar.navbar-expand-lg {
     position: relative;
     margin: 0;
@@ -2351,7 +2362,7 @@ footer .widget ul li a:hover {
 .teacher-item {
     position: relative;
     text-align: center;
-    margin: 0 0 51px;
+    margin: 0 0 27px;
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
@@ -2430,7 +2441,7 @@ footer .widget ul li a:hover {
 
 .teacher-meta {
     position: relative;
-    padding: 25px 15px 0;
+    padding: 15px 2px 0;
 }
 
 .teacher-meta h5 {
@@ -2449,11 +2460,12 @@ footer .widget ul li a:hover {
 }
 
 .teacher-meta p {
-    font-size: 16px;
+    font-size: 12px;
     line-height: 1.8;
     color: #000000;
-    font-weight: 600;
+    /* font-weight: 600; */
     margin: 0;
+    padding: 2px;
 }
 
 .teachers-slider.owl-carousel {
@@ -7357,6 +7369,26 @@ Profile Page
 }
 
 .header-01.fix-header .navbar-brand {
+    padding: 17px 0;
+    transition: all 0.1s ease-out;
+}
+
+.header-016.fix-header .navbar-brand img {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.header-016.fix-header .navbar-brand .sticky-logo {
+    visibility: visible;
+    opacity: 1;
+}
+
+.header-03.fix-header,
+.header-02.fix-header {
+    background: #fff;
+}
+
+.header-016.fix-header .navbar-brand {
     padding: 17px 0;
     transition: all 0.1s ease-out;
 }
