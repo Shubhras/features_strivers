@@ -29483,10 +29483,20 @@ table.checkboxtable th {
 }
 
 @media (max-width:580px) {
-    .hdata {
+    /* .hdata {
         display: inline-block;
         margin-right: 4px;
         width: 80px
+    } */
+    .hdata {
+        display: inline-block;
+        margin-right: -195px;
+        width: 200px
+    }
+    .mcol-left {
+        float: left;
+        width: 16%;
+        margin-top: 1px;
     }
     .useradmin {
         text-overflow: ellipsis;
