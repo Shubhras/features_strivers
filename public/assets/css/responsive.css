@@ -4190,10 +4190,15 @@ width: 200px;
         border-collapse: separate;
         width: 33%;
     }
-    .fc-view {
+    /* .fc-view {
         width: 100%;
         overflow: hidden;
         width: 859px!important;
+    } */
+    .fc-view {
+        width: 100%;
+        overflow: hidden;
+        width: 1012px!important;
     }
 }
 
@@ -4253,11 +4258,11 @@ width: 200px;
         line-height: 30px;
         width: 77px;
     }
-    .fc-view {
+    /* .fc-view {
         width: 100%;
         overflow: hidden;
-        width: 1133!important;
-    }
+        width: 995!important;
+    } */
     .btn_class {
         height: 50px;
         background-color: #053568!important;
@@ -4317,7 +4322,7 @@ position: relative;
     .fc-view {
         width: 100%;
         overflow: hidden;
-        width: 1130!important;
+        width: 1010!important;
     }
     table.fc-header {
         background-color: #FFFFFF;
