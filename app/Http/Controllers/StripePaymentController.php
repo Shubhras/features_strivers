@@ -67,6 +67,8 @@ class StripePaymentController extends Controller
         // print_r($request->totalHours);die;
         $user = auth()->user();
         $userId = $user->id;
+        $user_name = $user->name;
+        $user_email = $user->email;
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $token =     \Stripe\Token::create(array(
@@ -111,6 +113,8 @@ class StripePaymentController extends Controller
 
         Session::flash('success', 'Payment successful!');
 
+        
+
         if ($subscription->paid) {
             $data['subscription_plan'] = DB::table('users')->where('id', $userId)
                 ->update(array(
@@ -131,6 +135,8 @@ class StripePaymentController extends Controller
                         'amount' => $subscription->amount / 100,
                         'receipt_url' => $subscription->receipt_url,
                         'active' => 1,
+                        'email' => $user_email,
+                        'user_name' =>$user_name,
                         'source' =>   $request->stripeToken,
                         'created_at' => Carbon::now(),
                         'SubExpires' => $privious_date,

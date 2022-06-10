@@ -30,10 +30,7 @@ class PaymentController extends PanelController
 		| BASIC CRUD INFORMATION
 		|--------------------------------------------------------------------------
 		*/
-		
-		
 		$this->xPanel->setModel('App\Models\Payment');
-		
 		$this->xPanel->with(['post', 'package', 'paymentMethod']);
 		$this->xPanel->setRoute(admin_uri('payments'));
 		$this->xPanel->setEntityNameStrings(trans('admin.payment'), trans('admin.payments'));
@@ -69,18 +66,18 @@ class PaymentController extends PanelController
 			$this->xPanel->addClause('where', 'created_at', '<=', $dates->to);
 		});
 		// -----------------------
-		$this->xPanel->addFilter([
-			'name'        => 'country',
-			'type'        => 'select2',
-			'label'       => mb_ucfirst(trans('admin.country')),
-			'placeholder' => trans('admin.select'),
-		],
-		getCountries(),
-		function ($value) {
-			$this->xPanel->addClause('whereHas', 'post', function($query) use ($value) {
-				$query->where('country_code', '=', $value);
-			});
-		});
+		// $this->xPanel->addFilter([
+		// 	'name'        => 'country',
+		// 	'type'        => 'select2',
+		// 	'label'       => mb_ucfirst(trans('admin.country')),
+		// 	'placeholder' => trans('admin.select'),
+		// ],
+		// getCountries(),
+		// function ($value) {
+		// 	$this->xPanel->addClause('whereHas', 'post', function($query) use ($value) {
+		// 		$query->where('country_code', '=', $value);
+		// 	});
+		// });
 		// -----------------------
 		// $this->xPanel->addFilter([
 		// 	'name'  => 'post_id',
@@ -153,6 +150,16 @@ class PaymentController extends PanelController
 			'name'  => 'created_at',
 			'label' => trans('admin.Date'),
 		]);
+		$this->xPanel->addColumn([
+			'name'  => 'user_name',
+			'label' => trans('admin.User Name'),
+		]);
+
+		$this->xPanel->addColumn([
+			'name'  => 'email',
+			'label' => trans('admin.Email'),
+		]);
+
 		// $this->xPanel->addColumn([
 		// 	'name'          => 'post_id',
 		// 	'label'         => trans('admin.Ad'),
@@ -160,19 +167,18 @@ class PaymentController extends PanelController
 		// 	'function_name' => 'getPostTitleHtml',
 		// ]);
 
-		$this->xPanel->addColumn([
-			'name'          => 'post_id',
-			'label'         => trans('User name'),
-			'type'          => 'model_function',
-			'function_name' => 'getUserNameHtml',
-		]);
-
-		$this->xPanel->addColumn([
-			'name'          => 'post_id as user_post_id',
-			'label'         => trans('Email'),
-			'type'          => 'model_function',
-			'function_name' => 'getEmailNameHtml',
-		]);
+		// $this->xPanel->addColumn([
+		// 	'name'          => 'post_id',
+		// 	'label'         => trans('User name'),
+		// 	'type'          => 'model_function',
+		// 	'function_name' => 'getUserNameHtml',
+		// ]);
+		// $this->xPanel->addColumn([
+		// 	'name'          => 'user_id as user_post_id',
+		// 	'label'         => trans('Email'),
+		// 	'type'          => 'model_function',
+		// 	'function_name' => 'getEmailNameHtml',
+		// ]);
 
 
 		$this->xPanel->addColumn([
