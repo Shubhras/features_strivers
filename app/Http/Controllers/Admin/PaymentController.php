@@ -105,15 +105,15 @@ class PaymentController extends PanelController
 			$this->xPanel->addClause('where', 'package_id', '=', $value);
 		});
 		// -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'payment_method',
-			'type'  => 'dropdown',
-			'label' => trans('admin.Payment Method'),
-		],
-		$this->getPaymentMethods(),
-		function ($value) {
-			$this->xPanel->addClause('where', 'payment_method_id', '=', $value);
-		});
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'payment_method',
+		// 	'type'  => 'dropdown',
+		// 	'label' => trans('admin.Payment Method'),
+		// ],
+		// $this->getPaymentMethods(),
+		// function ($value) {
+		// 	$this->xPanel->addClause('where', 'payment_method_id', '=', $value);
+		// });
 		// -----------------------
 		$this->xPanel->addFilter([
 			'name'  => 'status',
