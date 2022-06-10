@@ -11,7 +11,10 @@
  * of the above copyright notice. If you Purchased from CodeCanyon,
  * Please read the full License from here - http://codecanyon.net/licenses/standard
 --}}
-<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+<!-- <section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+       
+ </section> -->
+ <section class="page-banner01">
        
  </section>
  @extends('layouts.master_new')

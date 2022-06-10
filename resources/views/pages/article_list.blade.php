@@ -6,7 +6,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css" />
-<section class="page-banner01" style="background-image: url(../assets/images/home/cta-bg.jpg);">
+<section class="page-banner01">
 </section>
 
 @section('content')
