@@ -47,40 +47,40 @@ class PaymentController extends PanelController
 		// -----------------------
 		$this->xPanel->disableSearchBar();
 		// -----------------------
-		// $this->xPanel->addFilter([
-		// 	'name'  => 'id',
-		// 	'type'  => 'text',
-		// 	'label' => 'ID',
-		// ],
-		// false,
-		// function ($value) {
-		// 	$this->xPanel->addClause('where', 'id', '=', $value);
-		// });
+		$this->xPanel->addFilter([
+			'name'  => 'id',
+			'type'  => 'text',
+			'label' => 'ID',
+		],
+		false,
+		function ($value) {
+			$this->xPanel->addClause('where', 'id', '=', $value);
+		});
 		// -----------------------
-		// $this->xPanel->addFilter([
-		// 	'name'  => 'from_to',
-		// 	'type'  => 'date_range',
-		// 	'label' => trans('admin.Date range'),
-		// ],
-		// false,
-		// function ($value) {
-		// 	$dates = json_decode($value);
-		// 	$this->xPanel->addClause('where', 'created_at', '>=', $dates->from);
-		// 	$this->xPanel->addClause('where', 'created_at', '<=', $dates->to);
-		// });
+		$this->xPanel->addFilter([
+			'name'  => 'from_to',
+			'type'  => 'date_range',
+			'label' => trans('admin.Date range'),
+		],
+		false,
+		function ($value) {
+			$dates = json_decode($value);
+			$this->xPanel->addClause('where', 'created_at', '>=', $dates->from);
+			$this->xPanel->addClause('where', 'created_at', '<=', $dates->to);
+		});
 		// -----------------------
-		// $this->xPanel->addFilter([
-		// 	'name'        => 'country',
-		// 	'type'        => 'select2',
-		// 	'label'       => mb_ucfirst(trans('admin.country')),
-		// 	'placeholder' => trans('admin.select'),
-		// ],
-		// getCountries(),
-		// function ($value) {
-		// 	$this->xPanel->addClause('whereHas', 'post', function($query) use ($value) {
-		// 		$query->where('country_code', '=', $value);
-		// 	});
-		// });
+		$this->xPanel->addFilter([
+			'name'        => 'country',
+			'type'        => 'select2',
+			'label'       => mb_ucfirst(trans('admin.country')),
+			'placeholder' => trans('admin.select'),
+		],
+		getCountries(),
+		function ($value) {
+			$this->xPanel->addClause('whereHas', 'post', function($query) use ($value) {
+				$query->where('country_code', '=', $value);
+			});
+		});
 		// -----------------------
 		// $this->xPanel->addFilter([
 		// 	'name'  => 'post_id',
@@ -98,45 +98,45 @@ class PaymentController extends PanelController
 		// 	}
 		// });
 		// -----------------------
-		// $this->xPanel->addFilter([
-		// 	'name'  => 'package',
-		// 	'type'  => 'dropdown',
-		// 	'label' => trans('admin.Package'),
-		// ],
-		// $this->getPackages(),
-		// function ($value) {
-		// 	$this->xPanel->addClause('where', 'package_id', '=', $value);
-		// });
+		$this->xPanel->addFilter([
+			'name'  => 'package',
+			'type'  => 'dropdown',
+			'label' => trans('admin.Package'),
+		],
+		$this->getPackages(),
+		function ($value) {
+			$this->xPanel->addClause('where', 'package_id', '=', $value);
+		});
 		// -----------------------
-		// $this->xPanel->addFilter([
-		// 	'name'  => 'payment_method',
-		// 	'type'  => 'dropdown',
-		// 	'label' => trans('admin.Payment Method'),
-		// ],
-		// $this->getPaymentMethods(),
-		// function ($value) {
-		// 	$this->xPanel->addClause('where', 'payment_method_id', '=', $value);
-		// });
+		$this->xPanel->addFilter([
+			'name'  => 'payment_method',
+			'type'  => 'dropdown',
+			'label' => trans('admin.Payment Method'),
+		],
+		$this->getPaymentMethods(),
+		function ($value) {
+			$this->xPanel->addClause('where', 'payment_method_id', '=', $value);
+		});
 		// -----------------------
-		// $this->xPanel->addFilter([
-		// 	'name'  => 'status',
-		// 	'type'  => 'dropdown',
-		// 	'label' => trans('admin.Status'),
-		// ], [
-		// 	1 => trans('admin.Unapproved'),
-		// 	2 => trans('admin.Approved'),
-		// ], function ($value) {
-		// 	if ($value == 1) {
-		// 		$this->xPanel->addClause('where', function ($query) {
-		// 			$query->where(function ($query) {
-		// 				$query->where('active', '!=', 1)->orWhereNull('active');
-		// 			});
-		// 		});
-		// 	}
-		// 	if ($value == 2) {
-		// 		$this->xPanel->addClause('where', 'active', '=', 1);
-		// 	}
-		// });
+		$this->xPanel->addFilter([
+			'name'  => 'status',
+			'type'  => 'dropdown',
+			'label' => trans('admin.Status'),
+		], [
+			1 => trans('admin.Unapproved'),
+			2 => trans('admin.Approved'),
+		], function ($value) {
+			if ($value == 1) {
+				$this->xPanel->addClause('where', function ($query) {
+					$query->where(function ($query) {
+						$query->where('active', '!=', 1)->orWhereNull('active');
+					});
+				});
+			}
+			if ($value == 2) {
+				$this->xPanel->addClause('where', 'active', '=', 1);
+			}
+		});
 		
 		
 		/*
