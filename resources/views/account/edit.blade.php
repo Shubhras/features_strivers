@@ -10,6 +10,8 @@
     transition: all 0.1s ease-out;
     box-shadow: 0px 6px 10px 0px rgb(11 2 55 / 6%);
 }
+
+
 	</style>
 
 
@@ -64,15 +66,28 @@
 						<?php }?>
 					<span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b>  {{ $user->name }}</b> </span>
 					
-					
+					<div class="containersss">
+						<div id="inviteCode" class="invite-page" class="col-md-4">
+						<!-- Copy Subscription Link:  -->
+						<input id="link" value="https://ycsdigitalstage.co.uk/pricing" readonly style="color:blue; border:none;"> 
+							<div id="copy" class="col-md-1">
+							<i class="fa fa-duotone fa-copy copy-icon-click-data" aria-hidden="true" data-copytarget="#link"><span class="click-to-copy-text"><a href="#"> Click to Copy</a></span></i>
+							</div>
+						</div>
+						</div>
+
 			<div class="row">
                
 			   <div class="col-md-12 col-sm-8 col-12">
+
+			  
 			   <span>
+			   
+			   
 
 			   
 				   <div class="header-data text-center-xs">
-					   
+				   
 					   <div class="hdata">
 					   <a href="{{ url('account/chat') }}">
 						   <div class="mcol-left">
@@ -2146,5 +2161,48 @@ function getlocation(id)
     });
 }
 </script>
+<script>
+	// functionality to copy text from inviteCode to clipboard
+
+// trigger copy event on click
+$('#copy').on('click', function(event) {
+  console.log(event);
+  copyToClipboard(event);
+});
+
+// event handler
+function copyToClipboard(e) {
+  // alert('this function was triggered');
+  // find target element
+  var
+    t = e.target, 
+    c = t.dataset.copytarget,
+    inp = (c ? document.querySelector(c) : null);
+  console.log(inp);
+  // check if input element exist and if it's selectable
+  if (inp && inp.select) {
+    // select text
+    inp.select();
+    try {
+      // copy text
+      document.execCommand('copy');
+      inp.blur();
+
+      // copied animation
+      t.classList.add('copied');
+	  
+      setTimeout(function() {
+        t.classList.remove('copied');
+      }, 1500);
+    } catch (err) {
+      //fallback in case exexCommand doesnt work
+      alert('please press Ctrl/Cmd+C to copy');
+    }
+
+  }
+
+}
+</script>
 
 @endsection
+

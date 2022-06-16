@@ -146,6 +146,25 @@ class CoachController extends PanelController
 		// 	}
 		// });
 		
+		// $this->xPanel->addFilter([
+		// 	'name'  => 'status',
+		// 	'type'  => 'dropdown',
+		// 	'label' => trans('admin.Status'),
+		// ], [
+		// 	1 => trans('admin.Activated'),
+		// 	2 => trans('admin.Unactivated'),
+		// ], function ($value) {
+		// 	if ($value == 1) {
+		// 		$this->xPanel->addClause('where', 'active', '=', 1);
+		// 	}
+		// 	if ($value == 2) {
+		// 		$this->xPanel->addClause('where', function ($query) {
+		// 			$query->where(function ($query) {
+		// 				$query->where('active', '!=', 1)->orWhereNull('active');
+		// 			});
+		// 		});
+		// 	}
+		// });
 		/*
 		|--------------------------------------------------------------------------
 		| COLUMNS AND FIELDS
@@ -200,6 +219,22 @@ class CoachController extends PanelController
 				'type'          => 'model_function',
 				'function_name' => 'getVerifiedEmailHtml',
 			]);
+
+			// $this->xPanel->addColumn([
+			// 	'name'  => 'active',
+			// 	'label' => trans('admin.Active'),
+			// 	'type'  => 'checkbox_switch',
+			// ]);
+
+			// $this->xPanel->addColumn([
+			// 	'name'          => 'active',
+			// 	'label'         => trans('admin.Active'),
+			// 	'type'          => "model_function",
+			// 	'function_name' => 'getActiveHtml',
+			// 	'on_display'    => 'checkbox',
+			// ]);
+
+
 			// $this->xPanel->addColumn([
 			// 	'name'          => 'verified_phone',
 			// 	'label'         => trans('admin.Verified Phone'),

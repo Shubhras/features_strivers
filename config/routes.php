@@ -14,7 +14,7 @@ return [
     'logout' => 'logout',
     'register' => 'register',
     'companies' => 'companies',
-    'letestNewsBySlug' => 'letest_news/{slug}',
+    'letestNewsBySlug' => 'latest_news/{slug}',
     'pageBySlug' => 'page/{slug}',
     'sitemap' => 'sitemap',
     'countries' => 'countries',

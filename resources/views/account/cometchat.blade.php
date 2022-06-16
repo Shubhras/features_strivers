@@ -150,7 +150,15 @@
 
 						<?php }?>
                 <span style="font-size: 24px; font-weight: 700; color: #2c234d;">   <b> {{ $user->name }}  </b> </span>
-            
+                <div class="containersss">
+						<div id="inviteCode" class="invite-page" class="col-md-4">
+						<!-- Copy Subscription Link:  -->
+						<input id="link" value="https://ycsdigitalstage.co.uk/pricing" readonly style="color:blue; border:none;"> 
+							<div id="copy" class="col-md-1">
+							<i class="fa fa-duotone fa-copy copy-icon-click-data" aria-hidden="true" data-copytarget="#link"><span class="click-to-copy-text"><a href="#"> Click to Copy</a></span></i>
+							</div>
+						</div>
+						</div>
                 <div class="row">
                
 			   <div class="col-md-12 col-sm-8 col-12">

@@ -26428,8 +26428,10 @@ div.login-box .panel-footer label {
 }
 
 .header-data {
-    margin-top: -55px;
-    text-align: right
+    margin-top: -88px;
+    text-align: right;
+    width: 200px;
+    float: right;
 }
 
 

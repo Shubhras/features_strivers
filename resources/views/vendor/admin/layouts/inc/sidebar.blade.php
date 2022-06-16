@@ -60,14 +60,26 @@
 
 
 					
+					<li class="sidebar-item">
+							<a href="{{ admin_url('Contact') }}" class="sidebar-link">
+								<i data-feather="book-open" class="feather-icon"></i> <span class="hide-menu">{{ trans('Contact') }}</span>
+							</a>
+						</li>
 
 
 					<!-- @if (auth()->user()->can('page-list') || userHasSuperAdminPermissions()) -->
 						<li class="sidebar-item">
 							<a href="{{ admin_url('latest_news') }}" class="sidebar-link">
-								<i data-feather="book-open" class="feather-icon"></i> <span class="hide-menu">{{ trans('admin.Letest_news') }}</span>
+								<i data-feather="book-open" class="feather-icon"></i> <span class="hide-menu">{{ trans('Letest_news') }}</span>
 							</a>
 						</li>
+
+						<li class="sidebar-item">
+							<a href="{{ admin_url('logo_and_image_change') }}" class="sidebar-link">
+								<i data-feather="book-open" class="feather-icon"></i> <span class="hide-menu">{{ trans('logo_header_and_footer') }}</span>
+							</a>
+						</li>
+
 					<!-- @endif -->
 
 					<li class="sidebar-item">
@@ -413,6 +425,11 @@
 					</li> -->
 
 
+					<li class="sidebar-item">
+							<a href="{{ admin_url('Contact') }}" class="sidebar-link">
+								<i data-feather="book-open" class="feather-icon"></i> <span class="hide-menu">{{ trans('Contact') }}</span>
+							</a>
+						</li>
 					
 
 
@@ -539,6 +556,12 @@
 					<li class="sidebar-item">
 							<a href="{{ admin_url('coach_payments') }}" class="sidebar-link">
 								<i data-feather="dollar-sign" class="feather-icon"></i> <span class="hide-menu">{{ trans('Coache payments') }}</span>
+							</a>
+						</li>
+
+						<li class="sidebar-item">
+							<a href="{{ admin_url('logo_and_image_change') }}" class="sidebar-link">
+								<i data-feather="book-open" class="feather-icon"></i> <span class="hide-menu">{{ trans('Logo And Image Change') }}</span>
 							</a>
 						</li>
 

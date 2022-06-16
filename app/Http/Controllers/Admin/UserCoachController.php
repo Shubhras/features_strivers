@@ -194,6 +194,7 @@ class UserController extends PanelController
 				'type'          => 'model_function',
 				'function_name' => 'getVerifiedEmailHtml',
 			]);
+			
 			$this->xPanel->addColumn([
 				'name'          => 'verified_phone',
 				'label'         => trans('admin.Verified Phone'),
@@ -317,6 +318,7 @@ class UserController extends PanelController
 					'class' => 'col-md-6',
 				],
 			]);
+			
 
 			$entity = $this->xPanel->getModel()->find(request()->segment(3));
 

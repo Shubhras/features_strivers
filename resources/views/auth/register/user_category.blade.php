@@ -151,7 +151,7 @@
                 
                 ?>
 
-            <div class="row p-5 text-center question"  data-max-answers="3">
+            <div class="row p-5 text-center question"  data-max-answers="4">
                 <div class="row" >
                     <!-- <div class="col-lg-12"> -->
                   <?php  $counter=0; ?>
@@ -309,7 +309,7 @@ function disableInputs(questionElement) {
     if ($(questionElement).data('max-answers') == undefined) {
         return true;
     } else {
-        maxAnswers = parseInt($(questionElement).data('max-answers'), 10); 
+        maxAnswers = parseInt($(questionElement).data('max-answers'), 15); 
         if ($(questionElement).find(":checked").length >= maxAnswers) {
             $(questionElement).find(":not(:checked)").attr("disabled", true);
         } else {

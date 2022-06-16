@@ -32,6 +32,9 @@ use Torann\LaravelMetaTags\Facades\MetaTag;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+use App\Helpers\Files\Storage\StorageDisk;
 use Auth;
  use App\Http\Controllers\Web\Session;
 
@@ -217,7 +220,7 @@ class HomeController extends FrontController
 		// print_r($data['packages']);die;
 		// Get SEO
 		$this->setSeo($searchFormOptions);
-
+		$data['index_and_footer_logo'] = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 
 		$data['letest_news'] = DB::table('latest_new')->select('latest_new.*')->where('active', 1)->orderBy('latest_new.id', 'desc')->limit(4)->get();
 
@@ -858,13 +861,81 @@ class HomeController extends FrontController
 		// $request['country_code'] = 'UK';
 
 
+		
+	// 	$extension= $request->file("upload_document")->getClientOriginalExtension();
+	// 	$stringPaperFormat=str_replace(" ", "", $request->input('name'));
+	
+	// 	$fileName= $stringPaperFormat.".".$extension;
+	//    $FileEnconded=  File::get($request->upload_document);
+	// 	Storage::disk('local')->put('public/document'.$fileName, $FileEnconded);
 
 
+
+		$value = $request->upload_document;
+
+
+		// print_r($value);die;
+
+		$disk = StorageDisk::getDisk();
+		$attribute_name = 'document';
+		$destination_path = 'app/upload_document';
+
+
+		// Check the image file
+		if ($value == url('/')) {
+			$this->attributes[$attribute_name] = null;
+
+			return false;
+		}
+
+		// If laravel request->file('filename') resource OR base64 was sent, store it in the db
+
+		// if (fileIsUploaded($value)) {
+
+
+		// Get file extension
+		$extension = getUploadedFileExtension($value);
+
+
+		if (empty($extension)) {
+			$extension = 'pdf';
+		}
+
+		// Image quality
+		$imageQuality = 100;
+
+		// Image default dimensions
+		$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 2000);
+		$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 1000);
+
+
+
+
+		$image = $value;
+		// Generate a filename.
+		// $filename = md5($value . time()) . '.' . $extension;
+		$filename = md5($value . time()) . '.' . $extension;
+
+		// Store the image on disk.
+		// $disk->put($destination_path . '/' . $filename, $image);
+		$courseimg =	$disk->put($destination_path, $image);
+		// print_r($courseimg);die;
+		// Save the path to the database
+		// $this->attributes[$attribute_name] = $destination_path . '/' . $filename;
+		$this->attributes[$attribute_name] = $destination_path . '/' . $image;
+		
+
+		$user_data_request = array(['name' =>$request->name,'email'=>$request->email,'phone'=>$request->phone,'file'=>$courseimg,'user_type_id' =>$request->user_type_id]);
+
+
+
+		
 
 
 		// Call API endpoint
 		$endpoint = '/users';
-		$data = makeApiRequest('post', $endpoint, $request->all());
+		// $data = makeApiRequest('post', $endpoint, $request->all());
+		$data = makeApiRequest('post', $endpoint, $user_data_request);
 
 		//print_r($data);die;
 		// Parsing the API's response
@@ -964,7 +1035,45 @@ class HomeController extends FrontController
 			}
 		}
 
+	$user_type_id= 	auth()->user()->user_type_id;
+	$user_id= 	auth()->user()->id;
+	$name= 	auth()->user()->name;
+	$email= 	auth()->user()->email;
 
+		if($user_type_id == 3){
+
+			$strivreDefaultPackage = DB::table('packages')->select('packages.*')->where('packages.id', 1)->first();
+			// $date = date('d-m-yy');
+			// $data = array(
+			// 	'user_id' => $user_id,
+			// 	'package_id' => $strivreDefaultPackage->id,
+			// 	'payment_method_id' => 1,
+			// 	'transaction_id' => 'active',
+			// 	'amount' =>$strivreDefaultPackage->price,
+			// 	'email' =>$email,
+			// 	'user_name' =>$name,
+			// 	'active' =>1,
+			// 	'created_at' => $date
+			// );
+
+			// DB::table('payments')->insert($data);
+
+			$date = date('d-m-yy');
+			$data = array(
+				'user_id' => $user_id,
+				'subscription_id' => $strivreDefaultPackage->id,
+				'total_provided_hours' => $strivreDefaultPackage->price,
+				'consumed_hours' => 0,
+				'remaining_hours' =>$strivreDefaultPackage->price,
+				'created_at' => $date
+			);
+
+			DB::table('user_subscription_payment')->insert($data);
+
+			
+
+		}
+		
 		$data['user_auth_id']= 	auth()->user()->id;
 
 
@@ -1206,6 +1315,31 @@ class HomeController extends FrontController
 
 
 		return appView('pages.article_list', $data);
+
+	}
+
+	public function contactUs(Request $request){
+
+		// print_r($request->all());die;
+		$data =array([
+			'first_name' =>$request->first_name,
+			'last_name' =>$request->last_name,
+			'email' =>$request->email,
+			'phone' =>$request->phone,
+			'subject' =>$request->subject,
+			'message' =>$request->message
+		]);
+
+		$dataq  = DB::table('contact')->insert($data);
+
+		$message = !empty(data_get($dataq, 'message')) ? data_get($dataq, 'message') : 'Unknown Error.';
+		if (array_get($dataq, 'success')) {
+			flash($message)->success();
+		} else {
+			flash($message)->error();
+		}
+		return appView('pages.contact',$data);
+		// print_r($request->all());die;
 
 	}
 }

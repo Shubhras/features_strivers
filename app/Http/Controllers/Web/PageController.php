@@ -60,6 +60,7 @@ class PageController extends FrontController
 
 		// $data['courseId'] = 130;
 
+		$data['index_and_footer_logo'] = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 
 		$data['packages'] = $packages;
 		// print_r($data);die;
@@ -1115,7 +1116,9 @@ class PageController extends FrontController
 	public function aboutUs()
 	{
 		// $data = "Hello Folks! ";
-		return appView('pages.aboutUs');
+
+		$data['index_and_footer_logo'] = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
+		return appView('pages.aboutUs',$data);
 	}
 
 	// Select plans per hours

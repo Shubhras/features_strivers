@@ -142,7 +142,8 @@
                     <div class="contact-form">
                         <h4>Let’s Connect</h4>
                         <p class="font-text-size-16px">Integer at lorem eget diam facilisis lacinia ac id massa.</p>
-                        <form  method="post" class="row" action="{{ \App\Helpers\UrlGen::contact() }}">
+
+                        <form  method="post" class="row" action="{{url('/contactUs') }}">
                             <div class="col-md-6">
 							<?php $firstNameError = (isset($errors) and $errors->has('first_name')) ? ' is-invalid' : ''; ?>
 							<label for="first_name">{{ t('first_name') }}</label>
@@ -170,7 +171,7 @@
                             </div>
                             <div class="col-md-12">
 						
-                                <input type="text" name="suject" placeholder="Subject">
+                                <input type="text" name="subject" placeholder="Subject">
                             </div>
                             <div class="col-md-12">
 							<?php $messageError = (isset($errors) and $errors->has('message')) ? ' is-invalid' : ''; ?>

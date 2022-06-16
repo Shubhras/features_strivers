@@ -32,8 +32,11 @@
         <div class="col-lg-8 col-md-6 title-box-fix">
             <div class="hero-content">
 
-                <p class="text_font_size_index232">Your Course To <br>Success</p>
+                <!-- <p class="text_font_size_index232">Your Course To <br>Success</p> -->
+
+                <p class="text_font_size_index232 content_width">{{$index_and_footer_logo->index_section_1_text}}</p>
                 <?php $id = '0'; ?>
+
                 <!-- <form action="{{ url('/coach_list_category_all/'.$id) }}" method="GET" class="row mt-5 box_filter2 search-box_filter2"> -->
 
                 <form action="{{ url('/findtopcoach') }}" method="post" class="row mt-5 box_filter2 search-box_filter2">
@@ -180,12 +183,12 @@ foreach($categories_list_coach187 as $userCatMulti){
 
                             <div class="strivre-img-wrapper">
 
-                                <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
+                                <a href="{{url('/latest_news/'.$news->slug) }}" target="_blank">
                                     <img src="{{ url('storage/'.$news->picture) }}" alt="{{ $news->name }}">
                                 </a>
 
                                 <label class="f-17 sort_name find-letest-news1">
-                                    <a class="index-34" href="{{url('/letest_news/'.$news->slug) }}" target="_blank">{{$ss['en']}}
+                                    <a class="index-34" href="{{url('/latest_news/'.$news->slug) }}" target="_blank">{{$ss['en']}}
                                     </a>
                                 </label>
 
@@ -194,11 +197,11 @@ foreach($categories_list_coach187 as $userCatMulti){
                             @if(empty($news->picture))
 
                             <div class="strivre-img-wrapper">
-                                <a href="{{url('/letest_news/'.$news->slug) }}" target="_blank">
+                                <a href="{{url('/latest_news/'.$news->slug) }}" target="_blank">
                                     <img src="../assets/images/course/1.jpg" alt="">
                                 </a>
                                 <label class="f-17 sort_name find-letest-news1">
-                                    <a class="index-34" href="{{url('/letest_news/'.$news->slug)}}" target="_blank">{{$ss['en']}}
+                                    <a class="index-34" href="{{url('/latest_news/'.$news->slug)}}" target="_blank">{{$ss['en']}}
                                     </a>
                                 </label>
 
@@ -507,17 +510,23 @@ foreach($categories_list_coach187 as $userCatMulti){
 
             <div class="mt-120">
                 <center>
-                    <h2 class="fwhite home-banner-page-text">GET YOUR DREAM COURSE WITH BEST INSTRUCTOR
-                    </h2>
+                    <!-- <h2 class="fwhite home-banner-page-text"> GET YOUR DREAM COURSE WITH BEST INSTRUCTOR 
+                    </h2>  -->
+
+                    <h2 class="fwhite home-banner-page-text"> {{$index_and_footer_logo->index_section_2}}
+                    </h2> 
                 </center>
                 <div class="row">
                     <div class="col-lg-5 col-md-6">
 
 
                         <div class="ab-content">
-                            <h3 class="fwhite">CONNECT WITH COACHES/ STRIVRES AROUND THE WORLD</h3>
-                            <p style="color: #ffffff;">Strivre is great for teams because its easy to get set up and the offerings touch on a vast array of soft skill focus areas, which not only build role-related talents but also enable team members to grow their whole selves beyond
+                            <!-- <h3 class="fwhite">CONNECT WITH COACHES/ STRIVRES AROUND THE WORLD</h3> -->
+                            <h3 class="fwhite">{{$index_and_footer_logo->index_section_4_text}}</h3>
+                            <!-- <p style="color: #ffffff;">Strivre is great for teams because its easy to get set up and the offerings touch on a vast array of soft skill focus areas, which not only build role-related talents but also enable team members to grow their whole selves beyond
                                 work.
+                            </p> -->
+                            <p style="color: #ffffff;">{{$index_and_footer_logo->index_section_6_text}}
                             </p>
                             <a class="bisylms-btn-pink" href="{{url('/register') }}">Sign Up </a>
                         </div>
@@ -545,9 +554,13 @@ foreach($categories_list_coach187 as $userCatMulti){
             </div>
             <div class="col-lg-5 col-md-6">
                 <div class="ab-content">
-                    <h3 class="fblack">JOIN OUR LARGEST COACHING COMMUNITY.</h3>
-                    <p class="fblack">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
+                <!-- <h3 class="fblack">JOIN OUR LARGEST COACHING COMMUNITY.</h3> -->
+                    <h3 class="fblack">{{$index_and_footer_logo->index_section_7_text}}</h3>
+                    <!-- <p class="fblack">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
                         Aliquam euismod, elit vel bibendum vestibulum, nisl nisl mollis tortor, a rhoncus mi augue eleifend justo. Sed sed ullamcorper massa, at pretium tortor. Integer nunc tellus, elementum eu malesuada eu, pellentesque a tellus.
+                    </p> -->
+                    <p class="fblack">
+                    {{$index_and_footer_logo->index_section_8_text}}
                     </p>
                     <a class="bisylms-btn" href="{{url('/register') }}">Get Started</a>
                 </div>

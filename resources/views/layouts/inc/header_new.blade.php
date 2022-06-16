@@ -49,7 +49,10 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 ?><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
+<?php 
+$index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 
+?>
 
 
 <header class="header-01 sticky">
@@ -58,9 +61,14 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg nav-menu-fix23">
                     <!-- logo Start-->
-                    <a class="navbar-brand" href="{{'/'}}">
+                    <!-- <a class="navbar-brand" href="{{'/'}}">
                         <img src="../assets/images/logo4.png" alt="">
                         <img class="sticky-logo" src="../assets/images/logo4.png" alt="">
+                    </a> -->
+
+                    <a class="navbar-brand" href="{{'/'}}">
+                        <img src="{{ url('storage/'.$index_and_footer_logo->index_header_logo_2) }}" alt="">
+                        <img class="sticky-logo" src="{{ url('storage/'.$index_and_footer_logo->index_header_logo_2) }}" alt="">
                     </a>
                     <!-- logo End-->
 
@@ -98,7 +106,7 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                             <li class="menu-item-has-children side-menu-content768">
                                 <a href="{{url('contact')}}">Contact</a>
                             </li>
-                            
+                           
 
                             @if (auth()->check())
 
@@ -157,6 +165,26 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                                 </ul>
                             </li>
                             @endif
+
+                            <li class="nav-item dropdown no-arrow side-menu-content768" style="width: 123px;">
+                            <div id="google_translate_element" style="margin-top: 30px;"></div>
+
+                            <script type="text/javascript">
+                                // function googleTranslateElementInit() {
+                                //     new google.translate.TranslateElement({
+                                //         pageLanguage: 'en'
+                                //     }, 'google_translate_element');
+                                // }
+                                function googleTranslateElementInit() {
+                                        new google.translate.TranslateElement({
+                                            includedLanguages: 'en,es,fr,pt,hi,ja,it',
+                                            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+                                        }, 'google_translate_element');
+                                    }
+                            </script>
+
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </li>
                         </ul>
 
                         @if (!auth()->check())
@@ -179,4 +207,17 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
             </div>
         </div>
     </div>
+     <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/62a9a4db7b967b117994a485/1g5janvaq';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 </header>

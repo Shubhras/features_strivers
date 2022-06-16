@@ -97,6 +97,17 @@
 
                         <input type="hidden" name="accept_terms" value="1">
                     </div>
+
+
+                    <div class="col-md-12">
+                    <?php $passwordError = (isset($errors) and $errors->has('password')) ? ' is-invalid' : ''; ?>
+                        <label class="form-label" for="password">Upload Document
+                        </label>
+                        <input id="upload_document" name="upload_document" type="file" class="form-control" accept=".pdf">
+
+                        <input type="hidden" name="accept_terms" value="1">
+                    </div>
+
                     <!-- <div class="col-sm-12">
                         <center><a class="b-btn bisylms-btn col-sm-12" href="payment-detail.html">Please Enter Your Card Details</a><br>
                         </center>

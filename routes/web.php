@@ -144,6 +144,8 @@ Route::group([
 
 		CRUD::resource('coach', 'CoachController');
 		CRUD::resource('coach_payments', 'CoachPaymentRequestController');
+		CRUD::resource('logo_and_image_change', 'LogoHeaderAndFooterAndImagesChangeController');
+		CRUD::resource('Contact', 'ContactController');
 		
 		// Others
 		Route::get('account', 'UserController@account');
@@ -274,7 +276,7 @@ Route::group([
 
 		Route::get('all_article', 'HomeController@all_article');
 		
-
+		Route::post('contactUs', 'HomeController@contactUs');
 		
 		Route::get('category_list', 'SitemapController@category_list');
 

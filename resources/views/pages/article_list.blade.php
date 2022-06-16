@@ -30,7 +30,7 @@
                     <div class="feature-course-item-4">
                         <div class="fcf-thumb">
                             <img src="{{ url('storage/'.$article_list_data->picture) }}" alt="" style="height: 244px;">
-                            <a class="enroll" href="{{url('/letest_news/'.$article_list_data->slug)}}" onclick="customSession()">View Article</a>
+                            <a class="enroll" href="{{url('/latest_news/'.$article_list_data->slug)}}" onclick="customSession()">View Article</a>
                         </div>
                         <div class="fci-details">
 
@@ -63,13 +63,13 @@
 
                             ?>
 
-                                <h4><a href="{{url('/letest_news/'.$article_list_data->slug)}}">{{$title['en']}}</a></h4>
+                                <h4><a href="{{url('/latest_news/'.$article_list_data->slug)}}">{{$title['en']}}</a></h4>
 
                             <?php  }
                             ?>
                             <div class="author">
                                 <img src="{{ url('storage/'.$article_list_data->photo) }}" alt="">
-                                <a href="{{url('/letest_news/'.$article_list_data->slug)}}">{{$article_list_data->user_name}}</a>
+                                <a href="{{url('/latest_news/'.$article_list_data->slug)}}">{{$article_list_data->user_name}}</a>
                             </div>
 
 

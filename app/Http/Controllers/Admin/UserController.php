@@ -40,6 +40,7 @@ class UserController extends PanelController
 		| BASIC CRUD INFORMATION
 		|--------------------------------------------------------------------------
 		*/
+		// print_r($this->xPanel->setModel('App\Models\User'));
 		$this->xPanel->setModel('App\Models\User');
 		
 		// If the logged admin user has permissions to manage users and is has not 'super-admin' role,
@@ -194,6 +195,14 @@ class UserController extends PanelController
 				'type'          => 'model_function',
 				'function_name' => 'getVerifiedEmailHtml',
 			]);
+
+			// $this->xPanel->addColumn([
+			// 	'name'  => 'active',
+			// 	'label' => trans('admin.Active'),
+			// 	'type'  => 'checkbox_switch',
+			// ]);
+
+
 			
 			// $this->xPanel->addColumn([
 			// 	'name'          => 'verified_phone',

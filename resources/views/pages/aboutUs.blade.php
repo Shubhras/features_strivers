@@ -10,7 +10,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h2 class="sec-title title-padding font-text-size-36px" style="color:#000000"> Get unlimited consultation across industries. </h2>
+                <!-- <h2 class="sec-title title-padding font-text-size-36px" style="color:#000000"> Get unlimited consultation across industries. </h2> -->
+                <h2 class="sec-title title-padding font-text-size-36px" style="color:#000000"> {{$index_and_footer_logo->about_section_1_text}} </h2>
                 <!-- <p>
                         So I said codswallop car boot cheers mufty I don't want no agro are you taking the<br> piss cheeky my lady gutted mate excuse my french.
                     </p> -->
@@ -36,9 +37,13 @@
         <center>
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <h2 class="sec-title font-text-size-34px">Our Global Community</h2>
+                    <!-- <h2 class="sec-title font-text-size-34px">Our Global Community</h2>
                     <p class="sec-desc font-text-size-16px">
                         GET YOUR DREAM COURSE WITH BEST INSTRUCTOR
+                    </p> -->
+                    <h2 class="sec-title font-text-size-34px">{{$index_and_footer_logo->about_section_3_text}}</h2>
+                    <p class="sec-desc font-text-size-16px">
+                        {{$index_and_footer_logo->about_section_4_text}}
                     </p>
                 </div>
             </div>
@@ -78,9 +83,11 @@
 </section>
 <section class="funfact-section-blue">
     <div class="container">
-        <p class="global_page_white font-text-size-20px"> “ Strivre is great for teams because it’s easy to get set up and the oferings touch on a<br>
+        <!-- <p class="global_page_white font-text-size-20px"> “ Strivre is great for teams because it’s easy to get set up and the oferings touch on a<br>
             vast array of soft skill focus areas, which not only build role-related talents but also<br>
-            enable team members to grow their whole selves beyond work.”</p>
+            enable team members to grow their whole selves beyond work.”</p> -->
+
+            <p class="global_page_white font-text-size-20px">{{$index_and_footer_logo->about_section_5_text}}</p>
 
     </div>
 </section>

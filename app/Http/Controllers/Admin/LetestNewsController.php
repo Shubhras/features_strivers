@@ -22,6 +22,7 @@ class LetestNewsController extends PanelController
 		| BASIC CRUD INFORMATION
 		|--------------------------------------------------------------------------
 		*/
+		
         
 		$this->xPanel->setModel('App\Models\LetestNews');
 		$this->xPanel->setRoute(admin_uri('latest_news'));
