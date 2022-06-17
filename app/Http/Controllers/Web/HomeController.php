@@ -861,6 +861,8 @@ class HomeController extends FrontController
 
 // start pdf ile upload
 
+if ($request->user_type_id == 2) {
+
 		$uploadfile = $request->upload_document;
 
 		$disk = StorageDisk::getDisk();
@@ -879,6 +881,7 @@ class HomeController extends FrontController
 
 		$upload_document =	$disk->put($destination, $uploadfile);
 		$this->attributes[$attribute_name] = $destination . '/' . $uploadfile;
+	}
 		// print_r($extension);
 
 // end pdf ile upload
