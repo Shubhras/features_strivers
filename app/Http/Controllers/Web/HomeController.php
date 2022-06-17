@@ -36,7 +36,8 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use App\Helpers\Files\Storage\StorageDisk;
 use Auth;
- use App\Http\Controllers\Web\Session;
+
+use App\Http\Controllers\Web\Session;
 
 class HomeController extends FrontController
 {
@@ -108,79 +109,77 @@ class HomeController extends FrontController
 		}
 
 		// print_r(json_decode($user1->category));die;
-		
-		if(empty(auth()->user())){
 
-		$data['user'] = DB::table('users')->select('users.*', 'categories.name as categories_slug')
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			->where('users.user_type_id', 2)
-			->whereNotIn('users.id', [1])
-			->inRandomOrder()
-			->limit(6)
-			->get();
-		}else{
+		if (empty(auth()->user())) {
 
-			if (!empty($user1->category)){
+			$data['user'] = DB::table('users')->select('users.*', 'categories.name as categories_slug')
+				->leftjoin('categories', 'categories.id', '=', 'users.category')
+				->where('users.user_type_id', 2)
+				->whereNotIn('users.id', [1])
+				->inRandomOrder()
+				->limit(6)
+				->get();
+		} else {
+
+			if (!empty($user1->category)) {
 
 				$conditions = $user1->category;
 				$x = explode(",", $conditions);
 				$catss =  json_encode($x);
 				$catUser = json_decode($catss);
-			// print_r($conditions);die;
-			$data =[];
-			foreach($catUser as $val){
-				
-			$q1 = DB::table('categories')->where('categories.id',$val)->first();
-			
-			$user = DB::table('users')->select('categories.name as categories_slug','users.*')
-			// ->leftJoin('categories', DB::raw('FIND_IN_SET(categories.id, users.category)'), '>', DB::raw(0))
-			->leftjoin('categories', 'categories.id', '=', 'users.category')
-			// ->leftjoin('categories', 'categories.id', '=', $val)
-			// ->leftJoin('categories', function ($val) {
-				
-			// 	$val->where('categories.id',$val);
-			// })
-			->where('users.user_type_id', 2)
-			->where(json_decode('users.category',$val))
-			->whereNotNull('users.category')
-			
-			->whereNotIn('users.id', [1])
-			
-			->inRandomOrder()
-			->limit(6)
-			->get();
+				// print_r($conditions);die;
+				$data = [];
+				foreach ($catUser as $val) {
 
-			$data['user'] =$user;
-		
-			
+					$q1 = DB::table('categories')->where('categories.id', $val)->first();
+
+					$user = DB::table('users')->select('categories.name as categories_slug', 'users.*')
+						// ->leftJoin('categories', DB::raw('FIND_IN_SET(categories.id, users.category)'), '>', DB::raw(0))
+						->leftjoin('categories', 'categories.id', '=', 'users.category')
+						// ->leftjoin('categories', 'categories.id', '=', $val)
+						// ->leftJoin('categories', function ($val) {
+
+						// 	$val->where('categories.id',$val);
+						// })
+						->where('users.user_type_id', 2)
+						->where(json_decode('users.category', $val))
+						->whereNotNull('users.category')
+
+						->whereNotIn('users.id', [1])
+
+						->inRandomOrder()
+						->limit(6)
+						->get();
+
+					$data['user'] = $user;
+				}
+			} else {
+				$edit_user = DB::table('users')->select('users.*')->where('users.id', $user1->id)->first();
+				$data['user_auth_id'] = 	auth()->user()->id;
+
+
+				$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
+				return view('auth.register.user_category', $data);
 			}
-		}else  {
-			$edit_user = DB::table('users')->select('users.*')->where('users.id', $user1->id)->first();
-		$data['user_auth_id'] = 	auth()->user()->id;
 
-
-		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
-			return view('auth.register.user_category', $data);
-		} 
-
-		// print_r($data['user']);die;
+			// print_r($data['user']);die;
 
 
 			// $condition= $data['user']
 			// print_r($data['user'];die;
 			// foreach($datauser as $value){
-				
+
 			//  }
 
-			
+
 			// $users = User::where(function($q) use ($condition){
 			// 	foreach($condition as $key => $value){
 			// 		$user1 = auth()->user();
 			// 		$conditions =json_decode($user1->category);
-					
+
 			// 		$q->where('users.category', 'LIKE', $conditions);
 			// 		$q->where('users.user_type_id', 2);
-			
+
 			// 		$q->whereNotIn('users.id', [1]);
 			// 		$q->limit(6);
 			// 	}
@@ -189,9 +188,9 @@ class HomeController extends FrontController
 
 			// $data['user'] = $users;
 
-			 
+
 		}
-		
+
 
 		$data['our_reviews'] = DB::table('users')->select('users.*')->where('users.user_type_id', 2)->whereNotIn('users.id', [1])->orderBy('users.id', 'asc')->limit(3)->get();
 
@@ -232,14 +231,14 @@ class HomeController extends FrontController
 		// print_r($data['categories']);die;
 
 		$data['categories_list_coach343'] = DB::table('users')
-		->select('users.category')
-		->where('users.user_type_id', 2)->get();
+			->select('users.category')
+			->where('users.user_type_id', 2)->get();
 
 
 		$data['categories_list_coach'] = DB::table('users')
-		->select('categories.slug', 'categories.id', 'categories.name', 'users.category', 'categories.picture', 'categories.icon_class')
-		->join('categories', 'categories.id', '=', 'users.category')
-		->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->where('users.user_type_id', 2)->get();
+			->select('categories.slug', 'categories.id', 'categories.name', 'users.category', 'categories.picture', 'categories.icon_class')
+			->join('categories', 'categories.id', '=', 'users.category')
+			->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->where('users.user_type_id', 2)->get();
 
 		//  print_r($data['categories_list_coach343']);die;
 
@@ -770,13 +769,12 @@ class HomeController extends FrontController
 
 							if (!empty($course_id)) {
 
-								$course_data = 'get_coach_course/'. $course_id;
+								$course_data = 'get_coach_course/' . $course_id;
 
 								// print_r($course_data);die;
-								
 
-								return redirect('get_coach_course/'. $course_id);
 
+								return redirect('get_coach_course/' . $course_id);
 							} else {
 
 
@@ -827,11 +825,11 @@ class HomeController extends FrontController
 		return redirect('/login');
 	}
 
-	
+
 	public function register_new_user(Request $request)
 	{
 
-		
+
 
 		// print_r($request->all());die;
 
@@ -861,83 +859,38 @@ class HomeController extends FrontController
 		// $request['country_code'] = 'UK';
 
 
-		
-	// 	$extension= $request->file("upload_document")->getClientOriginalExtension();
-	// 	$stringPaperFormat=str_replace(" ", "", $request->input('name'));
-	
-	// 	$fileName= $stringPaperFormat.".".$extension;
-	//    $FileEnconded=  File::get($request->upload_document);
-	// 	Storage::disk('local')->put('public/document'.$fileName, $FileEnconded);
+// start pdf ile upload
 
-
-
-		$value = $request->upload_document;
-
-
-		// print_r($value);die;
+		$uploadfile = $request->upload_document;
 
 		$disk = StorageDisk::getDisk();
-		$attribute_name = 'document';
-		$destination_path = 'app/upload_document';
+		$attribute_name = 'pdf';
 
 
-		// Check the image file
-		if ($value == url('/')) {
-			$this->attributes[$attribute_name] = null;
-
-			return false;
-		}
-
-		// If laravel request->file('filename') resource OR base64 was sent, store it in the db
-
-		// if (fileIsUploaded($value)) {
+		$destination = 'app/upload_document';
 
 
-		// Get file extension
-		$extension = getUploadedFileExtension($value);
 
+		$extension = getUploadedFileExtension($uploadfile);
 
 		if (empty($extension)) {
 			$extension = 'pdf';
 		}
 
-		// Image quality
-		$imageQuality = 100;
+		$upload_document =	$disk->put($destination, $uploadfile);
+		$this->attributes[$attribute_name] = $destination . '/' . $uploadfile;
+		// print_r($extension);
 
-		// Image default dimensions
-		$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 2000);
-		$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 1000);
-
-
-
-
-		$image = $value;
-		// Generate a filename.
-		// $filename = md5($value . time()) . '.' . $extension;
-		$filename = md5($value . time()) . '.' . $extension;
-
-		// Store the image on disk.
-		// $disk->put($destination_path . '/' . $filename, $image);
-		$courseimg =	$disk->put($destination_path, $image);
-		// print_r($courseimg);die;
-		// Save the path to the database
-		// $this->attributes[$attribute_name] = $destination_path . '/' . $filename;
-		$this->attributes[$attribute_name] = $destination_path . '/' . $image;
-		
-
-		$user_data_request = array(['name' =>$request->name,'email'=>$request->email,'phone'=>$request->phone,'file'=>$courseimg,'user_type_id' =>$request->user_type_id]);
-
-
-
-		
+// end pdf ile upload
 
 
 		// Call API endpoint
 		$endpoint = '/users';
-		// $data = makeApiRequest('post', $endpoint, $request->all());
-		$data = makeApiRequest('post', $endpoint, $user_data_request);
+		$data = makeApiRequest('post', $endpoint, $request->all());
+		// $data = makeApiRequest('post', $endpoint, $user_data_request);
 
-		//print_r($data);die;
+
+
 		// Parsing the API's response
 		$message = !empty(data_get($data, 'message')) ? data_get($data, 'message') : 'Unknown Error.';
 
@@ -1035,12 +988,19 @@ class HomeController extends FrontController
 			}
 		}
 
-	$user_type_id= 	auth()->user()->user_type_id;
-	$user_id= 	auth()->user()->id;
-	$name= 	auth()->user()->name;
-	$email= 	auth()->user()->email;
 
-		if($user_type_id == 3){
+		$user_type_id = 	auth()->user()->user_type_id;
+		$user_id = 	auth()->user()->id;
+		$name = 	auth()->user()->name;
+		$email = 	auth()->user()->email;
+
+
+		if ($user_type_id == 2) {
+			$datas = DB::table('users')->where('users.id', $user_id)->update(['upload_document' => trim($upload_document, "app/upload_document!")]);
+		}
+
+
+		if ($user_type_id == 3) {
 
 			$strivreDefaultPackage = DB::table('packages')->select('packages.*')->where('packages.id', 1)->first();
 			// $date = date('d-m-yy');
@@ -1064,52 +1024,42 @@ class HomeController extends FrontController
 				'subscription_id' => $strivreDefaultPackage->id,
 				'total_provided_hours' => $strivreDefaultPackage->price,
 				'consumed_hours' => 0,
-				'remaining_hours' =>$strivreDefaultPackage->price,
+				'remaining_hours' => $strivreDefaultPackage->price,
 				'created_at' => $date
 			);
 
 			DB::table('user_subscription_payment')->insert($data);
-
-			
-
 		}
-		
-		$data['user_auth_id']= 	auth()->user()->id;
+
+		$data['user_auth_id'] = 	auth()->user()->id;
 
 
 		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
 		$category = auth()->user()->category;
 
-		if(empty($category)){
+		if (empty($category)) {
 
-			return view('auth.register.user_category',$data);
-
-		}else{
+			return view('auth.register.user_category', $data);
+		} else {
 			return redirect($nextUrl);
 		}
-		
-			
-
-		
 	}
 
-	public function updateUserCategory(Request $request){
+	public function updateUserCategory(Request $request)
+	{
 
 		// print_r(json_encode($request->category_id));die;
 		// implode($request->category_id);
-// print_r(implode(',',$request->category_id));die;
+		// print_r(implode(',',$request->category_id));die;
 		// $userCategory = 12;
 		$auth_id = auth()->user()->id;
 
 
-		DB::table('users')->where('users.id',$auth_id)->update(['users.category' =>implode(',',$request->category_id)]);
+		DB::table('users')->where('users.id', $auth_id)->update(['users.category' => implode(',', $request->category_id)]);
 
-	
+
 		return redirect('/account');
-	
-	
-	
-		}
+	}
 
 	public function coach_coursess($id)
 	{
@@ -1139,17 +1089,17 @@ class HomeController extends FrontController
 			->orderBy('coach_course.id', 'asc')
 			->first();
 
-			if (empty(auth()->user())) {		
-				$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+		if (empty(auth()->user())) {
+			$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
 				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')->inRandomOrder()
 				->limit(8)->get();
-			}else{
-				$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
+		} else {
+			$data['coach_striver'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo')
 				->leftjoin('users', 'users.id', '=', 'coach_course.coach_id')
-				->where('users.category',$user->category)
+				->where('users.category', $user->category)
 				->inRandomOrder()
 				->limit(8)->get();
-			}
+		}
 
 
 		// print_r($data['enroll_course_by_strivre']);die;
@@ -1231,54 +1181,51 @@ class HomeController extends FrontController
 
 			$user1 = auth()->user();
 
-			if(!empty($user1)){
-
-			
-			
-
-			$data['user'] = DB::table('users')->select('users.*', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'countries.name as countries_name', 'cities.name as cities_name')
-				// ->leftjoin('categories', 'categories.id', '=', 'users.category')
-				->leftJoin('categories', DB::raw('FIND_IN_SET(categories.id, users.category)'), '>', DB::raw(0))
-				->leftJoin('categories as sub', DB::raw('FIND_IN_SET(sub.id, users.sub_category)'), '>', DB::raw(0))
-				// ->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-				->leftjoin('countries', 'countries.code', '=', 'users.country_code')
-				->leftjoin('cities', 'cities.id', '=', 'users.location')
-				->where('users.user_type_id', 2)
-				->where(
-					function ($query) use ($key) {
-
-						return $query
-							->where('users.name', 'LIKE', '%' . $key . '%')->orWhere('countries.name', 'LIKE', '%' . $key . '%')->orWhere('categories.name', 'LIKE', '%' . $key . '%')->orWhere('cities.name', 'LIKE', '%' . $key . '%');
-					}
-				)
-				->groupBy('users.id')
-				->orderBy('users.id', 'asc')->get();
+			if (!empty($user1)) {
 
 
-		}else{
 
-			$data['user'] = DB::table('users')->select('users.*', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'countries.name as countries_name', 'cities.name as cities_name')
-				// ->leftjoin('categories', 'categories.id', '=', 'users.category')
-				->leftJoin('categories', DB::raw('FIND_IN_SET(categories.id, users.category)'), '>', DB::raw(0))
-				->leftJoin('categories as sub', DB::raw('FIND_IN_SET(sub.id, users.sub_category)'), '>', DB::raw(0))
-				// ->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
-				->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
-				->leftjoin('countries', 'countries.code', '=', 'users.country_code')
-				->leftjoin('cities', 'cities.id', '=', 'users.location')
-				->where('users.user_type_id', 2)
-				->where(
-					function ($query) use ($key) {
 
-						return $query
-							->where('users.name', 'LIKE', '%' . $key . '%')->orWhere('countries.name', 'LIKE', '%' . $key . '%')->orWhere('categories.name', 'LIKE', '%' . $key . '%')->orWhere('cities.name', 'LIKE', '%' . $key . '%');
-					}
-				)
-				->groupBy('users.id')
-				->orderBy('users.id', 'asc')->get();
+				$data['user'] = DB::table('users')->select('users.*', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'countries.name as countries_name', 'cities.name as cities_name')
+					// ->leftjoin('categories', 'categories.id', '=', 'users.category')
+					->leftJoin('categories', DB::raw('FIND_IN_SET(categories.id, users.category)'), '>', DB::raw(0))
+					->leftJoin('categories as sub', DB::raw('FIND_IN_SET(sub.id, users.sub_category)'), '>', DB::raw(0))
+					// ->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+					->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+					->leftjoin('countries', 'countries.code', '=', 'users.country_code')
+					->leftjoin('cities', 'cities.id', '=', 'users.location')
+					->where('users.user_type_id', 2)
+					->where(
+						function ($query) use ($key) {
 
+							return $query
+								->where('users.name', 'LIKE', '%' . $key . '%')->orWhere('countries.name', 'LIKE', '%' . $key . '%')->orWhere('categories.name', 'LIKE', '%' . $key . '%')->orWhere('cities.name', 'LIKE', '%' . $key . '%');
+						}
+					)
+					->groupBy('users.id')
+					->orderBy('users.id', 'asc')->get();
+			} else {
+
+				$data['user'] = DB::table('users')->select('users.*', 'packages.name as subscription_name', 'packages.price', 'packages.currency_code', 'countries.name as countries_name', 'cities.name as cities_name')
+					// ->leftjoin('categories', 'categories.id', '=', 'users.category')
+					->leftJoin('categories', DB::raw('FIND_IN_SET(categories.id, users.category)'), '>', DB::raw(0))
+					->leftJoin('categories as sub', DB::raw('FIND_IN_SET(sub.id, users.sub_category)'), '>', DB::raw(0))
+					// ->leftjoin('categories as sub', 'sub.id', '=', 'users.sub_category')
+					->leftjoin('packages', 'packages.id', '=', 'users.subscription_plans')
+					->leftjoin('countries', 'countries.code', '=', 'users.country_code')
+					->leftjoin('cities', 'cities.id', '=', 'users.location')
+					->where('users.user_type_id', 2)
+					->where(
+						function ($query) use ($key) {
+
+							return $query
+								->where('users.name', 'LIKE', '%' . $key . '%')->orWhere('countries.name', 'LIKE', '%' . $key . '%')->orWhere('categories.name', 'LIKE', '%' . $key . '%')->orWhere('cities.name', 'LIKE', '%' . $key . '%');
+						}
+					)
+					->groupBy('users.id')
+					->orderBy('users.id', 'asc')->get();
+			}
 		}
-	}
 
 		// print_r($data['user']);die;
 
@@ -1305,29 +1252,30 @@ class HomeController extends FrontController
 		return appView('pages.category_coaches', $data);
 	}
 
-	public function all_article(){
+	public function all_article()
+	{
 
-		$data['article_list'] =DB::table('latest_new')
-		->select('latest_new.*','users.name as user_name','users.photo')
-		->leftJoin('users','users.id','=','latest_new.user_id')
-		->where('latest_new.active',1)->get();
+		$data['article_list'] = DB::table('latest_new')
+			->select('latest_new.*', 'users.name as user_name', 'users.photo')
+			->leftJoin('users', 'users.id', '=', 'latest_new.user_id')
+			->where('latest_new.active', 1)->get();
 		// print_r($data);die;
 
 
 		return appView('pages.article_list', $data);
-
 	}
 
-	public function contactUs(Request $request){
+	public function contactUs(Request $request)
+	{
 
 		// print_r($request->all());die;
-		$data =array([
-			'first_name' =>$request->first_name,
-			'last_name' =>$request->last_name,
-			'email' =>$request->email,
-			'phone' =>$request->phone,
-			'subject' =>$request->subject,
-			'message' =>$request->message
+		$data = array([
+			'first_name' => $request->first_name,
+			'last_name' => $request->last_name,
+			'email' => $request->email,
+			'phone' => $request->phone,
+			'subject' => $request->subject,
+			'message' => $request->message
 		]);
 
 		$dataq  = DB::table('contact')->insert($data);
@@ -1338,7 +1286,7 @@ class HomeController extends FrontController
 		} else {
 			flash($message)->error();
 		}
-		return appView('pages.contact',$data);
+		return appView('pages.contact', $data);
 		// print_r($request->all());die;
 
 	}

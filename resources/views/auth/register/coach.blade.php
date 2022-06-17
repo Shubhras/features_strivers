@@ -50,7 +50,7 @@
                 <center>
                     <h4>Sign Up As Coach</h4>
                 </center><br>
-                <form id="signUpForm" role="form" method="POST" action="{{ url('/strivers_signup') }}" class="row">
+                <form id="signUpForm" role="form" method="POST" action="{{ url('/strivers_signup') }}" class="row" enctype="multipart/form-data">
                     <div class="col-md-12">
 
                         <?php $uiid = rand(10000,99990);

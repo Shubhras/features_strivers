@@ -108,7 +108,8 @@ class User extends BaseUser
 		'location',
 		'subscription_plans',
 		'youtube_link',
-		'coach_summary'
+		'coach_summary',
+		'upload_document'
 	];
 	
 	/**
@@ -299,6 +300,43 @@ class User extends BaseUser
 		return $isOnline;
 	}
 	
+
+
+	public function downloadBtn($xPanel = false)
+	{
+		if (auth()->check()) {
+			if ($this->id == auth()->user()->id) {
+				return null;
+			}
+			if (isDemoDomain() && $this->id == 1) {
+				return null;
+			}
+		}
+		
+		if (auth()->check()) {
+			if ($this->upload_document == auth()->user()->upload_document) {
+				return null;
+			}
+			if (isDemoDomain() && $this->upload_document == 1) {
+				return null;
+			}
+		}
+
+		$url = admin_url('coach/');
+		
+		$out = '';
+		$out .= '<a href="' . $url .'?'.$this->upload_document.'" class="btn btn-xs btn-success" data-button-type="download" download="'.$this->upload_document.'" target="_blank" type="application/octet-stream">';
+		$out .= '<i class="fa fa-solid fa-download"></i> ';
+		$out .= trans('download');
+		$out .= '</a>';
+
+// 		<a id="downloadLink" href="...yourpdf.pdf" target="_blank" 
+// type="application/octet-stream" download="yourpdf.pdf">
+		
+		return $out;
+
+
+	}
 	/*
 	|--------------------------------------------------------------------------
 	| RELATIONS

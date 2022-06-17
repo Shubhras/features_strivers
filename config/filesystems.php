@@ -74,6 +74,10 @@ return [
             'root'   => storage_path(),
         ],
 
+		'upload_document' => [
+            'driver' => 'local',
+            'root'   => storage_path(),
+        ],
 
         // Used for Admin -> Backup
         'backups' => [

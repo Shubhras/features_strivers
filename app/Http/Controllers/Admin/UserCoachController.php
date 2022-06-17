@@ -201,6 +201,13 @@ class UserController extends PanelController
 				'type'          => 'model_function',
 				'function_name' => 'getVerifiedPhoneHtml',
 			]);
+
+			$this->xPanel->addColumn([
+				'name'          => 'upload_document',
+				'label'         => trans('Upload Document'),
+				// 'type'          => 'model_function',
+				// 'function_name' => 'getVerifiedPhoneHtml',
+			]);
 			
 			// FIELDS
 			$this->xPanel->addField([

@@ -63,6 +63,9 @@ class CoachController extends PanelController
 		$this->xPanel->addButtonFromModelFunction('line', 'impersonate', 'impersonateBtn', 'beginning');
 		$this->xPanel->removeButton('delete');
 		$this->xPanel->addButtonFromModelFunction('line', 'delete', 'deleteBtn', 'end');
+		$this->xPanel->addButtonFromModelFunction('line', 'download', 'downloadBtn', 'end');
+
+		
 		
 		// Filters
 		// -----------------------
@@ -108,23 +111,23 @@ class CoachController extends PanelController
 		// 		$this->xPanel->addClause('where', 'country_code', '=', $value);
 		// 	});
 		// // -----------------------
-		// $this->xPanel->addFilter([
-		// 	'name'  => 'status',
-		// 	'type'  => 'dropdown',
-		// 	'label' => trans('admin.Status'),
-		// ], [
-		// 	1 => trans('admin.Unactivated'),
-		// 	2 => trans('admin.Activated'),
-		// ], function ($value) {
-		// 	if ($value == 1) {
-		// 		$this->xPanel->addClause('where', 'verified_email', '=', 0);
-		// 		$this->xPanel->addClause('orWhere', 'verified_phone', '=', 0);
-		// 	}
-		// 	if ($value == 2) {
-		// 		$this->xPanel->addClause('where', 'verified_email', '=', 1);
-		// 		$this->xPanel->addClause('where', 'verified_phone', '=', 1);
-		// 	}
-		// });
+		$this->xPanel->addFilter([
+			'name'  => 'status',
+			'type'  => 'dropdown',
+			'label' => trans('admin.Status'),
+		], [
+			1 => trans('admin.Unactivated'),
+			2 => trans('admin.Activated'),
+		], function ($value) {
+			if ($value == 1) {
+				$this->xPanel->addClause('where', 'verified_email', '=', 0);
+				$this->xPanel->addClause('orWhere', 'verified_phone', '=', 0);
+			}
+			if ($value == 2) {
+				$this->xPanel->addClause('where', 'verified_email', '=', 1);
+				$this->xPanel->addClause('where', 'verified_phone', '=', 1);
+			}
+		});
 		// // -----------------------
 		// $this->xPanel->addFilter([
 		// 	'name'  => 'type',
@@ -220,10 +223,25 @@ class CoachController extends PanelController
 				'function_name' => 'getVerifiedEmailHtml',
 			]);
 
+			$this->xPanel->addColumn([
+				'name'          => 'upload_document',
+				'label'         => trans('Upload Document'),
+				// 'type'          => 'model_function',
+				// 'function_name' => 'getVerifiedPhoneHtml',
+			]);
+
 			// $this->xPanel->addColumn([
 			// 	'name'  => 'active',
 			// 	'label' => trans('admin.Active'),
 			// 	'type'  => 'checkbox_switch',
+			// 	'function_name' => 'getVerifiedPhoneHtml'
+			// ]);
+
+			// $this->xPanel->addColumn([
+			// 	'name'          => 'active',
+			// 	'label'         => trans('admin.Approved'),
+			// 	'type'          => 'model_function',
+			// 	'function_name' => 'getActiveHtml',
 			// ]);
 
 			// $this->xPanel->addColumn([
@@ -657,5 +675,11 @@ class CoachController extends PanelController
 		
 		return $isAdmin;
 	}
+	public function getActiveHtml()
+    {
+        if (!isset($this->active)) return false;
+        
+        return ajaxCheckboxDisplay($this->{$this->primaryKey}, $this->getTable(), 'active', $this->active);
+    }
 }
 
