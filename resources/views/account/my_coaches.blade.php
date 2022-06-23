@@ -57,14 +57,17 @@
 <section style="background-color: white;">
     <div class="main-container">
         <div class="container">
+        <?php
+                        $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 
+                        ?>
             <?php if ($user->user_type_id == 2) {
 
             ?>
 
                 <h2>
 
-                    <h2 class="sec-title">My Strivre</h2>
+                    <h2 class="sec-title">My {{$index_and_footer_logo->change_strivre_name}}</h2>
                 </h2>
 
                 <div class="row" style="padding: 6px; margin-left: -4px;">
@@ -189,7 +192,7 @@
                                     <div class="modal-dialog modal-xl">
 
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Strivre Details</h4>
+                                            <h4 class="modal-title">{{$index_and_footer_logo->change_strivre_name}} Details</h4>
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         </div>
 
@@ -239,7 +242,7 @@
                     <div class="container">
 
                         <h2 class="sec-title" style="font-weight: 700;">
-                            Suggested Strivre
+                            Suggested {{$index_and_footer_logo->change_strivre_name}}
 
                         </h2>
 

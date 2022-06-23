@@ -223,20 +223,21 @@ class CoachController extends PanelController
 				'function_name' => 'getVerifiedEmailHtml',
 			]);
 
-			$this->xPanel->addColumn([
-				'name'          => 'upload_document',
-				'label'         => trans('Upload Document'),
-				// 'type'          => 'model_function',
-				// 'function_name' => 'getVerifiedPhoneHtml',
-			]);
-
 			// $this->xPanel->addColumn([
-			// 	'name'  => 'active',
-			// 	'label' => trans('admin.Active'),
-			// 	'type'  => 'checkbox_switch',
-			// 	'function_name' => 'getVerifiedPhoneHtml'
+			// 	'name'          => 'upload_document',
+			// 	'label'         => trans('Upload Document'),
+			
 			// ]);
 
+			$this->xPanel->addColumn([
+				'name'  => 'active',
+				'label' => trans('admin.Active'),
+				'type'  => 'model_function',
+				'function_name' => 'getVerifiedActiveProfileHtml'
+			]);
+
+
+			
 			// $this->xPanel->addColumn([
 			// 	'name'          => 'active',
 			// 	'label'         => trans('admin.Approved'),
@@ -452,7 +453,11 @@ class CoachController extends PanelController
 	
 	/**
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 * 
+	 * 
 	 */
+
+
 	public function account()
 	{
 
@@ -681,5 +686,21 @@ class CoachController extends PanelController
         
         return ajaxCheckboxDisplay($this->{$this->primaryKey}, $this->getTable(), 'active', $this->active);
     }
+
+	public function userActive(Request $request){
+
+
+		$activeData = DB::table('users')->select('users.active')->where('users.id',$request->primaryKey)->first();
+
+		if($activeData->active == 0){
+			$data = DB::table('users')->where('users.id',$request->primaryKey)->update(['active'=> 1]);
+		}else{
+			$data = DB::table('users')->where('users.id',$request->primaryKey)->update(['active'=> 0]);
+		}
+		
+
+		// print_r($request->all());die;
+		return $data;
+	}
 }
 

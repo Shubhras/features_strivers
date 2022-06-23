@@ -40,9 +40,10 @@
 	 <div class="main-container" >
 		<div class="container">
 
-		
+		<?php
+            $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 
-
+            ?>
 <?php if($user->user_type_id == 2){ ?>
 
 
@@ -50,6 +51,27 @@
 
   <h2 class="sec-title">My Profile</h2>
      </h2>
+	 <!-- <h5>Your account is pending for admin approval. Once approved, it will be visible to website visitors.</h5> -->
+
+	 <?php
+
+if($user->active == 0){
+
+function function_alert($message) {
+   
+    echo "<script>alert('$message');</script>";
+}
+
+function_alert("Your account is pending for admin approval. Once approved, it will be visible to website visitors.");
+}else{
+
+	// function function_alert($message) {
+	// 	echo "<script>alert('$message');</script>";
+	// }
+	// function_alert("Your account is approved");
+	
+}
+?>
 
 			<div class="row" style="padding: 6px; margin-left: -4px;">
 				
@@ -87,7 +109,7 @@
 
 			   
 				   <div class="header-data text-center-xs">
-				   
+													
 					   <div class="hdata">
 					   <a href="{{ url('account/chat') }}">
 						   <div class="mcol-left">

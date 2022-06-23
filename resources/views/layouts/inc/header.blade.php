@@ -114,8 +114,8 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                             <i class="fas fa-user-circle hidden-sm"></i>
                             <span>{{ t('categories') }}</span>
                             
-                            <!-- <span class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">0</span> -->
-                            <!-- <i class="fas fa-chevron-down"></i> -->
+                            <span class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">0</span>
+                            <i class="fas fa-chevron-down"></i>
                         </a>
 
                        <ul id="userMenuDropdown" class="dropdown-menu user-menu dropdown-menu-right shadow-sm">

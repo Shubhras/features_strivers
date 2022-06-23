@@ -125,6 +125,12 @@ trait Update
 			'message' => t('account_details_has_updated_successfully'),
 			'result'  => (new UserResource($user))->toArray($request),
 		];
+
+		// $data = [
+		// 	'success' => true,
+		// 	'message' => t('account_pending_has_admin'),
+		// 	'result'  => (new UserResource($user))->toArray($request),
+		// ];
 		
 		// Send Email Verification message
 		if ($emailVerificationRequired) {

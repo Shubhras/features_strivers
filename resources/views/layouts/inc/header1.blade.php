@@ -111,14 +111,26 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
 
                             @if (auth()->check())
 
+                           
+                            
+
                             <li class="nav-item dropdown no-arrow side-menu-content768">
 
                                 @if (config('settings.security.login_open_in_modal'))
                                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                                     <!-- <i class="fas fa-user-circle hidden-sm"></i> -->
                                     <span>{{ auth()->user()->name }}</span>
+                                    <?php
+                        $user =auth()->user()->id;
+                      $message=  DB::table('threads_participants')->select('threads_participants.*')->where('threads_participants.user_id',$user)->where('threads_participants.last_read',null)->get();
 
+                     $total_unread_message =  count($message);
+                    //  print($total_unread_message);die;
+                        ?>
+                                    <span class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">{{$total_unread_message}}</span>
+								<!-- <i class="fas fa-chevron-down"></i> -->
                                     <i class="fas fa-chevron-down"></i>
+                                    
                                 </a>
                                 @else
 
@@ -129,6 +141,7 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
 
                                     <i class="fas fa-chevron-down"></i>
                                 </a>
+                                
                                 @endif
 
                                 <ul id="userMenuDropdown" class="dropdown-menu user-menu dropdown-menu-right shadow-sm sidebar-menu-ul side-menu-dropdown navbar-expand-lg1">
@@ -187,7 +200,7 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
                             <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                         </li>
                         </ul>
-
+                       
                         @if (!auth()->check())
 
                         <a href="{{url('login')}}" class="join-btn01">

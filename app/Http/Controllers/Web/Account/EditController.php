@@ -128,6 +128,37 @@ class EditController extends AccountBaseController
 			return view('auth.register.user_category', $data);
 		} else {
 
+
+			
+				$datas = DB::table('users')->where('users.id', $user->id)->get();
+			
+
+		$aproove= auth()->user()->active;
+			// print_r($datas);die;
+if($aproove == 0){
+
+
+			$message = !empty(data_get($datas, 'message')) ? data_get($datas, 'message') : 'Your account is pending for admin approval. Once approved, it will be visible to website visitors.';
+			// print_r($message);die;
+	
+
+			if (data_get($datas, 'success')) {
+				flash($message)->success();
+			} else {
+				flash($message)->error();
+			}
+
+		} else{
+
+			$message = !empty(data_get($datas, 'message')) ? data_get($datas, 'message') : 'Your account is approval .';
+			// print_r($message);die;
+	
+
+			
+				flash($message)->success();
+			
+		}
+
 			return appView('account.edit', $data);
 		}
 
@@ -1746,10 +1777,17 @@ $enroldStrvreUser_id = 0;
 			->where('user_subscription.user_id', $user->id)
 			// ->where('user_subscription.remaining_hours',0)
 			->get();
-		// print_r($data['user_subscription']);die;
+		// print_r($data['user_subscriptions1']);die;
 		// $data['user_subscription'] = DB::table('user_subscription_payment')
 		// 		->where('user_id', $user->id)
 		// 		->first();
+
+		$data['user_subscriptions_strivre'] = DB::table('user_subscription')->select('user_subscription.*', 'packages.name', 'users.name as username')
+			->leftjoin('packages', 'packages.id', '=', 'user_subscription.subscription_id')
+			->leftjoin('users', 'users.id', '=', 'user_subscription.student_id')
+			->where('user_subscription.student_id', $user->id)
+			// ->where('user_subscription.remaining_hours',0)
+			->get();
 
 
 		$data['enroll_coach_coarse_pending'] = DB::table('coach_course')->select('coach_course.*', 'users.name', 'users.photo', 'enroll_course.user_id')
@@ -1765,6 +1803,14 @@ $enroldStrvreUser_id = 0;
 			->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')
 			->where('user_subscription_payment.user_id', $user->id)->orderBy('user_subscription_payment.id', 'desc')
 			->get();
+
+
+			// $data['user_subscription'] = DB::table('user_subscription_payment')->select('user_subscription_payment.*', 'packages.name', 'users.name as username')
+			// ->leftjoin('packages', 'packages.id', '=', 'user_subscription_payment.subscription_id')
+			// ->leftjoin('users', 'users.id', '=', 'user_subscription_payment.user_id')
+			// ->where('user_subscription_payment.user_id', $user->id)->orderBy('user_subscription_payment.id', 'desc')
+			// ->get();
+			
 			// print_r($data['user_subscription']);die;
 
 		$totalsum = array();
@@ -1829,7 +1875,7 @@ $enroldStrvreUser_id = 0;
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			CURLOPT_CUSTOMREQUEST => 'GET',
 			CURLOPT_HTTPHEADER => array(
-				'appId: 2040141e5d5dcef3',
+				'appId: 21234831742240b3',
 				'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0Nzg1MTgxNSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0Nzg0ODIxNSwiZXhwIjoxNjUwNDQzODE1LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.TJNg26DTjo_YexASHQVAnVgZriGqPY7aLW_N8VAmLzo',
 				'uid: ' . $user->username
 			),
@@ -1874,7 +1920,7 @@ $enroldStrvreUser_id = 0;
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			CURLOPT_CUSTOMREQUEST => 'GET',
 			CURLOPT_HTTPHEADER => array(
-				'appId: 2040141e5d5dcef3',
+				'appId: 21234831742240b3',
 				'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0Nzg1MTgxNSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0Nzg0ODIxNSwiZXhwIjoxNjUwNDQzODE1LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.TJNg26DTjo_YexASHQVAnVgZriGqPY7aLW_N8VAmLzo',
 				'uid: $user->username'
 			),
@@ -1952,11 +1998,18 @@ $enroldStrvreUser_id = 0;
 			->where('enroll_course.coach_id', $user->id)->where('enroll_course.payment_status', null)->get();
 
 
+			$data['strivrePaymentDetail'] = DB::table('users')
+			->select('enroll_course.id as enroll_id', 'enroll_course.user_id as enroll_user_id', 'enroll_course.coach_id as enroll_coach_id', 'enroll_course.payment_status', 'enroll_course.course_id', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*','enroll_course.created_at as enroll_course_date')
+			->join('enroll_course', 'users.id', '=', 'enroll_course.coach_id')
+			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
+			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
+			->where('enroll_course.user_id', $user->id)->get();
+
 
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
-		// print_r($data['strivrePayment']);die;
+		// print_r($data['strivrePaymentDetail']);die;
 
 		$edit_user = DB::table('users')->select('users.*')->where('users.id', $user->id)->first();
 		$data['user_auth_id'] = 	auth()->user()->id;
@@ -1964,6 +2017,7 @@ $enroldStrvreUser_id = 0;
 
 		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
 
+		
 		if (empty($edit_user->category)) {
 			return view('auth.register.user_category', $data);
 		} else {
@@ -2372,6 +2426,198 @@ $enroldStrvreUser_id = 0;
 		return response()->stream($callback, 200, $headers);
 	}
 
+	public function exportPdf(Request $request)
+	{
+		$user = auth()->user();
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+		// print_r($request->all());die;
+
+		$fileName = 'tasks.pdf';
+		//    $tasks = Task::all();
+		$data['strivrePayment1'] = DB::table('users')
+			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
+			->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
+			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
+			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
+			->where('enroll_course.coach_id', $user->id)->get();
+		// print_r($data['strivrePayment']);die;
+
+		$headers = array(
+			"Content-type"        => "text/pdf",
+			"Content-Disposition" => "attachment; filename=$fileName",
+			"Pragma"              => "no-cache",
+			"Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+			"Expires"             => "0"
+		);
+
+		$columns = array('student', 'Course', 'Total Amount', 'Start Date', 'Fee deducted', 'Net payment');
+
+		$callback = function () use ($data, $columns) {
+			$file = fopen('php://output', 'w');
+			fputcsv($file, $columns);
+
+
+			foreach ($data['strivrePayment1'] as $key => $task) {
+				// $ss[$key] = $task;
+				// print_r($task->strivre_name);die;
+				// print_r($task);die;
+				$row['student']  = $task->strivre_name;
+				$row['Course']    = $task->course_name;
+				$row['Total Amount']    = $task->total_consultation_fee;
+				$row['Start Date']  = $task->dated;
+				$row['Fee deducted ']  = null;
+				$row['Net payment ']  = null;
+
+				fputcsv($file, array($row['student'], $row['Course'], $row['Total Amount'], $row['Start Date']));
+			}
+
+			fclose($file);
+		};
+
+		return response()->stream($callback, 200, $headers);
+	}
+
+	public function exportStrivreCsv(Request $request)
+	{
+		$user = auth()->user();
+
+		// print_r($user);die;
+
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+		// print_r($request->all());die;
+
+		$fileName = 'tasks.csv';
+		//    $tasks = Task::all();
+		$data['strivrePayment12'] = DB::table('users')
+			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
+			->join('enroll_course', 'users.id', '=', 'enroll_course.coach_id')
+			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
+			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
+			->where('enroll_course.user_id', $user->id)->get();
+		
+		$headers = array(
+			"Content-type"        => "application/pdf",
+			"Content-Disposition" => "attachment; filename=$fileName",
+			"Pragma"              => "no-cache",
+			"Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+			"Expires"             => "0"
+		);
+
+		$columns = array('coach', 'Course', 'Total Amount', 'Start Date', 'Fee deducted', 'Net payment');
+
+		$callback = function () use ($data, $columns) {
+			$file = fopen('php://output', 'w');
+			fputcsv($file, $columns);
+
+
+			foreach ($data['strivrePayment12'] as $key => $task) {
+				// $ss[$key] = $task;
+				// print_r($task->strivre_name);die;
+				// print_r($task);die;
+				$row['coach']  = $task->strivre_name;
+				$row['Course']    = $task->course_name;
+				$row['Total Amount']    = $task->total_consultation_fee;
+				$row['Start Date']  = $task->dated;
+				$row['Fee deducted ']  = null;
+				$row['Net payment ']  = null;
+
+				fputcsv($file, array($row['coach'], $row['Course'], $row['Total Amount'], $row['Start Date']));
+			}
+
+			fclose($file);
+		};
+
+		return response()->stream($callback, 200, $headers);
+	}
+
+	public function exportStrivrePdf(Request $request)
+	{
+		$user = auth()->user();
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+		// print_r($request->all());die;
+
+		$fileName = 'tasks.pdf';
+		//    $tasks = Task::all();
+		$data['strivrePayment1'] = DB::table('users')
+			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
+			->join('enroll_course', 'users.id', '=', 'enroll_course.coach_id')
+			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
+			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
+			->where('enroll_course.user_id', $user->id)->get();
+		// print_r($data['strivrePayment']);die;
+
+		$headers = array(
+			"Content-type"        => "text/pdf",
+			"Content-Disposition" => "attachment; filename=$fileName",
+			"Pragma"              => "no-cache",
+			"Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+			"Expires"             => "0"
+		);
+
+		$columns = array('coach', 'Course', 'Total Amount', 'Start Date', 'Fee deducted', 'Net payment');
+
+		$callback = function () use ($data, $columns) {
+			$file = fopen('php://output', 'w');
+			fputcsv($file, $columns);
+
+
+			foreach ($data['strivrePayment1'] as $key => $task) {
+				// $ss[$key] = $task;
+				// print_r($task->strivre_name);die;
+				// print_r($task);die;
+				$row['coach']  = $task->strivre_name;
+				$row['Course']    = $task->course_name;
+				$row['Total Amount']    = $task->total_consultation_fee;
+				$row['Start Date']  = $task->dated;
+				$row['Fee deducted ']  = null;
+				$row['Net payment ']  = null;
+
+				fputcsv($file, array($row['coach'], $row['Course'], $row['Total Amount'], $row['Start Date']));
+			}
+
+			fclose($file);
+		};
+
+		return response()->stream($callback, 200, $headers);
+	}
+
+
 	/**
 	 * Update the User's photo.
 	 *
@@ -2472,6 +2718,7 @@ $enroldStrvreUser_id = 0;
 
 		DB::table('user_subscription')->insert($data);
 	}
+	
 
 	public function comet_chat()
 	{
@@ -2502,6 +2749,30 @@ $enroldStrvreUser_id = 0;
 		})->where('user_id', $user->id)
 			->count();
 
+
+
+
+			$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => 'https://metrics-eu.cometchat.io/v3.0/calls',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'GET',
+			CURLOPT_HTTPHEADER => array(
+				'appId: 21234831742240b3',
+				'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0Nzg1MTgxNSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0Nzg0ODIxNSwiZXhwIjoxNjUwNDQzODE1LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.TJNg26DTjo_YexASHQVAnVgZriGqPY7aLW_N8VAmLzo',
+				'uid: ' . $user->username
+			),
+		));
+
+		
+
+		// https://21234831742240b3.apiclient-eu.cometchat.io/v3.0/calls
 
 		// $curl = curl_init();
 
@@ -2628,9 +2899,13 @@ $enroldStrvreUser_id = 0;
 		// DB::table('user_subscription_payment')->where('user_subscription_payment.user_id',$user->id)->update(['user_subscription_payment.consumed_hours'=>$videominutsTotal]);
 		// }
 		// print_r($user->username);die;
+
 		MetaTag::set('title', t('my_account'));
 		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
 
+
+		// print_r($curl);die;
+		
 		return appView('account.cometchat', $data);
 	}
 

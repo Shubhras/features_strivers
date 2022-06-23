@@ -23,10 +23,14 @@
                     </div>
                     <div class="col-md-6">
                         <div class="ab-content">
-                            <h3 class="fwhite">Join us as Coach or Strivre</h3>
+                            <?php
+                            $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
+
+                            ?>
+                            <h3 class="fwhite">Join us as Coach or {{$index_and_footer_logo->change_strivre_name}}</h3>
                             <a class="bisylms-btn-pink mbtn" onclick="openCity('coaches')" href="{{url('/coach') }}">Coach Sign up</a><br>
                             <br>
-                            <a class="bisylms-btn-pink mbtn" onclick="openCity('Strivers')" href="{{url('/Strivers') }}">Strivre Sign up</a>
+                            <a class="bisylms-btn-pink mbtn" onclick="openCity('Strivers')" href="{{url('/Strivers') }}">{{$index_and_footer_logo->change_strivre_name}} Sign up</a>
 
                         </div>
                     </div>

@@ -208,6 +208,14 @@ class UserController extends PanelController
 				// 'type'          => 'model_function',
 				// 'function_name' => 'getVerifiedPhoneHtml',
 			]);
+
+			$this->xPanel->addColumn([
+				'name'  => 'active',
+				'label' => trans('admin.Active'),
+				'type'  => 'model_function',
+				'function_name' => 'getVerifiedActiveProfileHtml'
+			]);
+
 			
 			// FIELDS
 			$this->xPanel->addField([

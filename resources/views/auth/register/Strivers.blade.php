@@ -79,21 +79,21 @@
 <section class="contact-section ">
 
     <div class="row">
-    @if (isset($errors) && $errors->any())
-    <div class="col-8" style="margin-left: 243px;">
-        <div class="alert alert-danger alert-dismissible">
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
-            <strong >{{ t('email_mobile_duplicat_check') }}</strong>
-            <ul class="list list-check">
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+        @if (isset($errors) && $errors->any())
+        <div class="col-8" style="margin-left: 243px;">
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ t('Close') }}"></button>
+                <strong>{{ t('email_mobile_duplicat_check') }}</strong>
+                <ul class="list list-check">
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
-    </div>
-    @endif
+        @endif
 
-    <!-- @if (session()->has('flash_notification'))
+        <!-- @if (session()->has('flash_notification'))
     <div class="col-12">
         @include('flash::message')
     </div>
@@ -109,10 +109,13 @@
         @endif
         <div class="contact-form dform" id="Strivers">
 
+            <?php
+            $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 
+            ?>
 
             <center>
-                <h4>Sign Up As Strivre</h4>
+                <h4>Sign Up As {{$index_and_footer_logo->change_strivre_name}}</h4>
             </center><br>
 
             <form role="form" method="POST" action="{{ url('/strivers_signup') }}" class="row">
@@ -122,7 +125,7 @@
                     <?php $uiid = rand(10000, 99990);
                     ?>
                     <input type="hidden" name="username" value="strivre<?php echo $uiid; ?>">
-                    <input type="hidden" name="country_code" value="UK" >
+                    <input type="hidden" name="country_code" value="UK">
                     <?php $nameError = (isset($errors) and $errors->has('name')) ? ' is-invalid' : ''; ?>
                     <label class="form-label" for="Name ">Name
                     </label>
@@ -130,33 +133,33 @@
                     <input name="user_type_id" class="form-control input-md{{ $nameError }}" type="hidden" value="3" required>
                 </div>
 
-              
+
 
                 @if (isEnabledField('email'))
-                        <div class="col-md-6">
-                        <?php $emailError = (isset($errors) and $errors->has('email')) ? ' is-invalid' : ''; ?>
-                            <label class="form-label" for="email">Email 
-                            </label>
-                            <input id="email"  name="email"	type="email" class="form-control{{ $emailError }}"placeholder="{{ t('email') }}"required>
-                        </div>
-                        @endif
+                <div class="col-md-6">
+                    <?php $emailError = (isset($errors) and $errors->has('email')) ? ' is-invalid' : ''; ?>
+                    <label class="form-label" for="email">Email
+                    </label>
+                    <input id="email" name="email" type="email" class="form-control{{ $emailError }}" placeholder="{{ t('email') }}" required>
+                </div>
+                @endif
 
 
 
                 @if (isEnabledField('phone'))
-                        <div class="col-md-6">
-                        <?php $phoneError = (isset($errors) and $errors->has('phone')) ? ' is-invalid' : ''; ?>
-                            <label class="form-label" for="phone">Phone Numbers
-                            </label>
-                            <input name="phone" placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}" class="form-control input-md{{ $phoneError }}" type="text" value="{{ phoneFormat(old('phone'), old('country', config('country.code'))) }}" maxlength="10" required>
-                        </div>
-                        @endif
+                <div class="col-md-6">
+                    <?php $phoneError = (isset($errors) and $errors->has('phone')) ? ' is-invalid' : ''; ?>
+                    <label class="form-label" for="phone">Phone Numbers
+                    </label>
+                    <input name="phone" placeholder="{{ (!isEnabledField('email')) ? t('Mobile Phone Number') : t('phone_number') }}" class="form-control input-md{{ $phoneError }}" type="text" value="{{ phoneFormat(old('phone'), old('country', config('country.code'))) }}" maxlength="10" required>
+                </div>
+                @endif
 
 
 
 
 
-               
+
 
 
 
@@ -183,13 +186,13 @@
                                     Register
                                 </a></center> -->
 
-                                <center><button class="btn01  btn-primary1 register-btn-primary" type="submit" id="signupBtn" data-toggle="modal" data-target=".bd-example-modal-lgss" >
-		
-                                    Register </button></center>
-                                
-                         </div>
-                         
-                            <!-- <div class="col-sm-12 register-btn-padding">
+                    <center><button class="btn01  btn-primary1 register-btn-primary" type="submit" id="signupBtn" data-toggle="modal" data-target=".bd-example-modal-lgss">
+
+                            Register </button></center>
+
+                </div>
+
+                <!-- <div class="col-sm-12 register-btn-padding">
                                 <center><button class="loginBtn loginBtn--google btn-primary1 google-fb-login">
                                 Login with Google
                               </button>  </center>

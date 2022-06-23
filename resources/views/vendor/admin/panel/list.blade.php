@@ -40,7 +40,7 @@
 
 			<?php 
 			 $user_id = auth()->user()->user_type_id;
-			//  print_r($user_id);die;
+		
 			 if($user_id == 4 ){
 				// if(url('admin/logo_and_image_change')){
 					
@@ -519,3 +519,4 @@
     {{-- CRUD LIST CONTENT - crud_list_scripts stack --}}
     @stack('crud_list_scripts')
 @endsection
+

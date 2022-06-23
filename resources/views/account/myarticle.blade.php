@@ -16,7 +16,10 @@
 @section('content')
 @includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
 
+<?php
+                        $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 
+                        ?>
 	<section style="background-color: white;">
 		<div class="main-container">
 			<div class="container">
@@ -530,7 +533,7 @@
 		<div class="container">
 
 			<h2 class="sec-title" style="font-weight: 700;">
-				Suggested Strivre
+				Suggested {{$index_and_footer_logo->change_strivre_name}}
 
 			</h2>
 

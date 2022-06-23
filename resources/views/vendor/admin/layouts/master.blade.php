@@ -201,6 +201,21 @@
     });
 </script>
 <script>
+    // $(document).ready(function()
+    // {
+    //     /* Send an ajax update request */
+    //     $(document).on('click', '.ajax-request', function(e)
+    //     {
+    //         e.preventDefault(); /* prevents the submit or reload */
+    //         var confirmation = confirm("<?php echo trans('admin.confirm_this_action'); ?>");
+            
+    //         if (confirmation) {
+    //             saveAjaxRequest(siteUrl, this);
+    //         }
+    //     });
+    // });
+
+
     $(document).ready(function()
     {
         /* Send an ajax update request */
@@ -210,10 +225,140 @@
             var confirmation = confirm("<?php echo trans('admin.confirm_this_action'); ?>");
             
             if (confirmation) {
-                saveAjaxRequest(siteUrl, this);
+                saveAjaxRequestActive(siteUrl, this);
             }
         });
     });
+
+
+
+    function saveAjaxRequestActive(siteUrl, el)
+    {
+        if (isDemoDomainJs()) {
+            return false;
+        }
+        
+        var $self = $(this); /* magic here! */
+        
+        /* Get database info */
+        var _token = $('input[name=_token]').val();
+        var dataTable = $(el).data('table');
+        var dataField = $(el).data('field');
+        var dataId = $(el).data('id');
+        var dataLineId = $(el).data('line-id');
+        var dataValue = $(el).data('value');
+        
+        /* Remove dot (.) from var (referring to the PHP var) */
+        dataLineId = dataLineId.split('.').join("");
+        
+        console.log('data uyy');
+        $.ajax({
+            method: 'POST',
+            // dataType: 'application/json',
+            url: siteUrl + '/<?php echo admin_uri(); ?>/users_active',
+            context: this,
+            data: {
+                'primaryKey': dataId,
+                '_token': _token
+            },
+            // done: function(data) {
+            // },
+        }).done(function(data) {
+            console.log('data response123');
+            /* Check 'status' */
+            console.log('data request',data);
+            if (data.status != 1) {
+                return false;
+            }
+            
+            /* Decoration */
+            if (data.table === 'countries' && dataField === 'active')
+            {
+                if (!data.resImport) {
+                    new PNotify({
+                        text: "{{ trans('admin.Error - You can not install this country') }}",
+                        type: "error"
+                    });
+                    
+                    return false;
+                }
+                
+                if (data.isDefaultCountry == 1) {
+                    new PNotify({
+                        text: "{{ trans('admin.You can not disable the default country') }}",
+                        type: "warning"
+                    });
+                    
+                    return false;
+                }
+                
+                /* Country case */
+                if (data.fieldValue == 1) {
+                    $('#' + dataLineId).removeClass('fa fa-toggle-off').addClass('fa fa-toggle-on');
+                    $('#install' + dataId).removeClass('btn-light')
+                            .addClass('btn-success')
+                            .addClass('text-white')
+                            .empty()
+                            .html('<i class="fas fa-download"></i> <?php echo trans('admin.Installed'); ?>');
+                } else {
+                    $('#' + dataLineId).removeClass('fa fa-toggle-on').addClass('fa fa-toggle-off');
+                    $('#install' + dataId).removeClass('btn-success')
+                            .removeClass('text-white')
+                            .addClass('btn-light')
+                            .empty()
+                            .html('<i class="fas fa-download"></i> <?php echo trans('admin.Install'); ?>');
+                }
+            }
+            else
+            {
+                /* All others cases */
+                if (data.fieldValue == 1) {
+                    $('#' + dataLineId).removeClass('fa fa-toggle-off').addClass('fa fa-toggle-on').blur();
+                } else {
+                    $('#' + dataLineId).removeClass('fa fa-toggle-on').addClass('fa fa-toggle-off').blur();
+                }
+            }
+            
+            return false;
+        }).fail(function(xhr, textStatus, errorThrown) {
+            /*
+			console.log('FAILURE: ' + textStatus);
+			console.log(xhr);
+			*/
+            
+            /* Show an alert with the result */
+            /* console.log(xhr.responseText); */
+            if (typeof xhr.responseText !== 'undefined') {
+                if (xhr.responseText.indexOf("{{ trans('admin.unauthorized') }}") >= 0) {
+                    new PNotify({
+                        text: xhr.responseText,
+                        type: "error"
+                    });
+                    
+                    return false;
+                }
+            }
+            
+            /* Show an alert with the standard message */
+            if (typeof xhr.responseJSON !== 'undefined' && typeof xhr.responseJSON.message !== 'undefined') {
+                new PNotify({
+                    text: xhr.responseJSON.message,
+                    type: "error"
+                });
+            } else {
+                new PNotify({
+                    text: xhr.responseText,
+                    type: "error"
+                });
+            }
+            
+            return false;
+        });
+        
+        return false;
+    }
+
+    
     
     function saveAjaxRequest(siteUrl, el)
     {

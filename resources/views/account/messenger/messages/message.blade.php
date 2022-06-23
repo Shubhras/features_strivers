@@ -1,3 +1,4 @@
+
 @if (auth()->id() == $message->user->id)
 	<div class="chat-item object-me">
 		<div class="chat-item-content">

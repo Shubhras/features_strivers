@@ -108,12 +108,16 @@
                     </div>
                 </div>
             </div> -->
+            <?php 
+$index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 
+?>
         <div class="row footer-row-fix">
             <div class="col-lg-4 col-md-375">
                 <aside class="widget">
                     <div class="about-widget">
-                        <a href="#"><img src="../assets/images/logo.png" alt=""></a>
+                        <!-- <a href="#"><img src="../assets/images/logo.png" alt=""></a> -->
+                        <a href="#"> <img src="{{ url('storage/'.$index_and_footer_logo->index_footer_logo_1) }}" alt=""></a>
                         <p>
                             Lost the plot Richard you mug cup of tea knackered boot bender.
                         </p>
@@ -139,7 +143,7 @@
                         <li><a href="{{url('contact')}}">Contact us</a> </li>
 
                         <li><a href="{{url('all_article')}}">Article</a></li>
-                        <!-- <li><a href="#">Courses</a></li> -->
+                        <li><a href="{{url('page/faq')}}">FAQ</a></li>
                         <!-- <li><a href="{{ \App\Helpers\UrlGen::contact() }}">Contact Us</a></li> -->
                     </ul>
                 </aside>

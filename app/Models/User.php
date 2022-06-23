@@ -102,14 +102,14 @@ class User extends BaseUser
 		'last_activity',
 		'category',
 		'sub_category',
-		// 'coach_summary',
 		'year_of_experience',
 		'current_level',
 		'location',
 		'subscription_plans',
 		'youtube_link',
 		'coach_summary',
-		'upload_document'
+		'upload_document',
+		'active',
 	];
 	
 	/**
@@ -337,6 +337,42 @@ class User extends BaseUser
 
 
 	}
+
+// public function ajaxCheckboxActiveDisplayHtmlData($xPanel = false)
+// {
+//     if (auth()->check()) {
+// 		if ($this->id == auth()->user()->id) {
+// 			return null;
+// 		}
+// 		if (isDemoDomain() && $this->id == 1) {
+// 			return null;
+// 		}
+// 	}
+// 	if (auth()->check()) {
+// 		if ($this->active == auth()->user()->active) {
+			
+// 		}
+		
+		
+// 	}
+
+
+// 	$url = admin_url('users_active/' . $this->id);
+	
+// 	$out = '';
+
+//     if ($this->active == 1) {
+//         $out = '<i id="' . $this->id . '" class="admin-single-icon fa fa-toggle-on" aria-hidden="true"></i>';
+//     } else {
+//         $out = '<i id="' .$this->id . '" class="admin-single-icon fa fa-toggle-off" aria-hidden="true"></i>';
+//     }
+//     // $html = '<a href="" class="ajax-request" ' . $data . '>' . $html . '</a>';
+
+//     $out = '<a href="'. $url.' " class="ajax-request" id="' . $this->id . '">' . $out . '</a>';
+
+
+//     return $out;
+// }
 	/*
 	|--------------------------------------------------------------------------
 	| RELATIONS

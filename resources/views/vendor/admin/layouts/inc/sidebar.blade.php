@@ -80,6 +80,14 @@
 							</a>
 						</li>
 
+						<li class="sidebar-item">
+						<a href="{{admin_url('percent_of_payment')}}" class="sidebar-link">
+							<i data-feather="book-open" class="feather-icon"></i><span class="hide-menu">{{ trans('percent of payment') }}</span>
+						</a>
+
+					</li>
+
+
 					<!-- @endif -->
 
 					<li class="sidebar-item">
@@ -440,7 +448,12 @@
 							</a>
 						</li>
 					<!-- @endif -->
+					<li class="sidebar-item">
+						<a href="{{admin_url('percent_of_payment')}}" class="sidebar-link">
+							<i data-feather="book-open" class="feather-icon"></i><span class="hide-menu">{{ trans('percent of payment') }}</span>
+						</a>
 
+					</li>
 
 
 

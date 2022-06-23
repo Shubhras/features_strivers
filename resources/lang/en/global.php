@@ -199,6 +199,7 @@ return [
     'no_deletion_is_done' => 'No deletion is done. Please try again.',
     'account_details_has_updated_successfully' => 'Your account details has updated successfully.',
     'account_settings_has_updated_successfully' => 'Your account settings has updated successfully.',
+    'account_pending_has_admin' => 'Your account is pending for admin approval. Once approved, it will be visible to website visitors.',
     
     'my_account' => 'My account',
     'my_account_on' => 'My account on :appName',

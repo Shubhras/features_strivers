@@ -485,9 +485,12 @@
 
 <div class="main-section">
     <div class="container">
+    <?php
+                        $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 
+                        ?>
         <h2 class="sec-title" style="font-weight: 700;">
-            Suggested Strivre
+            Suggested {{$index_and_footer_logo->change_strivre_name}}
 
         </h2>
 
@@ -670,7 +673,7 @@
 
     <h2>
 
-        <h2 class="sec-title">My Strivres Dashboard</h2>
+        <h2 class="sec-title">My {{$index_and_footer_logo->change_strivre_name}} Dashboard</h2>
     </h2>
     <div class="row" style="padding: 6px; margin-left: -4px;">
 

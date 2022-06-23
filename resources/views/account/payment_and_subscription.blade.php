@@ -53,7 +53,10 @@
 <section class="page-banner01">
 
 </section>
+<?php
+$index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 
+?>
 @section('content')
 @includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
 
@@ -92,14 +95,14 @@
                         <span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 
                         <div class="containersss">
-						<div id="inviteCode" class="invite-page" class="col-md-4">
-						<!-- Copy Subscription Link:  -->
-						<input id="link" value="https://ycsdigitalstage.co.uk/pricing" readonly style="color:blue; border:none;"> 
-							<div id="copy" class="col-md-1">
-							<i class="fa fa-duotone fa-copy copy-icon-click-data" aria-hidden="true" data-copytarget="#link"><span class="click-to-copy-text"><a href="#"> Click to Copy</a></span></i>
-							</div>
-						</div>
-						</div>
+                            <div id="inviteCode" class="invite-page" class="col-md-4">
+                                <!-- Copy Subscription Link:  -->
+                                <input id="link" value="https://ycsdigitalstage.co.uk/pricing" readonly style="color:blue; border:none;">
+                                <div id="copy" class="col-md-1">
+                                    <i class="fa fa-duotone fa-copy copy-icon-click-data" aria-hidden="true" data-copytarget="#link"><span class="click-to-copy-text"><a href="#"> Click to Copy</a></span></i>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
 
                             <div class="col-md-12 col-sm-8 col-12">
@@ -181,7 +184,7 @@
 
                             <div class="row  coaches_payment_data">
                                 <div class="col-lg-4 card bg-danger text-white card-body till_date_striver">
-                                    <span class="span_text_show">Total Strivres</span>
+                                    <span class="span_text_show">Total {{$index_and_footer_logo->change_strivre_name}}</span>
                                     <span>{{$totalStrivrePayment}}</span>
 
 
@@ -497,7 +500,11 @@
 
 
 
-                        <center><span data-href=" {{url('account/tasks')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span><button type="button" class="btn btn-primary btn-sm" id="btnMultiple" style="font-size: 9px;">Add Price</button></center>
+                        <center><span data-href=" {{url('account/tasks')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span>
+
+                        <span data-href=" {{url('account/tasks_pdf')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export PDF</span>
+                        
+                        <button type="button" class="btn btn-primary btn-sm" id="btnMultiple" style="font-size: 9px;">Add Price</button></center>
 
                     </div>
                     <script>
@@ -518,7 +525,7 @@
             <div class="container">
 
                 <h2 class="sec-title" style="font-weight: 700;">
-                    Suggested Strivre
+                    Suggested {{$index_and_footer_logo->change_strivre_name}}
 
                 </h2>
 
@@ -816,7 +823,215 @@
                 }    ?>
                 <br>
             </div>
+
+
+            <div class="row">
+
+
+                <div class="table-responsive">
+                    <br>
+                    <form name="listForm" method="POST" action="{{ url('account/' . $pagePath . '/delete') }}">
+                        {!! csrf_field() !!}
+                        <!-- <div class="table-action"> -->
+                        <!-- <div class="btn-group hidden-sm" role="group">
+                     <button type="button" class="btn btn-sm btn-secondary">
+                        <input type="checkbox" id="checkAll" class="from-check-all">
+                    </button>
+                    <button type="button" class="btn btn-sm btn-secondary from-check-all">
+                        {{ t('Select') }}: {{ t('All') }}
+                    </button> -->
+                        <!-- </div>  -->
+
+                        <!-- <button type="submit" class="btn btn-sm btn-default delete-action">
+                    <i class="fa fa-trash"></i> {{ t('Delete') }}
+                </button> -->
+
+                        <!-- <div class="table-search float-end col-sm-7">
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="col-sm-5 control-label text-end">{{ t('search') }} <br>
+                                <a title="clear filter" class="clear-filter" href="#clear">[{{ t('clear') }}]</a>
+                            </label>
+                            <div class="col-sm-7 searchpan">
+                                <input type="text" class="form-control" id="filter">
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                        <!-- </div> -->
+
+                        <table id="addManageTable" class="result-table" data-filter="#filter" data-filter-text-only="true">
+                            <thead>
+                                <tr>
+                                    <th class="course">Coach</th>
+                                    <th class="date">Course</th>
+                                    <th class="grade">Total Amount</th>
+                                    <th class="progres">Date </th>
+                                    <th class="progres"> Fee deducted </th>
+                                    <th class="progres">Net payment </th>
+                                    <th class="progres">Action</th>
+
+
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+                                <?php foreach ($strivrePaymentDetail as $key => $strivrePaymentDetail) {
+
+                                    // print_r($strivrePaymentDetail);die;
+
+
+                                ?>
+                                    <tr>
+                                        <td class="course">
+                                            <a href="#">{{$strivrePaymentDetail->strivre_name}}</a>
+                                        </td>
+                                        <td class="date">{{$strivrePaymentDetail->course_name}}</td>
+                                        <td class="grade">{{$strivrePaymentDetail->total_consultation_fee}}</td>
+                                        <td class="progres">{{$strivrePaymentDetail->dated}}</td>
+                                        <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
+                                        <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
+
+                                        <?php if ($strivrePaymentDetail->payment_status != null) { ?>
+                                            <td class="grade"><input type="checkbox" name="payment_status" checked disabled></td>
+
+                                        <?php } else { ?>
+                                            <td class="grade"><input type="checkbox" name="payment_status_id" id="payment_status_id_{{$strivrePaymentDetail->enroll_id}}" onclick="javascript: SelectallColorsForStyle(this, value);" value="{{$strivrePaymentDetail->enroll_id}}"></td>
+
+
+                                        <?php } ?>
+
+                                    </tr>
+
+                                <?php } ?>
+
+
+
+                            </tbody>
+
+
+                            <tbody>
+                                <?php
+                                $i = 0;
+
+                                if (isset($user_subscription1) && $user_subscription1->count() > 0) :
+                                    foreach ($user_subscription1 as $key => $post) :
+
+                                        $i =    $i + 1; ?>
+
+                                        <tr>
+
+
+                                            <td class="price-td" style="width:20%">
+                                                <div>
+                                                    <strong>
+                                                        {{ $post->username }}
+
+
+                                                    </strong>
+                                                </div>
+                                            </td>
+
+                                            <td class="price-td" style="width:40%">
+                                                <div>
+                                                    <strong>
+                                                        {{ $post->name }}
+
+
+                                                    </strong>
+                                                </div>
+                                            </td>
+
+                                            <td class="price-td" style="width:10%">
+                                                <div>
+                                                    <strong>
+
+                                                        <?php
+
+
+
+                                                        $total_payment = $post->fee_deducte + $post->net_payment;
+                                                        print_r($total_payment);
+                                                        die;
+                                                        ?>
+
+                                                        {{$total_provided_hours}}
+
+                                                    </strong>
+
+                                                </div>
+                                            </td>
+
+                                            <td class="price-td" style="width:10%">
+                                                <div>
+                                                    <strong>
+                                                        {{$post->created_at}}
+
+
+                                                    </strong>
+                                                </div>
+                                            </td>
+
+
+                                            <td class="price-td" style="width:10%">
+                                                <div>
+                                                    <strong>
+
+
+
+                                                    </strong>
+                                                </div>
+                                            </td>
+
+
+                                            <td class="price-td" style="width:10%">
+                                                <div>
+                                                    <strong>
+
+
+
+                                                    </strong>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                    <?php endforeach; ?>
+
+                                <?php endif; ?>
+
+                            </tbody>
+                        </table>
+
+                    </form>
+                </div>
+
+               
+            </div>
+
+            <nav>
+                            {{ (isset($posts)) ? $posts->links() : '' }}
+                        </nav>
+
+
+
+                        <center><span data-href=" {{url('account/tasks_strivre')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export CSV</span>
+                       
+                        <span data-href=" {{url('account/tasks_strivre_pdf')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export PDF</span>
+                    </center>
+
+                    </div>
+                    <script>
+                        function exportTasks(_this) {
+                            let _url = $(_this).data('href');
+                            window.location.href = _url;
+                        }
+                    </script>
+          
         </div>
+        
     </div>
     <?php
 

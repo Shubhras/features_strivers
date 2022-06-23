@@ -12,7 +12,10 @@
 
 @section('content')
 @includeFirst([config('larapen.core.customizedViewPath') . 'common.spacer', 'common.spacer'])
+<?php
+                        $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 
+                        ?>
 
 <?php if ($user->user_type_id == 2) {
 
@@ -49,13 +52,13 @@
 						<?php } ?>
 						<span style="font-size: 24px; font-weight: 700; color: #2c234d;"> <b> {{ $user->name }} </b> </span>
 						<div class="containersss">
-						<div id="inviteCode" class="invite-page" class="col-md-4">
-						<!-- Copy Subscription Link:  -->
-						<input id="link" value="https://ycsdigitalstage.co.uk/pricing" readonly style="color:blue; border:none;"> 
-							<div id="copy" class="col-md-1">
-							<i class="fa fa-duotone fa-copy copy-icon-click-data" aria-hidden="true" data-copytarget="#link"><span class="click-to-copy-text"><a href="#"> Click to Copy</a></span></i>
+							<div id="inviteCode" class="invite-page" class="col-md-4">
+								<!-- Copy Subscription Link:  -->
+								<input id="link" value="https://ycsdigitalstage.co.uk/pricing" readonly style="color:blue; border:none;">
+								<div id="copy" class="col-md-1">
+									<i class="fa fa-duotone fa-copy copy-icon-click-data" aria-hidden="true" data-copytarget="#link"><span class="click-to-copy-text"><a href="#"> Click to Copy</a></span></i>
+								</div>
 							</div>
-						</div>
 						</div>
 
 						<div class="row">
@@ -121,7 +124,19 @@
 
 								<h2 class="title-2"> {{ ('Credit by him') }}
 
-									<button id="myBtn" class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#myModal">+ Create Consultation</button>
+									<?php $activeAccount =  auth()->user()->active;
+
+									if ($activeAccount == 1) {
+									?>
+
+										<button id="myBtn" class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#myModal">+ Create Consultation</button>
+
+									<?php } else {
+									?>
+										<button  class="btn btn-primary" style="float: right;"  onclick="myFunction()">+ Create Consultation</button>
+
+
+									<?php } ?>
 								</h2>
 
 
@@ -267,68 +282,81 @@
 
 									</div>
 								</div>
+
+								<!-- pending account  -->
+
+								<script>
+									function myFunction() {
+										
+										alert("Your account is pending for admin approval. Once approved, it will be visible to website visitors.");
+									}
+								</script>
+
+
 							</div>
-
-
-							<!-- </div> -->
-
-
-							<!-- <div class="inner-box default-inner-box"> -->
-
-
-							<div class="row">
-								<?php
-								foreach ($coach_coarsee as  $coaches_corsee) {
-								?>
-									<div class="col-lg-4 col-md-6">
-										<div class="feature-course-item-4">
-											<div class="fcf-thumb">
-												<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" class="image-height" style="height: 244px; weight: 244px;">
-												<!-- <a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" onclick="customSession()">View Package</a> -->
-											</div>
-
-											<div class="fci-details">
-												<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name">
-													<i class="fas fa-tags"></i>
-													{{$coaches_corsee->course_name}}</a>
-												<h4><a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
-												<div class="author">
-													<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
-													<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
-												</div>
-												<div class="price-rate">
-													<div class="course-price"><a>
-															{{$coaches_corsee->total_consultation_fee}} $ Credit
-														</a>
-													</div>
-
-												</div>
-											</div>
-										</div>
-
-									</div>
-								<?php } ?>
-							</div>
-
-
-
-
-
-
-							<!-- </div> -->
-
-
-
-							<!--/.page-content-->
 						</div>
-
-						<br>
-
-
-
-
-
 					</div>
+
+
+					<!-- </div> -->
+
+
+					<!-- <div class="inner-box default-inner-box"> -->
+
+
+					<div class="row">
+						<?php
+						foreach ($coach_coarsee as  $coaches_corsee) {
+						?>
+							<div class="col-lg-4 col-md-6">
+								<div class="feature-course-item-4">
+									<div class="fcf-thumb">
+										<img src="{{ url('storage/'.$coaches_corsee->image) }}" alt="" class="image-height" style="height: 244px; weight: 244px;">
+										<!-- <a class="enroll" href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" onclick="customSession()">View Package</a> -->
+									</div>
+
+									<div class="fci-details">
+										<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}" class="c-cate sort_name">
+											<i class="fas fa-tags"></i>
+											{{$coaches_corsee->course_name}}</a>
+										<h4><a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">Using Creative Problem Solving</a></h4>
+										<div class="author">
+											<img src="{{ url('storage/'.$coaches_corsee->photo) }}" alt="">
+											<a href="{{url('../get_coach_course/'.$coaches_corsee->id)}}">{{$coaches_corsee->name}}</a>
+										</div>
+										<div class="price-rate">
+											<div class="course-price"><a>
+													{{$coaches_corsee->total_consultation_fee}} $ Credit
+												</a>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+						<?php } ?>
+					</div>
+
+
+
+
+
+
+					<!-- </div> -->
+
+
+
+					<!--/.page-content-->
+				</div>
+
+				<br>
+
+
+
+
+
+			</div>
 	</section>
 
 
@@ -336,7 +364,7 @@
 		<div class="container">
 
 			<h2 class="sec-title" style="font-weight: 700;">
-				Suggested Strivre
+				Suggested {{$index_and_footer_logo->change_strivre_name}}
 
 			</h2>
 
@@ -887,6 +915,35 @@
 
 	// Get the button that opens the modal
 	var btn = document.getElementById("myBtn");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks the button, open the modal 
+	btn.onclick = function() {
+		modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+</script>
+
+
+<script>
+	// Get the modal
+	var modal = document.getElementById("myModalPending");
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtnPending");
 
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];

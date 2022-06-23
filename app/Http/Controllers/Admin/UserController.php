@@ -196,12 +196,28 @@ class UserController extends PanelController
 				'function_name' => 'getVerifiedEmailHtml',
 			]);
 
+			$this->xPanel->addColumn([
+				'name'          => 'upload_document',
+				'label'         => trans('Upload Document'),
+				// 'type'          => 'model_function',
+				// 'function_name' => 'getVerifiedPhoneHtml',
+			]);
+
 			// $this->xPanel->addColumn([
 			// 	'name'  => 'active',
 			// 	'label' => trans('admin.Active'),
-			// 	'type'  => 'checkbox_switch',
+			// 	'type'  => 'model_function',
+			// 	'function_name' => 'getVerifiedActiveProfileHtml'
 			// ]);
 
+			$this->xPanel->addColumn([
+				'name'  => 'active',
+				'label' => trans('admin.Active'),
+				'type'  => 'model_function',
+				'function_name' => 'ajaxCheckboxActiveDisplayHtmlData'
+			]);
+
+			
 
 			
 			// $this->xPanel->addColumn([

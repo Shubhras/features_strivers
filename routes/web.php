@@ -23,6 +23,7 @@ use Illuminate\Support\Str;
 | The upgrading process routes
 |
 */
+
 Route::group([
 	'namespace'  => 'App\Http\Controllers\Web\Install',
 	'middleware' => ['web', 'no.http.cache'],
@@ -75,14 +76,14 @@ Route::group([
 	Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 	Route::post('login', 'Auth\LoginController@login');
 	Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-	
-	
+
+
 	// Password Reset Routes...
 	Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 	Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 	Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset')->where('token', '.+');
 	Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-	
+
 	// Admin Panel Area
 	Route::group([
 		'middleware' => ['admin', 'clearance', 'banned.user', 'no.http.cache'],
@@ -90,7 +91,7 @@ Route::group([
 		// Dashboard
 		Route::get('dashboard', 'DashboardController@dashboard');
 		Route::get('/', 'DashboardController@redirect');
-		
+
 		// Extra (must be called before CRUD)
 		Route::get('homepage/{action}', 'HomeSectionController@reset')->where('action', 'reset_(.*)');
 		Route::get('languages/sync_files', 'LanguageController@syncFilesLines');
@@ -122,12 +123,12 @@ Route::group([
 		CRUD::resource('admins2/{admin2Code}/cities', 'CityController');
 		CRUD::resource('languages', 'LanguageController');
 		CRUD::resource('meta_tags', 'MetaTagController');
-		CRUD::resource('packages', 'PackageController');	
+		CRUD::resource('packages', 'PackageController');
 		CRUD::resource('pages', 'PageController');
 
 		CRUD::resource('latest_news', 'LetestNewsController');
 		CRUD::resource('enroll_payment_list', 'EnrollcourseController');
-		
+
 		CRUD::resource('payments', 'PaymentController');
 		CRUD::resource('payment_methods', 'PaymentMethodController');
 		CRUD::resource('permissions', 'PermissionController');
@@ -146,31 +147,39 @@ Route::group([
 		CRUD::resource('coach_payments', 'CoachPaymentRequestController');
 		CRUD::resource('logo_and_image_change', 'LogoHeaderAndFooterAndImagesChangeController');
 		CRUD::resource('Contact', 'ContactController');
-		
+		CRUD::resource('percent_of_payment', 'PaymentPercentController');
+
+
+
+		Route::post('users_active', 'CoachController@userActive');
+
 		// Others
 		Route::get('account', 'UserController@account');
-		Route::get('tasks','EnrollcourseController@exportCsv');
-		
+		Route::get('tasks', 'EnrollcourseController@exportCsv');
+		// Route::get('tasks_pdf','EnrollcourseController@exportPdf');
+		// Route::get('tasks_strivre','EnrollcourseController@exportStrivreCsv');
+		// Route::get('tasks_strivre_pdf','EnrollcourseController@exportStrivrePdf');
+
 		//Route::post('ajax/{table}/{field}', 'InlineRequestController@make')->where('table', '[^/]+')->where('field', '[^/]+');
-		
+
 		// Backup
 		Route::get('backups', 'BackupController@index');
 		Route::put('backups/create', 'BackupController@create');
 		Route::get('backups/download/{file_name?}', 'BackupController@download')->where('file_name', '[^/]*');
 		Route::delete('backups/delete/{file_name?}', 'BackupController@delete')->where('file_name', '[^/]*');
-		
+
 		// Actions
 		Route::get('actions/clear_cache', 'ActionController@clearCache');
 		Route::get('actions/clear_images_thumbnails', 'ActionController@clearImagesThumbnails');
 		Route::get('actions/maintenance/{mode}', 'ActionController@maintenance')->where('mode', 'down|up');
-		
+
 		// Re-send Email or Phone verification message
 		$router->pattern('id', '[0-9]+');
 		Route::get('users/{id}/verify/resend/email', 'UserController@reSendEmailVerification');
 		Route::get('users/{id}/verify/resend/sms', 'UserController@reSendPhoneVerification');
 		Route::get('posts/{id}/verify/resend/email', 'PostController@reSendEmailVerification');
 		Route::get('posts/{id}/verify/resend/sms', 'PostController@reSendPhoneVerification');
-		
+
 		// Plugins
 		$router->pattern('plugin', '.+');
 		Route::get('plugins', 'PluginController@index');
@@ -178,7 +187,7 @@ Route::group([
 		Route::get('plugins/{plugin}/install', 'PluginController@install');
 		Route::get('plugins/{plugin}/uninstall', 'PluginController@uninstall');
 		Route::get('plugins/{plugin}/delete', 'PluginController@delete');
-		
+
 		// System Info
 		Route::get('system', 'SystemController@systemInfo');
 	});
@@ -199,14 +208,14 @@ Route::group([
 ], function ($router) {
 	// Select Language
 	Route::get('lang/{code}', 'Locale\SetLocaleController@redirect');
-	
+
 	// FILES
 	Route::get('file', 'FileController@show');
 	Route::get('js/fileinput/locales/{code}.js', 'FileController@fileInputLocales');
-	
+
 	// SEO
 	Route::get('sitemaps.xml', 'SitemapsController@index');
-	
+
 	// Impersonate (As admin user, login as an another user)
 	Route::group(['middleware' => 'auth'], function ($router) {
 		Route::impersonate();
@@ -241,8 +250,8 @@ Route::group([
 		 */
 		$countryCodePattern = '(?i:' . $countryCodePattern . ')';
 		$router->pattern('countryCode', $countryCodePattern);
-		
-		
+
+
 		// HOMEPAGE
 		if (!doesCountriesPageCanBeHomepage()) {
 			Route::get('/', 'HomeController@index');
@@ -252,13 +261,13 @@ Route::group([
 			// Route::post('strivers_signup', 'HomeController@register_new_user');
 			Route::post('strivers_signup', 'HomeController@register_new_user');
 
-			Route::post('updateUserCategory','HomeController@updateUserCategory');
+			Route::post('updateUserCategory', 'HomeController@updateUserCategory');
 
 			Route::get(dynamicRoute('routes.countries'), 'CountriesController@index');
 		} else {
 			Route::get('/', 'CountriesController@index');
 		}
-		
+
 
 		Route::get('/coach_details/{id}', 'PageController@coach_details');
 		Route::get('/coach_list/{id}', 'PageController@coach_list_category2');
@@ -272,15 +281,15 @@ Route::group([
 		Route::get('/coach_list_category_all/{id}', 'PageController@coach_list_category_all');
 		Route::get('/coach_list_category_all_filter', 'PageController@coach_list_category_all_filter');
 
-		
+
 
 		Route::get('all_article', 'HomeController@all_article');
-		
+
 		Route::post('contactUs', 'HomeController@contactUs');
-		
+
 		Route::get('category_list', 'SitemapController@category_list');
 
-		
+
 		// AUTH
 		Route::group(['middleware' => ['guest', 'no.http.cache']], function ($router) {
 			// Registration Routes...
@@ -289,43 +298,43 @@ Route::group([
 			Route::get('register/finish', 'Auth\RegisterController@finish');
 			Route::get('coach', 'Auth\RegisterController@getRegisternewUsers');
 			Route::get('Strivers', 'Auth\RegisterController@getRegisternewStrivers');
-			
-			
+
+
 			// Authentication Routes...
 			Route::get(dynamicRoute('routes.login'), 'Auth\LoginController@showLoginForm');
 			Route::post(dynamicRoute('routes.login'), 'Auth\LoginController@login');
-			
+
 			// Forgot Password Routes...
 			Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
 			Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLink');
-			
+
 			// Reset Password using Token
 			Route::get('password/token', 'Auth\ResetPasswordController@showTokenRequestForm');
 			Route::post('password/token', 'Auth\ResetPasswordController@sendResetToken');
-			
+
 			// Reset Password using Link (Core Routes...)
 			Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
 			Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-			
+
 			// Social Authentication
 			$router->pattern('provider', 'facebook|linkedin|twitter|google');
 			Route::get('auth/{provider}', 'Auth\SocialController@redirectToProvider');
 			Route::get('auth/{provider}/callback', 'Auth\SocialController@handleProviderCallback');
 		});
-		
+
 		// Email Address or Phone Number verification
 		$router->pattern('field', 'email|phone');
 		Route::get('users/{id}/verify/resend/email', 'Auth\RegisterController@reSendEmailVerification');
 		Route::get('users/{id}/verify/resend/sms', 'Auth\RegisterController@reSendPhoneVerification');
 		Route::get('users/verify/{field}/{token?}', 'Auth\RegisterController@verification');
 		Route::post('users/verify/{field}/{token?}', 'Auth\RegisterController@verification');
-		
 
-		
+
+
 		// User Logout
 		Route::get(dynamicRoute('routes.logout'), 'Auth\LoginController@logout');
-		
-		
+
+
 		// POSTS
 		Route::group(['namespace' => 'Post'], function ($router) {
 			$router->pattern('id', '[0-9]+');
@@ -344,18 +353,18 @@ Route::group([
 			} else {
 				$router->pattern('slug', '^(?=.*)((?!\/).)*$');
 			}
-			
+
 			// SingleStep Post creation
 			Route::group(['namespace' => 'CreateOrEdit\SingleStep'], function ($router) {
 				Route::get('create', 'CreateController@getForm');
 				Route::post('create', 'CreateController@postForm');
 				Route::get('create/finish', 'CreateController@finish');
-				
+
 				// Payment Gateway Success & Cancel
 				Route::get('create/payment/success', 'CreateController@paymentConfirmation');
 				Route::get('create/payment/cancel', 'CreateController@paymentCancel');
 				Route::post('create/payment/success', 'CreateController@paymentConfirmation');
-				
+
 				// Email Address or Phone Number verification
 				$router->pattern('field', 'email|phone');
 				Route::get('posts/{id}/verify/resend/email', 'CreateController@reSendEmailVerification');
@@ -363,7 +372,7 @@ Route::group([
 				Route::get('posts/verify/{field}/{token?}', 'CreateController@verification');
 				Route::post('posts/verify/{field}/{token?}', 'CreateController@verification');
 			});
-			
+
 			// MultiSteps Post creation
 			Route::group(['namespace' => 'CreateOrEdit\MultiSteps'], function ($router) {
 				Route::get('posts/create', 'CreateController@getPostStep');
@@ -376,12 +385,12 @@ Route::group([
 				Route::post('posts/create/payment', 'CreateController@postPaymentStep');
 				Route::post('posts/create/finish', 'CreateController@finish');
 				Route::get('posts/create/finish', 'CreateController@finish');
-				
+
 				// Payment Gateway Success & Cancel
 				Route::get('posts/create/payment/success', 'CreateController@paymentConfirmation');
 				Route::post('posts/create/payment/success', 'CreateController@paymentConfirmation');
 				Route::get('posts/create/payment/cancel', 'CreateController@paymentCancel');
-				
+
 				// Email Address or Phone Number verification
 				$router->pattern('field', 'email|phone');
 				Route::get('posts/{id}/verify/resend/email', 'CreateController@reSendEmailVerification');
@@ -389,21 +398,21 @@ Route::group([
 				Route::get('posts/verify/{field}/{token?}', 'CreateController@verification');
 				Route::post('posts/verify/{field}/{token?}', 'CreateController@verification');
 			});
-			
+
 			Route::group(['middleware' => ['auth']], function ($router) {
 				$router->pattern('id', '[0-9]+');
-				
+
 				// SingleStep Post edition
 				Route::group(['namespace' => 'CreateOrEdit\SingleStep'], function ($router) {
 					Route::get('edit/{id}', 'EditController@getForm');
 					Route::put('edit/{id}', 'EditController@postForm');
-					
+
 					// Payment Gateway Success & Cancel
 					Route::get('edit/{id}/payment/success', 'EditController@paymentConfirmation');
 					Route::get('edit/{id}/payment/cancel', 'EditController@paymentCancel');
 					Route::post('edit/{id}/payment/success', 'EditController@paymentConfirmation');
 				});
-				
+
 				// MultiSteps Post edition
 				Route::group(['namespace' => 'CreateOrEdit\MultiSteps'], function ($router) {
 					Route::get('posts/{id}/edit', 'EditController@getForm');
@@ -414,25 +423,25 @@ Route::group([
 					Route::post('posts/{id}/photos/reorder', 'PhotoController@reorder');
 					Route::get('posts/{id}/payment', 'PaymentController@getForm');
 					Route::post('posts/{id}/payment', 'PaymentController@postForm');
-					
+
 					// Payment Gateway Success & Cancel
 					Route::get('posts/{id}/payment/success', 'PaymentController@paymentConfirmation');
 					Route::post('posts/{id}/payment/success', 'PaymentController@paymentConfirmation');
 					Route::get('posts/{id}/payment/cancel', 'PaymentController@paymentCancel');
 				});
 			});
-			
+
 			// Post's Details
 			Route::get(dynamicRoute('routes.post'), 'DetailsController@index');
-			
+
 			// Send report abuse
 			Route::get('posts/{id}/report', 'ReportController@showReportForm');
 			Route::post('posts/{id}/report', 'ReportController@sendReport');
 		});
-		
-		
+
+
 		// ACCOUNT
-		 Route::group(['prefix' => 'account'], function ($router) {
+		Route::group(['prefix' => 'account'], function ($router) {
 			// Messenger
 			// Contact Post's Author
 			Route::group([
@@ -441,24 +450,29 @@ Route::group([
 			], function ($router) {
 				Route::post('posts/{id}', 'MessagesController@store');
 			});
-			
+
 			Route::group([
 				'middleware' => ['auth', 'banned.user', 'no.http.cache'],
 				'namespace'  => 'Account',
 			], function ($router) {
 				$router->pattern('id', '[0-9]+');
-				
+
 				// Users
 				Route::get('/', 'EditController@index');
 				Route::get('dashboard', 'EditController@dashboard');
 				// Route::get('profile', 'EditController@profile');
-				Route::get('my_coaches','EditController@my_coaches_by_striver');
-				Route::get('my_striver','EditController@my_coaches_by_striver');
-				Route::get('my_courses','EditController@my_courses_by_striver');
-				Route::get('my_payments','EditController@payment_and_subscription');
-				Route::get('tasks','EditController@exportCsv');
-				Route::get('my_subscription','EditController@payment_and_subscription');
-				Route::post('create_course' , 'EditController@create_coursesss');
+				Route::get('my_coaches', 'EditController@my_coaches_by_striver');
+				Route::get('my_striver', 'EditController@my_coaches_by_striver');
+				Route::get('my_courses', 'EditController@my_courses_by_striver');
+				Route::get('my_payments', 'EditController@payment_and_subscription');
+				Route::get('tasks', 'EditController@exportCsv');
+
+				Route::get('tasks_pdf', 'EditController@exportPdf');
+				Route::get('tasks_strivre', 'EditController@exportStrivreCsv');
+				Route::get('tasks_strivre_pdf', 'EditController@exportStrivrePdf');
+
+				Route::get('my_subscription', 'EditController@payment_and_subscription');
+				Route::post('create_course', 'EditController@create_coursesss');
 				Route::get('getSubcategories', 'EditController@getSubcategories');
 				Route::put('photo/delete', 'EditController@updatePhoto');
 				Route::put('photo', 'EditController@updatePhoto');
@@ -467,16 +481,16 @@ Route::group([
 
 				Route::post('get_payment_coach_request', 'EditController@getPaymentCoachRequest');
 				Route::post('get-coach-payment-request', 'EditController@getCoachPaymentRequest');
-				
+
 				// Route::get('allcities/{id}','EditController@getCountryLocation');
 				Route::get('article', 'EditController@getMyArticle');
-				Route::post('create_article' , 'EditController@create_article');
-				Route::post('Update_article' , 'EditController@Update_article');
+				Route::post('create_article', 'EditController@create_article');
+				Route::post('Update_article', 'EditController@Update_article');
 
 				// Route::get('/findtopcoach', 'EditController@coach_list_category_interesting');
-				Route::get('allcities','EditController@getCountryLocation');
-				
-				
+				Route::get('allcities', 'EditController@getCountryLocation');
+
+
 
 				Route::get('chat', 'EditController@comet_chat');
 
@@ -488,7 +502,7 @@ Route::group([
 				Route::group(['middleware' => 'impersonate.protect'], function () {
 					Route::post('close', 'CloseController@submit');
 				});
-				
+
 				// Posts
 				Route::get('saved-search', 'PostsController@getSavedSearch');
 				$router->pattern('pagePath', '(my-posts|archived|favourite|pending-approval|saved-search)+');
@@ -497,7 +511,7 @@ Route::group([
 				Route::get('archived/{id}/repost', 'PostsController@getArchivedPosts');
 				Route::get('{pagePath}/{id}/delete', 'PostsController@destroy');
 				Route::post('{pagePath}/delete', 'PostsController@destroy');
-				
+
 				// Messenger
 				Route::group(['prefix' => 'messages'], function ($router) {
 					$router->pattern('id', '[0-9]+');
@@ -512,13 +526,13 @@ Route::group([
 					Route::get('{id}/delete', 'MessagesController@destroy');
 					Route::post('delete', 'MessagesController@destroy');
 				});
-				
+
 				// Transactions
 				Route::get('transactions', 'TransactionsController@index');
 			});
-		 });
-		
-		
+		});
+
+
 		// AJAX
 		Route::group(['prefix' => 'ajax'], function ($router) {
 			Route::get('countries/{countryCode}/admins/{adminType}', 'Ajax\LocationController@getAdmins');
@@ -532,20 +546,20 @@ Route::group([
 			Route::post('save/search', 'Ajax\PostController@saveSearch');
 			Route::post('post/phone', 'Ajax\PostController@getPhone');
 		});
-		
-		
+
+
 		// FEEDS
 		Route::feeds();
-		
-		
+
+
 		// SITEMAPS (XML)
 		Route::get('{countryCode}/sitemaps.xml', 'SitemapsController@site');
 		Route::get('{countryCode}/sitemaps/pages.xml', 'SitemapsController@pages');
 		Route::get('{countryCode}/sitemaps/categories.xml', 'SitemapsController@categories');
 		Route::get('{countryCode}/sitemaps/cities.xml', 'SitemapsController@cities');
 		Route::get('{countryCode}/sitemaps/posts.xml', 'SitemapsController@posts');
-		
-		
+
+
 		// PAGES
 		Route::get(dynamicRoute('routes.pricing'), 'PageController@pricing');
 		Route::get(dynamicRoute('routes.pageBySlug'), 'PageController@cms');
@@ -554,17 +568,17 @@ Route::group([
 		Route::get(dynamicRoute('routes.aboutUs'), 'PageController@aboutUs');
 		Route::post('pricingCourse', 'PageController@pricingCourse');
 
-		
 
-		
-		
+
+
+
 		Route::post(dynamicRoute('routes.contact'), 'PageController@contactPost');
-		
+
 		// SITEMAP (HTML)
 		Route::get(dynamicRoute('routes.sitemap'), 'SitemapController@index');
-		
-		
-		
+
+
+
 		// SEARCH
 		Route::group(['namespace' => 'Search'], function ($router) {
 			$router->pattern('id', '[0-9]+');

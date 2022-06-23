@@ -18,8 +18,8 @@
 <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
 <link rel="stylesheet" href="../assets/css/lightcase.css">
 <link rel="stylesheet" href="../assets/css/preset.css" />
-<link rel="stylesheet" href="../assets/css/theme.css" />
-<link rel="stylesheet" href="../assets/css/responsive.css" />
+<link rel="stylesheet" href="{{url('/assets/css/theme.css')}}" />
+<link rel="stylesheet" href="{{url('/assets/css/responsive.css')}}" />
 
 
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -117,7 +117,18 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
                                     <!-- <i class="fas fa-user-circle hidden-sm"></i> -->
                                     <span>{{ auth()->user()->name }}</span>
                                    
+                                    <?php
+                        $user =auth()->user()->id;
+                      $message=  DB::table('threads_participants')->select('threads_participants.*')->where('threads_participants.user_id',$user)->where('threads_participants.last_read',null)->get();
+
+                     $total_unread_message =  count($message);
+                    //  print($total_unread_message);die;
+                        ?>
+                                    <span class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">{{$total_unread_message}}</span>
+								<!-- <i class="fas fa-chevron-down"></i> -->
                                     <i class="fas fa-chevron-down"></i>
+                                    
+
                                 </a>
                                 @else
 
@@ -150,6 +161,21 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
                                             <span class="badge badge-pill badge-important count-threads-with-new-messages">0</span> -->
                                         </a>
                                     </li>
+                                    <?php
+                        $user =auth()->user()->id;
+                      $message=  DB::table('threads_participants')->select('threads_participants.*')->where('threads_participants.user_id',$user)->where('threads_participants.last_read',null)->get();
+
+                     $total_unread_message =  count($message);
+                    //  print($total_unread_message);die;
+                        ?>
+                            
+                                    
+                                    <li class="dropdown-item dropdown-menu-sidebar list-side-menu876">
+									<a href="{{ url('account/messages') }}" class="dropdown-menu-sidebar-a side-menu-li-user">
+										<i class="far fa-envelope"></i> {{ t('messenger') }}
+										<span class="badge badge-pill badge-important count-threads-with-new-messages">{{$total_unread_message}}</span>
+									</a>
+								</li>
                                     <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/transactions') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
                     class="fas fa-coins"></i> {{ t('Transactions') }}</a></li> -->
                                     <!-- <li class="dropdown-divider"></li> -->

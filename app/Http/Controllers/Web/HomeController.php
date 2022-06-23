@@ -918,7 +918,7 @@ if ($request->user_type_id == 2) {
 
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
-			CURLOPT_URL => 'https://20775274f4e7a98f.api-eu.cometchat.io/v3/users',
+			CURLOPT_URL => 'https://21234831742240b3.api-eu.cometchat.io/v3/users',
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => '',
 			CURLOPT_MAXREDIRS => 10,
@@ -928,7 +928,7 @@ if ($request->user_type_id == 2) {
 			CURLOPT_CUSTOMREQUEST => 'POST',
 			CURLOPT_POSTFIELDS => array('uid' => $request->username, 'name' => $request->name),
 			CURLOPT_HTTPHEADER => array(
-				'apiKey: 865cabbaabab4fa310a14877b7c44f64b6564e3c'
+				'apiKey: 54cf45c3d0c670d9ab067f1b3498ea02873281bd'
 			),
 		));
 
