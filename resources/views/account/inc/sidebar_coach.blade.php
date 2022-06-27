@@ -94,11 +94,27 @@
                         <li class="nav-item active ">
                             <a {!! ($pagePath=='messenger' ) ? 'class="active" ' : '' !!}href="{{ url('account/messages') }}">
                                 <h5 class="collapse-title no-border">
-                                    <i class="far fa-envelope"></i> {{ t('messenger') }}&nbsp;
+                                    <i class="fas fa-envelope"></i> {{ t('messenger') }}&nbsp;
                                     <span class="badge badge-pill count-threads-with-new-messages hide" style="color:black; font-size: 12px;">{{$total_unread_message}}</span>
                                 </h5>
                             </a>
                         </li>
+
+                        <li class="nav-item active ">
+                            <a {!! ($pagePath=='video_recorded_list' ) ? 'class="active" ' : '' !!}href="{{ url('account/video_recorded_list') }}">
+                                <h5 class="collapse-title no-border">
+                                    <i class="fas fa-video"></i> Video Recorded List&nbsp;
+                                    
+                                </h5>
+                            </a>
+                            <!-- <video id="V1">
+                        <source src="filename.mp4" type="video/mp4" />
+                      
+                        <a href="filename.mp4" download>Download video</a> .
+                    </video> -->
+                        </li>
+
+                       
 
                     </ul>
                     <!-- <span class="heading border-top pt-4 d-block">Billing</span>

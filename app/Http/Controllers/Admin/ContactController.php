@@ -22,7 +22,7 @@ class ContactController extends PanelController
 		$this->xPanel->setModel('App\Models\Contact');
 		// $this->xPanel->with(['post', 'package', 'paymentMethod']);
 		$this->xPanel->setRoute(admin_uri('Contact'));
-		$this->xPanel->setEntityNameStrings(trans('admin.Contact'), trans('admin.Contact'));
+		$this->xPanel->setEntityNameStrings(trans('Contact Us'), trans('Contact Us'));
 		// $this->xPanel->denyAccess(['create', 'update', 'delete']);
 		// $this->xPanel->removeAllButtons(); // Remove also: 'create' & 'reorder' buttons
 		// if (!request()->input('order')) {

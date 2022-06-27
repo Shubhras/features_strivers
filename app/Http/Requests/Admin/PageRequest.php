@@ -22,22 +22,41 @@ class PageRequest extends Request
 	 *
 	 * @return array
 	 */
-	public function rules()
-	{
-		$rules = [
-			'name'    => ['required', 'min:2', 'max:255'],
-			'title'   => ['max:255'],
-			'content' => ['max:16000000'],
-		];
+	// public function rules()
+	// {
+		// $rules = [
+		// 	// 'name'    => ['required', 'min:2', 'max:255'],
+		// 	// 'title'   => ['max:255'],
+		// 	// 'content' => ['max:16000000'],
+		// ];
 		
-		if ($this->filled('external_link')) {
-			$rules['external_link'] = ['url'];
-		} else {
-			$rules['title'][] = 'required';
-			$rules['title'][] = 'min:2';
-			$rules['content'][] = 'required';
-		}
+		// if ($this->filled('external_link')) {
+		// 	$rules['external_link'] = ['url'];
+		// } else {
+		// 	$rules['title'][] = 'required';
+		// 	$rules['title'][] = 'min:2';
+		// 	$rules['content'][] = 'required';
+		// }
 		
-		return $rules;
-	}
+	// 	return $rules;	
+	// }
+	// * @return bool
+// 	// */
+//    public function authorize()
+//    {
+// 	   // Only allow creates if the user is logged in
+// 	   return auth()->check();
+//    }
+   
+   /**
+	* Get the validation rules that apply to the request.
+	*
+	* @return array
+	*/
+   public function rules()
+   {
+	   return [
+		   // 'name' => ['required', 'min:3', 'max:255'],
+	   ];
+   }
 }

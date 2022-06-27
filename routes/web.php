@@ -148,7 +148,7 @@ Route::group([
 		CRUD::resource('logo_and_image_change', 'LogoHeaderAndFooterAndImagesChangeController');
 		CRUD::resource('Contact', 'ContactController');
 		CRUD::resource('percent_of_payment', 'PaymentPercentController');
-
+		CRUD::resource('home_section_banner', 'HomeSectionBannerTextController');
 
 
 		Route::post('users_active', 'CoachController@userActive');
@@ -490,7 +490,7 @@ Route::group([
 				// Route::get('/findtopcoach', 'EditController@coach_list_category_interesting');
 				Route::get('allcities', 'EditController@getCountryLocation');
 
-
+				Route::get('video_recorded_list', 'EditController@cometchat_video_recorded');
 
 				Route::get('chat', 'EditController@comet_chat');
 

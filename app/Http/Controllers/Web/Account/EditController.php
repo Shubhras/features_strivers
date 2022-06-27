@@ -2909,6 +2909,194 @@ $enroldStrvreUser_id = 0;
 		return appView('account.cometchat', $data);
 	}
 
+	public function cometchat_video_recorded(){
+
+
+		$data = [];
+
+		$data['genders'] = Gender::query()->get();
+
+		$user = auth()->user();
+
+		$data['countPostsVisits'] = DB::table((new Post())->getTable())
+			->select('user_id', DB::raw('SUM(visits) as total_visits'))
+			->where('country_code', config('country.code'))
+			->where('user_id', $user->id)
+			->groupBy('user_id')
+			->first();
+
+		$data['auth_user_name'] = DB::table('users')
+			->select('users.username')
+			->where('id', $user->id)
+			->first();
+
+		$data['countPosts'] = Post::currentCountry()
+			->where('user_id', $user->id)
+			->count();
+		$data['countFavoritePosts'] = SavedPost::whereHas('post', function ($query) {
+			$query->currentCountry();
+		})->where('user_id', $user->id)
+			->count();
+
+
+
+
+			$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => 'https://metrics-eu.cometchat.io/v3.0/calls',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'GET',
+			CURLOPT_HTTPHEADER => array(
+				'appId: 21234831742240b3',
+				'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0Nzg1MTgxNSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0Nzg0ODIxNSwiZXhwIjoxNjUwNDQzODE1LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.TJNg26DTjo_YexASHQVAnVgZriGqPY7aLW_N8VAmLzo',
+				'uid: ' . $user->username
+			),
+		));
+
+		print_r($curl);die;
+
+		// https://21234831742240b3.apiclient-eu.cometchat.io/v3.0/calls
+
+		// $curl = curl_init();
+
+		// curl_setopt_array($curl, array(
+		// CURLOPT_URL => 'https://metrics-us.cometchat.io/v1/calls/sessions',
+		// CURLOPT_RETURNTRANSFER => true,
+		// CURLOPT_ENCODING => '',
+		// CURLOPT_MAXREDIRS => 10,
+		// CURLOPT_TIMEOUT => 0,
+		// CURLOPT_FOLLOWLOCATION => true,
+		// CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		// CURLOPT_CUSTOMREQUEST => 'GET',
+		// CURLOPT_HTTPHEADER => array(
+		// 	'appId: 2040141e5d5dcef3',
+		// 	'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0Nzg1MTgxNSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0Nzg0ODIxNSwiZXhwIjoxNjUwNDQzODE1LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.TJNg26DTjo_YexASHQVAnVgZriGqPY7aLW_N8VAmLzo',
+		// 	'uid: '.$user->username
+		// ),
+		// ));
+
+		// $response = curl_exec($curl);
+
+		// curl_close($curl);
+		// // echo $response;
+		// $responsesst= json_decode($response);
+		// 	//   $datauid = array();
+
+		// 	$session_id = array();
+		// 	$datavideo_minutes = array();
+
+		// foreach($responsesst as $key =>$uidkey){
+
+		// 	//   $data[$uidkey->uid] =$uidkey;
+		// 	// print_r($uidkey);die;
+
+		// 	foreach($uidkey as $key =>$value){
+
+		// 		// $datauid[$value->uid] =$value->uid;
+		// 		$datavideo_minutes[] =$value->video_minutes;
+		// 		$dataaudio_minutes[] =$value->audio_minutes;
+
+		// 		// if($value->uid == $user->username){
+
+
+		// 			$session_id[$user->username] =$value->session_id;
+
+		// 		//}
+
+		// 		// print_r($value->video_minutes);die;
+		// 			$session_s = $value->session_id;
+		// 	}
+		// }
+		// // print_r($value->session_id);die;
+
+
+		// $curl = curl_init();
+
+		// curl_setopt_array($curl, array(
+		// 	CURLOPT_URL => 'https://metrics-us.cometchat.io/v1/calls/sessions/$session_s/participants',
+		// 	CURLOPT_RETURNTRANSFER => true,
+		// 	CURLOPT_ENCODING => '',
+		// 	CURLOPT_MAXREDIRS => 10,
+		// 	CURLOPT_TIMEOUT => 0,
+		// 	CURLOPT_FOLLOWLOCATION => true,
+		// 	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		// 	CURLOPT_CUSTOMREQUEST => 'GET',
+		// 	CURLOPT_HTTPHEADER => array(
+		// 	'appId: 2040141e5d5dcef3',
+		// 	'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGltZ210LmNvbWV0Y2hhdC5pb1wvYXBwc1wvMjA0MDE0MWU1ZDVkY2VmMyIsImlhdCI6MTY0Nzg1MTgxNSwic3ViIjoiMjA0MDE0MWU1ZDVkY2VmMyIsIm5iZiI6MTY0Nzg0ODIxNSwiZXhwIjoxNjUwNDQzODE1LCJkYXRhIjp7ImFwcElkIjoiMjA0MDE0MWU1ZDVkY2VmMyIsInJlZ2lvbiI6InVzIn19.TJNg26DTjo_YexASHQVAnVgZriGqPY7aLW_N8VAmLzo',
+		// 	'uid: $user->username'
+		// 	),
+		// ));
+
+
+		// $response = curl_exec($curl);
+
+		// curl_close($curl);
+		// //   echo $response;
+		// 	$responsess= json_decode($response);
+		// 	//   $datauid = array();
+		// 	$datavideo_minutes = array();
+		// 	$dataaudio_minutes = array();
+		// 	//   $session_id = array();
+		// foreach($responsess as $key =>$uidkey){
+
+		// 	//   $data[$uidkey->uid] =$uidkey;
+
+
+		// 	foreach($uidkey as $key =>$value){
+
+		// 		$datauid[$value->uid] =$value->uid;
+		// 		$datavideo_minutes[$value->uid] =$value->video_minutes;
+		// 		$dataaudio_minutes[$value->uid] =$value->audio_minutes;
+
+		// 		if($value->uid == $user->username){
+
+		// 			$datavideo_minutes[$value->uid] =$value->video_minutes;
+		// 			$dataaudio_minutes[$value->uid] =$value->audio_minutes;
+		// 			$session_id[$value->uid] =$value->session_id;
+
+		// 		}
+
+
+		// 	}  
+
+
+		// //   print_r($value->session_id);exit;
+
+		// $data['datavideo_minutes'] = $datavideo_minutes + $dataaudio_minutes;
+
+		// $videominuts = implode('',$data['datavideo_minutes']);
+		// $videominuts = $value->video_minutes;
+		// $data['dataaudio_minutes'] = $dataaudio_minutes;
+
+		// $consumed_hours = DB::table('user_subscription_payment')->select('user_subscription_payment.*')->where('user_subscription_payment.user_id',$user->id)->first();
+		// // print_r($consumed_hours->consumed_hours);die;
+		// $datavalue = 0;
+		// // if($datavalue >=1)
+		// // {
+		// $videominutsTotal =$consumed_hours->consumed_hours + $videominuts;
+
+		// // print_r($videominutsTotal);die;
+		// // if(!empty($videominutsTotal))
+
+		// DB::table('user_subscription_payment')->where('user_subscription_payment.user_id',$user->id)->update(['user_subscription_payment.consumed_hours'=>$videominutsTotal]);
+		// }
+		// print_r($user->username);die;
+
+		MetaTag::set('title', t('my_account'));
+		MetaTag::set('description', t('my_account_on', ['appName' => config('settings.app.name')]));
+
+
+		// print_r($curl);die;
+		
+		return appView('account.cometchat_video_recorded', $data);
+	}
 
 	public function coach_list_category_interesting(Request $request)
 	{

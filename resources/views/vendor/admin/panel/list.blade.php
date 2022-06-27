@@ -10,9 +10,9 @@
 		</div>
 		<div class="col-md-6 col-12 align-self-center d-none d-md-flex justify-content-end">
 			<ol class="breadcrumb mb-0 p-0 bg-transparent">
-				<li class="breadcrumb-item"><a href="{{ admin_url() }}">{{ trans('admin.dashboard') }}</a></li>
-				<li class="breadcrumb-item"><a href="{{ url($xPanel->route) }}" class="text-capitalize">{!! $xPanel->entityNamePlural !!}</a></li>
-				<li class="breadcrumb-item active d-flex align-items-center">{{ trans('admin.list') }}</li>
+				<!-- <li class="breadcrumb-item"><a href="{{ admin_url() }}">{{ trans('admin.dashboard') }}</a></li> -->
+				<!-- <li class="breadcrumb-item"><a href="{{ url($xPanel->route) }}" class="text-capitalize">{!! $xPanel->entityNamePlural !!}</a></li> -->
+				<!-- <li class="breadcrumb-item active d-flex align-items-center">{{ trans('admin.list') }}</li> -->
 			</ol>
 		</div>
 	</div>
@@ -46,10 +46,10 @@
 					
 				
 			?>
-				<!-- <div class="card-header {{ $xPanel->hasAccess('create')?'with-border':'' }}">
+				<div class="card-header {{ $xPanel->hasAccess('create')?'with-border':'' }}">
 					@include('admin::panel.inc.button_stack', ['stack' => 'top'])
 					<div id="datatable_button_stack" class="float-end text-end"></div>
-				</div> -->
+				</div>
 				
 				<?php 
 			 }else if($user_id == 1){

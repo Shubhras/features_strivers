@@ -34,7 +34,7 @@ class PaymentPercentController extends PanelController
 		*/
 		$this->xPanel->setModel('App\Models\PaymentPercent');
 		$this->xPanel->setRoute(admin_uri('percent_of_payment'));
-		$this->xPanel->setEntityNameStrings(trans('Percent Of payment'), trans('Percent Of payment'));
+		$this->xPanel->setEntityNameStrings(trans('Percentage Management'), trans('Percentage Management'));
 		
         if (!request()->input('order')) {
 			$this->xPanel->orderBy('created_at', 'DESC');
@@ -94,37 +94,37 @@ class PaymentPercentController extends PanelController
 		]);
 		
 	
-		$this->xPanel->addField([
-			'name'        => 'icon_class',
-			'label'       => trans('admin.Icon'),
-			'type'        => 'select2_from_array',
-			'options'     => collect(config('fontello'))->map(function ($iconCode, $iconClass) {
-				return $iconClass . ' (' . $iconCode . ')';
-			})->toArray(),
-			'allows_null' => true,
-			'hint'        => trans('admin.Used in the categories area on the home and sitemap pages'),
-		]);
+		// $this->xPanel->addField([
+		// 	'name'        => 'icon_class',
+		// 	'label'       => trans('admin.Icon'),
+		// 	'type'        => 'select2_from_array',
+		// 	'options'     => collect(config('fontello'))->map(function ($iconCode, $iconClass) {
+		// 		return $iconClass . ' (' . $iconCode . ')';
+		// 	})->toArray(),
+		// 	'allows_null' => true,
+		// 	'hint'        => trans('admin.Used in the categories area on the home and sitemap pages'),
+		// ]);
 		
 		
 		
 	
-		$this->xPanel->addField([
-			'name'  => 'seo_end',
-			'type'  => 'custom_html',
-			'value' => '<hr style="border: 1px dashed #EFEFEF;">',
-		]);
+		// $this->xPanel->addField([
+		// 	'name'  => 'seo_end',
+		// 	'type'  => 'custom_html',
+		// 	'value' => '<hr style="border: 1px dashed #EFEFEF;">',
+		// ]);
 		
-		$this->xPanel->addField([
-			'name'    => 'active',
-			'label'   => trans('admin.Active'),
-			'type'    => 'checkbox_switch',
-			'default' => '1',
-		], 'create');
-		$this->xPanel->addField([
-			'name'  => 'active',
-			'label' => trans('admin.Active'),
-			'type'  => 'checkbox_switch',
-		], 'update');
+		// $this->xPanel->addField([
+		// 	'name'    => 'active',
+		// 	'label'   => trans('admin.Active'),
+		// 	'type'    => 'checkbox_switch',
+		// 	'default' => '1',
+		// ], 'create');
+		// $this->xPanel->addField([
+		// 	'name'  => 'active',
+		// 	'label' => trans('admin.Active'),
+		// 	'type'  => 'checkbox_switch',
+		// ], 'update');
 	}
 	
 	public function store(StoreRequest $request)

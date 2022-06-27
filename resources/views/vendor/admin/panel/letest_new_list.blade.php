@@ -10,9 +10,9 @@
 		</div>
 		<div class="col-md-6 col-12 align-self-center d-none d-md-flex justify-content-end">
 			<ol class="breadcrumb mb-0 p-0 bg-transparent">
-				<li class="breadcrumb-item"><a href="{{ admin_url() }}">{{ trans('admin.latest_news') }}</a></li>
+				<!-- <li class="breadcrumb-item"><a href="{{ admin_url() }}">{{ trans('admin.latest_news') }}</a></li>
 				<li class="breadcrumb-item"><a href="{{ url($xPanel->route) }}" class="text-capitalize">{!! $xPanel->entityNamePlural !!}</a></li>
-				<li class="breadcrumb-item active d-flex align-items-center">{{ trans('admin.list') }}</li>
+				<li class="breadcrumb-item active d-flex align-items-center">{{ trans('admin.list') }}</li> -->
 			</ol>
 		</div>
 	</div>
