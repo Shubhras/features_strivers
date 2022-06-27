@@ -18,10 +18,8 @@ use App\Http\Requests\Admin\PageRequest as StoreRequest;
 use App\Http\Requests\Admin\PageRequest as UpdateRequest;
 use Prologue\Alerts\Facades\Alert;
 
-// use App\Http\Requests\Admin\HomePageBannerRequest as StoreRequest;
-// use App\Http\Requests\Admin\HomePageBannerRequest as UpdateRequest;
 
-class HomeSectionBannerTextController extends PanelController
+class HomePageSectionTwoBannerController extends PanelController
 {
     public function setup()
 	{
@@ -32,8 +30,8 @@ class HomeSectionBannerTextController extends PanelController
 		*/
 		
         
-		$this->xPanel->setModel('App\Models\HomeSectionBannerText');
-		$this->xPanel->setRoute(admin_uri('home_section_banner'));
+		$this->xPanel->setModel('App\Models\HomePageSectionTwoBanner');
+		$this->xPanel->setRoute(admin_uri('home_section_two_banner'));
 		$this->xPanel->setEntityNameStrings(trans('Home Page Banner'), trans('Home Page Banner'));
 		if (!request()->input('order')) {
 			$this->xPanel->orderBy('created_at', 'DESC');
@@ -52,7 +50,7 @@ class HomeSectionBannerTextController extends PanelController
 			
 		]);
 		$this->xPanel->addColumn([
-			'name'  => 'home_page_section_banner_text',
+			'name'  => 'home_page_section_banner_text_top_heading',
 			'label' => trans('Home Page text'),
 		]);
 
@@ -72,17 +70,39 @@ class HomeSectionBannerTextController extends PanelController
 			'disk'   => 'public',
 		]);
         
+		
 		$this->xPanel->addField([
-			'name'       => 'home_page_section_banner_text',
-			'label'      => trans('home page section banner text'),
+			'name'       => 'home_page_section_banner_text_top_heading',
+			'label'      => trans('Home Page Section Banner Top Heading text'),
+			'type'       => 'text',
+			'attributes' => [
+				'placeholder' => trans('Home Page Section Banner Top Heading text'),
+			],
+		]);
+        
+
+        $this->xPanel->addField([
+			'name'       => 'home_page_section_banner_tex_heading',
+			'label'      => mb_ucfirst(trans('home page section banner text heading')),
+			'type'       => 'text',
+			'attributes' => [
+				'placeholder' => mb_ucfirst(trans('home page section banner text heading')),
+			],
+		]);
+
+       
+		$this->xPanel->addField([
+			'name'       => 'home_page_section_banner_text_two',
+			'label'      => trans('home page section banner text two'),
 			'type'       => ($wysiwygEditor != 'none' && file_exists(resource_path() . $wysiwygEditorViewPath))
 				? $wysiwygEditor
 				: 'textarea',
 			'attributes' => [
-				'placeholder' => trans('home page section banner text'),
+				'placeholder' => trans('home page section banner text two'),
 				'rows'        => 20,
 			],
 		]);
+
 	}
 	
 
@@ -99,3 +119,4 @@ class HomeSectionBannerTextController extends PanelController
 	
 	
 }
+

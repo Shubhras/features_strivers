@@ -149,6 +149,8 @@ Route::group([
 		CRUD::resource('Contact', 'ContactController');
 		CRUD::resource('percent_of_payment', 'PaymentPercentController');
 		CRUD::resource('home_section_banner', 'HomeSectionBannerTextController');
+		CRUD::resource('home_section_two_banner', 'HomePageSectionTwoBannerController');
+		CRUD::resource('home_section_three_banner','HomePageSectionThreeBannerController');
 
 
 		Route::post('users_active', 'CoachController@userActive');

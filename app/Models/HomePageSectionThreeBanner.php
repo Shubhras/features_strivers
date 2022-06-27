@@ -24,7 +24,7 @@ use App\Models\Scopes\ActiveScope;
 use Prologue\Alerts\Facades\Alert;
 use App\Observers\PageObserver;
 
-class HomeSectionBannerText extends BaseUser
+class HomePageSectionThreeBanner extends BaseUser
 {
     
 
@@ -36,7 +36,7 @@ class HomeSectionBannerText extends BaseUser
 	 *
 	 * @var string
 	 */
-	protected $table = 'home_section_banner_text';
+	protected $table = 'home_page_section_three_banner';
 	
 	/**
 	 * The primary key for the model.
@@ -66,11 +66,11 @@ class HomeSectionBannerText extends BaseUser
 	 */
 	protected $fillable = [
 		'picture',
-		'home_page_section_banner_text',
-		
+		'home_page_section_banner_text_three_heading',
+		'home_page_section_banner_text_three',
 		
 	];
-	public $translatable = ['picture', 'home_page_section_banner_text'];
+	public $translatable = ['picture', 'home_page_section_banner_text_three_heading','home_page_section_banner_text_three'];
 	
 	/**
 	 * The attributes that should be hidden for arrays
@@ -404,39 +404,9 @@ class HomeSectionBannerText extends BaseUser
 			$value = null;
 		}
 		
-		// return $value;
-
-
-
-        if (!isset($this->attributes) || !isset($this->attributes['home_page_section_two_banner_image'])) {
-			return null;
-		}
+    }
 		
-		$value = $this->attributes['home_page_section_two_banner_image'];
-		
-		$disk = StorageDisk::getDisk();
-		
-		if (!$disk->exists($value)) {
-			$value = null;
-		}
-		
-		// return $value;
-
-
-        if (!isset($this->attributes) || !isset($this->attributes['home_page_section_three_banner_image'])) {
-			return null;
-		}
-		
-		$value = $this->attributes['home_page_section_three_banner_image'];
-		
-		$disk = StorageDisk::getDisk();
-		
-		if (!$disk->exists($value)) {
-			$value = null;
-		}
-		
-		return $value;
-	}
+	
 	
 	/*
 	|--------------------------------------------------------------------------
@@ -540,188 +510,6 @@ class HomeSectionBannerText extends BaseUser
 			
 			return false;
 		}
-
-    
-        // home index banner 2 image
-
-     
-        
-
-
-        $disk = StorageDisk::getDisk();
-		$attribute_name = 'home_page_section_two_banner_image';
-		$destination_path = 'app/course_image';
-		
-		// If the image was erased
-		if (empty($value)) {
-			// delete the image from disk
-			$disk->delete($this->home_page_section_two_banner_image);
-			
-			// set null in the database column
-			$this->attributes[$attribute_name] = null;
-			
-			return false;
-		}
-		
-		// Check the image file
-		if ($value == url('/')) {
-			$this->attributes[$attribute_name] = null;
-			
-			return false;
-		}
-		
-		// If laravel request->file('filename') resource OR base64 was sent, store it in the db
-		try {
-			if (fileIsUploaded($value)) {
-				// Get file extension
-				$extension = getUploadedFileExtension($value);
-				if (empty($extension)) {
-					$extension = 'jpg';
-				}
-				
-				// Image quality
-				$imageQuality = 100;
-				
-				// Image default dimensions
-				$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 2000);
-				$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 1000);
-				
-				// Init. Intervention
-				$image = Image::make($value);
-				
-				// Get the image original dimensions
-				$imgWidth = (int)$image->width();
-				$imgHeight = (int)$image->height();
-				
-				// Fix the Image Orientation
-				if (exifExtIsEnabled()) {
-					$image = $image->orientate();
-				}
-				
-				// If the original dimensions are higher than the resize dimensions
-				// OR the 'upsize' option is enable, then resize the image
-				if ($imgWidth > $width || $imgHeight > $height) {
-					// Resize
-					$image = $image->resize($width, $height, function ($constraint) {
-						$constraint->aspectRatio();
-					});
-				}
-				
-				// Encode the Image!
-				$image = $image->encode($extension, $imageQuality);
-				
-				// Generate a filename.
-				$filename = md5($value . time()) . '.' . $extension;
-				
-				// Store the image on disk.
-				$disk->put($destination_path . '/' . $filename, $image);
-				
-				// Save the path to the database
-				$this->attributes[$attribute_name] = $destination_path . '/' . $filename;
-			} else {
-				// Retrieve current value without upload a new file.
-				if (!Str::startsWith($value, $destination_path)) {
-					$value = $destination_path . last(explode($destination_path, $value));
-				}
-				$this->attributes[$attribute_name] = $value;
-			}
-		} catch (\Throwable $e) {
-			Alert::error($e->getMessage())->flash();
-			$this->attributes[$attribute_name] = null;
-			
-			return false;
-		}
-
-    
-    
-         // home index banner 3 image
-
-
-
-
-         $disk = StorageDisk::getDisk();
-         $attribute_name = 'home_page_section_three_banner_image';
-         $destination_path = 'app/logo';
-         
-         // If the image was erased
-         if (empty($value)) {
-             // delete the image from disk
-             $disk->delete($this->picture);
-             
-             // set null in the database column
-             $this->attributes[$attribute_name] = null;
-             
-             return false;
-         }
-         
-         // Check the image file
-         if ($value == url('/')) {
-             $this->attributes[$attribute_name] = null;
-             
-             return false;
-         }
-         
-         // If laravel request->file('filename') resource OR base64 was sent, store it in the db
-         try {
-             if (fileIsUploaded($value)) {
-                 // Get file extension
-                 $extension = getUploadedFileExtension($value);
-                 if (empty($extension)) {
-                     $extension = 'jpg';
-                 }
-                 
-                 // Image quality
-                 $imageQuality = 100;
-                 
-                 // Image default dimensions
-                 $width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 2000);
-                 $height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 1000);
-                 
-                 // Init. Intervention
-                 $image = Image::make($value);
-                 
-                 // Get the image original dimensions
-                 $imgWidth = (int)$image->width();
-                 $imgHeight = (int)$image->height();
-                 
-                 // Fix the Image Orientation
-                 if (exifExtIsEnabled()) {
-                     $image = $image->orientate();
-                 }
-                 
-                 // If the original dimensions are higher than the resize dimensions
-                 // OR the 'upsize' option is enable, then resize the image
-                 if ($imgWidth > $width || $imgHeight > $height) {
-                     // Resize
-                     $image = $image->resize($width, $height, function ($constraint) {
-                         $constraint->aspectRatio();
-                     });
-                 }
-                 
-                 // Encode the Image!
-                 $image = $image->encode($extension, $imageQuality);
-                 
-                 // Generate a filename.
-                 $filename = md5($value . time()) . '.' . $extension;
-                 
-                 // Store the image on disk.
-                 $disk->put($destination_path . '/' . $filename, $image);
-                 
-                 // Save the path to the database
-                 $this->attributes[$attribute_name] = $destination_path . '/' . $filename;
-             } else {
-                 // Retrieve current value without upload a new file.
-                 if (!Str::startsWith($value, $destination_path)) {
-                     $value = $destination_path . last(explode($destination_path, $value));
-                 }
-                 $this->attributes[$attribute_name] = $value;
-             }
-         } catch (\Throwable $e) {
-             Alert::error($e->getMessage())->flash();
-             $this->attributes[$attribute_name] = null;
-             
-             return false;
-         }
         
 
 	}

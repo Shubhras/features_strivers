@@ -522,7 +522,7 @@ foreach($categories_list_coach187 as $userCatMulti){
                     <!-- <h2 class="fwhite home-banner-page-text"> GET YOUR DREAM COURSE WITH BEST INSTRUCTOR 
                     </h2>  -->
 
-                    <h2 class="fwhite home-banner-page-text"> {{$home_section_banner_text->home_page_section_banner_text_top_heading}}
+                    <h2 class="fwhite home-banner-page-text"> {{$home_page_section_two__banner->home_page_section_banner_text_top_heading}}
                     </h2> 
                 </center>
                 <div class="row">
@@ -531,11 +531,11 @@ foreach($categories_list_coach187 as $userCatMulti){
 
                         <div class="ab-content">
                             <!-- <h3 class="fwhite">CONNECT WITH COACHES/ STRIVRES AROUND THE WORLD</h3> -->
-                            <h3 class="fwhite">{{$home_section_banner_text->home_page_section_banner_tex_heading}}</h3>
+                            <h3 class="fwhite">{{$home_page_section_two__banner->home_page_section_banner_tex_heading}}</h3>
                             <!-- <p style="color: #ffffff;">Strivre is great for teams because its easy to get set up and the offerings touch on a vast array of soft skill focus areas, which not only build role-related talents but also enable team members to grow their whole selves beyond
                                 work.
                             </p> -->
-                            <p style="color: #ffffff;">{!! $home_section_banner_text->home_page_section_banner_text_two !!}
+                            <p style="color: #ffffff;">{!! $home_page_section_two__banner->home_page_section_banner_text_two !!}
                             </p>
                             <a class="bisylms-btn-pink" href="{{url('/register') }}">Sign Up </a>
                         
@@ -546,8 +546,9 @@ foreach($categories_list_coach187 as $userCatMulti){
 
                         <div class="">
                             <!-- <img src="assets/images/edu_2.png" alt=""> -->
-                            <img src="{{ url('storage/'.$home_section_banner_text->home_page_section_two_banner_image) }}" alt="">
+                            <img src="{{ url('storage/'.$home_page_section_two__banner->picture) }}" alt="">
                         </div>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -561,19 +562,20 @@ foreach($categories_list_coach187 as $userCatMulti){
         <div class="row mt-120">
             <div class="col-lg-7 col-md-6">
                 <div class="ab-thumb">
+                   
                     <!-- <img src="assets/images/edu_1.png" alt=""> -->
-                    <img src="{{ url('storage/'.$home_section_banner_text->home_page_section_three_banner_image) }}" alt="">
+                    <img src="{{ url('storage/'.$home_page_section_three_banner->picture) }}" alt="">
                 </div>
             </div>
             <div class="col-lg-5 col-md-6">
                 <div class="ab-content">
                 <!-- <h3 class="fblack">JOIN OUR LARGEST COACHING COMMUNITY.</h3> -->
-                    <h3 class="fblack">{{$home_section_banner_text->home_page_section_banner_text_three_heading}}</h3>
+                    <h3 class="fblack">{{$home_page_section_three_banner->home_page_section_banner_text_three_heading}}</h3>
                     <!-- <p class="fblack">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis ex consectetur viverra vehicula. Nullam mauris ante, condimentum ac mi eu, bibendum mollis elit. Duis pretium velit lobortis felis fermentum pellentesque.
                         Aliquam euismod, elit vel bibendum vestibulum, nisl nisl mollis tortor, a rhoncus mi augue eleifend justo. Sed sed ullamcorper massa, at pretium tortor. Integer nunc tellus, elementum eu malesuada eu, pellentesque a tellus.
                     </p> -->
                     <p class="fblack">
-                    {!! $home_section_banner_text->home_page_section_banner_text_three !!}
+                    {!! $home_page_section_three_banner->home_page_section_banner_text_three !!}
                     </p>
                     <a class="bisylms-btn" href="{{url('/register') }}">Get Started</a>
                 </div>

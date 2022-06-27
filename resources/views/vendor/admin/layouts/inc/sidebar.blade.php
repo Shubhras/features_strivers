@@ -502,9 +502,25 @@ if ($data == 1) { ?>
 							<li class="sidebar-item">
 								<a href="{{ admin_url('home_section_banner') }}" class="sidebar-link">
 									<i class="mdi mdi-adjust"></i>
-									<span class="hide-menu">{{ trans('Home Banner 1') }}</span>
+									<span class="hide-menu">{{ trans('Home Page Banner 1') }}</span>
 								</a>
 							</li>
+
+							<li class="sidebar-item">
+								<a href="{{ admin_url('home_section_two_banner') }}" class="sidebar-link">
+									<i class="mdi mdi-adjust"></i>
+									<span class="hide-menu">{{ trans('Home Page Banner 2') }}</span>
+								</a>
+							</li>
+
+							<li class="sidebar-item">
+								<a href="{{ admin_url('home_section_three_banner') }}" class="sidebar-link">
+									<i class="mdi mdi-adjust"></i>
+									<span class="hide-menu">{{ trans('Home Page Banner 3') }}</span>
+								</a>
+							</li>
+
+							
 							
 						</ul>
 					</li>

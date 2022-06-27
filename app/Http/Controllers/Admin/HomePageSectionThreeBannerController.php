@@ -18,10 +18,7 @@ use App\Http\Requests\Admin\PageRequest as StoreRequest;
 use App\Http\Requests\Admin\PageRequest as UpdateRequest;
 use Prologue\Alerts\Facades\Alert;
 
-// use App\Http\Requests\Admin\HomePageBannerRequest as StoreRequest;
-// use App\Http\Requests\Admin\HomePageBannerRequest as UpdateRequest;
-
-class HomeSectionBannerTextController extends PanelController
+class HomePageSectionThreeBannerController extends PanelController
 {
     public function setup()
 	{
@@ -32,8 +29,8 @@ class HomeSectionBannerTextController extends PanelController
 		*/
 		
         
-		$this->xPanel->setModel('App\Models\HomeSectionBannerText');
-		$this->xPanel->setRoute(admin_uri('home_section_banner'));
+		$this->xPanel->setModel('App\Models\HomePageSectionThreeBanner');
+		$this->xPanel->setRoute(admin_uri('home_section_three_banner'));
 		$this->xPanel->setEntityNameStrings(trans('Home Page Banner'), trans('Home Page Banner'));
 		if (!request()->input('order')) {
 			$this->xPanel->orderBy('created_at', 'DESC');
@@ -52,13 +49,10 @@ class HomeSectionBannerTextController extends PanelController
 			
 		]);
 		$this->xPanel->addColumn([
-			'name'  => 'home_page_section_banner_text',
+			'name'  => 'home_page_section_banner_text_three_heading',
 			'label' => trans('Home Page text'),
 		]);
 
-        
-     
-		
 
 
         $wysiwygEditor = config('settings.other.wysiwyg_editor');
@@ -72,14 +66,26 @@ class HomeSectionBannerTextController extends PanelController
 			'disk'   => 'public',
 		]);
         
+
+
+       
 		$this->xPanel->addField([
-			'name'       => 'home_page_section_banner_text',
-			'label'      => trans('home page section banner text'),
+			'name'       => 'home_page_section_banner_text_three_heading',
+			'label'      => trans('home page section banner text three heading'),
+			'type'       => 'text',
+			'attributes' => [
+				'placeholder' => trans('home page section banner text three heading'),
+			],
+		]);
+       
+		$this->xPanel->addField([
+			'name'       => 'home_page_section_banner_text_three',
+			'label'      => trans('home page section banner text three'),
 			'type'       => ($wysiwygEditor != 'none' && file_exists(resource_path() . $wysiwygEditorViewPath))
 				? $wysiwygEditor
 				: 'textarea',
 			'attributes' => [
-				'placeholder' => trans('home page section banner text'),
+				'placeholder' => trans('home page section banner text three'),
 				'rows'        => 20,
 			],
 		]);
@@ -99,3 +105,4 @@ class HomeSectionBannerTextController extends PanelController
 	
 	
 }
+

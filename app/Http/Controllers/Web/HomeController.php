@@ -222,6 +222,11 @@ class HomeController extends FrontController
 		$data['index_and_footer_logo'] = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 		$data['home_section_banner_text'] = DB::table('home_section_banner_text')->select('home_section_banner_text.*')->orderBy('home_section_banner_text.id','desc')->first();
 
+
+		$data['home_page_section_two__banner'] = DB::table('home_page_section_two__banner')->select('home_page_section_two__banner.*')->orderBy('home_page_section_two__banner.id','desc')->first();
+
+		$data['home_page_section_three_banner'] = DB::table('home_page_section_three_banner')->select('home_page_section_three_banner.*')->orderBy('home_page_section_three_banner.id','desc')->first();
+
 		$data['letest_news'] = DB::table('latest_new')->select('latest_new.*')->where('active', 1)->orderBy('latest_new.id', 'desc')->limit(4)->get();
 
 		// $data['categories_list_coach'] = DB::table('categories')->select('categories.slug','categories.id','categories.name','users.category')->join('users' ,'categories.id' ,'=' ,'users.category')->orderBy('categories.slug','asc')->where('categories.parent_id' ,null)->get();
