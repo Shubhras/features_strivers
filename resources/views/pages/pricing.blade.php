@@ -20,18 +20,18 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<!-- <h2 class="hero-content_h2 font-text-size-43px"> A global learning platform for all</h2> <br> -->
-				<h2 class="hero-content_h2 font-text-size-43px"> {{$index_and_footer_logo->pricing_section_1_text}}</h2> <br>
+				<h2 class="hero-content_h2 font-text-size-43px"> A global learning platform for all</h2> <br>
+				
 				<div>
 					<!-- <a href=""> A global learning platform for all </a> -->
-					<!-- <p class="global_page font-text-size-16px">
+					<p class="global_page font-text-size-16px">
 						Unlimited access to 6,000+ top courses selected – anytime, on any device Fresh content taught by global instructors – for any learning style
 						Actionable learning insights and admin functionality
-					</p> -->
-					<p class="global_page font-text-size-16px">
-						{{$index_and_footer_logo->pricing_section_2_text}}
-						
 					</p>
+					<!-- <p class="global_page font-text-size-16px">
+						
+						
+					</p> -->
 				</div>
 			</div>
 		</div>
@@ -49,8 +49,8 @@
 					<div class="elementor-row">
 						<br>
 
-						<!-- <h2 class="h22 font-text-size-30px"> Choose a plan for after your 7-day Free trial</h2><br><br> -->
-						<h2 class="h22 font-text-size-30px"> {{$index_and_footer_logo->pricing_section_3_text}}</h2><br><br>
+						<h2 class="h22 font-text-size-30px"> Choose a plan for after your 7-day Free trial</h2><br><br>
+						
 
 						
 						<div class="row">

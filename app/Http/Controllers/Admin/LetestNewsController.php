@@ -95,13 +95,13 @@ class LetestNewsController extends PanelController
 			'name'  => 'title',
 			'label' => mb_ucfirst(trans('admin.title')),
 		]);
-		$this->xPanel->addColumn([
-			'name'          => 'active',
-			'label'         => trans('admin.Active'),
-			'type'          => "model_function",
-			'function_name' => 'getActiveHtml',
-			'on_display'    => 'checkbox',
-		]);
+		// $this->xPanel->addColumn([
+		// 	'name'          => 'active',
+		// 	'label'         => trans('admin.Active'),
+		// 	'type'          => "model_function",
+		// 	'function_name' => 'getActiveHtml',
+		// 	'on_display'    => 'checkbox',
+		// ]);
 		
 		// FIELDS
 		$this->xPanel->addField([
@@ -218,11 +218,11 @@ class LetestNewsController extends PanelController
 			'type'  => 'custom_html',
 			'value' => '<hr style="border: 1px dashed #EFEFEF; margin-top: 0; margin-bottom: 2px;">',
 		]);
-		$this->xPanel->addField([
-			'name'  => 'dynamic_variables_hint',
-			'type'  => 'custom_html',
-			'value' => trans('admin.dynamic_variables_hint'),
-		]);
+		// $this->xPanel->addField([
+		// 	'name'  => 'dynamic_variables_hint',
+		// 	'type'  => 'custom_html',
+		// 	'value' => trans('admin.dynamic_variables_hint'),
+		// ]);
 		$this->xPanel->addField([
 			'name'              => 'seo_title',
 			'label'             => trans('admin.Title'),
@@ -251,22 +251,22 @@ class LetestNewsController extends PanelController
 			'hint'  => trans('admin.comma_separated_hint') . ' ' . trans('admin.seo_keywords_hint'),
 		]);
 		
-		$this->xPanel->addField([
-			'name'  => 'seo_end',
-			'type'  => 'custom_html',
-			'value' => '<hr style="border: 1px dashed #EFEFEF;">',
-		]);
+		// $this->xPanel->addField([
+		// 	'name'  => 'seo_end',
+		// 	'type'  => 'custom_html',
+		// 	'value' => '<hr style="border: 1px dashed #EFEFEF;">',
+		// ]);
 		
 		// $this->xPanel->addField([
 		// 	'name'  => 'excluded_from_footer',
 		// 	'label' => trans('admin.Exclude from footer'),
 		// 	'type'  => 'checkbox_switch',
 		// ]);
-		$this->xPanel->addField([
-			'name'  => 'active',
-			'label' => trans('admin.Active'),
-			'type'  => 'checkbox_switch',
-		]);
+		// $this->xPanel->addField([
+		// 	'name'  => 'active',
+		// 	'label' => trans('admin.Active'),
+		// 	'type'  => 'checkbox_switch',
+		// ]);
 	}
 	
 	public function store(StoreRequest $request)

@@ -118,7 +118,7 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
                 <aside class="widget">
                     <div class="about-widget">
                         <!-- <a href="#"><img src="../assets/images/logo.png" alt=""></a> -->
-                        <a href="#"> <img src="{{ url('storage/'.$index_and_footer_logo->index_footer_logo_1) }}" alt=""></a>
+                        <a href="#"> <img src="{{ url('storage/'.$index_and_footer_logo->picture) }}" alt=""></a>
                         <p>
                             Lost the plot Richard you mug cup of tea knackered boot bender.
                         </p>

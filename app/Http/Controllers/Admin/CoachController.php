@@ -216,12 +216,12 @@ class CoachController extends PanelController
 				'type'          => 'model_function',
 				'function_name' => 'getCountryHtml',
 			]);
-			$this->xPanel->addColumn([
-				'name'          => 'verified_email',
-				'label'         => trans('admin.Verified Email'),
-				'type'          => 'model_function',
-				'function_name' => 'getVerifiedEmailHtml',
-			]);
+			// $this->xPanel->addColumn([
+			// 	'name'          => 'verified_email',
+			// 	'label'         => trans('admin.Verified Email'),
+			// 	'type'          => 'model_function',
+			// 	'function_name' => 'getVerifiedEmailHtml',
+			// ]);
 
 			// $this->xPanel->addColumn([
 			// 	'name'          => 'upload_document',

@@ -497,7 +497,13 @@ if ($data == 1) { ?>
 									<span class="hide-menu">{{ trans('Logo') }}</span>
 								</a>
 							</li>
-
+							<li class="sidebar-item">
+								<a href="{{ admin_url('sticky_header_logo') }}" class="sidebar-link">
+									<!-- <i data-feather="book-open" class="feather-icon"></i>  -->
+									<span class="hide-menu">{{ trans('Sticky Logo') }}</span>
+								</a>
+							</li>
+							
 							
 							<li class="sidebar-item">
 								<a href="{{ admin_url('home_section_banner') }}" class="sidebar-link">

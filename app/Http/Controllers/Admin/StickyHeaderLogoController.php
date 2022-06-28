@@ -18,7 +18,7 @@ use App\Http\Requests\Admin\PageRequest as StoreRequest;
 use App\Http\Requests\Admin\PageRequest as UpdateRequest;
 use Prologue\Alerts\Facades\Alert;
 
-class HomePageSectionThreeBannerController extends PanelController
+class StickyHeaderLogoController extends PanelController
 {
     public function setup()
 	{
@@ -29,9 +29,9 @@ class HomePageSectionThreeBannerController extends PanelController
 		*/
 		
         
-		$this->xPanel->setModel('App\Models\HomePageSectionThreeBanner');
-		$this->xPanel->setRoute(admin_uri('home_section_three_banner'));
-		$this->xPanel->setEntityNameStrings(trans('Header Logo'), trans('Header Logo'));
+		$this->xPanel->setModel('App\Models\StickyHeaderLogo');
+		$this->xPanel->setRoute(admin_uri('sticky_header_logo'));
+		$this->xPanel->setEntityNameStrings(trans('Sticky Header Logo'), trans('Sticky Header Logo'));
 		if (!request()->input('order')) {
 			$this->xPanel->orderBy('created_at', 'DESC');
 		}
@@ -45,13 +45,10 @@ class HomePageSectionThreeBannerController extends PanelController
         
 		$this->xPanel->addColumn([
 			'name'          => 'picture',
-			'label'         => trans('Home Banner Image'),
+			'label'         => trans('Sticky Header logo'),
 			
 		]);
-		$this->xPanel->addColumn([
-			'name'  => 'home_page_section_banner_text_three_heading',
-			'label' => trans('Home Page text'),
-		]);
+		
 
 
 
@@ -60,35 +57,12 @@ class HomePageSectionThreeBannerController extends PanelController
 
         $this->xPanel->addField([
 			'name'       => 'picture',
-			'label'      => trans('Home Banner Image'),
+			'label'      => trans('Sticky Header logo'),
 			'type'   => 'image',
 			'upload' => true,
 			'disk'   => 'public',
 		]);
         
-
-
-       
-		$this->xPanel->addField([
-			'name'       => 'home_page_section_banner_text_three_heading',
-			'label'      => trans('home page section banner text three heading'),
-			'type'       => 'text',
-			'attributes' => [
-				'placeholder' => trans('home page section banner text three heading'),
-			],
-		]);
-       
-		$this->xPanel->addField([
-			'name'       => 'home_page_section_banner_text_three',
-			'label'      => trans('home page section banner text three'),
-			'type'       => ($wysiwygEditor != 'none' && file_exists(resource_path() . $wysiwygEditorViewPath))
-				? $wysiwygEditor
-				: 'textarea',
-			'attributes' => [
-				'placeholder' => trans('home page section banner text three'),
-				'rows'        => 20,
-			],
-		]);
 	}
 	
 
@@ -105,4 +79,5 @@ class HomePageSectionThreeBannerController extends PanelController
 	
 	
 }
+
 

@@ -151,6 +151,7 @@ Route::group([
 		CRUD::resource('home_section_banner', 'HomeSectionBannerTextController');
 		CRUD::resource('home_section_two_banner', 'HomePageSectionTwoBannerController');
 		CRUD::resource('home_section_three_banner','HomePageSectionThreeBannerController');
+		CRUD::resource('sticky_header_logo','StickyHeaderLogoController');
 
 
 		Route::post('users_active', 'CoachController@userActive');

@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <!-- <h2 class="sec-title title-padding font-text-size-36px" style="color:#000000"> Get unlimited consultation across industries. </h2> -->
-                <h2 class="sec-title title-padding font-text-size-36px" style="color:#000000"> {{$index_and_footer_logo->about_section_1_text}} </h2>
+                <h2 class="sec-title title-padding font-text-size-36px" style="color:#000000"> {{$index_and_footer_logo->change_strivre_name}} </h2>
                 <!-- <p>
                         So I said codswallop car boot cheers mufty I don't want no agro are you taking the<br> piss cheeky my lady gutted mate excuse my french.
                     </p> -->
@@ -41,9 +41,9 @@
                     <p class="sec-desc font-text-size-16px">
                         GET YOUR DREAM COURSE WITH BEST INSTRUCTOR
                     </p> -->
-                    <h2 class="sec-title font-text-size-34px">{{$index_and_footer_logo->about_section_3_text}}</h2>
+                    <h2 class="sec-title font-text-size-34px">{{$index_and_footer_logo->change_strivre_name}}</h2>
                     <p class="sec-desc font-text-size-16px">
-                        {{$index_and_footer_logo->about_section_4_text}}
+                        {{$index_and_footer_logo->change_strivre_name}}
                     </p>
                 </div>
             </div>
@@ -87,7 +87,7 @@
             vast array of soft skill focus areas, which not only build role-related talents but also<br>
             enable team members to grow their whole selves beyond work.”</p> -->
 
-            <p class="global_page_white font-text-size-20px">{{$index_and_footer_logo->about_section_5_text}}</p>
+            <p class="global_page_white font-text-size-20px">{{$index_and_footer_logo->change_strivre_name}}</p>
 
     </div>
 </section>

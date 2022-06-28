@@ -109,15 +109,15 @@
                 </div>
             </div> -->
             <?php 
-$index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
-
+$index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.picture')->first();
+// print_r($index_and_footer_logo->picture);die;
 ?>
         <div class="row footer-row-fix">
             <div class="col-lg-4 col-md-375">
                 <aside class="widget">
                     <div class="about-widget">
                         <!-- <a href="#"><img src="../assets/images/logo.png" alt=""></a> -->
-                        <a href="#"> <img src="{{ url('storage/'.$index_and_footer_logo->index_footer_logo_1) }}" alt=""></a>
+                        <a href="#"> <img src="{{ url('storage/'.$index_and_footer_logo->picture) }}" alt=""></a>
                         <p>
                             Lost the plot Richard you mug cup of tea knackered boot bender.
                         </p>

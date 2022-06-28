@@ -23,7 +23,8 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Models\Scopes\ActiveScope;
 use Prologue\Alerts\Facades\Alert;
 use App\Observers\PageObserver;
-class LogoHeaderAndFooterAndImagesChange extends BaseUser
+
+class StickyHeaderLogo extends BaseUser
 {
     
 
@@ -35,7 +36,7 @@ class LogoHeaderAndFooterAndImagesChange extends BaseUser
 	 *
 	 * @var string
 	 */
-	protected $table = 'logo_header_and_footer_and_images_change';
+	protected $table = 'sticky_Header_logo';
 	
 	/**
 	 * The primary key for the model.
@@ -65,10 +66,9 @@ class LogoHeaderAndFooterAndImagesChange extends BaseUser
 	 */
 	protected $fillable = [
 		'picture',
-		'change_strivre_name',
 		
 	];
-	public $translatable = ['picture', 'change_strivre_name'];
+	public $translatable = ['picture'];
 	
 	/**
 	 * The attributes that should be hidden for arrays
@@ -94,7 +94,7 @@ class LogoHeaderAndFooterAndImagesChange extends BaseUser
 		parent::boot();
 		
 		
-        LogoHeaderAndFooterAndImagesChange::observe(PageObserver::class);
+        HomeSectionBannerText::observe(PageObserver::class);
 		
 		static::addGlobalScope(new ActiveScope());
 	}
@@ -402,14 +402,9 @@ class LogoHeaderAndFooterAndImagesChange extends BaseUser
 			$value = null;
 		}
 		
-		return $value;
-
     }
-
-       
-
-
-        
+		
+	
 	
 	/*
 	|--------------------------------------------------------------------------
@@ -513,11 +508,7 @@ class LogoHeaderAndFooterAndImagesChange extends BaseUser
 			
 			return false;
 		}
-
-    
-        
         
 
 	}
 }
-

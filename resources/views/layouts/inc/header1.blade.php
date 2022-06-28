@@ -52,6 +52,9 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
 <?php
 $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 
+$sticky_and_footer_logo = DB::table('sticky_Header_logo')->select('sticky_Header_logo.*')->first();
+
+
 ?>
 
 
@@ -66,8 +69,8 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
                         <img class="sticky-logo" src="../assets/images/logo4.png" alt="">
                     </a> -->
                     <a class="navbar-brand" href="{{'/'}}">
-                        <img src="{{ url('storage/'.$index_and_footer_logo->index_header_logo_1) }}" alt="">
-                        <img class="sticky-logo" src="{{ url('storage/'.$index_and_footer_logo->index_header_logo_2) }}" alt="">
+                        <img src="{{ url('storage/'.$index_and_footer_logo->picture) }}" alt="">
+                        <img class="sticky-logo" src="{{ url('storage/'.$sticky_and_footer_logo->picture) }}" alt="">
                     </a>
 
                     <!-- logo End-->

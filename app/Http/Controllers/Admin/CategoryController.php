@@ -188,13 +188,13 @@ class CategoryController extends PanelController
 		// 	'type'          => 'model_function',
 		// 	'function_name' => 'customFieldsBtn',
 		// ]);
-		$this->xPanel->addColumn([
-			'name'          => 'active',
-			'label'         => trans('admin.Active'),
-			'type'          => 'model_function',
-			'function_name' => 'getActiveHtml',
-			'on_display'    => 'checkbox',
-		]);
+		// $this->xPanel->addColumn([
+		// 	'name'          => 'active',
+		// 	'label'         => trans('admin.Active'),
+		// 	'type'          => 'model_function',
+		// 	'function_name' => 'getActiveHtml',
+		// 	'on_display'    => 'checkbox',
+		// ]);
 		
 		
 		// FIELDS
@@ -250,16 +250,16 @@ class CategoryController extends PanelController
 				'class' => 'col-md-12',
 			],
 		]);
-		$this->xPanel->addField([
-			'name'              => 'hide_description',
-			'label'             => trans('admin.hide_cat_description_label'),
-			'type'              => 'checkbox_switch',
-			'hint'              => trans('admin.hide_cat_description_hint'),
-			'wrapperAttributes' => [
-				'class' => 'col-md-12 mb-4',
-				'style' => 'margin-top: -15px;',
-			],
-		]);
+		// $this->xPanel->addField([
+		// 	'name'              => 'hide_description',
+		// 	'label'             => trans('admin.hide_cat_description_label'),
+		// 	'type'              => 'checkbox_switch',
+		// 	'hint'              => trans('admin.hide_cat_description_hint'),
+		// 	'wrapperAttributes' => [
+		// 		'class' => 'col-md-12 mb-4',
+		// 		'style' => 'margin-top: -15px;',
+		// 	],
+		// ]);
 		$this->xPanel->addField([
 			'name'   => 'picture',
 			'label'  => trans('admin.Picture'),
@@ -268,44 +268,44 @@ class CategoryController extends PanelController
 			'disk'   => 'public',
 			'hint'   => trans('admin.category_picture_icon_hint'),
 		]);
-		$this->xPanel->addField([
-			'name'        => 'icon_class',
-			'label'       => trans('admin.Icon'),
-			'type'        => 'select2_from_array',
-			'options'     => collect(config('fontello'))->map(function ($iconCode, $iconClass) {
-				return $iconClass . ' (' . $iconCode . ')';
-			})->toArray(),
-			'allows_null' => true,
-			'hint'        => trans('admin.Used in the categories area on the home and sitemap pages'),
-		]);
-		$this->xPanel->addField([
-			'name'  => 'type',
-			'label' => mb_ucfirst(trans('admin.type')),
-			'type'  => 'enum',
-			'hint'  => trans('admin.category_types_info'),
-		]);
-		$this->xPanel->addField([
-			'name'  => 'is_for_permanent',
-			'label' => trans('admin.for_permanent_posts'),
-			'type'  => 'checkbox_switch',
-			'hint'  => trans('admin.for_permanent_posts_hint'),
-		]);
+		// $this->xPanel->addField([
+		// 	'name'        => 'icon_class',
+		// 	'label'       => trans('admin.Icon'),
+		// 	'type'        => 'select2_from_array',
+		// 	'options'     => collect(config('fontello'))->map(function ($iconCode, $iconClass) {
+		// 		return $iconClass . ' (' . $iconCode . ')';
+		// 	})->toArray(),
+		// 	'allows_null' => true,
+		// 	'hint'        => trans('admin.Used in the categories area on the home and sitemap pages'),
+		// ]);
+		// $this->xPanel->addField([
+		// 	'name'  => 'type',
+		// 	'label' => mb_ucfirst(trans('admin.type')),
+		// 	'type'  => 'enum',
+		// 	'hint'  => trans('admin.category_types_info'),
+		// ]);
+		// $this->xPanel->addField([
+		// 	'name'  => 'is_for_permanent',
+		// 	'label' => trans('admin.for_permanent_posts'),
+		// 	'type'  => 'checkbox_switch',
+		// 	'hint'  => trans('admin.for_permanent_posts_hint'),
+		// ]);
 		
 		$this->xPanel->addField([
 			'name'  => 'seo_tags',
 			'type'  => 'custom_html',
 			'value' => '<br><h4 style="margin-bottom: 0;">' . trans('admin.seo_tags') . '</h4>',
 		]);
-		$this->xPanel->addField([
-			'name'  => 'seo_start',
-			'type'  => 'custom_html',
-			'value' => '<hr style="border: 1px dashed #EFEFEF;" class="mt-0 mb-1">',
-		]);
-		$this->xPanel->addField([
-			'name'  => 'dynamic_variables_hint',
-			'type'  => 'custom_html',
-			'value' => trans('admin.dynamic_variables_hint'),
-		]);
+		// $this->xPanel->addField([
+		// 	'name'  => 'seo_start',
+		// 	'type'  => 'custom_html',
+		// 	'value' => '<hr style="border: 1px dashed #EFEFEF;" class="mt-0 mb-1">',
+		// ]);
+		// $this->xPanel->addField([
+		// 	'name'  => 'dynamic_variables_hint',
+		// 	'type'  => 'custom_html',
+		// 	'value' => trans('admin.dynamic_variables_hint'),
+		// ]);
 		$this->xPanel->addField([
 			'name'       => 'seo_title',
 			'label'      => trans('admin.Title'),
@@ -334,23 +334,23 @@ class CategoryController extends PanelController
 			'hint'       => trans('admin.comma_separated_hint') . ' ' . trans('admin.seo_keywords_hint'),
 		]);
 		
-		$this->xPanel->addField([
-			'name'  => 'seo_end',
-			'type'  => 'custom_html',
-			'value' => '<hr style="border: 1px dashed #EFEFEF;">',
-		]);
+		// $this->xPanel->addField([
+		// 	'name'  => 'seo_end',
+		// 	'type'  => 'custom_html',
+		// 	'value' => '<hr style="border: 1px dashed #EFEFEF;">',
+		// ]);
 		
-		$this->xPanel->addField([
-			'name'    => 'active',
-			'label'   => trans('admin.Active'),
-			'type'    => 'checkbox_switch',
-			'default' => '1',
-		], 'create');
-		$this->xPanel->addField([
-			'name'  => 'active',
-			'label' => trans('admin.Active'),
-			'type'  => 'checkbox_switch',
-		], 'update');
+		// $this->xPanel->addField([
+		// 	'name'    => 'active',
+		// 	'label'   => trans('admin.Active'),
+		// 	'type'    => 'checkbox_switch',
+		// 	'default' => '1',
+		// ], 'create');
+		// $this->xPanel->addField([
+		// 	'name'  => 'active',
+		// 	'label' => trans('admin.Active'),
+		// 	'type'  => 'checkbox_switch',
+		// ], 'update');
 	}
 	
 	public function store(StoreRequest $request)

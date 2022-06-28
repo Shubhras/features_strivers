@@ -42,7 +42,7 @@
 
                 <!-- <p class="text_font_size_index232">Your Course To <br>Success</p> -->
 
-                <!-- <p class="text_font_size_index232 content_width">{{$index_and_footer_logo->index_section_1_text}}</p> -->
+
                 <p class="text_font_size_index232 content_width">{!! $home_section_banner_text->home_page_section_banner_text !!}</p>
                 <?php $id = '0'; ?>
 

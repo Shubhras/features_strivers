@@ -193,12 +193,12 @@ class PaymentController extends PanelController
 		// 	'type'          => 'model_function',
 		// 	'function_name' => 'getPaymentMethodNameHtml',
 		// ]);
-		$this->xPanel->addColumn([
-			'name'          => 'active',
-			'label'         => trans('admin.Approved'),
-			'type'          => 'model_function',
-			'function_name' => 'getActiveHtml',
-		]);
+		// $this->xPanel->addColumn([
+		// 	'name'          => 'active',
+		// 	'label'         => trans('admin.Approved'),
+		// 	'type'          => 'model_function',
+		// 	'function_name' => 'getActiveHtml',
+		// ]);
 		
 		// FIELDS
 	}
