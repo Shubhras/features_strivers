@@ -526,7 +526,17 @@ if ($data == 1) { ?>
 								</a>
 							</li>
 
-							
+							<li class="sidebar-item">
+								<a href="{{admin_url('about_us_video')}}" class="sidebar-link">
+									<i class="mdi mdi-adjust">
+
+									</i>
+									<span class="hide-menu">{{trans('About Us Video')}}
+
+									</span>
+								</a>
+
+							</li>
 							
 						</ul>
 					</li>

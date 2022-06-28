@@ -152,6 +152,7 @@ Route::group([
 		CRUD::resource('home_section_two_banner', 'HomePageSectionTwoBannerController');
 		CRUD::resource('home_section_three_banner','HomePageSectionThreeBannerController');
 		CRUD::resource('sticky_header_logo','StickyHeaderLogoController');
+		CRUD::resource('about_us_video','AboutUsVideoController');
 
 
 		Route::post('users_active', 'CoachController@userActive');

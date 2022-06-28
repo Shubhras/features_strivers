@@ -32,7 +32,7 @@ class HomePageSectionTwoBannerController extends PanelController
         
 		$this->xPanel->setModel('App\Models\HomePageSectionTwoBanner');
 		$this->xPanel->setRoute(admin_uri('home_section_two_banner'));
-		$this->xPanel->setEntityNameStrings(trans('Home Page Banner'), trans('Home Page Banner'));
+		$this->xPanel->setEntityNameStrings(trans('Home Page Banner Section 2'), trans('Home Page Banner Section 2'));
 		if (!request()->input('order')) {
 			$this->xPanel->orderBy('created_at', 'DESC');
 		}

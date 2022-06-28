@@ -32,8 +32,8 @@ class LogoHeaderAndFooterAndImagesChangeController extends PanelController
 		$this->xPanel->setModel('App\Models\LogoHeaderAndFooterAndImagesChange');
 		// $this->xPanel->with(['post', 'package', 'paymentMethod']);
 		$this->xPanel->setRoute(admin_uri('logo_and_image_change'));
-		$this->xPanel->setEntityNameStrings(trans('admin.logo_header_and_footer'), trans('admin.logo_header_and_footer'));
-		$this->xPanel->setEntityNameStrings(trans('Home Page Banner'), trans('Home Page Banner'));
+		// $this->xPanel->setEntityNameStrings(trans('admin.logo_header_and_footer'), trans('admin.logo_header_and_footer'));
+		$this->xPanel->setEntityNameStrings(trans('Header Logo'), trans('Header Logo'));
 		if (!request()->input('order')) {
 			$this->xPanel->orderBy('created_at', 'DESC');
 		}

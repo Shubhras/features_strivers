@@ -18,7 +18,7 @@ use App\Http\Requests\Admin\PageRequest as StoreRequest;
 use App\Http\Requests\Admin\PageRequest as UpdateRequest;
 use Prologue\Alerts\Facades\Alert;
 
-class HomePageSectionThreeBannerController extends PanelController
+class AboutUsVideoController extends PanelController
 {
     public function setup()
 	{
@@ -29,9 +29,9 @@ class HomePageSectionThreeBannerController extends PanelController
 		*/
 		
         
-		$this->xPanel->setModel('App\Models\HomePageSectionThreeBanner');
-		$this->xPanel->setRoute(admin_uri('home_section_three_banner'));
-		$this->xPanel->setEntityNameStrings(trans('Home Page Banner Section 3'), trans('Home Page Banner Section 3'));
+		$this->xPanel->setModel('App\Models\AboutUsVideo');
+		$this->xPanel->setRoute(admin_uri('about_us_video'));
+		$this->xPanel->setEntityNameStrings(trans('About Us Video'), trans('About Us Video'));
 		if (!request()->input('order')) {
 			$this->xPanel->orderBy('created_at', 'DESC');
 		}
@@ -44,23 +44,34 @@ class HomePageSectionThreeBannerController extends PanelController
 
         
 		$this->xPanel->addColumn([
-			'name'          => 'picture',
-			'label'         => trans('Home Banner Image'),
+			'name'          => 'video',
+			'label'         => trans('Uploads Video'),
 			
 		]);
-		$this->xPanel->addColumn([
-			'name'  => 'home_page_section_banner_text_three_heading',
-			'label' => trans('Home Page text'),
+		
+
+        $this->xPanel->addColumn([
+			'name'  => 'about_text_heading_one',
+			'label' => trans('About Text Heading One'),
 		]);
 
+        $this->xPanel->addColumn([
+			'name'  => 'about_text_heading_two',
+			'label' => trans('About Text Heading Two'),
+		]);
+        $this->xPanel->addColumn([
+			'name'  => 'about_text',
+			'label' => trans('About Us Text'),
+		]);
 
+       
 
         $wysiwygEditor = config('settings.other.wysiwyg_editor');
 		$wysiwygEditorViewPath = '/views/vendor/admin/panel/fields/' . $wysiwygEditor . '.blade.php';
 
         $this->xPanel->addField([
-			'name'       => 'picture',
-			'label'      => trans('Home Banner Image'),
+			'name'       => 'video',
+			'label'      => trans('Uploads Video'),
 			'type'   => 'image',
 			'upload' => true,
 			'disk'   => 'public',
@@ -70,25 +81,32 @@ class HomePageSectionThreeBannerController extends PanelController
 
        
 		$this->xPanel->addField([
-			'name'       => 'home_page_section_banner_text_three_heading',
-			'label'      => trans('home page section banner text three heading'),
+			'name'       => 'about_text_heading_one',
+			'label'      => trans('About Text Heading One'),
 			'type'       => 'text',
 			'attributes' => [
-				'placeholder' => trans('home page section banner text three heading'),
+				'placeholder' => trans('About Text Heading One'),
+			],
+		]);
+        $this->xPanel->addField([
+			'name'       => 'about_text_heading_two',
+			'label'      => trans('About Text Heading Two'),
+			'type'       => 'text',
+			'attributes' => [
+				'placeholder' => trans('About Text Heading Two'),
+			],
+		]);
+        
+        $this->xPanel->addField([
+			'name'       => 'about_text',
+			'label'      => trans('About Us Text'),
+			'type'       => 'text',
+			'attributes' => [
+				'placeholder' => trans('About Us Text'),
 			],
 		]);
        
-		$this->xPanel->addField([
-			'name'       => 'home_page_section_banner_text_three',
-			'label'      => trans('home page section banner text three'),
-			'type'       => ($wysiwygEditor != 'none' && file_exists(resource_path() . $wysiwygEditorViewPath))
-				? $wysiwygEditor
-				: 'textarea',
-			'attributes' => [
-				'placeholder' => trans('home page section banner text three'),
-				'rows'        => 20,
-			],
-		]);
+		
 	}
 	
 
