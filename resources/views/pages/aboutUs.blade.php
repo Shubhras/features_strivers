@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <!-- <h2 class="sec-title title-padding font-text-size-36px" style="color:#000000"> Get unlimited consultation across industries. </h2> -->
-                <h2 class="sec-title title-padding font-text-size-36px" style="color:#000000"> {{$index_and_footer_logo->change_strivre_name}} </h2>
+                <h2 class="sec-title title-padding font-text-size-36px" style="color:#000000"> {{$index_and_footer_logo->about_text_heading_one}} </h2>
                 <!-- <p>
                         So I said codswallop car boot cheers mufty I don't want no agro are you taking the<br> piss cheeky my lady gutted mate excuse my french.
                     </p> -->
@@ -25,9 +25,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 col-md-10 col-sm-10 offset-lg-1 text-center">
+                <?php if(empty($index_and_footer_logo->picture)){?>
                 <div class="video-banner" style="background-image: url(../assets/images/home/video-bg.jpg);">
                     <a class="popup-video" href="#" data-rel="lightcase"><i class="fas fa-play fass"></i></a>
                 </div>
+                <?php }else{?>
+                    <div class="video-banner" style="background-image: url(<?php echo'storage/'.$index_and_footer_logo->picture ?>);">
+                    <a class="popup-video" href="#" data-rel="lightcase"><i class="fas fa-play fass"></i></a>
+                </div>
+                    
+                    <?php }?>
             </div>
         </div>
     </div>
@@ -41,9 +48,9 @@
                     <p class="sec-desc font-text-size-16px">
                         GET YOUR DREAM COURSE WITH BEST INSTRUCTOR
                     </p> -->
-                    <h2 class="sec-title font-text-size-34px">{{$index_and_footer_logo->change_strivre_name}}</h2>
+                    <h2 class="sec-title font-text-size-34px">{{$index_and_footer_logo->about_text_heading_two}}</h2>
                     <p class="sec-desc font-text-size-16px">
-                        {{$index_and_footer_logo->change_strivre_name}}
+                        {{$index_and_footer_logo->about_text}}
                     </p>
                 </div>
             </div>
@@ -87,7 +94,10 @@
             vast array of soft skill focus areas, which not only build role-related talents but also<br>
             enable team members to grow their whole selves beyond work.”</p> -->
 
-            <p class="global_page_white font-text-size-20px">{{$index_and_footer_logo->change_strivre_name}}</p>
+          
+            <p class="global_page_white font-text-size-20px">{{$index_and_footer_logo->about_us_text}}</p>
+
+            <!-- <p class="global_page_white font-text-size-20px">{{$index_and_footer->change_strivre_name}}</p> -->
 
     </div>
 </section>

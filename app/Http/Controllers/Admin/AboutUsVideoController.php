@@ -44,7 +44,7 @@ class AboutUsVideoController extends PanelController
 
         
 		$this->xPanel->addColumn([
-			'name'          => 'video',
+			'name'          => 'picture',
 			'label'         => trans('Uploads Video'),
 			
 		]);
@@ -63,6 +63,8 @@ class AboutUsVideoController extends PanelController
 			'name'  => 'about_text',
 			'label' => trans('About Us Text'),
 		]);
+        
+
 
        
 
@@ -70,7 +72,7 @@ class AboutUsVideoController extends PanelController
 		$wysiwygEditorViewPath = '/views/vendor/admin/panel/fields/' . $wysiwygEditor . '.blade.php';
 
         $this->xPanel->addField([
-			'name'       => 'video',
+			'name'       => 'picture',
 			'label'      => trans('Uploads Video'),
 			'type'   => 'image',
 			'upload' => true,
@@ -99,13 +101,27 @@ class AboutUsVideoController extends PanelController
         
         $this->xPanel->addField([
 			'name'       => 'about_text',
-			'label'      => trans('About Us Text'),
+			'label'      => trans('About Text'),
 			'type'       => 'text',
 			'attributes' => [
-				'placeholder' => trans('About Us Text'),
+				'placeholder' => trans('About Text'),
 			],
 		]);
+
+    
        
+        $this->xPanel->addField([
+			'name'       => 'about_us_text',
+			'label'      => trans('About Us Text'),
+			'type'       => ($wysiwygEditor != 'none' && file_exists(resource_path() . $wysiwygEditorViewPath))
+				? $wysiwygEditor
+				: 'textarea',
+			'attributes' => [
+				'placeholder' => trans('About Us Text'),
+				'rows'        => 20,
+			],
+		]);
+
 		
 	}
 	

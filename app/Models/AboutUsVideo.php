@@ -65,14 +65,15 @@ class AboutUsVideo extends BaseUser
 	 * @var array
 	 */
 	protected $fillable = [
-		'video',
+		'picture',
         'about_text_heading_one',
         'about_text_heading_two',
 		'about_text',
+        'about_us_text',
 		
 		
 	];
-	public $translatable = ['video','about_text_heading_one', 'about_text_heading_two', 'about_text'];
+	public $translatable = ['picture','about_text_heading_one', 'about_text_heading_two', 'about_text','about_us_text'];
 	
 	/**
 	 * The attributes that should be hidden for arrays

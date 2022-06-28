@@ -1116,8 +1116,8 @@ class PageController extends FrontController
 	public function aboutUs()
 	{
 		// $data = "Hello Folks! ";
-
-		$data['index_and_footer_logo'] = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
+		$data['index_and_footer_logo'] = DB::table('about_us_video')->select('about_us_video.*')->first();
+		$data['index_and_footer'] = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
 		return appView('pages.aboutUs',$data);
 	}
 

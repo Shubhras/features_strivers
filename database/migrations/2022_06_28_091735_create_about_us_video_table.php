@@ -15,7 +15,7 @@ class CreateAboutUsVideoTable extends Migration
     {
         Schema::create('about_us_video', function (Blueprint $table) {
             $table->id();
-            $table->string('video');
+            $table->string('picture');
             $table->string('about_text');
             $table->timestamps();
         });
