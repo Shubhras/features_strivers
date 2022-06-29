@@ -710,17 +710,31 @@ $enroldStrvreUser_id = 0;
 
 					// print_r($remaining_hourss);die;
 
+					$commission_percent = DB::table('payment_percent')->select('payment_percent.admin_percent')->first();
+
 					if ($remaining_hourss >=  $request->creadit_required) {
 
 
+						$coach_course = DB::table('coach_course')->select('coach_course.creadit_required')->where('coach_course.id',$request->course_id)->first();
+						
+					$creadit_required =	$coach_course->creadit_required;
+					// print_r($commission_percent->admin_percent);die;
 
+					$commission = $creadit_required * $commission_percent->admin_percent / 100;
+
+					$coach_payment = $creadit_required - $commission;
+					// print_r($coach_payment);die;
 						$date = date('d-m-yy');
 						$data = array(
 							'user_id' => $request->user_id,
 							'coach_id' => $request->coach_id,
 							'course_id' => $request->course_id,
 							'enroll_status' => 'active',
-							'created_at' => $date
+							'commission_percent' =>$commission_percent->admin_percent,
+							'commission' =>$commission,
+							'coach_payment'=>$coach_payment,
+							'total_payment'=>$creadit_required,
+							'created_at' => now()
 						);
 
 						DB::table('enroll_course')->insert($data);
@@ -1976,7 +1990,7 @@ $enroldStrvreUser_id = 0;
 		$data['totalStrivrePayment'] = count($data['totalStrivre']);
 
 		$data['strivrePayment'] = DB::table('users')
-			->select('enroll_course.id as enroll_id', 'enroll_course.user_id as enroll_user_id', 'enroll_course.coach_id as enroll_coach_id', 'enroll_course.payment_status', 'enroll_course.course_id', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
+			->select('enroll_course.id as enroll_id', 'enroll_course.user_id as enroll_user_id', 'enroll_course.coach_id as enroll_coach_id', 'enroll_course.payment_status', 'enroll_course.course_id', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*','enroll_course.commission_percent','enroll_course.commission','enroll_course.coach_payment','enroll_course.total_payment','enroll_course.created_at as payment_date')
 			->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
 			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
 			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
@@ -1984,14 +1998,14 @@ $enroldStrvreUser_id = 0;
 
 
 		$data['strivrePaymentCount'] = DB::table('users')
-			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
+			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*','enroll_course.coach_payment')
 			->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
 			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
 			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')
 			->where('enroll_course.coach_id', $user->id)->where('enroll_course.payment_status', 'done')->get();
 
 		$data['strivrePaymentAvailable'] = DB::table('users')
-			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*')
+			->select('enroll_course.*', 'users.name as strivre_name', 'users.email as strivre_email', 'coach_course.*','enroll_course.coach_payment')
 			->join('enroll_course', 'users.id', '=', 'enroll_course.user_id')
 			->join('coach_course', 'coach_course.id', '=', 'enroll_course.course_id')
 			// ->join('user_subscription_payment','user_subscription_payment.user_id','=','users.id')

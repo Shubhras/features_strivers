@@ -199,7 +199,7 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
                                     $total_balance = [];
                                     foreach ($strivrePayment as $totalBalance) {
 
-                                        $total_balance[$totalBalance->total_consultation_fee] =  $totalBalance->total_consultation_fee;
+                                        $total_balance[$totalBalance->coach_payment] =  $totalBalance->coach_payment;
                                     }
 
                                     $totalvalus = array_sum($total_balance);
@@ -241,7 +241,7 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
                         $requested_balance = [];
                         foreach ($strivrePaymentCount as $totalBalance) {
 
-                            $requested_balance[$totalBalance->total_consultation_fee] =  $totalBalance->total_consultation_fee;
+                            $requested_balance[$totalBalance->coach_payment] =  $totalBalance->coach_payment;
                         }
 
                         $requestedtotalvalus = array_sum($requested_balance);
@@ -255,7 +255,7 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
                         $available_balance = [];
                         foreach ($strivrePaymentAvailable as $totalBalance) {
 
-                            $available_balance[$totalBalance->total_consultation_fee] =  $totalBalance->total_consultation_fee;
+                            $available_balance[$totalBalance->coach_payment] =  $totalBalance->coach_payment;
                         }
 
                         $availabletotalvalus = array_sum($available_balance);
@@ -314,9 +314,10 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
                                                 <th class="course">Student</th>
                                                 <th class="date">Course</th>
                                                 <th class="grade">Total Amount</th>
-                                                <th class="progres">Date </th>
                                                 <th class="progres"> Fee deducted </th>
                                                 <th class="progres">Net payment </th>
+                                                <th class="progres">Commission % </th>
+                                                <th class="progres">Date </th>
                                                 <th class="progres">Action</th>
 
 
@@ -338,10 +339,11 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
                                                         <a href="#">{{$strivrePaymentDetail->strivre_name}}</a>
                                                     </td>
                                                     <td class="date">{{$strivrePaymentDetail->course_name}}</td>
-                                                    <td class="grade">{{$strivrePaymentDetail->total_consultation_fee}}</td>
-                                                    <td class="progres">{{$strivrePaymentDetail->dated}}</td>
-                                                    <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
-                                                    <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
+                                                    <td class="grade">{{$strivrePaymentDetail->total_payment}}</td>
+                                                    <td class="progres">{{$strivrePaymentDetail->commission}}</td>
+                                                    <td class="grade">{{$strivrePaymentDetail->coach_payment}}</td>
+                                                    <td class="grade">{{$strivrePaymentDetail->commission_percent}}&nbsp;%</td>
+                                                    <td class="progres">{{$strivrePaymentDetail->payment_date}}</td>
 
                                                     <?php if ($strivrePaymentDetail->payment_status != null) { ?>
                                                         <td class="grade"><input type="checkbox" name="payment_status" checked disabled></td>
