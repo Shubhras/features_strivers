@@ -49,10 +49,10 @@
 				// print_r(url('/admin/categories'));
 			?>
 			<!-- //strivre check  -->
-				<div class="card-header {{ $xPanel->hasAccess('create')?'with-border':'' }}">
+				<!-- <div class="card-header {{ $xPanel->hasAccess('create')?'with-border':'' }}">
 					@include('admin::panel.inc.button_stack', ['stack' => 'top'])
 					<div id="datatable_button_stack" class="float-end text-end"></div>
-				</div>
+				</div> -->
 				
 				<?php }else{ ?>
 
