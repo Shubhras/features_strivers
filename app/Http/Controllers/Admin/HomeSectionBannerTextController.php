@@ -41,7 +41,7 @@ class HomeSectionBannerTextController extends PanelController
 		$this->xPanel->enableDetailsRow();
 		$this->xPanel->allowAccess(['details_row']);
 		
-		// $this->xPanel->addButtonFromModelFunction('top', 'bulk_delete_btn', 'bulkDeleteBtn', 'end');
+		$this->xPanel->addButtonFromModelFunction('top', 'bulk_delete_btn', 'bulkDeleteBtn', 'end');
 		$this->xPanel->addButtonFromModelFunction('line', 'impersonate', 'impersonateBtn', 'beginning');
 		
 
@@ -83,6 +83,8 @@ class HomeSectionBannerTextController extends PanelController
 				'rows'        => 20,
 			],
 		]);
+
+	
 	}
 	
 

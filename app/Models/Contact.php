@@ -230,7 +230,7 @@ class Contact extends BaseUser
 		}
 		
 		$url = admin_url('Contact/' . $this->id);
-        $url2 = admin_url('Contact');
+        // $url2 = admin_url('Contact');
 		
 		$out = '';
 		$out .= '<a href="' . $url . '" class="btn btn-xs btn-danger" data-button-type="delete">';

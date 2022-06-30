@@ -84,6 +84,7 @@
                         <li><a href="{{url('contact')}}">Contact us</a> </li>
 
                         <li><a href="{{url('all_article')}}">Article</a></li>
+                        <li><a href="{{url('page/faq')}}">FAQ</a></li>
                         <!-- <li><a href="#">Courses</a></li> -->
                         <!-- <li><a href="{{ \App\Helpers\UrlGen::contact() }}">Contact Us</a></li> -->
                     </ul>

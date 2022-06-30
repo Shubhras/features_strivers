@@ -657,17 +657,19 @@ body {
 
                             if (!empty($catUser)) {
                                 foreach ($catUser as $val) {
-                                    $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+                                    $q1 = DB::table('categories')->select('categories.name as categories_name')->where('categories.id', $val)->first();
 
 
 
 
-                                    $name = json_decode($q1->categories_slug);
+                                    $name = json_decode($q1->categories_name);
+                                    
                                     $ss = array();
                                     foreach ($name as $key => $sub) {
                                         $ss[$key] = $sub;
                                     }
-
+                                    // print_r($ss);die;
+                                
 
                             ?>
 
@@ -675,6 +677,7 @@ body {
                                     </p>
                                 <?php
                                 }
+                                
                             } else {
                                 ?>
                                 <p class=" text-center">Others
@@ -739,20 +742,51 @@ body {
 
                                 <?php
 
-                                if (!empty($coach_list->slug)) {
+                                // if (!empty($coach_list->slug)) {
 
 
-                                    $name = json_decode($coach_list->slug);
-                                    $ss = array();
-                                    foreach ($name as $key => $sub) {
-                                        $ss[$key] = $sub;
-                                    }
+                                //     $name = json_decode($coach_list->slug);
+                                //     $ss = array();
+                                //     foreach ($name as $key => $sub) {
+                                //         $ss[$key] = $sub;
+                                //     }
 
                                 ?>
 
-                                    <p class="text-center">{{$ss['en']}}
-                                    </p>
-                                <?php  } else {
+                                    <!-- <p class="text-center">{{$ss['en']}}
+                                    </p> -->
+                                    <?php
+
+                                    $conditions = $coach_list->category;
+                                $x = explode(",", $conditions);
+                                $catss =  json_encode($x);
+                                $catUser = json_decode($catss);
+                                if (!empty($catUser)) {
+
+                                    foreach ($catUser as $val) {
+
+                                        $q1 = DB::table('categories')->select('categories.*')->where('categories.id', $val)->first();
+
+
+
+                                        // $cat =  json_encode($q1->name);
+                                        $name = json_decode($q1->name);
+                                        // $name = $q1->name;
+
+
+                                        $ss = array();
+                                        foreach ($name as $key => $sub) {
+                                            $ss[$key] = $sub;
+                                        }
+                                ?>
+
+                                        <p class="lh">{{$ss['en']}}
+                                        </p>
+                                    <?php
+                                    }
+
+                                 } 
+                                else {
                                 ?>
                                     <p class=" text-center">Others
                                     </p>

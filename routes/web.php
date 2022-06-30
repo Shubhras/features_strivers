@@ -157,6 +157,9 @@ Route::group([
 
 		Route::post('users_active', 'CoachController@userActive');
 
+		Route::post('users_aproove', 'CoachPaymentRequestController@users_aproove');
+		
+
 		// Others
 		Route::get('account', 'UserController@account');
 		Route::get('tasks', 'EnrollcourseController@exportCsv');

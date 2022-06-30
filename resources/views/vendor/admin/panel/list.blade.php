@@ -42,16 +42,22 @@
 			 $user_id = auth()->user()->user_type_id;
 		
 			 if($user_id == 4 ){
-				// if(url('admin/logo_and_image_change')){
+
+
+				if(url('/admin/categories') == url('/admin/categories')){
 					
-				
+				// print_r(url('/admin/categories'));
 			?>
+			<!-- //strivre check  -->
 				<div class="card-header {{ $xPanel->hasAccess('create')?'with-border':'' }}">
 					@include('admin::panel.inc.button_stack', ['stack' => 'top'])
 					<div id="datatable_button_stack" class="float-end text-end"></div>
 				</div>
 				
-				<?php 
+				<?php }else{ ?>
+
+			<?php	}
+
 			 }else if($user_id == 1){
 				
 				?>

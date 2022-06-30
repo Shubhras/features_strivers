@@ -215,7 +215,11 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
                                 <!-- <a href="#" class="get-payments-btn card text-white card-body till_date_striver"> -->
                                 <form action="{{url('/account/get-coach-payment-request')}}" method="post" class="get-payments-btn card text-white card-body till_date_striver">
                                     <div class="coaches_get_payment">
+                                        <input type="hidden" name="total_payment" id="total_payment" style="float: left; font-size: 14px; width:80px; border:none;" value="">
+
                                         <input type="text" name="total_payment_select" id="total_payment_select" style="float: left; font-size: 14px; width:80px; border:none;" value="">
+
+                                        <input type="hidden" name="commission" id="commission" style="float: left; font-size: 14px; width:80px; border:none;" value="">
 
 
                                         <input type="hidden" name="select_payment_id" id="select_payment_id" style="float: left; font-size: 14px; width:80px; border:none;" value="">
@@ -869,9 +873,9 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
                                     <th class="date">Course</th>
                                     <th class="grade">Total Amount</th>
                                     <th class="progres">Date </th>
-                                    <th class="progres"> Fee deducted </th>
-                                    <th class="progres">Net payment </th>
-                                    <th class="progres">Action</th>
+                                    <!-- <th class="progres"> Fee deducted </th>
+                                    <th class="progres">Net payment </th> -->
+                                    <!-- <th class="progres">Action</th> -->
 
 
 
@@ -892,19 +896,12 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
                                             <a href="#">{{$strivrePaymentDetail->strivre_name}}</a>
                                         </td>
                                         <td class="date">{{$strivrePaymentDetail->course_name}}</td>
-                                        <td class="grade">{{$strivrePaymentDetail->total_consultation_fee}}</td>
+                                        <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
                                         <td class="progres">{{$strivrePaymentDetail->dated}}</td>
-                                        <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
-                                        <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
+                                        <!-- <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td>
+                                        <td class="grade">{{$strivrePaymentDetail->creadit_required}}</td> -->
 
-                                        <?php if ($strivrePaymentDetail->payment_status != null) { ?>
-                                            <td class="grade"><input type="checkbox" name="payment_status" checked disabled></td>
-
-                                        <?php } else { ?>
-                                            <td class="grade"><input type="checkbox" name="payment_status_id" id="payment_status_id_{{$strivrePaymentDetail->enroll_id}}" onclick="javascript: SelectallColorsForStyle(this, value);" value="{{$strivrePaymentDetail->enroll_id}}"></td>
-
-
-                                        <?php } ?>
+                                        
 
                                     </tr>
 
@@ -1260,7 +1257,9 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
 
                         // $("#sub_category34").empty();
                         // alert(Response.coach_payment);
-                        $("#total_payment_select").val(Response.coach_payment);
+                        $("#total_payment").val(Response.total_payment);
+                        $("#total_payment_select").val(Response.coach_payment_request);
+                        $("#commission").val(Response.commission);
 
                         $("#select_payment_id").val(payment_status_id);
 

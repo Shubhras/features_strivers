@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\CoachPaymentRequest;
 use App\Models\PaymentMethod;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\Admin\Request;
 use Larapen\Admin\app\Http\Controllers\PanelController;
 use App\Http\Requests\Admin\Request as StoreRequest;
 use App\Http\Requests\Admin\Request as UpdateRequest;
@@ -69,22 +71,38 @@ class CoachPaymentRequestController extends PanelController
 
 
 		$this->xPanel->addColumn([
+			'name'          => 'total_payment',
+			'label'         => trans('Total Payment'),
+			
+			
+		]);
+		$this->xPanel->addColumn([
 			'name'          => 'payment',
-			'label'         => trans('admin.Package'),
+			'label'         => trans('Requested Payment'),
+			
+			
+		]);
+		$this->xPanel->addColumn([
+			'name'          => 'commission',
+			'label'         => trans('Commission'),
 			
 			
 		]);
 		
+		// $this->xPanel->addColumn([
+		// 	'name'          => 'active',
+        //     'label'         => trans('admin.Approved'),
+		// 	'type'          => 'model_function',
+		// 	'function_name' => 'getActiveHtml',
+        //     'on_display'    => 'checkbox',
+			
+		// ]);
+
 		$this->xPanel->addColumn([
-			'name'          => 'active',
-            'label'         => trans('admin.Approved'),
-			'type'          => 'model_function',
-			'function_name' => 'getActiveHtml',
-            'on_display'    => 'checkbox',
-            
-            
-			
-			
+			'name'  => 'active',
+			'label' => trans('admin.Approved'),
+			'type'  => 'model_function',
+			'function_name' => 'getVerifiedAprooveProfileHtml'
 		]);
 
 
@@ -168,5 +186,21 @@ class CoachPaymentRequestController extends PanelController
 		}
 		
 		return $arr;
+	}
+
+	public function users_aproove(Request $request){
+
+
+		$activeData = DB::table('coach_payment_request')->select('coach_payment_request.active')->where('coach_payment_request.id',$request->primaryKey)->first();
+
+		if($activeData->active == 0){
+			$data = DB::table('coach_payment_request')->where('coach_payment_request.id',$request->primaryKey)->update(['active'=> 1]);
+		}else{
+			$data = DB::table('coach_payment_request')->where('coach_payment_request.id',$request->primaryKey)->update(['active'=> 0]);
+		}
+		
+
+		// print_r($request->all());die;
+		return $data;
 	}
 }

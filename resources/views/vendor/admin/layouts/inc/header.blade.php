@@ -3,37 +3,41 @@
 	$navbarTheme = (config('settings.style.admin_navbar_bg') == 'skin6') ? 'navbar-light' : 'navbar-dark';
 	?>
 	<nav class="navbar top-navbar navbar-expand-md {{ $navbarTheme }}">
-		
+
 		<div class="navbar-header">
-			
+
 			{{-- This is for the sidebar toggle which is visible on mobile only --}}
 			<a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
 				<i class="ti-menu ti-close"></i>
 			</a>
-			
+
 			{{-- Logo --}}
 			<a class="navbar-brand" href="{{ url('/') }}" target="_blank">
 				{{-- Logo text --}}
 				<span class="logo-text">
-					<!-- <img src="/assets/images/logo4.png" alt="{{ strtolower(config('settings.app.name')) }}" class="dark-logo img-fluid" style="height: 70px;"/>
-					<img src="/assets/images/logo4.png" alt="{{ strtolower(config('settings.app.name')) }}" class="light-logo img-fluid" style="height: 70px;"/> -->
+					<?php
+					$index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
+
+					$sticky_and_footer_logo = DB::table('sticky_Header_logo')->select('sticky_Header_logo.*')->first();
+
+
+					?>
+				<!-- <img src="{{ url('storage/'.$index_and_footer_logo->picture) }}" alt=""> -->
+					<!-- <img src="/assets/images/logo4.png" alt="{{ strtolower(config('settings.app.name')) }}" class="dark-logo img-fluid" style="height: 70px;" />
+					<img src="/assets/images/logo4.png" alt="{{ strtolower(config('settings.app.name')) }}" class="light-logo img-fluid" style="height: 70px;" /> -->
+
+					<img src="{{ url('storage/'.$index_and_footer_logo->picture) }}" alt="{{ strtolower(config('settings.app.name')) }}" class="dark-logo img-fluid" style="height: 70px;" />
+					<img src="{{ url('storage/'.$sticky_and_footer_logo->picture) }}" alt="{{ strtolower(config('settings.app.name')) }}" class="light-logo img-fluid" style="height: 70px;" />
 				</span>
 			</a>
-			
+
 			{{-- Toggle which is visible on mobile only --}}
-			<a class="topbartoggler d-block d-md-none waves-effect waves-light"
-			   href="javascript:void(0)"
-			   data-bs-toggle="collapse"
-			   data-bs-target="#navbarSupportedContent"
-			   aria-controls="navbarSupportedContent"
-			   aria-expanded="false"
-			   aria-label="Toggle navigation"
-			>
+			<a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<i data-feather="more-horizontal" class="feather-sm"></i>
 			</a>
-			
+
 		</div>
-		
+
 		<div class="navbar-collapse collapse" id="navbarSupportedContent">
 			{{-- Toggle and nav items --}}
 			<ul class="navbar-nav me-auto">
@@ -43,22 +47,13 @@
 					</a>
 				</li>
 			</ul>
-			
+
 			{{-- Right side toggle and nav items --}}
 			<ul class="navbar-nav justify-content-end">
 				{{-- Profile --}}
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle waves-effect waves-dark"
-					   href=""
-					   data-bs-toggle="dropdown"
-					   aria-haspopup="true"
-					   aria-expanded="false"
-					>
-						<img src="{{ auth()->user()->photo_url }}"
-							 alt="user"
-							 width="30"
-							 class="profile-pic rounded-circle"
-						/>
+					<a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img src="{{ auth()->user()->photo_url }}" alt="user" width="30" class="profile-pic rounded-circle" />
 					</a>
 					<div class="dropdown-menu dropdown-menu-end user-dd">
 						<div class="d-flex no-block align-items-center p-3 bg-primary text-white mb-2">
@@ -81,6 +76,6 @@
 				</li>
 			</ul>
 		</div>
-		
+
 	</nav>
 </header>

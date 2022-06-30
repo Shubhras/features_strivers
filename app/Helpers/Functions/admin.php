@@ -135,6 +135,31 @@ function ajaxCheckboxActiveDisplay($id, $table, $field, $fieldValue = null)
 }
 
 
+function ajaxCheckboxAprooveDisplay($id, $table, $field, $fieldValue = null)
+{
+    $lineId = $field.$id;
+    $lineId = str_replace('.', '', $lineId); // fix JS bug (in admin layout)
+    $data = 'data-table="' . $table . '" 
+			data-field="'.$field.'" 
+			data-line-id="' . $lineId . '" 
+			data-id="' . $id . '" 
+			data-value="' . (isset($fieldValue) ? $fieldValue : 0) . '"';
+
+    // Decoration
+    if (isset($fieldValue) && $fieldValue == 1) {
+        $html = '<i id="' . $lineId . '" class="admin-single-icon fa fa-toggle-on" aria-hidden="true"></i>';
+    } else {
+        $html = '<i id="' . $lineId . '" class="admin-single-icon fa fa-toggle-off" aria-hidden="true"></i>';
+    }
+    // $html = '<a href="" class="ajax-request" ' . $data . '>' . $html . '</a>';
+
+    $html = '<a onClick="window.location.reload();" href="" class="ajax-request-aproove" ' . $data . '>' . $html . '</a>';
+
+
+    return $html;
+}
+
+
 
 /**
  * Advanced Ajax Checkbox Display

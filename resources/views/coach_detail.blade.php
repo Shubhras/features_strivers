@@ -37,18 +37,42 @@
 					<h4 class=" text-center">
 						<?php
 
-						if (!empty($top_coach_detail->slug)) {
-							$title = json_decode($top_coach_detail->slug);
-							$ss = array();
-							foreach ($title as $key => $sub) {
-								$ss[$key] = $sub;
-							}
+						if (!empty($top_coach_detail->category)) {
+							// $title = json_decode($top_coach_detail->slug);
+							// $ss = array();
+							// foreach ($title as $key => $sub) {
+							// 	$ss[$key] = $sub;
+							// }
 
 
-						?>
-							{{$ss['en']}}
+					
 
-						<?php } ?>
+$conditions = $top_coach_detail->category;
+// print_r($conditions);die;
+                            $x = explode(",", $conditions);
+                            $catss =  json_encode($x);
+                            $catUser = json_decode($catss);
+
+                            if (!empty($catUser)) {
+                                foreach ($catUser as $val) {
+                                    $q1 = DB::table('categories')->select('categories.name as categories_slug')->where('categories.id', $val)->first();
+
+
+
+
+                                    $name = json_decode($q1->categories_slug);
+                                    $ss = array();
+                                    foreach ($name as $key => $sub) {
+                                        $ss[$key] = $sub;
+                                    }
+
+
+                            ?>
+
+                                
+							{{$ss['en']}},
+
+						<?php }} }?>
 					</h4>
 				</center>
 

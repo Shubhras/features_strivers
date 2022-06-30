@@ -111,69 +111,25 @@ class CoachController extends PanelController
 		// 		$this->xPanel->addClause('where', 'country_code', '=', $value);
 		// 	});
 		// // -----------------------
-		$this->xPanel->addFilter([
-			'name'  => 'status',
-			'type'  => 'dropdown',
-			'label' => trans('admin.Status'),
-		], [
-			1 => trans('admin.Unactivated'),
-			2 => trans('admin.Activated'),
-		], function ($value) {
-			if ($value == 1) {
-				$this->xPanel->addClause('where', 'verified_email', '=', 0);
-				$this->xPanel->addClause('orWhere', 'verified_phone', '=', 0);
-			}
-			if ($value == 2) {
-				$this->xPanel->addClause('where', 'verified_email', '=', 1);
-				$this->xPanel->addClause('where', 'verified_phone', '=', 1);
-			}
-		});
-		// // -----------------------
-		// $this->xPanel->addFilter([
-		// 	'name'  => 'type',
-		// 	'type'  => 'dropdown',
-		// 	'label' => trans('admin.permissions_roles'),
-		// ], [
-		// 	1 => trans('admin.Has Admins Permissions'),
-		// 	2 => trans('admin.Has Super-Admins Permissions'),
-		// 	3 => trans('admin.Has Super-Admins Role'),
-		// ], function ($value) {
-		// 	if ($value == 1) {
-		// 		$this->xPanel->addClause('permission', Permission::getStaffPermissions());
-		// 	}
-		// 	if ($value == 2) {
-		// 		$this->xPanel->addClause('permission', Permission::getSuperAdminPermissions());
-		// 	}
-		// 	if ($value == 3) {
-		// 		$this->xPanel->addClause('role', Role::getSuperAdminRole());
-		// 	}
-		// });
-		
 		// $this->xPanel->addFilter([
 		// 	'name'  => 'status',
 		// 	'type'  => 'dropdown',
 		// 	'label' => trans('admin.Status'),
 		// ], [
-		// 	1 => trans('admin.Activated'),
-		// 	2 => trans('admin.Unactivated'),
+		// 	1 => trans('admin.Unactivated'),
+		// 	2 => trans('admin.Activated'),
 		// ], function ($value) {
 		// 	if ($value == 1) {
-		// 		$this->xPanel->addClause('where', 'active', '=', 1);
+		// 		$this->xPanel->addClause('where', 'verified_email', '=', 0);
+		// 		$this->xPanel->addClause('orWhere', 'verified_phone', '=', 0);
 		// 	}
 		// 	if ($value == 2) {
-		// 		$this->xPanel->addClause('where', function ($query) {
-		// 			$query->where(function ($query) {
-		// 				$query->where('active', '!=', 1)->orWhereNull('active');
-		// 			});
-		// 		});
+		// 		$this->xPanel->addClause('where', 'verified_email', '=', 1);
+		// 		$this->xPanel->addClause('where', 'verified_phone', '=', 1);
 		// 	}
 		// });
-		/*
-		|--------------------------------------------------------------------------
-		| COLUMNS AND FIELDS
-		|--------------------------------------------------------------------------
-		*/
-
+	
+		
 
 		if (request()->segment(2) != 'account' && $this->xPanel->addClause('where', 'user_type_id', '=', 2)) {
 			// COLUMNS

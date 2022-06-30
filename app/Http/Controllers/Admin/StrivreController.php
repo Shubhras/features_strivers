@@ -54,16 +54,16 @@ class StrivreController extends PanelController
 
 		$this->xPanel->setRoute(admin_uri('strivre'));
 		$this->xPanel->setEntityNameStrings(trans('admin.user_strivre'), trans('admin.strivre'));
-		if (!request()->input('order')) {
-			$this->xPanel->orderBy('created_at', 'DESC');
-		}
-		$this->xPanel->enableDetailsRow();
-		$this->xPanel->allowAccess(['details_row']);
+		// if (!request()->input('order')) {
+		// 	$this->xPanel->orderBy('created_at', 'DESC');
+		// }
+		// $this->xPanel->enableDetailsRow();
+		// $this->xPanel->allowAccess(['details_row']);
 		
-		$this->xPanel->addButtonFromModelFunction('top', 'bulk_delete_btn', 'bulkDeleteBtn', 'end');
-		$this->xPanel->addButtonFromModelFunction('line', 'impersonate', 'impersonateBtn', 'beginning');
-		$this->xPanel->removeButton('delete');
-		$this->xPanel->addButtonFromModelFunction('line', 'delete', 'deleteBtn', 'end');
+		// $this->xPanel->addButtonFromModelFunction('top', 'bulk_delete_btn', 'bulkDeleteBtn', 'end');
+		// $this->xPanel->addButtonFromModelFunction('line', 'impersonate', 'impersonateBtn', 'beginning');
+		// $this->xPanel->removeButton('delete');
+		// $this->xPanel->addButtonFromModelFunction('line', 'delete', 'deleteBtn', 'end');
 		
 		// Filters
 		// -----------------------

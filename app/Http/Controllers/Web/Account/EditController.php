@@ -339,6 +339,14 @@ if($aproove == 0){
 
 		$data['categories'] = DB::table('categories')->select('categories.*')->orderBy('categories.slug', 'asc')->where('categories.parent_id', null)->get();
 
+		$data['index_and_footer_logo'] = DB::table('logo_header_and_footer_and_images_change')->select('logo_header_and_footer_and_images_change.*')->first();
+		$data['home_section_banner_text'] = DB::table('home_section_banner_text')->select('home_section_banner_text.*')->orderBy('home_section_banner_text.id','desc')->first();
+
+
+		$data['home_page_section_two__banner'] = DB::table('home_page_section_two__banner')->select('home_page_section_two__banner.*')->orderBy('home_page_section_two__banner.id','desc')->first();
+
+		$data['home_page_section_three_banner'] = DB::table('home_page_section_three_banner')->select('home_page_section_three_banner.*')->orderBy('home_page_section_three_banner.id','desc')->first();
+		
 		if (empty($edit_user->category)) {
 			return view('auth.register.user_category', $data);
 		} else {
@@ -2207,12 +2215,18 @@ $enroldStrvreUser_id = 0;
 			// print_r($subcategories);die;
 			$data[$key] = $subcategories;
 			$data1[$key] = $subcategories->total_consultation_fee;
+			$data2[$key] = $subcategories->total_payment;
+			$data3[$key] = $subcategories->coach_payment;
+			$data4[$key] = $subcategories->commission;
 
 			// DB::table('enroll_course')->where('enroll_course.id', $paymentUserId)->update(['enroll_course.payment_status' => 'done']);
 
 		}
 
 		$alldata['coach_payment']=array_sum($data1);
+		$alldata['total_payment']=array_sum($data2);
+		$alldata['coach_payment_request']=array_sum($data3);
+		$alldata['commission']=array_sum($data4);
 	
 		
 		// print_r($alldata);
@@ -2259,7 +2273,9 @@ $enroldStrvreUser_id = 0;
 		$data = array(
 			'coach_id' => $user->id,
 			'email' => $user->email,
+			'total_payment' =>$request->total_payment,
 			'payment' => $request->total_payment_select,
+			'commission'=>$request->commission,
 			'created_at' => $datess,
 			'updated_at' => $datess
 
