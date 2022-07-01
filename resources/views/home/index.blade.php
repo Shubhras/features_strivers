@@ -546,7 +546,7 @@ foreach($categories_list_coach187 as $userCatMulti){
 
                         <div class="">
                             <!-- <img src="assets/images/edu_2.png" alt=""> -->
-                            <img src="{{ url('storage/'.$home_page_section_two__banner->picture) }}" alt="">
+                            <img src="{{ url('storage/'.$home_page_section_two__banner->picture) }}" alt="" style="height:98%">
                         </div>
                         <br>
                     </div>

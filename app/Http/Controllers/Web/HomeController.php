@@ -36,6 +36,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use App\Helpers\Files\Storage\StorageDisk;
 use Auth;
+use Mail;
 
 use App\Http\Controllers\Web\Session;
 
@@ -1287,15 +1288,53 @@ if ($request->user_type_id == 2) {
 			'message' => $request->message
 		]);
 
-		$dataq  = DB::table('contact')->insert($data);
+		
 
-		$message = !empty(data_get($dataq, 'message')) ? data_get($dataq, 'message') : 'Unknown Error.';
-		if (array_get($dataq, 'success')) {
+		// $message = !empty(data_get($dataq, 'message')) ? data_get($dataq, 'message') : 'Unknown Error.';
+		// if (array_get($dataq, 'success')) {
+		// 	flash($message)->success();
+		// } else {
+		// 	flash($message)->error();
+		// }
+
+
+
+
+		if (!empty($request->all())) {
+			$insert_id  = DB::table('contact')->insert($data);
+			$userEmail = 'sunil.vis2051991@gmail.com';
+
+			
+
+			$contact_id = DB::getPDO()->lastInsertId($insert_id);
+
+			$contact_detail['contact_detail'] = DB::table('contact')->select('contact.*')
+				->where('contact.id', $contact_id)->first();
+				// print_r($contact_detail);die;
+			if (env('MAIL_USERNAME') != null && env('MAIL_USERNAME') != "null" && env('MAIL_USERNAME') != "") {
+				// Send mail to User his new otp
+				Mail::send('emails.send_contact_detail', ['contact_detail' => $contact_detail], function ($m) use ($userEmail) {
+					$m->from('sunil.vis2051991@gmail.com', 'ycsdigitalstage.co.uk');
+					$m->to($userEmail, 'Admin')->subject('New course inquiry ');
+				});
+			}
+
+			$message = !empty(data_get($insert_id, 'message')) ? data_get($insert_id, 'message') : 'Unknown Error.';
+		if (array_get($insert_id, 'success')) {
 			flash($message)->success();
-		} else {
+		}  else {
 			flash($message)->error();
 		}
-		return appView('pages.contact', $data);
+	}
+			return appView('pages.contact', $data);
+		
+
+
+
+
+
+
+		
 		// print_r($request->all());die;
 
 	}

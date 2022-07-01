@@ -66,24 +66,32 @@ class HomeSectionBannerTextController extends PanelController
 
         $this->xPanel->addField([
 			'name'       => 'picture',
-			'label'      => trans('Home Banner Image'),
+			'label'      => trans('Home Banner Image size 477kb type jpg'),
 			'type'   => 'image',
 			'upload' => true,
 			'disk'   => 'public',
 		]);
         
+		// $this->xPanel->addField([
+		// 	'name'       => 'home_page_section_banner_text',
+		// 	'label'      => trans('home page section banner text'),
+		// 	'type'       => ($wysiwygEditor != 'none' && file_exists(resource_path() . $wysiwygEditorViewPath))
+		// 		? $wysiwygEditor
+		// 		: 'textarea',
+		// 	'attributes' => [
+		// 		'placeholder' => trans('home page section banner text'),
+		// 		'rows'        => 20,
+		// 	],
+		// ]);
+
 		$this->xPanel->addField([
 			'name'       => 'home_page_section_banner_text',
-			'label'      => trans('home page section banner text'),
-			'type'       => ($wysiwygEditor != 'none' && file_exists(resource_path() . $wysiwygEditorViewPath))
-				? $wysiwygEditor
-				: 'textarea',
+			'label'      => mb_ucfirst(trans('Text')),
+			'type'       => 'text',
 			'attributes' => [
-				'placeholder' => trans('home page section banner text'),
-				'rows'        => 20,
+				'placeholder' => mb_ucfirst(trans('Text')),
 			],
 		]);
-
 	
 	}
 	

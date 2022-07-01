@@ -60,7 +60,7 @@ class HomePageSectionThreeBannerController extends PanelController
 
         $this->xPanel->addField([
 			'name'       => 'picture',
-			'label'      => trans('Home Banner Image'),
+			'label'      => trans('Home Banner Image size 477kb type jpg'),
 			'type'   => 'image',
 			'upload' => true,
 			'disk'   => 'public',
