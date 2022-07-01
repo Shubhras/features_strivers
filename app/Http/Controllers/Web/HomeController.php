@@ -1302,11 +1302,14 @@ if ($request->user_type_id == 2) {
 
 		if (!empty($request->all())) {
 			$insert_id  = DB::table('contact')->insert($data);
-			$userEmail = 'sunil.vis2051991@gmail.com';
-
 			
+			// $userEmail = 'info@digiprima.com';
+			$userEmail = $request->email;
+
+			// print_r($userEmail);die;
 
 			$contact_id = DB::getPDO()->lastInsertId($insert_id);
+			// print_r($contact_id);die;
 
 			$contact_detail['contact_detail'] = DB::table('contact')->select('contact.*')
 				->where('contact.id', $contact_id)->first();
@@ -1314,12 +1317,14 @@ if ($request->user_type_id == 2) {
 			if (env('MAIL_USERNAME') != null && env('MAIL_USERNAME') != "null" && env('MAIL_USERNAME') != "") {
 				// Send mail to User his new otp
 				Mail::send('emails.send_contact_detail', ['contact_detail' => $contact_detail], function ($m) use ($userEmail) {
-					$m->from('sunil.vis2051991@gmail.com', 'ycsdigitalstage.co.uk');
+					$m->from('info@digiprima.com', 'digiprima.com');
 					$m->to($userEmail, 'Admin')->subject('New course inquiry ');
 				});
 			}
 
 			$message = !empty(data_get($insert_id, 'message')) ? data_get($insert_id, 'message') : 'Unknown Error.';
+
+		
 		if (array_get($insert_id, 'success')) {
 			flash($message)->success();
 		}  else {
