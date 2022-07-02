@@ -106,12 +106,7 @@ class HomePageSectionThreeBanner extends BaseUser
 	 *
 	 * @return array
 	 */
-	
-	
 
-	
-	
-	
 
 	
 
@@ -404,9 +399,12 @@ class HomePageSectionThreeBanner extends BaseUser
 			$value = null;
 		}
 		
-    }
-		
-	
+		return $value;
+
+
+
+       
+	}
 	
 	/*
 	|--------------------------------------------------------------------------
@@ -462,8 +460,8 @@ class HomePageSectionThreeBanner extends BaseUser
 				$imageQuality = 100;
 				
 				// Image default dimensions
-				$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 500);
-				$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 340);
+				$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 1800);
+				$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 1000);
 				
 				// Init. Intervention
 				$image = Image::make($value);
@@ -510,6 +508,7 @@ class HomePageSectionThreeBanner extends BaseUser
 			
 			return false;
 		}
+
         
 
 	}

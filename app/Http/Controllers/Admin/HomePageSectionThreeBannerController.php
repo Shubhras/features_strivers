@@ -30,6 +30,7 @@ class HomePageSectionThreeBannerController extends PanelController
 		
         
 		$this->xPanel->setModel('App\Models\HomePageSectionThreeBanner');
+		// print_r($this->xPanel->setModel('App\Models\HomePageSectionThreeBanner'));die;
 		$this->xPanel->setRoute(admin_uri('home_section_three_banner'));
 		$this->xPanel->setEntityNameStrings(trans('Home Page Banner Section 3'), trans('Home Page Banner Section 3'));
 		if (!request()->input('order')) {
@@ -42,10 +43,17 @@ class HomePageSectionThreeBannerController extends PanelController
 		$this->xPanel->addButtonFromModelFunction('line', 'impersonate', 'impersonateBtn', 'beginning');
 		
 
-        
+
+        	
+		/*
+		|--------------------------------------------------------------------------
+		| COLUMNS AND FIELDS
+		|--------------------------------------------------------------------------
+		*/
+		// COLUMNS
 		$this->xPanel->addColumn([
 			'name'          => 'picture',
-			'label'         => trans('Home Banner Image'),
+			'label'         => trans('Home Banner'),
 			
 		]);
 		$this->xPanel->addColumn([
@@ -57,6 +65,7 @@ class HomePageSectionThreeBannerController extends PanelController
 
         $wysiwygEditor = config('settings.other.wysiwyg_editor');
 		$wysiwygEditorViewPath = '/views/vendor/admin/panel/fields/' . $wysiwygEditor . '.blade.php';
+
 
         $this->xPanel->addField([
 			'name'       => 'picture',
