@@ -96,7 +96,7 @@ class HomePageSectionTwoBanner extends BaseUser
 		parent::boot();
 		
 		
-        HomeSectionBannerText::observe(PageObserver::class);
+        HomePageSectionTwoBanner::observe(PageObserver::class);
 		
 		static::addGlobalScope(new ActiveScope());
 	}
@@ -467,8 +467,8 @@ class HomePageSectionTwoBanner extends BaseUser
 				$imageQuality = 100;
 				
 				// Image default dimensions
-				$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 2000);
-				$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 1000);
+				$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 655);
+				$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 555);
 				
 				// Init. Intervention
 				$image = Image::make($value);

@@ -94,7 +94,7 @@ class StickyHeaderLogo extends BaseUser
 		parent::boot();
 		
 		
-        HomeSectionBannerText::observe(PageObserver::class);
+        StickyHeaderLogo::observe(PageObserver::class);
 		
 		static::addGlobalScope(new ActiveScope());
 	}
@@ -106,14 +106,7 @@ class StickyHeaderLogo extends BaseUser
 	 */
 	
 	
-
-	
-	
-	
-
-	
-
-    public function routeNotificationForMail()
+	public function routeNotificationForMail()
 	{
 		return $this->email;
 	}
@@ -402,9 +395,14 @@ class StickyHeaderLogo extends BaseUser
 			$value = null;
 		}
 		
+		return $value;
+
     }
-		
-	
+
+       
+
+
+        
 	
 	/*
 	|--------------------------------------------------------------------------
@@ -460,8 +458,8 @@ class StickyHeaderLogo extends BaseUser
 				$imageQuality = 100;
 				
 				// Image default dimensions
-				$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 2000);
-				$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 1000);
+				$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 500);
+				$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 250);
 				
 				// Init. Intervention
 				$image = Image::make($value);
@@ -508,6 +506,9 @@ class StickyHeaderLogo extends BaseUser
 			
 			return false;
 		}
+
+    
+        
         
 
 	}

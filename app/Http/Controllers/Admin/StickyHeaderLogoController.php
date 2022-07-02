@@ -52,7 +52,7 @@ class StickyHeaderLogoController extends PanelController
 
 
 
-        $wysiwygEditor = config('settings.other.wysiwyg_editor');
+		$wysiwygEditor = config('settings.other.wysiwyg_editor');
 		$wysiwygEditorViewPath = '/views/vendor/admin/panel/fields/' . $wysiwygEditor . '.blade.php';
 
         $this->xPanel->addField([

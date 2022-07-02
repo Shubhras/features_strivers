@@ -492,7 +492,7 @@ class HomeSectionBannerText extends BaseUser
 				$imageQuality = 100;
 				
 				// Image default dimensions
-				$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 2000);
+				$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 1800);
 				$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 1000);
 				
 				// Init. Intervention
