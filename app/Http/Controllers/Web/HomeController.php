@@ -36,7 +36,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use App\Helpers\Files\Storage\StorageDisk;
 use Auth;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 use App\Http\Controllers\Web\Session;
 
@@ -1303,8 +1303,8 @@ if ($request->user_type_id == 2) {
 		if (!empty($request->all())) {
 			$insert_id  = DB::table('contact')->insert($data);
 			
-			// $userEmail = 'info@digiprima.com';
-			$userEmail = $request->email;
+			$userEmail = 'chris@ycsdigital.com';
+			// $userEmail = $request->email;
 
 			// print_r($userEmail);die;
 
@@ -1317,7 +1317,7 @@ if ($request->user_type_id == 2) {
 			if (env('MAIL_USERNAME') != null && env('MAIL_USERNAME') != "null" && env('MAIL_USERNAME') != "") {
 				// Send mail to User his new otp
 				Mail::send('emails.send_contact_detail', ['contact_detail' => $contact_detail], function ($m) use ($userEmail) {
-					$m->from('info@digiprima.com', 'digiprima.com');
+					$m->from('ahujamohit327@gmail.com', 'ycsdigitalocean');
 					$m->to($userEmail, 'Admin')->subject('New course inquiry ');
 				});
 			}
@@ -1327,11 +1327,16 @@ if ($request->user_type_id == 2) {
 		
 		if (array_get($insert_id, 'success')) {
 			flash($message)->success();
+			return redirect('/contact');
+
 		}  else {
 			flash($message)->error();
+			return redirect('/contact');
 		}
 	}
-			return appView('pages.contact', $data);
+			// return appView('pages.contact', $data);
+
+			
 		
 
 

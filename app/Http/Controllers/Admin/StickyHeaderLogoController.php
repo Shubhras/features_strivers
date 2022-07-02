@@ -57,7 +57,7 @@ class StickyHeaderLogoController extends PanelController
 
         $this->xPanel->addField([
 			'name'       => 'picture',
-			'label'      => trans('Sticky Header logo'),
+			'label'      => trans('Sticky Header logo (Recommended Size 500px X 250px)'),
 			'type'   => 'image',
 			'upload' => true,
 			'disk'   => 'public',

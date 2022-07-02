@@ -79,7 +79,7 @@ class LogoHeaderAndFooterAndImagesChangeController extends PanelController
 
         $this->xPanel->addField([
 			'name'       => 'picture',
-			'label'      => trans('Home Banner Image'),
+			'label'      => trans('Home Banner (Recommended Size 500px X 250px)'),
 			'type'   => 'image',
 			'upload' => true,
 			'disk'   => 'public',

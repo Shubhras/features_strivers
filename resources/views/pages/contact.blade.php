@@ -167,7 +167,7 @@
                             </div>
                             <div class="col-md-6">
 							<label for="email">{{ ('Phone Number') }}</label>
-                                <input type="number" name="phone" placeholder="Phone Number">
+                                <input type="text" name="phone" placeholder="Phone Number" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
                             <div class="col-md-12">
 						

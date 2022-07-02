@@ -36,11 +36,11 @@ return [
 	'mailers' => [
 		'smtp' => [
 			'transport'  => 'smtp',
-			'host'       => env('MAIL_HOST', null),
-			'port'       => env('MAIL_PORT', 587),
-			'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-			'username'   => env('MAIL_USERNAME', null),
-			'password'   => env('MAIL_PASSWORD', null),
+			'host'       => env('MAIL_HOST', 'smtp.elasticemail.com'),
+			'port'       => env('MAIL_PORT', 2525),
+			'encryption' => env('MAIL_ENCRYPTION', 'Tls'),
+			'username'   => env('MAIL_USERNAME', 'sunil.vishwakarma@digiprima.com'),
+			'password'   => env('MAIL_PASSWORD', 'ACF2DC37A6B8F978A510ABC1EE41B4AF22FA'),
 			'timeout'    => null,
 		],
 		

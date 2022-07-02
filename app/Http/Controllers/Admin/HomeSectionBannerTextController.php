@@ -66,7 +66,7 @@ class HomeSectionBannerTextController extends PanelController
 
         $this->xPanel->addField([
 			'name'       => 'picture',
-			'label'      => trans('Home Banner Image size 477kb type jpg'),
+			'label'      => trans('Home Banner (Recommended Size 1800px × 1000px)'),
 			'type'   => 'image',
 			'upload' => true,
 			'disk'   => 'public',
