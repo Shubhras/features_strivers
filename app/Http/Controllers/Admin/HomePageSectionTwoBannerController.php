@@ -32,7 +32,7 @@ class HomePageSectionTwoBannerController extends PanelController
         
 		$this->xPanel->setModel('App\Models\HomePageSectionTwoBanner');
 		$this->xPanel->setRoute(admin_uri('home_section_two_banner'));
-		$this->xPanel->setEntityNameStrings(trans('Home Page Banner Section 2'), trans('Home Page Banner Section 2'));
+		$this->xPanel->setEntityNameStrings(trans('Home Page Section 2'), trans('Home Page Section 2'));
 		if (!request()->input('order')) {
 			$this->xPanel->orderBy('created_at', 'DESC');
 		}
@@ -46,7 +46,7 @@ class HomePageSectionTwoBannerController extends PanelController
         
 		$this->xPanel->addColumn([
 			'name'          => 'picture',
-			'label'         => trans('Home Banner Image'),
+			'label'         => trans('Image'),
 			
 		]);
 		$this->xPanel->addColumn([
@@ -64,7 +64,7 @@ class HomePageSectionTwoBannerController extends PanelController
 
         $this->xPanel->addField([
 			'name'       => 'picture',
-			'label'      => trans('Home Banner (Recommended Size 655px × 555px)'),
+			'label'      => trans('Image (Recommended Size 655px × 555px)'),
 			'type'   => 'image',
 			'upload' => true,
 			'disk'   => 'public',

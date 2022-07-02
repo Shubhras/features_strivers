@@ -34,7 +34,7 @@ class HomeSectionBannerTextController extends PanelController
         
 		$this->xPanel->setModel('App\Models\HomeSectionBannerText');
 		$this->xPanel->setRoute(admin_uri('home_section_banner'));
-		$this->xPanel->setEntityNameStrings(trans('Home Page Banner'), trans('Home Page Banner'));
+		$this->xPanel->setEntityNameStrings(trans('Home Page Section 1'), trans('Home Page Section 1'));
 		if (!request()->input('order')) {
 			$this->xPanel->orderBy('created_at', 'DESC');
 		}

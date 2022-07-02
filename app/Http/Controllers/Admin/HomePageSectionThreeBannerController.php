@@ -32,7 +32,7 @@ class HomePageSectionThreeBannerController extends PanelController
 		$this->xPanel->setModel('App\Models\HomePageSectionThreeBanner');
 		// print_r($this->xPanel->setModel('App\Models\HomePageSectionThreeBanner'));die;
 		$this->xPanel->setRoute(admin_uri('home_section_three_banner'));
-		$this->xPanel->setEntityNameStrings(trans('Home Page Banner Section 3'), trans('Home Page Banner Section 3'));
+		$this->xPanel->setEntityNameStrings(trans('Home Page Section 3'), trans('Home Page Section 3'));
 		if (!request()->input('order')) {
 			$this->xPanel->orderBy('created_at', 'DESC');
 		}
@@ -53,7 +53,7 @@ class HomePageSectionThreeBannerController extends PanelController
 		// COLUMNS
 		$this->xPanel->addColumn([
 			'name'          => 'picture',
-			'label'         => trans('Home Banner'),
+			'label'         => trans('Image'),
 			
 		]);
 		$this->xPanel->addColumn([
@@ -69,7 +69,7 @@ class HomePageSectionThreeBannerController extends PanelController
 
         $this->xPanel->addField([
 			'name'       => 'picture',
-			'label'      => trans('Home Banner (Recommended Size 500px × 340px)'),
+			'label'      => trans('Image (Recommended Size 500px × 340px)'),
 			'type'   => 'image',
 			'upload' => true,
 			'disk'   => 'public',

@@ -471,7 +471,7 @@ if ($data == 1) { ?>
 					<!-- @if (auth()->user()->can('payment-list') || userHasSuperAdminPermissions()) -->
 					<li class="sidebar-item">
 						<a href="{{ admin_url('payments') }}" class="sidebar-link">
-							<i data-feather="dollar-sign" class="feather-icon"></i> <span class="hide-menu">{{ trans('Strivre payments') }}</span>
+							<i data-feather="dollar-sign" class="feather-icon"></i> <span class="hide-menu">{{ trans('Strivre Payments') }}</span>
 						</a>
 					</li>
 					<!-- @endif -->
@@ -479,7 +479,7 @@ if ($data == 1) { ?>
 
 					<li class="sidebar-item">
 						<a href="{{ admin_url('coach_payments') }}" class="sidebar-link">
-							<i data-feather="dollar-sign" class="feather-icon"></i> <span class="hide-menu">{{ trans('Coache payments') }}</span>
+							<i data-feather="dollar-sign" class="feather-icon"></i> <span class="hide-menu">{{ trans('Coach Payments') }}</span>
 						</a>
 					</li>
 
@@ -508,21 +508,21 @@ if ($data == 1) { ?>
 							<li class="sidebar-item">
 								<a href="{{ admin_url('home_section_banner') }}" class="sidebar-link">
 									<i class="mdi mdi-adjust"></i>
-									<span class="hide-menu">{{ trans('Home Page Banner 1') }}</span>
+									<span class="hide-menu">{{ trans('Home Page Section 1') }}</span>
 								</a>
 							</li>
 
 							<li class="sidebar-item">
 								<a href="{{ admin_url('home_section_two_banner') }}" class="sidebar-link">
 									<i class="mdi mdi-adjust"></i>
-									<span class="hide-menu">{{ trans('Home Page Banner 2') }}</span>
+									<span class="hide-menu">{{ trans('Home Page Section 2') }}</span>
 								</a>
 							</li>
 
 							<li class="sidebar-item">
 								<a href="{{ admin_url('home_section_three_banner') }}" class="sidebar-link">
 									<i class="mdi mdi-adjust"></i>
-									<span class="hide-menu">{{ trans('Home Page Banner 3') }}</span>
+									<span class="hide-menu">{{ trans('Home Page Section 3') }}</span>
 								</a>
 							</li>
 
