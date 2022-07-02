@@ -639,11 +639,11 @@ $index_and_footer_logo = DB::table('logo_header_and_footer_and_images_change')->
 
                             <div class="hdata">
                                 <a href="{{ url('account/chat') }}">
-                                    <div class="mcol-left">
+                                    <div class="mcol-left1">
                                         <!-- <i class="fas fa-comments ln-shadow"></i> -->
                                         <img src="../assets/images/chat_call.png" alt="">
                                     </div>
-                                    <div class="mcol-right">
+                                    <div class="mcol-right1">
                                         {{-- Number of visitors --}}
                                         <p>
 

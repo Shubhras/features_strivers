@@ -26506,12 +26506,24 @@ div.login-box .panel-footer label {
     margin-top: -7px
 }
 
+.mcol-left1 {
+    float: left;
+    width: 22%;
+    margin-top: 27px
+}
+
 .mcol-right {
     /* float: right;
     width: 48% */
     float: right;
     width: 78%;
     margin-top: 10px;
+}
+
+.mcol-right1 {
+    float: right;
+    width: 78%;
+    margin-top: 44px;
 }
 
 .panel-title {
@@ -29496,6 +29508,11 @@ table.checkboxtable th {
         width: 200px
     }
     .mcol-left {
+        float: left;
+        width: 16%;
+        margin-top: 1px;
+    }
+    .mcol-left1 {
         float: left;
         width: 16%;
         margin-top: 1px;

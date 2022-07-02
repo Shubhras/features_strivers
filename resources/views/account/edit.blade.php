@@ -985,11 +985,11 @@ favDialog.addEventListener('close', function onClose() {
 					   
 					   <div class="hdata">
 					   <a href="{{ url('account/chat') }}">
-						   <div class="mcol-left">
+						   <div class="mcol-left1">
 							   <!-- <i class="fas fa-comments ln-shadow"></i> -->
 							   <img src="../assets/images/chat_call.png" alt="">
 						   </div>
-						   <div class="mcol-right">
+						   <div class="mcol-right1">
 							   {{-- Number of visitors --}}
 							   <p>
 								   

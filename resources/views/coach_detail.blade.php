@@ -442,6 +442,10 @@ $conditions = $top_coach_detail->category;
 			padding-left: 5px;
 
 		}
+		.mcol-left1 {
+			padding-left: 5px;
+
+		}
 	</style>
 
 
