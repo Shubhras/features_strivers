@@ -99,7 +99,7 @@ class AboutUsVideo extends BaseUser
 		parent::boot();
 		
 		
-        HomeSectionBannerText::observe(PageObserver::class);
+        AboutUsVideo::observe(PageObserver::class);
 		
 		static::addGlobalScope(new ActiveScope());
 	}
@@ -109,12 +109,7 @@ class AboutUsVideo extends BaseUser
 	 *
 	 * @return array
 	 */
-	
-	
 
-	
-	
-	
 
 	
 
@@ -407,9 +402,12 @@ class AboutUsVideo extends BaseUser
 			$value = null;
 		}
 		
-    }
-		
-	
+		return $value;
+
+
+
+       
+	}
 	
 	/*
 	|--------------------------------------------------------------------------
@@ -465,7 +463,7 @@ class AboutUsVideo extends BaseUser
 				$imageQuality = 100;
 				
 				// Image default dimensions
-				$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 2000);
+				$width = (int)config('larapen.core.picture.otherTypes.bgHeader.width', 1800);
 				$height = (int)config('larapen.core.picture.otherTypes.bgHeader.height', 1000);
 				
 				// Init. Intervention
@@ -513,6 +511,7 @@ class AboutUsVideo extends BaseUser
 			
 			return false;
 		}
+
         
 
 	}
