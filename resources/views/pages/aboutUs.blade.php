@@ -95,7 +95,7 @@
             enable team members to grow their whole selves beyond work.”</p> -->
 
           
-            <p class="global_page_white font-text-size-20px">{{$index_and_footer_logo->about_us_text}}</p>
+            <p class="global_page_white font-text-size-20px">{!! $index_and_footer_logo->about_us_text  !!}</p>
 
             <!-- <p class="global_page_white font-text-size-20px">{{$index_and_footer->change_strivre_name}}</p> -->
 
