@@ -91,14 +91,14 @@
                         $total_unread_message =  count($message);
                         //  print($total_unread_message);die;
                         ?>
-                        <li class="nav-item active ">
+                        <!-- <li class="nav-item active ">
                             <a {!! ($pagePath=='messenger' ) ? 'class="active" ' : '' !!}href="{{ url('account/messages') }}">
                                 <h5 class="collapse-title no-border">
                                     <i class="fas fa-envelope"></i> {{ t('messenger') }}&nbsp;
                                     <span class="badge badge-pill count-threads-with-new-messages hide" style="color:black; font-size: 12px;">{{$total_unread_message}}</span>
                                 </h5>
                             </a>
-                        </li>
+                        </li> -->
 
                         <li class="nav-item active ">
                             <a {!! ($pagePath=='video_recorded_list' ) ? 'class="active" ' : '' !!}href="{{ url('account/video_recorded_list') }}">

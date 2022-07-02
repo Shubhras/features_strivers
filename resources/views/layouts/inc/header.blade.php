@@ -239,12 +239,12 @@ if (isset($multiCountriesIsEnabled) && $multiCountriesIsEnabled) {
                                         class="fas fa-hourglass-half"></i> {{ t('pending_approval') }} </a></li>
                             <li class="dropdown-item"><a href="{{ url('account/archived') }}"><i
                                         class="fas fa-calendar-times"></i> {{ t('archived_ads') }}</a></li>
-                            <li class="dropdown-item">
+                            <!-- <li class="dropdown-item">
                                 <a href="{{ url('account/messages') }}">
                                     <i class="far fa-envelope"></i> {{ t('messenger') }}
                                     
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="dropdown-item"><a href="{{ url('account/transactions') }}"><i
                                         class="fas fa-coins"></i> {{ t('Transactions') }}</a></li>
                             <li class="dropdown-divider"></li>

@@ -124,7 +124,7 @@ $sticky_and_footer_logo = DB::table('sticky_Header_logo')->select('sticky_Header
                      $total_unread_message =  count($message);
                     //  print($total_unread_message);die;
                         ?>
-                                    <span class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm">{{$total_unread_message}}</span>
+                                    <span class="badge badge-pill badge-important count-threads-with-new-messages hidden-sm"></span>
 								<!-- <i class="fas fa-chevron-down"></i> -->
                                     <i class="fas fa-chevron-down"></i>
                                     
@@ -170,12 +170,12 @@ $sticky_and_footer_logo = DB::table('sticky_Header_logo')->select('sticky_Header
                         ?>
                             
                                     
-                                    <li class="dropdown-item dropdown-menu-sidebar list-side-menu876">
+                                    <!-- <li class="dropdown-item dropdown-menu-sidebar list-side-menu876">
 									<a href="{{ url('account/messages') }}" class="dropdown-menu-sidebar-a side-menu-li-user">
 										<i class="far fa-envelope"></i> {{ t('messenger') }}
 										<span class="badge badge-pill badge-important count-threads-with-new-messages">{{$total_unread_message}}</span>
 									</a>
-								</li>
+								</li> -->
                                     <!-- <li class="dropdown-item dropdown-menu-sidebar"><a href="{{ url('account/transactions') }}" class="dropdown-menu-sidebar-a side-menu-li-user"><i
                     class="fas fa-coins"></i> {{ t('Transactions') }}</a></li> -->
                                     <!-- <li class="dropdown-divider"></li> -->
